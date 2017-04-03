@@ -1,4 +1,5 @@
 ## Interface: 20300
+## DefaultState: disabled
 ## Title: WIM Classic Skin
 ## Notes: WIM Skin
 ## Author: Pazza (Bronzebeard)

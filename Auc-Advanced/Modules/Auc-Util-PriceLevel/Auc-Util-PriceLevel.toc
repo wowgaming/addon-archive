@@ -1,5 +1,6 @@
 ## Title: Auc:Util:Price Level
 ## Interface: 30300
+## DefaultState: disabled
 ## Dependancies: Auc-Advanced
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

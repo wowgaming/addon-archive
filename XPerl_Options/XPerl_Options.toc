@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: X-Perl |cffeda55fOptions|r by |cFFFF8080Zek |cFF40FF40(LoadOnDemand)|r
 ## Title-ruRU: X-Perl |cffeda55fНастройки |cFF40FF40(LoadOnDemand)|r
 ## Title-zhCN: X-Perl |cffeda55f选项|r |cFF40FF40(LoadOnDemand)|r

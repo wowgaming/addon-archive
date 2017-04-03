@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Version: 3.0.9
 ## Title: Omen3
 ## Notes: A lightweight, flexible, multi-target threat meter.

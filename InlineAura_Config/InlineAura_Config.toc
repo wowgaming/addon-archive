@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## X-Curse-Packaged-Version: 1.4
 ## X-Curse-Project-Name: Inline Aura
 ## X-Curse-Project-ID: inline-aura

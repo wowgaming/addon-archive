@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 
 ## Title: Lib: SharedMedia-3.0
 ## Notes: Shared handling of media data (fonts, sounds, textures, ...) between addons.

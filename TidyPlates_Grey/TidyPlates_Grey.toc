@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Tidy Plates: Grey Theme
 ## Notes: Tidy Plates' Bundled Theme.  Use apostrophes wisely. 
 ## Author: Binny the Love Fool

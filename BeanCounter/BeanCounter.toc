@@ -2,6 +2,7 @@
 ## Notes: Auction House transaction history to include purchases and sales, failures and successes.  Data viewable in game and stored for use within other Auctioneer Modules and other AddOns.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## Dependencies: Stubby
 ## OptionalDeps: !nLog, Babylonian, DebugLib, SlideBar, Auc-Advanced, Configator, LibExtraTip, TipHelper
 ## SavedVariables: BeanCounterDB, BeanCounterAccountDB

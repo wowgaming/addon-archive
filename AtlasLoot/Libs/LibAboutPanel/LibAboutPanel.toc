@@ -13,6 +13,7 @@
 ## X-Donate: http://www.curseforge.com/projects/libaboutpanel/#w_donations
 
 ## Interface: 30300
+## DefaultState: disabled
 ## Version: 1.43
 ## X-Revision: @project-revision@
 ## X-Date: 2009-12-18T22:27:31Z
@@ -25,7 +26,7 @@
 ## Dependencies:
 ## X-Embeds: LibStub, CallbackHandler-1.0
 ## OptionalDeps: LibStub, CallbackHandler-1.0
-## DefaultState: Enabled
+
 ## LoadOnDemand: 0
 
 #@no-lib-strip@

@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fCombo points|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fCombo-Punkte|r]
 ## Title-esES: PitBull4 |r[|cffeda55fPuntos de combo|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 如果你是潜行者或猫形态德鲁伊则在单位框体上显示连击点数
 ## Notes-zhTW: 如果你是盜賊或貓形態德魯伊則在單位框架上顯示連擊點。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

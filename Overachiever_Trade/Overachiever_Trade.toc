@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Overachiever - Trade
 ## Version: 0.56
 ## Author: Tuhljin

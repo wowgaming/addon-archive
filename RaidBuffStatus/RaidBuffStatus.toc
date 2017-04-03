@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: RaidBuffStatus
 ## Author: Danielbarron
 ## Version: 3.249
@@ -7,7 +8,7 @@
 ## Notes: Reports to /raid or /party on consumables, buffs, AFK, mana, crusader aura, talent spec and many many others but in an intelligent automagic way. RBS is the last nail in the coffin of all slacking level 80 raiders.
 ## eMail: daniel@jadeb.com
 ## URL: http://www.wowace.com/projects/raidbuffstatus/
-## DefaultState: Enabled
+
 ## OptionalDeps: Ace3, oRA2, XPerl, LibGroupTalents-1.0, LibTalentQuery-1.0
 ## SavedVariables: RaidBuffStatusDB, RaidBuffStatusDefaultProfile
 ## X-Category: Raid

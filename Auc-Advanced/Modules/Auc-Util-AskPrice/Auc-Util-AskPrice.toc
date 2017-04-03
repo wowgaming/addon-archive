@@ -2,6 +2,7 @@
 ## Notes: Auctioneer utility that automatically responds to requests for pricing via the guild and, or, party chat channesl.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## Dependancies: Auc-Advanced
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

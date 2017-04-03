@@ -1,4 +1,5 @@
 ## Interface: 30100
+## DefaultState: disabled
 ## Title: Lib: QTip-1.0
 ## Notes: Library providing multi-column tooltips.
 ## Author: Torhal, Adirelle, Elkano, Tristanian

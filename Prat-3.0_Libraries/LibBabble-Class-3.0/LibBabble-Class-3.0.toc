@@ -1,4 +1,5 @@
 ## Interface: 30100
+## DefaultState: disabled
 ## LoadOnDemand: 1
 ## Title: Lib: Babble-Class-3.0
 ## Notes: A library to help with localization of classes.

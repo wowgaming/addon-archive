@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fLua texts|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fLua Texte|r]
 ## Title-esES: PitBull4 |r[|cffeda55fTextos Lua|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 使用Lua脚本创建文本
 ## Notes-zhTW: 使用Lua腳本提供文字訊息。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

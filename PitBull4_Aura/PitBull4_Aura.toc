@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fAura|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fAura|r]
 ## Title-esES: PitBull4 |r[|cffeda55fAura|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 为PB4框体显示buff和debuff
 ## Notes-zhTW: 為PB4框體顯示buff和debuff
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

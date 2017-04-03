@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: Atlas
 ## Title-zhTW: |r|cFF0099FF[地圖]|rAtlas 地圖集
 ## Notes: Instance Map Browser

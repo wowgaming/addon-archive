@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fCombat text|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fKampftext|r]
 ## Title-esES: PitBull4 |r[|cffeda55fTexto de Combate|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 在单位框体上显示诸如受到伤害、受到治疗、抵抗等等战斗信息
 ## Notes-zhTW: 在單位框架上顯示諸如受到傷害、受到治療、抵抗等等戰鬥資訊。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 ## LoadOnDemand: 1
 ## X-Curse-Packaged-Version: r59
 ## X-Curse-Project-Name: LibSharedMedia-3.0

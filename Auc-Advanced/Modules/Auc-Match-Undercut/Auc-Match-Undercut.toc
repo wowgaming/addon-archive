@@ -1,6 +1,7 @@
 ## Title: Auc:Match:Undercut
 ## Notes: Utility module for Auctioneer that allows you to automatically meet, beat, or exceed the prices set by others when creating auctions at the Auction House, all based upon your chosen settings.
 ## Interface: 30300
+## DefaultState: disabled
 ## Dependancies: Auc-Advanced
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

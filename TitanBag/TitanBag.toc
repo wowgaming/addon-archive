@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Titan Panel [|cffeda55fBag|r] |cff00aa004.3.8.30300|r
 ## Notes: Adds bag and free slot information to Titan Panel
 ## Author: Titan Development Team (http://www.titanpanel.org)

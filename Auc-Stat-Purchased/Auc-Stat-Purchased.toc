@@ -2,6 +2,7 @@
 ## Notes: Statistics extension for Auctioneer that performs historical exponential moving averages at the 1, 3, 7 and 14 day intervals, using the item's last known price before expiration and buy-out price if auction ends early.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ## Disabled: 0
 ## Dependencies: Auc-Advanced

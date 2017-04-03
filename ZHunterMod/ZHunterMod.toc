@@ -1,4 +1,5 @@
 ## Interface: 30100
+## DefaultState: disabled
 ## Title: Zanzer's Hunter Mod
 ## Notes: Useful additions to make a Hunter's life even easier!
 ## SavedVariablesPerCharacter: ZHunterMod_Saved

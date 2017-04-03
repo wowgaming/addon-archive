@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fDogTag-3.0 texts|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fDogTag-3.0-Texte|r]
 ## Title-esES: PitBull4 |r[|cffeda55fTextos DogTag-3.0|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: LibDogTag-3.0文本代码
 ## Notes-zhTW: LibDogTag-3.0文字代碼。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## OptionalDeps: LibDogTag-3.0, LibDogTag-Unit-3.0

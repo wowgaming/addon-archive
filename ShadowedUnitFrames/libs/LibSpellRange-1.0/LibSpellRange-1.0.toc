@@ -1,4 +1,5 @@
 ## Interface: 70000
+## DefaultState: disabled
 ## X-CompatibleWith: 50400
 ## Title: Lib: SpellRange-1.0
 ## Notes: Provides enhanced spell range checking functionality

@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: DataStore_Reputations
 ## Notes: Stores information about character reputation levels
 ## Author: Thaoky (EU-Marécages de Zangar)

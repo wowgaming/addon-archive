@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: MrTrader |cff7fff7f (Skill Window)|r
 ## Notes: Module for MrTrader. Provides the SkillWindow UI.
 ## Author: user@zedonline.net

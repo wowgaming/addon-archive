@@ -1,8 +1,9 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: EasyLoot
 ## Author: Zaman
 ## Version: 1.7.0.0
-## DefaultState: Enabled
+
 ## LoadOnDemand: 0
 ## SavedVariables: EasyLootSettings
 ## SavedVariablesPerCharacter: EasyLootLootList

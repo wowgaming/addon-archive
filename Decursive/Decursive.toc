@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## X-Curse-Packaged-Version: 2.5.1-6-gd3885c5
 ## X-Curse-Project-Name: Decursive
 ## X-Curse-Project-ID: decursive

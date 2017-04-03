@@ -1,9 +1,10 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Carbonite 3.34
 ## Version: 3.34
 ## Author: Carbon Based Creations, LLC
 ## Notes: Copyright 2007-2010 Carbon Based Creations, LLC
-## DefaultState: Enabled
+
 ## LoadOnDemand: 0
 ## SavedVariables: NxData, NxCombatOpts, NxMapOpts
 ## SavedVariablesPerCharacter: NxCData

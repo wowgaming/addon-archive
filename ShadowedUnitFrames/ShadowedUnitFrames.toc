@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Shadowed Unit Frames
 ## Notes: An apple a day keeps the raptor away, or so they say
 ## Author: Shadowed

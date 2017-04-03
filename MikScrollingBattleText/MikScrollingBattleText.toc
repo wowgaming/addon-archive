@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Version: 5.4.78
 ## Title: Mik's Scrolling Battle Text
 ## Author: Mikord

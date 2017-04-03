@@ -1,4 +1,5 @@
 ﻿## Interface: 30000
+## DefaultState: disabled
 ## LoadOnDemand: 1
 ## Title: Lib: Banzai-2.0
 ## Notes: Aggro notification library.

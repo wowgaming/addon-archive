@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 ## Title: UTF8
 ## Notes: A library for manipulating UTF-8 strings
 ## Author: Pastamancer

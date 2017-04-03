@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Version: 1.30300.1308
 ## X-ReleaseDate: "$Date: 2010-08-06 05:31:41 +0000 (Fri, 06 Aug 2010) $"
 ## X-Curse-Packaged-Version: r1318

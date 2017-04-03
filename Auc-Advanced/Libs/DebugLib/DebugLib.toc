@@ -2,6 +2,7 @@
 ## Notes: A embeddable debugging library that transparently supports the nLog logging system, if present.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ## OptionalDependencies: !nLog
 ##

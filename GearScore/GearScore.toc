@@ -1,4 +1,5 @@
 ## Interface: 40000
+## DefaultState: disabled
 ## Title: GearScore
 ## Notes: Quickly and easily judge a player's level of Gear
 ## Version: 3.1.20b - Release

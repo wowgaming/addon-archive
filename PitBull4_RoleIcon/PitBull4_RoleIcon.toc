@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fRole icon|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fRollensymbol|r]
 ## Title-esES: PitBull4 |r[|cffeda55fIcono de rol|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 在单位框体上按其队伍角色显示图标
 ## Notes-zhTW: 按隊伍角色在單位框體上顯示圖示
 ## Author: ulic
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

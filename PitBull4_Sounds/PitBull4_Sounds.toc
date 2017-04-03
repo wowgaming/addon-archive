@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fSounds|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fSounds|r]
 ## Title-esES: PitBull4 |r[|cffeda55fSonidos|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 在特定的单位时间发生时播放音效
 ## Notes-zhTW: 在特定的單位事件發生時播放音效。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

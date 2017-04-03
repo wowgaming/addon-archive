@@ -2,6 +2,7 @@
 ## Notes: Assists in the management of additional tooltip information.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ##
 ## Version: 1.1

@@ -2,6 +2,7 @@
 ## Notes: Debugging tool for handling and displaying of error messages in a useful way.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## SavedVariables: SwatterData
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

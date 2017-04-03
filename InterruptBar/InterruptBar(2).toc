@@ -1,9 +1,10 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Interrupt Bar
 ## Notes: Tracks interrupts
 ## Version: 1.18
 ## Author: Kollektiv
-## DefaultState: Enabled
+
 ## SavedVariables: InterruptBarDB
 ## X-Curse-Packaged-Version: v1.20
 ## X-Curse-Project-Name: InterruptBar

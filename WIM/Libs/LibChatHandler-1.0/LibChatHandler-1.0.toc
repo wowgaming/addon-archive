@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## X-Curse-Packaged-Version: r15
 ## X-Curse-Project-Name: LibChatHandler-1.0
 ## X-Curse-Project-ID: libchathandler

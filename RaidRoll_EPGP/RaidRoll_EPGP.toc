@@ -1,4 +1,5 @@
 ## Interface: 40000
+## DefaultState: disabled
 ## X-Compatible-With: 40000
 ## Title: Raid Roll - EPGP
 ## Author: Musou

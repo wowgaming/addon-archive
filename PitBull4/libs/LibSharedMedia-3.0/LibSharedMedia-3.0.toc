@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 ## X-Curse-Packaged-Version: 2
 ## X-Curse-Project-Name: LibSharedMedia-3.0
 ## X-Curse-Project-ID: libsharedmedia-3-0

@@ -1,4 +1,5 @@
 ﻿## Interface: 40000
+## DefaultState: disabled
 ## Title: BonusScanner Continued |cff00aa005.3|r
 ## Version: 5.4.0
 ## Notes: Scans your Equipment for cumulative item bonuses and sums them up. Currently maintained and updated by Tristanian. Updated by Mirrikat45 / Arxkanite

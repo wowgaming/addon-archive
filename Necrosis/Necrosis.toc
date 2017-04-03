@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Necrosis
 ## Title-ruRU: Necrosis (Русский)
 ## Title-frFR: Necrosis (Français)
@@ -9,7 +10,7 @@
 ## Author: Arpharazon [TarCalion @ US-Nagrand]
 ## eMail: arpharazon@godsofchaos.org
 ## Website: http://wow.curse.com/downloads/wow-addons/details/necrosis-ld-c.aspx
-## DefaultState: Enabled
+
 ## X-Original-Author: Lomig
 ## X-Original-Website: http://necrosis.larmes-cenarius.net/  [does not work anymore]
 ## X-Localizations: enUS, enGB, deDE, frFR, koKR, zhCN, zhTW, esES, ruRU

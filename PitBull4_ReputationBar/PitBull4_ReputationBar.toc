@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fReputation bar|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fRufleiste|r]
 ## Title-esES: PitBull4 |r[|cffeda55fBarra de reputación|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 显示声望条
 ## Notes-zhTW: 顯示聲望條。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

@@ -2,6 +2,7 @@
 ## Notes: Provides additional features and enhancement of the Auction House's "Browse" frame.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## Dependancies: Auc-Advanced
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

@@ -2,6 +2,7 @@
 ## Notes: Auctioneer utility module that aids in the search for items posted on the Auction House.  Extremely flexible, with multiple, fully configurable Searchers to quickly and easily find specific items to use, resell, craft, and more.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## Dependencies: Auc-Advanced, Stubby
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

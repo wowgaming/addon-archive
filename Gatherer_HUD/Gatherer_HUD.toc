@@ -1,4 +1,5 @@
 ## Interface: 30200
+## DefaultState: disabled
 ## 
 ## Title: Gatherer Heads-Up Display Plugin
 ## Title-frFR: Gatherer Heads-Up Display Plugin

@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: Atlas |r|cFF0099FF[Battlegrounds]|r
 ## Title-deDE: Atlas |r|cFF0099FF[Schlachtfelder]|r
 ## Title-ruRU: Atlas |r|cFF0099FF[Поля Сражений]|r

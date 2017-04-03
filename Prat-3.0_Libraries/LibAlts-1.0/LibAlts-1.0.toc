@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## X-Curse-Packaged-Version: r23
 ## X-Curse-Project-Name: LibAlts-1.0
 ## X-Curse-Project-ID: libalts-1-0

@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: X-Perl |cffeda55fPlayer Buffs|r by |cFFFF8080Zek|r
 ## Title-ruRU: X-Perl |cffeda55fБаффы игрока|r
 ## Title-zhCN: X-Perl |cffeda55f玩家Buff|r

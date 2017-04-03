@@ -1,4 +1,5 @@
 ## Interface: 30200
+## DefaultState: disabled
 ## LoadOnDemand: 1
 ## Title: Lib: DogTag-Unit-3.0
 ## Notes: A library to provide unit-oriented tags to LibDogTag-3.0

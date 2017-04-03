@@ -2,6 +2,7 @@
 ## Notes: Allows AddOns to load automatically, when called, based upon simple event notification hooks. [5.8.4723] This AddOn is licensed under the GNU GPL, see GPL.txt for details.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## OptionalDeps: !nLog, DebugLib
 ## SavedVariables: StubbyConfig
 ##

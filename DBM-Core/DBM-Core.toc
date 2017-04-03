@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title:|cffffd200Deadly Boss Mods|r |cff69ccf0Core|r
 ## Title-zhCN: |cffffd200Deadly Boss Mods|r |cff69ccf0核心|r
 ## Title-ruRU:|cffffd200Deadly Boss Mods|r |cff69ccf0Основной|r
@@ -9,7 +10,7 @@
 ## Notes: Deadly Boss Mods
 ## SavedVariablesPerCharacter: DBM_SavedOptions, DBT_SavedOptions
 ## LoadOnDemand: 0
-## DefaultState: enabled
+
 ## Author: Tandanu and Nitram
 ## X-Website: http://www.deadlybossmods.com
 localization.en.lua

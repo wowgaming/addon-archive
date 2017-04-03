@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fBorder|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fRand|r]
 ## Title-esES: PitBull4 |r[|cffeda55fBorde|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 鼠标滑过或选为目标时进行高亮
 ## Notes-zhTW: 滑鼠滑過或選為目標時進行高亮。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

@@ -1,4 +1,5 @@
 ﻿## Interface: 30200
+## DefaultState: disabled
 ## X-Curse-Packaged-Version: LibCompress r40-release
 ## X-Curse-Project-Name: LibCompress
 ## X-Curse-Project-ID: libcompress

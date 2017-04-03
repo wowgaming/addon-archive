@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Skada |r[|caaedc99fDeaths|r]
 ## Notes: Adds a Deaths mode and data collection to Skada.
 ## Author: Zarnivoop

@@ -2,6 +2,7 @@
 ## Notes: Allows Auctioneer to delay loading the, probably, large auction scan dataset until it is needed. [5.8.4723] This AddOn is licensed under the GNU GPL, see GPL.txt for details.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 1
 ## SavedVariables: AucScanData
 ## Dependencies: Auc-Advanced

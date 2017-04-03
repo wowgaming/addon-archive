@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: AtlasLoot_OriginalWoW
 ## Title-deDE: AtlasLoot |cFF0099FF[Alte Instanzen]|r
 ## Title-zhCN: AtlasLoot |cFF0099FF[经典旧世]|r

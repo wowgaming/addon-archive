@@ -1,4 +1,5 @@
 ## Interface: 30200
+## DefaultState: disabled
 ## 
 ## Title: Gatherer
 ## Title-frFR: Gatherer

@@ -2,6 +2,7 @@
 ## Notes: Add general utilities to the Auction House Frame - protects from closing, allows repositioning, and limited scaling.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ## Disabled: 0
 ## Dependencies: Auc-Advanced

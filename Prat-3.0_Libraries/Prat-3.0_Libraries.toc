@@ -1,8 +1,9 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Prat |cff8080ff3.0|r |r[|cffeda55fLibraries|r]
 ## Author: Sylvanaar
 ## X-License: GPLv3
-## DefaultState: enabled
+
 ## X-Curse-Packaged-Version: 3.3.26
 ## X-Curse-Project-Name: Prat 3.0
 ## X-Curse-Project-ID: prat-3-0

@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fRest icon|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fRastsymbol|r]
 ## Title-esES: PitBull4 |r[|cffeda55fIcono de descanso|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 显示单位处在旅店或主城中时的休息标记
 ## Notes-zhTW: 顯示單位處在旅店或主城中時的休息標記。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Titan Panel [|cffeda55fHealBot|r] 3.3.5.2
 ## Notes: Adds a small icon and options for Healbot.
 ## Author: Strife

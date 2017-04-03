@@ -2,6 +2,7 @@
 ## Notes: Statistics extension for Auctioneer that uses a histogram data collection method.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ## Disabled: 1
 ## Dependencies: Auc-Advanced

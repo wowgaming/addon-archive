@@ -2,6 +2,7 @@
 ## Notes: An embeddable library that assists AddOns wishing to use the LibExtraTip tooltip library.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ## OptionalDependencies: !nLog, LibExtraTip
 ##

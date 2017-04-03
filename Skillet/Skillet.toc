@@ -1,4 +1,5 @@
 ## Interface: 30200
+## DefaultState: disabled
 ## Title: Skillet |cff7fff7f -Ace2-|r
 ## Notes: A replacement tradeskill window
 ## Author: nogudnik, lilsparky

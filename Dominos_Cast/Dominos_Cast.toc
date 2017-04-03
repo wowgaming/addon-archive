@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Dominos Cast
 ## Title-zhCN: |cFF0099FF[Dominos]|r 施法条模块
 ## Notes: A movable casting bar, with timer

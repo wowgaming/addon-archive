@@ -1,4 +1,5 @@
 ﻿## Interface: 30200
+## DefaultState: disabled
 ## LoadOnDemand: 1
 ## Title: Lib: PeriodicTable-3.1 [|cffeda55fInstanceLoot|r]
 ## Notes: PeriodicTable data module.

@@ -1,5 +1,6 @@
 ## Title: Auc:Util:GlypherPost
 ## Interface: 30200
+## DefaultState: disabled
 ## Dependancies: Auc-Advanced
 ##
 ## Version: 5.6.4409 (KangaII)

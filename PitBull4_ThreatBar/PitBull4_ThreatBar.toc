@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fThreat bar|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fBedrohungsleiste|r]
 ## Title-esES: PitBull4 |r[|cffeda55fBarra de Amenaza|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 显示威胁值条
 ## Notes-zhTW: 顯示威脅值條。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

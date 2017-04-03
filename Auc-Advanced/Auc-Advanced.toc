@@ -2,6 +2,7 @@
 ## Notes: Auctioneer assists players to track item values; whether buying or selling. You must enable at least one statistics extension (like Auc:Stats:Simple) to begin.  Combines with other modules to form the powerful, fully configurable Auctioneer Suite.
 ##
 ## Interface: 30300
+## DefaultState: disabled
 ## LoadOnDemand: 0
 ## Dependencies: Stubby
 ## OptionalDependencies: !nLog, SlideBar, Configator, Babylonian, DebugLib, TipHelper, LibExtraTip

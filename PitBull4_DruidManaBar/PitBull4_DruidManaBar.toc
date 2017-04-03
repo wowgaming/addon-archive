@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fDruid mana bar|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fDruiden-Manaleiste|r]
 ## Title-esES: PitBull4 |r[|cffeda55fBarra de maná para Druída|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 德鲁伊处在猎豹或熊形态下时显示法力值条
 ## Notes-zhTW: 德魯伊處在獵豹或熊形態下時顯示法力值條。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

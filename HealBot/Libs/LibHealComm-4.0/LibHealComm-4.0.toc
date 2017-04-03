@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Lib: HealComm-4.0
 ## Notes: Library for showing incoming heals and hots
 ## Author: Shadowed

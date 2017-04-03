@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fVisualHeal|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fVisualHeal|r]
 ## Title-esES: PitBull4 |r[|cffeda55fVisualHeal|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 预估你和队友即将输出的治疗并图形化显示
 ## Notes-zhTW: 預估你和隊伍成員造成的治療並圖形化顯示。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## OptionalDeps: LibHealComm-4.0

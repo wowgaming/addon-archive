@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title:  Can't Heal You 3.12
 ## Version:  3.12
 ## Author: Travis S. Casey

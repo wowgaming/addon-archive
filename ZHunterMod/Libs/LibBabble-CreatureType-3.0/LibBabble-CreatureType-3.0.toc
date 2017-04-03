@@ -1,4 +1,5 @@
 ## Interface: 20400
+## DefaultState: disabled
 ## Title: Lib: Babble-CreatureType-3.0
 ## Notes: A library to help with localization of the output of UnitCreatureType.
 ## Author: Kemayo

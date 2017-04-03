@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: X-Perl |cffeda55fRaid Admin|r by |cFFFF8080Zek|r
 ## Title-ruRU: X-Perl |cffeda55fРейд админ|r
 ## Title-zhCN: X-Perl |cffeda55f团队管理|r

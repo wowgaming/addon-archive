@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: X-Perl UnitFrames by |cFFFF8080Zek|r
 ## Version: 3.0.9
 ## Title-ruRU: X-Perl UnitFrames |cFFFF6060Основной|r

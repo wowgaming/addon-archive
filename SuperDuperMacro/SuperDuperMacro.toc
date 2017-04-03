@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 ## Title : Super Duper Macro
 ## Notes: Enables creation of incredibly long macros.
 ## Author: hypehuman

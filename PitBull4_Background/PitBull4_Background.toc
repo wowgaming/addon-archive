@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: PitBull4 |r[|cffeda55fBackground|r]
 ## Title-deDE: PitBull4 |r[|cffeda55fHintergrund|r]
 ## Title-esES: PitBull4 |r[|cffeda55fFondo|r]
@@ -16,7 +17,7 @@
 ## Notes-zhCN: 单位框体显示背景
 ## Notes-zhTW: 單位框架顯示背景。
 ## Author: ckknight
-## DefaultState: enabled
+
 ## LoadOnDemand: 1
 ## Dependencies: PitBull4
 ## Version: v4.0.0-beta9

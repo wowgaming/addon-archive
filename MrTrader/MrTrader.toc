@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: MrTrader
 ## Notes: A lightweight addon that does something.
 ## Author: user@zedonline.net

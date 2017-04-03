@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 ## Name: Proximo
 ## Title: Proximo
 ## Notes: Simple enemy unit frames for Arena matches

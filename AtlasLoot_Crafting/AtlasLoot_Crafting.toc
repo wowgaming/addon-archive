@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: AtlasLoot_Crafting
 ## Title-zhCN: AtlasLoot |cFF0099FF[交易技能]|r
 ## Title-zhTW: |r|cFF0099FF[地圖]|rAL 商業技能

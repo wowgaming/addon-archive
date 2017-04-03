@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: DataStore_Stats
 ## Notes: Stores information about character statistics
 ## Author: Thaoky (EU-Marécages de Zangar)

@@ -1,5 +1,6 @@
 ## Title: Auc:Util:Scan Start
 ## Interface: 30200
+## DefaultState: disabled
 ## Dependancies: Auc-Advanced
 ##
 ## Version: 5.8.4723 (CreepyKangaroo)

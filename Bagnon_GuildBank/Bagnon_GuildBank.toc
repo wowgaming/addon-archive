@@ -1,10 +1,11 @@
 ## Interface: 30200
+## DefaultState: disabled
 ## Title: Bagnon Guild Bank
 ## Author: Tuller
 ## Notes: Single window display for your guild bank
 ## Version: 1.0.0
 ## RequiredDeps: Bagnon
 ## LoadOnDemand: 1
-## DefaultState: disabled 
+ disabled 
 main.lua
 components.xml

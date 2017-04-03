@@ -1,4 +1,5 @@
 ﻿## Interface: 50100
+## DefaultState: disabled
 ## Title: MinimapButtonBag
 ## Author: Tunhadil, Fixed by Pericles for WotLK, fixed by yossa for patch 4.0.1
 ## X-Category: Map

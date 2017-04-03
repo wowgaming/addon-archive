@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: X-Perl |cffeda55fRaid Monitor|r by |cFFFF8080Zek|r
 ## Title-ruRU: X-Perl |cffeda55fМонитор|r
 ## Title-zhCN: X-Perl |cffeda55f团队监控|r
@@ -10,7 +11,7 @@
 ## X-License: GNU GPL v3, 29 June 2007
 ## SavedVariablesPerCharacter: XPerlRaidMonConfig
 ## RequiredDeps: XPerl
-## DefaultState: Disabled
+ Disabled
 ## X-Curse-Packaged-Version: r402
 ## X-Curse-Project-Name: X-Perl UnitFrames
 ## X-Curse-Project-ID: xperl
