@@ -1,0 +1,14 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: r15
+## X-Curse-Project-Name: LibChatHandler-1.0
+## X-Curse-Project-ID: libchathandler
+## X-Curse-Repository-ID: wow/libchathandler/mainline
+
+## Title: LibChatHandler-1.0
+## Notes: Chat Event Model Control View (MCV)
+## Author: Pazza <Bronzebeard> johnlangone@gmail.com
+## X-Website: http://www.wimaddon.com
+## X-Category: Library
+## X-License: LGPL v2.1
+
+lib.xml

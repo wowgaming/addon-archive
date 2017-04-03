@@ -1,0 +1,36 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Karazhan|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariablesPerCharacter: DBMKarazhan_SavedVars, DBMKarazhan_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Name: Karazhan
+## X-DBM-Mod-Name-ruRU: Каражан
+## X-DBM-Mod-Name-zhTW: 卡拉贊
+## X-DBM-Mod-Name-zhCN: 卡拉赞
+## X-DBM-Mod-Sort: 7
+## X-DBM-Mod-LoadZone: Karazhan
+## X-DBM-Mod-LoadZone-zhTW: 卡拉贊
+## X-DBM-Mod-LoadZone-zhCN: 卡拉赞
+## X-DBM-Mod-LoadZone-ruRU: Каражан
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.es.lua
+localization.tw.lua
+localization.cn.lua
+localization.ru.lua
+Attumen.lua
+Moroes.lua
+MaidenOfVirtue.lua
+BigBadWolf.lua
+RomuloAndJulianne.lua
+WizardOfOz.lua
+Curator.lua
+TerestianIllhoof.lua
+ShadeOfAran.lua
+Netherspite.lua
+PrinceMalchezaar.lua
+Nightbane.lua
+NamedBeasts.lua

@@ -1,0 +1,7 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Include file="Support\Load.xml"/>
+	<Include file="SelectBox.xml"/>
+	<Include file="PanelScroller.xml"/>
+	<Script file="ScrollSheet.lua"/>
+	<Script file="Configator.lua"/>
+</Ui>

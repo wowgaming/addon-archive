@@ -1,0 +1,16 @@
+﻿## Interface: 30300
+## Title: DataStore_Stats
+## Notes: Stores information about character statistics
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.001
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_StatsDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+## X-Curse-Packaged-Version: r7
+## X-Curse-Project-Name: DataStore_Stats
+## X-Curse-Project-ID: datastore_stats
+## X-Curse-Repository-ID: wow/datastore_stats/mainline
+
+DataStore_Stats.lua

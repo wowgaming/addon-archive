@@ -1,0 +1,16 @@
+## Interface: 30200
+## LoadOnDemand: 1
+## Title: Lib: PeriodicTable-3.1 [|cffeda55fTradeskillLevels|r]
+## Notes: PeriodicTable data module.
+## Author: lilsparky
+## Version: 3.1
+## Dependencies: LibPeriodicTable-3.1
+## X-Category: Library
+## X-License: LGPL v2.1
+## X-PeriodicTable-3.1-Module: TradeskillLevels
+## X-Curse-Packaged-Version: r293
+## X-Curse-Project-Name: LibPeriodicTable-3.1
+## X-Curse-Project-ID: libperiodictable-3-1
+## X-Curse-Repository-ID: wow/libperiodictable-3-1/mainline
+
+LibPeriodicTable-3.1-TradeskillLevels.lua

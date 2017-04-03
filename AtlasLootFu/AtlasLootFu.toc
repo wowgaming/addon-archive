@@ -1,0 +1,24 @@
+﻿## Interface: 30300
+## Title: AtlasLootFu
+## Notes: Minimap button for AtlasLoot
+## Title-zhTW: |r|cFF0099FF[地圖]|rAL 小地圖按鍵
+## Notes-zhTW: AtlasLoot 小地圖按鍵
+## Author: Hegarol
+## Version: v5.11.04
+## X-eMail: manager@atlasloot.net
+## X-Category: Map
+## X-License: GPL v2
+## X-Website: http://www.atlasloot.net
+## X-Embeds: Ace2, FuBarPlugin-2.0, TabletLib
+## SavedVariables: AtlasLootFuDB
+## Dependencies: AtlasLoot
+## OptionalDeps: Ace2, FuBarPlugin-2.0, TabletLib, FuBar
+## X-Curse-Packaged-Version: v5.11.04
+## X-Curse-Project-Name: Atlasloot Enhanced
+## X-Curse-Project-ID: atlasloot-enhanced
+## X-Curse-Repository-ID: wow/atlasloot-enhanced/mainline
+
+embeds.xml
+
+Locales.lua
+AtlasLootFu.lua

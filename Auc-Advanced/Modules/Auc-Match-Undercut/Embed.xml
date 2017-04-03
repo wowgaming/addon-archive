@@ -1,0 +1,7 @@
+<!-- This file describes which scripts and xml files are to be loaded.  -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="Undercut.lua"/>
+	<Script>
+		AucAdvanced.RegisterRevision("$URL: http://svn.norganna.org/auctioneer/branches/5.8/Auc-Match-Undercut/Embed.xml $", "$Rev: 2531 $")
+	</Script>
+</Ui>

@@ -1,0 +1,16 @@
+------------------------------------------------------------------------
+r167 | lilsparky | 2010-06-25 17:08:47 +0000 (Fri, 25 Jun 2010) | 3 lines
+Changed paths:
+   M /trunk/UI/MainFrame.lua
+
+zomg it's a skillet update.
+chatframe stuff broke linking, so this should fix it.
+
+------------------------------------------------------------------------
+r166 | lilsparky | 2009-08-15 16:44:05 +0000 (Sat, 15 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/Skillet.toc
+   M /trunk/SkilletData.lua
+
+added nil check to initial skill list parsing
+------------------------------------------------------------------------

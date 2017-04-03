@@ -1,0 +1,71 @@
+Version 3.1.0.2
+
+May 17:
+Fixed keybindings
+Added Call Stabled Pet to ZPet bar
+Renamed Arcane Dispel to Tranq Dispel
+
+Feb 14:
+Fixed a bug with ZPet not working properly.
+
+Feb 14:
+Put the special feature back on the Aspect bar (/sigh).
+Added an option to enable/disable the special feature.
+Everything should now be perfect for everybody.
+
+Feb 13:
+Added an option to toggle Tooltips on/off.
+Fixed a problem with Square buttons not saving.
+Disabled the special feature on the Aspect bar.
+It will no longer toggle between the first two aspects as intended (NOT A BUG!).
+If you wanted it, you'll just have to make a macro yourself.
+
+Feb 08:
+Fixed an error with the cooldown display.
+
+Feb 08:
+Fixed several bugs with the new action bars.
+
+Feb 08:
+Complete redesign of Hunter action bars.
+
+Nov 26:
+Fixed some localization.
+
+Nov 20:
+Added /tracktarget - Automatically changes your track to the target's type.
+Added Aspect of the Dragonhawk to the list.
+Tranq Shot dispels should now display.
+
+Oct 22:
+Updated Keybindings (inside /zhunter menu).
+BE SURE TO DELETE KEYBINDINGS.XML SO YOU DON'T GET CONFUSED.
+Button bars close when clicked again.
+Removed error when loading non-hunters.
+
+
+Oct 15:
+Patch 3.0.2
+
+Aug 19:
+Localized (I think) for enUS, deDE, esES, frFR, koKR, ruRU, zhCN, zhTW
+
+Aug 17:
+ZPetAttack and ZPetObey key bindings are working again.
+
+Aug 14:
+Fixed the Key Bindings (I think?)
+Fixed errors when loading a non-hunter.
+Fixed certain chat options.
+
+Aug 9:
+You can now disable the special feature of the first Aspect button (requires '/console reloadui').
+Fixed a bug when changing the trap or track spells.
+Added an enable option for each bar.
+Disabling ZAutoStrip is working again.
+Removed ZTranq from the options.
+Fixed certain options.
+Fixed random errors.
+
+Aug 4:
+Redid a lot of junk.

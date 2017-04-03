@@ -1,0 +1,122 @@
+------------------------------------------------------------------------
+r272 | pazza | 2010-07-13 23:10:20 +0000 (Tue, 13 Jul 2010) | 7 lines
+Changed paths:
+   A /tags/3.3.7 (from /trunk:271)
+
+Tagging as 3.3.7
+
+    *Fixed linking of all blizzard items.
+    *Changed tooltip to read 'Character' instead of 'Toon Name'.
+    *Per request, ldb module changed from launcher to data source.
+    *Update zhTW translations. Thank you Junxian.
+    *Tweaked real id tooltip to not show bank info if info not provided.
+------------------------------------------------------------------------
+r271 | pazza | 2010-07-13 23:09:18 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/WIM.lua
+   M /trunk/WIM.toc
+
+prep for release
+------------------------------------------------------------------------
+r270 | pazza | 2010-07-06 21:48:05 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/Modules/ShortcutBar.lua
+   M /trunk/Modules/W2W.lua
+
+minor edit to realid tooltip information.
+------------------------------------------------------------------------
+r269 | pazza | 2010-07-06 21:35:47 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Sources/Hooks.lua
+
+fixed... method didn't work. revised. this should work.
+------------------------------------------------------------------------
+r268 | pazza | 2010-07-06 21:21:29 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/Localization/zhTW.lua
+   M /trunk/Modules/Includes.xml
+   M /trunk/Modules/ShortcutBar.lua
+   M /trunk/Modules/W2W.lua
+   A /trunk/Modules/alias.lua
+   M /trunk/Modules/ldb.lua
+   M /trunk/Sources/Hooks.lua
+   M /trunk/Sources/WindowHandler.lua
+   M /trunk/WIM.toc
+
+trying new method of linking items etc...
+------------------------------------------------------------------------
+r267 | pazza | 2010-06-30 22:56:50 +0000 (Wed, 30 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/Sources/Hooks.lua
+   M /trunk/Sources/WindowHandler.lua
+   M /trunk/WIM.lua
+
+tried new way to handling linking of items into WIM windows. test please. Look for possible tainting issues of the chat frame.
+------------------------------------------------------------------------
+r265 | pazza | 2010-06-24 17:20:04 +0000 (Thu, 24 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/WIM.lua
+
+prep for release
+------------------------------------------------------------------------
+r264 | pazza | 2010-06-24 17:02:23 +0000 (Thu, 24 Jun 2010) | 5 lines
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/Modules/ShortcutBar.lua
+   M /trunk/Modules/WhisperEngine.lua
+   M /trunk/Sources/Hooks.lua
+   M /trunk/Sources/WindowHandler.lua
+   M /trunk/WIM.lua
+
+    *Fixed issue when receiving messages from realID users.
+    +Invite & Ignore now work for realID messages from users on the same realm.
+    *Fixed bug where items were not linking into WIM windows.
+    *Added extra check for realID class colors.
+    *Fixed bug with intercepting whisper slash commands.
+------------------------------------------------------------------------
+r262 | pazza | 2010-06-23 14:25:07 +0000 (Wed, 23 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/Modules/ShortcutBar.lua
+   M /trunk/Sources/WindowHandler.lua
+   M /trunk/WIM.lua
+
+Prep for tagging.
+------------------------------------------------------------------------
+r261 | pazza | 2010-06-23 13:29:47 +0000 (Wed, 23 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/ChangeLog.lua
+   M /trunk/Modules/History.lua
+   M /trunk/Modules/ShortcutBar.lua
+   M /trunk/Modules/Sounds.lua
+   M /trunk/Modules/URLHandler.lua
+   M /trunk/Modules/W2W.lua
+   M /trunk/Modules/WhisperEngine.lua
+   M /trunk/Sources/Options/CoreOptions.lua
+   M /trunk/Sources/Socket.lua
+   M /trunk/Sources/ToolBox.lua
+   M /trunk/Sources/WindowHandler.lua
+   M /trunk/WIM.lua
+   M /trunk/WIM.toc
+
+Added support for CHAT_MSG_BN_WHISPER(_INFORM)
+------------------------------------------------------------------------
+r260 | pazza | 2010-06-23 10:02:45 +0000 (Wed, 23 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/WhisperEngine.lua
+   M /trunk/Sources/Hooks.lua
+   M /trunk/Sources/WindowHandler.lua
+
+added fix for dynamic ChatFrameEditBoxes
+------------------------------------------------------------------------
+r259 | 01satkins | 2010-06-07 18:51:43 +0000 (Mon, 07 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/History.lua
+
+Save Party Leader chat to History
+------------------------------------------------------------------------

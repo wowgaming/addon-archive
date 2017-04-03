@@ -1,0 +1,2 @@
+Christoph Gritschenberger:
+	- rewrite to support multiple addons

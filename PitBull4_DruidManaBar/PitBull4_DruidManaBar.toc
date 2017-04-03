@@ -1,0 +1,29 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fDruid mana bar|r]
+## Title-deDE: PitBull4 |r[|cffeda55fDruiden-Manaleiste|r]
+## Title-esES: PitBull4 |r[|cffeda55fBarra de maná para Druída|r]
+## Title-frFR: PitBull4 |r[|cffeda55fBarre de mana druidique|r]
+## Title-koKR: PitBull4 |r[|cffeda55f드루이드 마나바|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fПанель маны друида|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f德鲁伊法力值条|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f德魯伊法力值條|r]
+## Notes: Show the mana bar when a druid is in cat or bear form.
+## Notes-deDE: Zeigt die Manaleiste, wenn ein Druide in Katzen- oder Bärenform ist.
+## Notes-esES: Muestra la barra de maná cuando el druída está en forma de felino u oso.
+## Notes-frFR: Affiche la barre de mana lorsqu'un druide est en forme de félin ou d'ours.
+## Notes-koKR: 드루이드의 곰 또는 표범 변신 시 마나를 표시합니다.
+## Notes-ruRU: Показать панель маны друида в формах кошки и мишки.
+## Notes-zhCN: 德鲁伊处在猎豹或熊形态下时显示法力值条
+## Notes-zhTW: 德魯伊處在獵豹或熊形態下時顯示法力值條。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-PitBull4-Condition: return select(2, UnitClass("player")) == "DRUID"
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

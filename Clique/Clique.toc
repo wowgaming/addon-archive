@@ -1,0 +1,26 @@
+## Interface: 30300 
+## Title: Clique
+## Author: Cladhaire
+## Version: wowi:revision
+## Notes: Simply powerful click-casting interface
+## SavedVariables: CliqueDB
+## OptionalDeps: Dongle
+## X-Curse-Packaged-Version: r139-release
+## X-Curse-Project-Name: Clique
+## X-Curse-Project-ID: clique
+## X-Curse-Repository-ID: wow/clique/mainline
+
+Dongle.lua
+Clique.xml
+Clique.lua
+Localization.enUS.lua
+Localization.esES.lua
+Localization.esMX.lua
+Localization.frFR.lua
+Localization.deDE.lua
+Localization.koKR.lua
+Localization.ruRU.lua
+Localization.zhCN.lua
+Localization.zhTW.lua
+CliqueOptions.lua
+CliqueUtils.lua

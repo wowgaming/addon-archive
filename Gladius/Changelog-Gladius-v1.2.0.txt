@@ -1,0 +1,39 @@
+tag v1.2.0
+c728d6df2e4c16959912975a3ed09400323f5229
+root <root@cfrepos1.curseforge.net>
+2010-07-14 14:36:07 +0000
+
+Tagging as v1.2.0
+
+
+--------------------
+
+Rinu:
+	- updated AceGUI-3.0-SharedMediaWidgets
+	- added secure frame for arena enemy's target (click to target enemy's target and usable for mouseover macros)
+	fixed DR icons not being straight
+	fixed aura gain announcement
+	- fixed DR icons + cooldown bug when disabled
+	- added more options for the DR tracker (margin, anchor, icon size, disable DR type, no cooldown count, toggle text)
+	added cast bar background color
+	added cooldown sound option
+	fixed unit display and cooldown display bug, caused by my stupidity
+	fixed cooldown announcement not working when cooldown icons are disabled
+	fixed cooldown and DR icon reset on UpdateFrame
+	- new feature: DR Tracker
+	fixed some random bugs
+	sorted the cooldown list a little bit
+	- updated toc
+	- new feature: enemy cooldowns
+	added parrot support for the announcements
+	added self print support for the announcements
+	added raid main assist border (ticket #10)
+	added cast bar position option (ticket #26)
+	added aura position option (ticket #31)
+	added aura gain announcement (ticket #15)
+	added font option
+	added health bar color option
+	added another arena button, so we can handle the unitId arena6 (hopefully)
+	fixed secure frame position
+	fixed (hopefully) not appearing enemies
+	fixed new profile and reset profile also resets the frame

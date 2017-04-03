@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r61 | nevcairiel | 2010-07-26 19:34:20 +0000 (Mon, 26 Jul 2010) | 1 line
+Changed paths:
+   A /tags/3 (from /trunk:60)
+
+Tag as 3
+------------------------------------------------------------------------
+r60 | nevcairiel | 2010-07-26 19:32:55 +0000 (Mon, 26 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0.toc
+
+Bump .toc
+------------------------------------------------------------------------
+r59 | nevcairiel | 2009-03-06 10:12:34 +0000 (Fri, 06 Mar 2009) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-3.0.toc
+
+Restore LoD to Libraries, as 3.0.8 fixed all bugs that blocked LoD OptionalDeps to load properly.
+------------------------------------------------------------------------

@@ -1,0 +1,201 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+    <!--
+
+	Skillet: A tradeskill window replacement.
+	Copyright (c) 2007 Robert Clark <nogudnik@gmail.com>
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    -->
+
+<!--
+ #
+ #  Template for all the buttons used in the list of notes for the recipe
+ #
+-->
+<Frame name="SkilletNoteItemButtonTemplate" hidden="false" virtual="true">
+	<Size>
+		<AbsDimension x="190" y="48"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<FontString name="$parentText" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP">
+				<Size>
+					<AbsDimension x="160" y="0"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="18" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Color r="1" g="1" b="1" a="1"/>
+			</FontString>
+			<FontString name="$parentNotes" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP">
+				<Size>
+					<AbsDimension x="180" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="1" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Color r="1" g="1" b="1" a="1"/>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Frames>
+		<!-- A button for the icon -->
+		<button name="$parentIcon">
+			<Size>
+				<AbsDimension x="16" y="16"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="1" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</button>
+	</Frames>
+	<Attributes>
+        <Attribute name="notes_key" value="item:-1"/>
+    </Attributes>
+	<Scripts>
+		<OnClick>
+			Skillet:RecipeNote_OnClick(this)
+		</OnClick>
+	</Scripts>
+</Frame>
+
+<!--
+ #
+ # A frame for displaying the recipe notes
+ #
+-->
+<Frame name="SkilletRecipeNotesFrame" parent="SkilletFrame">
+	<Size>
+		<AbsDimension x="200" y="380"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT" relativeTo="SkilletFrame" relativePoint="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-1" y="-75"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="OVERLAY">
+			<FontString name="$parentLabel" inherits="GameFontHighlight" text="Notes" justifyH="LEFT">
+				<Size>
+					<AbsDimension x="100" y="0"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="SkilletRecipeNotesFrame" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="6" y="-6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+
+	<Frames>
+		<!--
+	    #
+	    # A button on the top right to close the window
+	    #
+	    -->
+		<Button name="SkilletNotesCloseButton" inherits="UIPanelCloseButton">
+            <Anchors>
+                <Anchor point="TOPRIGHT" relativeTo="SkilletRecipeNotesFrame" relativePoint="TOPRIGHT">
+                    <Offset>
+                        <AbsDimension x="-1" y="-1"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+			<Scripts>
+				<OnClick>
+					HideUIPanel(SkilletRecipeNotesFrame);
+				</OnClick>
+			</Scripts>
+        </Button>
+
+        <ScrollFrame name="SkilletNotesList" inherits="FauxScrollFrameTemplate" parent="SkilletRecipeNotesFrame">
+			<Size>
+				<AbsDimension x="170" y="345"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletRecipeNotesFrame" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="2" y="-30"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		    <Scripts>
+				<OnVerticalScroll>
+				    FauxScrollFrame_OnVerticalScroll(self, offset, SKILLET_NOTES_ITEM_HEIGHT, Skillet.NotesList_OnScroll);
+				</OnVerticalScroll>
+			</Scripts>
+		</ScrollFrame>
+		<Button name="SkilletNotesButton1" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesList" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="3" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="SkilletNotesButton2" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesButton1" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="SkilletNotesButton3" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesButton2" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="SkilletNotesButton4" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesButton3" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="SkilletNotesButton5" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesButton4" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="SkilletNotesButton6" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesButton5" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+		<Button name="SkilletNotesButton7" inherits="SkilletNoteItemButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="SkilletNotesButton6" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+    </Frames>
+</Frame>
+
+</Ui>

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fPvP icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fPvP-Symbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono JcJ|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône JcJ|r]
+## Title-koKR: PitBull4 |r[|cffeda55fPvP 아이콘|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fИконка ПвП|r]
+## Title-zhCN: PitBull4 |r[|cffeda55fPvP标记|r]
+## Title-zhTW: PitBull4 |r[|cffeda55fPvP標記|r]
+## Notes: Show an icon on the unit frame when the unit is in PvP mode.
+## Notes-deDE: Zeigt ein Symbol auf dem Einheitsrahmen, wenn die Einheit im PvP-Modus ist.
+## Notes-esES: Muestra un icono en la unidad cuando está en modo JcJ (PvP)
+## Notes-frFR: Affiche une icône sur le cadre d'unité quand l'unité est en mode JcJ.
+## Notes-koKR: 전쟁 참여 상태시 아이콘을 표시합니다.
+## Notes-ruRU: Показывать иконку ПвП, если игрок находится в режиме ПвП.
+## Notes-zhCN: 显示单位的PvP标记
+## Notes-zhTW: 顯示單位的PvP標記。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

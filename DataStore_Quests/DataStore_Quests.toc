@@ -1,0 +1,19 @@
+﻿## Interface: 30300
+## Title: DataStore_Quests
+## Notes: Stores information about character quests
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.001
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_QuestsDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+## X-Curse-Packaged-Version: r12
+## X-Curse-Project-Name: DataStore_Quests
+## X-Curse-Project-ID: datastore_quests
+## X-Curse-Repository-ID: wow/datastore_quests/mainline
+
+locale.xml
+
+DataStore_Quests.lua
+Options.xml

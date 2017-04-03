@@ -1,0 +1,4 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Include file="Babylonian\Load.xml"/>
+	<Include file="Configator\Load.xml"/>
+</Ui>

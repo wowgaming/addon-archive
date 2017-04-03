@@ -1,0 +1,23 @@
+------------------------------------------------------------------------
+r367 | dridzt | 2009-12-18 18:21:57 +0000 (Fri, 18 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/XLoot.toc
+
+- .toc edit to repackage XLoot with fixed SEELoot for need before greed lootmethod 
+(thx to Narzuhl for debugging this one)
+------------------------------------------------------------------------
+r366 | dridzt | 2009-11-23 03:07:35 +0000 (Mon, 23 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/XLoot.lua
+   M /trunk/XLoot.toc
+   M /trunk/XLootRowTools.lua
+
+- update for patch 3.3 and disenchant loot option.
+------------------------------------------------------------------------
+r365 | danielbarron | 2009-10-10 17:19:28 +0000 (Sat, 10 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/XLoot.toc
+
+XLoot: Fixed toc for wow 3.2.
+------------------------------------------------------------------------

@@ -1,0 +1,40 @@
+## Interface: 30300
+## Title: _|cffCCCC88NPCScan|r
+## Notes: Scans NPCs around you for rare ones.
+## Notes-frFR: Analyse les PNJs autour de vous à la recherche de ceux qui sont rares.
+## Notes-koKR: 근처에 있는 희귀몹을 탐색합니다.
+## Notes-ruRU: Сканирует облость вокруг вас на наличие редких НИПов.
+## Notes-zhTW: 搜尋出沒在你附近的稀有怪。
+## Author: Saiket
+## X-Credits-frFR: Localization: Pettigrow
+## X-Credits-koKR: Localization: kdw112
+## X-Credits-ruRU: Localization: StingerSoft
+## X-Credits-zhTW: Localization: s8095324, pepper_ep
+## Version: 3.3.5.5
+## X-Date: 2010-07-24
+## X-Category: Miscellaneous
+## X-License: GPLv3
+## X-Email: saiket.wow@gmail.com
+## X-Website: http://sites.google.com/site/wowsaiket/Add-Ons/NPCScan
+## X-Feedback: http://code.google.com/p/wow-saiket/issues/list?can=1&q=AddOn:NPCScan
+## X-WoWI-ID: 12995
+## X-Curse-Project-ID: npcscan
+## X-Localizations: enUS, frFR, koKR, ruRU, zhTW
+## X-CompatibleLocales: deDE, enUS, esES, esMX, frFR, koKR, ruRU, zhCN, zhTW
+## X-Embeds: LibTextTable-1.0, LibSharedMedia-3.0
+## SavedVariables: _NPCScanOptions
+## SavedVariablesPerCharacter: _NPCScanOptionsCharacter
+## OptionalDeps: Ace3, LibTextTable-1.0, LibSharedMedia-3.0, LibRareSpawns
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+
+Embeds.xml
+Locales.xml
+
+_NPCScan.lua
+_NPCScan.Button.lua
+_NPCScan.Overlays.lua
+_NPCScan.TamableIDs.lua
+
+_NPCScan.Config.lua
+_NPCScan.Config.Search.lua

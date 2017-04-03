@@ -1,0 +1,25 @@
+## Interface: 30300
+## Title: MrTrader |cff7fff7f (Skill Window)|r
+## Notes: Module for MrTrader. Provides the SkillWindow UI.
+## Author: user@zedonline.net
+## Version: 0.5
+## LoadOnDemand: 1
+## Dependencies: MrTrader 
+## OptionalDeps: Ace3
+## X-Category: Professions
+## X-Curse-Packaged-Version: v0.5.10
+## X-Curse-Project-Name: MrTrader
+## X-Curse-Project-ID: mrtrader
+## X-Curse-Repository-ID: wow/mrtrader/mainline
+
+embeds.xml
+
+MRTUIEvents.lua
+MRTUIUtils.lua
+
+MRTSkillContext.lua
+MRTSkillWindow.lua
+MRTSkillWindow.xml
+
+MRTQueueWindow.lua
+MRTQueueWindow.xml

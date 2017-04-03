@@ -1,0 +1,17 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<!--@debug@
+<Script file="Modules\BurningCrusade\burningcrusade.lua"/>
+<Script file="Modules\BurningCrusade\localization.lua"/>
+<Script file="Modules\Crafting\crafting.lua"/>
+<Script file="Modules\Crafting\localization.lua"/>
+<Script file="Modules\OriginalWoW\originalwow.lua"/>
+<Script file="Modules\OriginalWoW\localization.lua"/>
+<Script file="Modules\WorldEvents\worldevents.lua"/>
+<Script file="Modules\WorldEvents\localization.lua"/>
+<Script file="Modules\WrathoftheLichKing\wrathofthelichking.lua"/>
+<Script file="Modules\WrathoftheLichKing\localization.lua"/>
+@end-debug@-->
+
+</Ui>

@@ -1,0 +1,21 @@
+﻿## Interface: 30300
+## X-Curse-Packaged-Version: 3.3.26
+## X-Curse-Project-Name: Prat 3.0
+## X-Curse-Project-ID: prat-3-0
+## X-Curse-Repository-ID: wow/prat-3-0/mainline
+
+## If you want to be a bit more efficient, you should:
+## 1) Download the 'addonloader' addon http://wow.curse.com/downloads/wow-addons/details/addon-loader.aspx
+## 2) Configure addonloader to your taste, but it probably makes sense to only load guild alt data
+##    when you are actually playing on that server. I have set that up partially for you
+## 3) In the lines below change "<Your Server Name>", and if you renamed this addon change "MyGuildAlts" 
+## 4) Edit MyGuildAlts.lua (instructions are in that file)
+
+## AddonLoader Fields
+## X-LoadOn-Realm: <Your Server Name>
+
+LibStub.lua
+CallbackHandler-1.0.xml
+LibAlts-1.0.lua
+
+MyGuildAlts.lua

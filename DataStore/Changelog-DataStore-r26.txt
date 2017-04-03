@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r26 | Thaoky | 2010-07-06 17:21:38 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore.lua
+
+Minor update to prepare the migration of the account sharing process from Altoholic to DataStore.
+------------------------------------------------------------------------
+r25 | thaoky | 2010-03-17 11:50:20 +0000 (Wed, 17 Mar 2010) | 1 line
+Changed paths:
+   A /trunk/Export
+   A /trunk/Export/DataStore.xsl
+   A /trunk/Export/ExportToXML.lua
+
+Added an external script to export databases to XML.
+------------------------------------------------------------------------

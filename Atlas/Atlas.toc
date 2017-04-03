@@ -1,0 +1,46 @@
+﻿## Interface: 30300
+## Title: Atlas
+## Title-zhTW: |r|cFF0099FF[地圖]|rAtlas 地圖集
+## Notes: Instance Map Browser
+## Notes-deDE: Instanzkarten-Browser
+## Notes-frFR: Navigateur de cartes d'instances
+## Notes-zhTW: Atlas 地圖集主程式
+## Notes-zhCN: 副本地图浏览器
+## Notes-esES: Navegador de Mapas de Mazmorras
+## Notes-ruRU: Обозреватель подземелий
+## Version: 1.17.0
+## X-Date: August, 2010
+## Author: Dan Gilbert
+## Updater: Lothaer
+## X-Email: dan.b.gilbert@gmail.com
+## X-Website: http://www.atlasmod.com
+## X-Category: Map
+## X-OptionsFrame: AtlasOptionsFrame
+## SavedVariablesPerCharacter: AtlasOptions
+
+Libs\LibStub.lua
+Libs\CallbackHandler-1.0.lua
+Libs\LibDataBroker-1.1.lua
+Libs\LibBabble-Zone-3.0\lib.xml
+Libs\LibBabble-SubZone-3.0\lib.xml
+Libs\LibBabble.lua
+
+Locale\Atlas-enUS.lua
+Locale\Atlas-ruRU.lua
+Locale\Atlas-deDE.lua
+Locale\Atlas-frFR.lua
+Locale\Atlas-zhCN.lua
+Locale\Atlas-esES.lua
+Locale\Atlas-zhTW.lua
+AtlasMaps.lua
+
+AtlasDropDown.lua
+
+Atlas.lua
+Atlas.xml
+
+AtlasButton.lua
+AtlasButton.xml
+
+AtlasOptions.lua
+AtlasOptions.xml

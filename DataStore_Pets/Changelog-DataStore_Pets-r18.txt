@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r18 | Thaoky | 2010-07-06 17:14:26 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Data/CompanionList.lua
+
+Minor fixes in the companion list.
+------------------------------------------------------------------------
+r17 | thaoky | 2010-03-09 10:26:17 +0000 (Tue, 09 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Pets.lua
+
+Now registering event COMPANION_LEARNED instead of COMPANION_UPDATE.
+------------------------------------------------------------------------

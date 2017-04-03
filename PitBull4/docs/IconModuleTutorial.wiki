@@ -1,0 +1,95 @@
+Well, you've decided you want to make an icon module for PitBull4. Or minimally, you're contemplating it. Admitting this is the first step towards recovery.
+
+== What is an icon module? ==
+
+In designing PitBull4, I (ckknight), thought to myself, what is the minimal amount of work that a module has to do in order to be full-featured, and I came to the conclusion that all an icon really is is a reference to a texture which can change dynamically and arbitrarily.
+
+For the example we're going to use, we'll be creating an icon that shows if the unit is female and hides if it is non-female. We'll call it the "Hello Kitty Icon".
+
+== Initial setup ==
+Since we're making the "Hello Kitty Icon", your directory structure will look like this:
+
+ PitBull4/
+     Modules/
+         HelloKittyIcon/
+             hellokitty.tga
+             HelloKittyIcon.lua
+             load.xml
+
+; hellokitty.tga
+: Since WoW doesn't come with a Hello Kitty icon by default, you'll want to draw or acquire one yourself. This should be in tga format with the dimensions <tt>2^a</tt> by <tt>2^b</tt> where <tt>a</tt> and <tt>b</tt> are within [3, 10]. This means 8x8 is the smallest possible and 1024x1024 is the largest possible, but 8x1024 and 1024x8 are acceptable. For our purposes, keep it square. You should probably have it be 32x32.
+; HelloKittyIcon.lua
+: All your actual code is going in here.
+; load.xml
+: This will load your lua.
+
+You should also add <tt><nowiki><Include file="Modules\HelloKittyIcon\load.xml"/></nowiki></tt> to PitBull4/modules.xml so that your module loads. Make sure you use backslashes instead of forward slashes in your XML paths.
+
+Your load.xml file should be the following:
+<pre><nowiki>
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+<Script file="HelloKittyIcon.lua"/>
+</Ui>
+</nowiki></pre>
+
+Make your lua file, but keep it blank for now.
+
+'''At this point, if you have WoW running, close it completely and open it up again.''' New files are not discovered until this happens.
+
+== Actual code ==
+
+<pre><code>
+local PitBull4 = _G.PitBull4
+if not PitBull4 then
+	error("PitBull4_HelloKittyIcon requires PitBull4")
+end
+
+-- Let's make the module
+local PitBull4_HelloKittyIcon = PitBull4:NewModule("HelloKittyIcon") -- you can specify any embeds you want to use here, e.g. "AceTimer-3.0", "AceEvent-3.0"
+
+-- This is important, you have to specify your module type. Since we're making an icon, this is "indicator"
+PitBull4_HelloKittyIcon:SetModuleType("indicator")
+
+-- This is the localized name of your module. It should be in "Title Case". TODO: localization
+PitBull4_HelloKittyIcon:SetName("Hello Kitty Icon")
+
+-- This is the localized description of your module. It should be a full sentence ending in a full stop. TODO: localization
+PitBull4_HelloKittyIcon:SetDescription("Show an icon on the unit frame when the unit is female.")
+
+-- Set the database defaults for your icon. You have to specify something, even if it's a blank table. In this case, we're specifying that the icon will, by default, anchor itself to the top-left edge of the unit frame.
+PitBull4_HelloKittyIcon:SetDefaults({
+	attach_to = "root",
+	location = "edge_top_left",
+})
+
+-- a constant we'll use later. This is one of the possible returns of [http://www.wowwiki.com/API_UnitSex UnitSex]
+local FEMALE_CODE = 3
+
+-- This is where the magic happens. Icons have to define this, and it will be called by the framework.
+-- if nil is returned, it means that the icon should not be shown on this frame.
+-- if a string is returned, that will be what the icon's texture path is.
+function PitBull4_HelloKittyIcon:GetTexture(frame)
+    -- the UnitID that the frame references.
+	local unit = frame.unit
+	
+	-- get the sex of the unit
+	gender_code = UnitSex(unit)
+    
+	if gender_code == FEMALE_CODE then
+	    -- we're female, return the texture
+		return [[Interface\AddOns\PitBull4\Modules\HelloKittyIcon\hellokitty]]
+	else
+	    -- we're either male or unknown, return nil to hide the icon
+	    return nil
+	end
+end
+
+-- This will allow you to specify the TexCoord for the texture. This is completely optional to implement.
+function PitBull4_HelloKittyIcon:GetTexCoord(frame, texture)
+    return 0, 1, 0, 1
+end
+</code></pre>
+
+And that's it. You might be wondering about dealing with events such as when the target changes and the like, but since <tt>UnitSex</tt> doesn't change dynamically, PitBull takes care of all those details for you.
+
+If you do need to update dynamically, you would register events and then call appropriate update methods such as <tt>:Update(frame)</tt>, <tt>:UpdateForUnitID(unit)</tt>, <tt>:UpdateForGUID(guid)</tt>, or <tt>:UpdateAll()</tt>. These are described at [http://www.wowace.com/projects/pitbull4/pages/].

@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## Title: Dualspec Profiles
+## Notes: Automatically changes profiles when changing spec
+## Author: profalbert
+## X-License: All rights reserved.
+## X-Curse-Packaged-Version: v1.2-1-gbfb7f9e
+## X-Curse-Project-Name: Bartender4_Dualspec
+## X-Curse-Project-ID: bartender4_dualspec
+## X-Curse-Repository-ID: wow/bartender4_dualspec/mainline
+
+## SavedVariables: Bartender4DualspecDB
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+
+Core.lua
+
+

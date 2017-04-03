@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fReady check icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fBereitschaftscheck-Symbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono de comprobacion de quien está listo.|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône de l'appel|r]
+## Title-koKR: PitBull4 |r[|cffeda55f준비 확인 아이콘|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fИконка готовности|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f就位确认标记|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f就位確認標記|r]
+## Notes: Show a ready check icon on the unit frame based on their response.
+## Notes-deDE: Zeigt ein Bereitschaftscheck-Symbol auf dem Einheitsrahmen abhängig von der Antwort der Einheit.
+## Notes-esES: Muestra un icono de "Listo" en la unidad basándose en su respuesta.
+## Notes-frFR: Affiche une icône d'appel sur le cadre d'unité selon sa réponse au dit appel.
+## Notes-koKR: 유닛의 응답에 따른 유닛 프레임에 준비 확인 아이콘을 표시합니다.
+## Notes-ruRU: Показывать иконку готовности на фрейме юнита на основе их ответа.
+## Notes-zhCN: 根据其反应显示就位确认图标
+## Notes-zhTW: 根據其反應顯示就位確認圖示。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

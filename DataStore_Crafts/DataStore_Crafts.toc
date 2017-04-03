@@ -1,0 +1,20 @@
+﻿## Interface: 30300
+## Title: DataStore_Crafts
+## Notes: Stores information about professions & crafts
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.002
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_CraftsDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+## X-Curse-Packaged-Version: r24
+## X-Curse-Project-Name: DataStore_Crafts
+## X-Curse-Project-ID: datastore_crafts
+## X-Curse-Repository-ID: wow/datastore_crafts/mainline
+
+embeds.xml
+locale.xml
+
+DataStore_Crafts.lua
+Options.xml

@@ -1,0 +1,36 @@
+﻿## Interface: 30300
+## Title: Power Auras Classic
+## Author: Smacker 'lolcat',Driizt 'classic',Garstiger 'continued',Sinsthar 'base'
+## Version: 3.0.0S
+## Notes: Cool Effects around the player for ingame events.                                 Authors: |cff7f7fff-Sinsthar-, -Garstiger-, -Driizt-, and -Smacker-|r
+## Notes-frFR: Affiche des effets visuels autour du personnage.
+## Notes-zhCN: 强大的条件触发式事件提示插件                                                 |cff00ff00基尔罗格[|r末日彩虹|cff00ff00]汉化|r
+## Notes-zhTW: 強大的條件觸發式事件提示插件                                                 |cff00ff00撒爾薩里安[|r末日彩虹|cff00ff00]漢化|r
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: PowaGlobalSet,PowaGlobalListe
+## SavedVariablesPerCharacter: PowaSet,PowaMisc,PowaTimer,PowaPlayerListe,PowaState
+
+PowerAurasBase.lua
+localisation.lua
+localisation_frFR.lua
+localisation_deDE.lua
+localisation_ruRU.lua
+localisation_zhCN.lua
+localisation_zhTW.lua
+localisation_koKR.lua
+localisation_esES.lua
+localisation_esMX.lua
+PowerAurasRole.lua
+PowerAurasDump.lua
+PowerAurasDecoratorClasses.lua
+PowerAurasAuraClasses.lua
+PowerAurasAnimations.lua
+PowerAurasAnimationsOld.lua
+PowerAuras.lua
+PowerAurasEvents.lua
+PowerOptions.lua
+PowerAuras.xml
+PowerOptions.xml
+PowerBlizzOptions.xml
+PowerSlots.xml

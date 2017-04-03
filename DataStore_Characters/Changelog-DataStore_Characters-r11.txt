@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r11 | Thaoky | 2010-07-06 16:43:08 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Characters.lua
+
+Code cleanup. Event handlers reorganized.
+------------------------------------------------------------------------
+r10 | thaoky | 2010-02-08 14:22:12 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Characters.lua
+
+Now tracking englishRace, returned by UnitRace().
+------------------------------------------------------------------------

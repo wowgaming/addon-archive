@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fRaid target icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fSchlachtzugziel-Symbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono de objetivo de Banda|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône de cible de raid|r]
+## Title-koKR: PitBull4 |r[|cffeda55f공격대 대상 아이콘|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fМетка рейда|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f团队标记|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f團隊標記|r]
+## Notes: Show an icon on the unit frame based on which Raid Target it is.
+## Notes-deDE: Zeigt ein Symbol auf dem Einheitsrahmen bezogen auf das Schlachtzugziel.
+## Notes-esES: Muestra un icono en la unidad basándose en los objetivos de banda.
+## Notes-frFR: Affiche une icône sur le cadre d'unité selon l'icône de raid qui lui a été assigné.
+## Notes-koKR: 공격대 징표 아이콘을 표시합니다.
+## Notes-ruRU: Показывать на фреймах метки рейда.
+## Notes-zhCN: 显示单位的团队图标
+## Notes-zhTW: 顯示單位的團隊圖示。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

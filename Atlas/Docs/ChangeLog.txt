@@ -1,0 +1,989 @@
+Atlas, a World of Warcraft instance map browser
+Copyright 2005-2010 Dan Gilbert <dan.b.gilbert@gmail.com>
+Copyright 2010 Atlas Team (http://atlasmod.com/)
+
+==============
+= Change Log =
+==============
+
+v1.17.0
+- improved auto-selection feature for foreign languages (Dynaletik, arith, Lothaer)
+- introduced LibBabble-Zone and LibBabble-SubZone to Atlas (arith, Dynaletik)
+- new map: Hellfire Citadel dungeon entrace map (arith)
+- new maps: Halaa PvP, Hellfire Peninsula PvP, Zangarmarsh PvP, 
+            Terokkar Forest PvP, Wintergrasp PvP, Game of Tower, Silithyst Must Flow (arith)
+- cleaned up and tweaked some code
+- translation update for several languages
+  - German: Dynaletik
+  - French: dokcharlie
+  - Russian: StingerSoft
+  - Traditional Chinese: s8095324, arith
+  - Simplified Chinese: arith
+- rewrote the readme file for Traditional Chinese (arith)
+- added Lunar Elders locations in Northrend maps (Deadca7, Dynaletik)
+- several maps refine (Deadca7)
+
+v1.16.1
+- new map: Ruby Sanctum
+- fixed and added some ICC entries
+- minor fixes
+
+v1.16.0
+- new map: Icecrown Citadel, in three parts (Deadca7)
+- new map: The Frozen Halls: The Forge of Souls (Deadca7)
+- new map: The Frozen Halls: Pit of Saron (Deadca7)
+- new map: The Frozen Halls: Halls of Reflection (Deadca7)
+- added Toravon to VoA and updated the map (Deadca7)
+- added new instances to the dungeon locations map (Dynaletik)
+- added the new flight paths (Dienur, Dynaletik, Jeehell)
+- added event boss to SFK (Dynaletik)
+- removed Onyxia attunement (Dynaletik)
+- fixed wave 6 to wave 5 in Culling of Stratholme (Dynaletik)
+- fixed many flight path routes (Dynaletik, Jeehell)
+- fixed some map categorization issues
+- rewrote and simplified the readme file
+- removed the world map coordinates feature
+
+v1.15.2
+- updated TOC number to 30300 for the 3.3 patch
+- fix for zhTW (Traditional Chinese) translation (s8095324)
+
+v1.15.1
+- fix for deDE (German) translation
+- updated version check for some Atlas addons
+- settings will now be preserved between some updates
+
+v1.15.0
+- new map: Crusaders' Coliseum: Trial of the Champion (Deadca7)
+- new map: Crusaders' Coliseum: Trial of the Crusader (Deadca7)
+- new map: Isle of Conquest (Deadca7, Celellach)
+- added Koralon the Flame Watcher to VoA (Deadca7)
+- added Dark Ranger Marrah to Utgarde Keep (thandrenn)
+- added Prospector Doren and Archivum Console to Ulduar (thandrenn)
+- added flight path from The Dark Portal to Shattrath (Celellach)
+- added trans routes (portals) from capitals to Dark Portal (Celellach)
+- added exit to The Botanica (Celellach)
+- added VoA to dungeon location map (Celellach)
+- added brackets to battleground level ranges (Celellach)
+- removed Highlord Kruul map entirely (nonameform)
+- removed Maraudon key since it's no longer needed (Hegarol)
+- fixed some level range groups (Celellach)
+- fixed some mob positions in Wailing Caverns (arith)
+- tagged Ahune with Midsummer Festival (Celellach)
+- changed Lunar tag to Lunar Festival (Celellach)
+- updated Onyxia's Lair player and level data (Bolino)
+- current deDE (German) translation (Nihlo)
+- current esES (Spanish) translation (maqjav)
+- current frFR (French) translation (TrAsHeR)
+- current ruRU (Russian) translation (StingerSoft)
+- current zhCN (Simplified Chinese) translation (arith)
+- current zhTW (Traditional Chinese) translation (arith)
+
+v1.14.2
+- updated TOC number to 30200 for the 3.2 patch
+
+v1.14.1
+- fixed some locations in Blackwing Lair (Celellach)
+
+v1.14.0
+- updated TOC number to 30100 for the 3.1 patch
+- new map: Ulduar [in 5 parts] (deadca7, everyone else!)
+- new map: Vault of Archavon (deadca7)
+- new map: Strand of the Ancients (deadca7, Celellach)
+- new map: The Eye of Eternity (deadca7)
+- revamped Stratholme Past map (thandrenn, Celellach, Nalumis, Hinalover)
+- revamped Northrend transportation maps (Timo, Celellach, Dynaletik, dcemuser, Kharthus)
+- revamped The Oculus map (Celellach, thandrenn)
+- added Stratholme Past to CoT Entrance map (Celellach)
+- added exit to Ahn'kahet map (Celellach)
+- added Brigg Smallshanks to Utgarde Pinnacle (Celellach)
+- added Commander Kolurg to The Nexus map (Spleebie)
+- added Kurzel to Drak'Tharon Keep map (thandrenn)
+- added Drakuru's Brazier to Drak'Tharon Keep map (Celellach)
+- added Vesperon, Tenebron, Shadron, and the entrance to Obsidian Sanctum map (Celellach)
+- added Ahn'kahet Brazier to Ahn'kahet map (Celellach)
+- added Watchers to Azjol-Nerub (Celellach)
+- added additional entrance and exit to Gundrak (Celellach)
+- added Wanders tag to Bjarngrim in HoL (Celellach)
+- added Ulduar to dungeon locations map (Celellach)
+- added exit to Tempest Keep Mechanar (Celellach)
+- added The Violet Hold Key to Violet Hold (Celellach)
+- added Celestial Planetarium Key to Ulduar (Celellach)
+- added a new category for 80+ maps
+- moved Trollgore's location in Drak'Tharon Keep (Spleebie)
+- moved Elder Starsong in Sunken Temple map (Robsato)
+- removed rep lines from Magtheridon's Lair (Celellach)
+- removed rep line from Naxx (Dynaletik, Celellach)
+- removed Archmage from Naxx (Celellach)
+- removed Mallet key from Zul'Farrak (Celellach)
+- removed Amulet key from Onyxia's Lair (Celellach)
+- removed all keys from Molten Core (Celellach)
+- removed Seal key from UBRS (Celellach)
+- removed Urn key from Karazhan (Celellach)
+- removed Medallion key from all BT (Celellach)
+- removed Tempest Key from The Eye (Celellach)
+- removed optional deps from TOC file (Phanx)
+- renumbered Ahn'kahet (Celellach)
+- renumbered The Nexus (Celellach)
+- increased battleground level ranges to 80 (Celellach)
+- increased frame strata to HIGH to avoid messing with the default interface
+- changed x-category in TOC files (Phanx)
+- fixed some Alterac Valley coloring and ordering issues (Celellach)
+- current deDE (German) translation (Dynaletik)
+- current esES (Spanish) translation (maqjav)
+- current frFR (French) translation (Kiria, TrAsHeR)
+- current ruRU (Russian) translation (StingerSoft)
+- current zhCN (Simplified Chinese) translation (DiabloHu)
+- current zhTW (Traditional Chinese) translation (banana, arith)
+
+v1.13.0
+- added tons of new WotLK instance maps!
+- added most if not all WotLK map data (thanks to DiabloHu, Deadca7, and others!)
+- corrected some map category grouping issues
+- added cursor coordinates to the world map
+- added Don Carlos and Guerrero to Old Hillsbrad Foothills (Hegarol)
+- gave Veyzhak the Cannibal a home in The Sunken Temple (Telchar)
+- updated Naxx information and data for WotLK changes
+- the flight path plugin now contains all transport routes (boat, zep, portals)
+- the flight path plugin has been renamed to Transportation
+- added Northrend dungeon location map
+- outdated modules are now checked for and disabled
+- resetting defaults now properly resets the sort-mode
+- resetting defaults now properly updates the status of the lock button
+- other minor tweaks and improvements
+
+v1.12.3
+- fixed various errors on non-English clients
+- fixed the right-click to toggle world map bug
+- added LibDataBroker support
+- Titan Panel support fixed (via LDB)
+- changed the options panel to the built-in interface
+- added support for the built-in defaults button
+- removed the minimap button icon's green tint
+
+v1.12.2
+- scrolling error fix
+- all remaining instances of 'Rep' changed to 'Reputation' in the locale files
+- non-English readme files should have no more messed up characters
+
+v1.12.1
+- updated TOC number to 30000 for the 3.0 patch
+- some compatibility fixes for the new patch
+- added 'Ahn'Qiraj' and 'Blackrock Mountain' as a prefix for the instances within them
+- added Delrissa's Minions to MT
+- added 'Griz Gutshank' to BRD
+- added a Minimum Level for SP
+- renamed 'Rep' to 'Reputation'
+
+v1.12.0
+- changed the Atlas data format to include GUID information (no in-game change)
+- changed the frame strata back to MEDIUM so Atlas can cover/be-covered-by other windows
+- added a fix for some UI elements that appear above the Atlas window
+- added a Shattered Sun Offensive reputation tag to MT
+- removed 'The' from both AQ instance names
+- added a mark (1) for Patchwerk to the map of Naxx
+- changed the entry colors for the Abomination Wing in Naxx
+- split C'Thun encounter into two entries in AQ40
+- removed 'The' from ST title
+- added an AKA line to ST
+- changed Troll minibosses to Atal'ai defenders in ST
+- changed Doomrigger's Clasp to Doomrigger's Coffer in UBRS
+- added the chapter to Draconic for Dummies in BWL
+- split the key entry into two in MC
+- added 'The' to the different Deeds in Scholo
+- added 'Various' to Postbox Keys in Strat
+- changed Scarlet side to Living side in Strat
+- changed Medallion of Faith to Malor's strongbox in Strat
+- changed Plans: Serenity and Plans: Corruption to Blacksmithing Plans in Strat
+- removed Plaguewood from Naxx location
+- added Four Horsemen Chest to Naxx
+- removed 'The' from Argent Dawn reputation line in Scholo, Strat and Naxx
+- added brakets to the two Pusillin entries in DM East
+- added brakets to Thralls stop entries in COT1
+- added (Lower) to Discs of Norgannon in Ulda
+- added a new key for Edge of madness in ZG
+- removed 'The' from Zandalar Tribe reputation line in ZG
+- added a Servants Quater entry to Kara [A]
+- completely rearanged the opera event in Kara [A] (renamed titles, added NPC)
+- added Dustcovered Chest to the chess event entry in Kara [B]
+- changed Budd's Map of ZA to The Map of ZA
+- changed Windcaller Claw to Claw in Underbog
+- changed Seer Udalo to Udalo in the Arcatras
+- removed Stasis Chamber tag from Yor in Manatombs
+- changed the order of reliquiary of souls in BT
+- added 'The' to Illidari Council in BT
+- refreshed the Shadowfang Keep map (Deadca7)
+- added minimum level data to instance maps (Deadca7)
+- changed the frame artwork to accommodate min level
+- zone information text will no longer extend past the edge of the frame
+- zone information text can now be ctrl-mouseover'd for a tooltip
+- merged the Entrances plugin (and all its maps) into the core Atlas addon
+- tweaked auto-select, more outdoor zones are now associated with instance maps
+- expanded meta-zone abbreviations to their full names, eg. HFC --> Hellfire Citadel
+- added a new sort-by option: type (separating instances and entrances)
+- added a key-binding to force a one-time auto-select, even if the option is disabled
+- added <Angle Bracket Titles> to all appropriate mobs in the Atlas database
+- changed "East" and "West" designations to "Eastern Kingdoms" and "Kalimdor" (Telchar)
+- added Ahune <The Frost Lord> to Slave Pens (Nihlo, Telchar)
+- this is a giant update, my apologies if I've forgotten anything
+
+v1.11.0
+- updated TOC number to 20400 for the 2.4 patch
+- new map: Magisters' Terrace
+- new map: Sunwell Plateau
+- the Atlas legend is quite a bit wider now
+- some artwork updates and tweaks, mostly for the scrollbar
+- added a button to toggle between entrances and instances, including a dropdown menu for multi-instance entrance maps
+- updated all the entrance map level ranges
+- with the wider legend, removed some instances of wrapping and abbreviation
+- tiny code fix for AtlasMajorCities (preliminary) (Andy)
+- tweaked the default position of the minimap button (Telchar)
+- renamed the five default Atlas plugins for a cleaner AddOns directory
+- improved the screen clamping offset values
+- fixed a bug with the reset position button
+- frame scale slider option increased to 1.5
+- legend entries that are too long will be truncated now
+- added an option to show a legend entry tooltip if the control button is held down
+- changed the frame strata of the main window so it covers all the action bars
+- added an option to display the player's coordinates on the world map
+- changed Horde Base to Horde Encampment and Night Elf Base to Night Elf Village in Hyjal (Telchar)
+- changed Blacksmith Plans to Blacksmithing Plans 3 times in BRD (Telchar)
+- added acronyms to Gnomeregan, Stockade, Magtheridon' Lair and all battlegrounds (Telchar)
+- changed Mailbox Keys to Postbox Keys in Stratholme (Telchar)
+- added Zaelot to the names of Zath and Lor'Khan in ZG (Telchar)
+- changed Necro Wing to Plague Wing in Naxxramas (Telchar)
+- removed Prince from Kael'Thas Sunstriders name (Telchar)
+- many changes to the Zul'Aman map (Celellach)
+- many changes to the Blackwing Lair map (Nihlo)
+- many changes to the Shadowfang Keep map (Celellach)
+- added Razorfen Spearhide to Razorfen Kraul (Celellach)
+- new map in outdoor raids: Skettis (Celellach, Nifl)
+- revamped Alterac Valley North and South maps (Celellach)
+- added Base Camp to Grom'Gol flightpoint (Telchar)
+- added Harrison Jones to ZA map (Kiria)
+- added angle-bracket titles to some mobs (more coming)
+- fixed a number of typos
+- remove attunement quest required for Karazhan, Hyjal Summit and Black Temple
+- revamped the auto-select feature to make use of SubZone data
+- Titan Panel support fix and some updates
+
+v1.10.3
+- the Atlas source is now hosted at Google Code
+- updated TOC number to 20300 for the 2.3 patch
+- new Zul'Aman map (Nifl, Celellach)
+- new CoT entrance map (Nifl, Celellach)
+- new SM entrance map (Nifl, Celellach)
+- revamped the background artwork on the FP and DL maps
+- updated the FP maps with the new flight points/paths
+- updated the DL maps with the new dungeon (Zul'Aman)
+- renumbered the FP and DL maps for consistency
+- new Karazhan entrance map (Mottie)
+- revamped the UBRS map (Nifl, Celellach)
+- revamped the LBRS map (Nifl, Celellach)
+- revamped the Karazhan map and split into two (Mottie)
+- revamped the DM entrance map (Nifl, Telchar)
+- combined BT full and middle maps into one BT start map (Telchar)
+- added a new option for the grouping of instance maps
+- fixed an auto-select issue with the new grouping code
+- deDE, frFR, and esES localisation files are now encoded in UTF-8 (Maqjav)
+- updated instance level ranges with the patch 2.3 changes
+- alphabetized some multi-part maps so they appear in the correct order
+- fixed a slight problem with Atlas remembering the last map you were looking at between sessions
+- Atlas will only remember the last map between sessions if it's one of the built-in ones
+- added specific zone names to the 'dragons of nightmare' areas (Celellach)
+- added named mobs that are roaming at the 'dragons of nightmare' spots (Celellach)
+- added Coren Direbrew (Brewfest) to BRD (Celellach)
+- added class-info to the mobs of the Kael'thas Sunstrider encounter (Telchar)
+- added Sah'rhee to RFD (Celellach)
+- changed the organization of DM arena mobs (Kiria)
+- added Elder Mistwalker to the DM arena (Celellach)
+- tagged DM arena mobs as random (Kiria)
+- added Library marker to the DM North map (Celellach)
+- added Shrine of Gelihast, Morridune and Altar of the Deeps to BFD
+- changed Fathom Core to Fathom Stone in BFD
+- retooled the mob locations in SM Graveyard a bit (Celellach)
+- added The Headless Horseman to SM Graveyard (Celellach)
+- added posible spawn points for Burning Felguard in LBRS (Celellach)
+- added Elder Stonefort to LBRS (Celellach)
+- put Doomrigger's Clasp in UBRS in the right place (Celellach)
+- changed the organization of Vem encounter in AQ40 (Celellach)
+- added Lord Kri and Princess Yauj to Vem encounter in AQ40 (Celellach)
+- added Vek'lor and Vek'nilash to Twin Emperors in AQ40 (Celellach)
+- added the entrance and a few mobs to Naxx (Celellach)
+- added specific mobs and their classes to Illidari Council in BT (Telchar)
+- added a number of mobs to Black Temple (Arzach)
+- renumbered Black Temple maps for consistency (Thandrenn)
+- added event names to CoT maps (Celellach)
+- added Ambassador Pax'ivi to Mana-Tombs (DiabloHu)
+- added Cryo-Engineer Sha'heen to Mana-Tombs (Celellach)
+- added D'ore to Auchenai Crypts (Celellach)
+- added Lakka to Sethekk Halls (Celellach)
+- added Shattered Hand Executioner to Shattered Halls (lichee)
+- added a number of mobs to The Shattered Halls (Celellach)
+- removed Blackened Urn key from Kara end (Celellach)
+- added Seer Olum to Serpentshrine Cavern (Celellach)
+- added Indormi and Tydormu to Hyjal Summit; locations still needed (Celellach)
+- renumbered Serpentshrine Cavern map for accuracy (Nihlo)
+- fixed some indentation issues
+- this was a huge update, so one or two things might have been missed here
+- current French translation (Kiria)
+- current Spanish translation (maqjav)
+- current Simplified Chinese translation (DiabloHu)
+- current Traditional Chinese translation (arith)
+- current German translation (Telchar)
+
+v1.10.2
+- updated TOC number to 20200 for the 2.2 patch
+
+v1.10.1
+- added individual instance names to Outland DL map (Telchar)
+- changed/fixed the CoT instance names in the West DL map (Telchar)
+- added class types to Maulgar's adds in Gruul's Lair (Lothaer, Yegg)
+- changed/fixed typo "Ferelas" to "Feralas" in FP maps (Celellach)
+- changed/fixed Moonglade FPs "Shrine of Remulos" to "Nighthaven" (Celellach)
+- added/clarified the additional Moonglade flight points (Celellach)
+- added a few mobs to the Wailing Caverns entrance map (Celellach)
+- changed plugin name "Entrances" to "Instance Entrances"
+- changed/fixed Naxx location to "Plaguewood, Eastern Plaguelands" (Celellach)
+- changed layout of CoT instances in Dungeon Locs plugin (Celellach)
+- added numerical displays to all the options pane's sliders
+- the Reset Position button now resets all the sliders too!
+- new Dire Maul entrance map including arena mobs (Kiria)
+- added troll miniboss names to ST map (Kiria)
+- added High Priestess of Thaurissan to BRD (Kiria)
+- added Oggleflint to RFC (Kiria)
+- added Zelemar the Wrathful the RFC (Kiria)
+- added Dire Pool to DM entrance map (Celellach)
+
+v1.10.0
+- fixed the Forest Song, Ashenvale flight point
+- renumbered the Alliance Kalimdor flight path map
+- translated into zhCN / Simplified Chinese (DiabloHu)
+- translated into zhTW / Traditional Chinese (arith)
+- translated into frFR / French (Kiria, TrAsHeR, Wysiwyg77)
+- translated into deDE / German (Nihlo, Thurraz, Celellach)
+- translated into esES / Spanish (maqjav)
+- koKR / Korean translation still needed
+
+v1.10.0pre5
+- added class tags to Moroes adds in Karazhan
+- added Sneed's Shredder to The Deadmines
+- renumbered The Arcatraz for better flow
+- added Stormwind to Thorium Point flight path
+- added Grom'gol to Flame Crest flight path
+- added Ratchet to Gadgetzan flight path
+- added Ratchet to Astranaar flight path
+- added Ratchet to Brackenwall Village flight path
+- added Brackenwall Village to Camp Tauraj flight path
+- added Brackenwall Village to Freewind Post flight path
+- added Thunderbluff to Zoram'gar flight path
+- added Evergrove to Toshley's Station flight path
+- added Honor Hold to Shattrath flight path
+- added Emerald Sanctuary, Felwood flight point
+- added Forest Song, Ashenvale flight point
+- added Emerald Sanctuary to Talonbranch Glade flight path
+- added Emerald Sanctuary to Bloodvenom Post flight path
+- added Forest Song to Astranaar flight path
+- renumbered Horde Kalimdor flight path map
+- renumbered Alliance Kalimdor flight path map
+- renumbered Horde Outland flight path map
+- renumbered Alliance Outland flight path map
+- added Blackwind Landing, Terokkar Forest flight point
+- added Skyguard Outpost, Blade's Edge flight point
+- added Blackwind Landing to Skyguard Outpost flight path
+- thanks to Celellach for providing so much data!
+
+v1.10.0pre4
+- removed optional tags in Kara (Nalumis)
+- changed cot3 name back to Hyjal Summit (Celellach)
+- re-lettered Black Temple maps (Celellach)
+- added acronym for Blackrock Mountain (Nihlo)
+- added Vorrel Sengutz to SM Graveyard
+- added Kazkaz the Unholy to ST entrance
+- added Zekkis to ST entrance
+- added Veyzhak the Cannibal to ST entrance
+- added Hammertoe Grez to Uld entrance
+- added Magregan Deepshadow to Uld entrance
+- added Tablet of Ryun'Eh to Uld entrance
+- added Krom Stoutarm's Chest to Uld entrance
+- added Garrett's Family Chest to Uld entrance
+- added Digmaster Shovelphlange to Uld entrance
+- added Conspicuous Urn to Uldaman
+- added Tablet of Will to Uldaman
+- added Shadowforge Cache to Uldaman
+- added Blackened Urn to Kara as key
+- tagged Nightbane in Kara with summon
+- added The Eye of Haramad to Mana-Tombs as key
+- tagged Yor in Mana-Tombs with summon and heroic
+- added Essence-Infused Moonstone to Sethekk as key
+- tagged Anzu in Sethekk as heroic (fixed summon tag)
+- fixed Blood Guard Porung's heroic tag in HFC:SH
+- added Mortog Steamhead to CFR entrance
+- changed player limit for CFR entrance to 5/25
+
+v1.10.0pre3
+- finally added data to Battle for Mount Hyjal
+- modified Hyjal map; shaded the top half
+- fixed Lothos Riftwaker's name in Blackrock Mountain
+- fixed the Blackrock Spire names in Blackrock Mountain
+- added numerical data for Black Temple (Full)
+- added attunement requirement to Ony and Kara
+- moved all attunement requirements to be listed first
+- updated all Black Temple maps considerably
+- once again, special thanks to Celellach
+- fixed "Slim" in Auch entrance (Nihlo)
+
+v1.10.0pre2
+- new map: Black Temple (Full)
+- updated Maraudon entrance map
+- updated Deadmines entrance map
+- updated Blackrock Mountain entrance map
+- updated Gnomeregan entrance map
+- updated Auchindoin entrance map
+- added attunement requirment to CoT and BT maps
+- added key and rep to BT maps
+- added Illidan Stormrage to Black Temple (Top)
+- added underwater entrance to CFR entrance map
+- changed all entrance markers to letters
+- thanks to Celellach for the majority of the notes
+
+v1.10.0pre
+- new maps: Black Temple (three levels)
+- new plugin containing entrance maps
+- changed Durnholde Keep to Old Hillsbrad Foothills
+- hyphenated Mana-Tombs
+- added several mobs to the DM library
+- added Yor to Mana-Tombs
+- added Anzu to Sethekk Halls
+- added Overcharged Manacell to The Mechanar
+- added several mobs to Kara
+- added several mobs to Gruul's Lair
+- added Skar'this the Heretic to The Slave Pens
+- added Seer Udalo to The Arcatraz
+- added several mobs to The Eye
+
+v1.9.1
+- updated TOC number to 20100 for the 2.1 patch
+- removed Interface/AddOns structure from archive
+- fixed two swapped mobs in The Eye (avatarshokpin)
+- minor updates to French (frFR) translation
+
+v1.9
+- made several database changes and additions
+- archive now contains Interface/AddOns structure
+- updated level ranges (needs some more work)
+- completely rewrote and updated the readme file
+- contains translations for enUS, deDE, frFR, koKR, zhCN, zhTW
+- still needs readme and GPL files for koKR (Korean)
+
+v1.9RC2
+- split Scarlet Monastery into four different maps
+- made many database changes, additions, and corrections
+- added auto-select code for Outland instances (Drahcir)
+- renumbered LBRS and Stratholme maps (Celellach)
+
+v1.9RC1
+- new maps: The Eye, Doom Lord Kazzak, Doomwalker
+- new maps: Outland dungeon locations and flight paths
+- changed Kazzak encounter to Highlord Kruul
+- added key listings to many maps (thanks Celellach)
+- added repulation listings to many maps (Celellach and Hegarol)
+- many, many database additions and fixes (thanks everyone)
+- changed Addon List formatting and coloring of plugins
+- tweaked appearance of certain maps for consistancy
+- probably more stuff that I'm forgetting right now
+
+v1.9b1
+- many new Burning Crusade maps
+- many database additions and fixes
+- cleaned up options panel
+
+v1.8.6
+- updated TOC number to 20003
+- disabled "Replace World Map" for taint issues
+- various translation updates across the board
+- search function improvement (Keith)
+
+v1.8.6b5
+- added a search feature (thanks Keith G.)
+- made visual changes to the options panel
+- some minor window texture improvements
+
+v1.8.6b4
+- the legend is now fully scrollable
+- maps can contain more than 27 entries
+- improved the frame's artwork a bit
+- switched all the button templates
+- updated German (deDE) translation (Dynaletik)
+- updated Spanish (esES) translation (bornay)
+
+v1.8.6b3
+- split off non-instance maps as Atlas plugins
+- install or enable any of them or none of them
+
+v1.8.6b2
+- version number is now only stored in the TOC
+- updated German (deDE) translation (Dynaletik)
+- added a simple code interface for plugins!
+- comes with the sample plugin AtlasPlugin
+
+v1.8.6b
+- integrated Titan Panel support
+- truly massive internal restructuring
+
+v1.8.5
+- wide release in anticipation of WoW v2 patch
+- fixed options frame dragging compatibility
+- fixed Spanish (esES) localization file
+- Atlas is now released under the GPL
+
+v1.8.5b3
+- no more AtlasLoader; no more load-on-demand (goodbye)
+- scrapped v1.8.5b2 and reverted to v1.8.5b base
+- the "Reset Position" button works again
+- all other b2 features should be a-okay
+- settings are now saved per-character
+- removed some unnecessary myAddOns code (as of b2)
+- new default minimap button position (as of b2)
+- lots of new metadata in the TOC (as of b2)
+
+v1.8.5b2
+- completely localized (arith, Sirlefou, Dynaletik, bornay)
+- added AtlasLoader which loads Atlas on first use (whoa!)
+- changed minimap button to use crisper built-in art (snazzy!)
+- auto-select should be hackishly working again (whoops!)
+- frame position is stored differently due to load on demand
+- renamed all the localization files (Atlas-xxXX.lua)
+- created some folders for organization
+
+v1.8.5b
+- updated TOC number to 20000 for TBC (WoW 2.0)
+- added a bunch of new HC and CFR maps (Nifl)
+- instance maps are now divided into categories
+- new option to scale the Atlas window
+- new option to set the radius of the minimap button
+- new option to clamp the Atlas window
+- the options panel is now draggable and clamped
+- the options sliders now display their min/max values
+- code compatibility update for BC (Daviesh)
+- minimap icon has new colors to diff from blizz's world map button
+- higher quality minimap icon, with new default position
+- changed naming scheme of localization files
+
+v1.8.4
+- since the beta NDA has been lifted, the HC maps are back; see:
+- http://forums.worldofwarcraft.com/thread.html?topicId=32338600
+- changed Spanish (esES) localization to be automatic
+- NOTE: ***Atlas needs a full Spanish translation!***
+- updated German (deDE) text (Dynaletik)
+- updated Korean (koKR) text (k2hyun)
+
+v1.8.3
+- removed HC maps as per Blizzard's wishes, see:
+- http://forums.worldofwarcraft.com/thread.html?topicId=32338600
+- updated French (frFR) text (Pherus)
+- updated German (deDE) text (Dynaletik)
+- updated Chinese Simplified (zhCN) text and readme (DiabloHu)
+- updated Chinese Traditional (zhTW) text (arith)
+- updated the backgrounds of the two HC maps (Nifl)
+- changed AQ20 damage from physical to nature (Pherus)
+- added Ony as Onyxia short version (Pherus)
+- added Onyxia as fire damage (Pherus)
+
+v1.8.2
+- new map: Hellfire Citadel, The Blood Furnaces (Patrick M.)
+- new map: Hellfire Citadel, The Shatterd Halls (Patrick M.)
+- updated Chinese Simplified (zhCN) text and readme (DiabloHu)
+- updated Chinese Traditional (zhTW) text (arith)
+- updated Korean (koKR) text (k2hyun)
+- improved the ToggleWorldMap replacement (Daphne P.)
+- possible fix for a rare World Map scaling bug
+- added damage type to ZG, MC, BWL, AQ20, AQ40, Nax (Pauper)
+- added druid-only flight paths
+
+v1.8.1
+- updated TOC number to 11200 for the 1.12 patch
+- fixed a serious World Map error caused by 1.12
+- fixed a bug in the French translation (KKram)
+
+v1.8
+- new map category: Raid Encounters
+- new maps: Azuregos, FourDragons, and Kazzak
+- added Death Knight Darkreaver to Scholo (Aludian)
+- added Lord Hel'nurath to DM West (Aludian)
+- added Master Elemental Shaper Krixix to BWL (Hegarol)
+- changed the location of Lord Roccor in BRD (Medion)
+- changed "n/a" to "---" for localization reasons
+- fixed BRD data so everything shows up
+
+v1.7.5
+- updated Chinese Simplified (zhCN) text and readme (DiabloHu)
+- updated Chinese Traditional (zhTW) text (arith, Suzuna)
+- updated French (frFR) text (Pherus)
+- updated German (deDE) text (Nihlo, Dynaletik)
+- updated Korean (koKR) text (k2hyun)
+- added some localizations to the TOC file
+- removed the separate Spanish TOC file
+
+v1.7.4
+- updated TOC number to 11100 for the 1.11 patch
+- added the new flight hubs and paths
+- updated Catalan text (Lehn)
+- updated Chinese Traditional (zhTW) text (Suzuna)
+- updated Chinese Simplified (zhCN) text (DiabloHu)
+- added Chinese Simplified (zhCN) Readme (DiabloHu)
+- fixed some errors on the flight path maps (arith)
+- fixed some errors on the UBRS legend (Aludian)
+- added Shadowpriest Sezz'ziz to ZF (Aludian)
+- added Solakar Flamewreath to UBRS (Hegarol)
+- added Dungeon Set Quest Bosses (Niflheim)
+- added EarthFeatureFrame as optional dep (Ryan S.)
+
+v1.7.3
+- updated Chinese Simplified (zhCN) text (DiabloHu)
+- updated Chinese Traditional (zhTW) text (arith)
+- updated French (frFR) text (Pherus)
+- updated German (deDE) text (Nihlo)
+- updated Korean (koKR) text (k2hyun)
+- updated Spanish text (festor)
+- added Spanish Readme (festor)
+- added Spanish TOC (festor)
+- fixed typo in Kel'Thuzad's name (Aludian)
+- fixed position of Magister Kalendris (Dynaletik)
+- fixed numbers for Dungeon Locations East (Morfin)
+- fixed numbers for Dungeon Locations West (Mox)
+- added some acronyms and abbreviations (thegabbert)
+
+v1.7.2
+- new map category: Dungeon Locations
+- new maps: Dungeon Locations (East and West)
+- tweaked Uldaman, Sunken Temple, and ZG maps
+- updated Chinese Simplified (zhCN) text (DiabloHu)
+- updated Chinese Traditional (zhTW) text (arith)
+- updated German (deDE) text (Nihlo)
+- updated French (frFR) text (Pherus)
+- widened the Reset Position button
+- Rajaxx is listed first in AQ20 (Nihlo)
+- AQ20 might work with auto-select now (Cold)
+- bugfix for the right-click feature (Cold)
+
+v1.7.1
+- quick fix for the PURP error with non-En clients
+
+v1.7
+- new map: Naxxramas (eDark, Cryect)
+- updated the resolution of many maps (Niflheim)
+- added Catalan text, see above for use (Lehn)
+- added Dutch text, see above for use (JungZandvliet)
+- updated German (deDE) text (Nihlo, anon)
+- updated Chinese Traditional (zhTW) text (arith)
+- updated Korean (koKR) text (Next96)
+- localized Atlas_GetFixedZoneText (DocVanGogh)
+- fixed a typo in Battleguard Sartura's name (Iskim, Michael R.)
+- added a new option: Display Acronyms
+- changed the way Atlas inits (Grayhoof)
+- changed the way Atlas saves its settings (Grayhoof)
+- escape once again closes the Atlas window, sorry about that
+- TitanAtlas, MapAtlas, and AtlasLoot will be (re)appearing soon!
+
+v1.6.2
+- updated TOC number to 11000 for the 1.10 patch
+- removed Titan Panel support (TitanAtlas) for the time being
+- hopefully fixed the awful load-time errors (send me feedback)
+- fixed a typo in the name of Captain Dreenn in AQ20 (Manias, baloor)
+- updated Chinese Simplified (zhCN) text (DiabloHu)
+- updated Chinese Traditional (zhTW) text (warrenchen, arith)
+- updated French (frFR) text (Pherus)
+- updated German (deDE) text (Nihlo)
+- fixed the colors of some NPCs in Alterac Valley (RommelESP)
+- fixed the location of Mulverick in Alterac Valley (RommelESP)
+- Auto-Select might start working in Ahn'Qiraj (Gnor)
+- fixed the names of Drenn, Qeez, Xurrem, and Tuubid (anon)
+- player limits updated to reflect 1.10 changes (Faithbleed)
+- changed Stormspike to Stormpike (Dazzle)
+- added flight: Ironforge and Light's Hope Chapel
+- added flight: Stonetalon Peak and Astranaar
+- added flight: Talendris Point and Everlook
+- added flight: Theramore and Talendris Point
+- added flight: Sepulcher and Tarren Mill
+- fixed "Kraal de Tranchebauge" in frFR text (Sparrows)
+
+v1.6.1
+- fixed a clarity problem with BWL (placebo)
+- fixed a typo in the name of Arygos in AQ40 (Foogray)
+- fixed some location errors in AQ40 (anon, Manias)
+- fixed the location of a few mobs in AQ20 (anon, Pater)
+- added a number of missing mobs to AQ20 (anon, Jan S.)
+- added data to both AV maps (RommelESP)
+- added an flight from Morgan's Vigil to Stormwind (Harm H.)
+- marked Ghaz'Ranka in ZG as optional (placebo)
+- moved Atlas_MapTypes into localization file (Pherus)
+- changed "Flight Point Maps" to "Flight Path Maps"
+- updated French (frFR) text (Pherus)
+
+v1.6
+- slightly expanded the Atlas frame
+- implemented a category system for maps
+- added a button to reset the frame's position
+- new map: Alterac Valley (North) (Niflheim)
+- new map: Alterac Valley (South) (Niflheim)
+- new map: FP (Flight Points) Alliance (East)
+- new map: FP (Flight Points) Alliance (West)
+- new map: FP (Flight Points) Horde (East)
+- new map: FP (Flight Points) Horde (West)
+- added location data to AQ20 (Jan S., Pater, Zanchez)
+- fixed AQ20 orientation (thanks everyone)
+- marked certain bosses in ZG as optional (Aludian)
+- added Dustwraith (Rare) to ZF (KarWing)
+- removed a nonexistent pathway in BWL (Ferahgus)
+- updated French (frFR) text (Pherus)
+- updated German (deDE) text (GermanWraith)
+- updated Chinese Simplified (zhCN) text (DiabloHu, Slaytanic)
+- changed the way Atlas initializes (Shamino)
+- fully commented Atlas.lua (more to come)
+- Auto Select, Replace World Map only work in instances
+- added Right-Click setting to TitanAtlas menu
+
+v1.5
+- new map: Warsong Gulch (Niflheim)
+- new map: Arathi Basin (Niflheim)
+- new map: The Ruins of Ahn'Qiraj (Niflheim)
+- added Korean (koKR) text (hicle, Mars)
+- added Spanish text, see Readme for usage (festor)
+- updated Chinese Simplified (zhCN) text (Xiang Lei)
+- updated French (frFR) text (Pherus)
+- updated German (deDE) text (Chinkuwaila, ninjamask)
+- added data to The Temple of Ahn'Qiraj map (Ragowit, Zanchez)
+- added Sandarr Dunereaver (Rare) to Zul'Farrak (DiabloHu)
+- changed the location of Jed Runewatcher in UBRS (Aludian)
+- graphical updates for BRD, MC, Stockades, RFK, RFD, UBRS (wowguru.com)
+- the Replace World Map feature is now turned off by default
+- fixed a bug that would prevent the World Map from closing
+- chaged the way Atlas checks to see if you're in an instance
+- to decrease download size all maps are now 16 bit instead of 32 bit
+- changed Muddy Churning Waters in Zul'Gurub from (B) to (1')
+- added an Atlas watermark to the corner of all maps
+- changed "The Stockades" to "The Stockade" (tyroney)
+- added Right-Click for World Map feature (tyroney)
+- added Interface/Addons directory structure to the zip file
+
+v1.4.1
+- updated Chinese Simplified (zhCN) text (DiabloHu)
+- updated German (deDE) text (EarMaster)
+- fixed an error-causing bug in non-Enlish clients
+
+v1.4
+- new feature: Replace World Map
+- new map: The Temple of Ahn'Qiraj (wowguru.com)
+- changed the minimap button's tooltip to be more user friendly (Yatlas)
+- the position of the minimap button can be changed with the mouse (Yatlas)
+
+v1.3.3
+- updated Chinese Simplified (zhCN) text (Slaytanic)
+- updated German (deDE) text (Maischter)
+
+v1.3.2
+- updated TOC number to 10900 for the 1.9 patch
+- added Spirestone Battle Lord (Rare) to LBRS (Bhaerau)
+- fixed a number of Stratholme spawns (Ville K.)
+- fixed Lorgus Jett in Blackfathom Deeps (Ville K. and Greymalkin)
+- updated Chinese Simplified (zhCN) localization (DiabloHu)
+- updated French (frFR) localization (Pherus)
+- updated German (deDE) localization (anavolver, Jan S.)
+- hopefully fixed some auto-select problems (jmu)
+- fixed a bug with the sanitize function (Pherus)
+- changed minimum transparency from zero to 0.25
+
+v1.3.1
+- updated French (frFR) localization (Pherus)
+- added Deviate Faerie Dragon to Wailing Caverns (Searing)
+- added Spirestone Butcher to Lower Blackrock Spire (Gauss)
+
+v1.3
+- updated TOC number to 1800
+- added Chinese Traditional (zhTW) localization (ama)
+- updated level ranges for all instances based on meeting stones (David C.)
+- fixed a minor event handling bug (PiraMod)
+- added the Library to Dire Maul North and West maps (Pherus)
+- updated French (frFR) localization (Pherus)
+- added more fishing spots to Zul'Gurub map (Jan)
+- added automatic drop-down list sorting (Alexander M.)
+- updated Chinese Simplified (zhCN) localization (DiabloHu)
+- added Zul'Gurub boss aspects (Matthew M.)
+- added ModWatcher support
+- fixed a drop-down list bug
+- centralized LevelRange and PlayerLimit values
+
+v1.2
+- added Titan Panel support via TitanAtlas addon (Adsertor)
+- core addon code tweaks and improvements (Adsertor)
+- updated MyAddOns support for both Atlas and TitanAtlas
+- Atlas now remembers the last map you were looking at
+
+v1.1.3
+- added Chinese localization (DiabloHu)
+
+v1.1.2
+- added French localization (Sparrows)
+
+v1.1.1
+- added German localization (Dermott, Katastrophen)
+- updated rare spawns in Scarlet Monastery (Geisterkarle)
+- removed (Rare) status from The Unforgiven in Stratholme (tanniss)
+- Auto Select is now enabled by default
+- fixed the AutoSelect variable bug
+
+v1.1
+- updated TOC number to 1700
+- new maps: Blackwing Lair (wowguru.com) and Zul'Gurub (Jan)
+- re-added the Auto Select feature as an option
+- created a Readme.txt file to include with releases
+- added Tsu'Zee (Rare) to Dire Maul West (Quiche)
+- added The Unforgiven (Rare) to Stratholme (Aludian)
+- added Earthcaller Halmgar (Rare) to Razorfen Kraul (Luke)
+- added Fifth and Sixth Mosh'aru Tablets to Lower Blackrock Spire (Billy)
+- added High Interrogator Gerstahn to Blackrock Depths (Yukkon)
+- added Blood Steward of Kirtonos to Scholomance (Ernesto)
+- named each Postbox in Stratholme (Thomas)
+- added Bannok Grimaxe (Rare) to Lower Blackrock Spire (Galon)
+- added Deathsworn Captain (Rare) to Shadowfang Keep (Harri)
+- added Alchemy Lab to Scholomance (Gere)
+- added Commander Gor'shak to Blackrock Depths (Jonas)
+- each item in the legend now has its own line
+
+v1.0.1
+- updated TOC number to 1600 for 1.6 patch
+- added French localization! (thanks Sasmira)
+- marked Ragglesnout in RFD as rare (thanks Joshua B.)
+- fixed the location of Marshal Windsor in BRD (thanks Stefan and Fegnus)
+- reverted to the old default minimap button position, for all you trackers
+
+v1.0
+- major layout changes!
+- new maps: Shadowfang Keep and Blackrock Spire (Lower)
+- all instance data is now stored as text
+- full localization support (other languages coming soon)
+- CTMod support added and Cosmos/myAddOns support improved
+- options frame layout tweaked a little bit
+- minimap button position code improved
+- minimap button default position changed
+- saved variable name changed to AtlasOptions
+- reordered drop down menu to ignore "The"
+- the frame can longer be right-click-dragged
+- changed the player limit for UBRS from 10 to 15 (thanks Scynn, Vilkku, and many others)
+- fixed the location of Kharan Mighthammer in BRD (thanks Mark)
+- fixed the location of Old Serra'kis in BFD (thanks Aludian)
+- fixed the location of Lorgus Jett in BFD (thanks Slooter and Komal)
+- added Marshal Windsor to BRD (thanks Mark)
+- made a number of changes to the Strath map (thanks Chris)
+- added Father Flame to UBRS, duplicated marking for both map sections (thanks SageoftheTimes)
+- added the names of the deeds in Scholomance (thanks Aludian)
+- added Zul'Farrak Dead Hero to ZF (thanks Dor)
+- added Magister Kalendris to DM West (thanks Ziiv, Buio, and Joshua B.)
+- added a secret chest and the lever that opens it to Scholomance (thanks Aludian)
+- removed the exit from Strath
+
+v0.9.5
+- updated TOC number to 1500 for the 1.5 patch
+- new maps: Onyxia's Lair and Blackrock Spire (Upper)
+- added player limit to all maps
+- added location of instance to all maps
+- added Skul to Stratholme map (thanks Miya)
+- added the various locations Targorr the Dread can spawn in The Stockade (thanks Deathmatcher)
+- moved Lorgus Jett in Blackfathom Deeps; is he in the right place now? (need feedback)
+- removed statue activation order from Temple map (due to a number of requests)
+- have many of the mobs in Stratholme moved? looking for solid and detailed information
+
+v0.9.4
+- new maps: The Temple of Atal'Hakkar and Dire Maul (North, East and West)
+- special thanks goes out to Nogame at worldofwarcraft.gameamp.com for the blank maps
+- added Lorgus Jett, Baron Aquanis and Fathom Core to Blackfathom Deeps (thanks Cadex)
+- added Azshir the Sleepless to Scarlet Monastery (thanks John K.)
+- added Fallen Champion and Ironspine to Scarlet Monastery (thanks Shape)
+- added Bruegal Ironknuckle to The Stockade (thanks DragonBlade)
+- added Stonespine to Stratholme (thanks Shape)
+- moved Magistrate Barthilas to the correct location (thanks Shape)
+- made a few cosmetic changes to the Scholomance map
+- changed the framestrata of the minimap button to low (thanks Zilas)
+- added a small credit to the titlebar
+
+v0.9.3
+- added Zerillis to Zul'Farrak map (thanks JennerCobrari)
+- fixed a typo in the Scarlet Monastery map (thanks halfhand and nonlinear)
+- marked Hearthsinger Forresten in Stratholme as rare (thanks DrimIT)
+
+v0.9.2
+- new maps: Scholomance, Stratholme and The Stockade
+- Atlas is 28% larger! (all maps are higher resolution)
+- added Meshlok the Harvester to Maraudon map (thanks Aludian)
+- added version number to the Atlas window
+- added an options button to the Atlas window
+- added a key binding to toggle the options window
+- updated all level ranges from official wow website
+- changed the Atlas icon to something better
+- the minimap button now collapses with the minimap
+- options are now saved under a single variable
+
+v0.9.1
+- updated Gnomeregan map with a new mob and marked one as rare
+- updated myAddOns support for the options frame
+- fixed problem with saving the status of the minimap button
+- fixed problem with the frame level of the minimap button
+
+v0.9
+- added Obsidian Sentinel to Uldaman map (thanks Bhaerau)
+- new options window: type '/atlas options' to bring it up
+- new minimap button, moveable and hideable (thanks CTMod code) 
+- transparency control slider
+
+v0.8.2
+- added Lorgalis Manuscript to Blackfathom Deeps map (thanks Connall)
+- lock button added next to close button, frame can only be dragged when unlocked
+- lock status is saved between sessions
+- frame position no longer resets all the time
+- frame position is unaffected by other UIPanels
+
+v0.8.1
+- added Ragglesnout to Razorfen Downs map (thanks beffe)
+- Escape once again closes the window (clearly important)
+- still draggable, but position isn't saved (a temp solution)
+
+v0.8
+- new map: The Deadmines (thanks Pycelle)
+- updated level range for all maps
+- due to popular demand, Atlas is once again draggable!
+- Escape no longer closes frame, use hotkey instead
+- updated myAddOns support
+
+v0.7
+- new maps: Razorfen Kraul, Razorfen Downs and Molten Core (thanks Conquest/Sudo)
+- added punch card locs to Gnomeregan map
+- added missing credit to SM map
+
+v0.6
+- new maps: Gnomeregan and Zul'farrak
+- removed loaded message (spam) upon entering the world
+- added level information to all maps
+- minor tweaks and spelling fixes
+
+v0.5
+- new map: Wailing Caverns (thank you Grimm@CC)
+- fixed issue with not being able to open other panels while Atlas was open, as a side effect dragging is disabled (feedback welcome)
+- Atlas will now automatically open to the map of the instance you're in (needs feedback and testing)
+- added myAddOns support
+- added Cosmos support
+
+v0.4
+- new map: Scarlet Monastery
+- pressing escape now closes frame
+- fixed version numbering
+
+v0.3
+- new maps: Maraudon and Uldaman
+- added hotkey binding to toggle frame
+
+v0.2
+- unreleased
+
+v0.1
+- unreleased

@@ -1,0 +1,19 @@
+## Interface: 30300
+## Title: AckisRecipeList_QuickMenu
+## Notes: Provides a LibDataBroker plugin for quick access to professions under Ackis Recipe List.
+## Author: Torhal
+## Version: 3.3.5-1.0.1
+## X-Date: 2010-07-12T13:47:29Z
+## X-Category: Plugins: Data Broker
+## Dependencies: AckisRecipeList
+## LoadWith: AckisRecipeList
+## X-Curse-Packaged-Version: 3.3.5-1.0.1
+## X-Curse-Project-Name: AckisRecipeList_QuickScan
+## X-Curse-Project-ID: arl_quickscan
+## X-Curse-Repository-ID: wow/arl_quickscan/mainline
+
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+QuickScan.lua

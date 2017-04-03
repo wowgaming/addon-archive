@@ -1,0 +1,41 @@
+<Bindings>
+	<Binding name="OUTFITTER_OUTFIT1" header="OUTFITTER_TITLE">
+		Outfitter:WearBoundOutfit(1)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT2">
+		Outfitter:WearBoundOutfit(2)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT3">
+		Outfitter:WearBoundOutfit(3)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT4">
+		Outfitter:WearBoundOutfit(4)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT5">
+		Outfitter:WearBoundOutfit(5)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT6">
+		Outfitter:WearBoundOutfit(6)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT7">
+		Outfitter:WearBoundOutfit(7)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT8">
+		Outfitter:WearBoundOutfit(8)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT9">
+		Outfitter:WearBoundOutfit(9)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT10">
+		Outfitter:WearBoundOutfit(10)
+	</Binding>
+	<Binding name="OUTFITTER_OUTFIT">
+		Outfitter:OpenUI()
+	</Binding>
+	<Binding name="OUTFITTER_ENABLEAUTOMATION">
+		Outfitter:EnableAutoChanges()
+	</Binding>
+	<Binding name="OUTFITTER_DISABLEAUTOMATION">
+		Outfitter:DisableAutoChanges()
+	</Binding>
+</Bindings>

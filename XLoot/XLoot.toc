@@ -1,0 +1,42 @@
+﻿## Interface: 30300
+## Title: XLoot |cff7fff7f -Ace2-|r
+## Notes: A remake of the built-in lootframe. |cffff4488By Xuerian|r.
+## Notes-ruRU: Переделывает встроенные окна добычи. |cffff4488Xuerian|r.
+## Notes-esES: Un reemplazo de la ventana de botín. |cffff4488Por Xuerian|r.
+## Notes-zhTW: 拾取物品增強 |cffff4488By Xuerian|r.
+## Notes-deDE: Ein Remake des eingebauten Lootfensters. |cffff4488By Xuerian|r.
+## Notes-zhCN: 拾取物品增强 |cffff4488By Xuerian|r。
+## Version: 0.91.1
+## Author: Xuerian
+## X-Category: Inventory
+## X-AceForum: 2278
+## X-eMail: sky.shell@gmail.com
+## X-Website: http://wowace.com/index.php/XLoot
+## X-Credits: In memory of Arm of Aman Thul and thanks to the authors of all the embeds XLoot uses, #wowace on Freenode.net for being my support group and helping fix bugs, fenlis for koKR translation, Cinedelle for frFR translation
+## X-Curse-Packaged-Version: r367
+## X-Curse-Project-Name: XLoot
+## X-Curse-Project-ID: xloot
+## X-Curse-Repository-ID: wow/xloot/mainline
+
+## OptionalDeps: Ace2, DewdropLib, Deformat, AnchorsAway, SpecialEventsEmbed, SpecialEvents-Loot-1.0
+## X-Embeds: Ace2, DewdropLib, Deformat, AnchorsAway, SpecialEventsEmbed
+## SavedVariables: XLootDB
+
+embeds.xml
+
+XLoot.lua
+XLootSkin.lua
+XLootOptions.lua
+
+XLootUtilities.lua
+XLootRowTools.lua
+XLootTooltip.lua
+
+locales\enUS.lua
+locales\ruRU.lua
+locales\koKR.lua
+locales\zhTW.lua
+locales\zhCN.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\esES.lua

@@ -1,0 +1,15 @@
+## Interface: 30300
+## Title: Prat |cff8080ff3.0|r |r[|cffeda55fLibraries|r]
+## Author: Sylvanaar
+## X-License: GPLv3
+## DefaultState: enabled
+## X-Curse-Packaged-Version: 3.3.26
+## X-Curse-Project-Name: Prat 3.0
+## X-Curse-Project-ID: prat-3-0
+## X-Curse-Repository-ID: wow/prat-3-0/mainline
+
+## OptionalDeps: Ace3, LibSink-2.0, LibBabble-Class-3.0, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, LibDataBroker-1.1, LibDBIcon-1.0, LibAlts-1.0
+
+## X-Embeds: Ace3, LibSink-2.0, LibBabble-Class-3.0, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, LibDataBroker-1.1, LibDBIcon-1.0, LibAlts-1.0
+
+includes.xml

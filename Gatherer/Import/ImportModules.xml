@@ -1,0 +1,7 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script>
+		Gatherer.ImportModules = {}
+	</Script>
+	<Script file="ImportCTMapMod.lua"/>
+</Ui>
+

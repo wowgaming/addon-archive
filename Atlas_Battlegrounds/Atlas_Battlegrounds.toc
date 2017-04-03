@@ -1,0 +1,31 @@
+﻿## Interface: 30300
+## Title: Atlas |r|cFF0099FF[Battlegrounds]|r
+## Title-deDE: Atlas |r|cFF0099FF[Schlachtfelder]|r
+## Title-ruRU: Atlas |r|cFF0099FF[Поля Сражений]|r
+## Title-zhTW: |r|cFF0099FF[地圖]|rAtlas 戰場地圖
+## Title-zhCN: Atlas |r|cFF0099FF[战场地图]|r
+## Notes: Battleground Maps
+## Notes-ruRU: Карты Полей Сражений
+## Notes-deDE: Schlachtfeldkarten
+## Notes-esES: Mapas de Campo de Batalla
+## Notes-frFR: Cartes de champs de bataille
+## Notes-koKR: 전장 지도
+## Notes-zhCN: 战场地图
+## Notes-zhTW: Atlas 戰場地圖模組
+## Version: 1.17.0
+## X-Date: August, 2010
+## Author: Dan Gilbert
+## X-Email: dan.b.gilbert@gmail.com
+## X-Website: http://www.atlasmod.com
+## X-Category: Map
+## RequiredDeps: Atlas
+
+Locale\Atlas_Battlegrounds-enUS.lua
+Locale\Atlas_Battlegrounds-ruRU.lua
+Locale\Atlas_Battlegrounds-frFR.lua
+Locale\Atlas_Battlegrounds-deDE.lua
+Locale\Atlas_Battlegrounds-zhCN.lua
+Locale\Atlas_Battlegrounds-zhTW.lua
+Locale\Atlas_Battlegrounds-esES.lua
+
+Atlas_Battlegrounds.lua

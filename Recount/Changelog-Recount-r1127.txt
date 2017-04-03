@@ -1,0 +1,42 @@
+------------------------------------------------------------------------
+r1127 | elsia | 2010-10-05 10:00:40 -0500 (Tue, 05 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/WindowOrder.lua
+
+- Update of locales for absorbs.
+------------------------------------------------------------------------
+r1126 | elsia | 2010-10-05 09:16:55 -0500 (Tue, 05 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/GUI_Detail.lua
+   M /trunk/GUI_Graph.lua
+   M /trunk/Widgets.lua
+
+- Fixes to dragging problems of numerous windows.
+------------------------------------------------------------------------
+r1125 | elsia | 2010-10-02 23:48:25 -0500 (Sat, 02 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/Recount_Modes.lua
+
+- Touch to repackage locales.
+------------------------------------------------------------------------
+r1124 | elsia | 2010-10-02 20:20:42 -0500 (Sat, 02 Oct 2010) | 3 lines
+Changed paths:
+   M /trunk/GUI_Config.lua
+   M /trunk/Recount.lua
+   M /trunk/Recount_Modes.lua
+   M /trunk/Tracker.lua
+
+- Added Absorb module (only functional with 4.0+, so currently only PTR/Cata Beta).
+- Added merge absorb with healing ability. This will merge healing done and absorbs in the main bar display and cause absorb effects to be added to the healing details. The latter cannot be reverted when unmerging unless one deletes data.
+- Testing appreciated.
+------------------------------------------------------------------------
+r1123 | elsia | 2010-07-21 17:56:39 -0500 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/GUI_Detail.lua
+   M /trunk/GUI_Graph.lua
+   M /trunk/Recount.lua
+   M /trunk/roster.lua
+   M /trunk/zonefilters.lua
+
+- Fixed unintended globals (to avoid taint issues). Thanks to Dargen for spotting these.
+------------------------------------------------------------------------

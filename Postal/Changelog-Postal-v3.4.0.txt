@@ -1,0 +1,73 @@
+------------------------------------------------------------------------
+r301 | xinhuan | 2010-09-26 03:48:29 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   A /tags/v3.4.0 (from /trunk:300)
+
+Tag release v3.4.0.
+------------------------------------------------------------------------
+r300 | xinhuan | 2010-09-26 03:16:58 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Postal.toc
+
+Update TOC: Add optional dependency on !ClassColors. Update Postal's version to 3.4.0. Add ## X-Compatible-With: 40000 flag for Curse, Curse Client and ACP.
+------------------------------------------------------------------------
+r299 | xinhuan | 2010-09-26 02:57:53 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+
+Localize the 2 new strings we added.
+------------------------------------------------------------------------
+r298 | xinhuan | 2010-09-26 02:29:54 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/Select.lua
+
+Select module's verbose mode will stop spamming too if your bags are full.
+------------------------------------------------------------------------
+r297 | xinhuan | 2010-09-26 02:26:25 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+
+Clean up the initial code for unattended OpenAll. Change the refresh duration from 5 to 10 seconds. OpenAll verbose mode will no longer spam you unnecessarily when your inventory is full.
+------------------------------------------------------------------------
+r296 | xinhuan | 2010-09-26 01:00:06 +0000 (Sun, 26 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/OpenAll.lua
+
+Initial implementation of mailbox refreshing itself during OpenAll, and continuing to OpenAll unattended.
+------------------------------------------------------------------------
+r295 | xinhuan | 2010-09-25 20:44:33 +0000 (Sat, 25 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/BlackBook.lua
+
+Disable the Real ID friends menu if no one is found.
+------------------------------------------------------------------------
+r294 | xinhuan | 2010-09-25 12:45:10 +0000 (Sat, 25 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/BlackBook.lua
+   M /trunk/Postal.lua
+
+BlackBook auto-complete will now also use recorded Real ID friend's characters.
+------------------------------------------------------------------------
+r293 | xinhuan | 2010-09-25 09:16:07 +0000 (Sat, 25 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/BlackBook.lua
+   M /trunk/Postal.lua
+
+BlackBook module will now remember your Real ID friend's characters.
+------------------------------------------------------------------------
+r292 | xinhuan | 2010-09-24 16:15:48 +0000 (Fri, 24 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/BlackBook.lua
+   M /trunk/Modules/Express.lua
+   M /trunk/Modules/OpenAll.lua
+   M /trunk/Modules/Select.lua
+   M /trunk/Postal.lua
+
+Postal should now work with Cataclysm.
+------------------------------------------------------------------------
+r291 | xinhuan | 2010-07-30 13:29:27 +0000 (Fri, 30 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/CarbonCopy.lua
+
+An empty commit to update localization tables.
+------------------------------------------------------------------------

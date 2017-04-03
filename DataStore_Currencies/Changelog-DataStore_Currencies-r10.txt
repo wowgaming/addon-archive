@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r10 | Thaoky | 2010-07-06 17:11:45 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Currencies.lua
+
+Code cleanup. Event handlers reorganized.
+------------------------------------------------------------------------
+r9 | thaoky | 2009-12-10 17:09:39 +0000 (Thu, 10 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/DataStore_Currencies.lua
+
+Fixed invalid earlier commit of DataStore_Currencies.lua
+------------------------------------------------------------------------

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+  <Script file="Locale\RaidRoll_Localization.en.lua" />
+  <Script file="Locale\RaidRoll_Localization.de.lua" />
+  <Script file="Locale\RaidRoll_Localization.ru.lua" />
+  <Script file="Locale\RaidRoll_Localization.es.lua" />
+  <Script file="Locale\RaidRoll_Localization.tw.lua" />
+  <Script file="Locale\RaidRoll_Localization.fr.lua" />
+  <Script file="Locale\RaidRoll_Localization.cn.lua" />
+  <Script file="RaidRoll_OnLoad.lua" />
+  <Script file="RaidRoll_LDB.lua" />
+  <Script file="RaidRoll_OptionsMenu.lua" />
+  <Script file="RaidRoll_ExtraRollFrames.lua" />
+  <Script file="RaidRoll_EPGP.lua" />
+  
+  
+	<GameTooltip name="RR_Compare_Tooltip1" 
+				 inherits="GameTooltipTemplate" 
+				 parent="UIParent" 
+				 hidden="true"/>
+				 
+	<GameTooltip name="RR_Compare_Tooltip2" 
+				 inherits="GameTooltipTemplate" 
+				 parent="UIParent" 
+				 hidden="true"/>
+
+
+
+  
+  
+  
+  <Frame name="MyAddOn_MainFrame"
+         parent="UIParent"
+         frameStrata="LOW"
+         toplevel="true"
+         inherits="SecureFrameTemplate">
+    <Anchors>
+      <Anchor point="CENTER" />
+    </Anchors>
+    <Scripts>
+      <OnLoad>RaidRoll_OnLoad(self)</OnLoad>
+      <OnEvent>RaidRoll_Event(self, event, ...);</OnEvent>
+    </Scripts>
+  </Frame>
+  
+  <Frame name="RR_FrameTemplate"
+         hidden="true"
+         toplevel="true"
+         virtual="true"
+         frameStrata="DIALOG"
+         parent="UIParent">
+    <Size>
+      <AbsDimension x="185"
+                    y="180" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" />
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+              edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
+              tile="true">
+      <TileSize>
+        <AbsValue val="32" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="32" />
+      </EdgeSize>
+      <BackgroundInsets>
+        <AbsInset left="11"
+                  right="12"
+                  top="12"
+                  bottom="11" />
+      </BackgroundInsets>
+    </Backdrop>
+    <Scripts>
+      <OnMouseDown>self:StartMoving();</OnMouseDown>
+      <OnMouseUp>self:StopMovingOrSizing();</OnMouseUp>
+      <OnDragStop>self:StopMovingOrSizing();</OnDragStop>
+    </Scripts>
+  </Frame>
+  <Frame name="RR_LOOT_FRAME"
+         inherits="RR_FrameTemplate"
+         movable="true"
+         enableMouse="true">
+    <Anchors>
+      <Anchor point="BOTTOM" />
+    </Anchors>
+  </Frame>
+  <Frame name="RR_RollFrame"
+         inherits="RR_FrameTemplate"
+         movable="true"
+         enableMouse="true">
+    <Layers>
+      <Layer level="MEDIUM">
+        <FontString name="RR_Itemname"
+                    inherits="GameFontNormal"
+                    text="Item Name">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="16"
+                              y="-13" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerPos"
+                    inherits="GameFontNormal"
+                    text="#">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="10"
+                              y="-30" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerPos1"
+                    inherits="GameFontNormal"
+                    text="1:">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_RollerPos"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerPos2"
+                    inherits="GameFontNormal"
+                    text="2:">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_RollerPos1"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerPos3"
+                    inherits="GameFontNormal"
+                    text="3:">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_RollerPos2"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerPos4"
+                    inherits="GameFontNormal"
+                    text="4:">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_RollerPos3"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerPos5"
+                    inherits="GameFontNormal"
+                    text="5:">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_RollerPos4"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_RollerName"
+                    inherits="GameFontNormal"
+                    text=" Name">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="30"
+                              y="-30" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Roller1"
+                    inherits="GameFontNormal"
+                    text="Roller 1">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_RollerName"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Roller2"
+                    inherits="GameFontNormal"
+                    text="Roller 2">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Roller1"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Roller3"
+                    inherits="GameFontNormal"
+                    text="Roller 3">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Roller2"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Roller4"
+                    inherits="GameFontNormal"
+                    text="Roller 4">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Roller3"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Roller5"
+                    inherits="GameFontNormal"
+                    text="Roller 5">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Roller4"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Rolled"
+                    inherits="GameFontNormal"
+                    text="Roll">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="120"
+                              y="-30" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Rolled1"
+                    inherits="GameFontNormal"
+                    text="---">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Rolled"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Rolled2"
+                    inherits="GameFontNormal"
+                    text="---">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Rolled1"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Rolled3"
+                    inherits="GameFontNormal"
+                    text="---">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Rolled2"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Rolled4"
+                    inherits="GameFontNormal"
+                    text="---">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Rolled3"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Rolled5"
+                    inherits="GameFontNormal"
+                    text="---">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Rolled4"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Group0"
+                    inherits="GameFontNormal"
+                    text="Grp">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="150"
+                              y="-30" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Group1"
+                    inherits="GameFontNormal"
+                    text="-">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Group0"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Group2"
+                    inherits="GameFontNormal"
+                    text="-">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Group1"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Group3"
+                    inherits="GameFontNormal"
+                    text="-">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Group2"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Group4"
+                    inherits="GameFontNormal"
+                    text="-">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Group3"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+        <FontString name="RR_Group5"
+                    inherits="GameFontNormal"
+                    text="-">
+          <Anchors>
+            <Anchor point="TOPLEFT"
+                    relativeTo="RR_Group4"
+                    relativePoint="BOTTOMLEFT" />
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Button name="RR_Last"
+              inherits="UIPanelButtonTemplate"
+              text="Last"
+              id="4">
+        <Size>
+          <AbsDimension x="40"
+                        y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="16"
+                            y="-105" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>RR_PrevRoll()</OnClick>
+        </Scripts>
+      </Button>
+      <Button name="RR_Clear"
+              inherits="UIPanelButtonTemplate"
+              text="Clear"
+              id="4">
+        <Size>
+          <AbsDimension x="50"
+                        y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="66"
+                            y="-105" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>RR_NewRoll()</OnClick>
+        </Scripts>
+      </Button>
+      <Button name="RR_Next"
+              inherits="UIPanelButtonTemplate"
+              text="Next"
+              id="4">
+        <Size>
+          <AbsDimension x="40"
+                        y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="126"
+                            y="-105" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>RR_NextRoll()</OnClick>
+        </Scripts>
+      </Button>
+      <CheckButton name="RaidRoll_Allow_All"
+                   inherits="UICheckButtonTemplate"
+                   id="16"
+                   text="Hello">
+        <Size>
+          <AbsDimension x="20"
+                        y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="10"
+                            y="-130" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>_G[self:GetName().."Text"]:SetText(" Allow all rolls (e.g. 1-50)");</OnLoad>
+          <OnClick>RaidRoll_CheckButton_Update()</OnClick>
+        </Scripts>
+      </CheckButton>
+      <CheckButton name="RaidRoll_Catch_All"
+                   inherits="UICheckButtonTemplate"
+                   id="16"
+                   text="Hello">
+        <Size>
+          <AbsDimension x="20"
+                        y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="10"
+                            y="-145" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>_G[self:GetName().."Text"]:SetText(" Catch unannounced rolls");</OnLoad>
+          <OnClick>RaidRoll_CheckButton_Update()</OnClick>
+        </Scripts>
+      </CheckButton>
+      <Button name="RR_Close_Button"
+              inherits="UIPanelCloseButton">
+        <Anchors>
+          <Anchor point="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-3"
+                            y="-3" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>RR_CloseWindow()</OnClick>
+        </Scripts>
+      </Button>
+    </Frames>
+  </Frame>
+</Ui>

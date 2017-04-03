@@ -1,0 +1,136 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<GameTooltip name="ZAutoShotTooltip" frameStrata="TOOLTIP" hidden="true" inherits="GameTooltipTemplate" parent="UIParent"/>
+
+	<Frame name="ZAutoShotMove" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension x="215" y="33"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="210"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton")
+			</OnLoad>
+			<OnMouseUp>
+				if ( self.isMoving ) then
+					self:StopMovingOrSizing()
+					self.isMoving = false
+				end
+			</OnMouseUp>
+			<OnDragStart>
+				self:StartMoving()
+				self.isMoving = true
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+				self.isMoving = false
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+
+	<StatusBar name="ZAutoShotBar" movable="true" toplevel="true" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="195" y="12"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="ZAutoShotMove" relativePoint="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.5"/>
+				</Texture>		
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTextLeft" inherits="GameFontHighlight" text="Spell">
+					<Size>
+						<AbsDimension x="150" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="2" y="0.5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTextRight" inherits="GameFontHighlight" text="99.9" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="32" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-3" y="0.5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="40" y="40"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame>
+				<Size>
+					<AbsDimension x="205" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+				</Backdrop>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				ZAutoShot_OnLoad(self)
+			</OnLoad>
+			<OnEvent>
+				ZAutoShot_OnEvent(self, event, arg1, arg2)
+			</OnEvent>
+			<OnUpdate>
+				ZAutoShot_OnUpdate(self)
+			</OnUpdate>
+		</Scripts>
+		<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+		<BarColor r="0.0" g="0.5" b="1.0"/>
+	</StatusBar>
+</Ui>

@@ -1,0 +1,119 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+<!--
+	Gatherer Addon for World of Warcraft(tm).
+	Version: 3.1.14 (<%codename%>)
+	Revision: $Id: GatherMapNotes.xml 754 2008-10-14 04:43:39Z Esamynn $
+
+	License:
+		This program is free software; you can redistribute it and/or
+		modify it under the terms of the GNU General Public License
+		as published by the Free Software Foundation; either version 2
+		of the License, or (at your option) any later version.
+
+		This program is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		GNU General Public License for more details.
+
+		You should have received a copy of the GNU General Public License
+		along with this program(see GPL.txt); if not, write to the Free Software
+		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+	Note:
+		This AddOn's source code is specifically designed to work with
+		World of Warcraft's interpreted AddOn system.
+		You have an implicit licence to use this AddOn with these facilities
+		since that is it's designated purpose as per:
+		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
+-->
+	<Script>Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/release/Gatherer/GatherMapNotes.xml $", "$Rev: 754 $")</Script>
+	<Script file = "GatherMapNotes.lua"/>
+	
+	<!--
+		Raise the level of the World Map's Player Arrow so that it is displayed above
+		our gather notes.  
+	-->
+	<Script>
+		for k, v in pairs({WorldMapFrame:GetChildren()}) do
+			if ( v:IsObjectType("Model") and v:GetModel() == "Interface\\Minimap\\MinimapArrow" ) then
+				v:SetFrameLevel(3)
+				break
+			end 
+		end
+		WorldMapPing:SetFrameLevel(3)
+	</Script>
+	
+	<!-- World Map Display Templates -->
+	<Frame name="GathererMapOverlayTemplate" hidden="true" virtual="true" setAllPoints="true">
+		<Scripts>
+			<OnLoad>
+				this:SetFrameLevel(this:GetParent():GetFrameLevel())
+				self:SetWidth(WorldMapButton:GetWidth())
+				self:SetHeight(WorldMapButton:GetHeight())
+			</OnLoad>
+			<OnHide>
+				Gatherer.MapNotes.MapOverlayFrame_OnHide(self)
+			</OnHide>
+		</Scripts>
+	</Frame>
+	<Button name="GatherMainTemplate" hidden="true" virtual="true">
+		<Size>
+			<AbsDimension x="12" y="12"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
+			</OnLoad>
+			<OnEnter>
+				Gatherer.MapNotes.MapNoteOnEnter(self)
+			</OnEnter>
+			<OnLeave>
+				WorldMapTooltip:Hide()
+			</OnLeave>
+			<OnClick>
+				
+			</OnClick>
+		</Scripts>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentTexture" file="Interface\AddOns\Gatherer\Original\Test"/>
+			</Layer>
+		</Layers>
+	</Button>
+	
+	<!-- Parent Frame for all World Map Note Objects -->
+	<Frame name="GathererMapOverlayParent" inherits="GathererMapOverlayTemplate" parent="WorldMapButton">
+		<Scripts>
+			<OnShow>
+				Gatherer.MapNotes.MapDraw()
+			</OnShow>
+		</Scripts>
+	</Frame>
+
+	<!-- Button to show/hide icons on world map -->
+	<Button name="Gatherer_WorldMapDisplay" inherits="UIPanelButtonTemplate" text="Show items" parent="WorldMapFrame" toplevel="true">
+		<Size>
+			<AbsDimension x="100" y="25"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="WorldMapPositioningGuide" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="10" y="5"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self:SetScale(0.8)
+			</OnLoad>
+			<OnClick>
+				Gatherer.MapNotes.ToggleDisplay()
+			</OnClick>
+		</Scripts>
+	</Button>
+</Ui>
+
+

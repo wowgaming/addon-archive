@@ -1,0 +1,29 @@
+<Bindings>
+	<Binding name="Toggle MA window" header="MOVEANYTHING">
+		MovAny:ToggleOptionsMenu()
+	</Binding>
+	<Binding name="Move frame - Safe">
+		MovAny:SafeMoveFrameAtCursor()
+	</Binding>
+	<Binding name="Hide frame - Safe">
+		MovAny:SafeHideFrameAtCursor()
+	</Binding>
+	<Binding name="Reset frame - Safe">
+		MovAny:SafeResetFrameAtCursor()
+	</Binding>
+	<Binding name="Move frame - Exact">
+		MovAny:MoveFrameAtCursor()
+	</Binding>
+	<Binding name="Hide frame - Exact">
+		MovAny:HideFrameAtCursor()
+	</Binding>
+	<Binding name="Reset frame - Exact">
+		MovAny:ResetFrameAtCursor()
+	</Binding>
+	<Binding name="Update positions">
+		MovAny:SyncAllFrames()
+	</Binding>
+	<Binding name="Show frame info">
+		MovAny:DebugFrameAtCursor()
+	</Binding>
+</Bindings>

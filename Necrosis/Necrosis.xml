@@ -1,0 +1,15 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Frame name="Necrosis_Variable_Frame" hidden="false">
+		<Scripts>
+			<OnLoad>
+				this:RegisterEvent("PLAYER_LOGIN")
+				this:RegisterEvent("VARIABLES_LOADED")
+			</OnLoad>
+			<OnEvent>
+				Necrosis:OnLoad()
+			</OnEvent>
+		</Scripts>
+	</Frame>
+
+	<GameTooltip name="NecrosisTooltip" inherits="GameTooltipTemplate" parent="UIParent" toplevel="true" movable="true" frameStrata="LOW" />
+</Ui>

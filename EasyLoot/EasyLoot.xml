@@ -1,0 +1,1848 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Script file="EasyLoot.lua" />
+	<Frame name="EasyLootFrame">
+		<Scripts>
+			<OnLoad>EasyLoot_OnLoad(self);</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Button name="EasyLootEntryTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="120" y="16" />
+		</Size>
+		<NormalFont style="GameFontHighlightLeft" />
+		<Scripts>
+			<OnClick>
+				EasyLoot_ListButtonClicked(self)
+			</OnClick>
+		</Scripts>
+	</Button>
+	<Button name="EasyLootItemButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="64" y="64" />
+		</Size>
+		<Layers>
+			<Layer>
+				<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+					text="">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="3" y="3" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="15" />
+					</FontHeight>
+					<Color r="1" g="1" b="1" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+						<Color r="0" g="0" b="0" />
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				EasyLoot_ItemClicked(self)
+			</OnClick>
+			<OnEnter>
+				EasyLoot_ItemEnter(self)
+			</OnEnter>
+			<OnLeave>
+				EasyLoot_ItemLeave(self)
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<CheckButton name="EasyLootPermanentTemplate" inherits="UICheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0"/>
+		</HitRectInsets>
+		<CheckedTexture file="Interface\Glues\CharacterSelect\Glues-AddOn-Icons">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+		</CheckedTexture>
+		<NormalTexture file="Interface\Glues\CharacterSelect\Glues-AddOn-Icons">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+		</NormalTexture>		
+		<Scripts>
+			<OnShow>
+				self:GetCheckedTexture():SetTexCoord(0, 0.25, 0, 1)
+				self:GetNormalTexture():SetTexCoord(0.25, 0.5, 0, 1)
+			</OnShow>
+			<OnClick>
+				EasyLoot_ListPermanentClicked(self);
+			</OnClick>
+		</Scripts>
+	</CheckButton>
+	<CheckButton name="EasyLootDisenchantTemplate" inherits="UICheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0"/>
+		</HitRectInsets>
+		<CheckedTexture file="Interface\ICONS\INV_enchant_disenchant">
+			<Size>
+				<AbsDimension x="16" y="16" />
+			</Size>
+		</CheckedTexture>
+		<Scripts>
+			<OnClick>
+				EasyLoot_ListDisenchantClicked(self);
+			</OnClick>
+		</Scripts>
+	</CheckButton>
+	<!-- Config frame -->
+	<Frame name="EasyLootConfigFrame" frameStrata="DIALOG">
+		<Frames>
+			<CheckButton name="$parentEnabled" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Enabled">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentFreeForAll" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Free for all">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEnabled"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentRoundRobin" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Roundrobin">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentFreeForAll"
+						relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="200" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentMaster" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Master looter">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentFreeForAll"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentGroup" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Group loot">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentRoundRobin"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentNeedBeforeGreed" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Need before greed">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentMaster"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentAtlasLoot" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Need on items in">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="AtlasLoot wishlist">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-15" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentGroup"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentQuest" inherits="OptionsCheckButtonTemplate"
+				checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal"
+							text="Autoloot quest items">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentNeedBeforeGreed"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="$parentComboRarity" inherits="UIDropDownMenuTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormalSmall"
+							text="Loot level">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="21" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size>
+					<AbsDimension x="157" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentAtlasLoot"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-12" y="-20" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						EasyLoot_RarityDropdown_OnShow();
+					</OnShow>
+				</Scripts>
+			</Button>
+			<Button name="EasyLootConfigButtonSettings" text="Show settings"
+				inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentQuest"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-45" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HideUIPanel(InterfaceOptionsFrame)
+						HideUIPanel(GameMenuFrame)
+						EasyLootFilter:Show()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				EasyLootConfigFrame_OnLoad(self);
+            </OnLoad>
+            <OnShow>
+            	EasyLoot_ConfigLoadOrCancel();
+            </OnShow>
+		</Scripts>
+	</Frame>
+	<!-- Loot options/Exemptions -->
+	<!-- Filter settings -->
+	<Frame name="EasyLootFilter" movable="true" toplevel="true"
+		frameStrata="MEDIUM" parent="UIParent" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension x="530" y="480" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent">
+				<Offset>
+					<AbsDimension x="0" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+			edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<Button name="$parentButtonClose" inherits="OptionsButtonTemplate"
+				text="">
+				<Size>
+					<AbsDimension x="32" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-5" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\BUTTONS\UI-Panel-MinimizeButton-Up">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+				</NormalTexture>
+				<Scripts>
+					<OnClick>
+						EasyLootFilter:Hide()
+						EasyLootSearch:Hide()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<ScrollFrame name="EasyLootFilterAutoLootScrollFrame"
+				inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="140" y="80" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="20" y="-60" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset,
+						16, EasyLoot_AutoLootScrollBar_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="EasyLootAutoLootEntry1" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterAutoLootScrollFrame"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="EasyLootAutoLootEntry2" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootAutoLootEntry1"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootAutoLootEntry3" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootAutoLootEntry2"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootAutoLootEntry4" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootAutoLootEntry3"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootAutoLootEntry5" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootAutoLootEntry4"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<EditBox name="EasyLootAutoLootLabel" autoFocus="false">
+				<Size>
+					<AbsDimension x="10" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="EasyLootAutoLootEntry1"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Auto Loot">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="12" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:EnableMouse(false)
+						self:EnableKeyboard(false)
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<ScrollFrame name="EasyLootFilterIgnoreScrollFrame"
+				inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="140" y="80" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterAutoLootScrollFrame"
+						relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="20" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset,
+						16, EasyLoot_IgnoreScrollBar_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="EasyLootIgnoreEntry1" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterIgnoreScrollFrame"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="EasyLootIgnoreEntry2" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootIgnoreEntry1"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootIgnoreEntry3" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootIgnoreEntry2"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootIgnoreEntry4" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootIgnoreEntry3"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootIgnoreEntry5" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootIgnoreEntry4"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<EditBox name="EasyLootIgnoreLabel" letters="12" autoFocus="false">
+				<Size>
+					<AbsDimension x="10" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="EasyLootIgnoreEntry1"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Ignore">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="12" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:EnableMouse(false)
+						self:EnableKeyboard(false)
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<ScrollFrame name="EasyLootFilterDestroyScrollFrame"
+				inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="140" y="80" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterIgnoreScrollFrame"
+						relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="20" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset,
+						16, EasyLoot_DestroyScrollBar_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="EasyLootDestroyEntry1" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterDestroyScrollFrame"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="EasyLootDestroyEntry2" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootDestroyEntry1"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootDestroyEntry3" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootDestroyEntry2"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootDestroyEntry4" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootDestroyEntry3"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootDestroyEntry5" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootDestroyEntry4"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<EditBox name="EasyLootDestroyLabel" letters="12" autoFocus="false">
+				<Size>
+					<AbsDimension x="10" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="EasyLootDestroyEntry1"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Destroy">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="12" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:EnableMouse(false)
+						self:EnableKeyboard(false)
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<ScrollFrame name="EasyLootFilterNeedScrollFrame"
+				inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="180" y="80" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterAutoLootScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-60" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset,
+						16, EasyLoot_NeedScrollBar_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="EasyLootNeedEntry1" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterNeedScrollFrame"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootNeedPermanent1" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry1"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootNeedEntry2" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry1"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootNeedPermanent2" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry2"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootNeedEntry3" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry2"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootNeedPermanent3" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry3"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootNeedEntry4" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry3"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootNeedPermanent4" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry4"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootNeedEntry5" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry4"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootNeedPermanent5" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootNeedEntry5"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<EditBox name="EasyLootNeedLabel" letters="12" autoFocus="false">
+				<Size>
+					<AbsDimension x="10" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="EasyLootNeedEntry1"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Need">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="12" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:EnableMouse(false)
+						self:EnableKeyboard(false)
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<ScrollFrame name="EasyLootFilterGreedScrollFrame"
+				inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="180" y="80" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterIgnoreScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-60" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset,
+						16, EasyLoot_GreedScrollBar_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="EasyLootGreedEntry1" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterGreedScrollFrame"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootGreedPermanent1" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry1"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="EasyLootGreedDisenchant1" inherits="EasyLootDisenchantTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedPermanent1"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootGreedEntry2" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry1"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootGreedPermanent2" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry2"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="EasyLootGreedDisenchant2" inherits="EasyLootDisenchantTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedPermanent2"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootGreedEntry3" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry2"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootGreedPermanent3" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry3"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="EasyLootGreedDisenchant3" inherits="EasyLootDisenchantTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedPermanent3"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootGreedEntry4" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry3"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootGreedPermanent4" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry4"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="EasyLootGreedDisenchant4" inherits="EasyLootDisenchantTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedPermanent4"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="EasyLootGreedEntry5" inherits="EasyLootEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry4"
+						relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<CheckButton name="EasyLootGreedPermanent5" inherits="EasyLootPermanentTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedEntry5"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="EasyLootGreedDisenchant5" inherits="EasyLootDisenchantTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootGreedPermanent5"
+						relativePoint="TOPRIGHT">
+						<Offset x="1" y="0" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<EditBox name="EasyLootGreedLabel" letters="12" autoFocus="false">
+				<Size>
+					<AbsDimension x="10" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="EasyLootGreedEntry1"
+						relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Greed">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="12" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:EnableMouse(false)
+						self:EnableKeyboard(false)
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<EditBox name="EasyLootFilterItem" letters="100">
+				<Size>
+					<AbsDimension x="100" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="-35" y="143" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="63" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1" />
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="62" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="10" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1" top="0" bottom="1" />
+						</Texture>
+					</Layer>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Item name">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="40" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						this:SetAutoFocus(false)
+					</OnLoad>
+					<OnEditFocusGained>
+						EasyLoot_SetHook()
+					</OnEditFocusGained>
+				</Scripts>
+				<FontString inherits="ChatFontNormal" font="Fonts\ARIALN.TTF"
+					bytes="0">
+					<FontHeight>
+						<AbsValue val="14" />
+					</FontHeight>
+					<Color r="1" g="1" b="1" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+						<Color r="0" g="0" b="0" />
+					</Shadow>
+				</FontString>
+			</EditBox>
+			
+			<Button name="$parentButtonSearch" inherits="OptionsButtonTemplate"
+				text="">
+				<Size>
+					<AbsDimension x="32" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterItem" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="5" y="5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\BUTTONS\UI-RotationRight-Button-Up">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+				</NormalTexture>
+				<Scripts>
+					<OnClick>
+						EasyLootSearch:Show()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="EasyLootFilterButtonAutoLoot" inherits="OptionsButtonTemplate"
+				text="Add">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterAutoLootScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EasyLoot_AddAutoLoot()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="EasyLootFilterButtonIgnore" inherits="OptionsButtonTemplate"
+				text="Add">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterIgnoreScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EasyLoot_AddIgnore()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="EasyLootFilterButtonDestroy" inherits="OptionsButtonTemplate"
+				text="Add">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterDestroyScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EasyLoot_AddDestroy()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="EasyLootFilterButtonNeed" inherits="OptionsButtonTemplate"
+				text="Add">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterNeedScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EasyLoot_AddNeed()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="EasyLootFilterButtonGreed" inherits="OptionsButtonTemplate"
+				text="Add">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyLootFilterGreedScrollFrame"
+						relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EasyLoot_AddGreed()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="EasyLootDEiLinfo">
+				<Size>
+					<AbsDimension x="350" y="125" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="$parent"
+						relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background"
+						edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="16" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="16" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<Button name="EasyLootFilterDisenchantComboRarity" inherits="UIDropDownMenuTemplate">
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="$parentLabel" inherits="GameFontNormalSmall"
+									text="or poorer">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="3" y="-5" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Size>
+							<AbsDimension x="157" y="32" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOM" relativeTo="$parent"
+								relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="30" y="55" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								EasyLoot_DisenchantRarityDropdown_OnShow();
+							</OnShow>
+						</Scripts>
+					</Button>
+					<EditBox name="EasyLootItemLevel" letters="3" numeric="true">
+						<Size>
+							<AbsDimension x="60" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="EasyLootFilterDisenchantComboRarity" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="20" y="5" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+									<Size>
+										<AbsDimension x="63" y="32" />
+									</Size>
+									<Anchors>
+										<Anchor point="LEFT">
+											<Offset>
+												<AbsDimension x="-10" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.2" top="0" bottom="1" />
+								</Texture>
+								<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+									<Size>
+										<AbsDimension x="62" y="32" />
+									</Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset>
+												<AbsDimension x="10" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.7" right="1" top="0" bottom="1" />
+								</Texture>
+							</Layer>
+							<Layer>
+								<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+									text="Item level">
+									<Anchors>
+										<Anchor point="LEFT" relativePoint="RIGHT">
+											<Offset>
+												<AbsDimension x="12" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<FontHeight>
+										<AbsValue val="10" />
+									</FontHeight>
+									<Color r="1" g="0.8196079" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="1" y="-1" />
+										</Offset>
+										<Color r="0" g="0" b="0" />
+									</Shadow>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnLoad>
+								this:SetAutoFocus(false)
+							</OnLoad>
+							<OnChar>
+								EasyLoot_ItemLevelChange()
+							</OnChar>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" font="Fonts\ARIALN.TTF"
+							bytes="0">
+							<FontHeight>
+								<AbsValue val="14" />
+							</FontHeight>
+							<Color r="1" g="1" b="1" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</EditBox>
+					<CheckButton name="EasyLootFilterDisenchantCheck" inherits="OptionsCheckButtonTemplate"
+							checked="false">
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="$parentLabel" inherits="GameFontNormalSmall"
+										text="Disenchant on">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="5" y="-5" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="EasyLootFilterDisenchantComboRarity"
+								relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="-80" y="0" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								EasyLootFilterGreedCheck:SetChecked(false)
+								self:SetChecked(true)
+								EasyLoot_DEBeforeGreed(true)
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="EasyLootFilterGreedCheck" inherits="OptionsCheckButtonTemplate"
+							checked="true">
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="$parentLabel" inherits="GameFontNormalSmall"
+									text="Greed or">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="5" y="-5" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="EasyLootFilterDisenchantComboRarity"
+								relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="-80" y="20" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								EasyLootFilterDisenchantCheck:SetChecked(false)
+								self:SetChecked(true)
+								EasyLoot_DEBeforeGreed(false)
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="EasyLootFilterGreedBoECheck" inherits="OptionsCheckButtonTemplate"
+							checked="false">
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="$parentLabel" inherits="GameFontNormalSmall"
+										text="Always greed on BoE items">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="5" y="-5" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="EasyLootFilterDisenchantCheck"
+								relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="00" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								EasyLoot_GreedOnBoEClicked(self)
+							</OnClick>
+							<OnShow>
+								self:SetChecked(EasyLootLootList.greedonboe)
+							</OnShow>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="EasyLootFilterDestroygrey" inherits="OptionsCheckButtonTemplate"
+							checked="false">
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="$parentLabel" inherits="GameFontNormalSmall"
+										text="Destroy grey items, value &lt;">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="5" y="-5" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="EasyLootFilterGreedBoECheck"
+								relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								EasyLoot_DestroygreyClicked(self)
+							</OnClick>
+							<OnShow>
+								self:SetChecked(EasyLootLootList.destroygrey)
+							</OnShow>
+						</Scripts>
+					</CheckButton>
+					<EditBox name="EasyLootDestroyValue" letters="7" numeric="true">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="EasyLootFilterDestroygrey" relativePoint="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="165" y="0" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+									<Size>
+										<AbsDimension x="63" y="32" />
+									</Size>
+									<Anchors>
+										<Anchor point="LEFT">
+											<Offset>
+												<AbsDimension x="-10" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.2" top="0" bottom="1" />
+								</Texture>
+								<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+									<Size>
+										<AbsDimension x="62" y="32" />
+									</Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset>
+												<AbsDimension x="10" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.7" right="1" top="0" bottom="1" />
+								</Texture>
+							</Layer>
+							<Layer>
+								<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+									text="copper">
+									<Anchors>
+										<Anchor point="LEFT" relativePoint="RIGHT">
+											<Offset>
+												<AbsDimension x="12" y="0" />
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<FontHeight>
+										<AbsValue val="10" />
+									</FontHeight>
+									<Color r="1" g="0.8196079" b="0" />
+									<Shadow>
+										<Offset>
+											<AbsDimension x="1" y="-1" />
+										</Offset>
+										<Color r="0" g="0" b="0" />
+									</Shadow>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnLoad>
+								this:SetAutoFocus(false)
+							</OnLoad>
+							<OnChar>
+								EasyLoot_DestroyValueChange()
+							</OnChar>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" font="Fonts\ARIALN.TTF"
+							bytes="0">
+							<FontHeight>
+								<AbsValue val="14" />
+							</FontHeight>
+							<Color r="1" g="1" b="1" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</EditBox>
+				</Frames>
+			</Frame>
+		</Frames>
+		<Layers>
+			<Layer>
+				<Texture name="$parentTitleBorder" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="160" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="5" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
+				</Texture>
+				<FontString name="$parentTitleString" font="Fonts\FRIZQT__.TTF"
+					text="EasyLoot">
+					<Size>
+						<AbsDimension x="140" y="0" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-4" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="12" />
+					</FontHeight>
+					<Color r="1" g="0.8196079" b="0" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+						<Color r="0" g="0" b="0" />
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnShow>
+				EasyLoot_AutoLootScrollBar_Update()
+				EasyLoot_IgnoreScrollBar_Update()
+				EasyLoot_DestroyScrollBar_Update()
+				EasyLoot_NeedScrollBar_Update()
+				EasyLoot_GreedScrollBar_Update()
+				EasyLoot_ItemLevel_Update()
+				EasyLoot_DestroyValue_Update()
+				EasyLootFilterDisenchantCheck:SetChecked(EasyLootLootList.DEbeforeGreed)
+				EasyLootFilterGreedCheck:SetChecked(not EasyLootLootList.DEbeforeGreed)
+			</OnShow>
+			<!--
+			<OnReceiveDrag>
+				EasyLoot_OnDragStop(self)
+			</OnReceiveDrag>
+			-->
+			<OnMouseDown>this:StartMoving()</OnMouseDown>
+			<OnMouseUp>
+				this:StopMovingOrSizing(); EasyLoot_OnDragStop(self);
+			</OnMouseUp>
+			<OnEscapePressed>
+				this:Hide();
+			</OnEscapePressed>
+			<OnHide>
+				EasyLoot_OnDragStop(self)
+			</OnHide>
+		</Scripts>
+	</Frame>
+	
+<!-- Search frame -->
+	<Frame name="EasyLootSearch" movable="true" toplevel="true"
+		frameStrata="MEDIUM" parent="UIParent" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension x="200" y="460" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="EasyLootFilter" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="10" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+			edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<EditBox name="EasyLootSearchText" letters="30">
+				<Size>
+					<AbsDimension x="100" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-30" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="63" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1" />
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="62" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="10" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1" top="0" bottom="1" />
+						</Texture>
+					</Layer>
+					<Layer>
+						<FontString name="$parentText" font="Fonts\FRIZQT__.TTF"
+							text="Search">
+							<Anchors>
+								<Anchor point="BOTTOM" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="5" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.8196079" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						this:SetAutoFocus(false)
+					</OnLoad>
+					<!--
+					<OnEditFocusGained>
+						EasyLoot_SetHook()
+					</OnEditFocusGained>
+					-->
+					<OnTextChanged>
+						EasyLoot_SearchUpdate()
+					</OnTextChanged>
+					<OnHide>
+						EasyLootSearchText:SetText("")
+					</OnHide>
+				</Scripts>
+				<FontString inherits="ChatFontNormal" font="Fonts\ARIALN.TTF"
+					bytes="0">
+					<FontHeight>
+						<AbsValue val="14" />
+					</FontHeight>
+					<Color r="1" g="1" b="1" />
+					<Shadow>
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+						<Color r="0" g="0" b="0" />
+					</Shadow>
+				</FontString>
+			</EditBox>
+			<Button name="EasyLootItem1" inherits="EasyLootItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EasyLootSearchText"
+						relativePoint="BOTTOM" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootItem2" inherits="EasyLootItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EasyLootItem1"
+						relativePoint="BOTTOM" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootItem3" inherits="EasyLootItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EasyLootItem2"
+						relativePoint="BOTTOM" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootItem4" inherits="EasyLootItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EasyLootItem3"
+						relativePoint="BOTTOM" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootItem5" inherits="EasyLootItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EasyLootItem4"
+						relativePoint="BOTTOM" />
+				</Anchors>
+			</Button>
+			<Button name="EasyLootItem6" inherits="EasyLootItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EasyLootItem5"
+						relativePoint="BOTTOM" />
+				</Anchors>
+			</Button>
+			<ScrollFrame name="EasyLootSearchScrollFrame"
+				inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="200" y="380" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-50" y="-60" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(this, offset,
+						64, EasyLoot_SearchScrollBar_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+</Ui>

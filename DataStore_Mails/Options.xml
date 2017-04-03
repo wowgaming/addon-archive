@@ -1,0 +1,102 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Options.lua"></Script>
+
+	<Frame name="DataStoreMailOptions" hidden="true">
+		<Size>
+			<AbsDimension x="615" y="306"/>
+		</Size>
+		<Frames>
+			<Slider name="$parent_SliderMailExpiry" inherits="OptionsSliderTemplate"  minValue="1" maxValue="15" defaultValue="5" valueStep="1">
+				<Size>
+					<AbsDimension x="180" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="40" y="-40" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnValueChanged>
+						local L = LibStub("AceLocale-3.0"):GetLocale("DataStore_Mails")
+						
+						local name = self:GetName()
+						_G[name .. "Text"]:SetText(L["Mail Expiry Warning"] .. " (" .. self:GetValue() ..")");
+						DataStore:SetOption("DataStore_Mails", "MailWarningThreshold", self:GetValue())
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+
+			<CheckButton name="$parent_CheckMailExpiry" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors> 
+					<Anchor point="TOPLEFT" relativeTo="$parent_SliderMailExpiry" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension  x="0" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>      
+				<Scripts>
+					<OnClick>
+						DataStore:ToggleOption(self, "DataStore_Mails", "CheckMailExpiry")
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_ScanMailBody" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors> 
+					<Anchor point="TOP" relativeTo="$parent_CheckMailExpiry" relativePoint="BOTTOM" >
+						<Offset>
+							<AbsDimension  x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors> 
+				<Scripts>
+					<OnClick>
+						DataStore:ToggleOption(self, "DataStore_Mails", "ScanMailBody")
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_CheckMailExpiryAllAccounts" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors> 
+					<Anchor point="TOP" relativeTo="$parent_ScanMailBody" relativePoint="BOTTOM" >
+						<Offset>
+							<AbsDimension  x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors> 
+				<Scripts>
+					<OnClick>
+						DataStore:ToggleOption(self, "DataStore_Mails", "CheckMailExpiryAllAccounts")
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_CheckMailExpiryAllRealms" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors> 
+					<Anchor point="TOP" relativeTo="$parent_CheckMailExpiryAllAccounts" relativePoint="BOTTOM" >
+						<Offset>
+							<AbsDimension  x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors> 
+				<Scripts>
+					<OnClick>
+						DataStore:ToggleOption(self, "DataStore_Mails", "CheckMailExpiryAllRealms")
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+	</Frame>
+	
+</Ui>

@@ -1,0 +1,20 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fRaid Admin|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fРейд админ|r
+## Title-zhCN: X-Perl |cffeda55f团队管理|r
+## Title-zhTW: X-Perl |cffeda55f團隊管理|r 由 |cFFFF8080Zek|r 開發
+## Notes: Provides useful raid admin tools for todays raid leader.
+## Notes-ruRU: Обеспечивает рейд лидера полезными инструментами рейд админа.
+## Notes-deDE: Bietet Schlachtzugsleitern nützliche Einstellungsmöglichkeiten.
+## Notes-zhTW: 提供團隊工具給予領隊方便的整合人員.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## SavedVariablesPerCharacter: XPerl_Admin, XPerl_CheckItems
+## RequiredDeps: XPerl
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_RaidAdmin.xml
+XPerl_Check.xml
+XPerl_RosterText.xml

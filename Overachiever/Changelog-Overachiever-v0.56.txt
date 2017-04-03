@@ -1,0 +1,50 @@
+------------------------------------------------------------------------
+r62 | tuhljin | 2010-08-06 22:38:59 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   A /tags/v0.56 (from /trunk:61)
+
+Tagging as v0.56
+------------------------------------------------------------------------
+r61 | tuhljin | 2010-08-06 03:31:52 +0000 (Fri, 06 Aug 2010) | 4 lines
+Changed paths:
+   M /trunk/Options.lua
+   M /trunk/Overachiever.lua
+   M /trunk/Overachiever_Tabs/Search.lua
+   M /trunk/Overachiever_Tabs/Watch.lua
+   M /trunk/Overachiever_Tabs/build.lua
+   M /trunk/Overachiever_Tabs/localization.lua
+   M /trunk/libs/TjSharedMediaDropDown/TjDropDownMenu.lua
+   M /trunk/readme.txt
+
++ Watch Tab: Custom-named watch lists.
++ Watch Tab: Delete/Clear button to delete (or in some cases empty) watch lists.
++ Watch Tab: Ability to copy achievements from active list to another list the user can specify.
+- Updated TjDropDownMenu library to v0.55.
+------------------------------------------------------------------------
+r60 | tuhljin | 2010-07-30 02:00:47 +0000 (Fri, 30 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Overachiever.toc
+   M /trunk/Overachiever_Tabs/Overachiever_Tabs.toc
+   M /trunk/Overachiever_Tabs/Watch.lua
+   M /trunk/Overachiever_Tabs/build.lua
+   M /trunk/Overachiever_Tabs/localization.lua
+   M /trunk/Overachiever_Trade/Overachiever_Trade.toc
+   M /trunk/readme.txt
+
+- Watch Tab: Separate "Global" and "Character-Specific" lists can now be created. (This is not saved per-character so the player can access the "character-specific" list of more than just the current character.)
+------------------------------------------------------------------------
+r58 | tuhljin | 2010-07-10 01:27:16 +0000 (Sat, 10 Jul 2010) | 3 lines
+Changed paths:
+   M /trunk/Options.lua
+   M /trunk/Overachiever.lua
+   M /trunk/Overachiever.toc
+   M /trunk/Overachiever_Tabs/Overachiever_Tabs.toc
+   M /trunk/Overachiever_Tabs/build.lua
+   M /trunk/Overachiever_Trade/Overachiever_Trade.toc
+   M /trunk/Overachiever_Trade/TradeSkills.lua
+   M /trunk/readme.txt
+
+- Updated for WoW patch 3.3.5: Linking achievements adjusted for compatibility with new ChatFrame system.
+- Hooked ChatFrame_OnHyperlinkShowinstead of SetItemRef to prevent taint that sometimes results in blocked actions (with Dungeon Finder, etc.).
+- Achievements are no longer tracked between sessions to resume when you log in because WoW now does this by default.
+------------------------------------------------------------------------

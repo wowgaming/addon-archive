@@ -1,0 +1,1447 @@
+X-Perl UnitFrames
+Author: Zek <Boodhoof-EU>
+License: GNU GPL v3, 29 June 2007 (see LICENSE.txt)
+
+3.0.9 (Community Updates)
+mysticalos: Added missing zones to all locals, including Ruby Sanctum
+mysticalos: Added Ruby sanctum custom highlights
+playerlin: Ticket 658 fix : ChatFrameEditBox obsoleted fix on Parch 3.3.5, thanks titanrecount.
+playerlin: Ticket 649 fix: Shaman Weapon Enchants buffs will giving the right duration now. (Temporarily fix by only1yzerman, needed more work?)
+StingerSoft: ruRU update
+playerlin: zhTW update
+Zek: Fix for the textures on status bars.
+Zek: Added option to apply cooldown/countdown coolness to blizzard default buffs/debuffs.
+
+3.0.8
+NEW: Added Dungeon Finder role icons to party and player name frame.
+
+3.0.7
+Changed: TOC 30300
+
+3.0.6 (proper)
+Fixed: Version number.. oop
+
+3.0.6
+New: LibHealComm-4.0 Support. Will try to use LHC4 first, if it fails will look for LHC3.
+New: Option to show XP deficit in player frame.
+Fixed: Issue with occasional error in party pets.
+Fixed: Should no longer error on PTR with GetFrameType (untested).
+Fixed: LibStub error when it's not present.
+
+3.0.5g
+New: Option for Runic Energy colour.
+Fixed: Default item selection for range finder.
+Fixed: Option for not showing raid frames in battlegrounds.
+Fixed: XPerl_DurabilityCheck error when no oRA/CTRA installed.
+Changed: Won't show hit indicator on player for heals if at full health.
+Changed: Shows one decimal place on health % when under 10%.
+
+3.0.5f
+Fixed: Unit menu positions for large frame scales.
+Fixed: Protected frame movement error for druids when shifting in combat.
+Fixed: AFK/DND timers being whacky on occasion (I think).
+Fixed: Invalid capture error on german client when oRA or CTRA not installed.
+Fixed: Aggro warning will no longer show for an opposite faction player who can't attack you (Either one not PVP flagged).
+Fixed: Talent info should show correct talent set now.
+
+3.0.5e
+Fixed: Only use curable filter with debuffs for friendly targets. Otherwise castable.
+Fixed: Removed Sanity from Yogg-Saron custom highlights. You'll either need to delete it from your config in options, or reload the new defaults in same place.
+Fixed: Anchoring issue with totem button frame.
+
+3.0.5d
+Fixed: Shouldn't forget range finder spell repeatadle now.
+Fixed: Won't try to announce version to party in a pvp instance.
+
+3.0.5c
+Fixed: Error in XPerl_Unit_ThreatStatus.
+
+3.0.5b
+Fixed: Party Pet errors.
+
+3.0.5a
+Fixed: PlayerBuffs error.
+Fixed: action blocked on target frame when in options.
+
+3.0.5
+New: Added debuff highlighting option for focus frame.
+Changed: Added Wild Growth to hot highlighting.
+Changed: Added Revive to rez watching on raid frames.
+Changed: HoT Counter on frames will show green if you have an active hot on the unit, red otherwise.
+Fixed: Prayer of Healing should highlight the correct group now.
+Fixed: SetFocus menu problem. Thanks for someone for finding a solution to that.
+Fixed: Extended Portrait height for druids showing multiple power bars.
+Fixed: Bar textures popup when LibSharedMedia not available.
+Fixed: Custom Highlight now works for all locales (you'll need to reload the defaults) and a lot more spells in the defaults (thanks SkyerRu)
+
+3.0.4d
+Fixed: Startup problems stemming from LoadAddOn() bugs meaning it's not able to load XPerl_Options as early as it used to and therefore not being able to access the default configurations.
+
+3.0.4c
+Fixed: 3.2 Issues and update TOC.
+
+3.0.3c
+NEW: Option to ignore seasonal debuffs (Bested Somecity, Mistletoe, Adored, Heartbroken etc.).
+Fixed: Big Buffs Pet Too option will now also work for vehicles as well as pets.
+Fixed: Allow threat indicator to work for focus if it's an enemy NPC.
+Fixed: Bug with sparkles.
+Fixed: 3D portrait for Guardians of Yogg-Saron.
+
+3.0.3b
+NEW: Added option for Blizzard MT Targets for raid helper. This will merge Blizzard defined MT targets with oRA defined ones. The order for the Blizzard ones will be the order that they are defined. Making the assumption that your Main MT is usually set first, followed by OTs. Also fixed issue with toggling totem frame option.
+Changed: The caster's name added to bottom of buff tooltips is now optional, to avoid conflicts with other mods that may display this you may turn it off.
+Fixed: Fix an addon blocked error when opening options in-combat.
+Fixed: Player frame totem issues.
+
+3.0.3a
+NEW: Option to include pet debuffs/buffs in with the big aura option.
+Changed: Moved the code that shows who cast an aura so that it now works for your own auras for whatever mod, be that Blizz default or whatever. Mouseover some aura to see the caster name at bottom!
+Changed: Removed Shadow of Death code, as this is now some trinket proc name, and the old Shadow of Death was removed.
+Fixed: Druid mana bar wasn't showing.
+
+3.0.3
+Changed: TOC Bump to 30100
+Fixed: Patch 3.1 Fixes.
+
+3.0.2a
+Fixed: Raid pets functionality improved and fixed overall. Vehicles now will all show up correctly (giving the name of the player in <>, rather than their mount). Should help you all immensely for Malygos, which we killed tonight despite my coding efforts.. :)
+
+3.0.2
+NEW: Threat display for party and focus frames, to work based on your target.
+Fixed: A few issues with vehicles (will only now show intended vehicles, and not ones such as being in the air at Malygos' Vortex, or on a Hog/Mammoth).
+Fixed: Combo points now show correctly for vehicles.
+Changed: Health display of large numbers improved to cater for VERY large numbers (Like Sappiron's 13 million). Will now show 13.0M/13.0M. At lower 'current' HP values, the suffix will change and you'll get 123.4K/13.0M, until it's under 100k and then it's shown as 12345/13.0M. So now instead of seeing you wiped at 1%, you'll be able to gauge the precise amount by which you sucked.
+
+3.0.1f
+Fixed: New install error.
+
+3.0.1e
+Fixed: Whacky minimap button and threat dial on target frame. Oops on that.
+Fixed: 5-second rule mana regen indication for player frame.
+
+3.0.1d
+Fixed: Upgrade error. Oops
+
+3.0.1c
+Fixed: the Power Word: Shield highlight not working on first login.
+Fixed: Circle of Healing no longer highlights target group, because of change of spell behaviour.
+Fixed: LDB error when LDB not available.
+
+3.0.1b
+Changed: Special case for You're Infected! debuff to show a minimum max time of 2 mins, so it's easier to see when it's expiring.
+
+3.0.1a
+NEW: LDB support. If you're using an LDB display (ButtonBin, Fortress etc.) you can disable the Minimap Icon and use the one on your LDB display instead.
+NEW: Added second option for buff cooldowns, so you can set either cooldowns and/or countdowns to show for all/mine only.
+Fixed: Stopped blue flashing out of control frame from showing when on a taxi.
+
+3.0.1
+NEW: Option to only show cooldown for your own buffs and debuffs.
+Fixed: Player buffs can now be clicked off.
+Fixed: Happiness indicator. Thanks Whitetooth.
+Fixed: Minor fix for missing buffs tooltip.
+Fixed: Error on raid frames menus.
+Fixed: Problems with extra raid frames.
+
+3.0.0i
+Fixed: Shield highlight now also works for Ice Barrier and Mana Shield for mages. (You must have Shield highlight AND sparkles enabled).
+
+3.0.0h
+Changed: Shield highlight changed. Now shows a bar similar to the Hot Bar, which shows the amount of shielding left on the target, based on the damage they've absorbed.
+Changed: Merged changes for version live 2.4.3g version.
+Removed: Pet loyalty indication on tooltip. No longer used.
+Fixed: PVP icon on player frame.
+Fixed: A few minor issues with status highlighting.
+
+3.0.0g (for patch 8982)
+Fixed: Rune problems on player frame (Thanks Scott).
+Fixed: Another error related to missing DKs and raid frames.
+Changed: Merged appropriate changes from 2.4.3a and 2.4.3b in from live code, mostly relating to LibQuickHealth-1.0 support.
+
+3.0.0f (for patch 8970)
+Fixed: Moved the localizations for the buff helper to XPerl core module (fixes the XPerl_Init, line 354 error).
+Fixed: Death Knights weren't showing up in raid frames.
+Fixed: XPerl_Raid's XPerl_Raid_ShowWhoNeedsBuff error.
+Fixed: Various options errors (ones mentioning OptionsFrame_EnableSlider).
+
+3.0.0e (for patch 8926)
+Fixed: Big Buff options working again. Now that the API is explained for that.
+Changed: Druid mana bar behaviour is now implemented without the need for libraries or addons. (ie: You should remove DruidBar, SmallDruidBar, SmartyCat, LibDruidMana-1.0)
+Changed: Buff helper tooltip functionality moved from raid to X-Perl proper, and will therefor work when in a party too now. Hook method also changed to something more globally compatible.
+Removed: Code which pulled buff times from CTRA info. No longer needed.
+
+3.0.0d (for patch 8820)
+Fixed: Combo point issues (combos will also now show for focus frame if applicable).
+
+3.0.0c (for patch 8770)
+NEW: Threat indicator for target frame. 2 display modes (Only shows when grouped).
+Fixed: Five-Second-Rule mana regen indicator.
+Fixed: Buff timer display errors introduced with Patch 8770 (return value changed on UnitBuff/Debuff from maxDuration/timeLeft -> maxDuration/endTime
+Fixed: Minimap icon menu.
+
+3.0.0b (for WotLK patch 8714)
+NEW: Rune Display for Death Knights. Can either be docked with player frame which will attach it to the lower side of the frame, with buffs underneath if player buffs module enabled. Alternatively, you can undock it and move it where you like (when options are open).
+Changed: Player and Pet frames will now behave as blizzard frames, and switch to Vehicle and Player frames when you enter a vehicle. The code's in, but I've not tried it yet. But, there's a large flaw in their method, that it won't work properly when you enter a vehicle in combat. Since you can't change the frame attributes. But they do, cos they run as secure code... :|
+Fixed: Crash bug when loading addons.
+
+3.0.0a - (for WotLK patch 8681)
+Fixed: XPerl_RaidHelper errors.
+Fixed: Problems with buff display.
+
+2.4.3g
+NEW: Proper LibHealComm support, giving pre-emptive estimated health bars. Slightly narrower than main bars, and not quite same colour, should help to distinguish the difference.
+Changed: A few very minor memory improvements to raid frames. Not that it needed it, but every savable byte is worth it to me.
+Fixed: Display issues with POM animation getting stuck.
+Fixed: Small fix for sparkles to hopefully not linger on dead people.
+Fixed: Won't show raid pets when raid told to hide for single group raids.
+
+2.4.3f
+Fixed: Unparsed HEAL comms problem.
+Fixed: Couple of options cosmetics.
+
+2.4.3e
+Fixed: The XPerl_ParseCTRA bug.
+
+2.4.3d
+Changed: Rare mobs now have a grey wingless rare graphic, as apposed to the dimmed winged gold elite graphic. Thanks Scott.
+
+2.4.3c
+Note: X-Perl now falls under the GNU General Public Licence version 3. This does not affect users in any way. It's merely to protect against other people making money from my work.
+NEW: Support for the LibQuickHealth-2.0 library.
+NEW: Pet and Pet's target will show in virtual mode when options are open.
+NEW: Sparkles. Everyone likes sparkles, in varying degrees from the mild mannered subtle to the downwright obscene. For the obscene among you, there's an 'Extra Sparkles' option for that touch of pure bad taste all unit frames deserve.
+Changed: Version query module brought up to date with the latest in 18th century coding techniques, now replies via whisper instead of queueing up replies on channels. Much saner.
+Changed: Highlighting module a little more robust now, and uses unit GUIDs rather than names where possible. Should now also work correctly with raid pets.
+Changed: HOT Highlighting changed (optionally) from a border colour to now showing a yellow bar (with sparkles) at the top of a unit's health bar indicating Hot duration.
+Changed: Circle of Healing now counts as a highlighted heal, showing the green healing border for 1 second.
+Changed: Raid pets won't grow taller than a standard raid group now, but will instead grow sideways 5 per column.
+Changed: POM highlighting now actually follows your Prayer of Mending from target to target, complete with moving sparkles and changed the highlight from a border colour to a glowing icon in the frame. If sparkles are disabled, the old border highlight will show as before.
+
+2.4.3b
+Fixed: Fixes to LibQuickHealth-1.0 support to reflect changes in library, and now uses GUID maps instead of loops for updates.
+
+2.4.3a
+Fixed: LibQuickHealth-1.0 support. Oopsie
+
+2.4.3
+NEW: Russian translation.
+
+2.4.2
+NEW: Custom Highlights Module. Configure via Raid options, allows you to specify monitoring debuffs to splat fat icon onto raid frames of members who suffer from them in specified zones. (Fel Rage, Fatal Attraction etc.). Note that this module will only work inside instances, and there is no validate on instance names that you enter. The default is current zone, and you can click on an existing one when entering a new spell to copy the text.
+NEW: Blizzard's Totem Frame is now hijacked and placed with X-Perl's player frame. You can adjust the position freely under player options.
+Changed: De-localized all spellname references in favor of new WoW 2.4 functionality which allows spell lookups by ID.
+Fixed: Hit indicators colours when Self Only is enabled.
+
+2.4.1
+Changed: The Hit Indicators now has an option for target and focus frames to show all damage or yours only.
+Changed: Files moved into appropriate folders per module in preparation for compatibility with WoW Ace Updater. (Requires a WoW restart to work)
+
+2.4.0b
+Fixed: Target/Focus hit indicators.
+Fixed: Erroneous tooltip indication in raid monitor for which mouse button to press.
+
+2.4.0a
+Fixed: Talent query fixed.
+
+2.4.0
+Changed: TOC updated to 20400
+Changed: Target frame hit indicator now only shows YOUR hits/heals against the target and focus units.
+Changed: The toggle raid pets keybinding now cycles through pet options (both pets, hunter pets, warlock pets, off).
+Fixed: Sorting anomoly with the Assists Frame, which would occassionally sort wrongly.
+Fixed: Target class as text would show the unit name instead of class name if targetting an NPC (WoW 2.4 only, because of a change to the UnitClass function).
+Removed: X-Perl Grim Reaper is now a seperate and much improved addon and will be made available on the wowace site asap under the name of GrimReaper. (Hopefully later today)
+
+2.3.9b
+NEW: Talents (as numbers or text) optionally shown for target under portrait. This defaults to OFF and you can enable it under target options. Note that there is a small delay between targetting and seeing the talents, but this is unavoidable because the talent data has to be requested from the server and takes time to come back.
+Fixed: Player frame no longer nudges up and down when in bottom half of screen when druids shapeshift.
+Fixed: Raid pets health percentage showed double %%.
+
+2.3.9a
+Fixed: Blizzard buffs correctly refreshed whne player buffs options changed.
+Fixed: Option for player debuffs (and when you upgrade to 2.3.9a the default will be set the same as the buffs option).
+
+2.3.9
+Fixed: Raid pets scale wasn't being set.
+Fixed: A couple of french localizations.
+NEW: Ready Check status optionally displayed on unit frames.
+NEW: 'hide' option for Grim Reaper so that it remains active, but not longer auto-shows.
+Changed: Added Gift of the Naaru as a HOT to monitor.
+Changed: Vastly reduced Grim Reaper's memory usage by re-using it's tables.
+Changed: Updated zhTW translations, thanks kairkuo.
+
+2.3.8a
+Fixed: Syntax error in XPerl_RaidMonitor.lua line 411.
+
+2.3.8
+Changed: TOC updated to 20300
+Changed: Various code changes for new API functions (mainly SetFormattedText) - WILL NOT WORK WITH WoW 2.2.0
+
+2.3.7e
+Fixed: The speaker icons were creating dead spots when clicking on unit frames.
+
+2.3.7d
+Changed: Raid Admin now allows officers to load group layouts.
+Fixed: Problems with voice chat icons.
+Fixed: MobInfo2 issue with pvp players.
+
+2.3.7c
+Fixed: Spelling mistake for Prayer of Mending to include as priest buffs to show when showing only castable.
+Fixed: Player frame anchoring issue when druidbar/rep/xp bars hide/show.
+Fixed: MT List anchoring when sizes changes.
+
+2.3.7b
+Fixed: Error with XPerl_PlayerBuffs tooltips.
+
+2.3.7a
+Fixed: Tooltips for most frames would not show the Buff Helper information for more than the first split second.
+Fixed: MT List first column borders were getting corrupted. Seems to be some bug in the rendering engine when you set borders a lot, it can get lost. So I've changed the code that sets them and it seems to behave now.
+Fixed: Some issues with player buff positioning when buffs not wrapped and xp/rep bars shown.
+
+2.3.7 - TOC 20200
+Changed: TOC updated to 20200.
+Changed: Updated zhCN translations. Thanks xgale.
+Fixed: Pet Aggro issue.. gg bugs in API.
+Fixed: Player frame highlight was too big when percents were disabled.
+
+2.3.6c
+Changed: Option for mana values as well as health values now.
+Fixed: Options frame could become un-usable if a colour picker and other popups were used.
+Fixed: Player buff positions when xp/rep bars used.
+Fixed: Tooltip logic was a bit fubar. Should now work as expected.
+Fixed: Frame Layout loading.
+
+2.3.6b
+Fixed: Buffs Above options should work for all frames now. No really! Even HOSTILE units, which was causing the problems :)
+
+2.3.6a
+Fixed: Buffs Above options should work for all frames now.
+Fixed: Options for big buffs/debuffs were missing for target's target, focus target, pet target. (TTT assumes TT option as usual).
+Fixed: Target/Focus buffs were aligned to whole frame instead of stats frame. (When below frame)
+Fixed: A couple of missing default variables from upgrade routine for the new buffs code. (buff.size, buff.wrap, buff.rows)
+Fixed: A couple of option errors.
+Fixed: Buff Helper not matching buffs again. Had optimized the buff helper some (less garbage production, but had broken it at the same time!)
+Fixed: Player highlight was over left edge in some configurations.
+
+2.3.6
+NEW: Big buff option. Buffs and Debuffs that you have cast on a unit can be shown at double normal size. (Defaults to on for target frame debuffs only)
+NEW: Status Highlighting, My Target - Optional highlight to hightlight your current target in the party and raid in a similar way to normal mouseover highlights.
+NEW: 30 yard range hand thingy returned, cos people complained :)
+NEW: Grim Reaper option for the reporting scan back feature, enabled it will loop back and report only the lines since the player was at 100% health (this used to be always the default action). Disabled will report all lines.
+NEW: Option to extend the player and pet portraits to bottom of stats frame when rep/xp bars are shown.
+NEW: Added Buff Helper support for ElkBuffBars version 2.
+NEW: Non-unitframes now have a Scaling corner which allows re-scaling of the frames. This replaces all the relevant scaling options previously in place.
+Changed: PTR: Changed the voice comms event names to match WoW 0.2.0 Build 7175.
+Changed: Scale options for Item Checker and Admin removed from options, in favor of new corner dragging control on frames which perform the scaling.
+Changed: Big buffs option on target frame also meant a complete re-code of the target frame buff display and allows improvements to the buff options for all main frames (wrapping and such).
+Changed: Raid group title is now white for the party you are in.
+Fixed: Grim Reaper menu 'Report' option was always disabled.
+Fixed: Error trying to move raid pets.
+Fixed: Double status highlights weren't being shown in double gradient colour, but were white instead (some change in the API broke this).
+Fixed: Target level frame was under portrait when elite graphics shown.
+Fixed: Party Pet and Raid Pet text disappeared after mouseover.
+Fixed: Target frame status bar in name frame was not working for debuff counts for Sunder Armor, Winter's Chill etc as it should be doing.
+Fixed: Another issue with toggling global settings mode. Should really really work now.
+Fixed: Added 'Charred Earth' from Nightbane to list of spells to not debuff highlight. It's not cleansable, so just wastes time and distracts. (check translations pls cos I used altavista!)
+Fixed: Some new install errors for people with no previous X-Perl config.
+
+2.3.5a
+Fixed: Silly startup error on upgrade to 2.3.5.. Sorry
+
+2.3.5
+NEW: Status Highlighting, HOT Counter. Clearly shows total number of HOTs on a unit (anyone's).
+NEW: Status Highlighting, Heals. Highlights a player with a green border if they are receiving a heal. Note that this will only work reliably when healers are using X-Perl or HealComm. I know people are going to ask this, so here's the low-down before you do. No, teh casting monitor can't show the heal target for a player given this information because of the secure template stuff. The unit shown alongside the players in the monitor are simply the target of that unit and this can't be changed in combat. But hopefully the status highlight should go a long way to overcome this issue.
+NEW: Option to hide raid mana percentage text.
+NEW: Option in range finder to use fixed 10 yard and 30 yard check distances, regardless of spell/item selection. Useful for players with limited or no helpful spells and items.
+Changed: Some optimizations to the registered events in various cases, enabled but un-used/un-shown mods will no longer do any work. Also does the same for the Blizzard_RaidUI which still does full updates even when hidden.
+Changed: Optimization of the with/without buff code. The last result is cached while the tooltip is open and re-scan only performed if someone in raid changes buffs.
+Changed: Raid Frames now using a slimmer border, cleaner looking. If it goes down well with the fans, then all frames will likely be changed to match.
+Changed: Grim Reaper window will now always show even with no data if you mouse over a unit in the raid (so you can use the menu and position it).
+Removed: Missing buffs feature of status highlighting. Was laggy and I might re-write it soon, but was causing problems so it's out for now.
+Removed: 30 Yard (actually 28) range indicator. Yes, I know a few people use it but it's raelly pointless and un-clear most of the time compared to the built in range finder functionality, which will now do the same distance check if you want.
+Fixed: FRAME FREEZING when people zone, login, logout etc. (Removed most uses of the topLevel flag on frames). Not actually a bug in X-Perl, but rather a known Blizzard issue. Because the the freezup actually occurs inside the UI interface rendering engine before the frame is drawn, and after all UI code has been executed for that frame.
+Fixed: Right click tooltip on Raid Monitor.
+Fixed: Error when adjusting the Maximum Frame Scale option.
+Fixed: The 'All' options page was reseting the width of all frames without user interaction.
+Fixed: MobHealth2/MobInfo2 wasn't being queried correctly for player health values.
+Fixed: Some options for focustarget weren't updating immediately, they did work when you closed the options, but now work as expected when toggling option.
+Fixed: Cleaned up some variables and functions that should have been local.
+Fixed: Grim Reaper was un-responsive when un-docked for some people. This should now function correctly.
+
+2.3.4b
+Fixed: Single group raid option. oops.
+
+2.3.4a
+NEW: Buff Tooltip option. Follows the same rules as unit tooltips allowing you to use the tooltip modifier key.
+NEW: Tooltip option to never show them in combat.
+NEW: Grim Reaper Health bars now estimated from known accurate health points (optional).
+Changed: Defaulting Range Finder to OFF now for all classes. Getting way too many complaints about faded frames.
+Fixed: XPerl's CN, KR, TW translations got currupted by a new editor I was testing... ggrr
+Fixed: XPerl_FrameOptions.lua:2409 nil error with blank config.
+Fixed: XPerl.lua:554 nil error.
+Fixed: Targets Target not always showing values (due to the XPerl.lua:554 error).
+Fixed: FAQ.TXT file got corrupted. /blink
+Fixed: Bar Texture selection in options was not being set when first displayed.
+Fixed: Weapon enchants in XPerl_PlayerBuffs weren't showing.
+
+2.3.4
+NEW: PTR: XPerl_TeamSpeak removed and new system in place in XPerl proper to work with new WoW voice system, but can't be tested until system is active (PLEASE DON'T REPORT ERRORS ON IT JUST YET).
+NEW: One-Group Raid Show option (party options). For arena groups this will keep the party shown and the raid group hidden if you only have a single raid group.
+NEW: Raid Roster copy'n'paste feature accessed from the minimap dropdown menu. Allows you to copy out a list of the raid members to paste into EQDKP web forms for example.
+NEW: Added SmartyCat support (Ace2 mod same as DruidBar type mods, but with no interface of it's own).
+NEW: Castbar option for the timer to be inside the casting bar instead of outside player frame.
+NEW: When values are not shown on frames, mousing over the unit will show them for that unit until mouse leaves.
+NEW: Grim Reaper output channel option. Use: "/grim channel" or append channel name reporting "/grim playername channelname", "/grim playername whispername" etc., or select channel from the dropdown menu when reaper is un-docked.
+Changed: PTR: Now using the provided tooltip update mechanism instead of the OnUpdate handler per buff icon. yay!
+Changed: Minimap icon placement now has a variable radius if you hold the Alt key whilst dragging. (Thanks bsmorgan for the patch)
+Changed: Buff Helper now ignores dead and offline members.
+Fixed: Target frame 'Show Class as Text' option wasn't working.
+Fixed: Pet cast bar wasn't working (the default wasn't set). There's a new option to turn it on in options. It will also default to on when you first install this version.
+Fixed: Will no longer disable CT_PartyBuffs if XPerl_Party is not enabled.
+Fixed: XPerl_Notice error when incompatible mods were disabled.
+Fixed: Raid buff icons were sometimes faded.
+Fixed: Assist frame showed your own pet twice in the assisting units list.
+Fixed: Target's Target buff options not updating immediately, giving the illusion of not working at all, even though they did update after you closed options.
+Fixed: PTR: Assists Frame would show 'Unknown' entries due to a change in the behaviour of the API (UnitName() returning "Unknown" always now instead of nil... sheesh).
+Fixed: FSR (5 second rule mana regen thingy) indicator now only starts ticking when mana has been used for a spell, which should stop the erroneous ticker displays when items are clicked and procs occur.
+Fixed: Layout textbox length was too short for some long realm/player names.
+Fixed: Player's pet name colour was ignoring the colour settings.
+Fixed: Per Character options wasn't working when you toggled it, unless you reloaded UI.
+Fixed: Grim Reaper 'scale' command.
+Fixed: Grim Reaper 'dockpoint' command.
+
+2.3.3
+NEW: Brightness control for class coloured health bars.
+Changed: Frame layouts are now stored for each character, and auto-restored if all/part of X-Perl was previously disabled.
+Fixed: Added options for healer mode on targettarget, focustarget, pettarget frames. This also fixes those frames regarding healer mode.
+Fixed: Options for Cast Bars being disabled when you first upgrade from pre-2.3.2.
+Fixed: Another energy ticker issue (if energy ticker disabled). Go me!
+Fixed: Extra blank mana bar for those not using DruidBar/SimpleDruidBar.
+Fixed: Problem with toggling 'Save Settings Per Character' option.
+Fixed: Issues with raid frames range finding and raid frame titles not updating.
+Fixed: Inverse health bars on raid frames.
+Fixed: Tooltip Buff Helper sorting by class was giving an error.
+Fixed: Issues with auto restore of a frame's position after an X-Perl module was re-enabled.
+Fixed: Party background when options were open was always acting as if anchor mode was at TOP.
+Fixed: Party tooltips not always working.
+Fixed: Options error when XPerl_Player not enabled.
+Fixed: Alpha option for frame borders and backgrounds.
+Fixed: Raid Pets title showing when there's no pet handlers.
+
+2.3.2c
+Fixed: Restore position bug with Raid Monitor.
+Fixed: Problem with status highlighting (XPerl_FreeTable error).
+
+2.3.2b
+NEW: Option to only apply Range Finder to raid frames.
+Fixed: An error in the import config routine which caused most of the problems. Was for people importing from 2.1.6 and earlier I believe (That's what you get for not upgrading regularly!). Sorry for the oversight, but you did backup your SavedVariables as I said... right?
+Fixed: Occasional error in party frame with party targets enabled.
+Fixed: Error with pet being debuffed before the first buff.
+Fixed: Target Counters hide option not working after you close options.
+Fixed: A few errors in options when certain X-Perl child mods disabled.
+Fixed: Issues with druid energy ticker.
+Fixed: A few options issues when parts of X-Perl disabled.
+Fixed: Restoring a layout would not flag frames as User Placed, so their positions would not be remembered always.
+
+2.3.2a
+Fixed: Pet debuffs missing var.
+Fixed: 'max' problem for MobHealth2 users.
+Fixed: XPerl_SetupFrames errors when RaidHelper not loaded.
+
+2.3.2
+WARNING: SavedVariables for 2.3.2 are not compatible with previous versions. 2.3.2 will import old settings from earlier versions. But if you choose to revert to an earlier version of X-Perl, you will start with a blank config.
+NEW: Option for class coloured health bars. (Colour options)
+NEW: Option for gradient backgrounds on all X-Perl frames. (Colour options)
+NEW: Energy Ticker now doubles as an FSR (5 second rule) indicator for mana users. (Player options)
+NEW: Seperate options for buff and debuff sizes for most frames.
+NEW: You can delete un-used config data from the saved variables by issueing the command: /xperl delete config REALMNAME PLAYERNAME
+NEW: Third Healer Mode option showing Current/Max in health bar, with deficit health in place of percentage.
+NEW: Option to align the raid pets frame to the last used raid frame.
+NEW: Added standard enable/cure/cast options for pet buffs and debuffs.
+Changed: Internally the options system has been re-written from scratch to give more flexibility in the future. This needs some extensive testing to make sure all options work as expected. (Hence the beta status)
+Changed: Some improvements on load size (discarding functions that are used at startup only mostly), a few generic changes.
+Changed: More reduction in garbage memory production during combat (Some re-used tables and less on-the-fly strings).
+Changed: Put the party frames back how they used to be, which fixes the odd party frame display glitch if members changed when in combat.
+Changed: Updated koKR translation.
+Changed: Updated zhCN translation.
+Changed: A few improvements to the Raid Monitor. Dead, Ghost, non-close members show as grey and are not included in totals to avoid confusion.
+Changed: Class Icon now shown for NPCs as well as players.
+Changed: Frame Appearance section in options has moved to the Colours tab, and there's a new Frame Layout manager in place of it to save/load layouts.
+Fixed: An issue where Skinner was messing up some options dialogs. /grumble @ other mods breaking things :(
+Fixed: SendAddOnMessage error in XPerl_Raid.lua.
+Fixed: Index error in options frame when no extra textures available externally.
+Fixed: Class/flags updated now for party members when you log in. Querying them too soon leaves them blank.
+Fixed: Target frame mana percent not always shown when it should be.
+Fixed: Conversion of old bar texture config to new. Sorry for those that it messed up with last version. :)
+Fixed: Player pet debuffs were slightly out of place.
+Fixed: Target debuff highlighting was showing for wrong option choices of friend/enemy etc.
+Fixed: Issues with display correct curable/castble buffs.
+Fixed: Options sliders no longer accept mousewheel input when disabled.
+Fixed: Various options errors with fresh installations.
+Fixed: Occasional problem with raid titles not hiding or showing correctly when there are a lot of raid group changes very quickly. Like when leader disbands the raid.
+
+2.3.1
+Changed: Will read all statusbar textures from Ace2's SharedMedia-1.0 and allow you to pick any of them as X-Perl's default bar texture.
+Changed: Grim Reaper report now only shows last time in full. Previous line's time is shown as a negative offset from last time.
+Changed: Grim Reaper report now only shows details since unit was last at full health.
+Fixed: Party pets health and mana update.
+Fixed: Party pets debuff location.
+Fixed: Some issues with the party flip feature.
+
+2.3.0
+Fixed: Party Pets
+Fixed: Party Targets
+Fixed: Couple of errors in options due to party frame changes.
+
+2.2.9
+NEW: Option for only showing missing buffs for raid groups that are shown.
+Changed: Party frames creation method changed to be more like raid frames. This was changed to allow future extending of the party frames to cover larger virtual party display. NOTE: CLICK CASTING config for the party frames should be verified because of frame name changes.
+FIXED: LOCKUP PROBLEMS. Thank you to Xinhuan for finally tracking down the exact problem. Note to everyone that this was an issue in the Blizzard code as I maintained all along, but there is a workaround thankfully.
+Fixed: Full screen health/ooc warnings.
+Fixed: Minimap icon dragging.
+Fixed: nil error on raid frame menus when XPerl_RaidHelper not loaded.
+Fixed: nil error in grim reaper with health bars not shown.
+
+2.2.8
+NEW: Enable option for Grim Reaper.
+Fixed: Scale option for Grim Reaper.
+Fixed: A few errors and display issues with the Grim Reaper.
+Fixed: XPerl_PartyPet.lua buff nil error.
+Fixed: XPerl_Raid.lua XUpdated nil error.
+
+2.2.7
+NEW: Grim Reaper sub-addon (type /grim and/or see readme.txt for usage). Minimalistic data gathering to keep the most recent combat events per unit (default is 15). How did XXXX die? This lets you answer that by showing the last 15 heals, hits, crushings etc. Mob information and such will NOT be stored or parsed, simply the hit/heal events on the units which can be done very quickly and efficiently with provided events.
+NEW: Flip option for party frames, so they can be aligned on right hand side of screen. Early work at option, so might need some tweaking if some elements don't line up right.
+NEW: Minimap Menu (Right Click) to open various tools (Options, Item Checker, Raid Admin, Casting Monitor etc.).
+NEW: Responds to CTRA dur/item/resist checks for those people that choose not to install either one. Blame my guildies..
+Changed: More optimizing to reduce garbage memory created.
+Changed: Healing Way added to shaman castable buffs.
+Changed: Updated zhTW Translation.
+Changed: Revoked the name optimizing. Caused more problems than it cured, and was barely any optimzation :)
+Changed: Changed warlock default range check spell to Underwater Breathing, instead of bandages.
+Changed: Frame insets adjusted to remove the very thin transparent border that's apparent with larger scaling.
+Fixed: Dragging of party frames was getting stuck on mouse if you grabbed any of the name frames.
+Fixed: Problem with party pet debuff location.
+Fixed: Added sound for clearing target when target sounds enabled.
+Removed: Mini Threat bar from MT List. With the changes in KTM and the alternatives now available for KTM (Omen), there are much sleaker options for this now.
+
+2.2.6
+NEW: Added Earth Shield as a shield spell to track with Status Highlighting. (Needs zhCN translation)
+NEW: Width option to adjust the health frames for all units (seperate option per frame).
+NEW: Code to track Prayer of Mending, but it's totally untested as I don't have a priest nor the time to level one up just to test this new 40 lines of code. So, feedback pls ;)
+NEW: Targetted Focus indicator (when you have your focus targetted, the target frame shows a highlight around the stats frame).
+NEW: Targetting sounds (same used as Blizzard default UI). Optional.
+NEW: Party Debuffs option to wrap and scale to half size when too many to show in width of party frame.
+Changed: Using own flashing code (for options, highlights, pet happiness etc.) since the Blizzard one generates some un-needed garbage and litters frames with variables that loiter forever.
+Changed: Target level shown as Skull icon where appropriate.
+Changed: Added Forbearance to list of debuffs to include when curable only showed for paladin class.
+Changed: Improvements to garbage production. Buff icons and debuff highlighting were producing around 32k garbage each per 1000 calls, so even fights as short as a few minutes will notice a significant reduction in garbage memory usage.
+Changed: Optimization of the raid and party frames to cope with rumored problems with the UNIT_NAME_UPDATE event being fired WAY too often.
+Fixed: LOCKUPS when entering BG, logging in during raid etc.
+Fixed: Raid Pets not being setup correctly after /reloadui.
+Fixed: Cooldown option was being ignore for debuffs.
+
+2.2.5
+NEW: Player Buffs! Optional self containted addon (Will need to restart WoW to activate this).
+NEW: Tooltip buff helper sort option (unsorted, by group, by class).
+Changed: Changed the stealth detection for energy ticker, so druids who had a problem with this please keep me informed if it's working better now.
+Fixed: Problem with target frames not working. Was caused by a bug in the API rather than other mods, but a solution was made available by Blizzard which should workaround the issue.
+Fixed: Party buffs now re-displayed when party members go out of range and come in sight. Previously would not re-display them and the buff order would change and then tooltips would display incorrectly because the API does not return duration information for members that are not in range, and no other notification is given to change buff order, like a UNIT_AURA event like you'd expect when the buffs change...
+Fixed: Player's Pet's Target options weren't visible.
+Fixed: Party debuff location when buffs displayed below members.
+Fixed: Party pet frame click area size too large when party pet mana not shown.
+Fixed: Display issue with Pet's target mana bar showing when option was off.
+
+2.2.4
+NEW: Option to entirely disable the cooldown indicator for buff icons (global options).
+NEW: AFK flag display is now optional (global options).
+NEW: Options sliders can be operated with Mouse Wheel for more precise control.
+NEW: Option for the target counter display on player and target frames.
+Changed: Slightly (about 20%) increased the size of the stacking number for buff icons. Was a fraction too small.
+Changed: Update French translations.
+Fixed: Maximum rows option for buff/debuff display on target.
+Fixed: Won't add duplicate buff time remaining line to tooltips for buffs we cast.
+
+2.2.3
+NEW: Cooldown indicator on buffs and debuffs, with optional time remaining number (when < 10 secs). NOTE: This forced a change in the way buff sizes are worked out to a small degree (scaling icons instead of sizing them), so they may not appear 100% the same as you had before, so fiddle with the size option if they're wrong for you.
+Changed: Buff icon tooltips update in real time for cooldown and buff helper purposes.
+Changed: Implemented (as a TEST ONLY) a delay for creating raid frames on load. We'll see if it helps with the freezups until Blizzard (I'm fairly certain it's some WoW fault) can fix something up.
+Fixed: Party target raid icons now update correctly, and adjusted the location slightly.
+Fixed: Buff Tooltip helper on own buffs, and matched new Gift of the Wild icon to Mark of the Wild. Also sorting the list by class for clarity.
+Fixed: Various Alpha problems (buff icons, range finder) - Also note that the default fade amount for range finder is now 50% instead of 30% to compensate.
+
+2.2.2 - TOC 20100
+NEW: Seperate options for Focus Target, Pet Target. (Instead of using Target's Target options)
+Changed: TOC Updated to 20100
+Fixed: Raid Frame and Raid Helper issues with WoW 2.1 patch
+Fixed: Small raid icon placement over Elite Graphic was above frame.
+Fixed: Aggro warning.
+Fixed: Frame highlights getting stuck when status' expire (HoT/missing buffs etc.)
+
+2.2.1
+NEW: Focus Target and Pet's Target.
+NEW: French Translation. Thank you Marillar.
+NEW: Support for CT_BuffMod for the raid tooltip buff info.
+NEW: The aggro alert is now movable. Open options and an arrow anchor thing will display for you to drag around.
+NEW: Added spanish spell names for hot monitor etc.
+NEW: (2.1 only) Mousing over Minimap icon with ALT pressed will show current memory usage of all X-Perl components, and totals thereof.
+Changed: Debuff Highlighting will no longer highlight certain debuffs (Banish, Unstable Affliction, Dreamless Sleep, Arcane Blast, Chilled)
+Changed: Debuff Highlighting now works with certain friendly NPCs (Thrall in OHF most commonly).
+Changed: When elite target graphic is showm then level frame will nudge left into the portrait frame.
+Changed: When specifying Health Check and Debuff Check on range finder, it now considers EITHER to flag the unit as needy, rather than BOTH.
+Changed: Missing Buff highlighter will now only work when you are in a party/raid.
+Changed: Cast bar flashes will now work at a normal pace when framerate is very low.
+Changed: Removed PVP Rank option, as this is no longer relevant. Any displayed rank in WoW now is returned purely as a string to allow for custom rank strings.
+Fixed: Blizzard's Party frame lagging the UI when raid member changes occured. X-Perl now forces the HIDE_PARTY_INTERFACE option so that the Blizzard party frames are no longer shown and hidden for every member in the raid. Who wrote that code?.... please.
+Fixed: Optimized the roster update code for missing buffs checker, so that only new raid members are checked on a raid member change, existing members are only re-drawn.
+Fixed: Optimized the roster update code when re-displaying raid members, so that buff/debuff re-draw is queued, rather than instant. It will do one player's buffs per frame instead.
+Fixed: Default spell/item for Range Finder would always be set when closing options window.
+Fixed: Missing Buff highlighter will no longer incorrectly highlight players not in raid/party.
+Fixed: Range Finder with MT List.
+Fixed: A couple of options errors when various modules not loaded.
+Fixed: Focus frame wasn't being updated properly when you first entered the game with a valid focus.
+Fixed: Options were getting set every time you left combat if options were closed while in combat. Caused a few display anomolies mostly noticable by slight flashing of faded frames or missing sections of debuff highlighting.
+Fixed: Assist Frame would show duplicate entries for people with pets, instead of checking pet's target.
+Fixed: Target/Focus buff display alignment with certain friendly NPCs (Thrall in OHF most commonly).
+Fixed: Compatibilty issue with Secure templates on PTR.
+
+2.2.0a
+Fixed: Stupid startup errors. Sorry.
+
+2.2.0
+Tense Nervous Headaches? Whilst trying to promote people in raid? Removing wrong members?
+Raid colleagues nagging at you for being a nub? Can't promote your best friend?
+Well, Zek comes to the rescue with a hack for Blizzards 2.0.3 fuckup.
+The raid context menus should work properly... /applause
+---------- WHEN USED FROM X-PERL'S RAID FRAMES ----------
+If any of them still don't work, yell at me some and I might fix them.
+
+NEW: When a unit has a Status Highlight, their tooltip will indicate what it means in the same colour.
+NEW: Tutorial Tips for new users. Load on Demand module. Uses the same system as WoW's new users tips. For existing users it will default to off and not load. You can always turn it on from the global options if you're curious.
+NEW: MT List shows Main Assist and Main Tank status (as defined from Blizzard raid dropdowns).
+NEW: Target's debuff highlighting now has an option to limit for all/friend/enemy.
+Fixed: Error when mousing over X-Perl icon when in a battleground.
+Fixed: Group number display when in raid.
+
+2.1.9 - TOC 20003
+NEW: (WoW 2.0.2+) X-Perl's minimap tooltip will show count of real raid/party members and if you're the leader of real raid, if you're in a pseudo BG raid.
+NEW: Status Highlighting can highlight with a grey border anyone who is missing your class' raid buff (sta, int, mark only). And optionally, ALL 3 class' raid buffs (for raid leaders). Missing classes will not be included in the check. Rogues and warriors are skipped for INT buff checks.
+Changed: Shield Monitor added to track expiry of PW: Shield.
+Changed: HoTs Monitor will flash frame highlights for 5 seconds before HoT is due to expire.
+Changed: TOC Updated to 20003
+Fixed: Cooldown on 'Renew' in the HoTs Monitor.
+Fixed: Error in options when XPerl_Target not loaded.
+Fixed: Error in options when XPerl_PartyPets not loaded.
+Fixed: Party NameFrames weren't registering as click casters.
+Fixed: Party frames weren't seting up correctly at startup.
+Fixed: Player's hit damage over portrait.
+Fixed: Party Leader icon not always correct. Actually rather than an X-Perl fix, is a workaround for bug in the API which often claimed that party1 was the leader, regardless of who the leader really is.
+Fixed: Party debuff highlighting error.
+Fixed: Tooltip problem with debuffs in raid when 'Buffs Until Debuffed' option enabled and unit is debuffed.
+Fixed: Raid group 9 was not hiding when you switched from class sorting to group sorting.
+Fixed: Focus hit indicator was in middle of screen.
+
+2.1.8
+Fixed: Problem with DruidBar.
+Fixed: Fading Bars errors.
+
+2.1.7
+Large code change overall gradually changing to a new internal structure, so appologies if there's any issues. Will get to them asap.
+
+NEW: HoTs Monitor (Status Highlighting in global options)! Works on all frames. Will show YOUR Heal Over Time spells for any raid/party members by highlighting the frame with a blue border.
+NEW: Elite Graphic for target. YA RLY! Don't complain that it obscures the target level, I really don't care :)
+NEW: Option for party target health bar.
+NEW: Hit Indicator added for party members and player's pet. Also, seperated option for Hit Indicator from one global option to player, pet, target, focus and party options.
+Changed: Highlight tanker option removed and replaced as part of the Status Highlighting functionality in global options. Will now show anyone (that is detectable) who has aggro in whole raid, with red highlight border. (Requires assist frame to be enabled)
+Changed: Range Finder improved. Now has seperate options for Whole Frame, Name Frame and Stats Frame. For decursing classes, you'll probably want to set the 'All' range finder to a healing spell and setup the Stats Frame finder to a healing spell.
+Changed: Range Finder from using UnitIsFriend() to UnitCanAssist(). This means you can watch duels without faded frames basically.
+Changed: Will only inform of X-Perl updates when the 'X-Perl Info' option is enabled.
+Changed: Hotkeys for options will no longer work when options are open. This was causing some display issues if used.
+Changed: 1/2 second hold time added to combat flashing to make it more apparent.
+Changed: Reaction Highlight for hostile targets will now show a white name. Players will still follow class colouring when enabled. (Also fixed it, cos it didn't work when target debuff highlighting was used at same time. And noone noticed! Hah!)
+Changed: Party member's flags (afk, dnd, dead, ghost) now show in the percent area if room for the text (for consistancy).
+Changed: Player reputation bar will now show current/max rep instead of rep name.
+Changed: No longer displays DND flag as some people seem to use this a lot.
+Fixed: Worked around a bug in the API which incorreclty shows the player as AFK when you first log in after being AFK when you log out.
+Fixed: A minor issue where raid member names sometimes showed as 'Error!' (was part of the optimization, but had a hole in the logic).
+Fixed: Fat frame borders for debuff highlighting were sticking if you got cured of debuffs when being damaged.
+Fixed: Pet Happyness frame hide/show when using Fizzwidget Feed-O-Matic. Now, the Feed-O-Matic frame will remain (invisible, but still clickable) even when happyness icon is hidden. This is due to in-combat restrictions in the API that prevented the happyness icon from being hidden/shown when in combat. Also now repositions it correctly if you change pet display options.
+Fixed: Copyied settings would get lost after relogging.
+Fixed: Highlight Tanker when Selection Highlight disabled.
+Fixed: Mark/Gift of Wild not matching in buff helper.
+Fixed: Ressurection Monitor in raid frames. Also, it is no longer dependant on CTRA info and will instead watch for spell cast events.
+Fixed: MT List 'my target' arrow, and issues with dup target colouring not working.
+
+2.1.6
+Changed: Player, Target and Focus, ToT frames now show AFK/DND flags, and colouring of status' made consistant to that of the raid frames. (ie: Full grey bars when dead, ghost, afk, dnd, FD, Offline)
+Changed: Some performance improvement when raid roster changes by checking the last name in that slot and just not bothering if it's the same, which happens an awful lot.
+Changed: (AFTER WOW 2.0.3 PATCH) The spell/item icon in options has been changed to a drag/drop receiver. So, insted of alt-clicking items in inventory or spells in spellbook, you can simply drop them into the icon.
+Fixed: Raid Frames' name plates were not click cast registering.
+Fixed: Raid Monitor from popping up all the time when it was turned off.
+Fixed: A few minor overlap issues in options.
+
+2.1.5
+Fixed: Player frame wasn't registering as a click cast frame. And oops, Should have put that in in 2.1.4.
+
+2.1.4
+Fixed: SetHighlightTexture error in XPerl_init.lua
+Fixed: XPerlConfig error in XPerl_Player.lua
+
+2.1.3
+NEW: XPerl_RaidPets addon. Simplistic pets addon which will only work for Hunters and Warlocks (due to various API restrictions). Does not display buffs, debuffs (although debuff highlighting will work) or mana or any of the flags other frames show. Is just a health monitor. If anything is desperately missing from this, let me know. Can set a key to toggle them.
+NEW: Spanish Translation. Thank you Hastings.
+NEW: Raid Monitor. For druids, right clicking on a friendly player's mana bar in the raid monitor (the bars on left) will cast Innervate on that unit. For shamans, it'll cast Mana Tide Totem. Do Paladins have some super bubblelicious mana regen buffy thing?
+NEW: Option to combine health check with range finder to only highlight people in range AND needing a heal. Health level is configurable.
+NEW: Rogues added to list of curers for debuffs of type poison (I know they can't cure it, but it was easiest way to get desired result), and a new option on target frame to include it in debuff highlighting. This will very clearly highlight the target frame green when the target is poisoned. If the only curable option (global options) is not used, the poison debuffs will still take priority over any other debuff on the target, so you can just watch for a green frame.
+NEW: Put a check in for SupportFuncs to make sure it's not a version that will not break the Range Finder. Will notify you if found. (Not entirely sure which versions are good/bad, so might not be entirely accurate).
+NEW: Buffs until Debuffed option. (RAID)
+NEW: Party members will now show as AFK/DND as with raid frames.
+Changed: Full screen warning frames now use XPerl versions. This may fix the occasional action blocked being reported as an XPerl_Player fault.
+Changed: Option to display raid group numer in the player's name frame, instead of over the frame.
+Changed: Click casting frames changed. Name frames are now seperately registered click casting area so that you may retain default clicks for a unit, even when click casting is defined for the whole frame. Note that Clique (and probably others) users may need to re-setup definitions for the effected frames. This is a big change to many of the frames, so if there's any issues with highlight working in a too big/small area, dead zones, no functionality etc. Let me know asap.
+Changed: Because of the click cast change, raid buffs/debuffs can now overlap the name frame if you have Buffs Inside turned on. This is unavoidable.
+Changed: Raid AFK/DND flags now taken from new Blizzard API events and no longer rely on CTRA info.
+Changed: Party targets now work with range finding too.
+Changed: Arcane Casting Bars made into seperate mod, so you can disable it all if you don't use them.
+Fixed: Various Raid Monitor fixes and changes.
+Fixed: nil error in UIParent.lua, 1546
+Fixed: Player pet bar problem.
+Fixed: MT List unit size options not updating.
+Fixed: Fade amount selection in options would miss the '70%' mark.
+Fixed: Put the spell matching back in for buff helper (oops).
+Fixed: Party debuff location when pets hide/show.
+Fixed: Party Feign Death wouldn't show if buffs/debuffs not enabled.
+Fixed: Taint by using StaticPopupDialogs. Now uses own popup dialog in options for yes/no questions.
+
+2.1.2
+NEW: Raid Monitor sub-addon. Basically a Raid Mana/Casting Monitor.
+Shows selected classes in a list (much like the MT List), but with some differences.
+Shows mana bars and cast bars on left. Their targets on right. Health bar as normal, but a secondary small red bar on targets which shows the maximum single hit this unit has received since entering combat. The secondary bar will extend downwards from their current HP level down to as far as zero.
+A green name on the targets indicates this is the same target that you have.
+You can click on casters or their targets as expected.
+All bars can be re-sized in X-Perl main options (Monitor section).
+Totals can be toggled (from the 'T' minibutton at top of frame) which gives overview of raid mana status.
+
+NEW: Support for SimpleDruidBar.
+NEW: Arcane bar for player's pet.
+Fixed: Error with toggling the energy ticker option.
+Fixed: Action blocked in raid frames occasionally. Oops again.
+Fixed: Error when enabling TTT frame for first time.
+Fixed: Target, TTT frames not saving position if only aligned (not moved with mouse).
+Fixed: Party frame graphics errors when scaling.
+
+2.1.1
+Fixed: Raid frames not showing if titles weren't enabled. Oops!
+
+2.1.0
+NEW: Virtual raid/party area displays, for easy setup when frames unlocked.
+NEW: Raid group selection options re-coded and more flexible.
+NEW: Support for Fizzwidget Feed-O-Matic.
+NEW: Range finder will now work on MT List.
+NEW: Healer mode option for MT list.
+Changed: Raid alignment options improved to work with horizontal layout.
+Changed: Healer mode for target frames will now show normal hp values for enemy targets.
+Fixed: Buff helper on player's buffs (and added support for ElkBuffbar)
+Fixed: MT List target's target was not responding to clicks.
+Fixed: Missing text in Raid Admin.
+Fixed: (Probably) Hide party in raid option.
+
+2.0.9
+NEW: Option to adjust the size of the party targets.
+Removed: Most old alpha changing code. Unecessary now with range finding (even if unused), which leads to:
+Fixed: Occasional flashing on some unit frames when unit is out of range of range finder.
+Fixed: Now immediately sets alpha when ppl leave/join raid/party and on target changes.
+Fixed: Range finder for non-visible units.
+Fixed: Player stats frame height in some cases.
+Fixed: Disabled sliders in options will no longer lose their greyed out state when u mouse over them, or give a tooltip.
+Fixed: Player pet buff error when changing buff size in options.
+
+2.0.8
+NEW: Option to select custom spell or item to use as the range finder. Alt click in spell book or on an item when options open to set. Alt click the custom one to reset default.
+Changed: Range finder will try and find any type of bandage in inventory as a default for non casters (Only done for English, German and zhTW atm, French syntax was taking the piss so I skipped that if someone wants to do the code for that in the FindABandage() function you're welcome to)
+Changed: Range finder will not fade enemy targets.
+Fixed: Range fade wasn't working on raid frames.
+Fixed: Highlight tanker.
+
+2.0.7
+NEW: Range checker (ZOMG!). You can bind a key to toggle option. Runs every 0.2 secs per frame. Checks common BENEFICIAL spells against party, raid, target, tot, focus frames. Spells currently fixed to (DRUID = Healing Touch, PALADIN = Holy Light, PRIEST = Lesser Heal, SHAMAN = Healing Wave, MAGE = Remove Lesser Curse, Everyone else will check with Heavy Runecloth Bandage). Will be adding some configurability to this later.
+Fixed: nil error at XPerl_RaidHelper.lua, line 458
+Fixed: nil error at XPerl_RaidHelper.lua, line 696
+Fixed: Removed TargetUnit() call from Item checker.
+
+2.0.6
+NEW: Key modifier option for unit tooltip display.
+NEW: Independant reputation bar for player frame. Currently works from watched faction, but plan on making this selectable somehow.
+NEW: Option to show target/focus class as text instead of class icon.
+Changed: MT List re-coded, and added grow upwards option. Shouldn't have any more issues with wrong people showing up in the list when people join/leave raid.
+Changed: Won't react to the raid sort/hide keys during combat any more so no more confusing title changes when we can't change them anyway.
+Fixed: Placement of arcane bar cast time for most frames.
+Fixed: Player's pet tooltip was ignoring tooltip option.
+Fixed: Minimap icon option nil error.
+Fixed: Druid bar percent showing when option was off.
+Fixed: Target/TT/Focus frames buffs above option.
+Fixed: Odds/Evens selection for raid frame alignment.
+Fixed: Default raid spacing.
+
+2.0.5
+NEW: Global option for unit tooltips.
+Changed: Party anchoring sorted out. Spacing now applies to left and right distance if LEFT or RIGHT anchor used. All direction anchoring now works.
+Fixed: Party pets weren't be updated correctly when group changed.
+Fixed: Party spacing on startup.
+Fixed: Druid bar overlapping problem.
+
+2.0.4
+Changed: Reduced amount of raid frame refreshing done on options changes, and implemented an update throttle to improve performance.
+Changed: Re-implemented highlight tanker feature.
+Fixed: Occasional errors when joining raid.
+Fixed: Raid Debuff display option hotkeys gave an error if used before options were displayed.
+Fixed: Party frame not showing again after you were in a raid once with hide party in raid option on.
+Fixed: Player frame click overlay anchors changed to not inhibit the stats frame from growing to accomodate druid bar in combat.
+Fixed: Party leader icon showing for party1. Not updating this on a full redraw atm to see if we can manage like this. It's actually a bug with the API, with GetPartyLeaderIndex() sometimes returning 1 even when it should be 0.
+Fixed: Locked options in options weren't always locking correctly, leading to stuff being clickable when in combat.
+Removed: Other targets from the MT list. Causing more trouble that it was worth, and it could never have been anything more than a visual aid. Would have been frustrating more than anything.
+Removed: 2.0.3 change "Unit frame targetting/casting clicks now occur on mouse down instead of mouse up. Both events registered for this." Causes problems with the template click handlers by targetting units when you try to only cast on them. This is bad.
+
+2.0.3
+Changed: Unit frame targetting/casting clicks now occur on mouse down instead of mouse up. Both events registered for this.
+Fixed: nil error in XPerl_Target.lua line 277.
+Fixed: nil error in XPerl_init.lua when XPerl_Party mod not loaded.
+Fixed: Raid Debuff display option hotkeys weren't updating the buffs immediately.
+Fixed: Error with teamspeak monitor showing on raid frames.
+
+2.0.2
+Changed: Raid frame anchoring finished. Can now anchor to top, left, bottom or right of the title. This is the anchor point for first cell, frames grow oposite from this point. So TOP anchor anchors the top of the first cell to the title, and the rest of the frames in that group anchor their top to the previous cell, and so on. Options still needs some tidying.
+Fixed: Debuff highlight checker was reading old return values from UnitDebuff.
+Fixed: Raid and Party frames didn't have UIParent as parent (so would show when hiding UI).
+Fixed: Raid Key Bindings (show/hide & sort) weren't working.
+Fixed: Full screen warnings options error.
+
+2.0.1
+NEW: Align Left option for raid frames.
+NEW: Bottom and right anchor options for party and raid. (Not perfect yet, but close)
+Changed: Target debuff display limit increased to 40. You can still restrict this by limiting the number of display rows. And of course, buff icons are created on demand so zero overhead if you don't use them all.
+Changed: Party pets are now a child of the party members frame. This is to fix a bug in the WoW API which still gives pet details for non existant party members, therefor the UnitWatch (secure part of WoW API) keeps showing pets for people that don't exist. This will effect the scaling of party pets, because pets are now a subframe. But I had no choice on this.
+Fixed: Option titles for non-English clients. (Still looking for French & Spanish translations for X-Perl)
+Fixed: Aggro alert from showing when option is off.
+Fixed: Raid frames hide/show options.
+Fixed: Party frames 'Hide party in raid' option.
+Fixed: Party targets option was not working.
+
+2.0.0 (beta10)
+NEW: Focus frame scaling option.
+NEW: Anchor option to grow the party members to right instead of downwards. Will do up and left as soon as I get the math working for moving the anchor frame. If someone wants to point me to some code that will change the anchor point of a frame without moving the frame, that would help tonnes.
+NEW: Anchor option to grow the raid members to the right instead of downwards.
+NEW: MT List indicates the WoW assigned Main Assist with a * (as assigned via the blizzard player raid menus). Beats me how you assist that assigned player though. Here's hoping they add that, or did I miss something? (NOTE: This is currently available on TBC only)
+Changed: By default, all unit frames now target when any/all key modifiers are used with the left mouse button. So click == ctrl+click == shift+click and so on. This allows players to retain their habit of holding down a modifier for a spell then clicking a unit without releasing the key. These can of course be re-defined by click heal mods.
+Fixed: Focus frame hit indicator position.
+Fixed: Pet's buffs tooltip error.
+Fixed: Error when assigning a Main tank option from raid frames dropdown menu.
+Fixed: Party targets.
+
+2.0.0 (beta9)
+Changed: Added in-combat block to edit boxes and buttons and more of the in-combat blocks in place for options. Let me know if any are missing or causing problems, like not updating when options changed. You shouldn't be able to change position, size or scale or displayed frame segment options for any unit frame when in combat.
+Changed: Improved the display of in-combat locked check buttons.
+Fixed: Party pets weren't updating properly when freshly summoned.
+Fixed: Party frame spacing problem.
+
+2.0.0 (beta8)
+Fixed: Arcane bar startup error on fresh install.
+Fixed: Tooltips for target and target's target frames.
+Fixed: Target's Target (and TTT) was not registering as a click casting frame.
+Fixed: Blizzard Combo points were giving an error.
+Fixed: Errors in player's pet.
+Changed: Added in-combat block to scaling sliders in options.
+
+2.0.0 (beta7)
+Fixed: Stupid target problems.
+Fixed: Couple of other reported issues.
+
+2.0.0 (beta6)
+Fixed: Party pet code changes done.
+Fixed: Odd issue with party frame movement with mouse.
+Fixed: Click casting wouldn't work on target frame.
+Fixed: Disabling Target's Target and Target's Target's Target frames would not hide the frame if shown once until a reload.
+
+2.0.0 (beta5)
+Fixed: Target frame error.
+Fixed: Party frames now hide/show correctly (deja vu) but no.. Worked out the issues with this and tested it a lot and it's not thrown any problems up recently.
+Fixed: Raid frames showing/hiding correctly also.
+Fixed: Assists frame no longer shows duplicate entries if you mouse click a unitframe.
+Fixed: Various blocked actions.
+Fixed: Raid frame dropdown menu (main tanks part).
+Changed: MT List tank target updates now only occur when a player switches target. The only OnUpdate checking now is for health updates of indirect targets.
+Changed: MT List changes now wait until you're out of combat before refreshing the MT List.
+Changed: Target's Target frames no longer resise if the unit has no mana bar. Instead the mana bar is simply hidden. This was a necessary change due to complications in the new API.
+
+2.0.0 (beta4)
+NEW: Options window will indicate clearly when options are locked during combat. Some options will still be availalble all of the time.
+NEW: Focus frame options.
+Fixed: Implemented the new standard for click casting (method that Clique uses).
+Fixed: Party frames now hide/show correctly (but do test this) when in combat and party members change.
+Fixed: MT List working now, except that the Other targets are not clickable. And I'll probably have to do something if the MT list is changed in combat.
+Fixed: Raid Frames \o\ \o/ /o/ But I had to remove some things. Moving cells, draggable member movement by leader. Have also disabled the raid pullout replacement for the moment until I get time to look at it. But, the raid frames themself should work to at least a minimal degree.
+Changed: Party frame alignment options changed.
+Changed: Party member frames no longer individually movable.
+Removed: Most /command options removed (except menu, lock, unlock), as this would mean covering the in-combat checks twice and I'm not prepared to do that atm. Everything is on the menu anyway, and was not all in the command options.
+Removed: Hotkey definitions for target first non-tanked, and smart assist. Nowe we can other pick random targets or have 10 hotkeys setup for 10 main tanks... gg
+
+2.0.0 (beta3)
+NEW: Focus frame. Copy of target frame affecting the "focus" unit instead of "target", and has a small eyeball icon to tell the difference.
+Fixed: Pet frame now works.
+
+2.0.0 (beta2)
+Fixed: A few string.gfind -> string.gmatch.
+Fixed: Function hooks now using securehookfunc.
+Fixed: Item Checker parameter change on calls to GetItemInfo()
+Fixed: Party frames now using correct Secure calls.
+Changed: No longer resizing the party member frames when they die (technically very difficult and ugly to keep).
+Changed: Assist Frame 50% optimised, more to come.
+Changed: Some frame resizing had to change to stop the various ADDON_BLOCKED errors.
+Removed: Clear Blizzard Frames option (no longer possible without tainting).
+Removed: Fading frames option and functionality (no longer possible).
+
+2.0.0 (beta1)
+Changed: Initial Burning Crusade support.
+Changed: Removed target's target history temporarily.
+Known Issue: Raid frames will not be updated immediately if you are in combat when the raid changes.
+Known Issue: Fading frames will not work. This will probably have to be removed entirely.
+
+1.9.6 (Last release before The Burning Crusade)
+NEW: Aggro notifier (part of the XPerl_RaidHelper mod), based on Ombres' Aggro mod from some time ago. Something I always used myself, so for me it made sense to incorporate it into X-Perl, rather than rework something from scratch with a biased opinion. The bonus is that all the of the checking for aggro is already done by the assists viewer, so the extra overhead for this function is next to none. Unlike CTRA's aggro notifier, this one will warn you about aggro from ANY mob, not just an MT's target. Personally I find this more useful. May well add some positional options soon, so don't ask yet.
+Changed: Custom click function now considered a 3rd party click, and as such will only function if using the '3rd Party' option. This will affect Clique users, who just need to make sure the option is on.
+Changed: Retracted OnClick change from 1.8.3 which put some default behaviour before click handlers, since we're now using the NameFrame as a default click area it's not needed.
+Changed: Arcane bar now shows the spellname, and the spark and flash now work for channeled spells.
+Fixed: Party pet options errors when party pets module not installed.
+Fixed: oRA2 startup error (they'd changed a function name).
+Fixed: Player's pvp flag not clearing under some conditions (ie: in combat when pvp removed)
+Fixed: Priest debuff highlighting was not including disease.
+Fixed: Player name was ignoring text transparency option.
+
+1.9.5
+NEW: Chinese Traditional translation. Thanks JakeLin.
+NEW: Option to defer display of some Target frame elements for 0.5 seconds. This further improves the responsiveness of the target frame by reducing the average redraw time by a further 0.5ms.
+NEW: Options text highlights on mouseover for clarity.
+Changed: Buff scaling from options improved, and won't appear to forget some now.
+Fixed: Mini Threat bar wasn't showing on MT list.
+Fixed: Party Pets. YA RLY! And thanks Krafthofen for pointing out the bleeding obvious to me.
+
+1.9.4
+NEW: TeamSpeak monitor (Included in this release to get it known, will thereafter be available as a seperate download on the X-Perl pages). Define the same key in Key Bindings that you use to trigger team speak, ventrilo push-to-talk. X-Perl will monitor this and show other X-Perl users who is talking. There are obviously some limitations to this. Notably it will only work when WoW is the focussed application, so if you're browsing some web page and press your push-to-talk button, WoW won't see it. It will obviously also not work if you use voice activation. Also, due to the way WoW key bindings work, it is not possible at this time to monitor Control, Alt, Shift (or other similar modifier keys). And finally, you would want to run TeamSpeak/Ventrilo on the same PC that WoW is on, unless you fancy pressing 2 keys at once :) This is a standalone module that will work without X-Perl proper, and will be available to download seperately. It is also easy to incorporate the same functionality into other UnitFrame addons.
+
+NEW: Debuff time remaining for raid members for a few things. Mark of Nature, Mark of Frost, Recently Bandaged, Resurrection Sickness
+NEW: More bar textures. And improved texture selection in options.
+NEW: Option to only highlight a player's debuff if it's something you can cure.
+NEW: Tooltip options to choose which tooltips to show in MT List.
+Changed: Will not hide or show Cast Party frames any longer. Use the settings in Cast Party for that now.
+Changed: Updated Chinese localisation.
+Changed: Optimized the the Target frame full redraw. Notably for when target is changed, I have reduced the workload if things don't need to be done. For healers constantly clicking players in the raid frames, you should notice a reduction in the target switch lag. It's worth noting that it's not entirely down to X-Perl that there is target change lag. The Target change event is fired directly when you change unit. All frames that register this event are called before the function returns. Every single individual action button also processes the PLAYER_TARGET_CHANGED event and takes on average (for me) 0.1ms to process (PER BUTTON). So 40 buttons == 4ms. Last version of X-Perl average target change was 2.5 ms for full target frame redraw, reduced now to around 1ms on average.
+Changed: Threat bar no longer shown if you're out of combat, and update frequency reduced.
+Changed: Party member names now centred. Didn't like that they were the exception to the rule. Now they are not. Ok ok.. It was for the comms monitor speaker icon :)
+Changed: Party Pet coding changed a little, which may alleviate the problems some people are getting with the pets disappearing. Feedback please!
+Fixed: Party member frame sizes were a little wonky in some configurations.
+Fixed: Chinese and Korean class name localisations for guild list colouring.
+Fixed: Target's Target raid icon.
+Fixed: Problem where mousing over your own debuffs could erroneously shown the with/without buff tooltip info.
+
+1.9.3
+Fixed: Occasional buff timer error in XPerl_Raid.lua, line 995.
+Fixed: New options for MT List weren't greying when disabled.
+Fixed: Target feign death status was sticking.
+
+1.9.2
+Fixed: Forcably disabling the WT_ZoningTimeFix mod. It's very out-dated and should not be used as it breaks many mods by unregistering their frame events and not re-registering them as it should. It breaks X-Perl for precisely this reason by unregistering health update events then then not setting them again, so X-Perl appears to freeze up, as reported to me by several people.
+Fixed: Combat Flashing Frames option was not disabling the option.
+
+1.9.1
+NEW: Speed option for fading bar effect.
+NEW: 'Accepted' status on raid frames when someone accepts their rez, which fills the gap between Resurrected fading and them being dead for a second while WoW makes them alive.
+NEW: Item Checker has channel selection dropdown to determine report channel destination.
+NEW: Option to not give default Warrior tank list when not CTRA list available.
+NEW: Party pet mana and level display options.
+Changed: Tooltips no longer shown when frames are unlocked.
+Changed: Highlight debuffs option can now highlight border or background or both.
+Changed: Combat Flashing frames now take into account low alpha settings of borders and bump up the alpha for the flash.
+Changed: Fade Bars will no longer occur when you switch targets, or when target's target changes.
+Changed: Target and TT now show 'Feign Death' status when it can be determined.
+Changed: Guild colouring now also applies to /who list.
+Changed: Healer Mode option split into seperate options for player, target, party and raid.
+Fixed: Party pet issues (Do let me know asap if it's still an issue for some people). It used to break when party pet names were shown. Sometimes. Simplified the anchoring, and the frames no longer move about. They're always fixed to same spot for now. Yes, I'll be allowing moving party pets at some point soon.
+Fixed: Buff timers fixed now. Shouldn't be anyone missing that you are present in raid for when they receive buffs.
+Fixed: More damned hunter FD things. They should need a reagent for that. Or better still durability loss, there. that would fix my problem. Well, maybe not fix, but I'd feel better about making it work.
+Fixed: Options window size expanded to accomodate actual size of options tabs, so non-standard fonts shouldn't make them go off the end of window any more.
+Fixed: Party only, FD colour hp bar was green instead of red.
+Fixed: Raid tooltip error, XPerl_Raid.lua, 2049 when a druid's rebirth cooldown was due within 2 mins.
+Fixed: Border transparency issue with target's target frame.
+Fixed: Player's XP bar and Druid bar were not being setup correctly.
+Fixed: JustClick support.
+Fixed: Occasional irregular cell movement when people join and leave the raid.
+Fixed: Player/Target gap setting when no player portrait.
+Fixed: Party buff region error when a party member had a debuff and bo buff.
+
+1.9.0
+Fixed: Fade Bars problem.
+Fixed: Options error message when Raid Admin isn't loaded.
+
+1.8.9
+NEW: Added support for Cast Party v4.2 (click heal mod).
+NEW: Added support for Heart (click heal mod).
+NEW: Fading bars (will fade away the portion of health or mana that was just removed).
+NEW: Class coloured names option now (optionally) applies to your guild list also. People in same zone highlighted green. X-Perl users highlighted with red name. Level colour follows normal rules.
+Changed: The 4th bar texture to something that looks less than exactly like the 3rd one.
+Changed: Raid Admin hide/show option a little more consistant to what you would expect it to do. Note that this is still something that needs much work in general, it's just here as-is for now.
+Changed: Raid Icon in MT list now appears over the in-combat indcation.
+Fixed: A few errors when fiddling with options.
+Fixed: Arcane Bar channeling wasn't clearing the casting bar when interrupted.
+Fixed: Some issues causing buff times to not display. Needs testing.
+Fixed: New hunter FD issue. You know I hate that feature...
+Fixed: Occasional menu error when creating a raid pullout frame.
+Fixed: Finally! The tooltip buff issue in raid frames.
+Fixed: Key bindings for Toggle Raid Frames and Toggle Raid Sorting both gave errors.
+Fixed: (Probably) The cause of the occasional border highlight sticking. Is the only thing I can think it could be atm, without any impirical evidence to the contrary.
+Fixed: Arcane Bar spark was out of place and wrongly sized.
+Fixed: NameFrame click override. Now clicking on nameframe will use default behaviour, bypassing click mods.
+Fixed: Possible problem with target frame cursor click region.
+Fixed: Arcane Bar texture was not being set.
+Fixed: PVP Rank icon alpha was not set correctly. No really, it is fixed now. /sigh
+Fixed: Config copier will now copy raid group positions correctly, and X-Perl will move old settings to new if you've not already placed raid frames yet.
+
+1.8.8
+Fixed: Highlight tankers error
+Fixed: Fading frames option was broken.
+Fixed: Some test code was left in by mistake.
+Fixed: PVP Rank icon alpha was not set correctly.
+
+1.8.7
+Fixed: nil error in XPerl_Target.lua, line 478.
+Fixed: nil error in XPerl.lua, line 775.
+Fixed: Usage startup wasn't always kicking in when you first login.
+
+IMPORTANT INSTALLATION NOTES WHEN UPGRADING FROM VERSION 1.8.5:
+You must delete old installation of X-Perl 1.8.5 before unzipping this one. All files, folders, frame names and globals have been renamed to finally put an end to the endless naming conflicts and issues with mods thinking that X-Perl is Nymbia's Perl.
+
+In other words, delete the following folders from your Interface/Addons folder: Perl, Perl_Player, Perl_PlayerPet, Perl_Party, Perl_PartyPet, Perl_Target, Perl_TargetTarget, Perl_RaidFrames, Perl_RaidAdmin, Perl_RaidHelper.
+
+A temporary addon called 'Perl' has been included to copy your configuration from the old layout to the new one. Once you have logged in, enter the command /xperlcopy to copy the old configuration variables to the new. This will only need to be done once per account, even if you have multiple characters you will only need to do it once on one of them.
+
+While every care has been taken to ensure that no settings are lost, I would still recommend backing up your WTF folder (or at least the X-Perl settings in WTF/Account/YourAccount/SavedVariables/Perl.lua).
+
+A note for the techies: Simply renaming Perl.lua to XPerl.lua will not suffice, as the variable names within have changed.
+
+Regretfully, window positions will not be restored (except for raid groups). For this I am sorry.
+
+I am also quite aware that this change does temporarily break a few things (Benecast, Clique and others) that are X-Perl (or Nymbia's Perl) aware, but the long term benefits cannot be ignored.
+
+1.8.6
+NEW: FAQ (see faq.txt) for some of the Frequently Asked Questions and answers to common problems.
+NEW: Equiped item scanner in the Item Checker, so you can see if people are actually wearing their Ony cloak, or did they leave it in the bank. After you've run an /raitem in X-Perl's Item Checker, click the scan button and X-Perl will actively look at the raid members around you and see if they have the selected item equiped. Note that normal inspect range rules apply, so you will have to move around the raid until everyone has been picked up. Unscanned members will always be at the top of the list. People who are offline or in another zone will be indicated as such. If members change equipment during a scan, this will be indicated by a greyed result and it will rescan them when in range again.
+NEW: Tooltip for dead raid members will now also show available combat rezzers (druids with rebirth up now or within 2 minutes, and other classes who aren't in combat at the time).
+NEW: Raid pets. These are not a permenant display or option, but if you need to see raid pets for anyone then you can drag either group or class from the Blizzard raid UI (as with creating the standard raid pullouts), but by holding down the Control key the unit's pets will be shown instead of the normal members. You can also toggle between owners and pets in the pull outs by right clicking on the pullout title and selecting 'Show Pets' / 'Show Owners' from the menu.
+NEW: JustClick support added.
+NEW: X-Perl will announce it's version and X-Perl mods used over it's own addon channel. This is more for my own benefit than anything else atm. A lot of guildies running this and it'll be handy to see what version they're running without them getting confused and such. But the info is there for anyone for the curious.
+NEW: Background bar textures option, so background of all bars can use the same texture as the forground.
+NEW: Target name frame reaction colour option. Will colour the whole target's name frame based on target units reaction colour.
+NEW: Option for Player's Pet health/mana values.
+NEW: Raid popup menu includes option to set/clear main tanks.
+NEW: Changed, all tga textures into blp textures for all unit highlights (mouseover and curses), and minimap icon textures removed as alternative now used to same effect.
+NEW: Option to limit the number of Main Tanks in the MT List.
+Changed: Click handlers (Cast Party, Clique and so on) functionality is ignored if you click on the NAME part of a unit.
+Changed: The 'Clear Blizzard Frames' option should no longer cause errors for mods that rely on default Blizzard frames, because X-Perl now replaces these with a dummy frame with no content that can be moved and shown without consequence.
+Changed: More Lua 5.1 code compatability changes.
+Changed: Some German localization for the Item Checker.
+Changed: A lot of general improvements to the Item Checker.
+Changed: Buff Helper option moved to raid options.
+Changed: Player's pet frame more compact in certain option configurations (namely when portrait shown but no name plate, the buffs will slot under stats frame, to right of portrait).
+Changed: Moved Addon options into All section of options, made the old 'All' into Admin options page.
+Changed: Curse Highlighting improved when using the extra border highlights. Now uses a custom edge file instead of overlaying another texture above frame. Memory usage decreased overall as a result.
+Fixed: (I hope) Hunter FD not always clearing on raid frames. If hunter FD's and stands very quickly, you don't always get the same set of events compared to FDing for a while and standing.
+Fixed: Target's Target (and TTT) tooltip. Wasn't showing at all.
+Fixed: Target debuffs on friendly target not showing correctly soon after starting up. Once one of them had been shown once it was ok. Fixed now.
+Fixed: Player's pet health values were getting truncated in fat bars mode. Font size retained to small for that frame.
+Fixed: Buff helper not working for CT_BuffMod, Morganti's BuffBar and in fact (in theory) all player buff mods. Now uses a much nicer approach to displaying the tooltip info.
+Fixed: Pull out raid frames weren't updating their CTRA info in line with default raid frames.
+Fixed: Text in Assist Frame now displayed correctly (without truncating or leaving open space) if you resize the window.
+Fixed: nil error on startup when Raid_Helper used without Raid_Admin.
+Fixed: nil error in Perl_Party.lua, line 223 when a party member had debuffs, and had never had buffs since startup.
+
+1.8.5
+NEW: X-Perl Item Check. Replacement for /raitem /radur /raresist /rareg. Use the old commands as before, or drop items in the left item list. Query button will perform /raitem on all ticked items (query always includes dur, reagents and resists) and you can then view and review all the results whenever, without having to re-query each item. Includes everyone in raid, so you don't have to work out who doesn't have items, it'll list them with 0 instead of no entry. This is a work in progress and has some more goodness coming to it, but it's very useful already. To come will be a Filter of some sort which you can add items to and name them, to save selecting what to query. Thanks to Boro on Bloodhoof for the idea :)
+NEW: Buff Helper will also list players who's buffs are fading soon (varying times depending on length of buff, but around 5% remaining). You will only see these notices from raid buffs that you can cast, or if you are raid leader/officer.
+NEW: German localization.
+Changed: Some option window adjustments to cope with German translation (very long words and all that). Let me know if there's any text overlapping, wrapping wrong etc.
+Changed: All X-Perl frames now clamped to screen, so they can't be accidentally moved or scaled out of view.
+Changed: OnClick function names changed to remove the constant conflict of click addons expecting Nymbia's Perl. X-Perl has in-built click handler support anyway. If one is missing, let me know asap.
+Changed: Full screen glow effects now occur on event triggers, rather than checking per frame. Option is also OFF by default now.
+Fixed: Out of control full screen warning will no longer occur on a flight.
+Fixed: nil error for FullScreen warnings for some people.
+Fixed: Added a few more localized strings.
+Fixed: Party targts PVP icon was ignore pvp flag option.
+Fixed: MT Targets not showing again after you closed it manually.
+Fixed: Party member's targets not having correct border/background colours.
+Fixed: nil error in Perl.lua, 621.
+
+1.8.4
+Changed: Party buffs increased to display 16 instead of 10.
+Changed: Re-implemented the 'lost' right click on MT List to target the tank from their target (assuming no other click was valid at that point via other handlers).
+Fixed: Border/Background frame colours. oops.
+Fixed: Buff time remaining not always showing for CTRA recognised raid buffs.
+Fixed: Some Chinese localization errors.
+Fixed: Buff tooltips not always working on pullouts.
+Fixed: MT List not appearing in some cases.
+Fixed: MT Targets for Unicode locales. Newer versions of CTRA no longer mangle the characters and mess up unicode things. So, un-mangle stuff removed.
+Fixed: Some CTRA localization checking.
+Fixed: nil error in Perl_target.lua, 1036. Master looter in different party than yourself.
+Fixed: nil error in Perl_target.lua, 1320. perlBuffs error.
+
+1.8.3
+General Improvements: Overal memory usage lowered (initial load size decreased by around 300k), memory usage per update lowered (by around 3x), performance improvements throughout.
+NEW: Buff filtering made SM4RT. For warlocks includes Soulstone Resurrection, for priests and druids includes each other's regrwoth/renew spells. For priests, always shows Weakened Soul. For everyone shows Recently Bandaged.
+NEW: Raid pullouts converted to X-Perl (The thing you do when you drag Group titles or Class titles out from the Blizzard raid frame).
+NEW: Raid Frame mana bars now optional.
+NEW: Raid frames can now grow upward from title.
+NEW: Key binding to toggle raid sorting by class/group.
+NEW: Option for the fading tooltips.
+NEW: Chinese localization. Thanks hughman.
+NEW: Passes MT's target names to BigWigs mod to activate in plenty of time (I always forget to mouseover stuff).
+NEW: STOP button for raid admin during roster load.
+NEW: Copy another character's configuration.
+NEW: Colour options for unit reaction types.
+NEW: Option to discard (nil out) all replaced Blizzard unit frames and associated function calls, so they can be garbage collected and the memory re-used. Note that this is not reversable unless you disable the option and reloadui/relog. If you have some mods that require those frames, then turn it off again. Alternatively, it may indicate to you where you're loading more mods than necessary.
+NEW: Raid Helper/Admin windows can be moved without un-pinning by holding Ctrl, Alt and Shift. For those that manage to get them stuck off the edge of screen.
+NEW: Can change the colour of the options window (button next to close).
+NEW: Target shows leader/master loot indicators. Note that there is no way in the current WoW API to determine master looter if they are not in your group. So this is absent for now.
+NEW: An ALL option section for globally setting some unit display options.
+NEW: Addon setup to enable or disable parts of X-Perl easier.
+NEW: Options for PVP status icons.
+NEW: Second display option for healer mode. To show deficit/max as well as the current deficit only method.
+Changed: No longer looks for internal CTRA or oRA variables for main tank list, but reads it from the CTRA channel instead to ensure future compatiblity (oRA2 and such). Note that this also means all CTRA info utilities are dependant on WoW 1.12.
+Changed: Resurrected colour now the same as Player ressing colour.
+Changed: SS Available players coloured green.
+Changed: All options strings moved to localization file. Translations for German, French and Korean wanted :)
+Changed: Class Coloured names option will override pvp colour indications for targets.
+Changed: Click handlers will use normal behaviour if mouse cursor has spell or item already and u click on a unit.
+Changed: Perl_Raid_FindID reverted to public function by request.
+Changed: Raid, Party, Party Pets, Target (and TT, TTT) buff icons created on the fly, saving an initial 200k UI memory on startup, and only creating what is necessary.
+Changed: Not creating needless menus that exist elsewhere already (ie, using Blizzard's own player, target, party, raid dropdown menus instead of creating new ones)
+Changed: Party optimizations (1 event/update handler instead of 4).
+Changed: Party Pet optimizations (1 event/update handler instead of 4).
+Changed: Raid optimizations (1 OnUpdate handler instead of 1 per unit, around 2.5 times less processing required)
+Changed: Many other miscellaneous optimizations throughout, with special attention paid to performance (verified by using LuaProfiler).
+Changed: Party name font reduced in size if the name using normal font exceeds frame display width.
+Changed: Assisting list shows enemy mobs assisting on your target, for benefit of healer classes with players targeted.
+Changed: Re-implemented old unlock/lock commands. To help avoid some confusion for other Perl version users.
+Changed: 3D portrait option split into seperate options for player, pet, target and party.
+Changed: Code compatible with Lua 5.1 (pre-requisite for The Burning Crusade)
+Changed: Blizzard default frames that are replaced by X-Perl are now also moved off the screen as well as hidden, so even when other mods re-show them, they're still not visible. Note that this is only applicable if you're not clearing out the Blizzard frames, which has the same effect, but at a more hardcore level.
+Fixed: Cured short freezes when clicking, aligning, setting gap of raid frames in some cases.
+Fixed: Moved Perl_SetBuffSize from Perl_Party to Perl proper.
+Fixed: Raid buffs not showing in some configurations.
+Fixed: Error when using align controls on raid frames when not all raid title frames had been created. Now creates all of them when you open options.
+Fixed: Hunter feign death display in raid frames. again..
+Fixed: MT Targets window not updating after a reloadui. Thanks again Blizzard for not sending RAID_ROSTER_UPDATE after a reloadui when you're in a raid.
+Fixed: Target Mob Type not hiding correctly when option disabled.
+Fixed: Own flags (afk, dnd etc.) now cleared when you login, to prevent sticky AFK etc. after a relog/reloadui.
+Fixed: Target dropdown now shows appropriate content (whisper etc).
+Fixed: Added support for CT_BuffMod, to work with buff helper.
+Fixed: GroupHeal mod button placement on party frames. Was compatible with Nymbia, but X-Perl's party targets and click overlay interfered.
+Fixed: Raid helper showing when CTRA still holds a tank list but you're not in a raid.
+Fixed: Occasional sticky afk/dnd flags on raid frames.
+
+1.8.2
+NEW: More alignment options for raid frames. Can choose to align first 4, last 4, odds, evens or all.
+NEW: Position options for Blizzard style combo point dots.
+Fixed: Finished off the code for the moving raid frames, shouldn't be issues with lots of movement when people join/leave raid now.
+Fixed: Player's pet mood icon alignment issues when using certain display option combinations.
+Fixed: Raid positions wasn't loading correctly.
+Fixed: Raid frames status indication colours too dark.
+Fixed: Raid frames sometimes not showing when joining raid. Some might ask why I futzed with all that, and they have.. so, when I was writing the Raid Admin, and u do a lot of group adjustments in a big block, the server sends 1 roster change event per change, so I wanted to defer re-building raid frames in such cases. It'll set a flag and just do 1 update instead of 20+ in one frame.
+Fixed: Target buffs above option was not quite finished, now complete.
+Fixed: Buff/Debuff stacking count >= 10 not showing.
+
+1.8.1
+Fixed: Raid not showing up when entering world after reloadui. Seems they don't send a RAID_ROSTER_UPDATE after a reloadui if you're in a raid now.
+Fixed: Options error setting icon size/rows when Target's Target addon not loaded.
+Fixed: 'myRoster' nil errors in Perl_Raid.lua
+
+1.8.0
+Fixed: CHAT_MSG_ADDON issue
+
+1.7.9
+NEW: X-Perl Raid Admin. Raid Leader tool for saving/loading raid group setups. Will substitute players of same class if the saved player not in raid. (Future plans will include templates and more) Again, this is a Raid LEADER tool and if you never lead raids, or arrange groups then you don't need it so can safely disable this addon.
+NEW: Resurrection count on tooltip for players in raid. "I ressed him 50 times already!"
+NEW: Option to display Target (and ToT, and ToToT) on top of frames, growing upward.
+NEW: Civilian flag shown on target frame.
+NEW: Raid Leader can right click drag and drop members in the X-Perl raid frames.
+NEW: Moving raid frames. Eye-candy, optional... Who wouldn't want that?!
+NEW: All Raid Tools given a Pin button to lock/unlock the window movement.
+NEW: Alpha option for frame backgrounds and borders, for those that just want to change the transparency of the background, and not the details.
+NEW: Reset Defaults button in options.
+Changed: TOC files for 1.12
+Changed: Put the rested XP back in, now that the text is more compact.
+Changed: Internal. Changed the old Perl xml code for bar backgrounds from using a seperate status bar, to instead creating a layer in the main bar. Faster and more memory efficient.
+Fixed: No longer displays the Combo point number frame if Blizzard combos being used.
+Fixed: SS Available/Ressed was not clearing if player released.
+Fixed: Res monitor was not resetting colour of someone's mana bar after they're alive.
+Fixed: Buff matching error in the buff helper (tooltip which shows who's missing buffs).
+Fixed: Hunter FD when unit is out of visual range. UnitIsDead() says they're alive in such cases.. :|
+
+1.7.8
+NEW: Transparency option for the assists frame background.
+Changed: Curable/Castable options for buff display on party and targets are now two seperate options. Not applicable to raid as you can only show either buffs or debuffs, and not both at the same time.
+Changed: Removed redundant CTRA flag checks from the OnUpdate loop in the Raid Frames as these can now be handled during the chat triggers. (In English: Performance improvement to raid frames)
+Fixed: SS Available wasn't showing in raid.
+Fixed: Can't be afk and dnd at same time, fixed raid display for that.
+Fixed: Small error with not having raid frames addon loaded.
+Fixed: Hit indicator won't show up now if there's no portrait.
+Fixed: A few other reported bugs.
+
+1.7.7
+NEW: oRA compatibility. No interferance is made with the oRA maintanksframe mod regarding display of MT List, so simply disable that mod and use X-Perl's instead. And then pursuade the author of that mod to provide visiblity options for MT list, so you can still have the nice menus on the raid frame :)
+NEW: Each X-Perl element (player, pet, party, target etc.) is now an optional addon!
+NEW: Many X-Perl frames (target's target's target, all raid unit frames, target history) are now not created until needed, saving load time and memory if you don't use them.
+NEW: RaidHelper: Can assign which of the MT Targets are the MA (/xp ma NUM or NAME), and after patch 1.12 will be able to broadcast this to other raid members (/xp ma broadcast). Will add some control to set this soon.
+NEW: RaidHelper: Smart Assist Key. Cycles through Main Tanks (MA first) till it finds you a suitable target. Will prioritise a target over 10% hp. Nothing gets my goat up more than assisting and moving to a target and it dies before you get there. Will also skip MA targets if you're a tank, and move straight onto the 'Other' targets, so you can use 1 Key for all cases. If you use /xp find, you can set the name of a target to look for 'BY NAME' as a priority.
+NEW: RaidHelper: KTM Mini threat bar on the MT Targets list for those that can't find space for KTM on their tidy screen layout.
+NEW: RaidHelper: A new (optional) column in MT list showing the tank themself.
+NEW: RaidHelper: Other target's scan is now optional.
+NEW: RaidHelper: Tooltips optional on MT list.
+NEW: RaidFrames: Built in resurrection monitor shows who is ressing a unit. Shows their health/mana bars in blue and gives the resser's name. (Assuming CTRA or oRA present)
+Changed: No longer directly references CT_RA_Stats to retrieve information. Instead collects data from the CTRA channel, to provide compatibility with oRA.
+Changed: Due to some performance issues with 40 man raids on some systems, the raid frames have been reverted to a normal addon, and not load on demand. However, don't despair. Each individual Raid Frame is not created until required, so the overhead and load time for it is very small when not in use.
+Fixed: Debuff highlight from showing through from frame segments that are not visible.
+
+1.7.6
+RaidHelper: Added appropriate click support for units displayed in the target lists.
+RaidHelper: Added option for MT Target's Targets.
+RaidHelper: Saved variables changed to per-character, sorry but you'll need to re-do your settings. (Note, this is for the XPerl Raid Helper addon only and is not a global change for X-Perl proper).
+RaidHelper: Auto hides the CTRA MT Targets list if Perl Raid Helper is enabled. (Only does this once at startup, or on option change)
+RaidHelper: No longer re-making tank list every 0.3 seconds (changed the CTRA hook) and no longer calls CTRA MT Targets update if we're displaying them ourselves and the CTRA one is hidden.
+RaidHelper: Fixed other targets not showing when you're mounted (Using UnitReaction instead of UnitCanAttack), and also checks that raid members targets are units YOU can attack, instead of them.
+NEW: Added an option to set the upper limit of all frame scaling, for those people that use very low UI scales. This also fixed the annoyances with frame scale numbers losing the occasional 1% in setup window.
+Changed: Ensured future compatibility with MobHealth3, although it worked as it was before.
+Fixed: Some text frame placements to accomodate larger frame scales. Let me know of any issues (text over edges of frames, text that wraps out of view etc.)
+Fixed: Small display mis-alignment with player xp rested bar.
+
+1.7.5
+Fixed: Stupid 1 time startup error. doh.
+
+1.7.4
+NEW: Raid Helper (standalone mod, does not require X-Perl proper). Replaces CTRA MT Targets window, and adds ability to select detectable untanked targets. And gives some raid target stats. Dynamically allocated frames, so won't use memory until needed.
+NEW: Buff options for party and targets to limit buff display to curable/castable only.
+Changed: Assists Frame moved to the Raid Helper addon. Also standalone and does not require X-Perl proper to function.
+Changed: Assists Frame won't truncate strings horizontally any more, but will word wrap instead.
+Fixed: CastParty, SmartHeal, ClickHeal support. They will now all pass through to default X-Perl behaviour if they're defined to within the respective addons.
+Removed: Warrior Targets from the Raid Frames. As the functionality of the Raid Helper covers this and more.
+Fixed: TTT frame was ignoring Selection Highlight option.
+Fixed: Some window positions from not saving after using the align/gap options.
+
+1.7.3
+NEW: Hunter feign death now shows in raid view.
+NEW: Resizable buff/debuff icons for Target, TT, TTT, Pet, Party. Debuffs are 20% to 50% larger than buffs, depending on frame.
+NEW: Option for maximum number of buff rows to display on Target, TT, TTT.
+Changed: Target, TT, TTT buff and debuff display re-written to display more rationally in allowed space.
+Fixed: Fat Health Bar option wasn't updating immediately.
+Fixed: Big XP numbers trimmed down to 1K values to help fit into bar.
+Fixed: PVP Update - Missed the API change about UNIT_PVP_UPDATE being removed. doh.
+Fixed: Made a little space for the rogue/catform energy bar ticker.
+Fixed: Warrior Targets in Raid frames. Temporary fix as this will be upgraded to be more useful in near future.
+Fixed: Frame level of target buffs was too low, and was hard to mouse over some buffs if the target had no mana.
+
+1.7.2
+NEW: Optional Pet names for player and party.
+NEW: Party Pet frame scale.
+NEW: Raid Title (Group numbers etc.) display now optional.
+NEW: Key bindings for raid buff options.
+NEW: Cast Party option to make clicks only apply to raid frames (Also applies to Genesis Clicks, Smart Heal).
+NEW: 30 Yard Range indicators for party members (So you can see if in range for auras, group heals and such).
+Changed: New 30 Yard Range Icon.. again. Opinions please :)
+Changed: Defaults for HealerMode, FatHealthBars and Castable Raid Buffs were on. Now off. oops.
+Changed: Tidied location of Blizzard combo point dots on target frame.
+Changed: Added options for cast party, genesis clicks, smart heal to only work from raid frame.
+Changed: Fat Health Bar appearance improved.
+Changed: Large rework of StatsFrame code, all frames using template StatsFrame now.
+Changed: Two more bar textures to choose from.
+Changed: Cast Party option now changed to '3rd Party' option to cover all supported 3rd party unitframe click mods. If your click mod is not working, then this is probably why. Turn the option on :)
+Fixed: For DruidBar addon; Mana will now update immediately on shapeshift.
+Fixed: A few small issues with options and now forces a redraw of everything when options are closed.
+Fixed: Some localizations and made some things less locale dependant. (ie, class names collected from WoW as they are encountered)
+Fixed: Using the align/gap options will now move the frames relative to UIParent instead of sister frames. this means frame locations will be saved correctly. (Also see known issues)
+Fixed: Combo Point (numerical display only). Didn't notice cos I use the bar version myself.
+Fixed: Some alpha frame issues.
+Fixed: Pet happiness flash when sad, when you had the happiness showing all the time.
+Fixed: Font issue with Fat Health bars.
+Fixed: CT_PartyBuffs from displaying extra buff icons. And gives a warning about not needing the mod, which you don't if you're using X-Perl.
+
+1.7.1
+Fixed: Update issue with target's target.
+
+1.7.0
+NEW: Party portraits! Don't panic if you prefer not to have them, old style retained when portraits not used.
+NEW: Player's Pet portrait.
+NEW: Pet happiness options. (only show when sad, flash when sad)
+NEW: Raid buffs and debuffs (maximum of 8) small display, but distinctive enough to identify who's buffed (option for castable/curable only).
+NEW: Target's Target's Target (with optional buffs).
+NEW: Healer mode to show health deficit rather than values.
+NEW: Option for FAT health bars. Was going to make that part of Healer mode, but guessed some might prefer it that way normally.
+NEW: Visual aid in options to help identify what an option does. (See Known Issues before complaining about display bugs)
+NEW: Option to use Blizard's Combo point dots (moving them around a little to fit X-Perl).
+NEW: More display options for health/mana percentages and values.
+NEW: Genesis clicks and SmartHeal support, and generalized X-Perl's OnClick handler into one call.
+NEW: Player XP bar will function as reputation watcher if you are level 60.
+Changed: Frame strata rationalised and made same throughout, LOW based.
+Changed: By request, 'Perl_CustomClickFunction' changed to 'Perl_Custom_ClickFunction'. Makes it compatible with Perl Classic.
+Changed: Clipping the border from buffs when it's a debuff, so we don't lose any more space than necessary. Buff icons have their own border, and when we're adding another border on top, it looks a bit odd.
+Changed: Greater than 30 yard to target indicator now something a little more obvious (says '>30yd').
+Fixed: Old Cast Bar option was not taking effect immediately, so gave the appearance of not working at all. Note, this now turns off if eCastingBar is loaded and enabled.
+Fixed: Target's Target pvp rank icon was stretched over name frame.
+
+1.6.8
+NEW: Alt key mouseover a buff to show ppl WITH buff. no key for without.
+Fixed occasional index error on player buff tooltips.
+Fixed party targets... yeah.. had tried to cut down on combat flag updates, and it got lost in there someplace :)
+Fixed Arcane Intellect now == Arcane Brilliance for tooltip helper.
+
+1.6.7
+Fixed buff tooltip helper to not report people who are offline/dead.
+Fixed buff tooltip helper to be sensible about PW:F and Prayer of Fortitude matching (as well as spirit and shadow).
+Fixed debuff highlights, they were colouring as if it was something YOU could dispell, when there was any debuff.
+
+1.6.6
+Fixed party click target thing... doh
+
+1.6.5
+Fixed growing buff tooltip error (non-duration buffs only)
+Fixed click error in raid frames
+Fixed stupid 'p' error. Thx Sentox
+
+1.6.4
+NEW: Energy ticker for rogues/cat form types.
+NEW: Debuff borders now coloured according to debuff type on all frames.
+NEW: Highlight of raid members who are cursed, poisoned etc.
+NEW: Highlight of target's target in raid (if your target is hostile) or highlight of target's target's target (if your target is friendly).
+NEW: Key Bindings to toggle Raid Windows and Options Window.
+NEW: Party buffs and debuffs are now optional.
+NEW: Party values for health and mana are now optional.
+NEW: Hit Indicators (dmg/heal numbers that flash over portraits) are now optional.
+NEW: Colour choices for most bars.
+NEW: Tooltips on buffs will show who's missing it.
+Fixed Cast Party (please test this)
+Fixed tooltip nil error in some cases (with ctra info).
+Fixed a variable missing for first time users, if they try and move raid group windows.
+Fixed options window error if you'd disabled the options addon. It needs to be enabled to work, but won't load till required. It will automatically enable the addon now if you ask for it, and will work after reloadui.
+Fixed a couple of CastParty frame calls.
+Removed references to distance library, as this became obsolete in WoW 1.6.
+
+1.6.3
+Fixed stupid locking frame thing on party member frames.
+Fixed party pets. weren't clickable.
+Fixed debuff alignment when more than 12 debuffs and no mana on target. And occasional debuff appearing under first buff (when detect magic used)
+
+1.6.2
+Fixed texture error in options page.. doh!
+
+1.6.1
+Fixed player's pet mouse click error.
+Fixed small issue with tooltip regarding CTRA info.
+
+1.6.0
+NEW: Configuration dialog. /perl unlock, /perl menu, /perl are now are all the same. Notice the alignment options for raid/party/player frames. And tooltips for 95% of the options.
+NEW: Minimap Icon to access the new menu also.
+NEW: CTRA information in raid frames (info like AFK, SS Available, Resurrected and so on).
+NEW: Optional highlight on mouseover of unit frames.
+NEW: Optional Class coloured names.
+NEW: Added Raid Target Icon to Target and Target's Target frames.
+NEW: Added a hook function for clicks for other mods (Perl_CustomClickFunction(button, unit), should return true if handled)
+Made Target's Target buffs optional.
+Target and Target's target buffs now stacking in rows of 8.
+Fixed Target's debuffs overlapping portrait when there's no mana bar. (Will stack in 6 rather than 8 in such cases)
+Fixed frame transparency.
+Fixed many display issues with toggling options. Changes should now occur immediately.
+Fixed the castclick overlay from instersecting first party debuff (when party debuffs to right of frame)
+Fixed click/mouse event issues. Clicks will only be called from Click events now. MouseUp/Down no longer used. (mod hook friendlyness)
+Fixed Hit Indicator from displaying underneath 3D portraits.
+Fixed assists frame from disappearing when zoning.
+
+1.5.0
+Added close button to assists view.
+Fixed an issue with options (target's target scale help, and broken parameter check).
+
+1.4.9
+Fixed mouse controls in assists view.
+Fixed index error in Perl_Target.lua when using self targetting viewer.
+Enemies targetting you wasn't including neutral faction.
+Fixed target's target history from nudging up into target's target frame when target's target had buffs. (oops)
+
+1.4.8
+Added group number display when in raid. (Optional)
+Added buff/debuff stacking counts to target and party icons.
+Added buff/debuff display to Target's Target.
+Fixed memory leak in assists/targetters view (SimpleHTML leaks like a seive in 1.11 when you call SetText()), changed display method.
+Now won't build lists for assists/targetters unless we're displaying that.
+Fixed party pets not showing/hiding correctly when option changed.
+Fixed druid mana not updating immediately after shape shifting.
+Fixed hunter pets from disappearing when hunter FD's.
+Charm warning (Bright yellow ! on frame) wasn't working for Target's Target.
+Changed all scaling ranges to 0.5 to 1.5 range.
+Fixed 1.11 WoW bug with stables causing player's pet frame to hide (same bug causes stable pets to disappear after swapping). Is WoW bug, rather than Perl bug, but working around it now.
+
+1.4.7
+Added scaling option for assists frame. (/perl setassistscale)
+
+1.4.6
+Fixed sorting issues in assists view.
+Allowed toggle of each assist and targetting self views into same window.
+
+1.4.5
+Added a permentant assists view (click the assists counter on target frame to open/close).
+Fixed pvp flag not updating when a player's pvp flag is removed (Thanks Blizzard for not sending UNIT_PVP_UPDATE msg any more..)
+Fixed party member targets (when did they stop working??)
+Stopped some target updates when frame is fading.
+
+1.4.4
+Fixes for patch 1.11
+
+1.4.3
+Fixed XP bar update on player and pet.
+Fixed party pets sometimes not updating on death.
+
+1.4.2
+Configurable colours for borders and backgrounds.
+Small tooltip fix.
+
+1.4.1
+Target's Target history (Useful for catching those over agroers who's name only pops on target's target for a split second, now it'll build a small list of names under the target's target)
+Fixed party pets displaying at wrong times.
+
+1.4.0
+Complete re-write of the event handling.
+Liberal usage of local functions to cut down compiled code size, and increase speed since functions are called directly rather than by name.
+Fixed target name colour of non Horde/Alliance faction groups. (Using UnitReaction() rather than UnitFactionGroup())
+Frames now fade out when closing.
+
+1.3.4
+Fixed pet name colours in target windows.
+Added time left on target buffs/debuffs for friendly targets, if the buff is found in CTRA information. (ie: only works in a raid and only if they have CTRA)
+
+1.3.3
+Fixed party menus.. again. No really.
+Normal portrait shown for target when target not visible.
+Combat flash extended to show green flash for heal effects.
+Added time left on party member buffs/debuffs, if the buff is found in CTRA information. (ie: only works in a raid and only if they have CTRA)
+
+1.3.2
+Fixed party menus.
+Fixed combat flash from pulsing correctly on players, and rationallised some of the variables as a result. some events were being sent from the buff slots, and so we weren't getting them if there were no buffs, or getting too many if there was more than 1 buff.
+Pet window won't show 'Unknown Entity' for short periods of time when summoning/dismissing, and is more responsive.
+
+1.3.1
+Optimized event usage to not bother with 99% of events while zoning. See various articles on the forums about zone times and event backlogs.
+Fixed 'Feign Death' text for party and player.
+Added red combat flash for frames when player, pet, target, party, partypets take damage. Optional.
+Fixed party buff display.
+
+1.3 - Zek's branch
+Global optimizations some random fixes.
+Fixed hunter in party FD health bar colour problem.
+Added combat indicators for pet, target, target's target, party, party pets.
+Added target counter. Panel in target frame will show you everyone else in party/raid who has your target selected.
+Added self counter. Panel in player frame will show what/who is targetting you. Optionally only healers, and optionally *known* enemies also.
+Optional 3D portrait for player and target.

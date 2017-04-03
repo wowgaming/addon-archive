@@ -1,0 +1,20 @@
+## Interface: 30300
+## Title: Overachiever - Tabs
+## Version: 0.56
+## Author: Tuhljin
+## Notes: Achievement frame tabs module.
+## LoadOnDemand: 1
+## LoadWith: Blizzard_AchievementUI
+## Dependencies: Overachiever
+## SavedVariables: Overachiever_Tabs_Settings
+## X-Child-Of: Overachiever
+## X-Curse-Packaged-Version: v0.56
+## X-Curse-Project-Name: Overachiever - achievement tools and tweaks
+## X-Curse-Project-ID: overachiever
+## X-Curse-Repository-ID: wow/overachiever/mainline
+
+localization.lua
+build.lua
+Search.lua
+Suggestions.lua
+Watch.lua

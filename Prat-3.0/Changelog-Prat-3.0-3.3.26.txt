@@ -1,0 +1,376 @@
+------------------------------------------------------------------------
+r572 | sylvanaar | 2010-08-08 15:22:30 +0000 (Sun, 08 Aug 2010) | 1 line
+Changed paths:
+   A /tags/3.3.26 (from /trunk:571)
+
+Tagging as 3.3.26
+------------------------------------------------------------------------
+r571 | sylvanaar | 2010-08-08 14:14:37 +0000 (Sun, 08 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+run collectgarbage before reporting memory usage
+------------------------------------------------------------------------
+r570 | sylvanaar | 2010-08-08 13:52:25 +0000 (Sun, 08 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+pick up localizations
+------------------------------------------------------------------------
+r569 | sylvanaar | 2010-08-08 13:43:49 +0000 (Sun, 08 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+show raid icons in the chat bubbles
+------------------------------------------------------------------------
+r568 | sylvanaar | 2010-08-08 13:08:09 +0000 (Sun, 08 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/Timestamps.lua
+   M /trunk/services/chatsections.lua
+
+fix right click menu for numbered chat channels (#402), prevent double timestamps when moving chat to a non-temporary chatframe
+------------------------------------------------------------------------
+r567 | sylvanaar | 2010-08-08 01:22:32 +0000 (Sun, 08 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChannelNames.lua
+
+remove unused code
+------------------------------------------------------------------------
+r566 | sylvanaar | 2010-08-07 20:13:04 +0000 (Sat, 07 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChatTabs.lua
+
+less drastic fix for #401
+------------------------------------------------------------------------
+r565 | sylvanaar | 2010-08-07 20:09:20 +0000 (Sat, 07 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChatTabs.lua
+
+try again to fix bug #401 error in FCF_FadeOutChatFrame
+------------------------------------------------------------------------
+r564 | sylvanaar | 2010-08-06 21:05:08 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Editbox.lua
+
+set the editbox header font the same as the main text's font
+------------------------------------------------------------------------
+r563 | sylvanaar | 2010-08-06 20:53:13 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Buttons.lua
+
+reshow the minimize button when the option is toggled
+------------------------------------------------------------------------
+r562 | sylvanaar | 2010-08-06 20:29:02 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomFilters.lua
+
+support a %1 in the replacement to allow for partial modification of a match
+------------------------------------------------------------------------
+r561 | sylvanaar | 2010-08-06 19:39:47 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+revert r536, seems to cause compatiblity issues with other addons
+------------------------------------------------------------------------
+r560 | sylvanaar | 2010-08-05 21:30:43 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Buttons.lua
+
+add an option to hide the minimize button
+------------------------------------------------------------------------
+r558 | sylvanaar | 2010-08-05 02:24:40 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Buttons.lua
+
+fix an error in the scroll to bottom buttons onclick
+------------------------------------------------------------------------
+r557 | sylvanaar | 2010-08-05 02:19:03 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Buttons.lua
+
+fix many wonky button placement issues. now all the options work
+------------------------------------------------------------------------
+r556 | sylvanaar | 2010-08-05 01:12:58 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+add an option to toggle text formatting of the chat bubbles
+------------------------------------------------------------------------
+r555 | sylvanaar | 2010-08-05 00:54:27 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+run all prat's message filters on the chat bubble text so we get player name coloring and custom filter, etc. in the chat bubbles
+------------------------------------------------------------------------
+r554 | sylvanaar | 2010-08-05 00:15:42 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/services/chatsections.lua
+
+fix another bliz bug and make the realid conversation playerlink for yourself clickable
+------------------------------------------------------------------------
+r553 | sylvanaar | 2010-08-05 00:10:16 +0000 (Thu, 05 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChannelNames.lua
+   M /trunk/modules/PlayerNames.lua
+
+support for realid conversation channel renaming, fix for realid conversation player name coloring
+------------------------------------------------------------------------
+r552 | sylvanaar | 2010-08-04 23:58:45 +0000 (Wed, 04 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChannelNames.lua
+   M /trunk/services/chatsections.lua
+   M /trunk/services/events.lua
+
+support for realid conversations. fix for blizzard bug where the player name has a space after it
+------------------------------------------------------------------------
+r551 | sylvanaar | 2010-08-04 22:46:11 +0000 (Wed, 04 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+fix the 'reappearing chat menu' problem #398
+------------------------------------------------------------------------
+r549 | sylvanaar | 2010-08-03 22:05:23 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Alias.lua
+
+change alias' default for inline expansion to off
+------------------------------------------------------------------------
+r548 | sylvanaar | 2010-08-03 02:15:58 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Buttons.lua
+
+update localizations, bring in an improvement for the minimize button on undocked frames from the originalbuttons module
+------------------------------------------------------------------------
+r547 | sylvanaar | 2010-08-03 02:00:52 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CopyChat.lua
+   M /trunk/modules/TellTarget.lua
+
+fix telltarget, provide a copychat button on chatframes > 10
+------------------------------------------------------------------------
+r546 | sylvanaar | 2010-08-03 01:37:56 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+make the command history saving work for chatframe1 only
+------------------------------------------------------------------------
+r545 | sylvanaar | 2010-08-03 01:29:05 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/Timestamps.lua
+
+prevent both 2 and 0 timestamps in temporary chat windows
+------------------------------------------------------------------------
+r544 | sylvanaar | 2010-08-03 01:08:57 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/OriginalButtons.lua
+
+better handling of chatframes > chatframe10.
+------------------------------------------------------------------------
+r543 | sylvanaar | 2010-08-03 00:45:09 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+refactored the code a bit to avoid some duplication
+------------------------------------------------------------------------
+r542 | sylvanaar | 2010-08-02 19:02:45 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+revert 541
+------------------------------------------------------------------------
+r541 | sylvanaar | 2010-08-02 18:43:38 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+add chatframes 11-13
+------------------------------------------------------------------------
+r540 | sylvanaar | 2010-08-02 13:08:33 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/AltNames.lua
+   M /trunk/modules/CopyChat.lua
+
+fix #397 for duplicate entries on the dropdown menus for altnames and copychat
+------------------------------------------------------------------------
+r539 | sylvanaar | 2010-08-02 12:49:38 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Filtering.lua
+
+better descriptions for the throttling feature
+------------------------------------------------------------------------
+r538 | sylvanaar | 2010-08-02 12:46:27 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+fix a bug that was preventing the chat menu from showing
+------------------------------------------------------------------------
+r537 | sylvanaar | 2010-08-02 06:48:12 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+color the chat bubbles' border the same as the chat type
+------------------------------------------------------------------------
+r536 | sylvanaar | 2010-08-01 23:57:04 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+update the chatedit parsetext hook code to handle the new funkyness
+------------------------------------------------------------------------
+r535 | sylvanaar | 2010-08-01 23:55:18 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Filtering.lua
+
+added a tradespam feature to the filtering module. It will filter out messages which are spammed multiple times into the numbered channels and yell.
+------------------------------------------------------------------------
+r534 | sylvanaar | 2010-08-01 17:30:04 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChannelNames.lua
+
+fix typo
+------------------------------------------------------------------------
+r533 | sylvanaar | 2010-08-01 17:22:15 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChannelNames.lua
+   M /trunk/modules/PopupMessage.lua
+
+realid whisper channel name formatting. fix a possible nil issue in popupmessage
+------------------------------------------------------------------------
+r532 | sylvanaar | 2010-08-01 16:32:17 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+make the chat bubbles expand to reveal all their text when you move your mouse onto them, and collapse back when you move your mouse out of them 
+------------------------------------------------------------------------
+r531 | sylvanaar | 2010-08-01 16:24:58 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+rewrite the frame scanner to not create extra table garbage
+------------------------------------------------------------------------
+r530 | sylvanaar | 2010-08-01 16:08:39 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Bubbles.lua
+
+make the chat bubble shortener an option of the bubbles module. toggle support for the chat bubble shortener. fix missing ... on the first bubble
+------------------------------------------------------------------------
+r529 | sylvanaar | 2010-08-01 15:41:06 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Sounds.lua
+
+touch for localizations
+------------------------------------------------------------------------
+r528 | sylvanaar | 2010-08-01 15:36:40 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+   M /trunk/modules/Sounds.lua
+   M /trunk/services/events.lua
+
+enable processing of battle.net whispers. optional random coloring of battle.net names. sounds for battle.net whispers
+------------------------------------------------------------------------
+r527 | sylvanaar | 2010-08-01 14:27:47 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Font.lua
+
+set the font again if PEW fires
+------------------------------------------------------------------------
+r526 | sylvanaar | 2010-08-01 14:25:29 +0000 (Sun, 01 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Font.lua
+
+set the font again if PEW fires
+------------------------------------------------------------------------
+r525 | sylvanaar | 2010-07-29 15:26:10 +0000 (Thu, 29 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+switch to tag:latest on AceGUI-3.0-SharedMediaWidgets
+------------------------------------------------------------------------
+r524 | sylvanaar | 2010-07-28 13:37:10 +0000 (Wed, 28 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+kludge for compatibility with some addons which call addmessage from their filter functions.
+------------------------------------------------------------------------
+r522 | sylvanaar | 2010-07-21 07:14:25 +0000 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Prat-3.0.toc
+
+touch to repackage to pick up AceGUI SharedMedia widgets fix
+------------------------------------------------------------------------
+r521 | sylvanaar | 2010-07-18 23:16:11 +0000 (Sun, 18 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+we can still safely hide and show the button frame I think, so put that code back in
+------------------------------------------------------------------------
+r520 | sylvanaar | 2010-07-18 23:09:49 +0000 (Sun, 18 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+prevent nil error in bnet.lua when using hidden button frame and originalbuttons module
+------------------------------------------------------------------------
+r519 | sylvanaar | 2010-07-18 15:07:12 +0000 (Sun, 18 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+finally - sane behavior for the chatframe buttons in right-inside configuration, and no more button frame
+------------------------------------------------------------------------
+r518 | sylvanaar | 2010-07-18 14:52:34 +0000 (Sun, 18 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+do not show the minimize button when the frame is docked - that just looks ugly
+------------------------------------------------------------------------
+r517 | sylvanaar | 2010-07-18 14:46:02 +0000 (Sun, 18 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalButtons.lua
+
+much cleaner minimize button solution for the originalbuttons module (for right-inside buttons)
+------------------------------------------------------------------------
+r516 | sylvanaar | 2010-07-15 12:14:51 +0000 (Thu, 15 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Scroll.lua
+
+reverse the meaning of shift-scroll and ctrl-scroll to match the default UI
+------------------------------------------------------------------------
+r514 | sylvanaar | 2010-07-09 00:26:17 +0000 (Fri, 09 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChatTabs.lua
+
+fix the 'disable flashing' option for the chat tabs
+------------------------------------------------------------------------
+r513 | sylvanaar | 2010-07-09 00:11:18 +0000 (Fri, 09 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+code needed to fix prat's addmessage processing for events that are processed
+------------------------------------------------------------------------
+r512 | sylvanaar | 2010-07-09 00:02:10 +0000 (Fri, 09 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/services/chatsections.lua
+
+very alpha support for bn whisper text popouts. works by fixing a very old bug that was allowing unprocessed chat types to be processed anyways.
+------------------------------------------------------------------------
+r511 | sylvanaar | 2010-07-08 22:20:28 +0000 (Thu, 08 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/UrlCopy.lua
+   M /trunk/modules/includes.xml
+
+fix another reference to CFEB and remove the OriginalEditbox module
+------------------------------------------------------------------------
+r510 | sylvanaar | 2010-07-08 22:17:03 +0000 (Thu, 08 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/AltNames.lua
+   M /trunk/modules/Substitutions.lua
+
+fix references to ChatFrameEditBox
+------------------------------------------------------------------------
+r509 | sylvanaar | 2010-07-06 14:41:36 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Editbox.lua
+
+since the useAltKey option was broken forever, people expect the default option to be off, so change it to that.
+------------------------------------------------------------------------

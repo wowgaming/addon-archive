@@ -1,0 +1,12 @@
+tag 3.0.3.1
+efd06041a5297a4c7f2a6e648ce15d2d81d25d92
+Hendrik Leppkes <h.leppkes@gmail.com>
+2010-07-26 21:40:13 +0200
+
+Tag as 3.0.3.1 for lib upgrades.
+
+
+--------------------
+
+Hendrik Leppkes:
+	- Use "tag: latest" for SMW and LSM

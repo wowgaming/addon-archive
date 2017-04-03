@@ -1,0 +1,16 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fPlayer Buffs|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fБаффы игрока|r
+## Title-zhCN: X-Perl |cffeda55f玩家Buff|r
+## Title-zhTW: X-Perl |cffeda55f玩家增益狀態|r 由 |cFFFF8080Zek|r 開發
+## Notes: Gives buff icons on the X-Perl player frame.
+## Notes-ruRU: Отображает иконки баффов на фрейме игрока.
+## Notes-zhTW: 給予 X-Perl 玩家框架增益狀態圖標功能.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## RequiredDeps: XPerl_Player
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_PlayerBuffs.lua

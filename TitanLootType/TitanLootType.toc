@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: Titan Panel [|cffeda55fLootType|r] |cff00aa004.3.8.30300|r
+## Notes: Adds group loot and instance difficulty information to Titan Panel
+## Author: Titan Development Team (http://www.titanpanel.org)
+## SavedVariables: 
+## OptionalDeps: 
+## Dependencies: Titan
+## Version: 4.3.8.30300
+## X-Child-Of: Titan
+TitanLootType.xml

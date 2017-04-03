@@ -1,0 +1,35 @@
+## Interface: 30000
+## Name: Proximo
+## Title: Proximo
+## Notes: Simple enemy unit frames for Arena matches
+## Notes-ruRU: Простой аддон фреймов противников для арена боёв
+## Notes-zhCN: 简单的竞技场敌方目标框架
+## Version: 2.3
+## Author: Grayhoof
+## SavedVariables: ProximoDB
+## X-Website: http://grayhoof.wowinterface.com/
+## X-Category: Combat
+## X-Embeds: Ace3, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, TalentGuess-1.0
+## OptionalDeps: Ace3, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, TalentGuess-1.0
+
+embeds.xml
+libs\TalentGuess-1.0\LibStub.lua
+libs\TalentGuess-1.0\TalentGuess-1.0.xml
+
+locals\localization-enUS.lua
+locals\localization-ruRU.lua
+locals\localization-deDE.lua
+locals\localization-koKR.lua
+locals\localization-zhTW.lua
+locals\localization-frFR.lua
+locals\localization-zhCN.lua
+locals\localization-class.lua
+Proximo.lua
+auras.lua
+spellcast.lua
+options.lua
+frame.lua
+class.lua
+nameplates.lua
+bindings.lua
+

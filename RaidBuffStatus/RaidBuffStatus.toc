@@ -1,0 +1,39 @@
+## Interface: 30300
+## Title: RaidBuffStatus
+## Author: Danielbarron
+## Version: 3.249
+## X-Build: $Revision: 337 $
+## X-ReleaseDate: "$Date: 2010-01-07 22:40:06 +0000 (Thu, 07 Jan 2010) $"
+## Notes: Reports to /raid or /party on consumables, buffs, AFK, mana, crusader aura, talent spec and many many others but in an intelligent automagic way. RBS is the last nail in the coffin of all slacking level 80 raiders.
+## eMail: daniel@jadeb.com
+## URL: http://www.wowace.com/projects/raidbuffstatus/
+## DefaultState: Enabled
+## OptionalDeps: Ace3, oRA2, XPerl, LibGroupTalents-1.0, LibTalentQuery-1.0
+## SavedVariables: RaidBuffStatusDB, RaidBuffStatusDefaultProfile
+## X-Category: Raid
+## X-Embeds: Ace3, LibDataBroker-1.1, LibGroupTalents-1.0, LibTalentQuery-1.0
+## By Danielbarron on Kul Tiras Europe (Daniel Barron)
+## X-Curse-Packaged-Version: v3.249
+## X-Curse-Project-Name: RaidBuffStatus
+## X-Curse-Project-ID: raidbuffstatus
+## X-Curse-Repository-ID: wow/raidbuffstatus/mainline
+
+embeds.xml
+
+Localization\enUS.lua
+Localization\frFR.lua
+Localization\deDE.lua
+Localization\koKR.lua
+Localization\esMX.lua
+Localization\ruRU.lua
+Localization\zhCN.lua
+Localization\esES.lua
+Localization\zhTW.lua
+
+
+Core.lua
+Buffs.lua
+Config.lua
+MiniMap.lua
+ToolScanner.lua
+oRAEvent.lua

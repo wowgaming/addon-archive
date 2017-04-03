@@ -1,0 +1,17 @@
+## Interface: 30100
+## Title: Lib: QTipClick-1.1
+## Notes: Library providing mouse-click support for LibQTip-1.0.
+## Author: Torhal
+## Version: r9 
+## X-Date: 2009-06-12T03:55:01Z
+## X-Category: Library, Tooltip
+## X-License: Ace3 BSD-like license
+## OptionalDeps: LibQTip-1.0
+## X-Curse-Packaged-Version: r9
+## X-Curse-Project-Name: LibQTipClick-1.1
+## X-Curse-Project-ID: libqtipclick-1-1
+## X-Curse-Repository-ID: wow/libqtipclick-1-1/mainline
+
+LibStub\LibStub.lua
+CallbackHandler-1.0\CallbackHandler-1.0.lua
+lib.xml

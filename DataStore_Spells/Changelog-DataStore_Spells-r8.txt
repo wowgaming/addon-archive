@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r8 | Thaoky | 2010-07-06 17:18:34 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Spells.lua
+
+Minor fix when scanning spell tab data.
+------------------------------------------------------------------------
+r7 | thaoky | 2009-12-09 12:35:40 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/DataStore_Spells.toc
+
+ToC Update
+------------------------------------------------------------------------

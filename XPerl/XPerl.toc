@@ -1,0 +1,25 @@
+﻿## Interface: 30300
+## Title: X-Perl UnitFrames by |cFFFF8080Zek|r
+## Version: 3.0.9
+## Title-ruRU: X-Perl UnitFrames |cFFFF6060Основной|r
+## Author: Zek
+## Title-zhCN: X-Perl 核心
+## Title-zhTW: X-Perl 主要核心 由 |cFFFF8080Zek|r 開發
+## Notes: Replaces the normal unit, party, target, pet frames and adds target-of-target.
+## Notes-ruRU: Заменяет стандартные фреймы игроков, группы, цели, питомца и добавляет цель цели.
+## Notes-deDE: Ersetzt die normalen Einheiten, Gruppe, Ziel, Begleiterframe und fügt Ziel des Zieles hinzu.
+## Notes-esES: Reemplazo para los marcos de unidades, con nuevo aspecto para jugador, mascota, grupo, objetivo, objetivo del objetivo, y banda
+## Notes-zhCN: 玩家头像增强插件，附带团队助手功能
+## Notes-zhTW: 提供玩家、隊伍、目標、寵物、目標的目標頭像增強以及團隊框架顯示、團隊助手功能
+## X-eMail: zeksie@gmail.com
+## X-Donate: PayPal:zeksie@gmail.com
+## X-Category: Interface Enhancements
+## X-License: GNU GPL v3, 29 June 2007
+## OptionalDeps: LibHealComm-4.0, LibHealComm-3.0
+## SavedVariables: XPerlConfig, XPerlConfig_Global, XPerlConfigNew, XPerlConfigSavePerCharacter
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_Globals.xml
+XPerl.xml

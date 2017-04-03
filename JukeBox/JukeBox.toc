@@ -1,0 +1,11 @@
+## Interface: 30100
+## Title: JukeBox
+## Author: MageAsh
+## Version: 1.2.1
+## Notes: A JukeBox application which allows you to play in-game music files, your own custom music and playlists. Open using /jukebox or /jb. Type /jb help for more commands.
+## eMail: lucres75@hotmail.com
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: PL_TotalIDs,Custom_TotalIDs,PlayListsTable,CustomTable,AutoPlayTable,versionID,DebugMessages
+JukeBoxForm.xml
+JukeBox.lua

@@ -1,0 +1,10 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="libs\LibDataBroker-1.1\LibDataBroker-1.1.lua"/>
+<Script file="libs\LibTradeLinks-1.0\LibTradeLinks-1.0.lua"/>
+<Script file="libs\LibTradeLinks-1.0\currentData.lua"/>
+
+</Ui>
+
+

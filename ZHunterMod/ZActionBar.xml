@@ -1,0 +1,12 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Include file="ZActionBar\template.xml"		/>
+<Script  file="ZActionBar\actionbar.lua"	/>
+<Script  file="ZActionBar\firstButton.lua"	/>
+<Script  file="ZActionBar\buttons.lua"		/>
+<Script  file="ZActionBar\header.lua"		/>
+<Script  file="ZActionBar\layout.lua"		/>
+<Script  file="ZActionBar\options.lua"		/>
+
+</Ui>

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fCast bar|r]
+## Title-deDE: PitBull4 |r[|cffeda55fZauberleiste|r]
+## Title-esES: PitBull4 |r[|cffeda55fBarra de Lanzamiento|r]
+## Title-frFR: PitBull4 |r[|cffeda55fBarre d'incantation|r]
+## Title-koKR: PitBull4 |r[|cffeda55f시전 바|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fПолоса применения (кастбар)|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f施法条|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f施法條|r]
+## Notes: Show a cast bar.
+## Notes-deDE: Zeigt eine Zauberleiste an.
+## Notes-esES: Muestra una barra de Lanzamiento
+## Notes-frFR: Affiche une barre d'incantation.
+## Notes-koKR: 시전 바를 표시합니다.
+## Notes-ruRU: Показать полосу применения.
+## Notes-zhCN: 显示施法条
+## Notes-zhTW: 顯示施法條。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

@@ -1,0 +1,461 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+	<Script file="XPerl_AssistFrame.lua"/>
+
+	<Frame name="XPerlListTemplate" virtual="true">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="XPerl_Assists_FrameAnchor" movable="true" resizable="true" parent="UIParent" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="330" y="124"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+	</Frame>
+
+	<Frame name="XPerl_Assists_Frame" frameStrata="LOW" resizable="true" parent="XPerl_Assists_FrameAnchor" hidden="true" enableMouse="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="330" y="124"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\AddOns\XPerl_RaidHelper\Images\XPerl_FrameBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Frames>
+			<Button name="XPerlAssistsCloseButton" inherits="UIPanelCloseButton">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						XPerl_AssistsView_Close()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="XPerlAssistPin" inherits="XPerl_BasicButton">
+				<Size>
+					<AbsDimension x="11" y="11"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="XPerlAssistsCloseButton" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="4" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Pin">
+					<TexCoords left="0" right="0.46875" top="0" bottom="0.453125"/>
+				</NormalTexture>
+
+				<PushedTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Pin">
+					<TexCoords left="0" right="0.46875" top="0.5" bottom="0.953125"/>
+				</PushedTexture>
+
+				<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD">
+					<TexCoords left="0" right="0.9" top="0.1" bottom="0.9"/>
+				</HighlightTexture>
+
+				<Scripts>
+					<OnLoad>
+						self.SetButtonTex = function()
+							local tex = XPerlAssistPin:GetNormalTexture()
+							if (XPerlConfigHelper.AssistPinned) then
+								tex:SetTexCoord(0.5, 0.96875, 0, 0.453125)
+							else
+								tex:SetTexCoord(0, 0.46875, 0, 0.453125)
+							end
+
+							tex = XPerlAssistPin:GetPushedTexture()
+							if (XPerlConfigHelper.AssistPinned) then
+								if (XPerl_Assists_Frame.corner) then
+									XPerl_Assists_Frame.corner:Hide()
+								end
+								tex:SetTexCoord(0.5, 0.96875, 0.5, 0.953125)
+							else
+								if (XPerl_Assists_Frame.corner) then
+									XPerl_Assists_Frame.corner:Show()
+								end
+								tex:SetTexCoord(0, 0.46875, 0.5, 0.953125)
+							end
+						end
+						self.tooltipText = XPERL_BUTTON_HELPER_PIN
+					</OnLoad>
+					<OnClick>
+						XPerlConfigHelper.AssistPinned = not XPerlConfigHelper.AssistPinned
+						self:SetButtonTex()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<ScrollFrame name="XPerl_Target_Targetting_ScrollFrame">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="4" y="-5"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="-1" y="4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<Frame name="XPerl_Target_Assists_ScrollChild_Targetting" inherits="XPerlListTemplate">
+						<Size>
+							<AbsDimension x="300" y="400"/>
+						</Size>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Frame>
+				</ScrollChild>
+				<Scripts>
+					<OnMouseDown>
+						XPerl_Assists_MouseDown(XPerl_Assists_Frame, button, "targetFrame")
+					</OnMouseDown>
+					<OnMouseUp>
+						XPerl_Assists_MouseUp(XPerl_Assists_Frame, button, "targetFrame")
+					</OnMouseUp>
+					<OnEnter>
+						XPerl_Tutorial(11)
+					</OnEnter>
+					<OnSizeChanged>
+						XPerl_Target_Assists_ScrollChild_Targetting:SetWidth(XPerl_Target_Targetting_ScrollFrame:GetWidth() / XPerl_Target_Targetting_ScrollFrame:GetEffectiveScale())
+					</OnSizeChanged>
+				</Scripts>
+			</ScrollFrame>
+			<ScrollFrame name="XPerl_Target_Assists_ScrollFrame">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-4" y="4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<Frame name="XPerl_Target_Assists_ScrollChild_Assists" inherits="XPerlListTemplate">
+						<Size>
+							<AbsDimension x="300" y="400"/>
+						</Size>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Frame>
+				</ScrollChild>
+				<Scripts>
+					<OnSizeChanged>
+						XPerl_Target_Assists_ScrollChild_Assists:SetWidth(XPerl_Target_Assists_ScrollFrame:GetWidth() / XPerl_Target_Assists_ScrollFrame:GetEffectiveScale())
+					</OnSizeChanged>
+					<OnMouseDown>
+						XPerl_Assists_MouseDown(XPerl_Assists_Frame, button)
+					</OnMouseDown>
+					<OnMouseUp>
+						XPerl_Assists_MouseUp(XPerl_Assists_Frame, button)
+					</OnMouseUp>
+					<OnEnter>
+						XPerl_Tutorial(11)
+					</OnEnter>
+				</Scripts>
+			</ScrollFrame>
+
+			<Frame name="XPerlScrollSeperator">
+				<!--Backdrop bgFile="Interface\AddOns\XPerl_RaidHelper\Images\XPerl_FrameBack" tile="true"/-->
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="XPerl_Target_Targetting_ScrollFrame"/>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="XPerl_Target_Assists_ScrollFrame"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\AddOns\XPerl_RaidHelper\Images\XPerl_FrameBack" setAllPoints="true"/>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				XPerl_Assists_OnLoad(self)
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame>
+		<Scripts>
+			<OnLoad>
+				self:SetScript("OnUpdate", XPerl_Assists_OnUpdate)
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	-- These two frames add to X-Perl UnitFrames. If X-Perl not loaded, then WoW will just ignore these without error
+	<Button name="XPerl_Player_TargettingFrame" parent="XPerl_Player" enableMouse="true" text="0" hidden="true">
+		<Size>
+			<AbsDimension x="27" y="20"/>
+		</Size>
+		<NormalFont style="GameFontNormalSmall"/>
+		<ButtonText name="$parenttext" setAllPoints="true"/>
+		<HighlightTexture file="Interface\Addons\XPerl\Images\XPerl_Highlight" alphaMode="ADD">
+			<TexCoords left="0" right="0.25" top="0" bottom="0.5"/>
+		</HighlightTexture>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativePoint="TOPLEFT" relativeTo="XPerl_PlayerportraitFrame">
+				<Offset>
+					<AbsDimension x="2" y="-19"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\Addons\XPerl\Images\XPerl_FrameBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				if (XPerl_RegisterUnitText) then
+					XPerl_RegisterUnitText(self)
+				end
+			</OnLoad>
+			<OnClick>
+				XPerl_ToggleAssistsFrame("targetting")
+				XPerl_SetFrameSides()
+				XPerl_ShowAssists()
+			</OnClick>
+			<OnEnter>
+				local title
+				if (table.getn(XPerl_Assists_Frame.targetting) > 0 and XPerl_Assists_Frame.targetting[1][2] == "") then
+					title = XPERL_TOOLTIP_ENEMYONME
+				else
+					if (XPerlConfigHelper.TargetCountersSelf == 0) then
+						title = XPERL_TOOLTIP_ALLONME
+					else
+						title = XPERL_TOOLTIP_HEALERS
+					end
+				end
+
+				local t = XPerl_MakeAssistsString(XPerl_Assists_Frame.targetting, title)
+				t = "|c00FFFFFF"..t.."\r|c009F6000"..XPERL_TOOLTIP_HELP
+				GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+				GameTooltip:SetText(t)
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				XPerl_PlayerTipHide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<Button name="XPerl_Target_AssistFrame" hidden="true">
+		<Size>
+			<AbsDimension x="27" y="20"/>
+		</Size>
+		<NormalFont style="GameFontNormalSmall"/>
+		<ButtonText name="$parenttext" setAllPoints="true"/>
+		<HighlightTexture file="Interface\Addons\XPerl\Images\XPerl_Highlight" alphaMode="ADD">
+			<TexCoords left="0" right="0.25" top="0" bottom="0.5"/>
+		</HighlightTexture>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="-2" y="-20"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\Addons\XPerl\Images\XPerl_FrameBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				if (XPerl_RegisterUnitText) then
+					XPerl_RegisterUnitText(self)
+				end
+			</OnLoad>
+			<OnClick>
+				XPerl_ToggleAssistsFrame("assists")
+				XPerl_SetFrameSides()
+				XPerl_ShowAssists()
+			</OnClick>
+			<OnEnter>
+				local t = XPerl_MakeAssistsString(XPerl_Assists_Frame.assists, XPERL_TOOLTIP_ASSISTING)
+				t = "|c00FFFFFF"..t.."\r|c009F6000"..XPERL_TOOLTIP_HELP
+				GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+				GameTooltip:SetText(t)
+				GameTooltip:Show()
+			</OnEnter>
+			<OnLeave>
+				XPerl_PlayerTipHide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<Frame name="XPerl_AggroAnchor" frameStrata="HIGH" parent="UIParent" movable="true">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Frames>
+			<Frame name="$parentArrows" setAllPoints="true">
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="$parenttex" file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_MoveCursor" setAllPoints="true"/>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForDrag("LeftButton")
+					</OnLoad>
+					<OnHide>
+						XPerl_AggroAnchor:StopMovingOrSizing()
+						if (XPerl_Aggro) then
+							XPerl_Aggro:SetScript("OnUpdate", XPerl_RefreshAggro)
+							XPerl_AggroPlayer:Hide()
+							XPerl_AggroPet:Hide()
+							XPerl_Aggro:Hide()
+						end
+					</OnHide>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+						GameTooltip:SetText(XPERL_AGGRO_DRAGTIP, 1, 1, 1)
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+					<OnDragStart>
+						XPerl_AggroAnchor:SetFrameStrata("DIALOG")
+						GameTooltip:Hide()
+						self.tex:Hide()
+						XPerl_AggroPlayer:SetVertexColor(0, 0, 1)
+						XPerl_AggroPet:SetVertexColor(0, 0, 1)
+						XPerl_AggroPlayer:SetAlpha(1)
+						XPerl_AggroPet:SetAlpha(1)
+						XPerl_AggroPlayer:Show()
+						XPerl_AggroPet:Show()
+						XPerl_Aggro:SetScript("OnUpdate", nil)
+						XPerl_Aggro:Show()
+						XPerl_AggroAnchor:StartMoving()
+					</OnDragStart>
+					<OnDragStop>
+						XPerl_AggroAnchor:SetFrameStrata("MEDIUM")
+						self.tex:Show()
+						XPerl_Aggro:SetScript("OnUpdate", XPerl_RefreshAggro)
+						XPerl_AggroAnchor:StopMovingOrSizing()
+
+						XPerl_AggroPlayer:Hide()
+						XPerl_AggroPet:Hide()
+						XPerl_Aggro:Hide()
+
+						if (XPerl_SavePosition) then
+							XPerl_SavePosition(XPerl_AggroAnchor)
+						end
+					</OnDragStop>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				XPerl_SetChildMembers(self)
+
+				self.Enable = function(self)
+					self.Arrows:Show()
+					self:EnableMouse(true)
+					self:SetFrameStrata("MEDIUM")
+				end
+				self.Disable = function(self)
+					self.Arrows:Hide()
+					self:EnableMouse(false)
+					self:SetFrameStrata("HIGH")
+				end
+
+				self:Disable()
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="XPerl_Aggro" parent="XPerl_AggroAnchor" hidden="true">
+		<Scripts>
+			<OnLoad>
+				self:SetScript("OnUpdate", XPerl_RefreshAggro)
+				if (GetLocale() == "koKR") then
+					XPerl_AggroPlayer:SetFont("Fonts/K_Damage.TTF", 42, "THICKOUTLINE")
+					XPerl_AggroPet:SetFont("Fonts/K_Damage.TTF", 16, "THICKOUTLINE")
+				elseif (GetLocale() == "zhTW") then
+					XPerl_AggroPlayer:SetFont("Fonts/bKAI00M.TTF", 42, "THICKOUTLINE")
+					XPerl_AggroPet:SetFont("Fonts/bKAI00M.TTF", 16, "THICKOUTLINE")
+				elseif (GetLocale() == "zhCN") then
+					XPerl_AggroPlayer:SetFont("Fonts/ZYHei.ttf", 42, "THICKOUTLINE")
+					XPerl_AggroPet:SetFont("Fonts/ZYHei.ttf", 16, "THICKOUTLINE")
+				end
+			</OnLoad>
+			<OnHide>
+				self.playerFadeStart = nil
+				self.petFadeStart = nil
+			</OnHide>
+		</Scripts>
+		<Size>
+			<AbsDimension x="256" y="64"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentPlayer" outline="THICK" font="Fonts\FRIZQT__.TTF" justifyH="CENTER" text="XPERL_AGGRO_PLAYER" hidden="true">
+					<FontHeight>
+						<AbsValue val="42"/>
+					</FontHeight>
+				</FontString>
+				<FontString name="$parentPet" outline="THICK" font="Fonts\FRIZQT__.TTF" justifyH="CENTER" text="XPERL_AGGRO_PET" hidden="true">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentPlayer" relativePoint="BOTTOM" />
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="16"/>
+					</FontHeight>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+</Ui>

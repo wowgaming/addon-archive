@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fCombo points|r]
+## Title-deDE: PitBull4 |r[|cffeda55fCombo-Punkte|r]
+## Title-esES: PitBull4 |r[|cffeda55fPuntos de combo|r]
+## Title-frFR: PitBull4 |r[|cffeda55fPoints de combo|r]
+## Title-koKR: PitBull4 |r[|cffeda55f연계 점수|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fКомбо поинты|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f连击点|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f連擊點|r]
+## Notes: Show combo points on the unit frame if you are a Rogue or Druid in Cat form.
+## Notes-deDE: Stellt Combo-Punkte auf dem Rahmen dar, wenn der Spieler ein Schurke oder Druide in Katzengestalt ist.
+## Notes-esES: Muestra los puntos de combo en el  marco de la unidad si eres un Pícaro o un Druída en forma Felina.
+## Notes-frFR: Affiche les points de combo sur le cadre de l'unité si vous êtes un voleur ou un druide en forme de félin.
+## Notes-koKR: 도적 또는 드루이드의 표범 폼일시 유닛 프레임에 연계 점수를 표시합니다.
+## Notes-ruRU: Показывает комбо поинты поверх юнит фрейма,  если вы играете разбойником или друидом в форме кошки.
+## Notes-zhCN: 如果你是潜行者或猫形态德鲁伊则在单位框体上显示连击点数
+## Notes-zhTW: 如果你是盜賊或貓形態德魯伊則在單位框架上顯示連擊點。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

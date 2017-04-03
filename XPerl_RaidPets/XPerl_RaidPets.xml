@@ -1,0 +1,94 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="XPerl_RaidPets.lua"/>
+
+	<Button name="XPerl_RaidPet_FrameTemplate" frameStrata="LOW" virtual="true" hidden="true" inherits="SecureActionButtonTemplate">
+		<Scripts>
+			<OnLoad function="XPerl_RaidPet_Single_OnLoad"/>
+			<OnEnter>
+				XPerl_PlayerTip(self)
+				self.highlight:Select()
+			</OnEnter>
+			<OnLeave>
+				self.highlight:Deselect()
+				XPerl_PlayerTipHide()
+			</OnLeave>
+		</Scripts>
+
+		<Size><AbsDimension x="80" y="30"/></Size>
+
+		<Backdrop bgFile="Interface\AddOns\XPerl\images\XPerl_FrameBack" edgeFile="Interface\Addons\XPerl\Images\XPerl_ThinEdge" tile="true">
+			<EdgeSize>
+				<AbsValue val="10"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="256"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="2" right="2" top="2" bottom="2"/>
+			</BackgroundInsets>
+		</Backdrop>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parenttext" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="2" y="-3"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-2" y="-9"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<StatusBar name="$parenthealthBar" inherits="XPerlRaidStatusBar">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="3" y="-12"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<BarColor r="0" g="0.8" b="0"/>
+			</StatusBar>
+
+			<Frame name="$parentHighlight" inherits="XPerl_HighlightTemplate" setAllPoints="true"/>
+		</Frames>
+	</Button>
+
+	<Frame name="XPerl_Raid_TitlePets" parent="UIParent" inherits="XPerl_Raid_TitleDragTemplate" id="99">
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset><AbsDimension x="720" y="-465"/></Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+
+	<Frame name="XPerl_Raid_GrpPets" parent="XPerl_Raid_TitlePets" inherits="SecureRaidPetHeaderTemplate" clampedToScreen="true" frameStrata="LOW" hidden="true" id="1">
+		<Size><AbsDimension x="80" y="10"/></Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT"/>
+		</Anchors>
+		<Attributes>
+			<Attribute name="template" type="string" value="XPerl_RaidPet_FrameTemplate"/>
+		</Attributes>
+	</Frame>
+
+	<Frame name="XPerl_RaidPets_Frame" parent="UIParent" hidden="true">
+		<Scripts>
+			<OnLoad function="XPerl_RaidPets_OnLoad"/>
+		</Scripts>
+	</Frame>
+</Ui>

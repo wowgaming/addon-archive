@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r21 | warbaby | 2009-06-12 18:45:05 +0000 (Fri, 12 Jun 2009) | 3 lines
+Changed paths:
+   M /trunk/LibQuickHealth-2.0.lua
+
+The long-no-update version is usable in WLK. But when players are alive immediately, for instance, releasing soul in NAXX will make one be alive in graveyard, there is no event trigger. The players remains zero-hp (actually their HP is full) for a long time.
+
+This patch fixes the bug, not offcially though :)
+------------------------------------------------------------------------
+r20 | nevcairiel | 2008-10-09 21:53:20 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibQuickHealth-2.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------

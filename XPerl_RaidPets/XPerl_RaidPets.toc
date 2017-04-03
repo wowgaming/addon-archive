@@ -1,0 +1,16 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fRaid Pets|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fПитомцы рейда|r
+## Title-zhCN: X-Perl |cffeda55f团队宠物窗|r
+## Title-zhTW: X-Perl |cffeda55f團隊寵物框架|r 由 |cFFFF8080Zek|r 開發
+## Notes: X-Perl Raid pets
+## Notes-ruRU: Фреймы питомцев рейда.
+## Notes-zhTW: 顯示 X-Perl 團隊寵物框架
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## Dependencies: XPerl_RaidFrames
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_RaidPets.xml

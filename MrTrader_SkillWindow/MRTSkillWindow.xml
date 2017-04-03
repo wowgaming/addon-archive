@@ -1,0 +1,1552 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+	<Button name="MRTFilterButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="136" y="20"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLines" file="Interface\AuctionFrame\UI-AuctionFrame-FilterLines">
+					<Size>
+						<AbsDimension x="7" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="13" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.4375" top="0" bottom="0.625"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("AnyDown");
+			</OnLoad>
+			<OnClick>
+				if(button == "LeftButton") then
+					MRTSkillWindow_OnFilterClick(self, button);
+				elseif(button == "RightButton") then
+					MRTSkillContext:DisplayFilterContext(MRTSkillItemDropDown, self.filterRef);
+				end
+			</OnClick>
+		</Scripts>
+		<NormalTexture name="$parentNormalTexture" file="Interface\AuctionFrame\UI-AuctionFrame-FilterBg">
+			<TexCoords left="0" right="0.53125" top="0" bottom="0.625"/>
+		</NormalTexture>
+		<HighlightTexture file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD"/>
+		<ButtonText name="$parentNormalText">
+			<Size>
+				<AbsDimension x="115" y="8"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="4" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GameFontNormalSmallLeft"/>
+		<HighlightFont style="GameFontHighlightSmallLeft"/>
+	</Button>
+	
+	<Button name="MRTSkillButtonTemplate" inherits="ClassTrainerSkillButtonTemplate" hidden="false" virtual="true">
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentCount" inherits="GameFontNormal">
+					<Size x="0" y="13"/>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick function="MRTSkillWindow_OnSkillClick" />
+			<OnLoad>
+				self:RegisterForClicks("AnyDown");
+				_G[self:GetName().."Count"]:SetPoint("LEFT", self:GetName().."Text", "RIGHT", 2, 0);
+			</OnLoad>
+			<OnEnter>
+				MRTSkillWindow_OnEnterSkillIcon(self);
+				_G[self:GetName().."Count"]:SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+				if ( not self.isHighlighted ) then
+					_G[self:GetName().."Count"]:SetVertexColor(self.r, self.g, self.b);
+				end
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<Button name="MRTReagentTemplate" inherits="QuestItemTemplate" virtual="true">
+		<Scripts>
+			<OnEnter>
+				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT");
+				GameTooltip:SetTradeSkillItem(MRTSkillWindow.selectedSkill, self:GetID());
+				CursorUpdate(self);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+				ResetCursor();
+			</OnLeave>
+			<OnUpdate>
+				CursorOnUpdate(self, elapsed);
+			</OnUpdate>
+			<OnClick>
+				HandleModifiedItemClick(GetTradeSkillReagentItemLink(MRTSkillWindow.selectedSkill, self:GetID()));
+			</OnClick>
+		</Scripts>
+	</Button>
+	
+	<Frame name="MRTSkillFrame" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
+		<!-- Basics -->
+		<Size>
+			<AbsDimension x="551" y="562"/> <!-- Needs 50 px of additional fill in the middle -->
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-104"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="0" right="34" top="0" bottom="75"/>
+		</HitRectInsets>
+		
+		<!-- Layers -->
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="MRTSkillFramePortrait">
+				  <Size>
+					<AbsDimension x="60" y="60"/>
+				  </Size>
+				  <Anchors>
+					<Anchor point="TOPLEFT">
+					  <Offset>
+						<AbsDimension x="7" y="-6"/>
+					  </Offset>
+					</Anchor>
+				  </Anchors>
+				</Texture>
+				<FontString name="$parentDummyString" inherits="GameFontNormal" hidden="true">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<Size x="0" y="0"/>
+				</FontString>
+			  </Layer>
+			<Layer level="BORDER">
+				<Texture Name="MRTSkillWindowTopLeftCorner" file="Interface\ClassTrainerFrame\UI-ClassTrainer-TopLeft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-TopLeft">
+					<Size>
+						<AbsDimension x="167" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="MRTSkillWindowTopLeftCorner" relativePoint="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.6" right="1.0" top="0.0" bottom="1.0"/>
+				</Texture>		
+				<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-TopRight">
+					<Size>
+						<AbsDimension x="128" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="MRTSkillFrameBottomLeftTexture" file="Interface\TradeSkillFrame\UI-TradeSkill-BotLeft">
+					<Size>
+						<AbsDimension x="64" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0.0" right="0.25" top="0.0" bottom="1.0"/>
+				</Texture>
+				<Texture name="MRTSkillFrameMidLeftTexture" file="Interface\TradeSkillFrame\UI-TradeSkill-BotLeft">
+					<Size>
+						<AbsDimension x="256" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="MRTSkillFrameBottomLeftTexture" relativePoint="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0.0" right="1.0" top="0.0" bottom="0.2"/>
+				</Texture>
+				<Texture name="MRTSkillFrameBottomCenterLeftTexture" file="Interface\TradeSkillFrame\UI-TradeSkill-BotLeft">
+					<Size>
+						<AbsDimension x="167" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="MRTSkillFrameBottomLeftTexture" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.1" right="0.30" top="0.0" bottom="1.0"/>
+				</Texture>
+				<Texture name="MRTSkillFrameBottomCenterRightTexture" file="Interface\TradeSkillFrame\UI-TradeSkill-BotLeft">
+					<Size>
+						<AbsDimension x="192" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="MRTSkillFrameBottomCenterLeftTexture" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.25" right="1.0" top="0.0" bottom="1.0"/>
+				</Texture>
+				<Texture name="MRTSkillFrameBottomRightTexture" file="Interface\ClassTrainerFrame\UI-ClassTrainer-BotRight">
+					<Size>
+						<AbsDimension x="128" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="MRTSkillFrameMidRightTexture" file="Interface\ClassTrainerFrame\UI-ClassTrainer-BotRight">
+					<Size>
+						<AbsDimension x="128" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativeTo="MRTSkillFrameBottomRightTexture" relativePoint="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.0" right="1.0" top="0.0" bottom="0.2"/>
+				</Texture>
+				<Texture name="MRTSkillFrameMidCenterTexture" file="Interface\ClassTrainerFrame\UI-ClassTrainer-BotLeft">
+					<Size>
+						<AbsDimension x="178" y="50"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativeTo="MRTSkillFrameMidRightTexture" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0.2" right="1.0" top="0.0" bottom="0.2"/>
+				</Texture>
+				<FontString name="MRTSkillFrameTitleText" inherits="GameFontNormal" text="Trade Skills">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="MRTSkillFrame" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-17"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="MRTSkillVerticalBarTop" file="Interface\FriendsFrame\UI-ChannelFrame-VerticalBar">
+					<Size>
+						<AbsDimension x="12" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="175" y="-94"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.1875" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="MRTSkillVerticalBarMiddle" file="Interface\FriendsFrame\UI-ChannelFrame-VerticalBar">
+					<Size>
+						<AbsDimension x="12" y="114"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="MRTSkillVerticalBarTop" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.421875" right="0.609375" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="MRTSkillVerticalBarBottom" file="Interface\FriendsFrame\UI-ChannelFrame-VerticalBar">
+					<Size>
+						<AbsDimension x="12" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="MRTSkillVerticalBarMiddle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.8125" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="MRTSkillHorizontalBarLeft" file="Interface\ClassTrainerFrame\UI-ClassTrainer-HorizontalBar">
+					<Size>
+						<AbsDimension x="256" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="180" y="-269"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1.0" top="0" bottom="0.25"/>
+				</Texture>
+				<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-HorizontalBar">
+					<Size>
+						<AbsDimension x="75" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="MRTSkillHorizontalBarLeft" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.29296875" top="0.25" bottom="0.5"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		
+		<!-- Frames -->
+		<Frames>
+			<!--<CheckButton name="MRTToggleQueue">
+				<Size>
+					<AbsDimension x="32" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="132" y="-44"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall" text="MRT_QUEUE">
+							<Anchors>
+								<Anchor point="TOP" relativePoint="BOTTOM">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<NormalTexture file="Interface\Icons\Spell_Holy_BorrowedTime">
+					<TexCoords left="0" right="1.0" top="0" bottom="1.0"/>
+				</NormalTexture>
+				<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+				<CheckedTexture alphaMode="ADD" file="Interface\Buttons\CheckButtonHilight"/>
+				<Scripts>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+						if( self:GetChecked() ) then
+							GameTooltip:SetText(MRT_HIDE_QUEUE, nil, nil, nil, nil, 1);
+						else
+							GameTooltip:SetText(MRT_SHOW_QUEUE, nil, nil, nil, nil, 1);					
+						end
+					</OnEnter>
+					<OnLeave function="GameTooltip_Hide"/>
+					<OnClick function="MRTSkillWindow_OnQueueToggle"/>
+				</Scripts>
+			</CheckButton>-->
+						
+			<Frame name="MRTSkillItemDropDown" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
+				<Scripts>
+					<OnLoad>
+						UIDropDownMenu_SetWidth(self, 140);
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			
+			<!-- Search Parts -->
+			<Frame name="MRTAvailableFilterFrame">
+				<Size>
+					<AbsDimension x="128" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="178" y="-71"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="MRTSkillExpandTabLeft" file="Interface\ClassTrainerFrame\UI-ClassTrainer-ExpandTab-Left">
+							<Size>
+								<AbsDimension x="8" y="32"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+						</Texture>
+						<Texture name="MRTSkillExpandTabMiddle" file="Interface\QuestFrame\UI-QuestLogSortTab-Middle">
+							<Size>
+								<AbsDimension x="148" y="32"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="MRTSkillExpandTabLeft" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="MRTSkillExpandTabRight" file="Interface\QuestFrame\UI-QuestLogSortTab-Right">
+							<Size>
+								<AbsDimension x="8" y="32"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="MRTSkillExpandTabMiddle" relativePoint="RIGHT"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<CheckButton name="MRTSkillFrameAvailableFilterCheckButton" inherits="UICheckButtonTemplate">
+						<Size>
+							<AbsDimension x="24" y="24"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="MRTSkillExpandTabLeft" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="0" y="1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								MRTSkillFrameAvailableFilterCheckButtonText:SetText(CRAFT_IS_MAKEABLE);
+							</OnLoad>
+							<OnClick>
+								TradeSkillOnlyShowMakeable(self:GetChecked());
+							</OnClick>
+							<OnEnter>
+								GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+								GameTooltip:SetText(CRAFT_IS_MAKEABLE_TOOLTIP, nil, nil, nil, nil, 1);
+							</OnEnter>
+							<OnLeave function="GameTooltip_Hide"/>
+						</Scripts>
+						<HitRectInsets>
+							<AbsInset left="0" right="-75" top="0" bottom="0"/>
+						</HitRectInsets>
+					</CheckButton>
+				</Frames>
+			</Frame>
+			
+			<EditBox name="$parentEditBox" autoFocus="false">
+				<Size>
+					<AbsDimension x="128" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MRTSkillFrame" relativePoint="TOPRIGHT">
+						<Offset x="-58" y="-71"/>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="8" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset x="-5" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+						</Texture>
+						<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="8" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+						</Texture>
+						<Texture name="$parentMiddle" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="0" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+								<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+							</Anchors>
+							<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnShow>
+						self:SetText(SEARCH);
+					</OnShow>
+					<OnEnterPressed function="EditBox_ClearFocus"/>
+					<OnEscapePressed function="EditBox_ClearFocus"/>
+					<OnTextChanged function="MRTSkillWindow_OnSearchTextChange"/>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+						if ( self:GetText() == "" ) then
+							self:SetText(SEARCH);
+						end
+					</OnEditFocusLost>
+					<OnEditFocusGained>
+						self:HighlightText();
+						if ( self:GetText() == SEARCH ) then
+							self:SetText("");
+						end
+					</OnEditFocusGained>
+				</Scripts>
+				<FontString inherits="ChatFontSmall"/>
+			</EditBox>
+			
+			<!-- Header Parts -->
+			<StatusBar name="MRTSkillRankFrame" drawLayer="BACKGROUND" minValue="0" maxValue="1" defaultValue="0" enableMouse="false">
+				<Size>
+					<AbsDimension x="265" y="14"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MRTSkillFrame" relativepoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-76" y="-48"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentSkillRank" inherits="GameFontHighlightSmall" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="0" y="9"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="MRTSkillRankFrame">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<Texture name="$parentBorder" file="Interface\PaperDollInfoFrame\UI-Character-Skills-BarBorder">
+							<Size>
+								<AbsDimension x="274" y="27"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentBackground">
+							<Color r="1.0" g="1.0" b="1.0" a="0.2"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterEvent("SKILL_LINES_CHANGED");
+					</OnLoad>
+					<OnEvent function="MRTSkillWindow_UpdateHeaders"/>
+				</Scripts>
+				<BarTexture name="$parentBar" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar" />
+				<BarColor r="0.25" g="0.25" b="0.75" />
+			</StatusBar>
+			<Button name="MRTSkillLinkButton">
+				<Size>
+					<AbsDimension x="32" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MRTSkillFrameTitleText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						local link=GetTradeSkillListLink();
+						if (not ChatEdit_InsertLink(link) ) then
+							ChatFrameEditBox:Show();
+							ChatEdit_InsertLink(link);
+						end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self,"ANCHOR_TOPLEFT");
+						GameTooltip:SetText(LINK_TRADESKILL_TOOLTIP, nil, nil, nil, nil, 1);
+						GameTooltip:Show();
+					</OnEnter>
+					<OnLeave function="GameTooltip_Hide"/>
+				</Scripts>
+				<NormalTexture file="Interface\TradeSkillFrame\UI-TradeSkill-LinkButton">
+					<TexCoords left="0" right="1.0" top="0" bottom="0.5"/>
+				</NormalTexture>
+				<HighlightTexture file="Interface\TradeSkillFrame\UI-TradeSkill-LinkButton" alphaMode="ADD">
+					<TexCoords left="0" right="1.0" top="0.5" bottom="1.0"/>
+				</HighlightTexture>
+			</Button>
+
+			<!-- Filter Buttons -->
+			<Button name="MRTSkillFilterButton1" inherits="MRTFilterButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="21" y="-98"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton2" inherits="MRTFilterButtonTemplate" id="2">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton3" inherits="MRTFilterButtonTemplate" id="3">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton4" inherits="MRTFilterButtonTemplate" id="4">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton5" inherits="MRTFilterButtonTemplate" id="5">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton4" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton6" inherits="MRTFilterButtonTemplate" id="6">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton5" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton7" inherits="MRTFilterButtonTemplate" id="7">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton6" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton8" inherits="MRTFilterButtonTemplate" id="8">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton7" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton9" inherits="MRTFilterButtonTemplate" id="9">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton8" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton10" inherits="MRTFilterButtonTemplate" id="10">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton9" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton11" inherits="MRTFilterButtonTemplate" id="11">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton10" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton12" inherits="MRTFilterButtonTemplate" id="12">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton11" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton13" inherits="MRTFilterButtonTemplate" id="13">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton12" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton14" inherits="MRTFilterButtonTemplate" id="14">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton13" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton15" inherits="MRTFilterButtonTemplate" id="15">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton14" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton16" inherits="MRTFilterButtonTemplate" id="16">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton15" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton17" inherits="MRTFilterButtonTemplate" id="17">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton16" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillFilterButton18" inherits="MRTFilterButtonTemplate" id="18">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFilterButton17" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<ScrollFrame name="MRTSkillFilterScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="136" y="360"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFrame" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="21" y="-96"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size>
+								<AbsDimension x="31" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size>
+								<AbsDimension x="31" y="112"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, MRTRADER_TRADE_SKILL_FILTER_HEIGHT, MRTSkillWindow_UpdateFilters);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			
+			<!-- Skill List Buttons -->
+			<Frame name="MRTSkillHighlightFrame" hidden="true">
+				<Size>
+					<AbsDimension x="293" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="MRTSkillHighlight" file="Interface\Buttons\UI-Listbox-Highlight2"/>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="MRTSkillButton1" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillFrame">
+						<Offset>
+							<AbsDimension x="187" y="-96"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton2" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton3" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton4" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton5" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton4" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton6" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton5" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton7" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton6" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton8" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton7" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton9" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton8" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton10" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton9" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillButton11" inherits="MRTSkillButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MRTSkillButton10" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<ScrollFrame name="MRTSkillListScrollFrame" inherits="ClassTrainerListScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="225" y="176"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MRTSkillFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-67" y="-96"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, MRTRADER_TRADE_SKILL_HEIGHT, MRTSkillWindow_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			
+			<!-- Skill Info Frame -->
+			<ScrollFrame name="MRTDetailScrollFrame" inherits="ClassTrainerDetailScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="300" y="176"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="183" y="-282"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<Frame name="MRTDetailScrollChildFrame">
+						<Size>
+							<AbsDimension x="297" y="150"/>
+						</Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="MRTSkillName" inherits="GameFontNormal" text="Skill Name" justifyH="LEFT">
+									<Size>
+										<AbsDimension x="244" y="0"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset>
+												<AbsDimension x="50" y="-5"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+								<FontString name="MRTSkillRequirementLabel" inherits="GameFontHighlightSmall" text="REQUIRES_LABEL">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativeTo="MRTSkillName" relativePoint="BOTTOMLEFT">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+								<FontString name="MRTSkillRequirementText" inherits="GameFontHighlightSmall" justifyV="TOP" justifyH="LEFT">
+									<Size>
+										<AbsDimension x="180" y="0"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativeTo="MRTSkillRequirementLabel" relativePoint="TOPRIGHT" >
+											<Offset>
+												<AbsDimension x="4" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+								<FontString name="MRTSkillCooldown" inherits="GameFontRedSmall">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativeTo="MRTSkillRequirementLabel" relativePoint="BOTTOMLEFT">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+								<Texture name="MRTSkillDetailHeaderLeft" file="Interface\ClassTrainerFrame\UI-ClassTrainer-DetailHeaderLeft">
+									<Size>
+										<AbsDimension x="256" y="64"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset>
+												<AbsDimension x="0" y="3"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-DetailHeaderRight">
+									<Size>
+										<AbsDimension x="64" y="64"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativeTo="MRTSkillDetailHeaderLeft" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<FontString name="MRTSkillDescription" inherits="GameFontHighlightSmall" justifyH="LEFT">
+									<Size>
+										<AbsDimension x="290" y="0"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset>
+												<AbsDimension x="5" y="-50"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+								<FontString name="MRTSkillReagentLabel" inherits="GameFontNormalSmall" text="SPELL_REAGENTS">
+									<Anchors>
+										<Anchor point="TOPLEFT" relativeTo="MRTSkillDescription" relativePoint="BOTTOMLEFT">
+											<Offset>
+												<AbsDimension x="0" y="-10"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<Button name="MRTSkillIcon">
+								<Size>
+									<AbsDimension x="37" y="37"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="8" y="-3"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="ARTWORK">
+										<FontString name="MRTSkillIconCount" inherits="NumberFontNormal" justifyH="RIGHT" hidden="false">
+											<Anchors>
+												<Anchor point="BOTTOMRIGHT">
+													<Offset>
+														<AbsDimension x="-5" y="2"/>
+													</Offset>
+												</Anchor>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnLoad>
+										self.hasItem = 1;
+									</OnLoad>
+									<OnClick>
+										HandleModifiedItemClick(GetTradeSkillItemLink(MRTSkillWindow.selectedSkill));
+									</OnClick>
+									<OnEnter function="MRTSkillWindow_OnEnterSkillIcon"/>
+									<OnLeave function="GameTooltip_HideResetCursor"/>
+									<OnUpdate>
+										if ( GameTooltip:IsOwned(self) ) then
+											MRTSkillWindow_OnEnterSkillIcon(self);
+										end
+										CursorOnUpdate(self);
+									</OnUpdate>
+								</Scripts>
+							</Button>
+							<Button name="MRTSkillReagent1" inherits="MRTReagentTemplate" id="1">
+								<Anchors>
+									<Anchor point="TOPLEFT" relativeTo="MRTSkillReagentLabel" relativePoint="BOTTOMLEFT">
+										<Offset>
+											<AbsDimension x="-2" y="-3"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent2" inherits="MRTReagentTemplate" id="2">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="MRTSkillReagent1" relativePoint="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent3" inherits="MRTReagentTemplate" id="3">
+								<Anchors>
+									<Anchor point="TOPLEFT" relativeTo="MRTSkillReagent1" relativePoint="BOTTOMLEFT">
+										<Offset>
+											<AbsDimension x="0" y="-2"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent4" inherits="MRTReagentTemplate" id="4">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="MRTSkillReagent3" relativePoint="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent5" inherits="MRTReagentTemplate" id="5">
+								<Anchors>
+									<Anchor point="TOPLEFT" relativeTo="MRTSkillReagent3" relativePoint="BOTTOMLEFT">
+										<Offset>
+											<AbsDimension x="0" y="-2"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent6" inherits="MRTReagentTemplate" id="6">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="MRTSkillReagent5" relativePoint="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent7" inherits="MRTReagentTemplate" id="7">
+								<Anchors>
+									<Anchor point="TOPLEFT" relativeTo="MRTSkillReagent5" relativePoint="BOTTOMLEFT">
+										<Offset>
+											<AbsDimension x="0" y="-2"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+							<Button name="MRTSkillReagent8" inherits="MRTReagentTemplate" id="8">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="MRTSkillReagent7" relativePoint="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</Button>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			
+			<!-- Close Buttons -->
+			<Button name="MRTSkillFrameCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MRTSkillFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-29" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="MRTSkillCancelButton" inherits="UIPanelButtonTemplate" text="EXIT">
+				<Size>
+					<AbsDimension x="80" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="MRTSkillFrame" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-42" y="79"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick function="HideParentPanel"/>
+				</Scripts>
+			</Button>
+			
+			<Button name="MRTNewCategoryButton" inherits="UIPanelButtonTemplate" text="MRTRADER_NEW_CATEGORY">
+				<Size>
+					<AbsDimension x="100" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="MRTSkillFrame" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="16" y="79"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MRTNewCategoryFrame.referenceSkill = nil;
+						MRTNewCategoryFrame:Show();
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<!-- Crafting Buttons -->
+			<Button name="MRTSkillCreateButton" inherits="UIPanelButtonTemplate" text="CREATE">
+				<Size>
+					<AbsDimension x="80" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MRTSkillCancelButton" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<Frame name="$parentMask" setAllPoints="true" enableMouse="true" hidden="true">
+						<Scripts>
+							<OnEnter>
+								if (self.tooltip) then
+									GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+									GameTooltip:SetText(self.tooltip, nil, nil, nil, nil, 1);
+								end
+							</OnEnter>
+							<OnLeave function="GameTooltip_Hide"/>
+						</Scripts>
+					</Frame>
+				</Frames>
+				<Scripts>
+					<OnClick>
+						if ( (not PartialPlayTime()) and (not NoPlayTime()) ) then
+							DoTradeSkill(MRTSkillWindow.selectedSkill, MRTSkillInputBox:GetNumber());
+							MRTSkillInputBox:ClearFocus();
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="MRTSkillCreateAllButton" inherits="UIPanelButtonTemplate" text="CREATE_ALL">
+					<Size>
+						<AbsDimension x="80" y="22"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="MRTSkillCreateButton" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="-83" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Frames>
+						<Frame name="$parentMask" setAllPoints="true" enableMouse="true" hidden="true">
+							<Scripts>
+								<OnEnter>
+									if (self.tooltip) then
+										GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+										GameTooltip:SetText(self.tooltip, nil, nil, nil, nil, 1);
+									end
+								</OnEnter>
+								<OnLeave function="GameTooltip_Hide"/>
+							</Scripts>
+						</Frame>
+					</Frames>
+					<Scripts>
+						<OnClick>
+							if ( (not PartialPlayTime()) and (not NoPlayTime()) ) then
+								MRTSkillInputBox:SetNumber(MRTSkillWindow.numAvailable);
+								DoTradeSkill(MRTSkillWindow.selectedSkill, MRTSkillWindow.numAvailable);
+								MRTSkillInputBox:ClearFocus();
+							end
+						</OnClick>
+					</Scripts>
+				</Button>
+			<Button name="MRTSkillDecrementButton">
+					<Size>
+						<AbsDimension x="23" y="22"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="MRTSkillCreateAllButton" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							MRTSkillWindow_OnDecrementClick();
+							MRTSkillInputBox:ClearFocus();
+						</OnClick>
+					</Scripts>
+					<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+					<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+					<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+					<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+				</Button>
+			<EditBox name="MRTSkillInputBox" letters="3" numeric="true" autoFocus="false">
+					<Size>
+						<AbsDimension x="30" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="MRTSkillDecrementButton" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="4" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="BACKGROUND">
+							<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+								<Size>
+									<AbsDimension x="8" y="20"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="-5" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+							</Texture>
+							<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+								<Size>
+									<AbsDimension x="8" y="20"/>
+								</Size>
+								<Anchors>
+									<Anchor point="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+							</Texture>
+							<Texture name="$parentMiddle" file="Interface\Common\Common-Input-Border">
+								<Size>
+									<AbsDimension x="10" y="20"/>
+								</Size>
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+									<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+								</Anchors>
+								<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+							</Texture>
+						</Layer>
+					</Layers>
+					<Scripts>
+						<OnEnterPressed function="EditBox_ClearFocus"/>
+						<OnEscapePressed function="EditBox_ClearFocus"/>
+						<OnTextChanged>
+							if ( self:GetText() == "0" ) then
+								self:SetText("1");
+							end
+						</OnTextChanged> 
+						<OnEditFocusLost function="EditBox_ClearHighlight"/>
+						<OnEditFocusGained function="EditBox_HighlightText"/>
+					</Scripts>
+					<FontString inherits="ChatFontNormal"/>
+				</EditBox>
+			<Button name="MRTSkillIncrementButton">
+				<Size>
+					<AbsDimension x="23" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="MRTSkillCreateButton" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MRTSkillWindow_OnIncrementClick();
+						MRTSkillInputBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+			</Button>
+
+			<!-- New Category Frame -->
+			<Frame name="MRTNewCategoryFrame" hidden="true" toplevel="true" enableKeyboard="true" enableMouse="true">
+				<Size>
+					<AbsDimension x="212" y="128"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="UIParent">
+						<Offset>
+							<AbsDimension x="0" y="100"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11"/>
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="32"/>
+					</EdgeSize>
+				</Backdrop>
+				<Layers>
+					<Layer level="BORDER">
+						<FontString name="$parentName" inherits="GameFontNormal" text="MRTRADER_NEW_FAVORITE_GROUP">
+							<Size>
+								<AbsDimension x="0" y="12"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="-5" y="-13"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<Texture name="$parentTitlebar" file="Interface\FriendsFrame\UI-ChannelFrame-Titlebar">
+							<Size>
+								<AbsDimension x="256" y="32"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="8" y="-8"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<Texture name="$parentCorner" file="Interface\DialogFrame\UI-DialogBox-Corner">
+							<Size>
+								<AbsDimension x="32" y="32"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-6" y="-7"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<EditBox name="$parentCategoryName" letters="31" multiLine="false" enableMouse="true" autoFocus="true" inherits="InputBoxTemplate">
+						<Size x="170" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="23" y="-60"/>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<FontString name="$parentLabel" inherits="GameFontNormal" text="MRTRADER_NAME">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="0" y="15"/>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								if ( self:GetText() ) then
+									MRTNewCategoryFrame_Okay(self);
+								else
+									MRTNewCategoryFrame_Cancel(self);
+								end
+							</OnEnterPressed>
+							<OnEscapePressed function="MRTNewCategoryFrame_Cancel"/>
+						</Scripts>
+					</EditBox>
+					<Button name="$parentDetailCloseButton" inherits="UIPanelCloseButton">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset x="-2" y="-3"/>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentOkayButton" inherits="UIPanelButtonTemplate" text="OKAY">
+						<Size>
+							<AbsDimension x="96" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="10" y="12"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick function="MRTNewCategoryFrame_Okay"/>
+						</Scripts>
+						<NormalFont style="GameFontNormalSmall"/>
+						<HighlightFont style="GameFontHighlightSmall"/>
+						<DisabledFont style="GameFontDisableSmall"/>
+					</Button>
+					<Button name="$parentCancelButton" inherits="UIPanelButtonTemplate" text="CANCEL">
+						<Size>
+							<AbsDimension x="96" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentOkayButton" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="1" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick function="MRTNewCategoryFrame_Cancel"/>
+						</Scripts>
+						<NormalFont style="GameFontNormalSmall"/>
+						<HighlightFont style="GameFontHighlightSmall"/>
+						<DisabledFont style="GameFontDisableSmall"/>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnShow>
+						PlaySound("UChatScrollButton");
+					</OnShow>
+					<OnHide>
+						MRTNewCategoryFrameCategoryName:SetText("");
+						PlaySound("UChatScrollButton");
+					</OnHide>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				PlaySound("igCharacterInfoOpen");
+				MRTSkillWindow_OnShow();
+			</OnShow>
+			<OnHide>
+				MRTSkillWindow_OnHide();
+				PlaySound("igCharacterInfoClose");
+			</OnHide>
+		</Scripts>
+	</Frame>
+</Ui>

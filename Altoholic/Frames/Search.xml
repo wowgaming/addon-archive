@@ -1,0 +1,338 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Search.lua"></Script>
+
+	<Button name="AltoSearchEntryTemplate" hidden="true" virtual="true">
+		<Size>
+			<AbsDimension x="615" y="41"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentName" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="240" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="53" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat1" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="160" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentName" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="5" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat2" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="150" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentStat1" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="5" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat3" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="50" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentStat2" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat4" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="50" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentStat3" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat5" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="50" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentStat4" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStat6" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="50" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentStat5" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentILvl" inherits="GameFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="50" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentStat6" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate"/>
+			<Button name="$parentItem" inherits="ItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						local link = select(2, GetItemInfo(self:GetID()))
+						
+						if link then
+							GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+							GameTooltip:SetHyperlink(link);
+							GameTooltip:Show();						
+						end
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						local link = select(2, GetItemInfo(self:GetID()))
+							
+						if link then
+							if ( button == "LeftButton" ) and ( IsControlKeyDown() ) then
+								DressUpItemLink(link);
+							elseif ( button == "LeftButton" ) and ( IsShiftKeyDown() ) then
+								local chat = ChatEdit_GetLastActiveWindow()
+								if chat:IsShown() then
+									chat:Insert(link)
+								else
+									AltoholicFrame_SearchEditBox:SetText(GetItemInfo(link))
+								end
+							end
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentSource">
+				<Size>
+					<AbsDimension x="220" y="10"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentName" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ButtonText name="$parentNormalText" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="210" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</ButtonText>
+				<Scripts>
+					<OnEnter>
+						local id = self:GetID()
+						if id == 0 then return end
+						
+						local link
+						local result = Altoholic.Search:GetResult(id)
+						
+						if result.linetype == 3 then
+							local _, _, spellID = DataStore:GetCraftLineInfo(result.profession, result.craftIndex)
+							link = Altoholic.TradeSkills.Recipes:GetLink(spellID, result.professionName)
+						elseif result.linetype == 4 then
+							local LTL = LibStub("LibTradeLinks-1.0")
+							link = Altoholic.TradeSkills.Recipes:GetLink(result.spellID, LTL:GetSkillName(result.skillID))
+						end
+
+						if link then
+							GameTooltip:ClearLines();
+							GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+							GameTooltip:SetHyperlink(link);
+							GameTooltip:AddLine(" ",1,1,1);
+							GameTooltip:Show();
+						end
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						if ( button == "LeftButton" ) and ( IsShiftKeyDown() ) then
+							local chat = ChatEdit_GetLastActiveWindow()
+							if chat:IsShown() then
+								local id = self:GetID()
+								if id == 0 then return end
+								
+								local link
+								local result = Altoholic.Search:GetResult(id)
+								
+								if result.linetype == 3 then
+									local _, _, spellID = DataStore:GetCraftLineInfo(result.profession, result.craftIndex)
+									link = Altoholic.TradeSkills.Recipes:GetLink(spellID, result.professionName)
+								elseif result.linetype == 4 then
+									local LTL = LibStub("LibTradeLinks-1.0")
+									link = Altoholic.TradeSkills.Recipes:GetLink(result.spellID, LTL:GetSkillName(result.skillID))
+								end
+								
+								if not link then return end
+								chat:Insert(link)
+							end
+						end
+					</OnClick>
+				</Scripts>
+				<NormalFont style="GameFontNormalSmallLeft"/>
+			</Button>
+		</Frames>
+		<HighlightTexture name="$parentHighlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="555" y="37"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="55" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<TexCoords left="0" right="1.0" top="0" bottom="0.578125"/>
+		</HighlightTexture>
+	</Button>
+
+	<Frame name="AltoholicFrameSearch" parent="AltoholicTabSearch" hidden="true">
+		<Size>
+			<AbsDimension x="615" y="306"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="39" y="-105"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" />
+					<Anchor point="BOTTOMRIGHT" />
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size>
+								<AbsDimension x="31" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size>
+								<AbsDimension x="31" y="106"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, 41, Altoholic.Search.Update)
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			
+			<Button name="$parentEntry1" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentScrollFrame" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parentEntry2" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEntry1" relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="$parentEntry3" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEntry2" relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="$parentEntry4" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEntry3" relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="$parentEntry5" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEntry4" relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="$parentEntry6" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEntry5" relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+			<Button name="$parentEntry7" inherits="AltoSearchEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentEntry6" relativePoint="BOTTOMLEFT" />
+				</Anchors>
+			</Button>
+
+		</Frames>
+	</Frame>
+
+</Ui>

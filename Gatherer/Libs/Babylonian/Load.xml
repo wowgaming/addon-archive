@@ -1,0 +1,4 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Include file="Support\Load.xml"/>
+	<Script file="Babylonian.lua"/>
+</Ui>

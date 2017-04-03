@@ -1,0 +1,334 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+    ..\..\FrameXML\UI.xsd">
+
+	<Frame name="PowaOptionsCpuFrame2" parent="UIParent">
+
+	    <Scripts>
+            <OnLoad>
+                PowaOptionsCpuFrame2_OnLoad(self);
+            </OnLoad>
+            <OnShow>
+                PowaOptionsCpuFrame2_OnShow();
+            </OnShow>
+        </Scripts>
+
+		<Frames>
+			
+			<!-- Enable PA Checkbox -->
+			<CheckButton name="PowaEnableButton" inherits="PowaCheckTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+				  <Anchor point="TOPLEFT"
+						  relativeTo="PowaOptionsCpuFrame2"
+						  relativePoint="TOPLEFT">
+					<Offset>
+					  <AbsDimension x="20"
+									y="-15" />
+					</Offset>
+				  </Anchor>
+			  </Anchors>
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = PowaAuras.Text.aideEnable;
+						PowaEnableButtonText:SetText(PowaAuras.Text.nomEnable);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:EnableChecked();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="PowaDebugButton" inherits="PowaCheckTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+			  <Anchor point="TOPLEFT"
+					  relativeTo="PowaEnableButton"
+					  relativePoint="BOTTOMLEFT">
+				<Offset>
+				  <AbsDimension x="0"
+								y="-10" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = PowaAuras.Text.aideDebug;
+						PowaDebugButtonText:SetText(PowaAuras.Text.nomDebug);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:DebugChecked();
+					</OnClick>
+				</Scripts>
+			</CheckButton>		
+		
+		  <Slider name="PowaOptionsUpdateSlider2"
+				  inherits="PowaBarSliderTemplate">
+			<Size>
+			  <AbsDimension x="360"
+							y="16" />
+			</Size>
+			<Anchors>
+			  <Anchor point="TOPLEFT"
+					  relativeTo="PowaDebugButton"
+					  relativePoint="BOTTOMLEFT">
+				<Offset>
+				  <AbsDimension x="0"
+								y="-20" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+			  <OnLoad>
+				self:SetMinMaxValues(0,100); self:SetValue(100-200*PowaMisc.OnUpdateLimit); self:SetValueStep(1); 
+				PowaOptionsUpdateSlider2Text:SetText(PowaAuras.Text.nomUpdateSpeed.." : "..self:GetValue().."%");
+				PowaOptionsUpdateSlider2Low:SetText("0%"); 
+				PowaOptionsUpdateSlider2High:SetText("100%");
+			  </OnLoad>
+			  <OnValueChanged>PowaAuras:PowaOptionsUpdateSliderChanged2(self);</OnValueChanged>
+			</Scripts>
+		  </Slider>
+		  
+		  <Slider name="PowaOptionsAnimationsSlider2"
+				  inherits="PowaBarSliderTemplate">
+			<Size>
+			  <AbsDimension x="360"
+							y="16" />
+			</Size>
+			<Anchors>
+			  <Anchor point="TOPLEFT"
+					  relativeTo="PowaOptionsUpdateSlider2"
+					  relativePoint="BOTTOMLEFT">
+				<Offset>
+				  <AbsDimension x="0"
+								y="-20" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+			  <OnLoad>
+				self:SetMinMaxValues(0,60); self:SetValue(PowaMisc.AnimationFps); self:SetValueStep(1); 
+				PowaOptionsAnimationsSlider2Text:SetText(PowaAuras.Text.nomFPS.." : "..self:GetValue().." FPS");
+				PowaOptionsAnimationsSlider2Low:SetText("0"); 
+				PowaOptionsAnimationsSlider2High:SetText("60");
+			  </OnLoad>
+			  <OnValueChanged>PowaAuras:PowaOptionsAnimationsSliderChanged2(self);</OnValueChanged>
+			</Scripts>
+		  </Slider>
+
+		  <Slider name="PowaOptionsTimerUpdateSlider2"
+				  inherits="PowaBarSliderTemplate">
+			<Size>
+			  <AbsDimension x="360"
+							y="16" />
+			</Size>
+			<Anchors>
+			  <Anchor point="TOPLEFT"
+					  relativeTo="PowaOptionsAnimationsSlider2"
+					  relativePoint="BOTTOMLEFT">
+				<Offset>
+				  <AbsDimension x="0"
+								y="-20" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+			  <OnLoad>
+				self:SetMinMaxValues(0,100); self:SetValue(100-1000*PowaMisc.AnimationLimit); self:SetValueStep(1); 
+				PowaOptionsTimerUpdateSlider2Text:SetText(PowaAuras.Text.nomTimerUpdate.." : "..self:GetValue().."%");
+				PowaOptionsTimerUpdateSlider2Low:SetText("0%"); 
+				PowaOptionsTimerUpdateSlider2High:SetText("100%");
+			  </OnLoad>
+			  <OnValueChanged>PowaAuras:PowaOptionsTimerUpdateSliderChanged2(self);</OnValueChanged>
+			</Scripts>
+		  </Slider>
+		  
+		  <Button name="PowaShowAuraBrowserButton" inherits="OptionsButtonTemplate" text="Show Browser">
+			<Size>
+			  <AbsDimension x="160"
+							y="22" />
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="PowaOptionsTimerUpdateSlider2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PowaShowAuraBrowserButtonText:SetText(PowaAuras.Text.nomPowaShowAuraBrowser);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:MainOptionShow();
+					</OnClick>
+				</Scripts>
+			</Button>
+		  
+		  <Button name="PowaResetPositionButton" inherits="OptionsButtonTemplate" text="Reset Editor">
+			<Size>
+			  <AbsDimension x="160"
+							y="22" />
+			</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="PowaShowAuraBrowserButton" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="30" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PowaResetPositionButtonText:SetText(PowaAuras.Text.nomReset);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:MainOptionShow();
+					</OnClick>
+				</Scripts>
+			</Button>
+		  
+              <Frame name="PowaDropDownDefaultTimerTexture"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="240" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaShowAuraBrowserButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="-25" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownDefaultTimerTextureLabel:SetText(PowaAuras.Text.nomDefaultTimerTexture); 
+                   </OnLoad>
+                   <OnShow>
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownDefaultTimerMenu_Initialize);
+                  </OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>		  
+		  
+              <Frame name="PowaDropDownDefaultStacksTexture"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="260" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaResetPositionButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="-25" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownDefaultStacksTextureLabel:SetText(PowaAuras.Text.nomDefaultStacksTexture); 
+                   </OnLoad>
+                   <OnShow>
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownDefaultStacksMenu_Initialize);
+                  </OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+
+			<CheckButton name="PowaTimerRoundingButton" inherits="PowaCheckTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+			  <Anchor point="TOPLEFT"
+					  relativeTo="PowaDropDownDefaultTimerTexture"
+					  relativePoint="BOTTOMLEFT">
+				<Offset>
+				  <AbsDimension x="0"
+								y="-10" />
+				</Offset>
+			  </Anchor>
+			</Anchors>				
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = PowaAuras.Text.aideTimerRounding;
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomTimerRounding);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:TimerRoundingChecked(self);
+					</OnClick>
+				</Scripts>
+			</CheckButton>		
+
+			<CheckButton name="PowaAllowInspectionsButton" inherits="PowaCheckTemplate">
+				<Size>
+					<AbsDimension x="25" y="25"/>
+				</Size>
+				<Anchors>
+			  <Anchor point="TOPLEFT"
+					  relativeTo="PowaDropDownDefaultStacksTexture"
+					  relativePoint="BOTTOMLEFT">
+				<Offset>
+				  <AbsDimension x="0"
+								y="-10" />
+				</Offset>
+			  </Anchor>
+			</Anchors>				
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = PowaAuras.Text.aideAllowInspections;
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomAllowInspections);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:AllowInspectionsChecked(self);
+					</OnClick>
+				</Scripts>
+			</CheckButton>	
+			
+		</Frames>
+    </Frame>
+
+</Ui>

@@ -1,0 +1,79 @@
+## Interface: 30300
+## Version: 1.30300.1308
+## X-ReleaseDate: "$Date: 2010-08-06 05:31:41 +0000 (Fri, 06 Aug 2010) $"
+## X-Curse-Packaged-Version: r1318
+## X-Curse-Project-Name: Grid
+## X-Curse-Project-ID: grid
+## X-Curse-Repository-ID: wow/grid/mainline
+
+## Title: Grid
+## Notes: A modular, lightweight, and screen-estate saving grid of party/raid unit frames.
+## Notes-zhCN: 小巧的轻量级模块化队伍/团队框架。
+## Notes-zhTW: 精簡的團隊框架功能
+
+## Author: Pastamancer, Maia
+## Credits: Greltok, Phanx, Jerry
+## X-Category: UnitFrame
+## X-Website: http://www.wowace.com/addons/grid/
+## X-AceForum: 2525
+## X-WoWI-ID: 5747
+
+## OptionalDeps: Ace2, DewdropLib, LibDataBroker-1.1, LibDBIcon-1.0, LibGratuity-3.0, LibHealComm-4.0, LibSharedMedia-3.0, UTF8, Waterfall-1.0, SharedMedia
+## SavedVariables: GridDB
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\AceLibrary\AceLibrary.lua
+Libs\AceOO-2.0\AceOO-2.0.lua
+Libs\AceAddon-2.0\AceAddon-2.0.lua
+Libs\AceConsole-2.0\AceConsole-2.0.lua
+Libs\AceEvent-2.0\AceEvent-2.0.lua
+Libs\AceDB-2.0\AceDB-2.0.lua
+Libs\AceHook-2.1\AceHook-2.1.lua
+Libs\AceLocale-2.2\AceLocale-2.2.lua
+Libs\AceDebug-2.0\AceDebug-2.0.lua
+Libs\AceModuleCore-2.0\AceModuleCore-2.0.lua
+
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\Dewdrop-2.0\Dewdrop-2.0.lua
+#@end-no-lib-strip@
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+#@no-lib-strip@
+Libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+Libs\LibGratuity-3.0\lib.xml
+Libs\LibHealComm-4.0\LibHealComm-4.0.xml
+Libs\LibSharedMedia-3.0\lib.xml
+Libs\Waterfall-1.0\Waterfall-1.0.lua
+#@end-no-lib-strip@
+
+Libs\UTF8\utf8.lua
+
+Locales\GridLocale-deDE.lua
+Locales\GridLocale-esES.lua
+Locales\GridLocale-esMX.lua
+Locales\GridLocale-frFR.lua
+Locales\GridLocale-koKR.lua
+Locales\GridLocale-ruRU.lua
+Locales\GridLocale-zhCN.lua
+Locales\GridLocale-zhTW.lua
+
+GridCore.lua
+GridLDB.lua
+GridRoster.lua
+GridRange.lua
+GridLayout.lua
+GridLayoutLayouts.lua
+GridFrame.lua
+GridStatus.lua
+
+GridStatusAggro.lua
+GridStatusAuras.lua
+GridStatusHeals.lua
+GridStatusHealth.lua
+GridStatusMana.lua
+GridStatusName.lua
+GridStatusRange.lua
+GridStatusReadyCheck.lua
+GridStatusTarget.lua
+GridStatusVehicle.lua
+GridStatusVoiceComm.lua

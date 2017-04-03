@@ -1,0 +1,13 @@
+## Title: Auc:Stat:Sales Prices
+## Notes: Statistics extension for Auctioneer that bases its pricing recommendations on the sales history contained within BeanCounter.
+##
+## Interface: 30300
+## Dependancies: Auc-Advanced BeanCounter
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Stat-Sales.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Embed.xml

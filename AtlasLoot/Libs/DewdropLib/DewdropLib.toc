@@ -1,0 +1,18 @@
+﻿## Interface: 20400
+## LoadOnDemand: 1
+## Title: Lib: Dewdrop-2.0
+## Notes: A library to provide a clean dropdown menu interface.
+## Author: ckknight
+## eMail: ckknight@gmail.com
+## X-Category: Library
+## OptionalDeps: Ace2
+## X-AceLibrary-Dewdrop-2.0: true
+## X-License: LGPL v2.1
+## X-Curse-Packaged-Version: r321
+## X-Curse-Project-Name: DewdropLib
+## X-Curse-Project-ID: dewdroplib
+## X-Curse-Repository-ID: wow/dewdroplib/mainline
+
+embeds.xml
+
+Dewdrop-2.0\Dewdrop-2.0.lua

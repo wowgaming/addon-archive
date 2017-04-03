@@ -1,0 +1,25 @@
+## Interface: 40000
+## Title: GearScore
+## Notes: Quickly and easily judge a player's level of Gear
+## Version: 3.1.20b - Release
+## Author: Mirrikat45
+## SavedVariables: GS_Data, GS_Settings
+## Dependencies: BonusScanner
+## OptionalDeps: Ace3, LibQTip-1.0, LibQTipClick-1.1, LibDataBroker-1.1, Recount
+
+
+embeds.xml
+
+locales\GearScore-enUS.lua
+locales\GearScore-frFR.lua
+locales\GearScore-koKR.lua
+locales\GearScore-zhTW.lua
+locales\GearScore-esES.lua
+
+information.lua
+
+Frame.xml
+GearScore.lua
+recount.lua
+Broker.lua
+weights.lua

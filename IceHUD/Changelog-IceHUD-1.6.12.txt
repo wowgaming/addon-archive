@@ -1,0 +1,661 @@
+------------------------------------------------------------------------
+r610 | parnic | 2010-09-23 14:17:57 +0000 (Thu, 23 Sep 2010) | 1 line
+Changed paths:
+   A /tags/1.6.12 (from /trunk:609)
+
+Tagging as 1.6.12
+------------------------------------------------------------------------
+r609 | parnic | 2010-09-22 05:47:01 +0000 (Wed, 22 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceElement.lua
+   M /trunk/IceHUD.lua
+   M /trunk/modules/CustomCDBar.lua
+
+- added some more protection against people tweaking settings or changing profiles while in combat and added a warning message explaining that stuff could be broked if they manage to do it anyway
+- fixed cooldown bars that are set to "when ready" to be properly hidden when the module is disabled or profiles are changed
+------------------------------------------------------------------------
+r608 | parnic | 2010-09-22 00:19:13 +0000 (Wed, 22 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+
+- added calls to disable updates on custom modules as they are disabled so that they don't stick around on screen when they shouldn't
+------------------------------------------------------------------------
+r607 | parnic | 2010-09-22 00:15:35 +0000 (Wed, 22 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/CustomCount.lua
+
+- minor fixes to enabling a module and how updates are handled that should allow custom modules to react appropriately when they are enabled while a player has the buff they're monitoring
+------------------------------------------------------------------------
+r606 | parnic | 2010-09-21 13:50:35 +0000 (Tue, 21 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCore.lua
+   M /trunk/modules/CustomBar.lua
+
+- fix for custom modules generating a ton of errors if they're disabled while active (such as when changing profiles). there is still a bug where they stop running their updates like they're supposed to, but this will at least take care of the error spam
+------------------------------------------------------------------------
+r605 | parnic | 2010-09-21 03:49:41 +0000 (Tue, 21 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceHUD.lua
+
+- added a tooltip to the LDB launcher
+------------------------------------------------------------------------
+r604 | parnic | 2010-09-21 03:02:08 +0000 (Tue, 21 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomCount.lua
+
+- set custom counters to display out of combat if they are not 0
+------------------------------------------------------------------------
+r603 | parnic | 2010-09-19 21:29:07 +0000 (Sun, 19 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/HungerForBlood.lua
+
+- nuked the HungerForBlood module if the user is on a 4.0+ client since the ability is going away
+------------------------------------------------------------------------
+r602 | parnic | 2010-09-19 20:39:41 +0000 (Sun, 19 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/modules/GlobalCoolDown.lua
+   M /trunk/modules/RangeCheck.lua
+
+- minor cleanup of the GCD module to make it (hopefully) more reliable
+- doubled the maximum width of the rangecheck frame to ideally knock out the occasional complaint that certain fonts make the text spill onto a second line (never seen that myself)
+------------------------------------------------------------------------
+r601 | parnic | 2010-09-19 06:39:59 +0000 (Sun, 19 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceCastBar.lua
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/FocusHealth.lua
+
+- moved all "icons" settings from being under a header to being in their own group. this should unify the "icon settings" features of all modules
+------------------------------------------------------------------------
+r600 | parnic | 2010-09-19 06:27:54 +0000 (Sun, 19 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/TargetHealth.lua
+
+- added party role icon to TargetHealth module (and CustomHealth by virtue of inheritance)
+------------------------------------------------------------------------
+r599 | parnic | 2010-09-19 04:10:31 +0000 (Sun, 19 Sep 2010) | 4 lines
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/modules/GlobalCoolDown.lua
+   M /trunk/modules/TargetInfo.lua
+   M /trunk/modules/TargetOfTarget.lua
+
+- minor cleanup of unused stuff in IceCore
+- fixed the GCD to update its bar color as the user changes it instead of requiring re-enabling the module or reloading the ui
+- clarified some tooltip text on the TargetInfo module's text blocks
+- added DogTag support to the ToT module by request
+------------------------------------------------------------------------
+r597 | parnic | 2010-09-18 21:25:19 +0000 (Sat, 18 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceElement.lua
+   M /trunk/modules/GlobalCoolDown.lua
+
+- fixed the GCD module to be available in the module settings list again
+- tweaked options visibility and made 'bg visible' work on the GCD module
+------------------------------------------------------------------------
+r595 | parnic | 2010-09-18 07:26:50 +0000 (Sat, 18 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+
+- fixed a bug where the combat icon would get stuck if you went into combat when resting but had the resting icon display disabled
+- made the combat icon replace the resting icon if you go into combat while resting and then switch back to the resting icon (if appropriate) when dropping combat
+------------------------------------------------------------------------
+r594 | parnic | 2010-09-18 07:04:38 +0000 (Sat, 18 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceHUD.lua
+   M /trunk/modules/ClassPowerCounter.lua
+   M /trunk/modules/ComboPoints.lua
+   M /trunk/modules/CustomCount.lua
+   M /trunk/modules/LacerateCount.lua
+   M /trunk/modules/MaelstromCount.lua
+   M /trunk/modules/RangeCheck.lua
+   M /trunk/modules/Runes.lua
+   M /trunk/modules/SunderCount.lua
+   M /trunk/modules/TargetInfo.lua
+   M /trunk/modules/TargetOfTarget.lua
+   M /trunk/modules/Totems.lua
+
+- changed all step = 10 to step = 1 by request
+- widened range of possible vertical offset values for the custom counter module by request
+------------------------------------------------------------------------
+r593 | parnic | 2010-09-18 04:04:30 +0000 (Sat, 18 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCore.lua
+   M /trunk/IceElement.lua
+   M /trunk/modules/MirrorBar.lua
+
+- fixed the mirror bar: changed function declaration "class.new" to "class:new" in IceCore_CreateClass so that "self" doesn't get included in ... when init is called. this was causing an off-by-one error in the order of parameters passed to mirrorbar's "init" method and surprisingly didn't break anything else (looks like judicious use of 'ifs' in some defensive coding saved the rest of the modules); thanks to mitch0 for the report
+- added an argument to IceElement's init function that allows modules to skip the registration with the core. mirrorbars need this since they are created on demand and not saved with the rest of the bars
+------------------------------------------------------------------------
+r592 | parnic | 2010-09-17 05:41:04 +0000 (Fri, 17 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCastBar.lua
+   M /trunk/IceCore.lua
+   M /trunk/IceElement.lua
+   M /trunk/IceHUD.lua
+   M /trunk/IceHUD.toc
+   M /trunk/IceUnitBar.lua
+   M /trunk/embeds.xml
+   M /trunk/libs
+   M /trunk/modules/CastBar.lua
+   M /trunk/modules/ClassPowerCounter.lua
+   M /trunk/modules/ComboPoints.lua
+   M /trunk/modules/ComboPointsBar.lua
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/CustomCount.lua
+   M /trunk/modules/CustomHealth.lua
+   M /trunk/modules/CustomMana.lua
+   M /trunk/modules/DruidMana.lua
+   M /trunk/modules/EclipseBar.lua
+   M /trunk/modules/FocusCC.lua
+   M /trunk/modules/FocusCast.lua
+   M /trunk/modules/FocusHealth.lua
+   M /trunk/modules/FocusMana.lua
+   M /trunk/modules/FocusThreat.lua
+   M /trunk/modules/GlobalCoolDown.lua
+   M /trunk/modules/HolyPower.lua
+   M /trunk/modules/HungerForBlood.lua
+   M /trunk/modules/LacerateCount.lua
+   M /trunk/modules/MaelstromCount.lua
+   M /trunk/modules/MirrorBar.lua
+   M /trunk/modules/PetHealth.lua
+   M /trunk/modules/PetInfo.lua
+   M /trunk/modules/PetMana.lua
+   M /trunk/modules/PlayerCC.lua
+   M /trunk/modules/PlayerHealth.lua
+   M /trunk/modules/PlayerInfo.lua
+   M /trunk/modules/PlayerInvuln.lua
+   M /trunk/modules/PlayerMana.lua
+   M /trunk/modules/RangeCheck.lua
+   M /trunk/modules/Runes.lua
+   M /trunk/modules/Shards.lua
+   M /trunk/modules/SliceAndDice.lua
+   M /trunk/modules/SunderCount.lua
+   M /trunk/modules/TargetCC.lua
+   M /trunk/modules/TargetCast.lua
+   M /trunk/modules/TargetHealth.lua
+   M /trunk/modules/TargetInfo.lua
+   M /trunk/modules/TargetInvuln.lua
+   M /trunk/modules/TargetMana.lua
+   M /trunk/modules/TargetOfTarget.lua
+   M /trunk/modules/TargetOfTargetCast.lua
+   M /trunk/modules/TargetOfTargetHealth.lua
+   M /trunk/modules/TargetOfTargetMana.lua
+   M /trunk/modules/Threat.lua
+   M /trunk/modules/Totems.lua
+
+- removed the last remnants of Ace2 (AceOO-2.0 and AceLibrary) thanks to a huge amount of help from ckknight for metatables
+------------------------------------------------------------------------
+r591 | parnic | 2010-09-16 02:42:16 +0000 (Thu, 16 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/modules/ClassPowerCounter.lua
+   M /trunk/modules/FocusHealth.lua
+   M /trunk/modules/HolyPower.lua
+   M /trunk/modules/PlayerHealth.lua
+   M /trunk/modules/PlayerInfo.lua
+   M /trunk/modules/Runes.lua
+   M /trunk/modules/Shards.lua
+   M /trunk/modules/TargetHealth.lua
+   M /trunk/modules/Totems.lua
+
+- fixed up several "hide blizzard frame" options to re-display when the module is disabled and to call blizzard's OnLoad for the frame instead of manually entering every event to re-register
+- fixed "show incoming heals" option to be properly toggleable on 4.0 (bad conditional on the 'disabled' option)
+- hid "cooldown mode" option on the totems module since there was never more than one choice
+------------------------------------------------------------------------
+r590 | parnic | 2010-09-15 13:17:20 +0000 (Wed, 15 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/IceHUD.lua
+
+- re-added "enabled" checkbox in the settings to allow users to completely enable/disable the mod (this seems to have been something we got for free with one of the ace2 libraries and is no longer present after the move to ace3)
+------------------------------------------------------------------------
+r589 | parnic | 2010-09-14 02:02:59 +0000 (Tue, 14 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceHUD.lua
+
+- registered callback for media updates from LibSharedMedia so that the mod can be refreshed if necessary
+------------------------------------------------------------------------
+r587 | parnic | 2010-09-13 14:05:12 +0000 (Mon, 13 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/embeds.xml
+   M /trunk/libs
+
+- added libstub to pkgmeta/embeds. why wasn't it there already?
+------------------------------------------------------------------------
+r586 | parnic | 2010-09-13 13:54:38 +0000 (Mon, 13 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/modules/GlobalCoolDown.lua
+
+- minor optimization of frame rotation by un-registering the event listening for animation completion after it has done its job
+- made GCD module animation smooth by utilizing the existing animation system instead of trying to run another repeating timer over the top
+------------------------------------------------------------------------
+r585 | parnic | 2010-09-13 05:45:45 +0000 (Mon, 13 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/modules/GlobalCoolDown.lua
+
+- fixed up a few areas that were expecting moduleSettings.markers to be non-nil; this isn't the case on user-created custom bars that existed prior to the marker code coming in
+- hide the marker settings on the GCD module as they don't make much sense to have there
+------------------------------------------------------------------------
+r584 | parnic | 2010-09-13 05:37:47 +0000 (Mon, 13 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceCore.lua
+
+- after renaming a custom module, set the mod to automatically select it in the options menu
+------------------------------------------------------------------------
+r583 | parnic | 2010-09-13 05:33:59 +0000 (Mon, 13 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/modules/EclipseBar.lua
+
+- added setting to hide the new marker settings for certain bar types
+- hid marker settings for the eclipse bar since it controls the placement and defines a single marker itself
+------------------------------------------------------------------------
+r582 | parnic | 2010-09-13 05:25:01 +0000 (Mon, 13 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/modules/EclipseBar.lua
+
+- added support for defining markers on any bar (ticket 75)
+------------------------------------------------------------------------
+r581 | parnic | 2010-09-13 01:47:07 +0000 (Mon, 13 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+
+- added rough implementation of horizontal bars by abusing some features of Blizzard's UI animation system. we'll see if there's any actual demand for this to determine if the feature needs to be improved at all
+------------------------------------------------------------------------
+r580 | parnic | 2010-09-12 22:52:37 +0000 (Sun, 12 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CastBar.lua
+   M /trunk/modules/FocusCast.lua
+   M /trunk/modules/FocusHealth.lua
+   M /trunk/modules/TargetCast.lua
+
+- fixed up a couple more modules with an empty 'animation settings' header and some too-long options that were being ellipsised (is that a word? it is now.)
+------------------------------------------------------------------------
+r579 | parnic | 2010-09-12 22:36:02 +0000 (Sun, 12 Sep 2010) | 8 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCastBar.lua
+   M /trunk/IceCore.lua
+   M /trunk/IceElement.lua
+   M /trunk/IceHUD.lua
+   M /trunk/IceUnitBar.lua
+   M /trunk/modules/CastBar.lua
+   M /trunk/modules/ComboPoints.lua
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/CustomCount.lua
+   M /trunk/modules/CustomHealth.lua
+   M /trunk/modules/CustomMana.lua
+   M /trunk/modules/FocusHealth.lua
+   M /trunk/modules/GlobalCoolDown.lua
+   M /trunk/modules/MirrorBar.lua
+   M /trunk/modules/PlayerHealth.lua
+   M /trunk/modules/PlayerInfo.lua
+   M /trunk/modules/TargetCC.lua
+   M /trunk/modules/TargetCast.lua
+   M /trunk/modules/TargetHealth.lua
+   M /trunk/modules/TargetInvuln.lua
+   M /trunk/modules/TargetMana.lua
+   M /trunk/modules/TargetOfTargetCast.lua
+   M /trunk/modules/Threat.lua
+
+- big giant options screen usability cleanup:
+- colorized the FAQ and Module Settings description text to be more readable
+- removed custom coloring from certain options that didn't match the rest
+- hid a few debug-only settings
+- consolidated all the 'create custom module' buttons into a drop-down + create button
+- clarified description of some options so that their intent/purpose is more clear
+- moved around/cleaned up headers for consistency
+- doubled the width of long options so that they don't get cut off and ...'d
+------------------------------------------------------------------------
+r577 | parnic | 2010-09-12 07:14:11 +0000 (Sun, 12 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceHUD.lua
+
+- AceSerializer isn't packaged with the addon just yet since its usage is still in development, so don't error out if LibStub can't find it
+------------------------------------------------------------------------
+r576 | parnic | 2010-09-12 06:56:26 +0000 (Sun, 12 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/IceHUD.lua
+   M /trunk/libs
+
+- fixed a bug introduced in r570 where custom modules had to be deleted twice before they'd go away (they were registering themselves twice)
+- made all pop-up dialogs display in the tooltip strata so that they draw on top of the options screen. each pop-up resets itself to dialog once it's hidden
+- made custom modules get auto-selected in the options screen after they're created
+------------------------------------------------------------------------
+r575 | parnic | 2010-09-12 00:07:47 +0000 (Sun, 12 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/IceCastBar.lua
+   M /trunk/IceHUD.toc
+   M /trunk/embeds.xml
+   M /trunk/libs
+
+- removed Deformat as it's no longer necessary
+- removed FuBarPlugin from the toc since it's not used any more
+------------------------------------------------------------------------
+r574 | parnic | 2010-09-11 19:22:17 +0000 (Sat, 11 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/IceHUD.lua
+   M /trunk/IceHUD.toc
+   A /trunk/modules/EclipseBar.lua
+
+- added basic implementation of Druid Eclipse bar for balance druids
+------------------------------------------------------------------------
+r573 | parnic | 2010-09-11 01:42:29 +0000 (Sat, 11 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/CustomHealth.lua
+   M /trunk/modules/CustomMana.lua
+   M /trunk/modules/GlobalCoolDown.lua
+   M /trunk/modules/HungerForBlood.lua
+   M /trunk/modules/PlayerInfo.lua
+   M /trunk/modules/RangeCheck.lua
+   M /trunk/modules/SliceAndDice.lua
+   M /trunk/modules/TargetCC.lua
+   M /trunk/modules/TargetInvuln.lua
+   M /trunk/modules/TargetOfTarget.lua
+   M /trunk/modules/TargetOfTargetCast.lua
+   M /trunk/modules/TargetOfTargetHealth.lua
+   M /trunk/modules/TargetOfTargetMana.lua
+   M /trunk/modules/Threat.lua
+
+- removed a few old CancelScheduledEvent calls on bars that weren't actually scheduling any repeating timers any more and added a few CancelTimers to modules that weren't previously canceling their scheduled timers
+- converted CancelScheduledEvent to CancelTimer for modules that are still scheduling repeating timers...not sure why CancelScheduledEvent didn't throw any errors (since i don't see how it exists) but whatever
+- removed a bunch of "function() self:Thing() end" closures in ScheduleRepeatingTimer calls that didn't need to be there
+------------------------------------------------------------------------
+r572 | parnic | 2010-09-10 16:35:12 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/FocusMana.lua
+
+- fixed FocusMana to actually work
+------------------------------------------------------------------------
+r571 | parnic | 2010-09-10 06:49:45 +0000 (Fri, 10 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/IceHUD.toc
+   A /trunk/modules/ClassPowerCounter.lua
+   M /trunk/modules/HolyPower.lua
+   A /trunk/modules/Shards.lua
+
+- abstracted the HolyPower module's functionality to a ClassPowerCounter module since the warlock shard bar is functionally identical to holy power
+- added shard bar inheriting from ClassPowerCounter. same basic functionality as the holy power module: graphical mode that shows the default shards and numeric mode that just displays a count of active shards
+------------------------------------------------------------------------
+r570 | parnic | 2010-09-10 06:30:56 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/IceCastBar.lua
+   M /trunk/IceCore.lua
+   M /trunk/IceElement.lua
+   M /trunk/IceHUD.lua
+   M /trunk/embeds.xml
+   M /trunk/libs
+   M /trunk/modules/CastBar.lua
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/CustomCount.lua
+   M /trunk/modules/CustomHealth.lua
+   M /trunk/modules/CustomMana.lua
+   M /trunk/modules/FocusCast.lua
+   M /trunk/modules/FocusHealth.lua
+   M /trunk/modules/FocusMana.lua
+   M /trunk/modules/GlobalCoolDown.lua
+   M /trunk/modules/HungerForBlood.lua
+   M /trunk/modules/MaelstromCount.lua
+   M /trunk/modules/MirrorBar.lua
+   M /trunk/modules/PetHealth.lua
+   M /trunk/modules/PetMana.lua
+   M /trunk/modules/PlayerHealth.lua
+   M /trunk/modules/PlayerInfo.lua
+   M /trunk/modules/PlayerMana.lua
+   M /trunk/modules/RangeCheck.lua
+   M /trunk/modules/Runes.lua
+   M /trunk/modules/SliceAndDice.lua
+   M /trunk/modules/TargetCC.lua
+   M /trunk/modules/TargetHealth.lua
+   M /trunk/modules/TargetInfo.lua
+   M /trunk/modules/TargetInvuln.lua
+   M /trunk/modules/TargetMana.lua
+   M /trunk/modules/TargetOfTarget.lua
+   M /trunk/modules/TargetOfTargetCast.lua
+   M /trunk/modules/TargetOfTargetHealth.lua
+   M /trunk/modules/TargetOfTargetMana.lua
+   M /trunk/modules/Threat.lua
+   M /trunk/modules/Totems.lua
+
+- replaced AceEvent-2.0 with AceEvent-3.0/AceTimer-3.0
+------------------------------------------------------------------------
+r569 | parnic | 2010-09-10 03:07:10 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+
+- fixed reported taint issue from people joining or leaving a party in combat with the "hide blizzard party frames" option set on the PlayerHealth module
+------------------------------------------------------------------------
+r568 | parnic | 2010-09-10 01:50:43 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceCastBar.lua
+   M /trunk/modules/CustomMana.lua
+   M /trunk/modules/DruidMana.lua
+   M /trunk/modules/FocusMana.lua
+   M /trunk/modules/HolyPower.lua
+   M /trunk/modules/PetMana.lua
+   M /trunk/modules/PlayerMana.lua
+
+- updated all UnitPower* code to use the SPELL_POWER_* constants instead of hardcoding numbers...mostly just a readability change
+------------------------------------------------------------------------
+r567 | parnic | 2010-09-10 01:41:50 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomCount.lua
+
+- fixed a bug where custom counters were not getting reset on target change or player death. this could cause an issue where the counter would not update when it should
+------------------------------------------------------------------------
+r566 | parnic | 2010-09-10 01:12:44 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/RangeCheck.lua
+
+- potentially fix some text overflow issues that were reported with the range finder
+------------------------------------------------------------------------
+r565 | parnic | 2010-09-09 01:08:44 +0000 (Thu, 09 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/IceCore.lua
+   M /trunk/IceHUD.lua
+   M /trunk/embeds.xml
+   M /trunk/libs
+
+- added LibDBIcon to bring back the minimap icon
+------------------------------------------------------------------------
+r564 | parnic | 2010-09-08 14:13:46 +0000 (Wed, 08 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/HolyPower.lua
+
+- don't hide the Blizzard version of Holy Power by default since we're not hiding the Blizzard player frame by default
+------------------------------------------------------------------------
+r562 | parnic | 2010-09-08 04:41:31 +0000 (Wed, 08 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/libs
+
+- removed FuBarPlugin-2.0 as it's no longer used
+------------------------------------------------------------------------
+r561 | parnic | 2010-09-08 04:38:32 +0000 (Wed, 08 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/IceHUD.lua
+
+- added a bit more user friendliness to the new configuration page. efforts to increase awareness about how to setup the mod and get help are ongoing
+------------------------------------------------------------------------
+r560 | parnic | 2010-09-08 04:20:03 +0000 (Wed, 08 Sep 2010) | 3 lines
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/IceHUD.lua
+   M /trunk/modules/PlayerInfo.lua
+
+- added a message to the PlayerInfo module when trying to dismiss a buff in cataclysm explaining that the API is currently protected and unable to fixed. this will be removed when Blizzard gives us a way to work around it
+- added upgrade detection to alert users that their profile may need to be re-selected if the last version they ran was pre-ace3-conversion
+- added an FAQ section to the /icehud configuration page so that users don't have to go to one of the addon hosting sites to get their questions answered
+------------------------------------------------------------------------
+r558 | parnic | 2010-09-08 02:30:38 +0000 (Wed, 08 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/HolyPower.lua
+
+- tweaked rune width/height to match blizzard's default
+------------------------------------------------------------------------
+r557 | parnic | 2010-09-07 03:24:05 +0000 (Tue, 07 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceHUD.toc
+   A /trunk/modules/HolyPower.lua
+
+- added basic implementation of Holy Power for Cataclysm Paladins. has a graphical mode (basically matches Blizzard's built-in frame without the background) and numeric mode (which just displays the number of runes active as 0/1/2/3)
+------------------------------------------------------------------------
+r556 | parnic | 2010-09-07 00:27:37 +0000 (Tue, 07 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+
+- modified last commit to use a new local variable for the UnitGroupRolesAssigned check in order to avoid stepping on a different usage of "role" in the surrounding code
+------------------------------------------------------------------------
+r555 | parnic | 2010-09-07 00:22:15 +0000 (Tue, 07 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+
+- updated UnitGroupRolesAssigned check for the new return value
+------------------------------------------------------------------------
+r554 | parnic | 2010-09-06 20:11:48 +0000 (Mon, 06 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+   M /trunk/modules/PlayerMana.lua
+
+- added proper color for player focus (cataclysm hunters) on the PlayerMana module
+- minor documentation fix for the incoming heal notification on the player health bar to indicate that it requires either libhealcomm-4 or cataclysm to function
+------------------------------------------------------------------------
+r553 | parnic | 2010-09-06 04:14:31 +0000 (Mon, 06 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/IceHUD.lua
+   A /trunk/LibDataBroker-1.1.lua
+   M /trunk/embeds.xml
+
+- embedded libdatabroker and removed old fubar code
+------------------------------------------------------------------------
+r552 | parnic | 2010-09-06 03:05:16 +0000 (Mon, 06 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+
+- updated to use UnitGetIncomingHeals instead of LibHealComm when running cataclysm client. doesn't seem to work with HoTs at the moment, so that's something to keep an eye on as the beta progresses
+------------------------------------------------------------------------
+r551 | parnic | 2010-09-06 02:40:18 +0000 (Mon, 06 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/IceHUD.toc
+
+- set LibRangeCheck and LibDogTag(-Unit) to pull from trunk instead of the latest tag in order to pick up cataclysm fixes
+- set X-Compatible-With to 40000
+------------------------------------------------------------------------
+r550 | parnic | 2010-09-06 00:12:25 +0000 (Mon, 06 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Runes.lua
+
+- fixed runes 'alpha' mode display for cataclysm (also works on live realms). apparently RUNE_POWER_UPDATE no longer passes 'usable' as the second argument, so usability needs to be grabbed from GetRuneCooldown instead
+------------------------------------------------------------------------
+r549 | parnic | 2010-09-05 20:11:33 +0000 (Sun, 05 Sep 2010) | 6 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCastBar.lua
+   M /trunk/IceCore.lua
+   M /trunk/IceElement.lua
+   M /trunk/IceHUD.lua
+   M /trunk/IceHUD.toc
+   M /trunk/IceUnitBar.lua
+   M /trunk/embeds.xml
+   M /trunk/libs
+   M /trunk/modules/CastBar.lua
+   M /trunk/modules/ComboPoints.lua
+   M /trunk/modules/ComboPointsBar.lua
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+   M /trunk/modules/CustomCount.lua
+   M /trunk/modules/CustomHealth.lua
+   M /trunk/modules/CustomMana.lua
+   M /trunk/modules/FocusCast.lua
+   M /trunk/modules/FocusHealth.lua
+   M /trunk/modules/FocusMana.lua
+   M /trunk/modules/HungerForBlood.lua
+   M /trunk/modules/LacerateCount.lua
+   M /trunk/modules/MaelstromCount.lua
+   M /trunk/modules/MirrorBar.lua
+   M /trunk/modules/PetHealth.lua
+   M /trunk/modules/PetMana.lua
+   M /trunk/modules/PlayerHealth.lua
+   M /trunk/modules/PlayerInfo.lua
+   M /trunk/modules/PlayerMana.lua
+   M /trunk/modules/RangeCheck.lua
+   M /trunk/modules/Runes.lua
+   M /trunk/modules/SliceAndDice.lua
+   M /trunk/modules/SunderCount.lua
+   M /trunk/modules/TargetCC.lua
+   M /trunk/modules/TargetCast.lua
+   M /trunk/modules/TargetHealth.lua
+   M /trunk/modules/TargetInfo.lua
+   M /trunk/modules/TargetInvuln.lua
+   M /trunk/modules/TargetMana.lua
+   M /trunk/modules/TargetOfTarget.lua
+   M /trunk/modules/TargetOfTargetCast.lua
+   M /trunk/modules/TargetOfTargetHealth.lua
+   M /trunk/modules/TargetOfTargetMana.lua
+   M /trunk/modules/Threat.lua
+   M /trunk/modules/Totems.lua
+
+- converted most of the mod to ace3. the only ace2 remaining is AceEvent-2 (probably easy to get away from) and AceOO-2 (not so easy)
+- the ace3 conversion also broke the dependence on Waterfall and gave a much better configuration screen through AceConfigDialog; plus Waterfall is very broken in Cataclysm and it's unclear whether anyone will bother to fix it or not
+- fixed a bug with the custom CD bar when changing profiles where it would generate endless errors until a reloadui
+- removed DewDrop library as it was no longer in use
+- temporarily removed FuBar plugin as it doesn't work as a mixin with AceAddon-3. i will eventually be bringing this back in some form (before the next full release version)
+- removed an unused 'about' button on the config page and some empty headers...not sure why they were ever there
+------------------------------------------------------------------------
+r548 | parnic | 2010-09-04 23:43:25 +0000 (Sat, 04 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/GlobalCoolDown.lua
+
+- simplified GCD module to pass the spell id when calling GetSpellCooldown; apparently this didn't work at some point in time but was fixed around 3.3.2ish and works in cata as well
+------------------------------------------------------------------------
+r547 | parnic | 2010-09-04 23:09:10 +0000 (Sat, 04 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PetHealth.lua
+
+- missed an event registration for UNIT_HAPPINESS in PetHealth; changed to UNIT_POWER for cataclysm
+------------------------------------------------------------------------
+r546 | parnic | 2010-09-04 22:49:39 +0000 (Sat, 04 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/modules/DruidMana.lua
+   M /trunk/modules/FocusMana.lua
+   M /trunk/modules/MirrorBar.lua
+   M /trunk/modules/PetMana.lua
+   M /trunk/modules/PlayerMana.lua
+   M /trunk/modules/TargetInfo.lua
+   M /trunk/modules/TargetMana.lua
+   M /trunk/modules/TargetOfTarget.lua
+
+- fixes for cataclysm: added UNIT_POWER/UNIT_MAXPOWER event registrations in place of all the old power types, fixed mirror bar, targetinfo, and targetoftarget SetScripts to pass 'this' and 'arg#' around where necessary
+- still broken for cata: GlobalCoolDown module, LibDogTag (needs to be fixed by one of its maintainers or I need to port to LuaTexts...fixing dogtag would be vastly easier), and Waterfall (not sure what to do about this one just yet)
+------------------------------------------------------------------------
+r545 | parnic | 2010-08-21 01:05:06 +0000 (Sat, 21 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+
+- forcibly set bar upper/lower text width to 0 after setting their contents so that they auto-resize to the proper width. some massive bar/font sizes were causing strings to get cut off
+------------------------------------------------------------------------

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fMaster looter icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fPlündermeistersymbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono de Maestro Despojador|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône de maître du butin|r]
+## Title-koKR: PitBull4 |r[|cffeda55f전리품 담당자 아이콘|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fИконка распределяющего добычу|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f主拾取者标志|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f主拾取者標誌|r]
+## Notes: Show an icon on the unit frame when the unit is the master looter.
+## Notes-deDE: Zeigt ein Symbol auf dem Einheitsrahmen, wenn die Einheit der Plündermeister ist.
+## Notes-esES: Muestra un icono en la unidad cuando es el Maestro Despojador.
+## Notes-frFR: Affiche une icône sur le cadre d'unité quand l'unité est le maître du butin.
+## Notes-koKR: 전리품 담당자일시 유닛 프레임에 아이콘을 표시합니다.
+## Notes-ruRU: Показывать иконку распределяющего добычу в группе.
+## Notes-zhCN: 显示单位的主拾取者图标
+## Notes-zhTW: 顯示單位的分配者圖示。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

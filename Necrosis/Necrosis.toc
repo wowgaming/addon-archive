@@ -1,0 +1,69 @@
+## Interface: 30300
+## Title: Necrosis
+## Title-ruRU: Necrosis (Русский)
+## Title-frFR: Necrosis (Français)
+## Notes: Warlock UI & Shard Management
+## Notes-frFR: Gestion graphique des shards.
+## Notes-ruRU: Менеджер заклинаний, камней и демонов для чернокнижника.
+## Version: 3.0 (r224)
+## Author: Arpharazon [TarCalion @ US-Nagrand]
+## eMail: arpharazon@godsofchaos.org
+## Website: http://wow.curse.com/downloads/wow-addons/details/necrosis-ld-c.aspx
+## DefaultState: Enabled
+## X-Original-Author: Lomig
+## X-Original-Website: http://necrosis.larmes-cenarius.net/  [does not work anymore]
+## X-Localizations: enUS, enGB, deDE, frFR, koKR, zhCN, zhTW, esES, ruRU
+## X-Category: Warlock
+## LoadOnDemand: 0
+## SavedVariablesPerCharacter: NecrosisConfig
+
+Necrosis.xml
+
+Localization.lua
+
+Locales\Functions-fr.lua
+Locales\Functions-en.lua
+Locales\Functions-de.lua
+Locales\Functions-es.lua
+Locales\Functions-tw.lua
+Locales\Functions-cn.lua
+Locales\Functions-ru.lua
+
+Locales\Dialog-fr.lua
+Locales\Dialog-en.lua
+Locales\Dialog-de.lua
+Locales\Dialog-es.lua
+Locales\Dialog-tw.lua
+Locales\Dialog-cn.lua
+Locales\Dialog-ru.lua
+
+Speech\Speech-fr.lua
+Speech\Speech-en.lua
+Speech\Speech-de.lua
+Speech\Speech-es.lua
+Speech\Speech-tw.lua
+Speech\Speech-cn.lua
+Speech\Speech-ru.lua
+
+Initialize.lua
+Message.lua
+Spells.lua
+
+Timers\Functions.lua
+Timers\GraphicalTimers.lua
+Timers\OtherTimers.lua
+
+Bindings.lua
+
+XML\Attributes.lua
+XML\XML.lua
+
+XML\Panel.lua
+XML\Options-Messages.lua
+XML\Options-Sphere.lua
+XML\Options-Buttons.lua
+XML\Options-Menus.lua
+XML\Options-Timers.lua
+XML\Options-Misc.lua
+
+Necrosis.lua

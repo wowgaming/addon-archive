@@ -1,0 +1,1182 @@
+AtlasLoot Enhanced
+
+This mod is distributed under Version 2 of the GPL.  A copy of the GPL is included in this zip file with links to non-english translations.
+
+-Daviesh
+
+Patch Notes
+
+
+
+v5.11.04
+Added support for Atlas 1.17.0
+Minor fixes
+
+v5.11.03
+Added Ruby Sanctum Heroic loot
+Minor fixes and additions
+
+v5.11.02
+Added New TCG loot
+Updated Lord Ahune loot
+Minor fixes
+
+v5.11.01
+zhTW translation fixed
+
+v5.11.00
+Added Ruby Sanctum Normal loot
+Lord Ahune drops updated
+Added New TCG loot
+Added support for upcoming Atlas 1.16.1
+Minor fixes and additions
+
+v5.10.01
+Adjusted PvP prices
+Total revamp of PvP section
+Minor fixes and additions
+
+v5.10.00
+Added Arena Season 8 items
+Adjusted old Arena prices
+Added Lich King loot
+Revamp of Love is in the Air Event
+Final adjustments for Atlas 1.16.0
+Minor fixes and additions
+
+v5.09.05
+Fixed the heroic toggle
+
+v5.09.04
+Added remaining ICC loot (Normal Mode)
+Added Heroic ICC loot
+Crafting updated for Patch 3.3
+Added support for upcoming Atlas 1.16.0
+Minor fixes and additions
+
+v5.09.03
+Added The Plagueworks raid loot
+Minor fixes and additions
+
+v5.09.02
+Added Icecrown Citadel raid loot
+Added Wishlist API (see forums)
+Compatible with Atlas Fan-update
+Minor fixes
+
+v5.09.01
+Pit of Saron is now visible in the loot browser
+Minor fixes
+
+v5.09.00
+Updated for Patch 3.3
+Added Icecrown Citadel Lower Spire (Normal Mode)
+Added The Forge of Souls
+Added the Halls of Reflection
+Change so that you only get nagged for AtlasLoot/Atlas mismatches once
+Change to the use of Babble data for non-English users
+Minor fixes
+
+v5.08.10
+Commented out some Patch 3.3 stuff that was causing problems
+Attempt to make the mod more resistant to errors
+
+v5.08.09
+Pilgrim's Bounty loot
+More loot in preparation of Patch 3.3 (only on PTR)
+Minor updates
+
+v5.08.08
+Added Emblem of Frost Rewards (only on PTR)
+Added Tier 10 Sets (only on PTR)
+Many minor fixes
+
+v5.08.07
+Added links to Tier 9 sets and PvP Sets in Emblem sections as appropriate
+Fixed a bug due to changes to Babble-Boss
+
+v5.08.06
+Corrections for the ToC Tribute run
+Updated Hallow's End Headless Horseman loot
+
+v5.08.05
+Update for Atlas 1.15.1
+Fixed <- and -> navigation for Ulduar
+Added the new Scourgewar trading card game in-game items.
+
+v5.08.04
+Fixed a bug where the loot filter was breaking heroic mode loot
+Mod will no longer attempt to load a loot table at startup
+Many minor bug fixes
+
+v5.08.03
+Fixed a bug with default loot table causing errors with a 'fresh' AL install
+Update for the latest Atlas 1.15 test build
+Cleanup of Onyxia loot
+
+v5.08.02
+Moved T2 Helms to Nefarian
+25 Man Onyxia loot completed
+Fixed bug where selection of default wishlist was not preserved
+
+v5.08.01
+Fixed Argent Confessor Bug
+
+v5.08.00
+First pass of Onyxia (level 80) loot
+Added missing Tankard of Terror
+Updated crafting for Patch 3.2.2
+
+v5.07.07
+Added Cooking Daily rewards
+Added Fishing Daily rewards
+Added Patch 3.2 Wintergrasp items
+Added Emalon the Storm Watcher and Koralon the Flame Watcher loot to Vault of Archavon
+Added Wrath of the Lich King Crafted Sets (Blacksmithing, Leatherworking and Tailoring)
+Updated Brewfest 2009 items
+Added Vanity Pet Accessories
+Reins of the Violet Proto-Drake now available in Mount page
+Compatible with the Atlas version 1.15 alpha build
+Minor updates/fixes/translations
+
+v5.07.06
+Arena Season 7 Loot included
+The loot filter now applies to most PvP and Rep rewards, more coming
+Search and Wishlist headings fixed
+Many minor bug fixes and updates
+Localisation updates (including esMX)
+
+v5.07.05
+Added New Mounts, Pets and Tabards
+Added 25 Man Trial of the Crusader loot
+Updated Argent Tournament
+Updated Emblem items
+Updated Jewelcrafting and added new epic gem recipes to Jewelcrafting daily
+Added crafted weapons (lvl80 ones have been missing)
+Added Yogg-Saron+0 loot
+Added PvP Heirlooms to set menu
+
+v5.07.04
+10 Man Trial of the Crusader is complete (Horde and Alliance)
+More minor bug fixes
+
+v5.07.03
+Added New Dungeon : Trial of the Crusader, 10 Man Alliance Loot (thanks ThyrelR)
+More minor bug fixes
+
+v5.07.02
+Added New Dungeon: Trial of the Champion
+Added Patch 3.2 Crafted items
+Emblem of Triumph rewards added
+Removed all references to BabbleClass
+
+v5.07.01
+Fixed the back to front Druid sets
+
+v5.07.00
+Tier 9 Set items included
+TOC update for Patch 3.2
+Fixed deleting shared wishlists
+Fixed editing shared wishlists
+Items from shared wishlists are now correctly marked
+The Loot Browser now uses Atlas menus where possible to reduce code maintenance
+
+v5.06.02
+Fixed sorting bug with the loot filter
+Fixed adding items to wishlist from search results
+Minor updates/fixes/translations
+
+v5.06.01
+Attempt to get around addon packager issues
+
+v5.06.00
+New Feature: Added an ability in the options menu to filter loot pages by item type
+Loot Filter Documentation: http://www.daviesh.net/atlasloot_enhanced/wiki/index.php?n=AtlasLoot.LootTableFilter
+New Feature: *Beta* Each character now has access to multiple wishlists and they can be shared between players
+WishList Documentation: http://www.daviesh.net/atlasloot_enhanced/wiki/index.php?n=AtlasLoot.WishLists
+Revamped the Mount page
+Drop rates added for: Tempest Keep - The Eye, Serpentshrine Cavern, Zul'Aman, Caverns of Time - Battle for Mount Hyjal, Black Temple, Magisters' Terrace, Sunwell Plateau, Ahn'kahet: The Old Kingdom, Drak'Tharon Keep, The Violet Hold, Gundrak, Halls of Stone, Halls of Lightning, Caverns of Time: Old Stratholme, Utgarde Pinnacle, The Oculus, Naxxramas, Obsidian Sanctum, The Eye of Eternity, Ulduar
+Minor updates/fixes/translations
+
+v5.05.01
+More Ulduar items added
+New Argent Tournament items added
+Drop rates added for Azjol-Nerub
+Added an option to switch between new and old visual styles for the loot browser
+Added the option to treat crafted items as crafting spells or as items
+Minor updates/fixes/translations
+
+v5.05.00
+Major Ulduar update
+Re-arranged loot table controls to make room for bigger buttons
+Revamped the Non Combat Pets pages and added missing/new pets
+New look for the standalone loot browser from Lag
+Fixed bug with the 'Help' options panel
+Compatible with the new Atlas version 1.14.1
+
+v5.04.03
+Added missing Emblem of Valour relics
+Completed the Argent Tournament rewards
+Completed Lake Wintergrasp rewards
+Added gear for Arena Season 6
+Updated PvP Prices
+Ulduar updates
+Noblegarden included
+Minor updates/fixes/translations
+
+v5.04.02
+Fixed a bug with Atlas 1.13 and Atlas 1.14 layouts getting confused
+New Tabards added
+
+v5.04.01
+Emblem of Conquest loot included
+Fixed comparison tooltip bug
+Fixed Vault of Archavon bug
+Compatible with the new Atlas version 1.14
+The Query Server button is now throttled (small delay between item queries)
+
+v5.04.00a
+Fixed loot module toc numbers
+
+v5.04.00
+Added New Event: The Argent Tournament
+Added Tier 8 (Ulduar) Sets
+Added Cooking to 450 skill, all professions updated for Patch 3.1
+Added new WotLK Darkmoon Faire items and revamped its menu
+Added WotLK new World BoE Items
+Added drop rates for Utgarde Keep and The Nexus 
+Trash Mob updates from Pucelle
+Added Key to the Focusing Iris (Normal/Heroic) Rewards
+The dressingroom and comparison tooltips should now work for crafted items
+Holding down the shift key while mousing over items will now always show an available comparison tooltip
+Minor updates/fixes/translations
+
+v5.03.03
+Revamped the following dungeons: Halls of Lightning, The Violet Hold
+Added New Wintergrasp items from Patch 3.0.8
+Added New Venture Bay Sigils
+Updated Engineering for WotLK
+Minor updates/fixes/translations
+
+v5.03.02
+Help Panel translation bugfix
+
+v5.03.01
+Updated wishlist code to deal with 25 Man loot better
+Added WotLK Tailoring
+Revamped the following dungeons: Ahn'kahet, Azjol-Nerub, The Nexus, Utgarde Keep, Drak'Tharon Keep,  Gundrak, Halls of Stone
+Added a 'Help' panel in the options screen with how to use various features
+
+v5.02.07
+Added Vault of Archavon (Under WotLK instances in loot browser, PvP Rewards in Atlas)
+Updated Gluth loot tables
+Added Deadly Gladiator's Necklaces, Cloaks, and Rings
+Added Battlemaster Trinkets (Level 80)
+Added PvP Jewelcrafting Designs
+Added Frenzyheart Tribe and The Oracles Disgusting Jar and Mysterious Egg rewards
+Added Venture Bay rewards to the PvP section
+Corrected Honor/Ratings for PvP items
+Minor updates/fixes/translations
+
+v5.02.06
+Fixed a bug in LibAboutPanel implementation
+
+v5.02.05
+Malygos and Sartharion updates
+Inscription Update
+Wrath of the Lich King Blacksmithing done
+Update to Emblem of Heroism items
+Added support for LibAboutPanel
+
+v5.02.04
+Wrath of the Lich King Jewelcrafting
+Utgarde Pinnacle Atlas interface fixed
+Update to the mounts collection
+
+v5.02.03
+Major Naxx Update
+Added new sets: Raine's Revenge and The Fists of Fury.
+Renamed and Split the pre-60 page into 2 pages - Classic and Burning Crusade/Wrath of the Lich King
+Added Winterfin Retreat as a new Wrath Faction
+Minor updates/fixes/translations
+
+v5.02.02
+Minor bugfixes
+Fixed a bug causing the 10 man/25 man toggle button to have the wrong text
+Violet Hold Normal/Heroic loot included
+Gundrak Heroic loot included
+Sartharion Update
+Naxx Update
+Added WotLK Enchanting recipes
+
+v5.02.01
+Added WotLK Alchemy and Leatherworking recipes
+Re-arranged Enchanting
+Updated Inscription
+Added the Horde Expedition and the Alliance Vanguard rep factions
+Minor updates for Atlas 1.13
+
+v5.02.00
+Dungeons and Raids:
+Added loot for 'Utgarde Keep'
+Added loot for 'The Nexus'
+Added loot for 'Azjol-Nerub'
+Added loot for 'Ahn'kahet: The Old Kingdom'
+Added loot for 'Drak'tharon Keep'
+Added loot for 'The Violet Hold'
+Added loot for 'Gundrak'
+Added loot for 'Halls of Stone'
+Added loot for 'CoT:Stratholme'
+Added loot for 'The Oculus'
+Added loot for 'Halls of Lightning'
+Added loot for 'Utgarde Pinnacle'
+Added loot for 'Naxxramas'
+Added loot for 'Obsidian Sanctum'
+Added loot for 'The Eye of Eternity'
+Revamp of almost every Classic instance
+Revamp of almost every BC instance
+PvP:
+Added PvP Level 80 Blue and Epic Sets (Savage/Hateful/Deadly Gladiator)
+Added PvP Level 80 Blue Weapons (Savage Gladiator/Deadly)
+Added PvP Non-Set Epics Level 80
+Factions:
+Added Argent Crusade faction
+Added Frenzyheart Tribe faction
+Added Kirin Tor faction
+Added Knights of the Ebon Blade faction
+Added The Kalu'ak faction
+Added The Oracles faction
+Added The Wyrmrest Accord faction
+Revamp of Faction section
+Sets:
+Added Tier 7 10/25-Man Sets
+Merged Tier 1/2 sets (sorted by class)
+Merged Tier 4/5/6 sets (sorted by class/spec)
+Merged Dungeon Set 3 (sorted by armor type)
+Merged PvP Reputation sets (sorted by armor type)
+Merged Arena sets (sorted by class/spec)
+Removed class breakdown for AQ20 sets
+Removed class breakdown for AQ40 sets
+Removed class breakdown for ZG sets
+Revamp of Tabard section
+Revamp of Pre-60 set section
+Revamp of Mounts sections
+Added Non Combat Pets section
+Interface:
+Added 'prev' and 'next' buttons to many sets pages
+Added 'prev' and 'next' buttons to many instance pages
+Changed loot browser instance menu from sort by continent to sort by expansion
+Events:
+Hallow's End update
+Crafting:
+Revamped Alchemy section of the Crafting Module
+New Profession: Inscription now included.
+
+v5.01.04
+Alchemy revamp complete
+AtlasLootFu can now be reset with atlasloot reset functions
+Many minor bugfixes
+
+v5.01.03
+Fixed T7 Paladin sets
+Scourge Invasion updated
+Removed the basic minimap button
+Began re-arranging Alchemy
+
+v5.01.02
+Minor wishlist fixes
+Localisation update
+
+v5.01.01
+Fixed the package
+
+v5.01.00
+New minimap button code, hopefully more reliable.
+
+v5.00.02
+Fixed a bug with Tier4/5/6 Sets being scrambled up
+Fixed a bug with searching
+Fixed a bug for displaying drop rates
+
+v5.00.01
+Updated for Atlas 1.12.2
+
+v5.00.00
+Compatible with WotLK
+Switch from Ace2 to Ace3
+Data from WotLK
+Items in the wishlist now have a star next to them
+LibDataBroker implemented (and hence Titan Panel support)
+New Options menu
+Loot browser now resizable in the options menu
+
+v4.06.03
+Minor bug fixes
+
+v4.06.02
+Removed Atlas 1.11 compatibility
+Fixed bug with Badge of Justice rewards
+Fixed bug with prices not showing in the wishlist
+Fixed bug in Alphamap integration
+
+v4.06.01
+AutoQuery has been removed, as it caused too many problems.  It has been replaced with a 'Query Server' button that will query all the items on the loot page.  If you get disconnected, you know which page to blame.
+'Level 70 Instance Rewards' renamed to 'Badge of Justice Rewards'
+Updated Brewfest section
+Added loot table for Coren Direbrew (Brewfest)
+Added Don Carlos loot table
+Added new TCG loot from "Drums of War"
+Readded previously removed vindicator items
+Fixed Arena prices (Season 3)
+Fixed a major Wishlist bug that caused crafted items to appear corrupted
+The Quicklooks button now disables itself for search results and the wishlist
+Minor updates/fixes/translations
+
+v4.06.00
+Compatible with the new Atlas 1.12 data format
+New feature: Quicklooks, which allows you to bind loot tables to one of 4 shortcut buttons in Atlas or the loot browser
+Added new TCG loot from "Hunt of Illidan"
+Updated Midsummer Fire Festival section, including Lord Ahune
+Arena prices and items for Season 4 adjusted
+Many minor loot fixes/additions/translations
+
+v4.05.00
+New and improved searching system (some nice work from Kurax there)
+All professions data available in the crafting module
+More efficient memory use due to optimisations implemented in Patch 2.4
+Added translations for all items
+Completed Arena Season 4
+Added M'uru loot table
+Many minor loot fixes/additions
+
+v4.04.01
+Fixed the Atlas/Titan integration issue
+Added new TBC set (The Fists of Fury)
+Fixed the LBRS extra buttons
+Upgrade to Babble 3.0
+Many minor loot fixes/additions
+
+v4.04.00
+Updated for Patch 2.4
+Updated for Atlas 1.11.0
+Added Sunwell Plateau loot
+Added Magisters' Terrace loot
+Added new Faction - Shattered Sun Offensive 
+Added new Set - Latro's Flurry
+Added new heroic items from Sunwell Isle
+Added Reputation PvP sets
+Added Arena season 4 sets/weapons (only a few IDs known)
+Added Lord Ahune (Midsummer Festival)
+Added new TCG loot (Servants of the Betrayer)
+Removed old Level 70 PvP sets (no longer available)
+Split crafted loot into its own module
+Many minor loot fixes/additions/translations
+
+v4.03.00
+Added the 'WishList'.  Alt-click on any item to add it to the wishlist, alt-clicking on an item in the wishlist deletes it.  There are buttons added to the Atlas panel and the loot browser to open the wishlist.
+PvP Non Set Epics now have the correct menu titles (Cloth/Leather and Mail/Plate)
+'/atlasloot reset' now also resets the loot browser and options menu to the middle of the screen in case they are accidentally dragged away 
+Horde/Alliance PvP tokens and World PvP tokens switch depending on the faction of the character you are logged in as.  Due to this a number of loot tables have been cleaned up and had duplicate items removed.
+Many minor loot fixes/additions/translations
+
+v4.02.01
+More adjustments for Atlas 1.10.3
+Added '/atlasloot reset' command so reset the loot page you last visited if you get disconnected
+Added '/atlasloot options' command to open the options screen without a FuBar/Minimap button
+Added the new Vindicator epic items
+Added the new March of the Legion trading card game in-game items.
+Many minor loot fixes/additions/translations
+
+v4.02.00
+Updated for Patch 2.3
+Updated for Atlas 1.10.3
+Revamped the options screen
+Added an option to automatically query the server for items instead of having right-click them all.  This can be turned on in the new options screen.
+Corrected pre-60 dungeon loot to now be blue in line with Blizzard changes
+Added Zul'Aman loot
+Added Hyjal trash loot
+Added Arena season 3 rewards
+Adjusted prices for previous arena seasons
+New menus for the PvP and Arena reward pages
+New World Event: Brewfest
+Added The Headless Horseman to the Hallow's End event
+Split the Rare Mounts page to 2 - Classic WoW and Burning Crusade pages
+Added new mounts to the Rare Mounts page
+Added the new Heroic Badge items
+New Menu for the Heroic Badge items
+Many minor loot fixes/additions/translations
+
+v4.01.05
+Updated Version Check for Atlas 1.10.2
+
+v4.01.04
+Versioning Update for Patch 2.2
+More BoE World Epics items added.
+New World Events added: Skettis, Abyssal Council, Ethereum Prison
+Pre 60 PvP gear added for WSG and AB.
+Many minor loot fixes/additions
+
+v4.01.03
+French and German updates
+
+v4.01.02
+Updated for Atlas 1.10.1
+Added BoE World Epics (thanks Lothaer!)
+Reorganised the 'Collections' menu
+World Events greatly expanded
+
+v4.01.01
+Update for German translation difference in Atlas 1.10
+
+v4.01.00
+Patch 2.2 Data included
+Atlas 1.10 Compatible
+Added 'World Events' section, more content there very soon
+Added loot to the Entrace map mobs
+Added the 2 centaur factions
+Can now disable text notification when a LoD module loads (no message by default)
+Added a 'Load Modules' button that manually loads all available LoD modules
+Loot updates and translations
+Bug fixes
+
+v4.00.00
+Core AtlasLoot mod now contains no data.  All data now contained in Load-On-Demand modules
+Created 5 modules: AtlasLoot_OldInstances, AtlasLoot_BCInstances, AtlasLoot_RepFactions, AtlasLoot_SetsandPvP, AtlasLoot_WorldLoot
+Total memory usage reduced where possible
+
+v3.01.04
+French and German bugfixes
+
+v3.01.03
+Bugfix: A file was still trying to access the old saved variables
+
+v3.01.02
+Fixed a bug where searching was not case insensitive if the item was unsafe
+Saved Variables now use AceDB
+Text messages generated by querying the server for items can now be switched off
+Updated PvP item prices
+Rep menus revamped
+'Back' button moved to the bottom centre of the loot frame to be out of the way of long titles
+TK Legendaries used in Kael'thas fight re-instated
+
+v3.01.01
+Updated PvP and Arena items for Patch 2.1.2 (thanks for your help gandharva)
+Slight adjustment of loot table UI layout
+Split Darkmoon Faire over two pages (one for cards, one for items)
+The mod will now use Equipcompare if it is installed, if not it will use the Blizz version
+French and Trad. Chinese updates
+Many minor fixes/updates
+
+v3.01.00
+Replaced EquipCompare support with Blizzards own function (thanks to siena for fasttracking this)
+Replace the 'Use Equipcompare' option wih a 'Show Comparison Tooltips' toggle
+Updated for changes to Babble-Tradeskill
+Fixed a bug in the BFD loot tables
+Minor bug fixes and updates
+
+v3.00.09
+Fixed bug in search function
+Further Item Link refinement
+Trad Chinese Update
+Minor updates/bug fixes/corrected typos
+
+v3.00.08
+Lootlink fix
+Update to way Item Links in chat are handled
+Minor updates and corrections
+
+v3.00.07
+Trad. Chinese Update
+Many updates and fixes
+
+v3.00.06
+Trad. Chinese bugfix
+Minor updates and fixes
+
+v3.00.05
+Fixed a bug with the Terokkar Forest PvP loot table
+Removed obsolete data
+Minor loot updates
+
+v3.00.04
+Fixes for French and Spanish
+Minor loot updates
+
+v3.00.03
+Made the loot browser submenu persist when open and closed, only resets on relog
+Partial French support (less likely to crash, but still mostly English)
+
+v3.00.02
+Capped debugging spam for those with tainted interfaces
+
+v3.00.01
+Updated for Atlas 1.9.1
+
+v3.00.00
+Updated for WoW Patch 2.01.00
+Early data for the Black Temple, Hyjal Summit and new factions (note: Black Temple data only available via loot browser, no Atlas map yet)
+Added Crafted Sets and more pre-60 sets
+AtlasLootFu now built-in, no longer required seperately so delete any seperate AtlasLootFu folder
+All localisation is done via AceLocale and Babble
+Switched to a Dewdrop menu for the standalone loot browser
+Rep Factions split into Original WoW and Burning Crusade
+Major Loot Updates
+Major Code revisions
+Drop Rates for all 5 mans + Kara + Gruul's Lair (take Heroic drop rates with a grain of salt due to small sample sizes)
+
+v2.04.00
+Support for Atlas 1.9
+Simp. Chinese Update
+Added Pre-60 Sets to the collections menu (with help from Celellach)
+Heroic Toggle now sticky (if you select a heroic table, all subsequent tables will be heroic [if available] until you switch back to normal)
+Loot updates
+
+v2.03.04
+German fix
+Loot update
+Loot browser now toggles with minimap button and is closed with 'ESC' key
+
+v2.03.01
+Made searching case insensitive
+Major loot update
+Added new LvL 70 PvP and Arena Sets for healers
+Adjusted Arena weapon prices in line with patch 2.0.10
+
+v2.03.00
+Support for AtlasExtras
+Added search function (see 'Using AtlasLoot Search.txt' for limitation, etc)
+Changed the way the minimap button is shown and hidden in an attempt to throw off addons that 'latch on' to the button and keep it shown.
+Big Trad. Chinese update
+Karazhan revamp
+Huge Heroic Mode update
+Added lvl60 Shaman PvP set for Alliance and lvl60 Paladin PvP set for horde
+Updated lvl70 PvP reward prices
+Added drop rates for Ramparts and Blood Furnace
+
+v2.02.05
+Support for AtlasCoT
+Fixed the Priest T4 loot table
+Updated the Violet Eye rep rewards
+Many minor additions and corrections
+
+v2.02.04
+New version of AtlasLootFu (thanks Myrathi)
+Added a Tabard section
+Big French update
+Many minor additions and corrections
+
+v2.02.03
+Added support for AtlasTempestKeep
+Added drop locations for most Dungeon Set 3 pieces
+Renamed to Addons folder to (hopefully) resolve Cosmos patcher issues
+Added High King Maulgar in Gruul's Lair
+Hellfire Ramparts revise to move Vazruden and Nazan's loot tables into the chest
+
+v2.02.02
+Urgent fix for the French client (Hegarol broke it!)
+
+v2.02.01
+Added support for AtlasAuchindoun
+Made the AtlasLoot Panel toggle slightly smaller
+Re-enabled lvl70 PvP rewards
+Many minor updates
+
+v2.02.00
+Hacked clickable boss names into Atlas
+Fixed a bug with the options menu
+Minor Updates
+
+v2.01.03
+Updated to support the latest version of ItemSync
+
+v2.01.02
+Fix for the Atlas version check
+
+v2.01.01
+Bug fix for Alphamap users
+
+v2.01.00
+Updated to work with Atlas 1.8.6 (still completely Alphamap compatible)
+Added optional FuBar Support (install AtlasLootFu to use it)
+Added Toggle button for the AtlasLoot panel
+Item set menus have been revamped for flexibility
+Refined right-click server query
+Unsafe items are now indicated with a red box around the icon
+Item icons are now slightly bigger
+Instance loot tables now split into 3 files for easier maintainence
+Added the Keepers of Time
+Added the Hydraxian Waterlords
+Added the Bloodsail Pirates
+Added the Scale of the Sands
+Added Dungeon Set 3
+Added lvl70 PvP Armor sets (Hidden as the items have since been removed from the game)
+Added lvl70 PvP Accessories (Hidden as the items have since been removed from the game)
+Added lvl70 PvP Non-set Epics (Hidden as the items have since been removed from the game)
+Complete Tier 4
+Complete Tier 5
+Added loot tables for the Shadow Labyrinth
+Added loot tables for the Shattered Halls
+Added loot tables for the Steamvault
+Added loot tables for the Mechanar
+Added loot tables for the Botanica
+Added loot tables for the Arcatraz
+Added loot tables for Karazhan
+Added loot tables for Hellfire Ramparts (Heroic Mode)
+All Rep factions revised
+Price displayed for PvP Armor sets and weapons
+Price displayed for Arena PvP sets
+Price displayed for Battleground rewards
+Price displayed for Heroic Mode token turn-ins
+Price displayed for World PvP rewards
+Darkmoon Faire Ticket rewards now have prices displayed
+Minor updates to 'old world' loot tables
+Battleground rewards revamped
+
+v2.00.01
+Removed a minor Lootlink integration bug
+
+v2.00.00
+Updated for Atlas 1.8.5
+Updated for WoW 2.0
+Various code refinements
+Added Ramparts, Blood Furnace, Slave Pens and Underbog loot tables
+Added loot tables for Mana-Tombs, Crypts and Escape from Durnholde
+Added loot tables for Sethekk Halls
+Added Heroic Mode Instance Token Turn-ins
+Added Sporeggar Faction
+Added Cenarion Expedition Faction
+Added Kurenai Faction
+Added Honor Hold Faction
+Added Thrallmar Faction
+Added Tranquillien Faction
+Added Scryer Faction
+Added Aldor Faction
+Added the Mag'har Faction
+Added the Consortium Faction
+Added the Lower City Faction
+All World PvP Rewards added
+Added Partial list of Tier 4 set pieces
+Added Partial list of Arena PvP set pieces
+
+v1.21.00
+Update for Atlas 1.8.5
+Fixed bug in Sunken Temple
+Added Plugger to the Grim Guzzler
+Added new User Interface
+Added Cosmos Integration code
+Added Minimap Button
+
+v1.20.01
+Fixed chatlink bug
+
+v1.20.00
+Major internal changes
+Seperate section for PvP rewards
+French Update
+Korean Update
+
+v1.19.04
+Update for Atlas 1.8.4
+Added the option to make the loot table background opaque
+Added the option to show itemIDs at all times
+Tome of Conjure Food VII Added
+Fixed up Ring of the Earthshatterer
+Fixed Darkmoon Faire typos
+Alphamap Compatibility Update
+
+v1.19.03
+Atlas 1.8.3 compatibility update
+Added AQ Opening quest chain to the AQ40 page
+Trad. Chinese and German updates
+
+v1.19.02
+Atlas 1.8.2 compatibility update
+Consolidation of AD rewards
+
+v1.19.01
+THIS RELEASE HAS NEW FILES, EXIT OUT OF WoW BEFORE INSTALLING
+Added Book of Ferocious Bite V
+Fixed T1 BoE bug
+Update to T0 descriptions
+Trash Mob data added to most instances (thanks to Coani for the research)
+BRD Arena event fixed up, Houndmaster Grebmar dropped due to lack of space
+New Reputation Tab Added
+Added Rep rewards for all factions (thanks condor2k for finishing the research)
+Naxx Update
+Korean Update
+German Update
+French Update
+
+v1.19.00
+Included a small database of all AQ40 and Naxx tooltips as these items cannot always be queried with a right-click
+Legendary Item page added in the 'Item Sets' window
+Naxx Update
+French Update
+
+v1.18.05
+Fixed a Zevrim Thornhoof typo
+Added the recipes Lieutenant General Andorov sells
+Made T0 trash drops more specific (where possible)
+HUGE Naxx update
+Minor German update
+Change to make AtlasLoot frames work with AtlasQuest frames
+Change to set display for external mods
+
+v1.18.04
+Fixed the Lootlink bug some were having
+Headings no longer bring up tooltip fragments
+Added Brood of Nozdormu Rings to the AQ40 page
+
+v1.18.03
+Right-clicking an unsafe item will attempt to get tooltip data from the server
+Attempted improvements in Lootlink use in non-english clients (thanks KKram!)
+Naxx Update
+Updates for all localisations except Korean
+
+NOTE: RIGHT CLICK QUERY USAGE
+All you need to do is right click an item.  If it is in your local cache already,
+you will just see a note saying the item is safe.  If the item needs to be fetched
+from the server, you will see a message to that effect.  Keep right clicking until
+that message goes away.
+
+If you have right clicked on an item that has not dropped on your server (or in your
+battlegroup) you will either be disconnected or the 'querying server' message will
+not go away no matter how many time you click.
+
+NOTE: NOT A BUG
+The introduction of cross server battlegrounds has brought some interesting
+challenges as far as loot linking goes.  In many cases, you can get the tooltip
+for an item as someone in your battlegroup has it, but you cannot link it in a
+chat channel as it has not dropped on your server.  As a result, I can no longer
+guarantee safe item linking, only safe viewing of tooltip data
+
+v1.18.02
+Updated version check for Atlas 1.8.1
+
+v1.18.01
+Changed (no iteminfo) to (unsafe) in the English translation as the old text was confusing people
+Expanded drop rates in Naxx to a few more bosses well and truly on farm
+Fixed Armaments and Regalia drop rates in AQ40
+Added error tooltip for 'unsafe' item links
+Minor formatting changes
+French Update
+German Update
+
+v1.18.00
+New directory structure
+Minor loot re-arranging to accomodate changes to Atlas 1.8
+World Boss tables now accessible through GUI
+Added Death Knight Darkreaver to Scholo
+Added Lord Hel'nurath to DMW
+Tier 0.5 Set Added
+Drop locations added to T0, T1, T2 and T3 set descriptions
+Fixed major XML bug
+Added PvP Weapons
+Added menu to access all sets and the options screen
+Small fix for non-Atlas mods
+Chinese, German, English and French pretty much up to date
+
+v1.17.04
+German, French and Chinese (Trad. and Simp.) updates
+Naxx fixes
+
+v1.17.03
+Added PvP, T2, T1, T0 Armour sets (thanks to Asurn for helping with data assimilation)
+Removed the default 'Boss:' prefix from headers that didn't need them
+Trad. Chinese Update
+
+v1.17.02
+French, German and Trad. Chinese updates
+
+v1.17.01
+Bigger Buttons
+Fixed problem for external addons hooking into Atlasloot
+Attempted fix for Noth text in the German client, let me know if it works.
+Attempted fix for localisation of set names, let me know if it works
+Fixed framestrata error appearing in FrameXML.log
+Simp. Chinese update
+
+v1.17.00
+Set interface re-programmed
+Added T3 Sets to Naxx page
+Added the Observer to DM North on Gordok's table
+Simp. Chinese Update
+Naxx Update
+
+v1.16.03
+VanCleef's Head graphic fixed.
+Added ZG NR Enchant
+Added Ribbly Screwspigot
+Added Rockshard Pellets and Murloc Skin Bag
+German Update
+French Update and bugfix
+
+v1.16.02
+Fixed a number of typos
+Viper, Defias and Scarlet sets added.
+Localised armor set text
+Quest items needed for armor sets localised
+Reordering of some boss loot
+Naxx updated
+
+v1.16.01
+German update for Atlas v1.7.5
+Bug fix for people without Atlas installed
+Drop Rates added to SFK, RC, SM, Uld, RFD, ZF, Mara, ST, Deadmines, WC, BFD, Stockade and Gnomeregan (thanks Pownas!)
+Naxx Update
+
+v1.16.00
+Korean Update
+German Update
+French Update
+Major XML and LUA reworking (HUGE Props to Telic for the ideas and most of the implementation)
+Stub for Fixed price DKP entry
+Added BRD Houndmaster
+Fixed some dodgy MC colouring
+More Naxx data :-)
+
+v1.15.07
+Simp. Chinese Update
+French Update
+More Naxx data :-)
+Added BRD Princess
+
+v1.15.06
+French Update
+Korean Update
+German Update
+Updated Ouro Loot
+Updated Naxx Loot
+Added Tablet of Flame Shock VI
+Added better bag descriptions and Binding of the Windseeker description
+Added Libram of Divinity
+
+v1.15.05
+Fixed Red Dragonscale Breastplate (en)
+Trad. Chinese Update
+Added Primal Hakkari Idol
+Added the Polymorph: Turtle book for Mages
+Added some more Naxx data
+Added data to the Grim Guzzler in BRD
+Added Shadowpriest Sezz'ziz in ZF (en)
+Added a missing Ouro drop
+
+v1.15.04
+Updated Simp. Chinese
+Added new ZG drops
+Fixed popup bug on non-english clients
+
+v1.15.03
+Fixed ZF to mach Atlas v1.7.4
+Seperated the Tier 0.5 Summonables to match Atlas v1.7.4 English (other languages as soon as Atlas is ready)
+Now checks the Atlas version is compatible.
+Completed WSG Pants Data
+Filled in some gaps in Naxx
+
+v1.15.02
+Fix to match Atlas v1.7.4 UBRS changes
+Upgraded ZG and AQ20 Sets to Epic Quality.
+
+v1.15.01
+Trad. Chinese Update
+Updated toc for patch 1.11
+
+v1.15.00
+Added Warsong Gulch Rep Rewards
+Added Zandalar Signets
+Added ZG Trash drops
+Added BRD Chests
+Minor AQ Corrections
+Implemented Phase One of database and localisation optimisations
+French and German Updates
+Reordering and cleanup of loot tables.
+
+v1.14.04
+Updated French localisation
+
+v1.14.03
+Bug fixed CORRECTLY this time :-)
+
+v1.14.02
+Minor bugfix
+Minor German update
+
+v1.14.01
+Updated German, Korean, Simp. Chinese and Trad. Chinese translations
+Drop Rate text localised
+Safe item links now enabled by default
+
+v1.14.00
+Added Alterac Valley Rep Rewards and Arathi Basin Rep Rewards (lvl60)
+Added Stubs for Naxxramas loot using all the test server data I could find
+
+v1.13.01
+Updated Traditional Chinese and Korean translations
+Fix to boss names having the first couple of letters cut off in the German translation.
+
+v1.13.00
+Updated German, Simp. Chinese and Trad. Chinese translations
+Now asks for setup when run for the first time.
+Added Dire Maul Books
+Tweaked Lootlink Handling
+Re-arrangement of AQ20 Class Sets
+AQ and ZG Class Sets now labeled with class name
+Moved Solekar Flamewreath to his own table (de only)
+Added AQ Enchants
+Added Tier 0.5 Quest Summonables 
+Added ZG Enchants
+
+v1.12.10
+Updated French, German, Simp. Chinese and Korean translations
+Added Ace of Warlords, Ace of Portals
+
+v1.12.09
+Updated French and German localisations
+Added Smoking Heart of the Mountain to Lord Roccor (BRD)
+Added Solakar Flamewreaths loot to 'Father Flame' on UBRS
+Added Cat Carrier to Cookie (Deadmines)
+Added Thick Obsidian Breastplate plans to Skeram (AQ40)
+Added Onyxia Hide Backpack to Onyxia
+Added Pusillin's unique drops to 'Pusillin Chase Ends' DM East
+Added Knot Thimblejack's Cache
+Flagged and seperated T0 loot in UBRS (en, de)
+Added better profession descriptions on plans/schematics/etc (en,de)
+
+v1.12.08
+Fixed some more typos in the English version
+Updated German Translation
+Added World Spawns in anticipation of a new Atlas version and to give translators time to work on it.
+
+v1.12.07
+Updated Simplified Chinese translation
+Fixed a number of typos in the English translation
+
+v1.12.06
+Added Traditional Chinese support
+
+v1.12.05
+Font fix for asian languages (I hope!)
+
+v1.12.04
+Updated Korean Translation
+Better use of artwork (now an atlas symbol next to bosses with loot)
+
+v1.12.03
+Fixed minor xml oversight
+
+v1.12.02
+Added Chinese translation from unauthorised thewow.cn version
+
+v1.12.01
+Slight positioning change to deal with long text (like in ZG)
+Added details to ZG item sets
+
+v1.12.00
+Added Korean localisation provided by k2hyun
+Fixed French localisation to work with Atlas 1.7.2
+Added a symbol to the right of boss line to indicate if there is loot. Changes color to indicate currently selected boss.
+
+v1.11.07
+Added AQ40 Class Set
+
+v1.11.05
+Updated French and German Translations
+Added AQ20 and ZG Class Sets
+Minor changes to fit Atlas 1.7.2
+
+v1.11.00
+Updated French and German Translations
+Converted all text strings to global variables for translation
+Partial translation of the Options menu
+English localisation cleanup
+
+v1.10.04
+Fixed Options screen bug regarding optional dependancies being removed
+Fixed MC Random Boss Items
+Updated German translation (thanks Asurn)
+
+v1.10.02
+Review of English localisation. Fixed some bugs and layout issues.
+
+v1.10.00
+Patch 1.11 Ready!
+Reorder and cleanup of MC (en)
+Fixed Felheart Slippers bug
+Fixed Blessed Qiraji Warhammer bug
+AtlasLoot no longer overwrites the colour of the text in Atlas. This was prompted by the awesome looking Naxx map with coloured text in Atlas 1.7. Clickable bosses still highlight on mouseover though.
+
+v1.9.5
+Random Boss loot in MC added
+Scholo complete
+ZG Summonables added
+Total revamp of German translation (thanks Asurn)
+
+v1.9.1
+DM North Fix (de)
+
+v1.9.0
+Minor xml update
+Fixed floating Options title
+Fixed the boss titles
+Added start of Scholo
+
+v1.8.0
+Fixed bug causing tooltips to scroll off the edge of the screen.
+Minor Thekal fix
+
+v1.7.0
+Atlas 1.7 Compliant
+Added bug fix to deal with Atlas's new startup
+Fix to DM North (de) due to text change in Atlas 1.7
+Fix to SM (de) due to text change in Atlas 1.7
+Added missing UD Strat loot
+
+v1.6.08
+Minor bug fixes with the German client
+Sorting of lbrs loot
+
+v1.6.07
+Fixed minor bug in German client.
+
+v1.6.06
+Completed Strat and LBRS leaving only Scholo to do
+NUMEROUS loot fixes
+Fixed bug with boss names not displaying properly
+
+v1.6.01
+Fix AQ20 Formatting
+Fix AQ20 for German Client
+
+v1.6.0
+Dressing Room Support (control-click on items)
+Item Highlighting on mouseover
+French Localization file
+Ability to turn off EquipCompare (except with ItemSync tooltips as ItemSync uses the GameTooltip)
+Added asurn's data: UBRS, Strat (partial), DM Tribute and many drop rates (That was AWESOME)
+
+v1.4.06
+MASSIVE cleanup of the code base
+Added AQ40 Trash drops
+Added ZG Shared drops (Primal Hakkari Stuff)
+Added AQ20 Class Books
+
+v1.4.01
+Added support for EquipCompare
+
+v1.3.01
+Fixed bug where atlasloot was highjacking the /atlas command
+
+v1.2.08
+Fixed problem with Garr
+Added drop rates to Blackwing Lair
+Added Blackwing Lair Trash Mobs epic drops
+
+v1.2.06
+Fixed ZG Bug
+Added code to allow drop rate to be added to tooltips, regardless of tooltip mode.
+
+v1.1.05
+Huge thank-you to asurn for DM, BRD and Shadowfang info
+
+v1.1.01
+-First Version, same as Pernicius's v1.03a version, but without the ItemSync tooltip bug

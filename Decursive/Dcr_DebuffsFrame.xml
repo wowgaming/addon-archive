@@ -1,0 +1,186 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <!--
+    This file is part of Decursive.
+    
+    Decursive (v 2.5.1-6-gd3885c5) add-on for World of Warcraft UI
+    Copyright (C) 2006-2007-2008-2009 John Wellesz (archarodim AT teaser.fr) ( http://www.2072productions.com/to/decursive.php )
+
+    Starting from 2009-10-31 and until said otherwise by its author, Decursive
+    is no longer free software, all rights are reserved to its author (John Wellesz).
+
+    The only official and allowed distribution means are www.2072productions.com, www.wowace.com and curse.com.
+    To distribute Decursive through other means a special authorization is required.
+    
+
+    Decursive is inspired from the original "Decursive v1.9.4" by Quu.
+    The original "Decursive 1.9.4" is in public domain ( www.quutar.com )
+
+    Decursive is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY.
+    -->
+    <Script>
+
+        local T = DecursiveRootTable or {};
+
+        -- big ugly scary fatal error message display function {{{
+        if not T._FatalError then
+        -- the beautiful error popup : {{{ -
+        StaticPopupDialogs["DECURSIVE_ERROR_FRAME"] = {
+        text = "|cFFFF0000Decursive Error:|r\n%s",
+        button1 = "OK",
+        OnAccept = function()
+        return false;
+        end,
+        timeout = 0,
+        whileDead = 1,
+        hideOnEscape = 1,
+        showAlert = 1,
+        }; -- }}}
+        T._FatalError = function (TheError) StaticPopup_Show ("DECURSIVE_ERROR_FRAME", TheError); end
+        end
+        -- }}}
+        if not T._LoadedFiles or not T._LoadedFiles["Dcr_DebuffsFrame.lua"] then
+        if not DecursiveInstallCorrupted then T._FatalError("Decursive installation is corrupted! (Dcr_DebuffsFrame.lua not loaded)"); end;
+        DecursiveInstallCorrupted = true;
+        return;
+        end
+
+        -- Dcr:SetDateAndRevision("$Date: 2008-04-10 00:53:55 +0200 (jeu., 10 avr. 2008) $", "$Revision: 68827 $");
+    </Script>
+
+    <Frame name="DcrMUFsContainer" clampedToScreen="true" frameStrata="MEDIUM" toplevel="true" enableMouse="true" movable="true" hidden="true" parent="UIParent">
+        <Size>
+            <AbsDimension x="20" y="20" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativePoint="CENTER">
+                <Offset>
+                    <AbsDimension x="200" y="250"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                self.UpdateYourself = true;
+                self.MaxUnit = 5;
+                self.UnitShown = 0;
+            </OnLoad>
+        </Scripts>
+        <Frames>
+            <Button name="$parentDragButton">
+                <Size>
+                    <AbsDimension x="20" y="20" />
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD" />
+                <!--<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD" /> -->
+                <!--<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/> -->
+
+                <Scripts>
+                    <OnMouseUp>
+                        if ( self.isMoving ) then
+                            self:GetParent():StopMovingOrSizing();
+                            self.isMoving = false;
+                            Dcr.MicroUnitF.DraggingHandle = false;
+                            Dcr.MicroUnitF:SavePos();
+                            Dcr.MicroUnitF:Place();
+                            Dcr.MicroUnitF:SavePos();
+                        elseif Dcr.Status.MouseOveringCorner then
+                            Dcr:QuickAccess(self, button);
+                        end
+                    </OnMouseUp>
+                    <OnMouseDown>
+                        if (   button == "LeftButton" and IsAltKeyDown() ) then
+                            self.isMoving = true;
+                            Dcr.MicroUnitF.DraggingHandle = true;
+                            self:GetParent():StartMoving();
+                        end
+                    </OnMouseDown>
+
+                    <OnHide>
+                        if ( self.isMoving ) then
+                            self:GetParent():StopMovingOrSizing();
+                            self.isMoving = false;
+                            Dcr.MicroUnitF.DraggingHandle = false;
+                        end
+                    </OnHide>
+                    <OnEnter>
+                        Dcr.Status.MouseOveringCorner = true;
+                        Dcr.MicroUnitF:OnCornerEnter(self);
+                    </OnEnter>
+                    <OnLeave>
+                        Dcr.Status.MouseOveringCorner = false;
+
+                        if (Dcr.profile.DebuffsFrameShowHelp) then
+                        GameTooltip:Hide();
+                        end;
+                    </OnLeave>
+                </Scripts>
+            </Button>
+            
+        </Frames>
+    </Frame>
+
+    <!-- Templates -->
+    <Cooldown name="DcrMicroUnitCDTemplate" virtual="true" hidden="true" setAllPoints="false">
+        <Size>
+            <AbsDimension x="16" y="16"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativePoint="CENTER">
+                <Offset>
+                    <AbsDimension x="0" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+    </Cooldown>
+
+    <Button name="DcrMicroUnitTemplateSecure" inherits="SecureUnitButtonTemplate" virtual="true" hidden="true">
+        <Size>
+            <AbsDimension x="20" y="20"/>
+        </Size>
+
+        <Scripts>
+            <OnLoad>
+                Dcr.MicroUnitF:OnLoad(self);
+            </OnLoad>
+            <OnEnter>
+                Dcr.MicroUnitF:OnEnter(self);
+            </OnEnter>
+            <OnLeave>
+                Dcr.MicroUnitF:OnLeave();
+            </OnLeave>
+        </Scripts>
+    </Button>
+
+
+    <FontString name="DcrMicroUnitChronoFont" inherits="NumberFontNormalSmall" maxLines="1" text="" virtual="true"> <!-- {{{ -->
+        <Anchors>
+            <Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent">
+                <Offset>
+                    <AbsDimension x="1" y="-2"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Color r="0.5" g="0.1" b="0.2" a="0.6"/>
+        <Shadow>
+            <offset>
+                <AbsDimension x="1" y="-1" />
+            </offset>
+            <color r="0" g="0" b="0" />
+        </Shadow>
+    </FontString> <!-- }}} -->
+
+
+    <Script>
+        local T = DecursiveRootTable or {};
+
+        T._LoadedFiles["Dcr_DebuffsFrame.xml"] = "2.5.1-6-gd3885c5";
+    </Script>
+</Ui>

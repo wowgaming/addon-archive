@@ -1,0 +1,213 @@
+3.0.2
+- Updated German localisation.
+- Added Russian localisation.
+- The announce spell list will now properly be refreshed after resetting records.
+- Updated Ace3 libraries. (fixes occasional error upon deleting profiles if you didn't already have updated libraries)
+- Fixed tooltip sorting option.
+
+3.0.1
+- DoT/HoT suffix is now properly hidden in the tooltip when no direct entry of the same spell exists.
+- Fixed some errors related to dual spec.
+- Fixed adding mobs to filter.
+- Added hack for direct spells being treated as periodic, and thus getting filtered incorrectly. (so far only the Divine Storm heal)
+- Fixed error that could, under certain circumstances, occur when you gained or lost a (de)buff.
+
+3.0.0
+* Rewrote a lot of code. Modules are now actually independent of each other, and can be removed as desired.
+* Options are now split up more, in their respective module's category.
+* Now using AceDB-3.0 for saved variables management. See addon description for more info.
+* Also implemented LibDualSpec. You can have profiles automatically change upon respeccing.
+* Unfortunately, the first time you login on a character that has data from a previous version, all general settings will be reset.
+* It is recommended that you delete your old Critline folder, as the folder structure has changed significantly.
+- Added aura filter UI. You can now add custom auras by providing spell ID or shift-clicking a buff or debuff with the UI open.
+- Improved aura filter. Will now try to filter spells that were cast with a special aura, but ticks after you lost it.
+- Removed the ability to specify custom tooltip formats. Was just a lot of trouble for little to no gain.
+- The trees in the standalone frame can no longer be explicitly set, and are instead tied to whether they are being registered.
+- Added an option to to show a text label instead of an icon in the display frame.
+- Added option to only register spells from the spell book. (eg no items, procs, vehicles etc)
+- The font style of the splash frame can now be changed.
+- Fixed rare bug where spells would not be properly alphabetically sorted.
+- Added option to disregard of additional damage due to vulnerability.
+- Added support for Ebon Gargoyle attacks.
+- Water Elemental attacks will now be registered when using the Glyph of Eternal Water.
+- Added Essence of the Blood Queen (Blood Queen Lana'thel) to aura filter.
+- Added Storm Power from 25 man Hodir to aura filter.
+
+2.3.1
+- Added Phantom Hallucination to mob filter.
+- Added Gastric Bloat (Festergut) to aura filter.
+- Scaling the summary frame or the splash frame will no longer relocate them.
+- Filtered auras are now tracked more accurately. (spell ID is available where it previously was not)
+- You can now reset the standalone display's position with '/cl reset'.
+
+2.3.0
+- Added Spanish localisation by Vladixlaus.
+- Added Aerial Command Unit, Fjola Lightbane, Eydis Darkbane and Icehowl to mob filter.
+- Reset scroll frame should no longer misbehave after deleting filtered records.
+- Modified some text colors in the detailed summary view to make it more readable.
+- Removed some legacy code. Data from versions <2.1.0 will no longer be converted.
+- Shift clicking the Broker plugin will now announce the highest record in that tree.
+- ToC bump for 3.3.
+
+2.2.2
+- Added Parrot SCT support.
+- You can now choose to print record notifications to the chat frame.
+
+2.2.1
+- 'Show old record' setting will now stick between sessions.
+
+2.2.0
+- Updated for patch 3.2.
+- Added German localisation by Destoxillo.
+- Changed spell ID for Burning Adrenaline, again. (should've worked the first time...)
+- Added option to display previous record with "New record" messages.
+
+2.1.2
+- Should no longer register unwanted quest pet records when you have your regular pet summoned.
+- Added Overwhelming Power (hard mode Assembly of Iron, normal and heroic) to aura filter.
+
+2.1.1
+- Fixed scaling settings not being remembered between sessions.
+
+2.1.0
+- Spells with a direct and a periodic effect will now be stored separately.
+- As a result of the above, database structure has changed slightly.
+- Spells that has no crit record will now only display its normal record in the summary.
+- Periodic spells will have DoT/HoT appended to its name in the summary tooltip only if the non periodic effect is visible, as well.
+- Now using combat log unit flags for new possibilities!
+- Record PvP no longer needs to be enabled to track healing done to players.
+- Removed "Ignore self damage" option. Damage done to any friendly unit is no longer tracked.
+- Healing done to hostile units is no longer tracked.
+- Healing now ignores the level filter.
+- DAMAGE_SHIELD type effects (Thorns, Retribution Aura etc) are no longer tracked.
+- Hopefully fixed custom tooltip formatting.
+- Added Fury of the Storm, Speed of Invention, Fortitude of Frost and Resilience of Nature from the Yogg-Saron encounter to aura filter.
+- Added Shadow Crash (General Vezax) to aura filter. (untested)
+- Added options to ignore integrated mob and aura filters respectively. (off by default)
+- Record sorting dropdown menu should no longer be empty on login.
+- Added Metanoia (Valkyrion Aspirant) to aura filter.
+- Improved pet tracking. Should now only register your class pets.
+- Merged the invert options for each tree into one.
+- Lots of small performance and memory improvements.
+
+2.0.2
+- Added Potent Pheromones (Freya) to aura filter.
+- Added Unstable Sun Beam (Elder Brightleaf) to aura filter.
+- Added Death Knight Understudy to mob filter.
+- Added Storm Power (Hodir) to aura filter.
+
+2.0.1
+- Fixed combat log event handler. Records should now be recorded again.
+- Fixed slash command.
+
+2.0.0
+* Renamed simply Critline with new version numbering. (hopefully for the last time!)
+- Mobs can now be added by name, in addition to by target. (case insensitive)
+- Added Heart of the Deconstructor to mob filter.
+- Added Rune of Power (Assembly of Iron) to aura filter.
+- Actually register UNIT_ENTERED/EXITED_VEHICLE events...
+
+r16
+- All XML code rewritten in Lua. End user shouldn't notice any significant difference.
+- Changed database formats for better readability. Records and filters are kept, but other settings are reset.
+- Tooltip format for detailed summary can now be customised to your liking. See advanced options for details.
+- Main GUI is now draggable by right mouse button at the text area. Left clicking the icon will open options, right click hides the button.
+- Added sorting option for summary tooltip. (alphabetically/crit/normal)
+- Changed default detailed tooltip format.
+- Added Might of Mograine (death knight story line) to aura filter.
+- Various cosmetic changes.
+
+r15
+- Fixed an error caused by an unintentionally added database entry. Broken databases will be repaired.
+- Removed some deprecated database entries that will never be used. (date and count)
+
+r14
+- Records in the tooltip is now sorted by crit amount > normal amount > spell name.
+- Added an option to use scrolling combat text instead of the default splash frame. Currently supports Mik SBT and SCT in addition to Blizzard's.
+- 'Move splash frame' is now a regular button rather than a check button.
+- Now using another (hopefully correct) spell ID for Burning Adrenaline.
+
+r13
+- Toggling standalone display via the minimap button is now permanent.
+- Dragging the minimap button should now function properly.
+- Added a single letter indicator for the Broker feeds.
+
+r12
+- Added option to ignore self inflicted damage. (off by default)
+- Fixed critical strike text error that occured on certain locales.
+- Added Blessing of the Crusade (Icecrown quest) to aura filter.
+
+r11
+- Fixed 'Move splash frame' option.
+- Added Iron's Bane (Storm Peaks quest) to aura filter.
+
+r10
+- Implemented LibDataBroker feed, which replaces Titan and FuBar plugins. FuBar users need install Broker2FuBar.
+- Fixed standalone display scaling not being saved between sessions.
+- Fixed the "Play sound" option.
+- Attacks when in a vehicle should no longer be recorded in the pet section.
+
+r9
+- FuBar plugins should now properly use the new icons.
+- An attempt at using mob IDs instead of names for the default mob filter. No need for localisations anymore.
+- Announce and reset check buttons will now reset when leaving the respective view.
+- Added Aura of Anger and Aura of Desire (Reliquary of Souls) to aura filter.
+- Added Shade of Akama to mob filter.
+- Added Energy Infusion and Energy Feedback (Vexallus) to aura filter.
+- Mob filter list should now work properly when scrollable.
+- Code cleanup.
+
+r8
+- Fixed FuBar error.
+- Fixed minimap icon.
+- Removed more legacy code.
+
+r7
+- Moved the options to Blizzard's interface panel and redesigned it slightly.
+- Non existant entries now won't be added to the tooltip when using detailed view.
+- Added Malygos' Power Spark and Potent Fungus (Amanitar) to aura filters.
+- Removed some legacy code.
+- Added options to record PvE/PvP and removed the old "PvP only" option.
+- Added option to let magical damage ignore level adjustment.
+- New (non custom made) icons.
+
+r6
+- Implemented (so far very simple) special (de)buff filtering.
+- Magical damage will yet again take level adjustment into consideration.
+
+r5
+- Fixed occasional error upon zoning.
+
+r4
+- Fixed level adjustment filter issues.
+- You can now set level adjustment to 0.
+- Default filtering is now in place for mobs that mostly receives extra damage.
+- Addition and removal of filtered mobs is now notified in the chat frame.
+
+r3
+- Splash frame will now be cleared before every record splash.
+- Mob filter list should no longer error when scrolled.
+- Polished some code.
+
+r2
+- Hopefully fixed FuBar plugins.
+- Splash screen spell text colour is now correctly yellow by default.
+- Fixed splash screen text colour picker.
+
+r1
+- Updated for 3.0.
+- Level adjustment should now work properly.
+- Level adjustment will now only apply to physical damage.
+- When displaying all three types, the display frames should now not appear on top of each other on login.
+- Splash screen should now behave correctly when using inverted filters.
+- Buttons in the Reset records scroll pane now should not become unchecked when you scroll it.
+- Self healing spells on your pet will no longer be recorded. (Prayer of Mending, Lifebloom etc)
+- Fixed the Titan Panel plugins' right click menu.
+- Cleaned up some code.
+
+v5.0
+- Renamed "Titan [Critline]" to "Critline"
+- Redesigned from the ground up to be a stand-alone mod, that supports Titan Panel.
+- Split out the Summary to show Damage, Healing and Pet on separate summary screens.
+- Added the option for Detailed or Simple summary display.
+- Code is now broken down into function sections. makes maintenance and feature development much easier.

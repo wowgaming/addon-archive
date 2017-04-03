@@ -1,0 +1,48 @@
+## Interface: 30300
+## Title: Every|cffffffffQuest|r2
+## Notes: Quest History tracker and shows lists of quests in each category
+## Notes-zhCN: 任务历史追踪及任务分类显示列表
+## Notes-zhTW: 任務歷史追蹤及任務分類顯示列表
+## Author: kandarz
+## SavedVariables: EveryQuestDB, EQ2DB
+## SavedVariablesPerCharacter: EveryQuestDBPC, EQ2DBPC
+## Version: 2.3r162
+## OptionalDeps: Ace3, LibQuixote-2.0, LibBabble-Zone-3.0
+## X-Embeds: Ace3, LibQuixote-2.0, LibBabble-Zone-3.0
+## X-Email: kandarz@gmail.com
+## X-Credits: Wowhead for the Quest data, bayi for Quest history display
+## X-Category: Quest
+## X-Curse-Packaged-Version: r162
+## X-Curse-Project-Name: EveryQuest
+## X-Curse-Project-ID: everyquest
+## X-Curse-Repository-ID: wow/everyquest/mainline
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+libs\AceConsole-3.0\AceConsole-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceHook-3.0\AceHook-3.0.xml
+libs\AceEvent-3.0\AceEvent-3.0.xml
+libs\AceLocale-3.0\AceLocale-3.0.xml
+libs\LibQuixote-2.0\lib.xml
+libs\LibBabble-Zone-3.0\lib.xml
+#@end-no-lib-strip@
+
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+locales\locales.xml
+
+
+modules.xml
+Everyquest.xml
+Core.lua
+zonemenu.lua
+frames.lua
+events.lua
+options.lua
+import.lua
+query.lua

@@ -1,0 +1,283 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Font name="EQFont_Failed" inherits="GameFontNormalLeft" virtual="true">
+		<Color r="1.0" g="0.0" b="0.0"/>
+	</Font>
+	<Font name="EQFont_Progress" inherits="GameFontNormalLeft" virtual="true">
+		<Color r="1.0" g="1.0" b="0.0"/>
+	</Font>
+	<Font name="EQFont_Complete" inherits="GameFontNormalLeft" virtual="true">
+		<Color r="0.0" g="1.0" b="0.0"/>
+	</Font>
+	<Font name="EQFont_TurnedIn" inherits="GameFontNormalLeft" virtual="true">
+		<Color r="0.0" g="0.807" b="0.019"/>
+	</Font>
+	<Font name="EQFont_Unknown" inherits="GameFontNormalLeft" virtual="true">
+		<Color r="1.0" g="1.0" b="1.0"/>
+	</Font>
+	<Font name="EQFont_Ignored" inherits="GameFontNormalLeft" virtual="true">
+		<Color r="0.733" g="0.372" b="1.0"/>
+	</Font>
+	
+	<Button name="EveryQuestTitleButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="300" y="16"/>
+		</Size>
+		<!--<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTag" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentGroupMates" inherits="GameFontNormalSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="8" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="$parentCheck" file="Interface\Buttons\UI-CheckBox-Check" hidden="true">
+					<Size>
+						<AbsDimension x="16" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="50" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>-->
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonDown");
+		    </OnLoad>
+			<OnClick>
+				EveryQuest:ButtonClick(self, arg1)
+			</OnClick>
+			<OnEnter>
+				EveryQuest:ButtonEnter(self)
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+		<!--<NormalTexture file="Interface\Buttons\UI-MinusButton-UP">
+			<Size>
+				<AbsDimension x="16" y="16"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="3" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>-->
+		<HighlightTexture name="$parentHighlight" file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
+		<ButtonText name="$parentNormalText" nonspacewrap="true">
+			<Size>
+				<AbsDimension x="290" y="10"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="5" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors> 
+		</ButtonText>
+		<NormalFont inherits="GameFontNormal" justifyH="LEFT"/>
+		<HighlightFont inherits="GameFontHighlight" justifyH="LEFT"/>
+		<DisabledFont inherits="GameFontHighlight" justifyH="LEFT"/>
+	</Button>
+	<Frame name="EveryQuestFrame" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="384" y="512"/>
+		</Size>
+		<Anchors>
+ 			<Anchor point="TOPLEFT">
+ 				<Offset>
+ 					<AbsDimension x="0" y="-104"/>
+ 				</Offset>
+ 			</Anchor>
+ 		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="0" right="35" top="0" bottom="75"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="EveryQuestDummyText" inherits="GameFontNormal" hidden="true">
+					<Size>
+						<AbsDimension x="0" y="13"/>
+					</Size>
+				</FontString>
+				<Texture file="Interface\QuestFrame\UI-QuestLog-BookIcon">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="4" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>		
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\Addons\EveryQuest\Images\topleft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>		
+				<Texture file="Interface\Addons\EveryQuest\Images\topmid_off2">
+					<Size>
+						<AbsDimension x="128" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Addons\EveryQuest\Images\botleft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Addons\EveryQuest\Images\botmid_off2">
+					<Size>
+						<AbsDimension x="128" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+				<FontString name="EveryQuestTitleText" inherits="GameFontHighlight" text="QUEST_LOG">
+					<Size>
+						<AbsDimension x="300" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="EveryQuestFrame" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="EveryQuestFrameCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="EveryQuestFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-28" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="EveryQuestExitButton" inherits="UIPanelButtonTemplate" text="EXIT">
+				<Size>
+					<AbsDimension x="79" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="EveryQuestFrame" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-43" y="5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HideUIPanel(EveryQuestFrame);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="EveryQuestHighlightFrame" hidden="true">
+				<Size>
+					<AbsDimension x="293" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="EveryQuestSkillHighlight" file="Interface\QuestFrame\UI-QuestLogTitleHighlight" alphaMode="ADD"/>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="EveryQuestTitle1" inherits="EveryQuestTitleButtonTemplate" id="1" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EveryQuestFrame">
+						<Offset>
+							<AbsDimension x="19" y="-75"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<ScrollFrame name="EveryQuestListScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="300" y="411"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EveryQuestFrame">
+						<Offset>
+							<AbsDimension x="20" y="-74"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, 16, EveryQuest_ScrollFrame_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				EveryQuest:OnShow();
+			</OnShow>
+			<OnHide>
+				if ( self.isMoving ) then
+				  self:StopMovingOrSizing();
+				  self.isMoving = false;
+				  EveryQuest:SavePosition()
+				end
+			</OnHide>
+			<OnMouseUp>
+				if ( self.isMoving ) then
+				  self:StopMovingOrSizing();
+				  self.isMoving = false;
+				  EveryQuest:SavePosition()
+				end
+			</OnMouseUp>
+			<OnMouseDown>
+				if ( ( ( not self.isLocked ) or ( self.isLocked == 0 ) ) and ( arg1 == "LeftButton" ) ) then
+				  self:StartMoving();
+				  self.isMoving = true;
+				end
+			</OnMouseDown>
+		</Scripts>
+	</Frame>
+</Ui>

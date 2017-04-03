@@ -1,0 +1,47 @@
+<Bindings>
+  <Binding name = "NxMAPTOGORIGINAL" header = "Nx">
+    Nx:NXMapKeyTogOriginal()
+  </Binding>
+  <Binding name = "NxMAPTOGNORMMAX">
+    Nx:NXMapKeyTogNormalMax()
+  </Binding>
+  <Binding name = "NxMAPTOGNONEMAX">
+    Nx:NXMapKeyTogNoneMax()
+  </Binding>
+  <Binding name = "NxMAPTOGNONENORM">
+    Nx:NXMapKeyTogNoneNormal()
+  </Binding>
+  <Binding name = "NxMAPSCALERESTORE">
+    Nx:NXMapKeyScaleRestore()
+  </Binding>
+  <Binding name = "NxMAPTOGMINIFULL">
+    Nx:NXMapKeyTogMiniFull()
+  </Binding>
+  <Binding name = "NxMAPTOGHERB">
+    Nx:NXMapKeyTogHerb()
+  </Binding>
+  <Binding name = "NxMAPTOGMINE">
+    Nx:NXMapKeyTogMine()
+  </Binding>
+
+  <Binding name = "NxTOGGLEFAV">
+    Nx:NXFavKeyToggleShow()
+  </Binding>
+  <Binding name = "NxTOGGLEGUIDE">
+    Nx:NXGuideKeyToggleShow()
+  </Binding>
+  <Binding name = "NxTOGGLEWAREHOUSE">
+    Nx:NXWarehouseKeyToggleShow()
+  </Binding>
+
+  <Binding name = "NxTOGGLEWATCHMINI">
+    Nx.NXWatchKeyToggleMini()
+  </Binding>
+  <Binding name = "NxWATCHUSEITEM">
+    Nx.NXWatchKeyUseItem()
+  </Binding>
+
+  <Binding name = "NxMAPSKIPTARGET">
+    Nx.NXMapKeyTargetSkip()
+  </Binding>
+</Bindings>

@@ -1,0 +1,38 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="TitanAutoHide.lua"/>
+	<Frame parent="UIParent">
+		<Frames>
+			<Button name="TitanPanelAutoHideButton" inherits="TitanPanelIconTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Scripts>
+					<OnLoad>
+						TitanPanelAutoHideButton_OnLoad(self);
+						TitanPanelButton_OnLoad(self);
+					</OnLoad>
+					<OnShow>
+						TitanPanelAutoHideButton_OnShow();
+					</OnShow>
+					<OnClick>
+						TitanPanelAutoHideButton_OnClick(self, button);
+						TitanPanelButton_OnClick(self, button);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="TitanPanelAuxAutoHideButton" inherits="TitanPanelIconTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Scripts>
+					<OnLoad>
+						TitanPanelAuxAutoHideButton_OnLoad(self);
+						TitanPanelButton_OnLoad(self);
+					</OnLoad>
+					<OnShow>
+						TitanPanelAuxAutoHideButton_OnShow();
+					</OnShow>
+					<OnClick>
+						TitanPanelAuxAutoHideButton_OnClick(self, button);
+						TitanPanelButton_OnClick(self, button);
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>	
+</Ui>

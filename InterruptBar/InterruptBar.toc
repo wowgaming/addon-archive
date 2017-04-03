@@ -1,0 +1,13 @@
+## Interface: 30300
+## Title: Interrupt Bar
+## Notes: Tracks interrupts
+## Version: 1.18
+## Author: Kollektiv
+## DefaultState: Enabled
+## SavedVariables: InterruptBarDB
+## X-Curse-Packaged-Version: v1.20
+## X-Curse-Project-Name: InterruptBar
+## X-Curse-Project-ID: interruptbar
+## X-Curse-Repository-ID: wow/interruptbar/mainline
+
+InterruptBar.lua

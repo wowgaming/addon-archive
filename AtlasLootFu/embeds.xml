@@ -1,0 +1,14 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="Libs\AceLibrary\AceLibrary.lua"/>
+<Script file="Libs\AceOO-2.0\AceOO-2.0.lua"/>
+<Script file="Libs\AceAddon-2.0\AceAddon-2.0.lua"/>
+<Script file="Libs\AceEvent-2.0\AceEvent-2.0.lua"/>
+<Script file="Libs\AceDB-2.0\AceDB-2.0.lua"/>
+
+<Script file="Libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua"/>
+
+<Script file="Libs\Tablet-2.0\Tablet-2.0.lua"/>
+
+</Ui>

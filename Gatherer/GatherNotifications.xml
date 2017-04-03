@@ -1,0 +1,95 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+<!--
+	Gatherer Addon for World of Warcraft(tm).
+	Version: 3.1.14 (<%codename%>)
+	Revision: $Id: GatherNotifications.xml 754 2008-10-14 04:43:39Z Esamynn $
+
+	License:
+		This program is free software; you can redistribute it and/or
+		modify it under the terms of the GNU General Public License
+		as published by the Free Software Foundation; either version 2
+		of the License, or (at your option) any later version.
+
+		This program is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		GNU General Public License for more details.
+
+		You should have received a copy of the GNU General Public License
+		along with this program(see GPL.txt); if not, write to the Free Software
+		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+	Note:
+		This AddOn's source code is specifically designed to work with
+		World of Warcraft's interpreted AddOn system.
+		You have an implicit licence to use this AddOn with these facilities
+		since that is it's designated purpose as per:
+		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
+
+	User Notification System
+		This is a system for delivering information to the user in a non-threatening manner 
+		such as warnings about Gatherer not recognizing all of the client's maps
+-->
+	<Script>Gatherer_RegisterRevision("$URL: http://svn.norganna.org/gatherer/release/Gatherer/GatherNotifications.xml $", "$Rev: 754 $")</Script>
+	<GameTooltip name="Gatherer_NotificationsTooltip" inherits="GameTooltipTemplate" parent="UIParent" enableMouse="true" toplevel="true" movable="true" frameStrata="TOOLTIP" hidden="true">
+		<Size>
+			<AbsDimension x="128" y="64"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="-10" y="80"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="Gatherer_NotificationsTooltipCloseButton">
+				<Size>
+					<AbsDimension x="32" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="1" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HideUIPanel(self:GetParent());
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Down"/>
+				<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				GameTooltip_OnLoad(self);
+				self:SetPadding(16);
+				self:RegisterForDrag("LeftButton");
+				Gatherer.Notifications.OnLoad(self)
+			</OnLoad>
+			<OnShow>
+				Gatherer.Notifications.OnShow(self)
+			</OnShow>
+			<OnHide>
+				Gatherer.Notifications.OnHide(self)
+			</OnHide>
+			<OnUpdate>
+				Gatherer.Notifications.OnUpdate(self, elapsed)
+			</OnUpdate>
+			<OnEvent>
+				Gatherer.Notifications.OnEvent(self, event, ...)
+			</OnEvent>
+			<OnDragStart>
+				self:StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+				ValidateFramePosition(self);
+			</OnDragStop> 
+		</Scripts>
+	</GameTooltip>
+</Ui>

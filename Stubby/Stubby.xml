@@ -1,0 +1,46 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+<!--
+	Stubby AddOn for World of Watcraft (tm)
+	Version: 5.8.4723 (CreepyKangaroo)
+	Revision: $Id: Stubby.xml 130 2008-10-11 12:38:07Z Norganna $
+	URL: http://auctioneeraddon.com/dl/Stubby/
+
+	License:
+		This program is free software; you can redistribute it and/or
+		modify it under the terms of the GNU General Public License
+		as published by the Free Software Foundation; either version 2
+		of the License, or (at your option) any later version.
+
+		This program is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		GNU General Public License for more details.
+
+		You should have received a copy of the GNU General Public License
+		along with this program(see GPL.txt); if not, write to the Free Software
+		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+	Note:
+		This AddOn's source code is specifically designed to work with
+		World of Warcraft's interpreted AddOn system.
+		You have an implicit license to use this AddOn with these facilities
+		since that is it's designated purpose as per:
+		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
+-->
+	<Script>
+		LibStub("LibRevision"):Set("$URL: http://svn.norganna.org/libs/tags/5.8/Stubby/Stubby.xml $","$Rev: 130 $","5.1.DEV.", 'auctioneer', 'libs')
+	</Script>
+
+	<Frame name="StubbyFrame" parent="UIParent" hidden="true">
+		<Scripts>
+			<OnLoad>
+				self:RegisterEvent("ADDON_LOADED");
+			</OnLoad>
+			<OnEvent>
+				Stubby.Events(event, ...)
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

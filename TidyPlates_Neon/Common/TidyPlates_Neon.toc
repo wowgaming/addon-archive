@@ -1,0 +1,19 @@
+## Interface: 30300
+## Title: Tidy Plates: Neon Theme
+## Notes: It glows!  
+## Author: Danltiger aka Binny
+## Version: 3
+## Dependencies: TidyPlates
+## SavedVariablesPerCharacter: TidyPlatesNeonTankSavedVariables, TidyPlatesNeonDPSSavedVariables
+
+Tank\Style.lua
+Tank\Functions.lua
+Tank\Panel.lua
+
+DPS\Style.lua
+DPS\Functions.lua
+DPS\Panel.lua
+
+Common\PanelBase.lua
+Common\PanelTank.lua
+Common\PanelDPS.lua

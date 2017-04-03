@@ -1,0 +1,55 @@
+local L = LibStub("AceLocale-3.0"):NewLocale("MrTrader", "deDE", false);
+if L then
+
+L["Add to New Favorite Group..."] = "Add to New Favorite Group..." -- Requires localization
+L["All Items"] = "All Items" -- Requires localization
+L["Categories"] = "Categories" -- Requires localization
+L["Characters"] = "Charaktere"
+L["Click to open menu."] = "Klicken zum Menü öffnen."
+L["Click to open tradeskill window."] = "Klicken um das Berufsfenster zu öffnen."
+L["Click to open tradeskill window. Shift-click to link tradeskill."] = "Klicken um das Berufsfenster zu öffnen. Shift-Klick um etwas daraus zu verlinken."
+L["Click to remove from the list, shift-click to ignore this character permanently."] = "Klicken um von der Liste zu entfernen, Shift-Klick um diesen Charakter permanent zu ignorieren."
+L["Close"] = "Schliessen"
+L["Configure"] = "Konfigurieren"
+L["Difficulty"] = "Difficulty" -- Requires localization
+L["Easy"] = "Easy" -- Requires localization
+L["Favorite Groups"] = "Favorite Groups" -- Requires localization
+L["Favorites"] = "Favorites" -- Requires localization
+L["I don't know that skill."] = "Ich beherrsche diese Fertigkeit nicht."
+L["I don't know what skill you mean."] = "Ich beherrsche die von dir gefragte Fertigkeit nicht."
+L["Inventory Slots"] = "Inventory Slots" -- Requires localization
+L["Medium"] = "Medium" -- Requires localization
+L["MrTrader"] = "MrTrader"
+L["Name"] = "Name" -- Requires localization
+L["New Favorite Group"] = "New Favorite Group" -- Requires localization
+L["New Group"] = "New Group" -- Requires localization
+L["No skill exists by that name."] = "No skill exists by that name." -- Requires localization
+L["Open configuration dialog"] = "Konfigurationsdialog öffnen"
+L["Optimal"] = "Optimal" -- Requires localization
+L["Profiles"] = "Profile"
+L["Remove"] = "Entfernen"
+L["Remove Favorite Group"] = "Remove Favorite Group" -- Requires localization
+L["Respond to Commands over Guild Chat"] = "Respond to Commands over Guild Chat" -- Requires localization
+L["Respond to Commands over Raid and Party Chat"] = "Respond to Commands over Raid and Party Chat" -- Requires localization
+L["Respond to Whisper Commands"] = "Auf Flüster-Befehle antworten"
+L["Show Minor Skills for Alts"] = "Show Minor Skills for Alts" -- Requires localization
+L["Show Opposing Faction Alts"] = "Show Opposing Faction Alts" -- Requires localization
+L["%s v%s loaded."] = "%s v%s geladen."
+L["Tradeskill cannot be linked, and is unavailable."] = "Tradeskill kann nicht verlinkt werden, und ist nicht verfügbar."
+L["Tradeskills"] = "Berufe"
+L["Trivial"] = "Trivial" -- Requires localization
+L["Unignore"] = "Nicht mehr ignorieren"
+L["Unignore this character and show on all other characters."] = "Diesen Charakter nicht mehr ignorieren und auf allen Charakteren anzeigen."
+L["Use Custom Tradeskill Window"] = "Use Custom Tradeskill Window" -- Requires localization
+L["Use Tradeskill Window"] = "Use Tradeskill Window" -- Requires localization
+L["Whisper Skills for Alts"] = "Whisper Skills for Alts" -- Requires localization
+L["Will respond to guild messages asking for skill links."] = "Will respond to guild messages asking for skill links." -- Requires localization
+L["Will respond to raid and party messages asking for skill links."] = "Will respond to raid and party messages asking for skill links." -- Requires localization
+L["Will respond to whispers sent to you asking for skill links."] = "Will respond to whispers sent to you asking for skill links." -- Requires localization
+L["Will search your alts for skill links when responding to whisper commands."] = "Will search your alts for skill links when responding to whisper commands." -- Requires localization
+L["Will show Cooking, Smelting, Runeforging, and First Aid on other characters."] = "Will show Cooking, Smelting, Runeforging, and First Aid on other characters." -- Requires localization
+L["Will show your alts from the opposing faction in the menu."] = "Zeigt deine weiteren Charaktere der gegnerischen Fraktion im Menü an."
+L["Will use MrTrader's tradeskill window in place of the default."] = "Will use MrTrader's tradeskill window in place of the default." -- Requires localization
+L["Will use MrTrader's tradeskill window instead of Blizzard's"] = "Verwendet das Tradeskill-Fenster von MrTrader anstatt des Blizzard-Fensters."
+
+end

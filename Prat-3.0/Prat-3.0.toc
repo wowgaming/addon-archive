@@ -1,0 +1,46 @@
+﻿## Interface: 30300
+## X-Curse-Packaged-Version: 3.3.26
+## X-Curse-Project-Name: Prat 3.0
+## X-Curse-Project-ID: prat-3-0
+## X-Curse-Repository-ID: wow/prat-3-0/mainline
+ 
+## Title: Prat |cff8080ff3.0|r
+## Notes: A framework for chat ehancement modules. 
+## Title-zhCN: Prat |cff8080ff3.0|r
+## Notes-zhCN: 整合的聊天增强助手
+## Notes-zhTW: 整合的聊天視窗模組。
+## Notes-frFR: Framework pour des modules concernant les fen\195\170tres de discussion
+## Notes-esES: Un entorno para modulos de chat.
+## Notes-deDE: Ein Grundaddon für Chatfenstermodule.
+## Notes-koKR: 대화창에 대한 다양한 기능을 제공하는 애드온입니다.
+## Notes-ruRU: Фреймворк для чата. Это БЕТА-версия, а значит возможны баги и глюки.
+## Version: 3.3.26 
+## Author: Sylvanaar (Sylvaann - Mal'Ganis/US-Horde)
+## eMail: sylvanaar@mindspring.com 
+
+## X-Category: Chat/Communication 
+## X-Website: http://www.wowace.com/wiki/Prat
+
+## X-Credits: Prat Dev Team (Sylvanaar, Fin, Curney, Krtek), Industrial, Ammo, Cirk, Yrys (ChatLink), Leuchtturm, AnduinLothar, Satrina, <CWDG>昏睡墨鱼&月色狼影
+
+## X-License: GPLv3
+
+## OptionalDeps: Prat-3.0_Libraries, LibSink-2.0, LibBabble-Class-3.0, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, LibDataBroker-1.1, LibDBIcon-1.0, LibAlts-1.0
+
+## SavedVariables: Prat3DB 
+## SavedVariablesPerCharacter: Prat3PerCharDB 
+
+#libraries\includes.xml
+
+fonts\includes.xml
+
+addon\includes.xml
+
+services\includes.xml
+
+modules\includes.xml
+
+
+
+
+

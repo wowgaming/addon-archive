@@ -1,0 +1,17 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<!--@debug@
+<!--<Include file="Modules\Battlegrounds\Battlegrounds.lua"/>
+<Include file="Modules\Classes\Classes.lua"/>
+<Include file="Modules\Dungeons\Dungeons.lua"/>
+<Include file="Modules\Eastern_Kingdoms\Eastern_Kingdoms.lua"/>
+<Include file="Modules\Kalimdor\Kalimdor.lua"/>
+<Include file="Modules\Miscellaneous\Miscellaneous.lua"/>
+<Include file="Modules\Northrend\Northrend.lua"/>
+<Include file="Modules\Outland\Outland.lua"/>
+<Include file="Modules\Professions\Professions.lua"/>
+<Include file="Modules\Raids\Raids.lua"/>
+<Include file="Modules\World_Events\World_Events.lua"/>-->
+@end-debug@-->
+</Ui>
+

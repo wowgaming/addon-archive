@@ -1,0 +1,157 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="TitanPanelTemplate.lua" />
+	<Button name="TitanPanelButtonTemplate" hidden="true" movable="true" virtual="true">
+		<Frames>
+			<Frame name="$parentRightClickMenu" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				TitanPanelButton_OnLoad(self);
+			</OnLoad>
+			<OnShow>
+				TitanPanelButton_OnShow(self);
+			</OnShow>
+			<OnClick>
+				TitanPanelButton_OnClick(self, button);
+			</OnClick>
+			<OnEnter>
+				TitanPanelButton_OnEnter(self);
+			</OnEnter>
+			<OnLeave>
+				TitanPanelButton_OnLeave(self);
+			</OnLeave>					
+		</Scripts>
+	</Button>
+	<Button name="TitanPanelChildButtonTemplate" hidden="true" virtual="true">
+		<Frames>
+			<Frame name="$parentRightClickMenu" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				TitanPanelButton_OnLoad(self, true);
+			</OnLoad>
+			<OnClick>
+				TitanPanelButton_OnClick(self, button, true);
+			</OnClick>
+			<OnEnter>
+				TitanPanelButton_OnEnter(self, true);
+			</OnEnter>
+			<OnLeave>
+				TitanPanelButton_OnLeave(self, true);
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Button name="TitanPanelTextTemplate" inherits="TitanPanelButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="0" y="16" />
+		</Size>
+		<ButtonText name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT">
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="0" y="1" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<PushedTextOffset>
+			<AbsDimension x="0" y="0"/>
+		</PushedTextOffset>
+	</Button>
+	<Button name="TitanPanelIconTemplate" inherits="TitanPanelButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="16" y="16" />
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentIcon">
+					<Size>
+						<AbsDimension x="16" y="16"/>
+					</Size>					
+					<Anchors>
+						<Anchor point="LEFT" />
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Button>
+	<Button name="TitanPanelComboTemplate" inherits="TitanPanelButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="0" y="16" />
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentIcon">
+					<Size>
+						<AbsDimension x="0" y="16"/>
+					</Size>					
+					<Anchors>
+						<Anchor point="LEFT" />
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<ButtonText name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT" />
+		<PushedTextOffset>
+			<AbsDimension x="0" y="0"/>
+		</PushedTextOffset>
+	</Button>
+	<Slider name="TitanOptionsSliderTemplate" orientation="VERTICAL" virtual="true" enableMouse="true" EnableMouseWheel="true">
+		<Size>
+			<AbsDimension x="10" y="100"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="-10" right="-10" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="8"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="6" right="6" top="3" bottom="3"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontGreenSmall">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentLow" inherits="GameFontHighlightSmall" text="LOW">
+					<Anchors>
+						<Anchor point="BOTTOM" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="0" y="3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentHigh" inherits="GameFontHighlightSmall" text="HIGH">
+					<Anchors>
+						<Anchor point="TOP" relativePoint="BOTTOM">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Vertical">
+			<Size>
+				<AbsDimension x="32" y="32"/>
+			</Size>
+		</ThumbTexture>
+	</Slider>
+</Ui>

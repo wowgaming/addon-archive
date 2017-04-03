@@ -1,0 +1,1020 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+    ..\..\FrameXML\UI.xsd">
+
+	<Button name="PowaIconeTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="38" y="38"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonDown");
+			</OnLoad>
+			<OnClick>
+				PowaAuras:IconeClick(self, button)
+			</OnClick>
+			<OnEnter>
+				PowaAuras:IconeEntered(self)
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<NormalFont style="GameFontHighlight"/>
+		<NormalTexture file="Interface\PaperDoll\UI-Backpack-EmptySlot"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+	</Button>
+
+	<Button name="PowaListTemplate" inherits="OptionsButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="90" y="25"/>
+		</Size>
+		<Scripts>
+			<OnClick>
+				PowaAuras:MainListClick(self);
+			</OnClick>
+			<OnEnter>
+				PowaAuras:MainListEntered(self);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<ButtonText name="$parentText"/>
+		<NormalFont style="GameFontNormalSmall"/>
+		<HighlightFont style="GameFontHighlightSmall"/>
+		<NormalTexture file=""/>
+		<PushedTexture file=""/>
+	    <Layers>
+		  <Layer>
+			<Texture name="$parentGlow" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD" hidden="true">
+	          <Size>
+		        <AbsDimension x="90" y="25" />
+			  </Size>
+	          <Anchors>
+		        <Anchor point="CENTER">
+			      <Offset>
+				    <AbsDimension x="0" y="0" />
+	              </Offset>
+		        </Anchor>
+			  </Anchors>
+		    </Texture>
+	      </Layer>
+		</Layers>
+	</Button>
+
+	<Frame name="PowaOptionsFrame" toplevel="true" movable="true" parent="UIParent" frameStrata="MEDIUM" hidden="true" enableMouse="true" enableKeyboard="true">
+		<Size>
+          <AbsDimension x="328" y="457" />
+        </Size>
+        <Anchors>
+          <Anchor point="CENTER" relativeTo="UIParent">
+           <Offset>
+            <AbsDimension x="0" y="50" />
+           </Offset>
+          </Anchor>
+        </Anchors>
+        <Backdrop bgFile="Dungeons\Textures\rock\BM_BRSPIRE_LAVAROCK01" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+          <BackgroundInsets>
+           <AbsInset left="11" right="12" top="12" bottom="11" />
+          </BackgroundInsets>
+          <TileSize>
+           <AbsValue val="200" />
+          </TileSize>
+          <EdgeSize>
+           <AbsValue val="32" />
+          </EdgeSize>
+        </Backdrop>
+		<Scripts>
+			<OnLoad>
+				self:SetBackdropBorderColor(0.9, 1.0, 0.9);
+				self:SetBackdropColor(0.6, 0.6, 0.6);
+                tinsert(UISpecialFrames, self:GetName());
+			</OnLoad>
+            <OnShow>
+				PlaySound("TalentScreenOpen");
+			</OnShow>
+            <OnHide>
+				PowaAuras:MainOptionClose();
+			</OnHide>
+			<OnMouseDown>
+				PowaAuras:Bar_MouseDown( self, button, "PowaOptionsFrame" );
+			</OnMouseDown>
+			<OnMouseUp>
+				PowaAuras:Bar_MouseUp( self, button, "PowaOptionsFrame" );
+			</OnMouseUp>
+		</Scripts>
+
+		-- BLOCK DE TITRE
+	    <Layers>
+		  <Layer>
+			<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+	          <Size>
+		        <AbsDimension x="180" y="32" />
+			  </Size>
+	          <Anchors>
+		        <Anchor point="TOP">
+			      <Offset>
+				    <AbsDimension x="0" y="8" />
+	              </Offset>
+		        </Anchor>
+			  </Anchors>
+	          <TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
+		    </Texture>
+			-- TITRE		
+			<FontString name="PowaOptionsHeader" inherits="GameFontNormalSmall" text="POWER AURAS">
+		      <Size>
+			    <AbsDimension x="140" y="0" />
+	          </Size>
+		      <Anchors>
+			    <Anchor point="TOP">
+				  <Offset>
+					<AbsDimension x="0" y="-4" />
+	              </Offset>
+		        </Anchor>
+			  </Anchors>
+	          <FontHeight>
+		        <AbsValue val="14" />
+			  </FontHeight>
+	        </FontString>
+			<FontString name="PowaAuthorText" inherits="GameFontDisable" text="Created by -Sinsthar-        [Ziya / Tiven, on Kirin Tor (FR)]">
+			  <Size>
+				<AbsDimension x="180" y="30" />
+			  </Size>
+			  <Anchors>
+				<Anchor point="BOTTOM">
+				  <Offset>
+					<AbsDimension x="0" y="120" />
+				  </Offset>
+				</Anchor>
+			  </Anchors>
+			  <FontHeight>
+				<AbsValue val="15" />
+			  </FontHeight>
+			</FontString>
+	      </Layer>
+		</Layers>
+-- Buttons
+		<Frames>
+			-- bouton fermer
+            <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-5" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			
+			-- bouton Editer
+			<Button name="PowaEditButton" inherits="OptionsButtonTemplate" text="Editer">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="PowaOptionsFrame" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-20" y="17"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PowaEditButtonText:SetText(PowaAuras.Text.nomEdit);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:EditorShow();
+						PlaySound("igCharacterInfoTab");
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			-- Test Button
+			<Button name="PowaMainTestButton" inherits="OptionsButtonTemplate" text="Tester">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="PowaOptionsFrame" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="20" y="17"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PowaMainTestButtonText:SetText(PowaAuras.Text.nomTest);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:OptionTest();
+						PowaAuras:UpdateMainOption();
+						PlaySound("igCharacterInfoTab");
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			-- Test All Button
+			<Button name="PowaMainTestAllButton" inherits="OptionsButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="PowaMainTestButton" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PowaMainTestAllButtonText:SetText(PowaAuras.Text.nomTestAll);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:OptionTestAll();
+						PowaAuras:UpdateMainOption();
+						PlaySound("igCharacterInfoTab");
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			-- bouton tout masquer
+			<Button name="PowaMainHideAllButton" inherits="OptionsButtonTemplate" text="Tout Cacher">
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="PowaOptionsFrame" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="17"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PowaMainHideAllButtonText:SetText(PowaAuras.Text.nomHide);
+					</OnLoad>
+					<OnClick>
+						PowaAuras:OptionHideAll();
+						PowaAuras:UpdateMainOption();
+						PlaySound("igCharacterInfoTab");
+					</OnClick>
+				</Scripts>
+			</Button>
+					
+			-- Fenetre icones effets
+			<Frame name="PowaOptionsSelectorFrame">
+				<Size>
+					<AbsDimension x="194" y="382"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-20" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface/DialogFrame/UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="12"/>
+					</EdgeSize>
+			        <TileSize>
+						<AbsValue val="128" />
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropBorderColor(0.0, 0.0, 0.0);
+						self:SetBackdropColor(0.1, 0.1, 0.1);
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					<Button name="PowaIcone1" inherits="PowaIconeTemplate" id="1">
+			          <Anchors>
+			            <Anchor point="TOPLEFT" relativeTo="PowaOptionsSelectorFrame" relativePoint="TOPLEFT">
+			              <Offset>
+			                <AbsDimension x="8" y="-8" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone2" inherits="PowaIconeTemplate" id="2">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone1" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone3" inherits="PowaIconeTemplate" id="3">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone2" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone4" inherits="PowaIconeTemplate" id="4">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone3" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone5" inherits="PowaIconeTemplate" id="5">
+			          <Anchors>
+			            <Anchor point="TOP" relativeTo="PowaIcone1" relativePoint="BOTTOM">
+			              <Offset>
+			                <AbsDimension x="0" y="-8" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone6" inherits="PowaIconeTemplate" id="6">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone5" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone7" inherits="PowaIconeTemplate" id="7">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone6" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone8" inherits="PowaIconeTemplate" id="8">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone7" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone9" inherits="PowaIconeTemplate" id="9">
+			          <Anchors>
+			            <Anchor point="TOP" relativeTo="PowaIcone5" relativePoint="BOTTOM">
+			              <Offset>
+			                <AbsDimension x="0" y="-8" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone10" inherits="PowaIconeTemplate" id="10">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone9" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone11" inherits="PowaIconeTemplate" id="11">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone10" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone12" inherits="PowaIconeTemplate" id="12">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone11" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone13" inherits="PowaIconeTemplate" id="13">
+			          <Anchors>
+			            <Anchor point="TOP" relativeTo="PowaIcone9" relativePoint="BOTTOM">
+			              <Offset>
+			                <AbsDimension x="0" y="-8" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone14" inherits="PowaIconeTemplate" id="14">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone13" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone15" inherits="PowaIconeTemplate" id="15">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone14" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone16" inherits="PowaIconeTemplate" id="16">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone15" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone17" inherits="PowaIconeTemplate" id="17">
+			          <Anchors>
+			            <Anchor point="TOP" relativeTo="PowaIcone13" relativePoint="BOTTOM">
+			              <Offset>
+			                <AbsDimension x="0" y="-8" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone18" inherits="PowaIconeTemplate" id="18">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone17" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone19" inherits="PowaIconeTemplate" id="19">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone18" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone20" inherits="PowaIconeTemplate" id="20">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone19" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone21" inherits="PowaIconeTemplate" id="21">
+			          <Anchors>
+			            <Anchor point="TOP" relativeTo="PowaIcone17" relativePoint="BOTTOM">
+			              <Offset>
+			                <AbsDimension x="0" y="-8" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone22" inherits="PowaIconeTemplate" id="22">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone21" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone23" inherits="PowaIconeTemplate" id="23">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone22" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					<Button name="PowaIcone24" inherits="PowaIconeTemplate" id="24">
+			          <Anchors>
+			            <Anchor point="LEFT" relativeTo="PowaIcone23" relativePoint="RIGHT">
+			              <Offset>
+			                <AbsDimension x="8" y="0" />
+			              </Offset>
+			            </Anchor>
+			          </Anchors>
+			        </Button>
+					-- Texture selected
+					<Frame name="PowaSelected" frameStrata="HIGH">
+					  <Size>
+						<AbsDimension x="38" y="38" />
+					  </Size>
+					  <Anchors>
+						<Anchor point="CENTER">
+						  <Offset>
+							<AbsDimension x="0" y="0" />
+						  </Offset>
+						</Anchor>
+					  </Anchors>
+						<Layers>
+							<Layer>
+								<Texture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD">
+								  <Size>
+									<AbsDimension x="38" y="38" />
+								  </Size>
+								  <Anchors>
+									<Anchor point="CENTER">
+									  <Offset>
+										<AbsDimension x="0" y="0" />
+									  </Offset>
+									</Anchor>
+								  </Anchors>
+								</Texture>
+							</Layer>
+						</Layers>
+					</Frame>
+					
+					-- Button - New Aura
+					<Button name="PowaOptionsSelectorNew" inherits="OptionsButtonTemplate" text="Nouveau">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="PowaOptionsSelectorFrame" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="5" y="82"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsSelectorNewText:SetText(PowaAuras.Text.nomNew);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionNewEffect();
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					-- Button - Delete
+					<Button name="PowaOptionsSelectorDelete" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PowaOptionsSelectorNew" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="5" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsSelectorDeleteText:SetText(PowaAuras.Text.nomDel);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionDeleteEffect(PowaAuras.CurrentAuraId);
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+							<OnEnter>
+								GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+								GameTooltip:SetText(PowaAuras.Text.aideDel, nil, nil, nil, nil, 1);
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+													
+					-- Button - Move
+					<Button name="PowaOptionsMove" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsSelectorNew" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsMoveText:SetText(PowaAuras.Text.nomMove);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionMoveEffect(true);
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					-- Button - Move
+					<Button name="PowaOptionsCopy" inherits="OptionsButtonTemplate" text="Copier">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PowaOptionsMove" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="5" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsCopyText:SetText(PowaAuras.Text.nomCopy);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionMoveEffect(false);
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					-- Button - Import
+					<Button name="PowaOptionsSelectorImport" inherits="OptionsButtonTemplate" text="Import">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsMove" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsSelectorImportText:SetText(PowaAuras.Text.nomImport);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionImportEffect();
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					-- Button - Export
+					<Button name="PowaOptionsSelectorExport" inherits="OptionsButtonTemplate" text="Export">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PowaOptionsSelectorImport" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="5" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsSelectorExportText:SetText(PowaAuras.Text.nomExport);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionExportEffect();
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>				
+					
+					-- Button - Import Set
+					<Button name="PowaOptionsSelectorImportSet" inherits="OptionsButtonTemplate" text="Import Set">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsSelectorImport" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsSelectorImportSetText:SetText(PowaAuras.Text.nomImportSet);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionImportSet();
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>
+					
+					-- Button - Export Set
+					<Button name="PowaOptionsSelectorExportSet" inherits="OptionsButtonTemplate" text="Export Set">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PowaOptionsSelectorImportSet" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="5" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PowaOptionsSelectorExportSetText:SetText(PowaAuras.Text.nomExportSet);
+							</OnLoad>
+							<OnClick>
+								PowaAuras:OptionExportSet();
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+						</Scripts>
+					</Button>					
+
+				</Frames>
+			</Frame>
+-- Fenetre player liste
+			<Frame name="PowaOptionsPlayerListFrame">
+				<Size>
+					<AbsDimension x="90" y="110"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="PowaOptionsSelectorFrame" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface/DialogFrame/UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="12"/>
+					</EdgeSize>
+			        <TileSize>
+						<AbsValue val="128" />
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2"/>
+					</BackgroundInsets>
+				</Backdrop>
+			    <Layers>
+					<Layer>
+						<FontString name="PowaOptionsPlayerTitre" inherits="GameFontHighlight" text="Character Effects">
+						  <Size>
+							<AbsDimension x="90" y="30" />
+						  </Size>
+						  <Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsPlayerListFrame" relativePoint="TOP">
+							  <Offset>
+								<AbsDimension x="0" y="0" />
+							  </Offset>
+							</Anchor>
+						  </Anchors>
+						  <FontHeight>
+							<AbsValue val="13" />
+						  </FontHeight>
+						</FontString>
+					</Layer>
+			    </Layers>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropBorderColor(0.0, 0.0, 0.0);
+						self:SetBackdropColor(0.1, 0.1, 0.1);
+						PowaOptionsPlayerTitre:SetText(PowaAuras.Text.nomPlayerEffects);
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					-- listes
+					<Button name="PowaOptionsList1" inherits="PowaListTemplate" text="Page 1" id="1">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsPlayerTitre" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList2" inherits="PowaListTemplate" text="Page 2" id="2">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList1" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList3" inherits="PowaListTemplate" text="Page 3" id="3">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList2" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList4" inherits="PowaListTemplate" text="Page 4" id="4">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList3" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList5" inherits="PowaListTemplate" text="Page 5" id="5">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList4" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+
+				</Frames>
+			</Frame>
+-- Fenetre global liste
+			<Frame name="PowaOptionsGlobalListFrame">
+				<Size>
+					<AbsDimension x="90" y="187"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="PowaOptionsPlayerListFrame" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-7"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface/DialogFrame/UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="12"/>
+					</EdgeSize>
+			        <TileSize>
+						<AbsValue val="128" />
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2"/>
+					</BackgroundInsets>
+				</Backdrop>
+			    <Layers>
+					<Layer>
+						<FontString name="PowaOptionsGlobalTitre" inherits="GameFontHighlight" text="Global Effects">
+						  <Size>
+							<AbsDimension x="90" y="30" />
+						  </Size>
+						  <Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsGlobalListFrame" relativePoint="TOP">
+							  <Offset>
+								<AbsDimension x="0" y="0" />
+							  </Offset>
+							</Anchor>
+						  </Anchors>
+						  <FontHeight>
+							<AbsValue val="13" />
+						  </FontHeight>
+						</FontString>
+					</Layer>
+			    </Layers>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropBorderColor(0.0, 0.0, 0.0);
+						self:SetBackdropColor(0.1, 0.1, 0.1);
+						PowaOptionsGlobalTitre:SetText(PowaAuras.Text.nomGlobalEffects);
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					-- listes
+					<Button name="PowaOptionsList6" inherits="PowaListTemplate" text="Page 1" id="6">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsGlobalTitre" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList7" inherits="PowaListTemplate" text="Page 2" id="7">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList6" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList8" inherits="PowaListTemplate" text="Page 3" id="8">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList7" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList9" inherits="PowaListTemplate" text="Page 4" id="9">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList8" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList10" inherits="PowaListTemplate" text="Page 5" id="10">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList9" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList11" inherits="PowaListTemplate" text="Page 6" id="11">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList10" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList12" inherits="PowaListTemplate" text="Page 7" id="12">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList11" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList13" inherits="PowaListTemplate" text="Page 8" id="13">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList12" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList14" inherits="PowaListTemplate" text="Page 9" id="14">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList13" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="PowaOptionsList15" inherits="PowaListTemplate" text="Page 10" id="15">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsList14" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="10"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					-- bouton Renommer
+					<Button name="PowaOptionsRename" inherits="OptionsButtonTemplate" text="Renommer">
+						<Size>
+							<AbsDimension x="90" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsGlobalListFrame" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PowaAuras:OptionRename();
+								PlaySound("igCharacterInfoTab");
+							</OnClick>
+							<OnEnter>
+								GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+								GameTooltip:SetText(PowaAuras.Text.aideRename, nil, nil, nil, nil, 1);
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					<EditBox name="PowaOptionsRenameEditBox" autoFocus="true" inherits="InputBoxTemplate" hidden="true">
+						<Size>
+							<AbsDimension x="85" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOP" relativeTo="PowaOptionsRename" relativePoint="TOP">
+								<Offset>
+									<AbsDimension x="3" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+                    <Layers>
+			                <Layer level="OVERLAY">
+				                <FontString inherits="GameFontNormalSmall" bytes="15"/>
+			                </Layer>
+		                </Layers>							
+						<Scripts>
+							<OnLoad>
+								self:SetMaxLetters(15)
+							</OnLoad>
+							<OnEnterPressed>
+								PowaAuras:OptionRenameEdited();
+								self:ClearFocus();
+							</OnEnterPressed>
+						</Scripts>
+					</EditBox>
+				</Frames>
+			</Frame>
+		</Frames>
+    </Frame>
+
+</Ui>

@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+r1318 | Phanx | 2010-09-20 02:29:26 +0000 (Mon, 20 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/GridFrame.lua
+
+- Fixed texcoords again, tested this time with all combinations of horizontal/vertical and inverted bars!
+------------------------------------------------------------------------
+r1316 | greltok | 2010-09-18 02:49:29 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/GridRoster.lua
+
+When inside a raid instance, base the raid size on the raid info.  This addresses issues with older raid instances that do not support multiple sizes.
+------------------------------------------------------------------------
+r1311 | Phanx | 2010-09-02 04:51:42 +0000 (Thu, 02 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/GridFrame.lua
+
+- More checks on tex coords
+- Prevent texture squishing on horizontal bars too
+------------------------------------------------------------------------
+r1310 | Phanx | 2010-08-23 02:54:02 +0000 (Mon, 23 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/GridFrame.lua
+
+- Fixed texture squishing fix for dead units when "show dead as full health" is disabled
+------------------------------------------------------------------------
+r1309 | Phanx | 2010-08-19 06:40:36 +0000 (Thu, 19 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/GridFrame.lua
+
+- Fix "texture squishing" effect visible with some bar textures
+------------------------------------------------------------------------

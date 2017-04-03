@@ -1,0 +1,17 @@
+## Title: Auc:Stat:Std Deviation
+## Notes: Statistics extension for Auctioneer that uses the variance to detect, and ignore, outliers and provides pricing recommendations.
+##
+## Interface: 30300
+## LoadOnDemand: 0
+## Disabled: 1
+## Dependencies: Auc-Advanced
+## SavedVariables: AucAdvancedStatStdDevData
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Stat-StdDev.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+
+StatStdDev.lua

@@ -1,0 +1,282 @@
+<!--
+
+	Atlas, a World of Warcraft instance map browser
+	Copyright 2005-2010 Dan Gilbert <dan.b.gilbert@gmail.com>
+
+	This file is part of Atlas.
+
+	Atlas is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	Atlas is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with Atlas; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Frame name="AtlasOptionsFrame" hidden="true">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString inherits="GameFontNormalLarge" text="ATLAS_TITLE">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$ParentToggleButton" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(ATLAS_OPTIONS_SHOWBUT);
+					</OnLoad>
+					<OnClick>
+						AtlasButton_Toggle();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$ParentAutoSelect" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(ATLAS_OPTIONS_AUTOSEL);
+					</OnLoad>
+					<OnClick>
+						AtlasOptions_AutoSelectToggle();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$ParentRightClick" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(ATLAS_OPTIONS_RCLICK);
+					</OnLoad>
+					<OnClick>
+						AtlasOptions_RightClickToggle();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$ParentAcronyms" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-100"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(ATLAS_OPTIONS_ACRONYMS);
+					</OnLoad>
+					<OnClick>
+						AtlasOptions_AcronymsToggle();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$ParentClamped" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-120"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(ATLAS_OPTIONS_CLAMPED);
+					</OnLoad>
+					<OnClick>
+						AtlasOptions_ClampedToggle();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$ParentCtrl" inherits="InterfaceOptionsSmallCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-140"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(ATLAS_OPTIONS_CTRL);
+					</OnLoad>
+					<OnClick>
+						AtlasOptions_CtrlToggle();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Slider name="$ParentSliderButtonPos" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="360" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-215" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						AtlasOptions_SetupSlider(ATLAS_OPTIONS_BUTPOS, 0, 360, 1);
+					</OnLoad>
+					<OnValueChanged>
+						AtlasOptions_UpdateSlider(ATLAS_OPTIONS_BUTPOS);
+						AtlasOptions.AtlasButtonPosition = this:GetValue();
+						AtlasButton_UpdatePosition();
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<Slider name="$ParentSliderButtonRad" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="360" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-250" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						AtlasOptions_SetupSlider(ATLAS_OPTIONS_BUTRAD, 0, 200, 1);
+					</OnLoad>
+					<OnValueChanged>
+						AtlasOptions_UpdateSlider(ATLAS_OPTIONS_BUTRAD);
+						AtlasOptions.AtlasButtonRadius = this:GetValue();
+						AtlasButton_UpdatePosition();
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<Slider name="$ParentSliderAlpha" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="360" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-285" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						AtlasOptions_SetupSlider(ATLAS_OPTIONS_TRANS, 0.25, 1.0, 0.01);
+					</OnLoad>
+					<OnValueChanged>
+						AtlasOptions_UpdateSlider(ATLAS_OPTIONS_TRANS);
+						AtlasOptions.AtlasAlpha = this:GetValue();
+						Atlas_UpdateAlpha();
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<Slider name="$ParentSliderScale" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="360" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-320" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						AtlasOptions_SetupSlider(ATLAS_OPTIONS_SCALE, 0.25, 1.5, 0.01);
+					</OnLoad>
+					<OnValueChanged>
+						AtlasOptions_UpdateSlider(ATLAS_OPTIONS_SCALE);
+						AtlasOptions.AtlasScale = this:GetValue();
+						Atlas_UpdateScale();
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<Button name="$ParentDropDownCats" inherits="UIDropDownMenuTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="ATLAS_OPTIONS_CATDD">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="20" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						AtlasOptionsFrameDropDownCats_OnShow();
+					</OnShow>
+				</Scripts>
+			</Button>
+			<Button name="$ParentResetPosition" inherits="UIPanelButtonTemplate2" text="ATLAS_OPTIONS_RESETPOS">
+				<Size>
+					<AbsDimension x="160" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-20" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						AtlasOptions_ResetPosition();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				AtlasOptions_OnLoad(self);
+			</OnLoad>
+		</Scripts>
+	</Frame>
+</Ui>

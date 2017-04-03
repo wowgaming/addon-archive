@@ -1,0 +1,16 @@
+tag 3.3.5-1.0.1
+c4cacd43001af3be27ea7840fc7380f2e9ec7060
+James D. Callahan III <darkenelf@gmail.com>
+2010-07-12 09:48:40 -0400
+
+Tagging new release.
+
+
+--------------------
+
+James D. Callahan III:
+	- Left-clicking the dataobj icon opens the ARL interface options panel.
+	- Unregister PLAYER_LOGIN and nil the function at the end of its execution.
+	- Changed the datafeed's initial text from "Unknown" to "Tradeskills".
+	- Added compatibility with the latest 2.0 code.
+	- In ARL_Scan(): If ARL.Frame is visible, hide it and do not scan - at this point the TradeSkillUI will be hidden so scanning will cause ARL to complain.

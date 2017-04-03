@@ -1,0 +1,26 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+    <Script file="WhisperEngine.lua"/>
+    <Script file="ChatEngine.lua"/>
+    <Script file="MinimapIcon.lua"/>
+    <Script file="URLHandler.lua"/>
+    <Script file="Sounds.lua"/>
+    <Script file="Emoticons.lua"/>
+    <Script file="Tutorials.lua"/>
+    <Script file="Menu.lua"/>
+    <Script file="TimeStamps.lua"/>
+    <Script file="ShortcutBar.lua"/>
+    <Script file="Filters.lua"/>
+    <Script file="TabManagement.lua"/>
+    <Script file="History.lua"/>
+    <Script file="ldb.lua"/>
+    <Script file="Negotiate.lua"/>
+    <Script file="W2W.lua"/>
+    <Script file="W2Wv2.lua"/>
+    <Script file="Expose.lua"/>
+    <Script file="ClickControl.lua"/>
+    <Script file="OffScreenTracker.lua"/>
+    <Script file="alias.lua"/>
+    
+</Ui>

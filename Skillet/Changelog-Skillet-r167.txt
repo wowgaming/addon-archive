@@ -1,0 +1,18 @@
+------------------------------------------------------------------------
+r167 | lilsparky | 2010-07-10 21:56:31 +0000 (Sat, 10 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/Skillet.toc
+
+updated .toc and hopefully this should repackage with updated ace2 libs
+
+------------------------------------------------------------------------
+r166 | StingerSoft | 2009-06-11 10:40:12 +0000 (Thu, 11 Jun 2009) | 2 lines
+Changed paths:
+   M /trunk/Locale/Locale-enUS.lua
+   M /trunk/Locale/Locale-ruRU.lua
+   M /trunk/UI/MainFrame.lua
+   M /trunk/UI/MainFrame.xml
+
+Skillet:
+- change button position
+------------------------------------------------------------------------

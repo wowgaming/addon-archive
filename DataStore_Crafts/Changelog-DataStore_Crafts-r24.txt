@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r24 | Thaoky | 2010-07-06 17:10:30 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Crafts.toc
+
+TOC update to retrieve updated libs.
+------------------------------------------------------------------------
+r23 | thaoky | 2010-03-09 10:23:51 +0000 (Tue, 09 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Crafts.lua
+
+Added GetProfessionSpellID()
+------------------------------------------------------------------------

@@ -1,0 +1,31 @@
+<Bindings>
+	<Binding name="RECOUNT_PREVIOUSPAGE" header="RECOUNT">Recount:MainWindowPrevMode()</Binding>
+	<Binding name="RECOUNT_NEXTPAGE">Recount:MainWindowNextMode()</Binding>
+	<Binding name="RECOUNT_DAMAGE">Recount:SetMainWindowModeByLabel("Damage Done")</Binding>
+	<Binding name="RECOUNT_DPS">Recount:SetMainWindowModeByLabel("DPS")</Binding>
+	<Binding name="RECOUNT_FRIENDLYFIRE">Recount:SetMainWindowModeByLabel("Friendly Fire")</Binding>
+	<Binding name="RECOUNT_DAMAGETAKEN">Recount:SetMainWindowModeByLabel("Damage Taken")</Binding>
+	<Binding name="RECOUNT_HEALING">Recount:SetMainWindowModeByLabel("Healing Done")</Binding>
+	<Binding name="RECOUNT_HEALINGTAKEN">Recount:SetMainWindowModeByLabel("Healing Taken")</Binding>
+	<Binding name="RECOUNT_OVERHEALING">Recount:SetMainWindowModeByLabel("Overhealing Done")</Binding>
+	<Binding name="RECOUNT_DEATHS">Recount:SetMainWindowModeByLabel("Deaths")</Binding>
+	<Binding name="RECOUNT_DOTS">Recount:SetMainWindowModeByLabel("DOT Uptime")</Binding>
+	<Binding name="RECOUNT_HOTS">Recount:SetMainWindowModeByLabel("HOT Uptime")</Binding>
+	<Binding name="RECOUNT_DISPELS">Recount:SetMainWindowModeByLabel("Dispels")</Binding>
+	<Binding name="RECOUNT_DISPELLED">Recount:SetMainWindowModeByLabel("Dispelled")</Binding>
+	<Binding name="RECOUNT_INTERRUPTS">Recount:SetMainWindowModeByLabel("Interrupts")</Binding>
+	<Binding name="RECOUNT_CCBREAKER">Recount:SetMainWindowModeByLabel("CC Breakers")</Binding>
+	<Binding name="RECOUNT_ACTIVITY">Recount:SetMainWindowModeByLabel("Activity")</Binding>
+	<Binding name="RECOUNT_RESURRECT">Recount:SetMainWindowModeByLabel("Ressers")</Binding>
+	<Binding name="RECOUNT_MANA">Recount:SetMainWindowModeByLabel("Mana Gained")</Binding>
+	<Binding name="RECOUNT_ENERGY">Recount:SetMainWindowModeByLabel("Energy Gained")</Binding>
+	<Binding name="RECOUNT_RAGE">Recount:SetMainWindowModeByLabel("Rage Gained")</Binding>
+	<Binding name="RECOUNT_RUNICPOWER">Recount:SetMainWindowModeByLabel("Runic Power Gained")</Binding>
+	<Binding name="RECOUNT_REPORT_MAIN">Recount:ShowReport("Main",Recount.ReportData)</Binding>
+	<Binding name="RECOUNT_REPORT_DETAILS">Recount:ShowReport("Detail",Recount.ReportDetail)</Binding>
+	<Binding name="RECOUNT_RESET_DATA">Recount:ShowReset()</Binding>
+	<Binding name="RECOUNT_SHOW_MAIN">Recount.MainWindow:Show();Recount:RefreshMainWindow()</Binding>
+	<Binding name="RECOUNT_HIDE_MAIN">Recount.MainWindow:Hide()</Binding>
+	<Binding name="RECOUNT_TOGGLE_MAIN">if Recount.MainWindow:IsShown() then Recount.MainWindow:Hide() else Recount.MainWindow:Show();Recount:RefreshMainWindow() end</Binding>
+	<Binding name="RECOUNT_TOGGLE_PAUSE">Recount:SetGlobalDataCollect(not Recount.db.profile.GlobalDataCollect)</Binding>
+</Bindings>

@@ -1,0 +1,16 @@
+## Interface: 20300
+## Title: WIM Classic Skin
+## Notes: WIM Skin
+## Author: Pazza (Bronzebeard)
+## eMail: johnlangone@gmail.com
+## X-Email: johnlangone@gmail.com
+## X-Website: http://www.wimaddon.com/
+## X-Category: MYADDONS_CATEGORY_CHAT
+## Dependencies: WIM
+## X-Curse-Packaged-Version: 3.3.7
+## X-Curse-Project-Name: WIM (WoW Instant Messenger) v3
+## X-Curse-Project-ID: wim-3
+## X-Curse-Repository-ID: wow/wim-3/mainline
+
+skin.xml
+skin.lua

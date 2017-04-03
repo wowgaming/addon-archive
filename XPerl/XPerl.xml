@@ -1,0 +1,104 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+	<Script file="XPerl.lua"/>
+	<Script file="XPerl_Usage.lua"/>
+	<Script file="XPerl_Highlight.lua"/>
+
+	<Button name="XPerl_MinimapButton_Frame" frameStrata="MEDIUM" parent="Minimap" enableMouse="true" movable="true">
+		<Size>
+			<AbsDimension x="33" y="33"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="Minimap" relativePoint="RIGHT"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="XPerl_MinitmapButton_Icon" file="Interface\Icons\INV_Misc_Gem_Pearl_02">
+					<Size>
+						<AbsDimension x="21" y="21"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="7" y="-6"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.075" right="0.925" top="0.075" bottom="0.925"/>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size>
+						<AbsDimension x="56" y="56"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp","RightButtonUp")
+				self:RegisterForDrag("RightButton")
+			</OnLoad>
+			<OnEnter>
+				if (not self.dragging) then
+					XPerl_MinimapButton_OnEnter(self)
+					self:SetScript("OnUpdate", XPerl_MinimapButton_OnUpdate)
+				end
+			</OnEnter>
+			<OnLeave>
+				if (not self.dragging) then
+					self:SetScript("OnUpdate", nil)
+				end
+				GameTooltip:Hide()
+			</OnLeave>
+			<OnMouseDown>
+				XPerl_MinitmapButton_Icon:SetTexCoord(0,1,0,1)
+			</OnMouseDown>
+			<OnMouseUp>
+				XPerl_MinitmapButton_Icon:SetTexCoord(.075,.925,.075,.925)
+			</OnMouseUp>
+			<OnDragStart>
+				self.dragging = true
+				self:SetScript("OnUpdate", XPerl_MinimapButton_Dragging)
+			</OnDragStart>
+			<OnDragStop>
+				self.dragging = false
+				self:SetScript("OnUpdate", XPerl_MinimapButton_OnUpdate)
+				XPerl_MinitmapButton_Icon:SetTexCoord(.075,.925,.075,.925)
+			</OnDragStop>
+			<OnClick>
+				--XPerl_Toggle()
+				XPerl_MinimapButton_OnClick(self, button)
+				XPerl_MinitmapButton_Icon:SetTexCoord(.075,.925,.075,.925)
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<Frame name="XPerl_LowHealthFrame" parent="UIParent" setAllPoints="true" hidden="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\FullScreenTextures\LowHealth" alphaMode="ADD"/>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="XPerl_OutOfControlFrame" parent="UIParent" setAllPoints="true" hidden="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\FullScreenTextures\OutOfControl" alphaMode="ADD"/>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="XPerl_DropDown" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
+		<Size><AbsDimension x="10" y="10"/></Size>
+		<Anchors><Anchor point="TOP"/></Anchors>
+		<Scripts>
+			<OnLoad function="XPerl_GenericDropDown_OnLoad"/>
+		</Scripts>
+	</Frame>
+</Ui>

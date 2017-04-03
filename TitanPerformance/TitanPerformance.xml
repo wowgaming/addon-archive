@@ -1,0 +1,105 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="TitanPerformance.lua"/>
+	<Frame name="TitanPanelPerfControlFrameTemplate" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="120" y="170" />
+		</Size>
+		<Backdrop bgFile="Interface\FullScreenTextures\OutOfControl" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="2" right="2" top="2" bottom="2"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer>
+				<FontString name="$parentTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Slider name="TitanPanelPerfControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelPerfControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelPerfControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelPerfControlSlider_OnValueChanged(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelPerfControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelPerfControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				TitanPanelPerfControlFrame_OnLoad(self);
+			</OnLoad>
+			<OnEnter>
+				TitanUtils_StopFrameCounting(self);
+			</OnEnter>
+			<OnLeave>
+				TitanUtils_StartFrameCounting(self, 0.5);
+			</OnLeave>
+			<OnShow>
+				TitanUtils_StartFrameCounting(self, 0.5);
+			</OnShow>
+			<OnUpdate>
+				TitanPanelPerfControlFrame_OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+	<Frame parent="UIParent">
+		<Frames>
+			<Button name="TitanPanelPerformanceButton" inherits="TitanPanelComboTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Scripts>
+					<OnLoad>
+						TitanPanelPerformanceButton_OnLoad(self);
+						TitanPanelButton_OnLoad(self);
+					</OnLoad>
+					<OnEvent>
+						TitanPanelPerformanceButton_OnEvent(self, event, ...);
+					</OnEvent>
+					<OnShow>
+						TitanPanelPerformanceButton_OnShow();
+						TitanPanelButton_OnShow(self);
+					</OnShow>
+					<OnHide>
+						TitanPanelPerformanceButton_OnHide();
+					</OnHide>
+					<OnClick>
+						TitanPanelPerformanceButton_OnClick(self, button);
+						TitanPanelButton_OnClick(self, button);
+					</OnClick>					
+				</Scripts>
+			</Button>
+			<Frame name="TitanPanelPerfControlFrame" inherits="TitanPanelPerfControlFrameTemplate" frameStrata="FULLSCREEN_DIALOG" toplevel="true" />
+		</Frames>
+	</Frame>		
+</Ui>

@@ -1,0 +1,365 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<!-- LUA Scripts -->
+	<Script file="XPerl_RosterText.lua"/>
+
+	<CheckButton name="XPerlRosterCheckButtonTemplate" virtual="true">
+		<Size><AbsDimension x="22" y="22"/></Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="-80" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Scripts>
+			<OnShow>
+				self:SetHitRectInsets(0, -(self.text:GetStringWidth()), 0, 0)
+			</OnShow>
+			<OnEnter>
+				if (self.tooltipText) then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:SetText(self.text:GetText(), 1, 1, 1)
+					GameTooltip:AddLine(self.tooltipText, nil, nil, nil, 1)
+					GameTooltip:Show()
+				end
+				self.text:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
+			</OnEnter>
+			<OnLeave>
+				self.text:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parenttext" inherits="GameFontNormalSmall" justifyH="left" wraponspaces="false">
+					<Size><AbsDimension x="200" y="12"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset><AbsDimension x="-2" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+		<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+		<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+		<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+		<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+	</CheckButton>
+
+	<CheckButton name="XPerlRosterGroupCheckButtonTemplate" inherits="XPerlRosterCheckButtonTemplate" virtual="true">
+		<Scripts>
+			<OnShow>
+				self.text:SetText(format(XPERL_ROSTERTEXT_GROUP, self:GetID()))
+				self.tooltipText = format(XPERL_ROSTERTEXT_GROUP_DESC, self:GetID())
+				self:SetHitRectInsets(0, -(self.text:GetStringWidth()), 0, 0)
+				self:SetChecked(XPerl_RosterText.group[self:GetID()])
+			</OnShow>
+			<OnClick>
+				XPerl_RosterText.group[self:GetID()] = self:GetChecked()
+				XPerl_RosterText:Update()
+			</OnClick>
+		</Scripts>
+	</CheckButton>
+
+	<Button name="XPerlRosterTextOptionsButtonTemplate" virtual="true">
+		<Size><AbsDimension x="90" y="21"/></Size>
+		<ButtonText name="$parentText" setAllPoints="true"/>
+		<NormalFont style="GameFontNormal"/>
+		<HighlightFont style="GameFontHighlight"/>
+		<DisabledFont style="GameFontDisable"/>
+		<NormalTexture inherits="UIPanelButtonUpTexture"/>
+		<PushedTexture inherits="UIPanelButtonDownTexture"/>
+		<DisabledTexture inherits="UIPanelButtonDisabledTexture"/>
+		<HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
+	</Button>
+
+	<Button name="XPerlRosterGroupSetnButtonTemplate" inherits="XPerlRosterTextOptionsButtonTemplate" virtual="true">
+		<Size><AbsDimension x="50" y="22"/></Size>
+		<Scripts>
+			<OnShow>
+				self.text = _G[self:GetName().."Text"]
+				if (self:GetID() == 0) then
+					self.text:SetText(XPERL_ROSTERTEXT_TOGGLE)
+					self.tooltipText = XPERL_ROSTERTEXT_TOGGLE_DESC
+				else
+					self.text:SetText(format(XPERL_ROSTERTEXT_SETN, self:GetID()))
+					self.tooltipText = format(XPERL_ROSTERTEXT_SETN_DESC, self:GetID())
+				end
+				self:SetWidth(self.text:GetStringWidth() + 20)
+			</OnShow>
+			<OnClick>
+				for i = 1,8 do
+					if (self:GetID() == 0) then
+						XPerl_RosterText.group[i] = not XPerl_RosterText.group[i]
+					else
+						if (self:GetID() >= i * 5) then
+							XPerl_RosterText.group[i] = 1
+						else
+							XPerl_RosterText.group[i] = nil
+						end
+					end
+				end
+				XPerl_RosterText:Hide()
+				XPerl_RosterText:Show()
+			</OnClick>
+			<OnEnter>
+				if (self.tooltipText) then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1)
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<Frame name="XPerl_RosterTextAnchor" clampedToScreen="true" parent="UIParent" movable="true" resizable="true">
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset><AbsDimension x="0" y="-270"/></Offset>
+			</Anchor>
+		</Anchors>
+		<Size><AbsDimension x="350" y="250"/></Size>
+	</Frame>
+
+	<Frame name="XPerl_RosterText" clampedToScreen="true" hidden="true" parent="XPerl_RosterTextAnchor" enableMouse="true">
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+		</Anchors>
+		<Size><AbsDimension x="350" y="250"/></Size>
+		<Scripts>
+			<OnLoad>
+				XPerl_RosterText_Init(self)
+			</OnLoad>
+			<OnShow>
+				XPerl_DoGradient(self)
+				self:Update()
+			</OnShow>
+			<OnDragStart>
+				XPerl_RosterTextAnchor:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				XPerl_RosterTextAnchor:StopMovingOrSizing()
+				if (XPerl_SavePosition) then
+					XPerl_SavePosition(XPerl_RosterTextAnchor, true)
+				end
+			</OnDragStop>
+		</Scripts>
+
+		<Backdrop bgFile="Interface\Addons\XPerl_Options\Images\XPerl_FancyBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="256"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parenttitle" inherits="GameFontNormal" justifyV="TOP" justifyH="LEFT" text="XPERL_ROSTERTEXT_TITLE">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset><AbsDimension x="5" y="-5"/></Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset><AbsDimension x="-25" y="-20"/></Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1"/>
+				</FontString>
+
+				<FontString name="$parenthelp" inherits="GameFontNormal" justifyV="BOTTOM" justifyH="CENTER" text="XPERL_ROSTERTEXT_HELP">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset><AbsDimension x="5" y="10"/></Offset>
+						</Anchor>
+						<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT">
+							<Offset><AbsDimension x="-10" y="25"/></Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="0.6" g="0.6" b="0.6"/>
+				</FontString>
+
+				<FontString name="$parenttotals" inherits="GameFontNormal" justifyV="CENTER" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parenthelp" relativePoint="TOPLEFT"/>
+						<Anchor point="TOPRIGHT" relativeTo="$parenthelp" relativePoint="TOPRIGHT">
+							<Offset><AbsDimension x="0" y="16"/></Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1"/>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			-- Player and Target Frame Options
+			<Button name="$parentbuttonClose" inherits="UIPanelCloseButton">
+				<Anchors><Anchor point="TOPRIGHT">
+					<Offset><AbsDimension x="3" y="2"/></Offset>
+				</Anchor></Anchors>
+			</Button>
+
+			<Frame name="$parentgroupFrame">
+				<Size><AbsDimension x="176" y="176"/></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="5" y="-25"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						XPerl_SetChildMembers(self)
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					<CheckButton name="$parent1" inherits="XPerlRosterGroupCheckButtonTemplate" id="1">
+						<Anchors><Anchor point="TOPLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent2" inherits="XPerlRosterGroupCheckButtonTemplate" id="2">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent1" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent3" inherits="XPerlRosterGroupCheckButtonTemplate" id="3">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent2" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent4" inherits="XPerlRosterGroupCheckButtonTemplate" id="4">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent3" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent5" inherits="XPerlRosterGroupCheckButtonTemplate" id="5">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent4" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent6" inherits="XPerlRosterGroupCheckButtonTemplate" id="6">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent5" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent7" inherits="XPerlRosterGroupCheckButtonTemplate" id="7">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent6" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+					<CheckButton name="$parent8" inherits="XPerlRosterGroupCheckButtonTemplate" id="8">
+						<Anchors><Anchor point="TOPLEFT" relativeTo="$parent7" relativePoint="BOTTOMLEFT"/></Anchors>
+					</CheckButton>
+
+					<Button name="$parentsize10" inherits="XPerlRosterGroupSetnButtonTemplate" id="10">
+						<Anchors><Anchor point="TOPRIGHT"/></Anchors>
+					</Button>
+					<Button name="$parentsize25" inherits="XPerlRosterGroupSetnButtonTemplate" id="25">
+						<Anchors><Anchor point="TOPRIGHT" relativeTo="$parentsize10" relativePoint="BOTTOMRIGHT">
+							<Offset><AbsDimension x="0" y="-2"/></Offset>
+						</Anchor></Anchors>
+					</Button>
+					<Button name="$parentsize40" inherits="XPerlRosterGroupSetnButtonTemplate" id="40">
+						<Anchors><Anchor point="TOPRIGHT" relativeTo="$parentsize25" relativePoint="BOTTOMRIGHT">
+							<Offset><AbsDimension x="0" y="-2"/></Offset>
+						</Anchor></Anchors>
+					</Button>
+					<Button name="$parenttoggle" inherits="XPerlRosterGroupSetnButtonTemplate" id="0">
+						<Anchors><Anchor point="TOPRIGHT" relativeTo="$parentsize40" relativePoint="BOTTOMRIGHT">
+							<Offset><AbsDimension x="0" y="-2"/></Offset>
+						</Anchor></Anchors>
+					</Button>
+				</Frames>
+			</Frame>
+
+			<CheckButton name="$parentzone" inherits="XPerlRosterCheckButtonTemplate" id="8">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentgroupFrame" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						self.text:SetText(XPERL_ROSTERTEXT_SAMEZONE)
+						self.tooltipText = XPERL_ROSTERTEXT_SAMEZONE_DESC
+						self:SetChecked(XPerl_RosterText.sameZone)
+					</OnShow>
+					<OnClick>
+						XPerl_RosterText.sameZone = self:GetChecked()
+						XPerl_RosterText:Update()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<Frame name="$parenttextFrame">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentgroupFrame" relativePoint="TOPRIGHT">
+						<Offset><AbsDimension x="5" y="0"/></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-5" y="40"/></Offset>
+					</Anchor>
+				</Anchors>
+
+				<Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+
+				<Frames>
+					<ScrollFrame name="$parentscroll" inherits="UIPanelScrollFrameTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset><AbsDimension x="5" y="-5"/></Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset><AbsDimension x="-28" y="4"/></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnMouseDown>
+								self.text:HighlightText()
+								self.text:SetFocus()
+							</OnMouseDown>
+						</Scripts>
+						<ScrollChild>
+							<EditBox name="$parenttext" multiLine="true" maxLines="50" letters="1000" wraponspaces="true" autoFocus="false">
+								<Size>
+									<AbsDimension x="200" y="2000"/>
+								</Size>
+								<Anchor point="TOPLEFT"/>
+								<Anchor point="BOTTOMRIGHT"/>
+
+								<FontString inherits="ChatFontNormal"></FontString>
+
+								<Scripts>
+									<OnTextChanged>
+										self:SetText(XPerl_RosterText.text or "")
+										self:HighlightText()
+										self:SetFocus()
+									</OnTextChanged>
+									<OnEscapePressed>
+										self:ClearFocus()
+									</OnEscapePressed>
+								</Scripts>
+							</EditBox>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+
+			<CheckButton name="$parentsort" inherits="XPerlRosterCheckButtonTemplate" id="8">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parenttextFrame" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						self.text:SetText(XPERL_ROSTERTEXT_SORT)
+						self.tooltipText = XPERL_ROSTERTEXT_SORT_DESC
+						self:SetChecked(XPerl_RosterText.sortAlpha)
+						self.text:ClearAllPoints()
+						self.text:SetPoint("RIGHT", self, "LEFT", 2, 0)
+						self.text:SetJustifyH("RIGHT")
+						self:SetHitRectInsets(-(self.text:GetStringWidth()), 0, 0, 0)
+					</OnShow>
+					<OnClick>
+						XPerl_RosterText.sortAlpha = self:GetChecked()
+						XPerl_RosterText:Update()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+	</Frame>
+</Ui>

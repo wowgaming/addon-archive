@@ -1,0 +1,11 @@
+﻿<Bindings>
+	<Binding name="WOWEQUIP_TOGGLE" header="WOWEQUIP">
+		WoWEquip:Toggle()
+	</Binding>
+	<Binding name="WOWEQUIP_INSPECT">
+		if CanInspect("target") then
+			WoWEquip:Show()
+			WoWEquip.frame.CopyTargetButton:Click()
+		end
+	</Binding>
+</Bindings>

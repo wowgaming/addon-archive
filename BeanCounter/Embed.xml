@@ -1,0 +1,18 @@
+<!-- This file describes which scripts and xml files are to be loaded.  -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+<Include file="Support\Load.xml"/>
+<Script file="BeanCounter.lua"/>
+<Script file="BeanCounterStrings.lua"/>
+<Script file="BeanCounterLocale.lua"/> 
+<Script file="BeanCounterConfig.lua"/>
+<Script file="BeanCounterFrames.lua"/>
+<Script file="BeanCounterTidyUp.lua"/>
+<Script file="BeanCounterUpdate.lua"/>
+<Script file="BeanCounterMail.lua"/>
+<Script file="BeanCounterSearch.lua"/>
+<Script file="BeancounterVendor.lua"/>
+<Script file="PostMonitor.lua"/>
+<Script file="BidMonitor.lua"/>
+<Script file="BeanCounterAPI.lua"/>
+<Script file="MatchBeanCount.lua"/>
+</Ui>

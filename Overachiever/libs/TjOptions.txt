@@ -1,0 +1,514 @@
+
+TjOptions v0.41
+========================================
+
+Author: Tuhljin
+
+Library for easy creation and management of Interface Options panels. TjOptions provides built-in support for a
+few variations on some basic item types (checkboxes, labels) and an extensible, modular system for supporting
+other items.
+
+Contents:
+
+PANEL CREATION API
+
+POST-CREATION API
+
+PANEL CONTENTS TABLE SPECIFICATIONS
+- Variables Table
+
+REGISTERING ADDITIONAL PANEL ITEM TYPES
+ - Item Functions Table
+ - Item Type Inheritance
+ - Iterator
+
+
+=== PANEL CREATION API ===
+
+panel, oldver = TjOptions.CreatePanel(name, parent, [isDefaultInGroup,] tab)
+  Creates a new Interface Options panel. The contents of the panel will not be created immediately, instead
+  being dynamically created if and when it is necessary.
+  Arguments:
+    name     String. The panel's name, being the text that is used to indicate this panel in the Interface
+             Options frame.
+    parent   String or nil. The name of the panel which will be the new panel's parent, or nil for no parent.
+    isDefaultInGroup
+             Any. If it evaluates to true and a parent created by TjOptions.CreatePanelGroup() is specified, this
+             panel will be shown when the parent panel is selected.
+    tab      Table. The panel's contents, using the specifications indicated in the "PANEL CONTENTS TABLE
+             SPECIFICATIONS" section, below.
+  Returns:
+    panel    Table. The new panel (frame).
+    oldver   Any. If the variables key is used in the panel contents table, this will be the value of the
+             "Version" key from the variables table unless TjOptions created the table (see the "Variables Table"
+             section, below), in which case it will be false. The use of this return is of course entirely
+             optional: Your variables table is not required to include a Version key.
+
+panel = TjOptions.CreatePanelGroup(name, parent[, isDefaultInGroup[, sound]])
+  Creates a new Interface Options panel that acts solely as a group header for other panels. If this panel is
+  selected, one of its children (if it has any) will be displayed.
+  Arguments:
+    name, parent, isDefaultInGroup
+             As TjOptions.CreatePanel()'s arguments.
+    sound    String or nil. A sound file to play when the panel is selected and one of its children is shown. Use
+             nil to play no sound, or an empty string ("") to use the suggested sound ("igCharacterInfoTab").
+  Returns:
+    panel    Table. The new panel (frame).
+
+
+=== POST-CREATION API ===
+
+In the following, myPanelGroup is the table returned by a TjOptions.CreatePanelGroup() call while myPanel is that
+returned by TjOptions.CreatePanel().
+
+myPanelGroup:SetDefaultPanel("PanelName")  -OR-
+myPanelGroup:SetDefaultPanel(PanelFrame)
+  Change the panel which will be shown when myPanelGroup is selected. The argument is either a string giving the
+  name of the panel or the panel frame itself.
+
+myPanelGroup:SetSound("SoundFile")
+  Change the sound file associated with this panel, as per the sound argument of TjOptions.CreatePanelGroup().
+
+myPanel:LoadVariables()
+  Cause all items on the panel to reflect the saved variables they represent (checking/unchecking appropriate
+  checkboxes, etc.). This is called automatically when the panel is shown or set to default settings.
+
+changesInProgress, canceling, defaulting, loading = myPanel:IsChangeInProgress()
+  Returns true if the panel is currently in the process of adjusting its items' settings, or nil otherwise.
+  Also returns 3 other values, true or nil, based on which changes are under way:
+    canceling    True if panel is reverting to previous settings, as occurs when the player hits the Cancel
+                 button to close the Interface Options frame (if myPanel was shown since the frame was opened).
+    defaulting   True if panel is reverting to default settings.
+    loading      True if panel is in the middle of a LoadVariables() call.
+
+ Most addons will have no need to use this function, but it can be useful to check when your addon needs to react
+ differently depending on what TjOptions is doing, perhaps in order to prevent a loop that might occur because,
+ e.g., you are forcing your panel's items to change their current values in response to TjOptions telling your
+ addon that a variable was changed.
+
+ The place where such a loop is most likely to occur is in an OnChange function (see table specifications,
+ below); however, those functions are generally better off utilizing the fourth argument that TjOptions passes to
+ them to prevent loops, but if, for some reason, knowing exactly what sort of change is taking place is needed,
+ this function is available.
+
+
+=== PANEL CONTENTS TABLE SPECIFICATIONS ===
+
+The table used as the fourth (or third, if isDefaultInGroup is omitted) argument of a TjOptions.CreatePanel()
+call should use the following format. In the following, myPanel is the table returned by a
+TjOptions.CreatePanel() call.
+
+Baseline Fields:
+  All fields are optional except "items."
+
+  title         String. Text of the large label used at the top of the panel. (The resulting label can be
+                accessed at myPanel.titleLabel.) No label is created if this is nil.
+
+  titleCenter   Boolean. If true, then the top label will be centered.
+
+  items         Table. The items, such as checkboxes, used on this panel. See "Item Fields," below.
+
+  itemspacing   Integer. The size of the empty buffer space between items. A default value is used if nil.
+
+  variables     Table or string. The variables that will be altered when the player manipulates the panel's items.
+                See "Variables Table," below. If this key is used, you will most likely want to make sure that the
+                call to TjOpions.CreatePanel() occurs after your addon's saved variables have been initialized by
+                WoW.
+
+  defaults      Table. Settings for the variables to be used when the player sets this panels' settings to the
+                default. See "Variables Table," below.
+
+  OnChange      Function. The given function will be called when TjOptions may have changed the value of any of
+                the panel's items' saved variables. It is called once for each item that may have changed and is
+                passed the item's frame as the first argument, the key of the associated variable (i.e.
+                "DoSomething") as the second one, and the value of that variable as the third. The fourth
+                argument will be true if the item was changed directly by the player or false if the change was
+                the result of something else, like the Cancel button. Also see the OnChange item field, below.
+
+  OnShow        Function. Called when the panel is shown, with the panel as its first argument. The function is
+                called after TjOptions handles its standard OnShow functionality, including LoadVariables().
+
+  OnBuild       Function. Called when the panel's contents are built, with the panel as its first argument. This
+                is called only once, either when the panel is shown for the first time (before the given OnShow
+                function is called) or when the player sets all interface options to the default. At the time of
+                this call, the panel's contents (checkboxes, etc.) have been created but LoadVariables() hasn't
+                been called so their settings may be wrong. LoadVariables() is called after the OnBuild function,
+                so you could change the values of your variables at this time so the new values will be used
+                (except they will still be set to their defaults, if any, if that's what triggered this).
+
+  OnOkay        Function. Called when the player clicks the interface options frame's Okay button if this panel
+                was shown or set to default settings at some point since the frame was last shown.
+
+  OnCancel      Function. Called when the player clicks the interface options frame's Cancel button if this panel
+                was shown or set to default settings at some point since the frame was last shown. It is called
+                after the panel's items have already been reverted to their previous state.
+
+  OnDefault     Function. Called when the panel's options are set to the default.
+
+  scrolling     Any. If it evaluates to true, the panel's items will be placed inside a scolling frame. If this
+                is a string, it will be the scroll frame's global variable name.
+
+  column?Offset (where "?" is the column number)
+    Number. The base x-position of items in that column. Also see "column" in "Item Fields," below.
+
+  tooltipWrap   Boolean or number. This is checked when an item's tooltip field is a string and that item's
+                tooltipWrap field is omitted. See tooltipWrap under "Item Fields," below.
+
+Item Fields - general (for all items):
+  All general item fields are optional.
+
+  type          String. The identifier for the desired type of item. Can refer to any item type registered with
+                TjOptions. Types included by default are:
+                  "checkbox"        A checkbox. This is the default if type isn't specified.
+                  "checkboxsmall"   A smaller checkbox.
+                  "checkboxnolabel" A checkbox with no text label.
+                  "label"           A text label.
+                  "labelwhite"      A white text label.
+                  "labelwrap"       As "label" but with default values for justifyH and width set to allow for
+                                    wordwrapping. The width is safe for options panels where scrolling is used.
+                  "labelwrapwhite"  As "labelwrap" but using a white text label.
+                  "labelnorm"       Alias for "label" (for backward compatibility).
+                  "dropdown"        A dropdown menu. Requires the TjDropDownMenu library. See note below.
+
+                Also see "SUPPORTING ADDITIONAL PANEL ITEM TYPES."
+
+                Note: The "dropdown" type is provided for backward compatibility purposes and may be removed
+                from this list in the future. Versions 0.51 and later of TjDropDownMenu use the item type
+                registration methods now provided by TjOptions, so registering it by default is unnecessary
+                unless the player is using an older version of that library.
+
+  variable      String. The key of the variable this item will manipulate. For example, if the type is "checkbox"
+                and this field is "DoSomething," when the checkbox is clicked, the "DoSomething" entry in the
+                "variables" table (from the baseline field) is set to true if checked or false otherwise.
+
+  text          String. Text of the label displayed alongside the item, if applicable.
+
+  name          String. The name of the global variable to give the new object. Use this if your addon needs
+                access to the object, but remember that it won't actually be created until it is needed.
+
+  tooltip       String or function. If a string, tooltip text to display. If a function, it is called after
+                the tooltip's owner is set and is ready to have text added to it. The item's frame is passed as
+                the first argument and the tooltip object is passed as the second argument. Your function doesn't
+                need to show the tooltip ("GameTooltip:Show()") since that will be done for you by TjOptions.
+                Some item types, such as labels, do not use this field or tooltip2.
+
+  tooltip2      String. Additional tooltip text (uses a smaller font). Used only if "tooltip" field is a string.
+
+  tooltipWrap   Boolean or number. If tooltip is a string, this determines whether the tooltip will automatically
+                be wordwrapped. If this is omitted, then the baseline tooltipWrap field is checked. If both are
+                omitted, wordwrapping will be applied.
+
+  xOffset       Integer. Offset the x position of the item by this amount. Column-1 items following it will also
+                be offset by this amount until another is specified. (Set to 0 to end previous offsets.) If the
+                current item is in a column other than 1, this offset instead applies only to the current item.
+
+  topBuffer     Integer. Additional space to add between this item and the previous one, or fewer if negative.
+
+  btmBuffer     Integer. Additional space to add between this item and the next one, or fewer if negative.
+
+  OnChange      Function. If this is defined, it will override the panel's OnChange field where this specific
+                item is concerned. If desired, you can set this to something other than a function (except for
+                nil or false) to prevent the panel's OnChange function from being called without calling a
+                different function.
+
+  column        Integer. The column this item will be placed in. Defaults to 1. If in a column other than 1, then
+                its y-position will be based on that of the last column-1 item. Also see the "column?Offset"
+                baseline field in the "PANEL CONTENTS TABLE" section, above.
+
+Item Fields - label or labelwhite:
+  Three additional optional fields are available for labels.
+
+  font          String. The font to use, such as "GameFontNormalLeftRed". If omitted, "GameFontNormal" is used
+                for normal "label" items and "GameFontHighlight" is used for "labelwhite" items.
+
+  width         Integer. The width of the label. Use this to allow automatic wordwrapping.
+
+  justifyH      String. The horizontal justification of the text (such as "LEFT").
+
+Item Fields - checkbox, checkboxsmall, or checkboxnolabel:
+  One additional optional field is available for labels.
+
+  width         Integer. Used to expand the checkbox's hit rectangle to the right. For example, using 100 means
+                the hit rectangle will be expanded 100 pixels (toward its text label, if it has one). If omitted,
+                the width of the its text label is used, if it has one.
+
+Item Fields - dropdown:
+  Three additional fields are available for dropdown menu items. The menu field is required.
+
+  menu          Table. Used as the third argument in TjDropDownMenu.CreateDropDown(). See TjDropDownMenu.lua.
+                If you use the tooltip item fields, they will be used instead of those found in this table when
+                the cursor is over the dropdown frame. Set tooltip to 0 show no tooltip. (The menu table's fields
+                will still be used for the dropped-down list itself.)
+
+  width         Integer. The width of the primary portion of the dropdown frame.
+
+  displayMode   String. The display mode of the dropdown menu. Usually left nil or set to "MENU".
+
+Variables Table
+---------------
+
+This table is intended to be used by your addon to determine the addon's options/configuration. It will probably
+be the same table you declare as a saved variable in the addon's TOC file. The keys used should correspond to
+those indicated by the "variable" field of the entries in the "items" table.
+
+A simple example function call using such a table follows:
+
+  MyAddon_Settings_Default = { Enabled = true, VerboseMode = false };
+  local panel = TjOptions.CreatePanel("My AddOn", nil, {
+	title = "My Addon",
+	items = {
+		 { type = "checkbox", variable = "Enabled", text = "Enable Stuff" },
+  		 { type = "checkboxsmall", variable = "VerboseMode", text = "Verbose Mode",
+  		   tooltip = "Increase verbosity", tooltip2 = "Makes things excessively wordy."  }
+	},
+	variables = MyAddon_Settings,
+	defaults = MyAddon_Settings_Default
+  });
+
+In this example, when the player clicks the checkbox with the label "Enable Stuff," the variable
+MyAddon_Settings["Enabled"] will be set to true if it is checked or false if it is unchecked. If the player uses
+the "Defaults" button of the Interface Options frame to set your addon's settings to the default, the "Enable
+Stuff" checkbox would become checked and the "Verbose Mode" checkbox would become unchecked.
+
+Using a String Instead of a Table:
+
+The variables key of your panel contents table should be declared either as a table or a string, if it is used.
+If a string, when TjOptions.CreatePanel() is called, it will check the global table (_G) to find a table with
+that global name. If one is found, the variables key in the contents table will be changed to point to it.
+Otherwise, an empty table with the given global name is created to take the place of the string. If the panel
+contents table also includes a defaults key that points to a table, the keys and values of the defaults table are
+copied to the new variables table. This is useful as a way to simplify common saved variables management tasks
+for your addon.
+
+Also see the oldver return value of TjOptions.CreatePanel(), which can be used to further manipulate the variables
+table should changes be necessary based on the table's previous Version value. Note that TjOptions does not set
+the Version key for you; the way it is used in your addon is entirely up to you.
+
+
+=== REGISTERING ADDITIONAL PANEL ITEM TYPES ===
+
+For an example of item type registration in use, see the built-in registration near the end of TjOptions.lua or
+look at the TjDropDownMenu library (version 0.51 or later).
+
+registered = TjOptions.RegisterItemType(itemType, revision, [inherit,] funcList[, updateFunc])
+  Registers a new item type for TjOptions panels.
+  Arguments:
+    itemType    String. A unique identifier for this type of item. It is suggested that all-lowercase generic
+                identifiers ("checkbox", "editbox", "slider" and the like) be reserved for the use of the
+                author(s) of TjOptions to allow forward compatibility.
+    revision    Number. The revision number of the code that runs this item type.
+                Only the highest-numbered revision given to TjOptions will be used.
+    inherit     String or nil. If a string, it specifies the previously-registered item type to use as a template
+                for this new item type. See "Item Type Inheritance" below for details on what this means.
+    funcList    Table or function. The functions used by TjOptions to interact with this item type. See "Item
+                Functions Table," below. Using a function for this argument is essentially shorthand for
+                "{ create = myFunc }" (without quotes), where myFunc is the given argument.
+    updateFunc  Function or nil. If provided and an older revision of the item type was registered, the given
+                function will be called once for each instance of the item that has actually been "built," if
+                any. Note that an item listed in an items table is not necessary a built item: Built items are
+                those whose associated frames have actually been created and (most often) displayed to the
+                player. The intent is that this function can be used to make previously-created items compatible
+                with the new revision if changes are necessary.
+
+                The function is called with three arguments, in this order:
+                  frame     Table. The item instance's frame.
+                  oldrev    Number. The old revision number.
+                  data      Table. This instance's "item table." This is the relevant portion of the table used
+                            in the TjOptions.CreatePanel call, e.g.:
+                            { type = "checkbox", variable = "Enabled", text = "Enable Stuff" }
+  Returns:
+    registered  Boolean. Returns true if the item type was successfully registered. Returns false if the same
+                or a newer revision was already registered.
+
+success = TjOptions.SetItemTypeAlias(alias, itemType)
+  Sets the alias (string) to point to the given item type (string). For example, "labelnorm" is an alias for
+  "label". Whenever methods involving the item type "labelnorm" are requested, the methods for "label" are run
+  instead. Returns true if the alias was successfully set.
+
+TjOptions.ItemChanged( [noUser,] itemFrame[, value] )
+  Registered items are responsible for letting TjOptions know when the user has done something to change their
+  current settings (e.g., unchecked a checkbox). To do so, they should call this function where appropriate (such
+  as in their OnClick handlers).
+  Arguments:
+    noUser      Boolean. If true, then this change isn't considered to have been triggered directly by the player
+                (meaning the item instance's OnChange function, if defined, will be passed false as the fourth
+                argument). If this argument is used, it must be true or false; nil will not work.
+    itemFrame   Table. The item instance in question (i.e., the checkbox frame).
+    value       Any. The new value to which the proper variable should be set. If omitted, TjOptions will use the
+                item type's getvalue function ("Item Functions Table" below) to get this value.
+                IMPORTANT NOTE: Unlike many other functions with optional arguments, this one checks whether the
+                argument was actually omitted or if it is simply nil, since nil is a valid value for its use.
+                However, when given nil, the actual saved value becomes false.
+
+revision = TjOptions.GetItemTypeRevision(itemType)
+  Returns the revision number of a registered item type, or nil if none is registered by that identifier.
+
+Item Functions Table
+--------------------
+
+The item functions table as provided by the funcList argument of TjOptions.RegisterItemType gives TjOptions the
+functions needed to interact with the registered item type. The possible fields for use are as follows. All
+fields except for create are optional.
+
+create        Function. The function that creates a new instance of the item. It will be called like so:
+                frame, handletip, xOffset, yOffset, btmBuffer, focusable = create(name, parent, data, arg)
+                Arguments:
+                name        String. The global name that should be used by the new frame (or the primary frame,
+                            if more than one is created).
+                parent      Table. The frame that should be the new frame's parent.
+                data        Table. This instance's "item table." This is the relevant portion of the table used
+                            in the TjOptions.CreatePanel call, e.g.:
+                            { type = "checkbox", variable = "Enabled", text = "Enable Stuff" }
+                arg         Any. See create_arg.
+              The function should return values like so:
+                frame       Table or false. The primary frame of the newly created item instance. This frame must
+                            support the SetPoint method. Return false instead to indicate the item was not
+                            created.
+                handletip   Any. If it evaluates to true, then TjOptions sets the frame's OnEnter and OnHide
+                            scripts to the standard used by certain built-in item types, like checkbox, in order
+                            to handle tooltips. Otherwise, it is the responsibility of the new item to handle the
+                            display of tooltips.
+                xOffset, yOffset
+                            Integer or nil. Adjustments used for the positioning of the frame.
+                btmBuffer   Integer. Additional space to add between this item and the next one, or fewer if
+                            negative.
+                focusable   Any. If it evaluates to true, then it is added to the list of its parent panel's
+                            focusable items. This allows the player to cycle between items on the list by hitting
+                            tab and shift+tab. This also causes TjOptions to clear the focus on the item when Okay
+                            or Cancel is pressed, which is a necessity for properly handling certain items that
+                            react to the focus being lost (which would otherwise lose the focus when the options
+                            panel closes, after Okay/Cancel handling, which can cause problems). The item must
+                            support the <item>:SetFocus(), <item>:ClearFocus() and <item>:HasFocus() methods.
+
+getvalue      Function. Required for any item that may have a variable associated with it. (Those that never have
+              a variable associated with them include labels.) It is called like so:
+                value = getvalue(self, data, arg)
+                Arguments:
+                self        Table. The item instance itself (e.g., the checkbox frame).
+                data        Table. This instance's item table.
+                arg         Any. See getvalue_arg.
+              The function should return the instance's current value as it should be saved in the variables. For
+              example, a checked checkbox returns true while an unchecked checkbox returns false.
+
+setvalue      Function. Required for any item that may have a variable associated with it. It is called like so:
+                setvalue(self, value, data, arg)
+                Arguments:
+                self        Table. The item instance itself.
+                value       Any. The value of the variable associated with this item instance.
+                data        Table. This instance's item table.
+                arg         Any. See setvalue_arg.
+              The function doesn't need to return anything. When called, it should do what is necessary to cause
+              the item instance to reflect the value given. For example, a checkbox given the value true would
+              become checked while one given the value false would become unchecked.
+
+create_arg    Any. Whenever an item instance of this type is created, the fourth argument of the create function
+              call will be whatever is in this field.
+
+getvalue_arg  Any. Whenever an item instance of this type is issued a getvalue call, the third argument of the
+              call will be whatever is in this field.
+
+setvalue_arg  Any. Whenever an item instance of this type is issued a setvalue call, the fourth argument of the
+              call will be whatever is in this field.
+
+create_prehook, getvalue_prehook, setvalue_prehook
+  Function. If provided, then this function will be called before the function it "hooks" (if that other function
+  is also defined by this item type or is inherited). It is given the same arguments that will be passed to the
+  original function. If the prehook function's first return value is false (not nil), then the original function
+  will not be called. If the first return value is true, then whatever else it returns will be passed to the
+  original function as arguments instead of the original arguments (though the same number of arguments are always
+  used even if the prehook returns more).
+
+create_posthook, getvalue_posthook, setvalue_posthook
+  Function. If provided, then this function will be called after the function it "hooks" (if that other function
+  is also defined by this item type or is inherited). It is passed whatever the original function returned (that
+  is, return values that were expected: extraneous return values are ignored) followed by the same arguments that
+  were passed to the original function, as noted below for reference:
+
+    create_posthook(frame, handletip, xOffset, yOffset, btmBuffer, name, parent, data, arg)
+    getvalue_posthook(value, self, data, arg)
+    setvalue_posthook(self, value, data, arg)
+
+  If the posthook's first return value is true, then whatever else it returns will be used as if the original
+  function returned those values. Otherwise, the original function's returns are used.
+
+  Tip: Since the posthook is passed the original function's return values first and TjOptions ignores extraneous
+  return values, something like this is a valid way to utilize a create_posthook:
+
+    local function MyItem_create_posthook(frame, handletip, ...)
+      return true, frame, false, ...  -- force handletip return to become false
+    end
+
+Item Type Inheritance
+---------------------
+
+When being registered, an item type can be set to "inherit" properties from another, previously-registered item
+type (the "template"). This means that whenever a create, getvalue, or setvalue method is to be called but that
+entry is not present in the new type's table, if it is present in the template's table, the template's function
+is called instead. If the template also doesn't have this method and it, too, inherited a template, the
+template's template is checked, then the template's template's template if it has one, and so on.
+
+TjOptions also uses the inheritance tree to determine what value to use for the *_arg argument passed to the
+function (*_arg being the create_arg, getvalue_arg, or setvalue_arg, depending on the function in question).
+If the base item type's *_arg property is nil, the first non-nil value found in the inheritance tree is used,
+starting by looking at the base item type's template, then the template's template, etc. However, unlike the
+function-seeking checks, this one will stop after checking the template which ultimately yielded the function
+that is to be called.
+
+For example, imagine you create an item type "MyCheckbox" that inherits from "checkboxsmall", which in turn
+inherits from "checkbox". "checkbox" defines the create, getvalue, and setvalue properties (and no others).
+"checkboxsmall" defines the create_arg property (and no others). When a "checkboxsmall" item is created, it uses
+the create method defined by "checkbox" but it passes its own create_arg argument to it. If "MyCheckbox" doesn't
+define a create method or a create_arg property, then when it is created, it will use "checkbox"'s method and
+"checkboxsmall"'s create_arg. However, if "MyCheckbox" does define a create method, it will use its own function
+and it will NOT use "checkboxsmall"'s create_arg because that is found further down the inheritance tree than
+the function is. Likewise, in this situation, if another item type called "ColorfulCheckbox" inherits from
+"MyCheckbox" and it defines neither create nor create_arg, it would use "MyCheckbox"'s create method and use
+nil for create_arg.
+
+The same principle as that used for finding the relevant *_arg argument applies to finding which *_prehook and
+*_posthook functions apply to a method call. If, in the previous example, "MyCheckbox" did not define a create
+method but instead defined a create_posthook function, then when "ColorfulCheckbox" is created, "checkbox"'s
+create method would be used (since no create method is found in the inheritance tree until that point),
+"checkboxsmall"'s create_arg would be passed to it, and "MyCheckbox"'s create_posthook would be used. However,
+if "ColorfulCheckbox" defined its own create method, then it essentially doesn't inherit anything as far as
+create is concerned (though it may inherit setvalue- and/or getvalue-related properties).
+
+Iterator
+--------
+
+An ipairs()-like iterator to iterate over all built items of a given type is available:
+TjOptions.BuiltItemsIterator(itemType).
+
+Example usage:
+  for i,obj in TjOptions.BuiltItemsIterator("label") do
+    print(obj:GetText())
+  end
+
+
+Recent changes
+================
+
+v0.41
+- TjOptions now supports the use of a single variables table for multiple options "pages" and other miscellaneous
+  use. Previously, if other entries were contained in the table, undesired results could occur when one page's
+  settings were set to the default or its settings were reverted (e.g., due to the Cancel button being clicked),
+  etc., since the entire table would be examined instead of just those keys that correspond to items on the
+  relevant page.
+
+v0.40
+- Now supports columns to align items to the right of a previous item, using the "column" key in item tables and
+  "column?Offset" keys in the panel contents table (where "?" is the column number).
+- Checkboxes' hit rectangles are now assigned based on the "width" item field or, if that is omitted, the width of
+  their text labels at creation.
+- Added the Focus/Tab system. Items can use the new "focusable" return from their create functions to be added to
+  a list of items that the player can cycle between using tab and shift+tab. (See details in the description of
+  the "focusable" return in TjOptions.txt)
+- Added the "checkboxnolabel" item type.
+- Added the "tooltipWrap" baseline field and standard item field.
+- Added the "titleCenter", "OnOkay", and "OnCancel" baseline fields.
+- Background added to scrolling frames' scroll bars.
+
+v0.34
+- Added functionality intended to simplify common saved variables management tasks, including support for using a
+  string for the panel contents table's variables key.
+- Added oldver return to TjOptions.CreatePanel().

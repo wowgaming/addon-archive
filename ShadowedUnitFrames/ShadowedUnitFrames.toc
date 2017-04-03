@@ -1,0 +1,53 @@
+## Interface: 30300
+## Title: Shadowed Unit Frames
+## Notes: An apple a day keeps the raptor away, or so they say
+## Author: Shadowed
+## Version: v3.2.10-13-g32d9f55
+## SavedVariables: ShadowedUFDB
+## OptionalDeps: Ace3, LibSharedMedia-3.0, LibHealComm-4.0, AceGUI-3.0-SharedMediaWidgets
+## X-Curse-Packaged-Version: v3.2.10-13-g32d9f55
+## X-Curse-Project-Name: Shadowed Unit Frames
+## X-Curse-Project-ID: shadowed-unit-frames
+## X-Curse-Repository-ID: wow/shadowed-unit-frames/mainline
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\LibSharedMedia-3.0\lib.xml
+libs\LibHealComm-4.0\LibHealComm-4.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+#@end-no-lib-strip@
+
+localization\enUS.lua
+localization\deDE.lua
+localization\esES.lua
+localization\esMX.lua
+localization\frFR.lua
+localization\koKR.lua
+localization\ruRU.lua
+localization\zhCN.lua
+localization\zhTW.lua
+
+ShadowedUnitFrames.lua
+modules\units.lua
+modules\layout.lua
+modules\movers.lua
+modules\defaultlayout.lua
+modules\highlight.lua
+modules\tags.lua
+modules\health.lua
+modules\power.lua
+modules\portrait.lua
+modules\indicators.lua
+modules\xp.lua
+modules\cast.lua
+modules\auras.lua
+modules\combattext.lua
+modules\totems.lua
+modules\runes.lua
+modules\fader.lua
+modules\combopoints.lua
+modules\incheal.lua
+modules\range.lua
+modules\empty.lua
+modules\druid.lua

@@ -1,0 +1,7 @@
+## Interface: 30000
+## Title: UTF8
+## Notes: A library for manipulating UTF-8 strings
+## Author: Pastamancer
+
+utf8data.lua
+utf8.lua

@@ -1,0 +1,17 @@
+## Interface: 30300
+## Title: Rewatch
+## Notes: Rewatch is an addon to help you monitor your healing-over-time (HoT) spells as a druid. Party- and raidhealing has never been so easy!
+## Notes-deDE: Rewatch ist ein Addon welches Druiden hilft, ihre Heal-Over-Time (HOT) Heilungen zu \195\188berwachen. Party- und Raidheilung war nie einfacher!
+## Notes-frFR: Rewatch est un addon destin\195\169 \195\160 garder une trace de vos soins sur la dur\195\169e en tant que druide. Les soins en groupe et en raid n'ont jamais \195\169t\195\169 aussi ais\195\169s!
+## Notes-esES: Rewatch is an addon to help you monitor your healing-over-time (HoT) spells as a druid. Party- and raidhealing has never been so easy!
+## Notes-koKR: Rewatch is an addon to help you monitor your healing-over-time (HoT) spells as a druid. Party- and raidhealing has never been so easy!
+## Version: 5.3.1
+## SavedVariables: rewatch_load, rewatch_version
+## Dependencies:
+localization.enEN.lua
+localization.deDE.lua
+localization.frFR.lua
+localization.esES.lua
+localization.koKR.lua
+Rewatch_options.lua
+Rewatch.lua

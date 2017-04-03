@@ -1,0 +1,60 @@
+## Interface: 30300
+## X-Compatible-With: 40000
+## Author: John Stephen
+## Title: Outfitter
+## Version: 5.0
+## Notes: Clothing and weapon management and automated equipment changes
+## OptionalDeps: Titan, FuBar, TankPoints, ButtonFacade
+## RequiredDeps: 
+## SavedVariablesPerCharacter: gOutfitter_Settings
+## SavedVariables: gOutfitter_GlobalSettings
+
+utf8data.lua
+utf8.lua
+
+LibStub.lua
+CallbackHandler-1.0.lua
+LibDataBroker-1.1.lua
+LibBabble-3.0.lua
+LibBabble-Zone-3.0.lua
+LibBabble-Inventory-3.0.lua
+LibTipHooker-1.1.lua
+LibStatLogic-1.1.lua
+
+OutfitterPrefix.lua
+
+MC2AddonLib.lua
+MC2DebugLib.lua
+MC2SchedulerLib.lua
+MC2EventLib.lua
+MC2UIElementsLib.lua
+
+OutfitterStrings.lua
+OutfitterStrings_de.lua
+OutfitterStrings_fr.lua
+OutfitterStrings_cn.lua
+OutfitterStrings_tw.lua
+OutfitterStrings_kr.lua
+OutfitterStrings_ru.lua
+
+OutfitterMenu.lua
+
+Outfitter.lua
+
+OutfitterOutfits.lua
+OutfitterInventory.lua
+OutfitterEquipment.lua
+OutfitterItemStats.lua
+OutfitterOptimize.lua
+OutfitterUITools.lua
+OutfitterScripting.lua
+OutfitterScriptDialog.lua
+OutfitterQuickSlots.lua
+OutfitterMinimapButton.lua
+OutfitterBar.lua
+OutfitterAbout.lua
+
+OutfitterLDB.lua
+
+Outfitter.xml
+OutfitterBar.xml

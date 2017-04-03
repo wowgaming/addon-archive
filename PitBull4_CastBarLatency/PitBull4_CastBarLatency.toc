@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fCast bar latency|r]
+## Title-deDE: PitBull4 |r[|cffeda55fZauberleistenlatenz|r]
+## Title-esES: PitBull4 |r[|cffeda55fLatencia en Barra de Lanzamiento|r]
+## Title-frFR: PitBull4 |r[|cffeda55fLatence de la barre d'incantation|r]
+## Title-koKR: PitBull4 |r[|cffeda55f시전바 지연율|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fОтображение задержки на кастбаре|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f施法延迟|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f施法延遲顯示|r]
+## Notes: Show a guessed safe zone at the end of the player castbar.
+## Notes-deDE: Zeige eine geschätzte sichere Zone am Ende der Zauberleiste des Spielers an.
+## Notes-esES: Muestra una zona estimada de seguridad al final de la barra de lanzamiento.
+## Notes-frFR: Affiche une estimation de la latence à la fin de la barre d'incantation du joueur.
+## Notes-koKR: 플레이어 시전바 지연율을 표시합니다.
+## Notes-ruRU: Показывает предполагаемую зону воздействия латентности (latency) на полосе применения заклинаний игрока.
+## Notes-zhCN: 在玩家施法条的末尾添加预测的延迟安全区
+## Notes-zhTW: 在玩家施法條的末尾顯示預測的延遲安全區域。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4, PitBull4_CastBar
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

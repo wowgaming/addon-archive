@@ -1,0 +1,187 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	
+	<Frame name="OutfitterDialogFrameTemplate" setAllPoints="true" virtual="true">
+		<Backdrop bgFile="Interface\Addons\GroupCalendar\Textures\DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Scripts>
+			<OnShow>
+				self:SetFrameLevel(self:GetParent():GetFrameLevel())
+			</OnShow>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="OutfitterChooseIconDialog" toplevel="true" frameStrata="DIALOG" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension x="340" y="415"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset><AbsDimension x="0" y="0"/></Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" text="" inherits="GameFontNormal">
+					<Size>
+						<AbsDimension x="306" y="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-20"/>
+							</Offset>
+						</Anchor>>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame inherits="OutfitterDialogFrameTemplate"/>
+			<Frame name="$parentIconSetMenu" inherits="UIDropDownMenuTemplate" hidden="false">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="47" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString text="Outfitter_cIconSetLabel" inherits="GameFontNormal">
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="14" y="13"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						Outfitter.OutfitBar.IconSetDropdown_OnLoad(self)
+					</OnLoad>
+					<OnShow>
+						Outfitter.OutfitBar.IconSetDropdown_OnLoad(self)
+					</OnShow>
+				</Scripts>
+			</Frame>
+			<EditBox name="$parentFilterEditBox" letters="50" historyLines="0">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentIconSetMenu" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="27" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="197" y="20"/>
+				</Size>
+				<Scripts>
+					<OnLoad>
+						Outfitter:FrameEditBox(self)
+						self:SetAutoFocus(false)
+					</OnLoad>
+					<OnTextChanged>
+						self:GetParent():SetIconFilter(self:GetText())
+					</OnTextChanged>
+					<OnEscapePressed>
+						self:ClearFocus()
+					</OnEscapePressed>
+					<OnEnterPressed>
+						self:GetParent():Save()
+						self:GetParent():Close()
+					</OnEnterPressed>
+				</Scripts>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString inherits="GameFontNormal" text="Outfitter_cIconFilterLabel">
+							<Anchors>
+								<Anchor point="RIGHT" relativePoint="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<FontString inherits="ChatFontNormal"/>
+			</EditBox>
+
+			<ScrollFrame name="$parentScrollFrame" inherits="ClassTrainerListScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="263" y="212"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentFilterEditBox" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-63" y="-19"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, 36, function () OutfitterChooseIconDialog:UpdateIcons() end)
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="$parentCancelButton" inherits="UIPanelButtonTemplate" text="CANCEL">
+				<Size>
+					<AbsDimension x="78" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-23" y="25"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Close()
+						PlaySound("gsTitleOptionOK")
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentOKButton" inherits="UIPanelButtonTemplate" text="OKAY">
+				<Size>
+					<AbsDimension x="78" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentCancelButton" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="-7" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Save()
+						self:GetParent():Close()
+						PlaySound("gsTitleOptionOK")
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				Outfitter.InitializeFrame(self, Outfitter.OutfitBar._ChooseIconDialog)
+			</OnLoad>
+			<OnMouseWheel>
+				return
+			</OnMouseWheel>
+		</Scripts>
+	</Frame>
+</Ui>

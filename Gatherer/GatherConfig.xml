@@ -1,0 +1,311 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Button name="BlacklistFrameListLineTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="260" y="16"/>
+		</Size>
+		<ButtonText inherits="GameFontNormal" justifyH="LEFT" setAllPoints="true"/>
+		<Scripts>
+			<OnLoad>
+				this:SetFrameLevel( this:GetFrameLevel() + 4 );
+			</OnLoad>
+			<OnClick>
+				Gatherer.Config.Blacklist_IgnoreButton_OnClick(self)
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
+	</Button>
+
+	<Frame name="Gatherer_SharingBlacklistFrame" hidden="false" enableMouse="true">
+		<Size>
+			<AbsDimension x="200" y="288"/>
+		</Size>
+		<Frames>
+			<Button name="Gatherer_SharingBlacklist_IgnorePlayerButton" inherits="UIPanelButtonTemplate" text="IGNORE_PLAYER">
+				<Size>
+					<AbsDimension x="131" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="Gatherer_SharingBlacklistFrame" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						this:SetFrameLevel( this:GetFrameLevel() + 3 );
+					</OnLoad>
+					<OnClick>
+						StaticPopup_Show("GATHERER_ADD_SHARING_IGNORE");
+					</OnClick>
+					<OnEnter>
+						
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_StopIgnoreButton" inherits="UIPanelButtonTemplate" text="STOP_IGNORE">
+				<Size>
+					<AbsDimension x="131" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Gatherer_SharingBlacklistFrame" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						this:SetFrameLevel( this:GetFrameLevel() + 3 );
+					</OnLoad>
+					<OnClick>
+						Gatherer.Config.Blacklist_UnignoreButton_OnClick(self)
+					</OnClick>
+					<OnEnter>
+						
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton1" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton2" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton1" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton3" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton2" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton4" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton3" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton5" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton4" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton6" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton5" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton7" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton6" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton8" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton7" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton9" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton8" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton10" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton9" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton11" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton10" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton12" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton11" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton13" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton12" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton14" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton13" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton15" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton14" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton16" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton15" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton17" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton16" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton18" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton17" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<!--
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton19" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton18" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="Gatherer_SharingBlacklist_IgnoreButton20" inherits="BlacklistFrameListLineTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="Gatherer_SharingBlacklist_IgnoreButton19" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			-->
+			<ScrollFrame name="Gatherer_SharingBlacklist_ScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="170" y="288"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-30" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size>
+								<AbsDimension x="31" y="256"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.484375" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+							<Size>
+								<AbsDimension x="31" y="106"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						this:SetFrameLevel( this:GetFrameLevel() + 3 );
+						ScrollFrame_OnLoad(self);
+					</OnLoad>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(16, Gatherer.Config.SharingBlacklist_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+</Ui>

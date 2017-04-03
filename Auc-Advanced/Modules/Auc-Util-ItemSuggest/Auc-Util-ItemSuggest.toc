@@ -1,0 +1,14 @@
+## Title: Auc:Util:ItemSuggest
+## Interface: 30300
+## OptionalDependencies: Auc-Util-Appraiser Enchantrix
+## Dependancies: Auc-Advanced
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Util-ItemSuggest.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+## SavedVariables: Auc-Util-ItemSuggest.lua
+
+Embed.xml

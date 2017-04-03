@@ -1,0 +1,107 @@
+local L = AceLibrary("AceLocale-2.2"):new("XLoot")
+
+L:RegisterTranslations("deDE", function()
+	return {
+		catSnap = "Fenster Verhalten",
+		catLoot = "Loot Verhalten",
+		catFrame = "Fenster Optionen",
+		catInfo = "Loot Informationen",
+		catGeneralAppearance = "Allgemeines Aussehen",
+		catFrameAppearance = "Fenster Aussehen",
+		catLootAppearance = "Loot Aussehen",
+		catExtras = "Extras",
+		
+		--["2.0 compatability"] = true, -- DEPRICATED
+		--["If you're getting errors with table.setn, enable this"] = true, -- DEPRICATED
+		--["Disable Tooltip Scanning"] = true, -- DEPRICATED
+		--["Enable this to skip scanning item tooltips for BoP/BoE/BoU information. This is most likely causing the 'Attempt to index field Rlines' error."] = true, -- DEPRICATED
+		
+		optLock = "Sperre Fenster",
+		optOptions = "GUI Optionen",
+		optBehavior = "Verhalten",
+		optCursor = "Lootfenster beim Cursor einrasten",
+		optSmartsnap = "Nur Vertikal einrasten",
+		optSnapoffset = "Versatz des Lootfensters",
+		optCollapse = "Verstecke leere Loot Schaltflächen",
+		optDragborder = "Ziehbarer Rahmen",
+		optLootexpand = "Passe die Fensterweite an den Lootnamen an",
+		optAltoptions = "Zeige Menü bei ALT+Rechtsklick",
+		optSwiftloot = "Verstecke Fenster beim auto. Looten",
+		optQualitytext = "Zeige Itemqualitätstext",
+		optInfotext = "Zeige Iteminformationstext",
+		["Show BoP/BoE/BoU"] =  "Zeige BoP/BoE/BoU",
+		["Show Bind on Pickup/Bind on Equip/Bind on Use text opposite stack size for items"] = "Zeigt 'Wird beim aufheben gebunden' (BoP), 'Wird beim anlegen gebunden' (BoE) oder 'Wird beim benutzen gebunden' (BoU) an. Zeigt die umgekehrte Stapelgröße für Items an.", -- maybe split it to two vars, its a bit wired?
+		optLinkAll = "'Berichten...' Schalter",
+		optLinkAllVis = "Sichtbarkeit: ",
+		optLinkAllThreshold = "Linkgrenzwert",
+		optLinkAllChannels = "Immer berichten an...",
+		optAppearance = "Aussehen",
+		optQualityborder = "Rahmen nach Qualität einfärben",
+		optQualityframe = "Fenster nach Qualität einfärben",
+		optLootqualityborder = "Rahmen nach Qualität einfärben",
+		optBgcolor = "Hintergrundfarbe",
+		optBordercolor = "Rahmenfarbe",
+		optTexColor = "Symbol nach Qualität einfärben",
+		optHighlightLoot = "Hervorhebung nach Qualität einfärben",
+		optHighlightThreshold = "Grenzwert für Hervorhebung", 
+		optLootbgcolor = "Hintergrundfarbe",
+		optLootbordercolor = "Rahmenfarbe",
+		optInfoColor = "Informationstextfarbe",
+		optScale = "Skalierung",
+		["Alpha"] = "Transparenz",
+		optAdvanced = "Erweiterte Optionen",
+		optDebug = "Fehlersuchprogramm einschalten",
+		optDefaults = "Zurücksetzen der Optionen",
+		
+		descLock = "Fixiert das Lootfenster.",
+		descOptions = "Zeigt das Dropdownmenü.",
+		descBehavior = "Ändert das Verhalten von XLoot.",
+		descCursor = "Lässt das Lootfenster während des Lootens immer beim Cursor einrasten.",
+		descSmartsnap = "Lässt das Lootfenster nur Vertikal einrasten. Damit wird verhindert, daß das Fenster herumspringt, wenn sich die Liste ändert.",
+		descSnapoffset = "Versetzt das Lootfenster Horizontal vom ersten Loot.",
+		descCollapse = "Versteckt leere gelootete Schaltflächen und plaziert den Cursor über den nächste Loot, wenn Einrasten aktiviert ist.",
+		descDragborder = "Erlaubt das Bewegen des Lootfensters durch festhalten des Rahmens, anstatt nur über die Schaltflächen.",
+		descLootexpand = "Ändert die Breite der Fenster passend zu den Namen der Loots.",
+		descAltoptions = "Erlaubt es durch ALT+Rechtsklick auf einen Loot das XLoot Menü aufzurufen. Kann deaktiviert werden um nicht mit anderen Addons zu interferieren.",
+		descSwiftloot = "Verhindert die Verzögerung beim automatischen Looten. Näheres zu dieser Einstellung befindet sich unter den Spieleinstellungen - Interface.",
+		descQualitytext = "Zeigt eine weitere Zeile mit der Itemqualität über dem Itemnamen an.",
+		descInfotext = "Zeigt eine weitere Zeile mit Iteminformationen unter dem Itemnamen an.",
+		descLinkAll = "Der 'Berichten...' Schalter, eine Schaltfläche welche ein Menü öffnet mit allen verfügbaren Channels an die der Loot gesendet werden kann.",
+		descLinkAllVis = "Wann der 'Berichten...' Schalter sichtbar sein soll.",
+		descLinkAllThreshold = "Sendet nur Links von Items, die höher des eingestellten Grenzwertes sind.",
+		descLinkAllChannels = "Sendet beim Linksklick auf den 'Berichten...'-Schalter immer an diese Channels. |cFFFF0000Solange kein Standard eingestellt ist erscheint das komplette Menü.|r",
+		descAppearance = "Farben, Skalierung und Skin des XLootfensters sowie der Loot Schaltflächen anpassen.",
+		descQualityborder = "Färbt den Lootfensterrahmen nach der höchsten Itemqualität ein.",
+		descQualityframe = "Färbt den Lootfensterhintergrund nach der höchsten Itemqualität ein.",
+		descLootqualityborder = "Färbt den Rahmen nach der höchsten Qualität ein.",
+		descHighlightLoot = "Hervorhebung der Lootfenster nach deren Qualität.",
+		descHighlightThreshold = "Die kleinste Qualität, bei der Lootfenster eine Hervorhebung bekommen sollen.",
+		descBgcolor = "Ändert die Hintergundfarbe des Lootfenster.",
+		descBordercolor = "Ändert die Rahmenfarbe des Lootfenster.",
+		descTexColor = "Färbt den Rahmen der derzeitigen Itemsymbole oder Texturen nach Qualität ein.",
+		descLootbgcolor = "Ändert die Hintergrundfarbe für jedes Lootitem.",
+		descLootbordercolor = "Ändert die Rahmenfarbe für jedes Lootitem.",
+		descInfoColor = "Ändert die Farbe des Informationstextes.",
+		descScale = "Skaliert das Lootfenster.",
+		descAdvanced = "Erweiterte Optionen. Achtung bei der Benutzung.",
+		descDebug = "Zeigt Fehlermeldungen an.",
+		descDefaults = "Alles auf XLoot Standard zurücksetzen.",
+		
+		qualityQuest = "Verschiedenes",
+		
+		["BoP"] = "BoP",
+		["BoE"] = "BoE",
+		["BoU"] = "BoU",
+		
+		guiTitle = "XLoot Optionen",
+		
+		itemWeapon = "Waffe",
+		
+		evHerbs = "Kräuter sammeln",
+		evOpenNT = "Öffnen - Kein Text",
+		evOpen = "Öffnen",
+		
+		linkallloot = "Berichten...",
+		linkallchanneldesc = "Automatisches senden der Itemlinks durch einen Linksklick an:\n%s",
+	}
+end)

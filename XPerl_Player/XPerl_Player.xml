@@ -1,0 +1,409 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+	<Script file="XPerl_Player.lua"/>
+
+	<Button name="XPerl_RuneButtonIndividualTemplate" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="22" y="22"/>
+		</Size>
+		<Frames>
+			<Cooldown name="$parentCooldown" drawEdge="true" frameStrata="LOW">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Cooldown>
+			<Frame frameStrata="MEDIUM" setAllPoints="true" name="$parentShine">
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="$parentTexture" file="Interface\ComboFrame\ComboPoint" alphaMode="ADD" hidden="true">
+							<Size x="60" y="35"/>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.5625" right="1" top="0" bottom="1"/>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentRune" file="Interface\PlayerFrame\UI-PlayerFrame-Deathknight-Blood">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="-1"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad function="RuneButton_OnLoad"/>
+			<OnEnter function="RuneButton_OnEnter"/>
+			<OnLeave function="RuneButton_OnLeave"/>
+		</Scripts>
+	</Button>
+
+	<Button name="XPerl_Player" inherits="SecureUnitButtonTemplate" clampedToScreen="true" frameStrata="LOW" movable="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="220" y="60"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="2" right="2" top="2" bottom="2"/>
+		</HitRectInsets>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="23" y="-12"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+
+		<!-- Script Events -->
+
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("AnyUp")
+				self:RegisterForDrag("LeftButton")
+				XPerl_Player_OnLoad(self)
+				self:SetScript("OnEnter", XPerl_Unit_OnEnter)
+				self:SetScript("OnLeave", XPerl_Unit_OnLeave)
+			</OnLoad>
+			<OnDragStart>
+				if (XPerlLocked == 0) then
+					self:StartMoving()
+				end
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+				XPerl_SwitchAnchor(self, "TOPLEFT")
+				XPerl_SavePosition(self)
+			</OnDragStop>
+		</Scripts>
+
+		<Frames>
+			<Frame name="$parentportraitFrame" inherits="XPerl_Portrait_Template">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+
+			<Button name="$parentnameFrame" inherits="SecureUnitButtonTemplate">
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("AnyUp")
+						self:RegisterForDrag("LeftButton")
+						XPerl_RegisterUnitText(getglobal(self:GetName().."text"))
+						XPerl_RegisterUnitText(getglobal(self:GetName().."group"))
+						self:SetScript("OnEnter", function(self) XPerl_Unit_OnEnter(self:GetParent()) end)
+						self:SetScript("OnLeave", function(self) XPerl_Unit_OnLeave(self:GetParent()) end)
+					</OnLoad>
+					<OnDragStart>
+						if (XPerlLocked == 0) then
+							XPerl_Player:StartMoving()
+						end
+					</OnDragStart>
+					<OnDragStop>
+						XPerl_Player:StopMovingOrSizing()
+						XPerl_SwitchAnchor(XPerl_Player, "TOPLEFT")
+						XPerl_SavePosition(XPerl_Player)
+					</OnDragStop>
+				</Scripts>
+				<Size>
+					<AbsDimension x="160" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentportraitFrame">
+						<Offset>
+							<AbsDimension x="-3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\Addons\XPerl\Images\XPerl_FrameBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="4" right="4" top="4" bottom="4"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Frames>
+					<Frame name="$parentpvp" hidden="true">
+						<Scripts>
+							<OnLoad>
+								self:SetScale(0.7)
+								self:SetFrameLevel(self:GetParent():GetFrameLevel() + 2)
+							</OnLoad>
+						</Scripts>
+						<Size>
+							<AbsDimension x="62" y="62"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="-5" y="1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parenticon" file="Interface\TargetingFrame\UI-PVP-FFA" setAllPoints="true"/>
+							</Layer>
+							<Layer level="ARTWORK">
+								<FontString name="$parenttimer" inherits="GameFontNormal">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset>
+												<AbsDimension x="5" y="-12"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="1" g="1" b="1" />
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</Frames>
+				<Layers>
+					<!-- Layer level="BORDER">
+						<Texture name="$parentpvpIcon" file="Interface\TargetingFrame\UI-PVP-FFA" hidden="true">
+							<Size>
+								<AbsDimension x="44" y="44"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer -->
+					<Layer level="ARTWORK">
+						<!-- Leader Icon -->
+						<Texture name="$parentleaderIcon" file="Interface\GroupFrame\UI-Group-LeaderIcon" hidden="true">
+							<Size>
+								<AbsDimension x="16" y="16"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="7"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+
+						<!-- Master Loot Icon -->
+						<Texture name="$parentmasterIcon" file="Interface\GroupFrame\UI-Group-MasterLooter" hidden="true">
+							<Size>
+								<AbsDimension x="16" y="16"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="20" y="7"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+
+						<Texture name="$parentroleIcon" file="Interface\GroupFrame\UI-Group-MainAssistIcon" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="10" y="5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Size><AbsDimension x="16" y="16"/></Size>
+						</Texture>
+
+						<!-- Rest/Combat Icon -->
+						<Texture name="$parentcombatIcon" file="Interface\CharacterFrame\UI-StateIcon" hidden="true">
+							<Size>
+								<AbsDimension x="32" y="31"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0.5" right = "1.0" top="0.0" bottom="0.5"/>
+						</Texture>
+
+						<FontString name="$parenttext" inherits="GameFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+								<Anchor point="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="0" y="1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1" g="1" b="0" />
+						</FontString>
+
+						<FontString name="$parentgroup" inherits="GameFontNormalSmall" text="G" hidden="true" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="8" y="1"/>
+									</Offset>
+								</Anchor>
+								<Anchor point="RIGHT"/>
+							</Anchors>
+							<Color r="0.7" g="0.7" b="0.7"/>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Button>
+			<Frame name="$parentlevelFrame" inherits="XPerl_BorderStyleTemplate">
+				<Size>
+					<AbsDimension x="27" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPLEFT" relativeTo="$parentportraitFrame">
+						<Offset>
+							<AbsDimension x="2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parenttext" inherits="GameFontNormalSmall" text="Error!" setAllPoints="true">
+							<Color r="1.0" g="1.0" b="0"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						XPerl_RegisterUnitText(getglobal(self:GetName().."text"))
+					</OnLoad>
+				</Scripts>
+			</Frame>
+
+			<Frame name="$parentclassFrame">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parentportraitFrame">
+						<Offset>
+							<AbsDimension x="-1" y="2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="$parenttex" file="Interface\Glues\CharacterCreate\UI-CharacterCreate-Classes">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+
+			<!-- Player Stats -->
+			<Frame name="$parentstatsFrame" inherits="XPerl_Stats_Template">		-- StatsXP_Template
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentnameFrame">
+						<Offset>
+							<AbsDimension x="0" y="2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+
+			<Frame name="$parentgroupFrame" hidden="true">
+				<Size>
+					<AbsDimension x="65" y="18"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parentnameFrame">
+						<Offset>
+							<AbsDimension x="1" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\Addons\XPerl\Images\XPerl_FrameBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="12"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parenttext" inherits="GameFontHighlightSmall" text="Error!" setAllPoints="true">
+							<Color r="0.7" g="0.7" b="0.7" />
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						XPerl_RegisterUnitText(getglobal(self:GetName().."text"))
+					</OnLoad>
+				</Scripts>
+			</Frame>
+
+			<Frame name="$parenthitIndicator" frameStrata="HIGH">
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parenttext" inherits="NumberFontNormalHuge" hidden="true" text="Error!">
+							<FontHeight>
+								<AbsValue val="30"/>
+							</FontHeight>
+							<Color r="1.0" g="1.0" b="1.0"/>
+							<Anchors>
+								<Anchor point="CENTER" relativePoint="CENTER" relativeTo="XPerl_PlayerportraitFrame"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+
+			<Frame name="$parenthighlight" inherits="XPerl_HighlightTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parentclassFrame">
+						<Offset>
+							<AbsDimension x="-2" y="-2"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="TOPRIGHT" relativeTo="$parentnameFrame"/>
+				</Anchors>
+			</Frame>
+		</Frames>
+	</Button>
+</Ui>

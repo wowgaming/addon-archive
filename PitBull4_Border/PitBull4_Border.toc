@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fBorder|r]
+## Title-deDE: PitBull4 |r[|cffeda55fRand|r]
+## Title-esES: PitBull4 |r[|cffeda55fBorde|r]
+## Title-frFR: PitBull4 |r[|cffeda55fBordure|r]
+## Title-koKR: PitBull4 |r[|cffeda55f테두리|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fГраница|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f边框|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f邊框|r]
+## Notes: Show a highlight when hovering or targeting.
+## Notes-deDE: Zeigt eine Hervorhebung am Rahmen, wenn sich der Mauszeiger darüber befindet oder die Einheit das Ziel ist.
+## Notes-esES: Muestra un resaltado cuando se pasa por encima o se marca.
+## Notes-frFR: Affiche un effet de surbrillance lors du survol ou du ciblage.
+## Notes-koKR: 마우스 오버시나 대상 선택시 강조하여 표시합니다.
+## Notes-ruRU: Подсвечивать окно при наведении курсора или выделении.
+## Notes-zhCN: 鼠标滑过或选为目标时进行高亮
+## Notes-zhTW: 滑鼠滑過或選為目標時進行高亮。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

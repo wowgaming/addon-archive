@@ -1,0 +1,77 @@
+#@non-debug@
+## Title: Ackis Recipe List 1.0
+## Title-frFR: Ackis Recipe List 1.0
+## Title-deDE: Ackis Rezeptliste 1.0
+## Title-koKR: Ackis의 제조법 리스트 1.0
+## Title-esMX: Ackis Recipe List 1.0
+## Title-ruRU: Ackis Recipe List 1.0
+## Title-zhCN: Ackis Recipe List 1.0
+## Title-esES: Ackis Recipe List 1.0
+## Title-zhTW: Ackis Recipe List 1.0
+#@end-non-debug@
+#@debug@
+# ## Title: Ackis Recipe List - SVN Version
+#@end-debug@
+## X-Curse-Packaged-Version: v1.0-r2818
+## X-Curse-Project-Name: Ackis Recipe List
+## X-Curse-Project-ID: arl
+## X-Curse-Repository-ID: wow/arl/mainline
+
+#@non-debug@
+## Notes: Ackis Recipe List is an addon which will scan your trade skills and provide information on how to obtain recipes. It works for all tradeskills including Runeforging.
+## Notes-frFR: Ackis Recipe List est un addon qui analyse vos métiers et fournit des informations sur la façon d'obtenir les recettes manquantes. Il fonctionne pour tous les métiers, y compris Runeforge.
+## Notes-deDE: Ackis Rezeptliste ist ein Add-on, das deine Berufe durchsucht und dir mitteilt, wie du fehlende Rezepte beschaffst. Es funktioniert mit allen Berufen inklusive des Runenschmiedens.
+## Notes-koKR: 캐릭터가 배우지 못한 제조법을 표시합니다. 또한 제조법의 획득 정보을 알려줍니다.
+## Notes-esMX: Muestra una lista de recetas inexistentes para sus Habilidades de Comercio. Funciona con todas las habilidades comerciales, incluidas venenos y entrenamiento de bestias del cazador.
+## Notes-ruRU: Сканирует ваши профессии и составляет список отсутствующих рецептов. Также отображает информацию о способах их приобретения.
+## Notes-zhCN: 扫描并告知如何获取缺失配方的详细商业技能信息插件。
+## Notes-esES: Ackis Recipe List es un addon que escanea tus habilidades comerciales y provee información de cómo obtener las recetas. Funciona para todas las habilidades comerciales, incluida Forja de Runas.
+## Notes-zhTW: 掃描並告知如何獲取缺失配方的詳細商業技能訊息插件。
+#@end-non-debug@
+#@debug@
+# ## Notes: Latest alpha version of Ackis Recipe List
+#@end-debug@
+
+## Author: Ackis, Zhinjio, Jim-Bim, Torhal, Pompachomp
+## eMail: ackis AT shaw DOT ca
+## X-Donate: http://www.wowace.com/addons/arl/#w-donations
+
+## Interface: 30300
+## Version: 1.0 2817
+## X-Revision: 2817
+## X-Date: 2010-01-26T09:48:31Z
+
+## X-Credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Aesir, BWMerlin, everyone who translated stuff and more!
+## X-Category: Tradeskill
+## X-Localizations: enUS, frFR, zhCN, zhTW, deDE, koKR, esES, esMX, ruRU
+## X-Website: http://wow.curse.com/downloads/wow-addons/details/arl.aspx
+## X-Feedback: http://www.wowace.com/addons/arl/forum/
+
+## OptionalDeps: Ace3, LibAboutPanel, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, LibSharedMedia-3.0, LibQTip-1.0, Skillet, ATSW, Manufac, Cauldron, TomTom, TipTac, Carbonite
+## DefaultState: Enabled
+
+## X-WoWI-ID: 5061
+## SavedVariables: ARLDB2
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /arl
+## X-LoadOn-Events: TRADE_SKILL_SHOW
+## X-LoadOn-TRADE_SKILL_SHOW: AddonLoader:LoadAddOn("AckisRecipeList"); AckisRecipeList:TRADE_SKILL_SHOW()
+
+#@no-lib-strip@
+# Libraries
+embeds.xml
+#@end-no-lib-strip@
+
+# Localization files
+local.xml
+
+ARL.lua
+Config.lua
+Colour.lua
+Frame.lua
+Datamine.lua
+Player.lua
+
+# Database files
+database.xml

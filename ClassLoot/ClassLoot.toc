@@ -1,0 +1,46 @@
+﻿## Interface: 30300
+## Title: ClassLoot
+## Notes: Kaliban's Class Loot List Star Display
+## Title-zhTW: ClassLoot 裝備適用職業/天賦提示
+## Notes-zhTW: 在非職業套裝部分的裝備以顆星等級表示該項裝備適用於哪些職業天賦使用。
+## Title-zhCN: ClassLoot 装备适用职业/天赋提示
+## Notes-zhCN: 在非职业套装部分的装备以颗星等级表示该项装备适用于哪些职业天赋使用。
+## Version: r126
+## Author: Pneumatus
+## X-Credits: Farook (deDE), digimouse (zhCN/zhTW), 7destiny (koKR), StingerSoft (ruRU)
+## X-Category: Boss Encounters, Class, Tooltip
+## OptionalDeps: Ace3, LibBabble-Boss-3.0, LibBabble-TalentTree-3.0, LibBabble-Zone-3.0, LibPeriodicTable-3.1, LinkWrangler
+## SavedVariables: ClassLootDB
+## X-Curse-Packaged-Version: r126
+## X-Curse-Project-Name: ClassLoot
+## X-Curse-Project-ID: classloot
+## X-Curse-Repository-ID: wow/classloot/mainline
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\LibBabble-Boss-3.0\lib.xml
+Libs\LibBabble-TalentTree-3.0\lib.xml
+Libs\LibBabble-Zone-3.0\lib.xml
+Libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1.lua
+#@end-no-lib-strip@
+
+PT3-RaidLoot.lua
+
+Locale-enUS.lua
+Locale-deDE.lua
+Locale-zhCN.lua
+Locale-zhTW.lua
+Locale-koKR.lua
+Locale-ruRU.lua
+
+ClassLoot.lua
+Constants.lua
+ClassLoot_Data.lua

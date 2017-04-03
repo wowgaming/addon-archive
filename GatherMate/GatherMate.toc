@@ -1,0 +1,52 @@
+﻿## Interface: 30300
+## Notes: Collects Herbs, Mines, Gas Clouds and Fishing locations and adds them to the worldmap and minimap
+## Notes-frFR: Enregistre les positions des herbes, mines, nuages de gaz et poissons et les ajoute sur la carte du monde et la minicarte.
+## Notes-ruRU: Собирает информацию о расположении трав, руды, газовых облаков и рыбных мест и показывает её на карте и миникарте
+## Notes-koKR: 약초, 광맥, 가스, 낚시 위치를 저장하여 월드맵과 미니맵에 표시합니다.
+## Notes-zhTW: 收集草藥、礦、氣雲和釣魚的地點，並增加他們到世界地圖和小地圖。
+## Notes-zhCN: 收集草药、矿、气云和钓鱼的地点，并增加他们到世界地图和小地图。
+## Title: GatherMate
+## Title-zhTW: GatherMate 採集助手
+## Title-zhCN: GatherMate 采集助手
+## Author: kagaro, Xinhuan, Ammo, Nevcairiel
+## X-Email: sal.scotto@gmail.com
+## X-Credits: OttoDeFe for the launher icon.
+## SavedVariables: GatherMateDB, GatherMateHerbDB, GatherMateMineDB, GatherMateFishDB, GatherMateGasDB, GatherMateTreasureDB
+## X-Category: Map
+## Version: v.1.25
+## X-License: GPL v2
+## OptionalDeps: Ace3, LibDataBroker-1.1
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+## X-Curse-Packaged-Version: v.1.25
+## X-Curse-Project-Name: GatherMate
+## X-Curse-Project-ID: gathermate
+## X-Curse-Repository-ID: wow/gathermate/mainline
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+#@end-no-lib-strip@
+
+Locales\GatherMate-enUS.lua
+Locales\GatherMate-esES.lua
+Locales\GatherMate-frFR.lua
+Locales\GatherMate-deDE.lua
+Locales\GatherMate-koKR.lua
+Locales\GatherMate-zhCN.lua
+Locales\GatherMate-zhTW.lua
+Locales\GatherMate-ruRU.lua
+
+GatherMate.lua
+Display.lua
+Collector.lua
+Constants.lua
+Config.lua

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fExperience bar|r]
+## Title-deDE: PitBull4 |r[|cffeda55fErfahrungsleiste|r]
+## Title-esES: PitBull4 |r[|cffeda55fBarra de experiencia|r]
+## Title-frFR: PitBull4 |r[|cffeda55fBarre d'expérience|r]
+## Title-koKR: PitBull4 |r[|cffeda55f경험치 바|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fПанель опыта|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f经验条|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f經驗條|r]
+## Notes: Show an experience bar.
+## Notes-deDE: Zeigt eine Erfahrungsleiste.
+## Notes-esES: Muestra una barra de experiencia.
+## Notes-frFR: Affiche une barre d'expérience.
+## Notes-koKR: 경험치바 보이기
+## Notes-ruRU: Показывать панель опыта.
+## Notes-zhCN: 显示经验条
+## Notes-zhTW: 顯示經驗條。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

@@ -1,0 +1,16 @@
+## Title: Auc:Filter:Outlier
+## Notes: Allows automatic filtering of outlier auctions, so that their values are ignored when compiling the various statistics used within Auctioneer and its modules.
+##
+## Interface: 30300
+## LoadOnDemand: 0
+## Disabled: 0
+## Dependencies: Auc-Advanced
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Filter-Outlier.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+
+OutlierFilter.lua

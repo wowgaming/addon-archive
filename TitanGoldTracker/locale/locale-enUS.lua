@@ -1,0 +1,32 @@
+local L = LibStub("AceLocale-3.0"):NewLocale("Titan_GoldTracker","enUS",true)
+
+L["TITAN_GOLDTRACKER_TOOLTIPTEXT"] = "Total Gold on";
+L["TITAN_GOLDTRACKER_ITEMNAME"] = "Gold Tracker";
+L["TITAN_GOLDTRACKER_CLEAR_DATA_TEXT"] = "Clear Database";
+L["TITAN_GOLDTRACKER_RESET_SESS_TEXT"] = "Reset Current Session";
+L["TITAN_GOLDTRACKER_DB_CLEARED"] = "Titan Gold Tracker - Database cleared.";
+L["TITAN_GOLDTRACKER_SESSION_RESET"] = "Titan Gold Tracker - Session reset.";
+L["TITAN_GOLDTRACKER_MENU_TEXT"] = "Gold Tracker";
+L["TITAN_GOLDTRACKER_TOOLTIP"] = "Gold Info";
+L["TITAN_GOLDTRACKER_TOGGLE_PLAYER_TEXT"] = "Display player gold";
+L["TITAN_GOLDTRACKER_TOGGLE_ALL_TEXT"] = "Display server gold";
+L["TITAN_GOLDTRACKER_SESS_EARNED"] = "Earned this session";
+L["TITAN_GOLDTRACKER_PERHOUR_EARNED"] = "Earned per hour";
+L["TITAN_GOLDTRACKER_SESS_LOST"] = "Lost this session";
+L["TITAN_GOLDTRACKER_PERHOUR_LOST"] = "Lost per hour";
+L["TITAN_GOLDTRACKER_STATS_TITLE"] = "Session Statistics";
+L["TITAN_GOLDTRACKER_TTL_GOLD"] = "Total Gold";
+L["TITAN_GOLDTRACKER_START_GOLD"] = "Starting Gold";
+L["TITAN_GOLDTRACKER_TOGGLE_SORT_GOLD"] = "Sort table by gold";
+L["TITAN_GOLDTRACKER_TOGGLE_SORT_NAME"] = "Sort table by name";
+L["TITAN_GOLDTRACKER_TOGGLE_GPH_SHOW"] = "Display gold per hour";
+L["TITAN_GOLDTRACKER_TOGGLE_GPH_HIDE"] = "Hide gold per hour";
+
+L["TITAN_GOLDTRACKER_TOGGLE_PLAYER_SHOW"] = "Make this toon visible";
+L["TITAN_GOLDTRACKER_TOGGLE_PLAYER_HIDE"] = "Hide this toon";
+L["TITAN_GOLDTRACKER_STATUS_PLAYER_SHOW"] = "visible";
+L["TITAN_GOLDTRACKER_STATUS_PLAYER_HIDE"] = "hidden";
+L["TITAN_GOLDTRACKER_DELETE_PLAYER"] = "Delete toon";
+L["TITAN_GOLDTRACKER_FACTION_PLAYER_ALLY"] = "Alliance";
+L["TITAN_GOLDTRACKER_FACTION_PLAYER_HORDE"] = "Horde";
+L["TITAN_GOLDTRACKER_CLEAR_DATA_WARNING"] = GREEN_FONT_COLOR_CODE.."Warning: "..FONT_COLOR_CODE_CLOSE.."This setting will wipe your Gold Tracker database. If you wish to continue with this operation, push 'Accept', otherwise push 'Cancel' or the 'Escape' key.";

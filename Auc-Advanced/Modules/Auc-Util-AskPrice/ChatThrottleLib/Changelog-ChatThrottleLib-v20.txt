@@ -1,0 +1,374 @@
+------------------------------------------------------------------------
+r65 | mikk | 2008-10-28 09:52:38 +0000 (Tue, 28 Oct 2008) | 1 line
+Changed paths:
+   A /tags/v20 (from /trunk:64)
+
+Tagging as v20.
+------------------------------------------------------------------------
+r64 | mikk | 2008-10-15 11:44:16 +0000 (Wed, 15 Oct 2008) | 5 lines
+Changed paths:
+   M /trunk/ChatThrottleLib.lua
+   M /trunk/ChatThrottleLib.toc
+
+ChatThrottleLib: 
+- v20
+- TOC version 30000
+- No longer LoD due to 3.0.2 bug
+- "prefix" is no longer optional (not that anyone ever left it as nil to my knowledge)
+------------------------------------------------------------------------
+r63 | nevcairiel | 2008-10-09 21:51:12 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/ChatThrottleLib.lua
+   M /trunk/ChatThrottleStats.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r62 | root | 2008-09-29 22:14:43 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r60 | root | 2008-09-29 20:57:44 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/ChatThrottleLib
+   A /trunk (from /tmp/trunk/ChatThrottleLib:59)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r56 | rabbit | 2008-03-26 11:55:28 +0000 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+.Some bumps.
+------------------------------------------------------------------------
+r54 | mikk | 2007-11-14 10:43:27 +0000 (Wed, 14 Nov 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib: toc 20300
+------------------------------------------------------------------------
+r53 | mikk | 2007-11-11 08:34:24 +0000 (Sun, 11 Nov 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib: v19:
+- Add optional "queueName" parameter as last arg to both Send functions. If supplied, queueing will be done according to this name rather than prefix+chattype+destination.  Useful for protocols that mangle the prefix, e.g. AceComm3, or addons that want in-sequence delivery of messages regardless of prefix.
+------------------------------------------------------------------------
+r52 | mikk | 2007-10-14 07:38:17 +0000 (Sun, 14 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib: Up toc to 20200
+------------------------------------------------------------------------
+r51 | mikk | 2007-09-25 21:49:52 +0000 (Tue, 25 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib: 
+- Sigh, fix the fix. It worked everywhere except AceComm.
+
+------------------------------------------------------------------------
+r50 | mikk | 2007-09-25 20:46:13 +0000 (Tue, 25 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib:
+- Better fix for copy&pasting ChatThrottleLib into a lua file that gets it into its head to "local ChatThrottleLib" (aka AceComm). It should not ALWAYS Do The Right Thing, not just when AceComm loads before other CTL users.
+
+------------------------------------------------------------------------
+r49 | mikk | 2007-08-21 08:14:31 +0000 (Tue, 21 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib: 
+getfenv().ChatThrottleLib = ChatThrottleLib  -- lets it work embedded inside other files where "ChatThrottleLib" is a local (e.g. AceComm-2.0.lua)
+------------------------------------------------------------------------
+r48 | mikk | 2007-08-20 12:28:43 +0000 (Mon, 20 Aug 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib: 
+- v18
+- Fix an unending error barfer if the number of unique destinations ever exceeded 25 (garbage collector was broken)
+- Add assert(len<255) to :SendChatMessage() also
+
+------------------------------------------------------------------------
+r47 | mikk | 2007-06-24 17:42:11 +0000 (Sun, 24 Jun 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib: Add TOC fields. Change author to just "Mikk"
+
+------------------------------------------------------------------------
+r46 | mikk | 2007-06-02 12:53:12 +0000 (Sat, 02 Jun 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib: Prefix "Lib: " to name.
+
+------------------------------------------------------------------------
+r45 | mikk | 2007-05-26 03:42:26 +0000 (Sat, 26 May 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+- v17
+- SendAddonMessage: assert() that text+prefix+1<=255 since exceeding it will cause a disconnect, which may look like overload problems when in fact they aren't
+
+
+------------------------------------------------------------------------
+r44 | mikk | 2007-05-23 13:59:42 +0000 (Wed, 23 May 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib: 20100
+
+------------------------------------------------------------------------
+r43 | ckknight | 2007-04-24 09:11:48 +0000 (Tue, 24 Apr 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - remove a SETGLOBAL msg.
+------------------------------------------------------------------------
+r42 | ckknight | 2007-04-14 07:51:10 +0000 (Sat, 14 Apr 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - v16 - use secure hooks instead of insecure hooks.
+------------------------------------------------------------------------
+r41 | mikk | 2007-04-08 20:11:42 +0000 (Sun, 08 Apr 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleStats.lua
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+- v15
+- Allow new "target" parameter in SendAddonMessage (gets introduced in 2.1)
+- Move constants (cps, burst size, etc) from locals to member variables to allow tweaking from outside sources as requested by power users (huhu, phear).
+
+
+------------------------------------------------------------------------
+r40 | mikk | 2007-04-04 10:53:39 +0000 (Wed, 04 Apr 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib: README.txt update with new urls, etc.
+------------------------------------------------------------------------
+r39 | rabbit | 2007-03-08 17:24:35 +0000 (Thu, 08 Mar 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib: Bump the TOC interface to 20003.
+------------------------------------------------------------------------
+r38 | kergoth | 2007-01-30 00:14:59 +0000 (Tue, 30 Jan 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+.Line ending fixups in .toc files (they werent in my .subversion/config autoprops)
+------------------------------------------------------------------------
+r37 | ckknight | 2007-01-27 21:07:25 +0000 (Sat, 27 Jan 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - added a few locals, made to take advantage of lua 5.1 in a few places, general syntax cleanup.
+------------------------------------------------------------------------
+r36 | kergoth | 2007-01-23 21:50:43 +0000 (Tue, 23 Jan 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.xml
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleStats.lua
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+.Line ending fixups: trunk/
+------------------------------------------------------------------------
+r33 | mikk | 2006-09-24 17:36:37 +0000 (Sun, 24 Sep 2006) | 5 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib:
+- Up version number in .toc to match .lua (12->13)
+~smack ckknight
+
+
+------------------------------------------------------------------------
+r32 | ckknight | 2006-09-23 06:10:29 +0000 (Sat, 23 Sep 2006) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - local'd some global functions. Now no longer crashes when someone messes up calling SendChatMessage/SendAddonMessage.
+Upped version number
+------------------------------------------------------------------------
+r31 | ckknight | 2006-09-21 06:54:05 +0000 (Thu, 21 Sep 2006) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - added missing pairs() to an iterator.
+------------------------------------------------------------------------
+r30 | mikk | 2006-09-15 09:13:17 +0000 (Fri, 15 Sep 2006) | 4 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib: Version 12:
+- Reduce max CPS from 1000 to 800
+- Reduce max burst from 8000 to 4000
+Apparently, a few (old? misconfigurd?) servers are crankier than all the others. This seems to fix it.
+------------------------------------------------------------------------
+r29 | mikk | 2006-08-25 10:05:44 +0000 (Fri, 25 Aug 2006) | 4 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+* Version 11
+* Clamp VERY hard the 5 first seconds after login and zoning. The rate limiter seems touchy at least right after login.
+
+------------------------------------------------------------------------
+r25 | mikk | 2006-08-10 02:13:53 +0000 (Thu, 10 Aug 2006) | 3 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib:
+- v10 for real now. SIGH.
+
+------------------------------------------------------------------------
+r24 | mikk | 2006-08-10 02:08:32 +0000 (Thu, 10 Aug 2006) | 4 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+Version 10:
+* Don't hook SendAddonMessage if it doesn't exist. Some mod might be using it to test for 1.12.
+
+------------------------------------------------------------------------
+r23 | mikk | 2006-08-08 22:46:50 +0000 (Tue, 08 Aug 2006) | 4 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+* Use string.format() for string concatenation
+* Up to version 9 - pushing to wowi.
+
+------------------------------------------------------------------------
+r22 | ckknight | 2006-08-08 20:48:48 +0000 (Tue, 08 Aug 2006) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - fixed bug that made addon messages spam to standard chat.
+------------------------------------------------------------------------
+r21 | mikk | 2006-08-01 19:24:37 +0000 (Tue, 01 Aug 2006) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib: Update README.txt too. *sigh*
+
+------------------------------------------------------------------------
+r20 | mikk | 2006-08-01 19:11:38 +0000 (Tue, 01 Aug 2006) | 7 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.xml
+   A /tmp/trunk/ChatThrottleLib/ChatThrottleStats.lua
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+- Version 7
+- Adaptive throttling according to frame rate
+- Adaptive throttling according to traffic bypassing the library
+- Allow "prefix" to be nil in :SendChatMessage() - use one flow per "this"
+- Add a stats module that can be used during devel
+
+------------------------------------------------------------------------
+r19 | mikk | 2006-07-31 21:25:57 +0000 (Mon, 31 Jul 2006) | 3 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+   A /tmp/trunk/ChatThrottleLib/ChatThrottleLib.xml
+   M /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+- Add ChatThrottleLib.xml to allow for easy directory-based embedding. (Just include ChatThrottleLib/ChatThrottleLib.xml in your .toc).
+
+------------------------------------------------------------------------
+r18 | mikk | 2006-07-30 17:16:05 +0000 (Sun, 30 Jul 2006) | 3 lines
+Changed paths:
+   A /tmp/trunk/ChatThrottleLib/README.txt
+
+ChatThrottleLib:
+Add README.txt and package for upload to wowi.
+
+------------------------------------------------------------------------
+r17 | mikk | 2006-07-30 14:41:21 +0000 (Sun, 30 Jul 2006) | 7 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib:
+- Version 6
+- Will now immediately pass messages to APIs as long as queuing is not necessary (= no lag unless there needs to be)
+- Will now allow burst output of up to 8KB. The server input buffer seems to be about 32KB.
+
+Seems doneish for the initial design.
+
+------------------------------------------------------------------------
+r16 | ckknight | 2006-07-29 14:07:27 +0000 (Sat, 29 Jul 2006) | 1 line
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+
+ChatThrottleLib - changed setn stuff, since it could mess up from a nil language. Upped minor version.
+------------------------------------------------------------------------
+r15 | mikk | 2006-07-26 20:21:09 +0000 (Wed, 26 Jul 2006) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib:
+- Removed _optional_ ChatThrottleLib:Hook() function and there was much rejoicing by all.
+------------------------------------------------------------------------
+r14 | mikk | 2006-07-25 20:36:33 +0000 (Tue, 25 Jul 2006) | 2 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib:
+- Will now clean out portions of its recycling bins too once in a while. Whoops. Tired coder = bad.
+------------------------------------------------------------------------
+r13 | mikk | 2006-07-25 20:00:01 +0000 (Tue, 25 Jul 2006) | 4 lines
+Changed paths:
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   M /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib:
+- Drop CPS down to 1000. 2000 seems safe if nothing else is happening, but we need margins.
+- Make SendChatMessage / SendAddonMessage hooking optional. AddOn must call ChatThrottleLib:Hook() in order for it to happen now.
+
+------------------------------------------------------------------------
+r12 | mikk | 2006-07-25 18:25:24 +0000 (Tue, 25 Jul 2006) | 7 lines
+Changed paths:
+   A /tmp/trunk/ChatThrottleLib
+   A /tmp/trunk/ChatThrottleLib/ChatThrottleLib.lua
+   A /tmp/trunk/ChatThrottleLib/ChatThrottleLib.toc
+
+ChatThrottleLib:
+Fully embeddable chat throttling library that:
+- Hooks SendChatMessage / SendAdd[Oo]nMessage
+- Provides extra functions for sending prioritized messages
+- Does full balancing between the three priorities ("ALERT", "NORMAL", "BULK")
+- Does round-robin traffic shaping between different prefix+chattype+destination tuples
+
+------------------------------------------------------------------------

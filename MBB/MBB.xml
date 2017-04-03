@@ -1,0 +1,694 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="MBB.lua"/>
+	<Frame name="MBBFrame" toplevel="true" parent="UIParent" frameStrata="DIALOG" hidden="true" enableMouse="true">
+		<Scripts>
+			<OnLoad>
+				MBB_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				MBB_OnEvent();
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+	<Button name="MBB_MinimapButtonFrame" toplevel="true" frameStrata="MEDIUM" parent="Minimap" enableMouse="true" movable="true" hidden="false">
+		<Size>
+			<AbsDimension x="33" y="33"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="-18" y="-100"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Texture" file="Interface\AddOns\MBB\icon">
+					<Size>
+						<AbsDimension x="17" y="17"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="8" y="-8"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.075" right="0.925" top="0.075" bottom="0.925"/>
+				</Texture>
+			</Layer>
+		<Layer level="OVERLAY">
+			<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+				<Size>
+					<AbsDimension x="56" y="56"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+			</Texture>
+		</Layer>
+		</Layers>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnMouseDown>
+				MBB_MinimapButtonFrame_Texture:SetTexCoord(0,1,0,1);
+			</OnMouseDown>
+			<OnMouseUp>
+				MBB_MinimapButtonFrame_Texture:SetTexCoord(.075,.925,.075,.925);
+			</OnMouseUp>
+			<OnClick>
+				MBB_OnClick(button);
+			</OnClick>
+			<OnEnter>
+				MBB_ShowTimeout = -1;
+				GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+				GameTooltip:AddLine("MinimapButtonBag v" .. MBB_Version);
+				GameTooltip:AddLine(MBB_TOOLTIP1, 0, 1, 0);
+				GameTooltip:Show();
+			</OnEnter>
+			<OnLeave>
+				MBB_ShowTimeout = 0;
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnDragStart>
+				if( MBB_Options.AttachToMinimap == 1 ) then
+					MBB_DragFlag = 1;
+				else
+					self:StartMoving();
+				end
+			</OnDragStart>
+			<OnDragStop>
+				if( MBB_Options.AttachToMinimap == 1 ) then
+					MBB_DragFlag = 0;
+				else
+					self:StopMovingOrSizing();
+				end
+				local point,_,_,xpos,ypos = self:GetPoint();
+				MBB_Options.ButtonPos = {xpos,ypos};
+				MBB_Options.DetachedButtonPos = point;
+			</OnDragStop>
+			<OnUpdate>
+				MBB_OnUpdate(elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Button>
+	
+	<Button name="MBB_ButtonAdd" hidden="true">
+		<Size>
+			<AbsDimension x="21" y="21"/>
+		</Size>
+		<Scripts>
+			<OnClick>
+				MBB_AddButton(self.MBBButtonName);
+				MBB_SetPositions();
+				self:Hide();
+			</OnClick>
+			<OnLeave>
+				self:Hide()
+			</OnLeave>
+		</Scripts>
+		<NormalTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Up"/>
+		<PushedTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Down"/>
+		<DisabledTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Disabled"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+	</Button>
+	<Button name="MBB_ButtonRemove" hidden="true">
+		<Size>
+			<AbsDimension x="21" y="21"/>
+		</Size>
+		<Scripts>
+			<OnClick>
+				MBB_RestoreButton(self.MBBButtonName);
+				MBB_SetPositions();
+				self:Hide();
+			</OnClick>
+			<OnLeave>
+				self:Hide()
+			</OnLeave>
+		</Scripts>
+		<NormalTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Up"/>
+		<PushedTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Down"/>
+		<DisabledTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Disabled"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+	</Button>
+	
+	<Frame name="MBB_OptionsFrame" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="300" y="290" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parent_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="370" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parent_HeaderText" inherits="GameFontNormal" text="MBB_OPTIONS_HEADER">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parent_Header">
+							<Offset>
+								<AbsDimension x="0" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_ExpansionLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONLABEL">
+					<Size>
+						<AbsDimension x="130" y="15" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="20" y="-85" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_MaxButtonsLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_MAXBUTTONSLABEL">
+					<Size>
+						<AbsDimension x="130" y="15" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="20" y="-155" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_AltExpansionLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_ALTEXPANSIONLABEL">
+					<Size>
+						<AbsDimension x="130" y="15" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent">
+							<Offset>
+								<AbsDimension x="20" y="-175" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Slider name="$parent_TimeoutSlider" inherits="OptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativeFrom="TOPLEFT">
+						<Offset>
+							<AbsDimension x="150" y="-45" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_SLIDERLABEL">
+							<Size>
+								<AbsDimension x="130" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT" relativePoint="LEFT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnValueChanged>
+						if( self:GetValue() == 0 ) then
+							getglobal(self:GetName().."Text"):SetText(MBB_OPTIONS_SLIDEROFF);
+						else
+							getglobal(self:GetName().."Text"):SetText(self:GetValue() .. " " .. MBB_OPTIONS_SLIDERSEK);
+						end
+					</OnValueChanged>
+					<OnLoad>
+						self:SetMinMaxValues(0,5);
+						self:SetValueStep(1);
+						getglobal(self:GetName().."High"):SetText("5 " .. MBB_OPTIONS_SLIDERSEK);
+						getglobal(self:GetName().."Low"):SetText(MBB_OPTIONS_SLIDEROFF);
+					</OnLoad>
+					<OnShow>
+						self:SetValue(MBB_Options.CollapseTimeout);
+						if( MBB_Options.CollapseTimeout == 0 ) then
+							getglobal(self:GetName().."Text"):SetText(MBB_OPTIONS_SLIDEROFF);
+						else
+							getglobal(self:GetName().."Text"):SetText(self:GetValue() .. " " .. MBB_OPTIONS_SLIDERSEK);
+						end
+					</OnShow>
+				</Scripts>
+			</Slider>
+			<CheckButton name="$parent_LeftRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_ExpansionLabel" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONLEFT">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(1);
+						MBB_UpdateAltRadioButtons();
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.ExpandDirection == 1 ) then
+							MBB_RadioButton_OnClick(1);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_TopRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_LeftRadio" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONTOP">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(2);
+						MBB_UpdateAltRadioButtons();
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.ExpandDirection == 2 ) then
+							MBB_RadioButton_OnClick(2);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_RightRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_TopRadio" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONRIGHT">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(3);
+						MBB_UpdateAltRadioButtons();
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.ExpandDirection == 3 ) then
+							MBB_RadioButton_OnClick(3);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_BottomRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_RightRadio" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONBOTTOM">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(4);
+						MBB_UpdateAltRadioButtons();
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.ExpandDirection == 4 ) then
+							MBB_RadioButton_OnClick(4);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parent_MaxButtonsTextBox" enableMouse="true" ignoreArrows="false" letters="3" autoFocus="false">
+				<Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<TileSize>
+						<AbsValue val="8" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="8" />
+					</EdgeSize>
+				</Backdrop>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentInfo" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_MAXBUTTONSINFO">
+							<Size>
+								<AbsDimension x="100" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size>
+					<AbsDimension x="30" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_MaxButtonsLabel" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<FontString inherits="ChatFontNormal" justifyH="RIGHT">
+					<FontHeight>
+						<AbsValue val="14" />
+					</FontHeight>
+					<Color r="1" g="1" b="1" />
+					<Shadow>
+						<Color r="0" g="0" b="0" />
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+					</Shadow>
+				</FontString>
+				<Scripts>
+					<OnEscapePressed>
+						self:SetText(MBB_Options.MaxButtonsPerLine);
+						self:ClearFocus();
+					</OnEscapePressed>
+					<OnTextChanged>
+						MBB_UpdateAltRadioButtons();
+					</OnTextChanged>
+					<OnEnterPressed>
+						if( not tonumber(self:GetText()) ) then
+							self:SetText(MBB_Options.MaxButtonsPerLine);
+						end
+						MBB_UpdateAltRadioButtons();
+						self:ClearFocus();
+					</OnEnterPressed>
+					<OnLoad>
+						self:SetTextInsets(2, 4, 2, 2);
+					</OnLoad>
+					<OnShow>
+						self:SetText(MBB_Options.MaxButtonsPerLine);
+					</OnShow>
+				</Scripts>
+			</EditBox>
+			<CheckButton name="$parent_LeftAltRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_AltExpansionLabel" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONLEFT">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(1, true);
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.AltExpandDirection == 1 ) then
+							MBB_RadioButton_OnClick(1, true);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_TopAltRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_LeftAltRadio" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONTOP">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(2, true);
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.AltExpandDirection == 2 ) then
+							MBB_RadioButton_OnClick(2, true);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_RightAltRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_TopAltRadio" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONRIGHT">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(3, true);
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.AltExpandDirection == 3 ) then
+							MBB_RadioButton_OnClick(3, true);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_BottomAltRadio" inherits="UIRadioButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_RightAltRadio" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" justifyH="LEFT" text="MBB_OPTIONS_EXPANSIONBOTTOM">
+							<Size>
+								<AbsDimension x="50" y="15" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						MBB_RadioButton_OnClick(4, true);
+					</OnClick>
+					<OnShow>
+						if( MBB_Options.AltExpandDirection == 4 ) then
+							MBB_RadioButton_OnClick(4, true);
+						end
+					</OnShow>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parent_OKButton" inherits="UIPanelButtonTemplate" text="MBB_OPTIONS_OKBUTTON">
+				<Size>
+					<AbsDimension x="125" y="21" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent" relativeFrom="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-75" y="-245" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MBB_OptionsFrame:Hide();
+						MBB_Options.CollapseTimeout = MBB_OptionsFrame_TimeoutSlider:GetValue();
+						if( MBB_OptionsFrame_LeftRadio:GetChecked() ) then
+							MBB_Options.ExpandDirection = 1;
+						elseif( MBB_OptionsFrame_TopRadio:GetChecked() ) then
+							MBB_Options.ExpandDirection = 2;
+						elseif( MBB_OptionsFrame_RightRadio:GetChecked() ) then
+							MBB_Options.ExpandDirection = 3;
+						elseif( MBB_OptionsFrame_BottomRadio:GetChecked() ) then
+							MBB_Options.ExpandDirection = 4;
+						end
+						if( tonumber(MBB_OptionsFrame_MaxButtonsTextBox:GetText()) ) then
+							MBB_Options.MaxButtonsPerLine = tonumber(MBB_OptionsFrame_MaxButtonsTextBox:GetText());
+						end
+						if( MBB_OptionsFrame_LeftAltRadio:GetChecked() ) then
+							MBB_Options.AltExpandDirection = 1;
+						elseif( MBB_OptionsFrame_TopAltRadio:GetChecked() ) then
+							MBB_Options.AltExpandDirection = 2;
+						elseif( MBB_OptionsFrame_RightAltRadio:GetChecked() ) then
+							MBB_Options.AltExpandDirection = 3;
+						elseif( MBB_OptionsFrame_BottomAltRadio:GetChecked() ) then
+							MBB_Options.AltExpandDirection = 4;
+						end
+						MBB_SetPositions();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_CancelButton" inherits="UIPanelButtonTemplate" text="MBB_OPTIONS_CANCELBUTTON">
+				<Size>
+					<AbsDimension x="125" y="21" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent" relativeFrom="TOPLEFT">
+						<Offset>
+							<AbsDimension x="75" y="-245" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MBB_OptionsFrame:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				MBB_OptionsFrame_HeaderText:SetText("MBB v" .. MBB_Version .. " " .. MBB_OPTIONS_HEADER);
+				MBB_UpdateAltRadioButtons();
+			</OnShow>
+		</Scripts>
+	</Frame>
+</Ui>

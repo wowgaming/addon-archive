@@ -1,0 +1,13 @@
+tag r139-release
+ad226b656bdd70324e818f304fdbbe1ba1899753
+James Whitehead II <jnwhiteh@gmail.com>
+2010-09-21 11:08:56 +0100
+
+Convert "r139-release" to proper git tag.
+
+
+--------------------
+
+James Whitehead II:
+	- Tagging r139-release
+	- Removing leftover debug messages

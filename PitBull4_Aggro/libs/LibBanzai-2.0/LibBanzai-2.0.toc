@@ -1,0 +1,18 @@
+﻿## Interface: 30000
+## LoadOnDemand: 1
+## Title: Lib: Banzai-2.0
+## Notes: Aggro notification library.
+## Author: Rabbit
+## X-Website: http://www.wowace.com/wiki/BanzaiLib
+## X-Email: rabbit.magtheridon@gmail.com
+## X-Category: Library
+## X-Credits: maia
+## Version: 2.0
+## X-AceLibrary-Banzai-2.0: true
+## X-Curse-Packaged-Version: 3.0-beta2
+## X-Curse-Project-Name: LibBanzai-2.0
+## X-Curse-Project-ID: libbanzai-2-0
+## X-Curse-Repository-ID: wow/libbanzai-2-0/mainline
+
+lib.xml
+

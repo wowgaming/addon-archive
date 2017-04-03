@@ -1,0 +1,19 @@
+Shadowed:
+	- Reverted the aura positioning change, while technically this is invalid, it'll cause less issues with aura positioning until I can work out cleaner updating code
+	Fixed cast.lua:387 error, since apparently it didn't commit
+	- Fixed cast.lua:383 error
+	- Fixed SUF error
+	- Removed OnUpdate for boss units if running 3.3.5 (Bug was fixed causing them not to trigger events)
+	Fixed a rare startTime error in cast.lua
+	Fixed an "Absolutely" type for the [abs:inchea] tag
+	- Fixed typo in range.lua
+	- Added softMin/softMax for aura rows
+	Added (needs more testing) automatic switching to using resurrection spells for range checking when a player is dead, but not a ghost
+	Added a hidden option to disable all border coloring for debuffs
+	- Fixed the hide omnicc setting showing up without advanced settings on
+	- Fixed incoming heals error if health bars are disabled by incoming heals is not
+	- On second though, trying another method, now adding 3 to the x and y offsets regardless of settings to try and keep consisency on the offsets
+	- Improved the upgrade code for aura offsets
+	- Changed packager to pull from latest Ace3 repo to fix softMin/softMax errors
+	- Fixing aura offset issues with profiles that have advanced settings disabled
+	- Added softMin/softMax support to a few of the sliders, such as size and offsets, allowing you to manually enter larger numbers than the slider allows (For some options only)

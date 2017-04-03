@@ -1,0 +1,47 @@
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by jon (n/a) -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+  <Frame name="Prat_PopupFrame" hidden="true" toplevel="true">
+    <Anchors>
+      <Anchor point="CENTER">
+		<Offset>
+			<AbsDimension y="84"/>
+		</Offset>
+	  </Anchor>	
+    </Anchors>
+    <ResizeBounds>
+      <minResize x="64" y="64" />
+    </ResizeBounds>    
+    <Backdrop edgeFile="Interface\Tooltips\ChatBubble-Backdrop">
+      <EdgeSize>
+        <AbsValue val="32"/>
+      </EdgeSize>
+    </Backdrop>
+    <Layers>
+    <!--
+      <Layer level="BACKGROUND">
+        <Texture name="Prat_PopupFrameBG">
+          <Color r="0.0" g="0.0" b="0.0" a="0.5"/>
+        </Texture>
+      </Layer>
+      -->
+      <Layer level="OVERLAY">
+        <FontString name="Prat_PopupFrameText" inherits="GameFontNormalLarge">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="10" y="10"/>
+              </Offset>
+            </Anchor>
+            <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+              <Offset>
+                <AbsDimension x="-10" y="-10"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Scripts>
+    </Scripts>
+  </Frame>
+</Ui>

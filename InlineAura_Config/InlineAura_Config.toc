@@ -1,0 +1,23 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 1.4
+## X-Curse-Project-Name: Inline Aura
+## X-Curse-Project-ID: inline-aura
+## X-Curse-Repository-ID: wow/inline-aura/mainline
+
+## Title: Inline Aura - Configuration GUI
+## Author: Adirelle
+## LoadOnDemand: 1
+## Dependencies: InlineAura
+## OptDeps: Ace3, AceGUI-3.0-SharedMediaWidgets
+## Version: 1.4 
+## X-Date: 2010-02-06T09:38:05Z
+
+#@no-lib-strip@
+..\InlineAura\libs\AceGUI-3.0\AceGUI-3.0.xml
+..\InlineAura\libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+..\InlineAura\libs\AceConfig-3.0\AceConfig-3.0.xml
+..\InlineAura\libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+#@end-no-lib-strip@
+
+..\InlineAura\Config.lua
+

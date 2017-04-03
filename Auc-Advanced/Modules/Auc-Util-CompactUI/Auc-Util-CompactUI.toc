@@ -1,0 +1,13 @@
+## Title: Auc:Util:Compact UI
+## Notes: Provides additional features and enhancement of the Auction House's "Browse" frame.
+##
+## Interface: 30300
+## Dependancies: Auc-Advanced
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Util-CompactUI.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Embed.xml

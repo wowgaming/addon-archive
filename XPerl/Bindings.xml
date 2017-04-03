@@ -1,0 +1,68 @@
+<Bindings>
+	<Binding name="TOGGLERAID" header="XPERL">
+		if (not XPerl_Options or not XPerl_Options:IsShown()) then
+			if (not InCombatLockdown()) then
+				if (XPerlDB.raid.enable) then
+					XPerlDB.raid.enable = nil
+				else
+					XPerlDB.raid.enable = 1
+				end
+				if (XPerl_Raid_HideShowRaid) then
+					XPerl_Raid_HideShowRaid()
+					XPerl_RaidTitles()
+				end
+			end
+		end
+	</Binding>
+	<Binding name="TOGGLERAIDSORT">
+		if (XPerl_ToggleRaidSort) then
+			XPerl_ToggleRaidSort()
+		end
+	</Binding>
+	<Binding name="TOGGLERAIDPETS">
+		if (not XPerl_Options or not XPerl_Options:IsShown()) then
+			if (not InCombatLockdown()) then
+				if (XPerlDB.raidpet.enable) then
+					if (XPerlDB.raidpet.hunter and XPerlDB.raidpet.warlock) then
+						XPerlDB.raidpet.warlock = nil
+						XPerlDB.raidpet.hunter = 1
+					elseif (XPerlDB.raidpet.hunter and not XPerlDB.raidpet.warlock) then
+						XPerlDB.raidpet.warlock = 1
+						XPerlDB.raidpet.hunter = nil
+					else
+						XPerlDB.raidpet.enable = nil
+					end
+				else
+					XPerlDB.raidpet.enable = 1
+					XPerlDB.raidpet.warlock = 1
+					XPerlDB.raidpet.hunter = 1
+				end
+				if (XPerl_RaidPets_OptionActions) then
+					XPerl_RaidPets_OptionActions()
+				end
+			end
+		end
+	</Binding>
+	<Binding name="TOGGLERANGEFINDER">
+		if (not XPerl_Options or not XPerl_Options:IsShown()) then
+			if (XPerlDB.rangeFinder.enabled) then
+				XPerlDB.rangeFinder.enabled = nil
+			else
+				XPerlDB.rangeFinder.enabled = 1
+			end
+		end
+	</Binding>
+	<Binding name="TOGGLEOPTIONS">
+		XPerl_Toggle()
+	</Binding>
+	<Binding name="TOGGLEBUFFTYPE">
+		if (XPerl_ToggleRaidBuffs) then
+			XPerl_ToggleRaidBuffs()
+		end
+	</Binding>
+	<Binding name="TOGGLEBUFFCASTABLE">
+		if (XPerl_ToggleRaidBuffs) then
+			XPerl_ToggleRaidBuffs(1)
+		end
+	</Binding>
+</Bindings>

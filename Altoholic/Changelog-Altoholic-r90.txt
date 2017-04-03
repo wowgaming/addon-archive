@@ -1,0 +1,37 @@
+------------------------------------------------------------------------
+r90 | Thaoky | 2010-07-06 17:50:10 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Altoholic.toc
+   M /trunk/Core.lua
+   M /trunk/Frames/TabOptions.lua
+   M /trunk/changelog.txt
+
+Version number update/what's new/etc..
+------------------------------------------------------------------------
+r89 | Thaoky | 2010-07-01 16:38:46 +0000 (Thu, 01 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Altoholic.lua
+   M /trunk/Frames/AuctionHouse.lua
+   M /trunk/Frames/Calendar.lua
+   M /trunk/Frames/Equipment.lua
+   M /trunk/Frames/GuildProfessions.lua
+   M /trunk/Frames/Mails.lua
+   M /trunk/Frames/Pets.lua
+   M /trunk/Frames/Quests.lua
+   M /trunk/Frames/Recipes.lua
+   M /trunk/Frames/Recipes.xml
+   M /trunk/Frames/Reputations.lua
+   M /trunk/Frames/Search.xml
+   M /trunk/Frames/Skills.lua
+   M /trunk/Frames/Talents.lua
+   M /trunk/Modules/Altoholic_Achievements/Achievements.lua
+   M /trunk/Modules/Altoholic_Achievements/TabAchievements.lua
+
+Fixed the ChatFrameEditBox issue caused by 3.3.5
+------------------------------------------------------------------------
+r88 | thaoky | 2010-04-12 18:02:22 +0000 (Mon, 12 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/Altoholic_Achievements/Achievements.lua
+
+Added missing raid achievements.
+------------------------------------------------------------------------

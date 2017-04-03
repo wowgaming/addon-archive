@@ -1,0 +1,29 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fRunes|r]
+## Title-deDE: PitBull4 |r[|cffeda55fRunen|r]
+## Title-esES: PitBull4 |r[|cffeda55fRunas|r]
+## Title-frFR: PitBull4 |r[|cffeda55fRunes|r]
+## Title-koKR: PitBull4 |r[|cffeda55f룬|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fРуны|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f符文|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f符文|r]
+## Notes: Show Death Knight rune icons.
+## Notes-deDE: Zeigt Runensymbole für Todesritter an.
+## Notes-esES: Muestra iconos de runa de Caballero de la Muerte
+## Notes-frFR: Affiche les icônes des runes du chevalier de la mort.
+## Notes-koKR: 죽음의 기사 룬 아이콘 보이기
+## Notes-ruRU: Отображение рун Рыцаря Смерти.
+## Notes-zhCN: 显示死亡骑士符文图标
+## Notes-zhTW: 顯示死亡騎士符文圖示。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-PitBull4-Condition: return select(2, UnitClass("player")) == "DEATHKNIGHT"
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

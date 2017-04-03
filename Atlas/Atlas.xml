@@ -1,0 +1,529 @@
+<!--
+
+	Atlas, a World of Warcraft instance map browser
+	Copyright 2005-2010 Dan Gilbert <dan.b.gilbert@gmail.com>
+
+	This file is part of Atlas.
+
+	Atlas is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	Atlas is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with Atlas; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Button name="AtlasEntryTemplate" hidden="true" virtual="true">
+		<Size>
+			<AbsDimension x="330" y="15" />
+		</Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Text" inherits="GameFontHighlight" wraponspaces="false" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="330" y="15" />
+					</Size>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate>
+				AtlasEntryTemplate_OnUpdate(self);
+			</OnUpdate>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Frame name="AtlasFrame" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true" frameStrata="HIGH">
+		<Size>
+			<AbsDimension x="921" y="601"/>
+		</Size>
+		<Anchors>
+ 			<Anchor point="TOPLEFT">
+ 				<Offset>
+ 					<AbsDimension x="0" y="-104"/>
+ 				</Offset>
+ 			</Anchor>
+ 		</Anchors>
+		<Frames>
+			<Button name="AtlasFrameCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="AtlasFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="5" y="-7"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="AtlasFrameLockButton">
+				<Size>
+					<AbsDimension x="32" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="AtlasFrameCloseButton" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						Atlas_ToggleLock();
+					</OnClick>
+				</Scripts>
+				<NormalTexture name="AtlasLockNorm"/>
+				<PushedTexture name="AtlasLockPush"/>
+				<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" AlphaMode="ADD"/>
+			</Button>
+			<Button name="AtlasFrameDropDownType" inherits="UIDropDownMenuTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="ATLAS_STRING_SELECT_CAT">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="21" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="60" y="-50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="AtlasFrameDropDown" inherits="UIDropDownMenuTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="ATLAS_STRING_SELECT_MAP">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="21" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="AtlasFrameDropDownType" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<EditBox name="AtlasSearchEditBox" inherits="InputBoxTemplate" letters="80">
+				<Size>
+					<AbsDimension x="144" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-147" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						this:SetAutoFocus(false);
+						this:SetTextInsets(0, 8, 0, 0);
+					</OnLoad>
+					<OnEnterPressed>
+						Atlas_SearchAndRefresh(this:GetText());
+						this:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+				<FontString name="AtlasSearchString" inherits="GameFontNormal"></FontString>
+			</EditBox>
+			<Frame name="AtlasSwitchDD" inherits="UIDropDownMenuTemplate" />
+  			<Button name="AtlasSwitchButton" inherits="UIPanelButtonTemplate2" parent="AtlasSearchEditBox">
+				<Size>
+					<AbsDimension x="80" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="-6" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						AtlasSwitchButton_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasSearchButton" inherits="UIPanelButtonTemplate2" parent="AtlasSearchEditBox" text="ATLAS_STRING_SEARCH">
+				<Size>
+					<AbsDimension x="69" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="1" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						Atlas_SearchAndRefresh(AtlasSearchEditBox:GetText());
+						AtlasSearchEditBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasSearchClearButton" inherits="UIPanelButtonTemplate2" parent="AtlasSearchEditBox" text="ATLAS_STRING_CLEAR">
+				<Size>
+					<AbsDimension x="58" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="AtlasSearchButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						AtlasSearchEditBox:SetText("");
+						Atlas_SearchAndRefresh(AtlasSearchEditBox:GetText());
+						AtlasSearchEditBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasFrameOptionsButton" inherits="UIPanelButtonTemplate2" text="ATLAS_OPTIONS_BUTTON">
+				<Size>
+					<AbsDimension x="80" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-20" y="-50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						AtlasOptions_Toggle();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<ScrollFrame name="AtlasScrollBar" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="351" y="367" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="530" y="-186"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, 15, AtlasScrollBar_Update); 
+					</OnVerticalScroll>
+					<OnShow>
+						AtlasScrollBar_Update()
+					</OnShow>
+				</Scripts>
+			</ScrollFrame>
+			<Frame name="AtlasSearchContainer">
+				<Size>
+					<AbsDimension x="362" y="32" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="540" y="-555"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="AtlasNoSearch" inherits="GameFontDisableSmall" text="ATLAS_SEARCH_UNAVAIL">
+							<Anchors>
+								<Anchor point="CENTER" />
+							</Anchors>
+							<Color r="1" g="1" b="1" a="0.4"/>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="AtlasText_ZoneName">
+				<Size>
+					<AbsDimension x="351" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="546" y="-97"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_Text" inherits="GameFontHighlightLarge" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="351" y="20"/>
+							</Size>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnUpdate>
+						AtlasEntryTemplate_OnUpdate(self);
+					</OnUpdate>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+			<Frame name="AtlasText_Location">
+				<Size>
+					<AbsDimension x="351" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AtlasText_ZoneName" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_Text" inherits="GameFontNormal" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="351" y="15"/>
+							</Size>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnUpdate>
+						AtlasEntryTemplate_OnUpdate(self);
+					</OnUpdate>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+			<Frame name="AtlasText_LevelRange">
+				<Size>
+					<AbsDimension x="351" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AtlasText_ZoneName" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-35"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_Text" inherits="GameFontNormal" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="351" y="15"/>
+							</Size>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnUpdate>
+						AtlasEntryTemplate_OnUpdate(self);
+					</OnUpdate>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+			<Frame name="AtlasText_MinLevel">
+				<Size>
+					<AbsDimension x="351" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AtlasText_ZoneName" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-50"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_Text" inherits="GameFontNormal" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="351" y="15"/>
+							</Size>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnUpdate>
+						AtlasEntryTemplate_OnUpdate(self);
+					</OnUpdate>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+			<Frame name="AtlasText_PlayerLimit">
+				<Size>
+					<AbsDimension x="351" y="15" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AtlasText_ZoneName" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-65"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_Text" inherits="GameFontNormal" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="351" y="15"/>
+							</Size>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnUpdate>
+						AtlasEntryTemplate_OnUpdate(self);
+					</OnUpdate>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\AddOns\Atlas\Images\AtlasFrame-Top">
+					<Size>
+						<AbsDimension x="512" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\AddOns\Atlas\Images\AtlasFrame-Left">
+					<Size>
+						<AbsDimension x="32" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-128"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\AddOns\Atlas\Images\AtlasFrame-Bottom">
+					<Size>
+						<AbsDimension x="512" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-384"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\AddOns\Atlas\Images\AtlasFrame-Bottom2">
+					<Size>
+						<AbsDimension x="512" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="512" y="-512"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\AddOns\Atlas\Images\AtlasFrame-Right">
+					<Size>
+						<AbsDimension x="512" y="512"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="512" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString inherits="GameFontHighlight" text="ATLAS_TITLE">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="20" y="-17"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString inherits="GameFontNormalSmall" text="ATLAS_VERSION">
+					<Color r="0.4" g="0.4" b="0.4"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-52" y="-18"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="AtlasMap"/>
+          	</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				Atlas_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				Atlas_OnEvent();
+			</OnEvent>
+			<OnShow>
+				Atlas_OnShow();
+			</OnShow>
+			<OnHide>
+				AtlasFrame:StopMovingOrSizing();
+			</OnHide>
+			<OnDragStart>
+				if(arg1 == "LeftButton") then
+					Atlas_StartMoving();
+				end
+			</OnDragStart>
+			<OnDragStop>
+				AtlasFrame:StopMovingOrSizing();
+			</OnDragStop>
+			<OnMouseUp>
+				AtlasFrame:StopMovingOrSizing();
+				Atlas_OnClick();
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+</Ui>

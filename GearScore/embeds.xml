@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<!--@no-lib-strip@-->
+	<Script file="Libs\LibStub\LibStub.lua"/>
+	<Include file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+	<Include file="Libs\AceAddon-3.0\AceAddon-3.0.xml"/>
+	<Include file="Libs\AceLocale-3.0\AceLocale-3.0.xml"/>
+	<Include file="Libs\LibQTip-1.0\lib.xml"/>
+	<Include file="Libs\LibQTipClick-1.1\lib.xml"/>
+	<!--@end-no-lib-strip@-->
+	<Include file="Libs\LibCompress\lib.xml"/>
+	<Script file="Libs\LibDataBroker-1.1.lua"/>
+</Ui>

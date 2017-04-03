@@ -1,0 +1,240 @@
+## Interface: 30300
+## Title: QuestHelper
+## Author: zorbathut, smariot, vipersniper, nesher
+## Notes: Calculates an optimal route for you to follow while questing.
+## Notes-deDE: Berechnet eine optimale Route für dich, der du während dem Questen folgen kannst.
+## Notes-frFR: Calcule un itinéraire optimal pour vous de suivre.
+## Notes-esES: Calcula la mejor ruta a seguir para usted.
+## Notes-esMX: Calcula la mejor ruta a seguir para usted.
+## Notes-koKR: 노선에 대한 계산을 수행합니다.
+## Version: 1.4.1
+## OptionalDeps: Cartographer_Waypoints, TomTom, Cartographer_InstanceMaps, !Swatter, tekticles, UnicodeFont, ClearFont2
+## SavedVariables: QuestHelper_Pref QuestHelper_UID QuestHelper_SaveDate QuestHelper_Errors QuestHelper_Collector QuestHelper_Collector_Version
+## SavedVariablesPerCharacter: QuestHelper_KnownFlightRoutes QuestHelper_Home QuestHelper_CharVersion QuestHelper_Flight_Updates
+## X-Website: http://www.quest-helper.com/
+## X-Embeds: AstrolabeQH, ChatThrottleLib
+
+# Explanation of optional deps:
+# Cartographer_Waypoints and Tomtom are there so I can link with their arrows properly.
+# Cartographer_InstanceMaps: Cartographer is terrible. See cartographer_is_terrible.lua.
+# Swatter really likes intercepting all error messages and not letting them through. Since I want to intercept my own messages, I go after Swatter so I can insert my hook earlier on.
+# Tekticles is around because, if QH loads before it does, then QH doesn't use its custom fonts, and I think its custom fonts are pretty. There's probably a better solution to this, but it turns out I'm incredibly lazy, so, meh.
+# UnicodeFont: see Tekticles
+# ClearFont2: see Tekticles
+
+
+# That is a pile of saved variables. Let me try to explain them better.
+#
+# Old data gathering:
+# QuestHelper_SaveDate: Date of last shutdown.
+# QuestHelper_Collector_Version: Originally part of the new system, now just hanging around until I believe it vanishing won't cause problems.
+#
+# New data gathering:
+# QuestHelper_Collector: Most new data. In one huge horrible pile, but a *properly categorized* huge horrible pile
+#
+# Misc:
+# QuestHelper_Pref: User preferences
+# QuestHelper_UID: User unique ID
+# QuestHelper_Errors: List of errors seen
+#
+# Everything under "Old data gathering" will go away once the new data gathering is in place. (note: they have mostly gone away)
+#
+# Per-character stuff needs to be consolidated as well, which will happen in some future version. I need to see how it handles *removing* variables. And yeah we're adding more per-character stuff already argharblrghab
+
+# Exists just for load-profiling's sake
+bst_pre.lua
+
+# Loads before everything else so we can catch errors in everything else
+error.lua
+
+# Basic utilities used for miscellaneous things, also creates the QH frame
+utility.lua
+
+# Event manager module. Depends on nothing, calls no external functions.
+manager_event.lua
+
+bst_libaboutpanel.lua
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+
+bst_astrolabe.lua
+libs\AstrolabeQH\Load.xml
+
+bst_ctl.lua
+libs\ChatThrottleLib\ChatThrottleLib.xml
+
+bst_range.lua
+libs\LibRangeCheck-2.0\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\LibRangeCheck-2.0\LibRangeCheck-2.0.lua
+
+changes.lua
+
+lang.lua
+lang\cscz.lua
+lang\dadk.lua
+lang\dede.lua
+lang\elel.lua
+lang\enus.lua
+lang\eses.lua
+lang\esmx.lua
+lang\fifi.lua
+lang\frfr.lua
+lang\huhu.lua
+lang\itit.lua
+lang\kokr.lua
+lang\nlnl.lua
+lang\nono.lua
+lang\plpl.lua
+lang\ptbr.lua
+lang\ptpt.lua
+lang\roro.lua
+lang\ruru.lua
+lang\svse.lua
+lang\trtr.lua
+lang\zhcn.lua
+lang\zhtw.lua
+
+# This is kind of a lot of files.
+static.lua
+static_1.lua
+static_2.lua
+static_deDE.lua
+static_deDE_1.lua
+static_deDE_2.lua
+static_enUS.lua
+static_enUS_1.lua
+static_enUS_2.lua
+static_esES.lua
+static_esES_1.lua
+static_esES_2.lua
+static_esMX.lua
+static_esMX_1.lua
+static_esMX_2.lua
+static_frFR.lua
+static_frFR_1.lua
+static_frFR_2.lua
+static_koKR.lua
+static_koKR_1.lua
+static_koKR_2.lua
+static_ruRU.lua
+static_ruRU_1.lua
+static_ruRU_2.lua
+static_zhTW.lua
+static_zhTW_1.lua
+static_zhTW_2.lua
+
+# oh shut up
+collect_notifier.lua
+
+# Memory management, depends on nothing, calls nothing. I don't mention when things depend on this - it's not as extensively used as it used to be, but it's still under basic-utilities.
+recycle.lua
+
+# Patterns for parsing the GlobalString patterns. Depends on nothing, calls nothing. Honestly, it's better than collect_pattern, I should probably be using it there. I need util_ or something.
+pattern.lua
+
+# Database module. Depends on nothing, calls no external functions.
+db_get.lua
+
+# Timeslice module. Depends on nothing, calls no external functions besides a few basic system-API things.
+timeslice.lua
+
+# Achievement manager, depends on timeslice
+manager_achievement.lua
+
+# Completed-quests manager, depends on events or something
+# you know I need to come up with a good way to handle dependencies someday
+#
+# someday
+manager_completed.lua
+
+# Graph module. Depends on nothing, calls no external functions.
+graph_core.lua
+graph_flightpath.lua
+
+# Routing module. Depends on Timeslice and Filters, calls almost no external functions (handles its own get-player-position stuff via RetrieveRawLocation, but that's it.)
+routing_debug.lua
+routing_loc.lua
+routing_route.lua
+routing_core.lua
+routing_controller.lua
+# this segment uses the menu system as well
+routing_hidden.lua
+
+# Filters. Pays attention to QH_pref but not a lot more.
+filter_core.lua
+filter_base.lua
+
+# New tooltip system. Depends on nothing, calls nothing besides WoW UI.
+tooltip.lua
+
+# Directors
+# Quest module. Depends on Database, Routing, Patterns, Tooltip, and Event Manager, interfaces with WoW UI.
+director_quest.lua
+director_achievement.lua
+director_find.lua
+
+# Map and minimap dodads. Old code. Depends on nothing, interfaces with WoW UI.
+dodads.lua
+
+# Wacky arbitrary triangle render code
+dodads_triangles.lua
+
+# New coordinator system. Depends on pretty much everything.
+core.lua
+
+# beep beep
+radar.lua
+
+
+upgrade.lua
+main.lua
+
+objective.lua
+quest.lua
+teleport.lua
+pathfinding.lua
+routing.lua
+custom.lua
+menu.lua
+nag.lua
+comm.lua
+mapbutton.lua
+flightpath.lua
+tracker.lua
+objtips.lua
+textviewer.lua
+help.lua
+
+collect_achievement.lua
+collect_lzw.lua
+collect_traveled.lua
+collect_location.lua
+collect_zone.lua
+collect_merger.lua
+collect_monster.lua
+collect_item.lua
+collect_object.lua
+collect_loot.lua
+collect_patterns.lua
+collect_flight.lua
+collect_util.lua
+collect_quest.lua
+collect_equip.lua
+collect_spec.lua
+collect_bitstream.lua
+collect_upgrade.lua
+collect_merchant.lua
+collect_warp.lua
+collect.lua
+
+cartographer.lua
+cartographer_is_terrible.lua
+tomtom.lua
+arrow.lua
+
+config.lua
+
+bst_post.lua

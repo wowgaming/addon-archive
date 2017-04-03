@@ -1,0 +1,136 @@
+tag v4.0.0-beta9
+577e7bfd93662ae595b0dab44f9aa459bd105e38
+Shefki <shefki@shefki.org>
+2010-03-23 13:38:27 -0700
+
+Tagging as v4.0.0-beta9
+
+
+--------------------
+
+Shefki:
+	- Allow groups that were previously deleted during the current session to
+	be recreated without requiring a reload/logout before they'll work.
+	- Fix Ticket 643: Latency bar disappears if attempting to cast while
+	already casting.
+	
+	UNIT_SPELLCAST_FAILED_QUIET shouldn't be watched for the CastBarLatency
+	module.  It's only fired for situations that aren't interesting to the
+	CastBarLatency module.
+	- Tooltip option should disable and show as being set to Never if
+	click-through is set on the frame since click-through won't allow
+	us to detect the mouse is in the frame.
+	- Fix some slopy implementation in the Unit and Caster Aura filter types.
+	In particular known and unknown make no sense in the context of the Unit
+	filter type and known and unknown should take no unit parmeter.
+	- Always set the minimum width and height on the group header.  Prevents
+	the positioning of group frames from being wrong after resizing the
+	frames.
+	- Aura filter update to support 3.3.3.
+	- Revert "Make the Aggro module function when run in an unpackaged format."
+	This reverts commit 5a648e4b0fa5b9a8270a6fa107d0dc3186a99bed.
+	
+	This was drycoded based on a report from ckknight.  It's not necessary
+	and was causing errors.  Fixes ticket 708.
+	- Split the Highlight filters for dispellable debuffs and extra friend
+	debuffs.  The combination of these into one filter caused you to always
+	to color the highlight by debuff type or a custom color.
+	- Allow the Aura filters used for Highlights access to the consolidate and
+	spell id filter types for frames that aren't showing auras but do have
+	a highlight configured.
+	- Ticket 707: Show buffs and debuffs cast by your vehicle in the default
+	aura filters.
+	- Ticket 504: Allow the Strata to be configurable.
+	Adds Strata and Frame level options to the layout editor under General.
+	- SetHorizTile and SetVertTile calls replace the use of
+	SetTexCoordModifiesRect.
+	- Fix Ticket 686: Addons registering media with SharedMedia that are
+	loaded after PitBull4 and/or it's modules would not be used until the
+	next normal update was triggered.  This commit forces an update when
+	relevent media is registered to the relevent elements so that they will
+	use the proper media regardless of load order.
+	- New fix for Ticket 326 that's less hackish.  Does more work on startup
+	but has no presistent overhead.
+	- Revert "Fix ticket 326 et al: Border on player/pet frame doesn't show on login"
+	This reverts commit a4434cd2a8a77cb2bb8dbfb44563332e20583c28.
+	
+	Changing to handle this in a different way.
+	- Fix some improper behavior with CastBar backgrounds and add an option to
+	show the background when nothing is being cast to satisfy ticket 705.
+	- Fix Ticket #704: PTR error due to removed function.  Without extra stuff
+	this time.
+	- Revert "Fix Ticket #704: PTR error due to removed function."
+	This reverts commit a577e558bff77a801c6f988d5a959c44e9333e3d.
+	
+	Due to accidentally commiting a lot of other unrelated stuff.
+	- Fix Ticket #704: PTR error due to removed function.
+vangual:
+	- Also consider GCD in Latency.
+	- Added optional queue display to Latency module. Please test and let me know if the default values work for you aswell. (Based on data from EJ)
+Shefki:
+	- Fix error that occurs in some rare cases while loading.
+	- Hmm so I guess somehow a text can exist without the events table.
+	- Fix an error in LuaTexts default Health texts.  The wrong event was
+	used.  This fix includes code that walks the saved variables and fixes
+	the event problem, essentailly renaming UNIT_HEALTHMAX to the proper
+	UNIT_MAXHEALTH.
+Cameron Knight:
+	- Add per-unit font size multipliers, allowing you to (for instance), make your pet unit half the height and then decrease the font size appropriately so it all fits.
+	- Fix what appears to be a typo
+Shefki:
+	- Allow pet groups to optionally not leave gaps for missing pets.
+	- Remove some code duplicated by putting a deep_copy in Utils.
+	- Make GetState() return the current state accounting for forced_state.
+	- Code to support the state to be set manually.  No UI provided yet.
+	Though it can be don with something like:
+	PitBull4.StateHeader:SetAttribute("forced_state","raid25")
+	or
+	PitBull4.StateHeader:SetAttribute("forced_state",nil)
+	
+	First one would force PB4 to believe it's always in raid25 mode and the
+	later would put it back into the existing automatic behavior.
+	- Stop the Portrait from flashing on state changes since the background
+	wasn't being hidden.
+	- CombatText needs an OnHide method so the text won't flash during state
+	changes after being in config mode.
+	- Annother assertion to help me track down issue 475.
+	- Fix an assertion error caused by the power colors used in the Airship and Saurfang
+	encounters.  Blizzard's own numbers were out of bounds.
+	- Ticket 684: Aura filter based on combat.
+	Based on patch by enyim.
+	Note: Using this filter forces polling of auras.  It may not be
+	desireable for large numbers of frames.
+	- Ticket 682: Warlock self buffs filter update.
+	Based on patch from Niightblade.
+vangual:
+	- Ticket #611: Add VisualHeal option to clamp overheals.
+Shefki:
+	- Add support for some non-standard power types having their own color
+	configuration as used in Ulduar and Icecrown Citadel.
+	- Ticket #360: Tooltip Toggle.
+	- Ticket 671: Remove aura id doesn't work.
+	- Fix a typo in the description on the New id control in the Spell id
+	filter.
+	- Ticket 672: Aura filter controls missing order parameter, end up sorted
+	by the localized name.
+	- Ticket 666: Visual heal fails to anchor properly with defecit bars.
+	- Ticket 673: Profiles broken because ckknight fails to test his code.
+	In particular you can't LoadAddOn in the main chunk because that forces
+	OnInitialize to end up being called before the SVs are ready.  So use an
+	OptDeps, LoadAddOn in OnInitialize and put the LibStub in ADDON_LOADED
+	where it belongs.
+	- Ticket #667: Deleted groups show up again in subsequent config mode
+	entries until the next reload.  They should be disabled before being
+	hidden.
+	- Add Should consolidate and spell id filter types to the Aura filter
+	system.
+	- Use AnyUp for the Clicks we capture since it's what we really want
+	rather than listing all of the possible values.
+Cameron Knight:
+	- try to Load the addon LibBossIDs-1.0 if it isn't loaded already. Note: not going to add LibBossIDs-1.0 as a proper dependency or put it in PB4 embedded, as it's mostly just nice fluff and we don't want to bloat up PB4.
+	- Add support for LibBossIDs-1.0 for classification checks, so that non-worldbosses will show up as bosses based on their MobID.
+Shefki:
+	- Make the Aggro module function when run in an unpackaged format.
+	- Ticket 645: OH temporary weapon enchants bug out due to a typo.
+	- Ticket 644: Full Body Portraits not always proper zoom.
+	- Fix typo in the TOC that messes up the addon list title for role icon.

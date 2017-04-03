@@ -1,0 +1,307 @@
+==Revisions==
+===Last version===
+Last version: 5.3.1 at 10-07-2010<br>
+Any feature requests or bug reports, please don't hesistate to contact me at c.wel@planet.nl!
+
+===Changelog===
+====5.3.1====
+* Fixed a threat update error
+* Fixed an in-combat error
+====5.3====
+* Stable version, starting version 5.3!
+* Fixed WG buff catching
+* Updated Nature's Swiftness duration to 180, up from 120
+* Now getting HoT duration rather than calculating it so it's more accurate!
+* Updated Shapeshift event listening
+* Removed some redundant options!
+* Changed highlighting colours to be more different
+* Minor code efficiency updates
+* Added option to hide tooltips
+====5.2.11====
+* Hope to have finally fixed RRJ duration
+* Removed a debug alert *blush*
+* Optimized some processing code
+* Fixed highlighting option textarea widths
+* Fixed a bug where another Druid's HoTs falling off were thought to be yours instead
+====5.2.10====
+* Fixed TOC version number, forgot to patch it with 5.2.9
+* Added cooldown on Nourish button to display Rebirth cooldown
+* Added cooldown on Healing Touch button to display Nature's Swiftness cooldown
+* Now using three lists for custom highlighting, which will do the same thing except highlight with different colors
+* Shift-clicking a frame will not attempt to Rez if that player is still alive
+* Fixed a crash when loading Rewatch with WG bar hidden
+* Added 4T10 Reju proc support
+* Changed the way HoTs are registered so it's now more reliable
+====5.2.9====
+* Changed the RRJ glyph support into calculation the new duration, rather than querying for it
+====5.2.8====
+* Changed the UnitMana calls to UnitPower
+* Added Apply button to Dimentions options page
+* Updated for patch 3.3
+* Added RRJ glyph support
+* Removed the old T5 set bonus support
+====5.2.7====
+* Added Abolish Poison cooldown pie to indicate buff duration
+* Abolish Poison button now lights up (no longer transparent) for the duration of it's buff
+* Can't wait on Blizz forever; included a workaround for the Wild Growth bug
+* You can now hide the bottom row of buttons on player frames in the options menu
+* Added combat checks on sorting and clearing
+* Now highlights with different colours for poison, curse, mark and custom highlights
+* Updated for 3.2!
+====5.2.6====
+* Custom highlighting on buffs/debuffs!
+* Fixed the rezzing-bit on French, German and Korean clients
+* Updated the Korean language file (Thank you again, Hee Seon!)
+====5.2.5====
+* Spanish localization support!
+* Proper pet support, at last! Right-click a player and choose "Add pet" to add this player's pet to your frame.
+* Fixed a few report bugs where "autogroup" was called "hide solo"
+* Changed the "/rew hide [0/1]" command to "/rew hide" and "/rew show"
+* Now reporting to raid (or party when not in raid) who you're rezzing when using the Rewatch rez
+* Added a button to reset the frame's position, in case you lost it
+* You can now mark individual players by their right-click menu if you wish
+* The mark-color can be altered in the options screen; it's the left color picker of the two behind "Frame color"
+====5.2.4====
+* Fixed for patch 3.1!
+* Fixed a /rewatch hidesolo bug.
+* Now shows in the middle of your screen by default, instead of top-left.
+* Fixed some translation issues
+* Updated Korean localization (again thanks to Hee-seon!)
+* Now turning playerframe red (as with curses or poisons) on Kel'Thuzad's Frost Blast
+====5.2.3====
+* I promise I'll never change anything a minute before releasing.
+* I promise I'll never change anything a minute before releasing.
+* I promise I'll never change anything a minute before releasing.
+* I promise I'll never change anything a minute before releasing.
+* I promise I'll never change anything a minute before releasing.
+====5.2.2====
+* Dragging a playerframe on top of another and letting it snap will move the underlying playerframe to free spot
+* Right-clicking the Rewatch frame will toggle the lock on moving frames now.
+* Added a feature where you can self-define the number of rows; /rewatch forcedHeight [rows]. Set it to 0 (default) to allow autosizing.
+* In forcedHeight, the "Numer of frames wide" feature is ignored and dynamically adjusts to the number of frames you put in one row.
+* Split the "Lock" feature into two parts; lock Rewatch frame and lock playerframes.
+* Changed command-line input to suit above change: /rewatch (un)lock(p). The "p" there stands for playerframes, so using /rewatch lockp will lock all playerframes.
+* Added a playerframe rightclick menu item to lock all playerframes
+* You can now change the Out-Of-Range frame transparency in the options menu
+* Added the option to change default health bar color
+* Now featuring an option to cut a name down to a specified amount of characters. Set this feature to 0 (default) to show the full name like normal.
+* Playerframes can be dragged by using their HP bar now, too
+* Added a /rewatch maxPlayers [number] feature, allowing you to set the maximum amount of frames Rewatch will contain. Set to 0 (or 939598, obviously) to ignore.
+* Changed some transperancies from .8 to 1
+* Fixed Nourish in Korean localization
+====5.2.1====
+* Now the snap-to-grid REALLY works, lol
+* Changed own tooltip to normal game tooltip
+* Fully localized Korean support (many many thanks to Hee-seon!)
+====5.2====
+* Added health deficit to a player's name!
+* Some customizable health deficit settings; show at all, after which threshold, with or without newline.
+* Now allowing modifier-clicks (shift+click, alt+click, ctrl+click) and rightclicks for special casts:
+*# Use a modifier when clicking, or rightclick, on Regrowth bar will cast Nature's Swiftness prior to it
+*# Use a modifier when clicking, or rightclick, on Nourish or Healing Touch button will also cast Nature's Swiftness prior to it
+*# Using a modifier when clicking on a player's HP bar will try to resurrect the player (Rebirth in combat, else Revive, when dead)
+* Optimized CPU time for Curse and Poison checks
+* Optimized CPU time by stripping some more stuff out of the OnUpdate function
+* Fixed the "Default" option menu button so it resets each and every setting of Rewatch now
+* Allowed the number of frames each line to be changed through the options menu
+* Fixed the bug where, on >5 playerframes each line, newly added frames would gather up at the left bottom slot
+* Added - but ripped out again - incoming heals detection; it was unreliable, chaotic and CPU cutting.
+* Made the castbar border slightly slimmer
+* Patched the XML of the player frames a bit to try and prevent minor overlapping castbars
+* Made the code that positions castbars and buttons a lot cleaner
+* Fixed minor bugs with castbar- and buttonmargins
+* Added a slight touch of the HoT color to the background of the castbar (thanks BlueIZ)
+* Changed default dimention settings slightly
+* Renamed Dimentions options tab to Advanced
+* Fixed some faulty path references
+* Fixed a snap-to-grid method bug
+====5.1====
+* Not a real AddOn change, but I changed my toon's name from Dezynee to Daîsey
+* Changed the class-initial with classcoloring to a configurable sidebar in classcoloring (instead of the default 7 pixel margin)
+* Border of the main frame is now invisible except on mouseover
+* Border of the main frame is also visible now when you drag a playerframe, so you can see where you can drag
+* Shows HP/MaxHP on mouseover player's health bar
+* Fixed dispel handling
+* Now correctly shows the name on dead player's health bars
+* Wild Growth timer is now properly reset upon death
+* Sorting the frames using the option window button or /rewatch sort is now done by (raid-)group
+* Frame background no longer changes along when you change bar colors
+* Reset buttons of bar colors now reset to the new colors instead of the old ones
+* Removed most select() function calls, as they are said to be inefficient
+====5.0.2====
+* Fixed the LUA error on using Swiftmend without the glyph
+====5.0.1====
+* Uhm, the "Moooo" message was for debugging purposes, removed it now *blush*
+* Added an extra setting; healthbar height!
+* Split the dimention settings and the other settings over two options screens now
+* Lifebloom now has a text of the time left on it as well, replacing it's previous text stating the number of stacks
+* Number of stacks you have of Lifebloom is now indicated by color, each stack has it's own customizable color!
+* You can now choose if you want to have text countdown labels, or spell name labels
+* Spell bar margin now properly adjusts to your option screen settings
+====5.0====
+* Wild Growth and Regrowth bars have been swapped places, so Regrowth is the 3rd and Wild Growth is the 4th
+* Wild Growth bar is now optional, you can uncheck the checkbox in the options menu if you don't have it
+* Texts on castbars have been removed! Once you get to know the addOn, these can be highly annoying. The order, top to bottom: Lifebloom, Reju, Regrowth, Wild Growth.
+* Cast bars are now half the height, harder to click but the 25-man usability of Rewatch has greatly increased.
+* To ease above issue, use the following macro's and you can mouseover a player frame and hit the shortcut key to heal (personally, I got this macro for both LB, Reju, Regrowth, Wild Growth and Swiftmend):
+**/cast [target=mouseover, exists, help] Lifebloom; Lifebloom
+* Lifebloom bar scales with the number of stacks. So like, the first LB takes up 1/3 of the width when applied.
+* To allow a quick view on the stacks of Lifebloom, there's a 1, 12 or 123 label on channeling Lifebloom bars.
+* Now checks the new snap-to position on drag&dropped playerframes instead of the actual new position, so it snaps and detaches more instinctively
+* Altered some dimentions again, smaller this time
+* Color an entire unit frame when there's something wrong with the player (low hp, curse, poison)
+* Now returns to the original frame background upon death
+* Gave Runic Power a fancy different color instead of the yellow it used to be
+* The welcome message is turned into a raid warning, only shows the first time you log in using Rewatch, don't worry ;)
+* Rejuvenation (rank 15) lasts longer than other ranks and I didn't notice! Fixed it now!
+* No longer allows you to set alpha colors on cast bars, they're always 80% now
+* You can set the color for all four HoT bars now! Pink Lifebloom bar? Color them your way!
+* Finally, the support of editing dimentions is here! You can edit size and margins in the options menu.
+* Right-clicking now pops a menu instead of directly removing the player. You can choose to remove the player from the list in the menu.
+* You can't remove the last player from the list anymore now.
+* Added a text of the time left on each running bar (except Lifebloom)
+* Doesn't disable the autogroup feature anymore when you remove a pet from the Rewatch frame
+* Doesn't disable the autogroup feature anymore when you remove a dead or a non-existant player from the Rewatch frame
+* Now also only disables autogroup feature if the removed player wasn't disconnected
+* Now automatically does a /rewatch sort if you confirm ('Okay') the options menu
+* Added a lock method (/rew lock and /rew unlock, or through /rew options) to disable you from moving the Rewatch frame or any playerframe.
+* Added lock/unlock to the commandline help list.
+* Pets UnitGUIDs are ignored. This means they don't pop on twice when they have been "refreshed" (mount+dismount, died+revived, etc).
+* I'm sorry, there'll not be an option to auto-add pets as I promised earlier - it's too much work for the few times people will actually use it. Just add pets (out of combat) by tossing them a heal or adding them manually using /rew add petname.
+* Now correctly works with the addOn "Cooldowns" (http://wow.curse.com/downloads/wow-addons/details/cooldowns.aspx)
+* Textfiles are now in Curse Wiki format
+* Added the Macros.txt with a list of usefull macro's to use in combination with Rewatch
+* Also added this textfile to Curseforge, along with the complete changelog, which is also included as textfile
+* Macro's were bugged upon targetting an NPC, fixed em
+* On slower PCs, WoW UI would load up without WoW being ready to process methods already. UnitGUID() on yourself resulted in nil, popping up two playerframes of yourself later on. Fixed that!
+* Optimized the LB stack double-check, saving a little bit of CPU and memory.
+* Now processes a death once, like it should, and then doesn't pay attention to that player anymore until it rezzes, thus saving a little bit of CPU.
+* Correctly removes HoT trackings on dispells
+* Improved the way fading HoTs are handled into a stable procedure
+* Added classindication with classcoloring left of the player names! See below on how to edit (experienced users).
+* Moved the font string to the WTF/Account/*accountname*/SavedVariables/Rewatch.lua file. If you want to change the font used, you can change it manually there.
+====4.1.5====
+* Fixed the bug where some curses wouldn't show up
+* Not only that, I also greatly improved the efficiency of checking for poisons/curses
+* Fixed the bug where sometimes Swiftmend buttons won't show the proper cooldown overlay
+* Sometimes player frames refused to be removed but acted as though they were.. Yes I know, weird aye. Fixed it now!
+* Fixed a little bug where sometimes playerframes wouldn't snap off the main frame when they were dragged out
+* Nourish and Healing Touch buttons now show a small mouse-over animation like the other buttons
+* Performed multiple checks on efficiency, seemed fine
+* Little insignificant changes, who cares lol
+* The width of the castbars wouldn't fit the 'real' length when there was extra time involved, so with the talent Nature's Splendor (and the corresponding checkbox ticked) you'd see a full Lifebloom castbar the first 2 seconds of it. It now nicely takes that into account. It will however NOT update castbars from playerframes that are currently visible when you first tick that checkbox! Resort the list and they'll be fine too (/rewatch sort).
+* Now clears poison and curse buttons on death
+* Also clears threat status on death
+====4.1.4====
+* Added Nourish button
+* Updated the FAQ.txt
+* Added the SavedVariables.txt
+* Moved the .txts to a subdir
+* Healthbars now turn orange at 50% and red at 25%
+====4.1.3====
+* Korean localization support
+* Fixed a bug where with the Nature's Splendor checkbox ticked, casting Wild Growth would give an error
+====4.1.2====
+* Increased the 'spare' height of the main frame by 5
+* Decreased the button's width by 1, to ease moving the player frame
+* Automatically setting Auto-adjust to group to false (0) when you remove a grouped player from the list
+* Externalized the frame dimentions: World of Warcraft\WTF\Account\ACCOUNTNAME\SavedVariables\Rewatch.lua now contains the dimentions, you can alter them and it'll work, too
+* No longer moving unbind player frames outside the main frame when moving the latter
+* When dragging the player frames out the main frame, they unbind from it, and they will rebind to it when you drag it (the left corner, to be precise) back on it.
+* Made the frame flash once it's toggled from hidden (Care? But it's pretty!)
+* While normally if you heal anyone in your party who is not on your list, he will be added automatically when OOC, this does not occur on Wild Growth heals, because that became annoying
+* Player frames of dead people now also appear "out of reach"-faded
+* Options window shows a little bit of explanation now
+* French/German versions now properly see Lifebloom in their language on the castbar
+* Optimized several structures to minimize the amount of actions taken each update
+* Now also clears mana-/energy-/ragebar on frames of dead people
+* Changed the bar colors to something more contrasting to the background
+* Fixed the aggro indicators, it's become a lot easier with 3.0 *cheers*
+* Added /rewatch version support
+* Changed the welcome message a bit, to tell you how to enter the options window
+* Added colorpickers for the frame background and bar color!
+* Fixed BG issue; now internally working with GUID instead of name
+====4.1.1====
+* Fixed a refresh of Wild Growth bars on party-/raidmembers if you re-cast it while it's still on
+* Added a frame background alpha slide bar to the options menu
+* Added support for extended HoT durations due to Glyph of Lifebloom or T5 (2) set bonus
+* Added support for the Glyph of Swiftmend to the options menu
+====4.1====
+* Added Wild Growth bar
+* Updated to match 3.0.2 changes
+* Added a Nature's Splendor indicator checkbox
+* Added a Healing Touch button
+* Changed castbar's width/height proportions
+* Fixed a few unnatural command-line command replies
+====4.0====
+* Major UI update to optimize for raid healing;
+** All player frames are now separately moveable
+** No horizontal bars, but vertical blocks of player HoT-bars
+** Removed the ability buttons; this isn't a toolbar AddOn
+* Tooltip on player data as well
+* Tooltip no longer crash on a non-resto druid or too-low-level druid
+* Added rangecheck to players
+* Druid buff check (/rewatch check)
+* Changeable global cooldown overlay alpha (/rewatch gcdAlpha [0 through 1])
+* Toggleable auto-hide on solo feature (/rewatch hideSolo [0 or 1])
+* Toggleable modify-to-group feature (/rewatch autoGroup [0 or 1])
+* Added extra check to determine if lifebloom counter was valid, sometimes when you refresh it at the exact expiration time it got confused
+* Now colours playernames of players in your list red when they are targetted by an enemy. This only works if someone in your list has this enemy targetted himself though
+* Now takes lag into account
+* Fixed an unlocalized cooldown trigger call of Swiftmend
+* Changed several for-loops with ipairs() into iterative for-loops, ipairs() seems to have troubles with nil values
+* Added a generalized UI configuration tab in the Interface menu to allow setting the above mentioned settings (autogroup, gcdalpha...). You can do most of the things you could do through /rewatch <command> through this UI now; Esc > Interface > AddOns > Rewatch
+* Added a "/rewatch options" command to open the WoW Interface pane.
+* Adjusted the height/width/margins to a bit smaller values
+====3.0====
+* HoT bars now turn red when about to expire.
+* Fixed the bug which held the bars stuck sometimes when in combat. It occurred when the group changed while in combat, but should now be fixed.
+* Uhm, little issue regarding my last version upload: meant to put version 1.2, but named the file version 2.0... I'll continue from this error onwards, meaning this version will be 3.0, instead of the intended 1.3. Oh well!
+* Lifebloom tracking! At last!
+* External localization in German and French
+* Fixed the taints; in combat attempts for remodelling the frame are now blocked in the AddOn itself, rather than by WoW's UI
+* The list of players is automatically filled with the members of the user's party/raid
+====2.0====
+* Added background to the mana-/energy-/ragebar
+* Pets/minions are now also considered to be grouped when their 'master' is
+* Mana-/energy-/ragebar added to listed players
+* Added global cooldown overlay
+* Added a console menu
+* Localised feedback, but inline because nobody's gonna want my AddOn in French/German/Magadascarian anyways
+* Tooltips added to abilities
+* Found a way to get the Swiftmend icon (GetSpellInfo()), fixed at last!
+* Changed the big Close button into a smaller X button to the bottomright corner
+* The checkbox to drag the frame has been removed; you can just drag the frame to move it now
+* Fixed a few scaling bugs
+* Edited the Rewatch.txt file a bit, the extra newlines were removed so one can actually read this
+====1.1====
+* Fixed a quick (but wrong) last-minute change, thanks Nihlo
+* Poisoned players in your list will have their Abolish Poison button icon changed to notify the user
+====1.0====
+* Catch errors for using the addon in non-resto spec or pre-70 characters
+* Fixed hiding/showing player order bug
+* New feature: Left-click player's healthbar to select player, right-click to remove it
+* Generalised some layout data to allow for modification by user in future revision
+* Check for cooldowns on startup and adjust button cooldown layers to it
+* Added close button
+* Added Abolish Poison button
+* Now resets HoT bars upon player death
+* Fixed Nature's Swiftness cooldown; now launches cooldown timer after it's been used
+* Added cooldown overlays to buttons
+* Add the user to the list by default
+* Added extra buttons for common spells
+* Added Swiftmend button
+* Initial built
+
+==Upcoming features==
+* Instead of fading players, add/remove them for better BG usage
+* Checkbox for the arena set bonus
+* DK's making new pets should automatically override the DK's previous pet frame
+* Scaling tools for >25 player frames
+
+==Known bugs==
+* Several translations into DE, ES and FR are not implemented yet
+* Colorpicker appears behind the options frame? No idea why...
+
+==Full changelog==
+You can see the full changelog at http://wow.curseforge.com/projects/rewatch/pages/changelog/.

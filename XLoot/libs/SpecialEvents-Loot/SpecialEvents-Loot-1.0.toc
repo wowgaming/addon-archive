@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## LoadOnDemand: 1
+## X-Curse-Packaged-Version: r218
+## X-Curse-Project-Name: SpecialEventsEmbed
+## X-Curse-Project-ID: specialeventsembed
+## X-Curse-Repository-ID: wow/specialeventsembed/mainline
+
+## Author: Xuerian
+## Title: Lib: Special Events [|cffeda55fLoot|r]
+## Notes: Special events for players looting items.
+## X-Category: Library
+
+## X-AceLibrary-SpecialEvents-Loot-1.0: true
+
+## OptionalDeps: Ace2, Deformat
+
+SpecialEvents-Loot-1.0.lua
+

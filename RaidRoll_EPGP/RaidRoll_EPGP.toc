@@ -1,0 +1,12 @@
+## Interface: 40000
+## X-Compatible-With: 40000
+## Title: Raid Roll - EPGP
+## Author: Musou
+## Notes: Used to track EPGP
+## email: killerpet@gmail.com
+## Dependencies: RaidRoll
+
+
+RaidRoll_EPGP.lua
+
+

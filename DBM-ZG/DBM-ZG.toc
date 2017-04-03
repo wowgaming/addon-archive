@@ -1,0 +1,36 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Zul'Gurub|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Zul'Gurub|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Зул'Гуруб|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariablesPerCharacter: DBMZG_SavedVars, DBMZG_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: Classic
+## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Name: Zul'Gurub
+## X-DBM-Mod-Name-esES: Zul'Gurub
+## X-DBM-Mod-Name-ruRU: Зул'Гуруб
+## X-DBM-Mod-Sort: 3
+## X-DBM-Mod-LoadZone: Nitram,Zul'Gurub
+## X-DBM-Mod-LoadZone-esES: Nitram,Zul'Gurub
+## X-DBM-Mod-LoadZone-ruRU: Nitram,Зул'Гуруб
+## X-DBM-Mod-LoadZone-frFR: Nitram,Zul'Gurub
+## X-DBM-Mod-LoadZone-esMX: Nitram,Zul'Gurub
+## X-DBM-Mod-LoadZone-zhTW: 祖爾格拉布
+## X-DBM-Mod-LoadZone-zhCN: 祖尔格拉布
+## X-DBM-Mod-LoadZone-koKR: 줄구룹
+## X-DBM-Mod-LoadZone-deDE: Nitram,Zul'Gurub
+localization.en.lua
+localization.es.lua
+localization.ru.lua
+Venoxis.lua
+Jeklik.lua
+Marli.lua
+Thekal.lua
+Arlokk.lua
+Hakkar.lua
+Bloodlord.lua
+EdgeOfMadness.lua
+Gahzranka.lua
+Jindo.lua

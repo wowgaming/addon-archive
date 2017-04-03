@@ -1,0 +1,46 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<!--@debug@
+<Include file="Modules\Aggro\load.xml"/>
+<Include file="Modules\Aura\load.xml"/>
+<Include file="Modules\Background\load.xml"/>
+<Include file="Modules\BlankSpace\load.xml"/>
+<Include file="Modules\Border\load.xml"/>
+<Include file="Modules\CastBar\load.xml"/>
+<Include file="Modules\CastBarLatency\load.xml"/>
+<Include file="Modules\CombatFader\load.xml"/>
+<Include file="Modules\CombatIcon\load.xml"/>
+<Include file="Modules\CombatText\load.xml"/>
+<Include file="Modules\ComboPoints\load.xml"/>
+<Include file="Modules\DogTagTexts\load.xml"/>
+<Include file="Modules\DruidManaBar\load.xml"/>
+<Include file="Modules\ExperienceBar\load.xml"/>
+<Include file="Modules\HappinessIcon\load.xml"/>
+<Include file="Modules\HealthBar\load.xml"/>
+<Include file="Modules\HideBlizzard\load.xml"/>
+<Include file="Modules\Highlight\load.xml"/>
+<Include file="Modules\HostilityFader\load.xml"/>
+<Include file="Modules\LeaderIcon\load.xml"/>
+<Include file="Modules\LuaTexts\load.xml"/>
+<Include file="Modules\ManaSpark\load.xml"/>
+<Include file="Modules\MasterLooterIcon\load.xml"/>
+<Include file="Modules\Portrait\load.xml"/>
+<Include file="Modules\PowerBar\load.xml"/>
+<Include file="Modules\PvPIcon\load.xml"/>
+<Include file="Modules\RaidTargetIcon\load.xml"/>
+<Include file="Modules\RangeFader\load.xml"/>
+<Include file="Modules\ReadyCheckIcon\load.xml"/>
+<Include file="Modules\ReputationBar\load.xml"/>
+<Include file="Modules\RestIcon\load.xml"/>
+<Include file="Modules\RoleIcon\load.xml"/>
+<Include file="Modules\Runes\load.xml"/>
+<Include file="Modules\Sounds\load.xml"/>
+<Include file="Modules\ThreatBar\load.xml"/>
+<Include file="Modules\Totems\load.xml"/>
+<Include file="Modules\VisualHeal\load.xml"/>
+<Include file="Modules\VisualHeal4\load.xml"/>
+<Include file="Modules\VoiceIcon\load.xml"/>
+@end-debug@-->
+
+</Ui>

@@ -1,0 +1,15 @@
+tag v3.0.9
+5edeb6f6aca65184c2b056ba77d421a91196b988
+Xinhuan <xinhuan@pacific.net.sg>
+2009-12-24 05:27:17 +0800
+
+Tag release v3.0.9
+
+
+--------------------
+
+Xinhuan:
+	- Update TOC and version.
+	- Add an option to make Omen click-through (non-interactive), defaults off.
+	- Optimized the bar animation code significantly.
+	- Fix bar backgrounds not being set to the inverted color on login if the "Invert Bar/Text Colors" setting is on. This wasn't noticable if the bar label color was the default white text with 100% alpha.

@@ -1,0 +1,88 @@
+X-Perl UnitFrames by Zek
+
+Frequently Asked Questions
+--------------------------
+
+Q. I get hiccups when people join/leave/zone in raid.
+A. Freezing when people join/leave/zone in raid. This is caused by overlapping complex frames (such as the raid frames). The border previously extended about 2 pixels past the visible, and this overlapping area can cause some slowdown in the UI rendering engine. It's nothing to do with any mod's code, but rather where the frames appear. Perhaps they will optimize this code in time.
+
+Q. I get hit out of combat, but then my target frame won't appear.
+A. Some addons can cause taints in WoW which will stop the target frames from functioning properly in combat. Most notably, action bar mods not updated since the patch.
+
+Q. I get an Action Blocked error saying X-Perl is at fault.
+A. Action Blocked errors in Blizzard Raid Frames - The functions to set maintank and mainassist flags are now protected, and ANY mod that uses ANY Blizzard menu will taint this. You just get the warning blaming whichever mod made the taint first. Taint is made by using the menu system. Needs a Blizzard fix.
+
+Q. How does X-Perl know there's a newer version available?
+A. When you log in, your version number is sent out on the WoW raid/guild addons channel (the same way CTRA, Omen and all other addons communicate). If anyone else is using X-Perl, they reply with their version number. If theirs is higher, X-Perl tells you. It's nothing more than an automated version check that other mods have. Simple.
+
+Q. How can I turn off the -AGGRO- warning!
+A. Helper options, bottom right corner.
+
+Q. Aggro warning won't work when I'm solo.
+A. It is assumed that if you are in combat and have a mob smacking you, you probably have aggro.
+
+Q. How can I move the frames?
+A. Open the options, all frames are movable when the options are open.
+
+Q. Can I move the party frames seperately from each other.
+A. For the moment, no. You can change the spacing and the grow direction though.
+
+Q. How can I open the options?
+A. By default, there's a Minimap icon to access options. If you turned this off, you can open options via the /xperl command.
+
+Q. Why do I still see my player and/or target frames with X-Perl?
+A. Some other mods have this habit of constantly re-displaying the default Blizzard frames. And while every effort has been made to make this as hard as possible, some mods are super stubborn. Check your other mods display options. Specific culprits are some of the HUDs (DHUD and such).
+
+Q. Why do I get duplicate party member buffs?
+A. CT_PartyBuffs displays these. You don't need this mod as the buff display functionality is already included with X-Perl.
+
+Q. Where are my combo points?
+A. X-Perl has 3 combo point display options. The Combo Bar Meter shows a proress bar in the target's name frame. The Blizzard style displays the old style Blizzard combos around the target portrait. If neither of these options are used, then a combo numeric will be displayed next to the target level.
+
+Q. How can I move the frames?
+A. All X-Perl frames are unlocked when you have the options window open. Click the minimap icon or type /perl. You may also use the /perl unlock and /perl lock options.
+
+Q. What are the extra numbers below my Player level and Target level?
+A. They are the people targetting you, and people assisting on your target. Click either of them to toggle the permenant detailed display.
+
+Q. I closed the Assists frame. How do I get it back?
+A. Either open the options and enable it under the Helper tab. Or click the small numbered frame under player and target levels.
+
+Q. What's with the red and blue glowing screen edges?
+A. That's the Full Screen Warnings. You can turn it off in player options.
+
+Q. X-Perl does a lot, does it take a lot of memory?
+A. Not really. Take a look at the Memmory usage comparison chart at the end of this document.
+
+Q. 3D portraits don't always show. Why not?
+A. Due to limitations of the WoW API and graphics engine, 3D model information is not given to your client until the object you are looking at is visible in the main world view. Even if someone is close, they may be out of view and you can be shown a purely white model. As soon as they come into view, this will be updated correctly. There are no indications from the WoW API whether a model is rendered correctly, so we have to make do for now.
+
+Q. Won't 3D portraits reduce my framerate?
+A. A little, depending on your system. They're merely eye candy and 100% optional. Use at your own discretion.
+
+Q. I want my frames transparent, but not the conents. How?
+A. In the options. Bottom left hand corner, there's the Border and Background colours. Each of these has a transparency option. (Not the Frame Transparency option below those, which will adjust the transparency of everything).
+
+Q. I can't find the controls to scale my (insert frame name) frame.
+A. With the options window open, mouse over the frame you want to scale and the scaling controls for those frames will appear.
+
+Q. What are the hand icons above my target and party member names?
+A. If you see the hand, you are further away than 30 yards from that unit.
+
+Q. Can you make that 40 yards instead please?
+A. No. Another limitation of the WoW API. We can only check if you're within 4 predefined ranges. 30 yards is the largest of these 4.
+
+Q. Can I see raid member's pets?
+A. Yes. From the Blizzard Raid UI, drag out either a group or a class while holding down the Control key. This will create the usual pullout raid view, but with their pets instead where the players are pet classes.
+
+Q. X-Perl does a lot of background work (MT Targets, Assists Frame, Fading Frames, Combat Flashes) and such. Does these slow down my system?
+A. Not really. A lot of work has been put into improving on the original Nymbia code, which is many times more efficient in performance and memory usage. The processes that X-Perl does do not even come close to losing what was gained from optimizations.
+
+Q. Why does my Player frame lose it's position when I login?
+A. WoW won't save window locations if they're at 0,0 (the very top left corner of screen), so then it takes the default position from the xml file. Best thing you can do is put it at 0,1 or 1,0.
+
+Q. There's this big -AGGRO- warning on my screen, how do I get rid of it?
+A. Options, Helper, Target Counters section.
+
+Q. How can I delete old configs from my saved variables?
+A. You can delete un-used config data from the saved variables by issueing the command: /xperl delete config REALMNAME PLAYERNAME

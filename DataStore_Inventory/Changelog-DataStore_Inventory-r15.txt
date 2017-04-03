@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r15 | Thaoky | 2010-07-06 17:12:46 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Inventory.toc
+
+TOC update to retrieve updated libs.
+------------------------------------------------------------------------
+r14 | thaoky | 2010-03-28 09:50:19 +0000 (Sun, 28 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Locales/enUS.lua
+   M /trunk/Locales/repoenUS.lua
+
+Missing localizations in previous commit.
+------------------------------------------------------------------------

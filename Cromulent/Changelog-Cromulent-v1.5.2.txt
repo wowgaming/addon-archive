@@ -1,0 +1,11 @@
+tag v1.5.2
+1200a9ab14b07284a06a2eb50a08ed84657b7074
+phyber <phyber@wowace>
+2010-03-27 20:50:42 +0000
+
+Tagging as v1.5.2
+
+
+--------------------
+
+No changelog

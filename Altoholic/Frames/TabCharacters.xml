@@ -1,0 +1,314 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="TabCharacters.lua"></Script>
+
+ 	<Button name="AltoViewIconTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="30" y="30"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture name="$parentIconTexture"/>
+				<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT" hidden="true">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-5" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentShine" inherits="AutoCastShineTemplate">
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="28" y="28"/>
+				</Size>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnEnter>
+				if self.text then
+					AltoTooltip:ClearLines();
+					AltoTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					AltoTooltip:AddLine(self.text,1,1,1);
+					AltoTooltip:Show();
+				end
+			</OnEnter>
+			<OnLeave>
+				AltoTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				Altoholic.Tabs.Characters:MenuItem_OnClick(self, button)
+			</OnClick>
+		</Scripts>
+		<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+		<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+	</Button>
+
+	<Frame name="AltoholicTabCharacters" parent="AltoholicFrame" hidden="true">
+		<Size>
+			<AbsDimension x="758" y="447"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset x="0" y="0" />
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentText1" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="100" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="35" y="-105"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentText2" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="100" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="35" y="-155"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentStatus" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="320" y="24" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset x="-250" y="13" />
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="255" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parent_SelectRealm" inherits="UIDropDownMenuTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentText1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-25" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						UIDropDownMenu_SetWidth(self, 120) 
+						UIDropDownMenu_SetButtonWidth(self, 20)
+						
+						local realm = GetRealmName()
+						UIDropDownMenu_SetSelectedValue(self, "Default|".. realm)
+						UIDropDownMenu_SetText(self, realm)
+						UIDropDownMenu_Initialize(self, Altoholic.Tabs.Characters.DropDownRealm_Initialize)
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<Frame name="$parent_SelectChar" inherits="UIDropDownMenuTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentText2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-25" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						UIDropDownMenu_SetWidth(self, 120) 
+						UIDropDownMenu_SetButtonWidth(self, 20)
+
+						local realm = GetRealmName()
+						local player = UnitName("player")
+						UIDropDownMenu_SetSelectedValue(self, format("%s.%s.%s", "Default", realm, player))
+						UIDropDownMenu_SetText(self, player)
+						UIDropDownMenu_Initialize(self, Altoholic.Tabs.Characters.DropDownChar_Initialize)
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			
+			<Button name="$parent_Bags" inherits="AltoViewIconTemplate" id="1">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabCharacters" relativePoint="BOTTOMLEFT" >
+						<Offset x="30" y="180" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Equipment" inherits="AltoViewIconTemplate" id="10">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Bags" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Quests" inherits="AltoViewIconTemplate" id="4">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Equipment" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Talents" inherits="AltoViewIconTemplate" id="2">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Quests" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			
+			<Button name="$parent_Auctions" inherits="AltoViewIconTemplate" id="5">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabCharacters" relativePoint="BOTTOMLEFT" >
+						<Offset x="30" y="140" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Bids" inherits="AltoViewIconTemplate" id="6">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Auctions" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Mails" inherits="AltoViewIconTemplate" id="3">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Bids" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			
+			<Button name="$parent_Pets" inherits="AltoViewIconTemplate" id="7">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabCharacters" relativePoint="BOTTOMLEFT" >
+						<Offset x="30" y="100" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Mounts" inherits="AltoViewIconTemplate" id="8">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Pets" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Factions" inherits="AltoViewIconTemplate" id="9">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Mounts" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Tokens" inherits="AltoViewIconTemplate" id="11">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Factions" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+
+			<Button name="$parent_Cooking" inherits="AltoViewIconTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabCharacters" relativePoint="BOTTOMLEFT" >
+						<Offset x="30" y="60" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_FirstAid" inherits="AltoViewIconTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Cooking" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Prof1" inherits="AltoViewIconTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_FirstAid" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Prof2" inherits="AltoViewIconTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent_Prof1" relativePoint="BOTTOMRIGHT" >
+						<Offset x="5" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+
+			<Button name="$parent_Sort1" inherits="AltoSortButtonTemplate" id="1">
+				<Size>
+					<AbsDimension x="130" y="19"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AltoholicFrame_SearchEditBox" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="10" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Sort2" inherits="AltoSortButtonTemplate" id="2">
+				<Size>
+					<AbsDimension x="70" y="19"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_Sort1" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Sort3" inherits="AltoSortButtonTemplate" id="3">
+				<Size>
+					<AbsDimension x="100" y="19"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_Sort2" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Sort4" inherits="AltoSortButtonTemplate" id="4">
+				<Size>
+					<AbsDimension x="100" y="19"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_Sort3" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+
+		</Frames>
+		<Scripts>
+			<OnShow>
+				Altoholic.Tabs.Characters:OnShow()
+			</OnShow>
+			<OnHide>
+				AltoholicFrameClasses:Hide()
+			</OnHide>
+		</Scripts>
+	</Frame>
+	
+</Ui>

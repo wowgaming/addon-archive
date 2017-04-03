@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: Bagnon Forever
+## Notes: Stores inventory information about your characters
+## Notes-zhTW: 儲存角色背包和銀行的物品資訊
+## Notes-zhCN: 保存角色背包与银行内物品的信息
+## Author: Tuller
+## Version: 1.1.2
+## SavedVariables: BagnonForeverDB
+## LoadOnDemand: 0
+db.lua
+ui.xml

@@ -1,0 +1,33 @@
+## Interface: 30300
+## Title: Critline
+## Version: 3.0.2
+## Notes: Saves your normal and critical records and flashes a message if you break the record.
+## Author: L'ombra
+## SavedVariables: CritlineDB
+## SavedVariablesPerCharacter: CritlinePerCharDB
+
+libs\LibStub.lua
+libs\CallbackHandler-1.0.lua
+libs\AceDB-3.0.lua
+libs\AceDBOptions-3.0.lua
+libs\AceLocale-3.0.lua
+libs\LibDataBroker-1.1.lua
+libs\LibDualSpec-1.0.lua
+
+locales\enUS.lua
+locales\deDE.lua
+locales\esES.lua
+locales\ruRU.lua
+locales\zhTW.lua
+
+templates.lua
+core.lua
+
+filters.lua
+splash.lua
+display.lua
+minimap.lua
+announce.lua
+reset.lua
+Broker.lua
+profiles.lua

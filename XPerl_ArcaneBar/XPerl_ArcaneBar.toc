@@ -1,0 +1,17 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fArcane Bars|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fПолосы применений|r
+## Title-zhCN: X-Perl |cffeda55f施法条|r
+## Title-zhTW: X-Perl |cffeda55f施法條|r 由 |cFFFF8080Zek|r 開發
+## Notes: Gives player, pet, target, focus and party frames a casting bar.
+## Notes-ruRU: Отображение полосок применения игрока, питомца, цели, фокуса и группы.
+## Notes-zhCN: 在玩家, 宠物, 目标, 焦点和队伍头像上增加施法条.
+## Notes-zhTW: 給予玩家, 寵物, 目標, focus 以及隊伍框架施法條進度顯示.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## RequiredDeps: XPerl
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_ArcaneBar.xml

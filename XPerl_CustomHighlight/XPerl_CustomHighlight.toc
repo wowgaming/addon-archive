@@ -1,0 +1,17 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fCustom Highlight|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fВыделение|r
+## Title-zhCN: X-Perl |cffeda55f自定义Debuff高亮|r
+## Title-zhTW: X-Perl |cffeda55f地區性狀態監視模組|r 由 |cFFFF8080Zek|r 開發
+## Notes: Custom highlights module allowing definition of frame by frame indicator of important debuffs.
+## Notes-ruRU: Модуль выделений - позволяет выделять важные дебаффы.
+## Notes-zhTW: 地區性狀態監視模組可讓您自定義設定框架中在不同地區時重要的 debuffs 顯示.
+## Author: Zek
+## RequiredDeps: XPerl
+## X-License: GNU GPL v3, 29 June 2007
+## LoadOnDemand: 1
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_CustomHighlight.lua

@@ -1,0 +1,12 @@
+
+What's new since 5.12?
+
+* The Tidy Plates core continues to evolve, and performance should remain consistent or better than previous versions.
+* Several new Theme API features have been added, making designers happy.
+* 'Neon' has been updated with several long-requested features:
+	- Debuff Filtering
+	- Distinct Aggro Glow
+	- Level Indicator
+	- Class Icon
+	- Use /neontank or /neondps for shortcuts to the Config Panel
+* Neon and Grey config panels have been moved from the Tidy Plates tree to their own category

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fHealth bar|r]
+## Title-deDE: PitBull4 |r[|cffeda55fGesundheitsleiste|r]
+## Title-esES: PitBull4 |r[|cffeda55fBarra de Salud.|r]
+## Title-frFR: PitBull4 |r[|cffeda55fBarre de vie|r]
+## Title-koKR: PitBull4 |r[|cffeda55f생명력 바|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fПанель здоровья|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f生命条|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f生命條|r]
+## Notes: Show a bar indicating the unit's health.
+## Notes-deDE: Eine Leiste für die Gesundheit der Einheit darstellen.
+## Notes-esES: Muestra una barra que indica la salud de la unidad.
+## Notes-frFR: Affiche une barre indiquant la vie de l'unité.
+## Notes-koKR: 유닛의 생명력 바 표시기를 표시합니다.
+## Notes-ruRU: Показывать панель здоровья юнита.
+## Notes-zhCN: 显示单位生命值状态条
+## Notes-zhTW: 顯示單位生命值狀態條。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

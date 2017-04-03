@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<!--@no-lib-strip@-->
+<Include file="libs\LibDogTag-3.0\lib.xml"/>
+<Include file="libs\LibDogTag-Unit-3.0\lib.xml"/>
+<!--@end-no-lib-strip@-->
+
+<Script file="DogTagTexts.lua"/>
+
+</Ui>

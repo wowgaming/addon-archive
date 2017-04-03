@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: Carbonite Transfer
+## Version: 1.01
+## Author: Carbon Based Creations, LLC
+## Notes: Copyright 2008-2010 Carbon Based Creations, LLC.  Used to transfer Warehouse data between accounts.
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: CarboniteTransferData
+
+CarboniteTransfer.lua

@@ -1,0 +1,18 @@
+------------------------------------------------------------------------
+r11 | Thaoky | 2010-07-06 17:17:32 +0000 (Tue, 06 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Skills.toc
+
+Toc update.
+------------------------------------------------------------------------
+r10 | pompachomp | 2010-02-19 18:59:58 +0000 (Fri, 19 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/DataStore_Skills.toc
+   A /trunk/Locales (from /trunk/Locals:9)
+   D /trunk/Locals
+   D /trunk/local.xml
+   A /trunk/locale.xml (from /trunk/local.xml:9)
+
+Locals->Locales
+local.xml->locale.xml
+------------------------------------------------------------------------

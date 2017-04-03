@@ -1,0 +1,31 @@
+﻿## Interface: 30300
+## Title: Atlas |r|cFF0099FF[Dungeon Locs]|r
+## Title-deDE: Atlas |r|cFF0099FF[Instanz-Standorte]|r
+## Title-ruRU: Atlas |r|cFF0099FF[Расп. подземелий]|r
+## Title-zhTW: |r|cFF0099FF[地圖]|rAtlas 地下城位置地圖
+## Title-zhCN: Atlas |r|cFF0099FF[副本分布图]|r
+## Notes: Dungeon Locations
+## Notes-ruRU: Расположение подземелий
+## Notes-deDE: Instanz-Standorte
+## Notes-esES: Lugar de Mazmorras
+## Notes-frFR: Emplacements des instances
+## Notes-koKR: 던전 지역
+## Notes-zhCN: 副本分布图
+## Notes-zhTW: Atlas 地下城位置地圖模組，顯示各個地下城 (副本) 所在位置
+## Version: 1.17.0
+## X-Date: August, 2010
+## Author: Dan Gilbert
+## X-Email: dan.b.gilbert@gmail.com
+## X-Website: http://www.atlasmod.com
+## X-Category: Map
+## RequiredDeps: Atlas
+
+Locale\Atlas_DungeonLocs-enUS.lua
+Locale\Atlas_DungeonLocs-ruRU.lua
+Locale\Atlas_DungeonLocs-frFR.lua
+Locale\Atlas_DungeonLocs-deDE.lua
+Locale\Atlas_DungeonLocs-zhCN.lua
+Locale\Atlas_DungeonLocs-zhTW.lua
+Locale\Atlas_DungeonLocs-esES.lua
+
+Atlas_DungeonLocs.lua

@@ -1,0 +1,40 @@
+## Title: Enchantrix
+## Notes: Display information in item tooltips pertaining to disenchanting, prospecting, and milling results.  [5.8.4723] This AddOn is licensed under the GNU GPL, see GPL.txt for details.
+##
+## Interface: 30300
+## LoadOnDemand: 1
+## Dependencies: Stubby
+## OptionalDeps: !nLog, Babylonian, DebugLib, Configator, SlideBar, LibExtraTip, TipHelper
+## SavedVariables: EnchantConfig, EnchantedLocal, EnchantedItemTypes, NonDisenchantablesLocal, ProspectedLocal, MillingLocal
+## SavedVariablesPerCharacter: AutoDisenchantIgnoreList
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Enchantrix.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Support\Load.xml
+EnxManifest.lua
+
+Libs\Load.xml
+
+EnxObjects.lua
+
+EnxStrings.lua
+EnxLocale.lua
+
+Data\EnxNonDisenchant.lua
+
+EnxSettings.lua
+EnxMiniIcon.lua
+EnxCommand.lua
+EnxConfig.lua
+EnxConstants.lua
+EnxStorage.lua
+EnxTooltip.lua
+EnxUtil.lua
+EnxAutoDisenchant.lua
+EnxMain.lua
+
+EnxAucUtil.lua

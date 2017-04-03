@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fRange fader|r]
+## Title-deDE: PitBull4 |r[|cffeda55fReichweite-Fader|r]
+## Title-esES: PitBull4 |r[|cffeda55fAtenuador de Alcance|r]
+## Title-frFR: PitBull4 |r[|cffeda55fFondu de portée|r]
+## Title-koKR: PitBull4 |r[|cffeda55f거리에 따른 투명도|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fФэйдер расстояния|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f距离淡出|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f距離淡出|r]
+## Notes: Make the unit frame fade if out of range.
+## Notes-deDE: Blendet den Einheitsrahmen aus, wenn man außer Reichweite ist.
+## Notes-esES: Hace que la unidad se atenue cuando está fuera de alcance.
+## Notes-frFR: Effectue un fondu du cadre d'unité si l'unité est hors de portée.
+## Notes-koKR: 사정거리 밖의 유닛에 투명도를 줍니다.
+## Notes-ruRU: Скрывает фрейм если он вне зоны действия.
+## Notes-zhCN: 超出距离淡出单位框体
+## Notes-zhTW: 超出距離淡出單位框架。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

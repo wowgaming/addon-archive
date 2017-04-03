@@ -1,0 +1,848 @@
+------------------------------------------------------------------------
+r144 | grayhoof | 2008-10-18 13:17:16 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   A /tags/v2.321 (from /trunk:143)
+
+Tagging as v2.321.
+------------------------------------------------------------------------
+r143 | grayhoof | 2008-10-18 13:16:52 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/Proximo.toc
+
+Proximo: fix toc
+------------------------------------------------------------------------
+r142 | grayhoof | 2008-10-18 04:56:14 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Proximo: Reverting shared media change
+------------------------------------------------------------------------
+r141 | grayhoof | 2008-10-18 04:48:21 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Proximo: fix shared media external
+------------------------------------------------------------------------
+r139 | grayhoof | 2008-10-18 04:41:39 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/Proximo.lua
+   M /trunk/Proximo.toc
+   M /trunk/nameplates.lua
+   M /trunk/options.lua
+
+Proximo: Updates for 3.0
+------------------------------------------------------------------------
+r138 | grayhoof | 2008-10-18 04:37:53 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   D /trunk/libs
+
+Proximo: Deleting libs folder
+------------------------------------------------------------------------
+r137 | root | 2008-09-30 16:07:42 +0000 (Tue, 30 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Hopefully fix .pkgmeta
+------------------------------------------------------------------------
+r136 | root | 2008-09-29 21:41:44 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+   M /trunk/libs
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r134 | root | 2008-09-29 20:58:31 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/Proximo
+   A /trunk (from /tmp/trunk/Proximo:133)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r131 | profalbert | 2008-07-24 21:06:31 +0000 (Thu, 24 Jul 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+
+Proximo:
+- fix toc
+
+------------------------------------------------------------------------
+r130 | StingerSoft | 2008-07-18 00:15:00 +0000 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/locals/localization-class.lua
+   A /tmp/trunk/Proximo/locals/localization-ruRU.lua
+
+Proximo: added fully ruRU translation
+------------------------------------------------------------------------
+r129 | grayhoof | 2008-07-17 00:36:41 +0000 (Thu, 17 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 2.3 commit
+------------------------------------------------------------------------
+r128 | grayhoof | 2008-07-16 00:16:28 +0000 (Wed, 16 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo: reverting back to /targetexact, as /targetenemyplayer doesn't appear to work on live.
+------------------------------------------------------------------------
+r127 | grayhoof | 2008-07-15 14:04:31 +0000 (Tue, 15 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo: Use new /targetenemyplayer command for all targeting.
+------------------------------------------------------------------------
+r126 | grayhoof | 2008-07-15 00:22:35 +0000 (Tue, 15 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo: Use call backs for talent guess changes
+------------------------------------------------------------------------
+r125 | grayhoof | 2008-06-07 00:25:14 +0000 (Sat, 07 Jun 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: Register SML callbacks correctly.
+------------------------------------------------------------------------
+r124 | grayhoof | 2008-06-03 21:58:58 +0000 (Tue, 03 Jun 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+
+Proximo: Attempting to fix issues with TalentGuess-1.0 in all environments.
+------------------------------------------------------------------------
+r123 | grayhoof | 2008-06-03 15:13:01 +0000 (Tue, 03 Jun 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/embeds.xml
+
+Proximo: Temp fix to toc to make sure TalentGuess-1.0 loads.
+------------------------------------------------------------------------
+r122 | trasher | 2008-06-03 11:33:08 +0000 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- frFR
+------------------------------------------------------------------------
+r121 | sayclub | 2008-06-03 02:40:06 +0000 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-koKR.lua
+
+Proximo: 
+koKR update
+------------------------------------------------------------------------
+r120 | ananhaid | 2008-06-03 00:54:47 +0000 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+   M /tmp/trunk/Proximo/locals/localization-zhTW.lua
+
+Proximo: 
+- zhCN/zhTW update.
+------------------------------------------------------------------------
+r119 | grayhoof | 2008-06-03 00:10:39 +0000 (Tue, 03 Jun 2008) | 7 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/auras.lua
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/libs
+   M /tmp/trunk/Proximo/locals/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: 
+- Added New "Use in Battlegrounds" option. It basically just becomes a "last 5 targets" unit frame for self only, and doesn't sync with other users. Work in Progress. ReloadUI if this is turned on or off while in a BG.
+- Removed old talent code.
+- Added new talents using TalentGuess-1.0. Provides talents as best as possible based on comblog events and buffs. No longer syncs talents as it isn't needed with this approach.
+- Converted to using ShareMedia Widgets for Ace3.
+- Added Frost Nova to tracked auras.lua
+- Fix for highlighted frames staying after leaving and reentering an arena
+------------------------------------------------------------------------
+r118 | trasher | 2008-05-25 21:16:22 +0000 (Sun, 25 May 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- frFR update
+------------------------------------------------------------------------
+r117 | trasher | 2008-05-16 17:39:10 +0000 (Fri, 16 May 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- frFR update
+------------------------------------------------------------------------
+r116 | grayhoof | 2008-05-13 03:41:33 +0000 (Tue, 13 May 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/libs
+   M /tmp/trunk/Proximo/options.lua
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 2.2 commit
+------------------------------------------------------------------------
+r115 | grayhoof | 2008-05-03 00:51:13 +0000 (Sat, 03 May 2008) | 4 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/auras.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/locals/localization-enUS.lua
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+   M /tmp/trunk/Proximo/locals/localization-koKR.lua
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+   M /tmp/trunk/Proximo/locals/localization-zhTW.lua
+
+Proximo: 
+- Converted Auras to use spellid
+- Fixed Profile copies/changes
+- Removed unneeded locals
+------------------------------------------------------------------------
+r113 | trasher | 2008-04-17 21:28:41 +0000 (Thu, 17 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- frFR update
+------------------------------------------------------------------------
+r112 | grayhoof | 2008-04-15 02:08:31 +0000 (Tue, 15 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 2.1 commit
+------------------------------------------------------------------------
+r111 | grayhoof | 2008-04-11 03:49:19 +0000 (Fri, 11 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/spellcast.lua
+
+Proximo: Updated cast bars to be accurate for focus and target.
+------------------------------------------------------------------------
+r110 | scorpion | 2008-04-07 03:10:33 +0000 (Mon, 07 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhTW.lua
+
+Proximo: 
+- zhTW update 
+------------------------------------------------------------------------
+r109 | sayclub | 2008-04-06 23:46:00 +0000 (Sun, 06 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-koKR.lua
+
+Proximo: 
+- koKR Update
+------------------------------------------------------------------------
+r108 | ananhaid | 2008-04-06 06:43:01 +0000 (Sun, 06 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+
+Proximo: 
+- zhCN update.
+------------------------------------------------------------------------
+r107 | grayhoof | 2008-04-06 04:22:10 +0000 (Sun, 06 Apr 2008) | 6 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/auras.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/locals/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+   A /tmp/trunk/Proximo/spellcast.lua
+
+Proximo:
+- Added optional cast bars (still beta)
+- Options for cast bar: color, size, font size, time
+- Made more of the frame clickable, besides just the health bar.
+- Converted to quicker combat log method
+- Gave main frame a name
+------------------------------------------------------------------------
+r106 | scorpion | 2008-04-02 18:32:08 +0000 (Wed, 02 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-enUS.lua
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+   M /tmp/trunk/Proximo/locals/localization-zhTW.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: 
+- zhCN & zhTW update 
+------------------------------------------------------------------------
+r105 | diablohu | 2008-04-02 08:02:43 +0000 (Wed, 02 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+
+Proximo:
+- zhCN update
+------------------------------------------------------------------------
+r104 | ananhaid | 2008-03-31 15:13:08 +0000 (Mon, 31 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+
+Proximo: 
+- zhCN update.
+------------------------------------------------------------------------
+r103 | trasher | 2008-03-31 02:32:10 +0000 (Mon, 31 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- frFR update
+------------------------------------------------------------------------
+r102 | grayhoof | 2008-03-30 23:46:43 +0000 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo: Fix for combat log names...a lot more stuff works correctly now =)
+------------------------------------------------------------------------
+r101 | trasher | 2008-03-27 23:29:17 +0000 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo2:
+- frFR update
+------------------------------------------------------------------------
+r100 | trasher | 2008-03-26 06:16:26 +0000 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo2:
+- frFR update
+------------------------------------------------------------------------
+r99 | diablohu | 2008-03-25 16:34:36 +0000 (Tue, 25 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+
+Proximo: 
+- added zhCN info into TOC
+------------------------------------------------------------------------
+r98 | sayclub | 2008-03-25 07:08:15 +0000 (Tue, 25 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-koKR.lua
+
+Proximo: 
+- koKR Update
+------------------------------------------------------------------------
+r95 | grayhoof | 2008-03-25 06:04:48 +0000 (Tue, 25 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Bindings.xml
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/auras.lua
+   M /tmp/trunk/Proximo/bindings.lua
+   A /tmp/trunk/Proximo/class.lua
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/install.txt
+   M /tmp/trunk/Proximo/libs
+   A /tmp/trunk/Proximo/locals/localization-class.lua
+   M /tmp/trunk/Proximo/locals/localization-deDE.lua
+   M /tmp/trunk/Proximo/locals/localization-enUS.lua
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+   M /tmp/trunk/Proximo/locals/localization-koKR.lua
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+   M /tmp/trunk/Proximo/locals/localization-zhTW.lua
+   M /tmp/trunk/Proximo/nameplates.lua
+   M /tmp/trunk/Proximo/options.lua
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 2.4 Commit
+------------------------------------------------------------------------
+r72 | trasher | 2008-02-06 13:20:56 +0000 (Wed, 06 Feb 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- frFR Typo fix
+- frFR UTF-8 Parsing
+------------------------------------------------------------------------
+r71 | chuanhsing | 2008-02-02 12:14:33 +0000 (Sat, 02 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhTW.lua
+
+Proximo: update zhTW
+------------------------------------------------------------------------
+r70 | grayhoof | 2008-01-06 05:00:19 +0000 (Sun, 06 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 1.4 commit
+------------------------------------------------------------------------
+r69 | grayhoof | 2008-01-03 01:01:29 +0000 (Thu, 03 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: Cleaned up announcement code (better in 2.0 branch). Added Blizzard FCT to announcements. Clear inspect name on zone check.
+------------------------------------------------------------------------
+r68 | grayhoof | 2008-01-01 03:30:25 +0000 (Tue, 01 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo:fix for self made multi step macros used for mouse clicks 
+------------------------------------------------------------------------
+r67 | grayhoof | 2007-12-31 08:09:24 +0000 (Mon, 31 Dec 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/libs
+
+Proximo: Really...Fixed back to using LibSharedMedia-2.0 correctly. Why we have to embed LibStub for a library already embedding it makes no sense...
+------------------------------------------------------------------------
+r66 | grayhoof | 2007-12-31 07:42:40 +0000 (Mon, 31 Dec 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/libs
+
+Proximo: Fixed back to using LibSharedMedia-2.0 correctly.
+------------------------------------------------------------------------
+r65 | sayclub | 2007-12-30 23:55:34 +0000 (Sun, 30 Dec 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-koKR.lua
+
+Proximo: - koKR Update
+------------------------------------------------------------------------
+r64 | trasher | 2007-12-30 21:17:14 +0000 (Sun, 30 Dec 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-frFR.lua
+
+Proximo:
+- Update French
+------------------------------------------------------------------------
+r63 | grayhoof | 2007-12-30 21:08:57 +0000 (Sun, 30 Dec 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+
+Proximo: Minor cleanup
+------------------------------------------------------------------------
+r62 | diablohu | 2007-12-30 11:09:01 +0000 (Sun, 30 Dec 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/locals/localization-zhCN.lua
+
+Proximo: 
+- zhCN update
+------------------------------------------------------------------------
+r61 | grayhoof | 2007-12-29 20:48:15 +0000 (Sat, 29 Dec 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/libs
+   D /tmp/trunk/Proximo/localization-deDE.lua
+   D /tmp/trunk/Proximo/localization-enUS.lua
+   D /tmp/trunk/Proximo/localization-frFR.lua
+   D /tmp/trunk/Proximo/localization-koKR.lua
+   D /tmp/trunk/Proximo/localization-zhCN.lua
+   D /tmp/trunk/Proximo/localization-zhTW.lua
+   A /tmp/trunk/Proximo/locals
+   A /tmp/trunk/Proximo/locals/localization-deDE.lua
+   A /tmp/trunk/Proximo/locals/localization-enUS.lua
+   A /tmp/trunk/Proximo/locals/localization-frFR.lua
+   A /tmp/trunk/Proximo/locals/localization-koKR.lua
+   A /tmp/trunk/Proximo/locals/localization-zhCN.lua
+   A /tmp/trunk/Proximo/locals/localization-zhTW.lua
+   M /tmp/trunk/Proximo/options.lua
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo:
+- Changed Arena zone code, removed Babble-Zone as a result.
+- Fixed RaidWarning announcements (though doesn't work as well).
+- Moved localization to its own folder.
+- Added optional talents display using the 2.2 new talent API. Talents currently work for enemies but may not in a future update. Note you may need to increase the width of your bars or reduce font size to make talents display properly.
+------------------------------------------------------------------------
+r60 | funkydude | 2007-11-16 12:07:37 +0000 (Fri, 16 Nov 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/libs
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: swap to LibSharedMedia-2.0
+------------------------------------------------------------------------
+r59 | funkydude | 2007-11-13 17:19:46 +0000 (Tue, 13 Nov 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+
+.trunk: Bump toc for various addons and libraries working on the PTR
+------------------------------------------------------------------------
+r58 | trasher | 2007-11-11 07:47:02 +0000 (Sun, 11 Nov 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-frFR.lua
+
+Proximo:
+- Update French
+------------------------------------------------------------------------
+r57 | diablohu | 2007-10-26 10:57:46 +0000 (Fri, 26 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/localization-zhCN.lua
+
+Proximo:
+- added zhCN
+------------------------------------------------------------------------
+r56 | grayhoof | 2007-10-10 23:15:13 +0000 (Wed, 10 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 1.3 release
+------------------------------------------------------------------------
+r55 | grayhoof | 2007-09-30 19:01:13 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo: Increased time before first zone check after zoning.
+------------------------------------------------------------------------
+r54 | grayhoof | 2007-09-29 15:39:52 +0000 (Sat, 29 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/frame.lua
+   A /tmp/trunk/Proximo/localization-frFR.lua
+
+Proximo: *BETA Release* Added FR localization. Changed up zoning logic. Changed up MA logic. Changed up window movement code.
+------------------------------------------------------------------------
+r53 | funkydude | 2007-09-25 16:20:41 +0000 (Tue, 25 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+
+.trunk: various toc updates of ptr working addons
+------------------------------------------------------------------------
+r52 | grayhoof | 2007-08-28 22:46:01 +0000 (Tue, 28 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+
+Proximo: Fix TOC
+------------------------------------------------------------------------
+r51 | chuanhsing | 2007-08-28 03:29:56 +0000 (Tue, 28 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/localization-zhTW.lua
+
+Proximo: add zhTW locale
+------------------------------------------------------------------------
+r50 | grayhoof | 2007-08-23 05:05:41 +0000 (Thu, 23 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/localization-deDE.lua
+
+Proximo: Updated deDE
+------------------------------------------------------------------------
+r49 | grayhoof | 2007-08-23 03:26:05 +0000 (Thu, 23 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/localization-deDE.lua
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 1.2 commit
+------------------------------------------------------------------------
+r48 | sayclub | 2007-08-20 13:00:05 +0000 (Mon, 20 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo : 
+- Updated localization koKR
+------------------------------------------------------------------------
+r47 | sayclub | 2007-08-20 05:05:24 +0000 (Mon, 20 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo : 
+- Updated localization koKR
+------------------------------------------------------------------------
+r46 | grayhoof | 2007-08-20 01:53:45 +0000 (Mon, 20 Aug 2007) | 8 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo:
+- Cleaned up syncs to only update when data changes
+- Changed class passing to use a standard name instead of localized name. Non enUS clients must all be running 1.12 if anyone in the group is using 1.12.
+- Added option to display class in text
+- Added left click options
+- Added Target and Macro as options for clicks
+- Fixed mind-control issue.
+- Add usage text on test function
+------------------------------------------------------------------------
+r45 | grayhoof | 2007-08-09 23:58:49 +0000 (Thu, 09 Aug 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Bindings.xml
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/embeds.xml
+   M /tmp/trunk/Proximo/frame.lua
+
+Proximo:
+- Made option menu not appear in combat or after arena starts
+- Fixed adjusting frame sizes
+- Converted to using embeds.xml
+- Cleaned up bindings framexml.log errors
+------------------------------------------------------------------------
+r44 | fenlis | 2007-07-31 06:57:21 +0000 (Tue, 31 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated localization koKR
+------------------------------------------------------------------------
+r43 | sayclub | 2007-07-31 03:36:38 +0000 (Tue, 31 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+- Updated localization koKR
+------------------------------------------------------------------------
+r42 | grayhoof | 2007-07-31 02:00:43 +0000 (Tue, 31 Jul 2007) | 3 lines
+Changed paths:
+   A /tmp/trunk/Proximo/Bindings.xml
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/bindings.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 1.11 pre-release
+- Added Key Bindings.
+- Added slightly faded color and sound when clicking a frame for an enemy that was added during combat.
+------------------------------------------------------------------------
+r41 | fenlis | 2007-07-25 22:13:35 +0000 (Wed, 25 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated localization koKR
+------------------------------------------------------------------------
+r40 | sayclub | 2007-07-25 14:42:01 +0000 (Wed, 25 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+------------------------------------------------------------------------
+r39 | sayclub | 2007-07-24 01:56:06 +0000 (Tue, 24 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+------------------------------------------------------------------------
+r38 | grayhoof | 2007-07-24 01:33:01 +0000 (Tue, 24 Jul 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo:
+-Added Version Check (beta).
+-Added option to cast spell on right click.
+-Cleaned up options.
+------------------------------------------------------------------------
+r37 | sayclub | 2007-07-15 23:06:55 +0000 (Sun, 15 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+------------------------------------------------------------------------
+r36 | grayhoof | 2007-07-15 22:21:13 +0000 (Sun, 15 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/readme.txt
+
+Proximo: 1.1 Commit
+
+------------------------------------------------------------------------
+r35 | grayhoof | 2007-07-14 16:40:58 +0000 (Sat, 14 Jul 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/frame.lua
+   A /tmp/trunk/Proximo/localization-deDE.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/localization-koKR.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo:
+- Made class icons click-able
+- Added Party Chat as option for announcements
+- Added optional low health announcement and sound
+- Lots of minor code cleanup
+
+------------------------------------------------------------------------
+r34 | sayclub | 2007-07-11 05:32:19 +0000 (Wed, 11 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+------------------------------------------------------------------------
+r33 | grayhoof | 2007-07-11 05:22:47 +0000 (Wed, 11 Jul 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: 
+- Added Party Targeting Bar Height option
+- Added Mana Bar Height option
+------------------------------------------------------------------------
+r32 | sayclub | 2007-07-10 06:09:02 +0000 (Tue, 10 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+------------------------------------------------------------------------
+r31 | grayhoof | 2007-07-10 02:36:57 +0000 (Tue, 10 Jul 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo
+- Added optional target highlights
+- Cleaned up zone code so don't get old data on leaving arena (hopefully)
+------------------------------------------------------------------------
+r30 | grayhoof | 2007-07-09 00:32:14 +0000 (Mon, 09 Jul 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/frame.lua
+
+Proximo: Create frame if changing options.
+------------------------------------------------------------------------
+r29 | sayclub | 2007-07-08 23:16:56 +0000 (Sun, 08 Jul 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+------------------------------------------------------------------------
+r28 | grayhoof | 2007-07-08 04:55:44 +0000 (Sun, 08 Jul 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo:
+- Added optional Party Targets
+- Added optional Mana Bars
+- Added different MA Highlighting options
+- Added Highlight and Mana color options
+- Cleaned up options
+------------------------------------------------------------------------
+r27 | grayhoof | 2007-07-06 00:39:35 +0000 (Fri, 06 Jul 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+
+Proximo: Fixed unregister error
+------------------------------------------------------------------------
+r26 | sayclub | 2007-07-05 23:16:17 +0000 (Thu, 05 Jul 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Updated koKR
+
+------------------------------------------------------------------------
+r25 | grayhoof | 2007-07-05 23:07:00 +0000 (Thu, 05 Jul 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/nameplates.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: 
+- Added additional code to stop "friends" from showing
+- Cleaned up Syncs and changed how/when the sync occurs
+- Added option to turn off syncs
+- Cleaned up events
+
+------------------------------------------------------------------------
+r24 | fenlis | 2007-06-27 11:04:19 +0000 (Wed, 27 Jun 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/localization-koKR.lua
+
+Proximo :
+ - Added koKR Translation
+------------------------------------------------------------------------
+r23 | grayhoof | 2007-06-27 02:48:03 +0000 (Wed, 27 Jun 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.toc
+   M /tmp/trunk/Proximo/frame.lua
+   A /tmp/trunk/Proximo/install.txt
+   A /tmp/trunk/Proximo/readme.txt
+
+Proximo: First official release
+------------------------------------------------------------------------
+r22 | grayhoof | 2007-06-26 04:24:49 +0000 (Tue, 26 Jun 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: Added enemy announcement option via chat, RaidWarning, SCT, or MSBT. Cleaned up localization of class.
+------------------------------------------------------------------------
+r21 | grayhoof | 2007-06-25 23:05:59 +0000 (Mon, 25 Jun 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+
+Proximo: Changed sync logic around deaths vs local client scans.
+------------------------------------------------------------------------
+r20 | grayhoof | 2007-06-24 19:22:23 +0000 (Sun, 24 Jun 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/frame.lua
+   M /tmp/trunk/Proximo/localization-enUS.lua
+   M /tmp/trunk/Proximo/nameplates.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: 
+Lots of code clean up/bug fixes; should be behaving much better now.
+Added option to hide Header.
+Added option to right click to set focus.
+
+
+------------------------------------------------------------------------
+r19 | grayhoof | 2007-06-24 04:44:22 +0000 (Sun, 24 Jun 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/Proximo.lua
+   M /tmp/trunk/Proximo/options.lua
+
+Proximo: Fixed MA comm channel. Localized more common functions. Don't updated syncs for current target. Trying new ways to avoid adding party members to list when first zoning in. Still Beta, use at own risk =)
+------------------------------------------------------------------------
+r18 | grayhoof | 2007-06-23 16:48:08 +0000 (Sat, 23 Jun 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/Proximo/libs
+
+Proximo: Added Externals
+------------------------------------------------------------------------
+r17 | grayhoof | 2007-06-23 16:42:51 +0000 (Sat, 23 Jun 2007) | 1 line
+Changed paths:
+   A /tmp/trunk/Proximo
+   A /tmp/trunk/Proximo/Proximo.lua
+   A /tmp/trunk/Proximo/Proximo.toc
+   A /tmp/trunk/Proximo/Textures
+   A /tmp/trunk/Proximo/Textures/Minimalist.tga
+   A /tmp/trunk/Proximo/Textures/otravi-semi-full-border.tga
+   A /tmp/trunk/Proximo/frame.lua
+   A /tmp/trunk/Proximo/libs
+   A /tmp/trunk/Proximo/localization-enUS.lua
+   A /tmp/trunk/Proximo/nameplates.lua
+   A /tmp/trunk/Proximo/options.lua
+
+Proximo: Initial Commit
+------------------------------------------------------------------------

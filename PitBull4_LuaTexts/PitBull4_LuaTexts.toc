@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fLua texts|r]
+## Title-deDE: PitBull4 |r[|cffeda55fLua Texte|r]
+## Title-esES: PitBull4 |r[|cffeda55fTextos Lua|r]
+## Title-frFR: PitBull4 |r[|cffeda55fTextes Lua|r]
+## Title-koKR: PitBull4 |r[|cffeda55fLua 문자|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fLua коды|r]
+## Title-zhCN: PitBull4 |r[|cffeda55fLua文本|r]
+## Title-zhTW: PitBull4 |r[|cffeda55fLua文字|r]
+## Notes: Text provider using Lua scripts to generate texts.
+## Notes-deDE: Text-Bereitsteller, der Lua-Scripts zum Textgenerieren nutzt.
+## Notes-esES: Proveedor de texto utilizando scripts Lua para generar textos.
+## Notes-frFR: Fournisseur de texte utilisant les scripts Lua pour générer les textes.
+## Notes-koKR: Text provider using Lua scripts to generate texts.
+## Notes-ruRU: Редактор тегов, использующий скрипты Lua для создания надписей.
+## Notes-zhCN: 使用Lua脚本创建文本
+## Notes-zhTW: 使用Lua腳本提供文字訊息。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

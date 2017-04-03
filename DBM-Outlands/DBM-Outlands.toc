@@ -1,0 +1,27 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Outlands|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Terrallende|r
+## Author: Tandanu and Nitram
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core, DBM-BurningCrusade
+## SavedVariablesPerCharacter: DBMOutlands_SavedVars, DBMOutlands_SavedStats
+## X-DBM-BC-AddOn: 1
+## X-DBM-Tab-ID: Outlands
+## X-DBM-Tab-BCTab: 1
+## X-DBM-Tab-Sort: 8
+## X-DBM-Name: Outlands
+## X-DBM-Name-esES: Terrallende
+## X-DBM-Tab-LoadZone: Gruul's Lair,Magtheridon's Lair
+## X-DBM-Tab-LoadZone-esES: Guarida de Gruul,Guarida de Magtheridon
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.tw.lua
+localization.cn.lua
+localization.ru.lua
+localization.es.lua
+Maulgar.lua
+Gruul.lua
+Magtheridon.lua
+Kazzak.lua
+Doomwalker.lua

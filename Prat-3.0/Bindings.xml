@@ -1,0 +1,86 @@
+<!--
+Name: Prat_KeyBindings
+Revision: $Revision: 80432 $
+Author(s): Curney (asml8ed@gmail.com)
+           Krtek (krtek4@gmail.com)
+Website: http://files.wowace.com/Prat/
+Documentation: http://www.wowace.com/wiki/Prat/Integrated_Modules#KeyBindings
+SVN: http://svn.wowace.com/wowace/trunk/Prat/
+Discussions: http://groups.google.com/group/wow-prat
+Issues and feature requests: http://code.google.com/p/prat/issues/list
+License: http://groups.google.com/group/wow-prat/web/license
+Description: Module for Prat that adds keybindings for modules.
+Dependencies: Prat
+-->
+
+<Bindings>
+	<!-- ChannelNames -->
+	<Binding name="officer" header="Prat">
+		ChatFrame_OpenChat("/o");
+	</Binding>
+	<Binding name="guild" >
+		ChatFrame_OpenChat("/g");
+	</Binding>
+ 	<Binding name="party" >
+		ChatFrame_OpenChat("/p");
+	</Binding>
+	<Binding name="raid" >
+		ChatFrame_OpenChat("/raid");
+	</Binding>
+	<Binding name="raidwarn" >
+		ChatFrame_OpenChat("/rw");
+	</Binding>
+	<Binding name="battleground" >
+		ChatFrame_OpenChat("/bg");
+	</Binding>
+	<Binding name="say" >
+		ChatFrame_OpenChat("/say");
+	</Binding>
+	<Binding name="yell" >
+		ChatFrame_OpenChat("/yell");
+	</Binding>
+	<Binding name="whisper" >
+		ChatFrame_OpenChat("/w");
+	</Binding>
+	<Binding name="one">
+		ChatFrame_OpenChat("/1");
+	</Binding>
+	<Binding name="two">
+		ChatFrame_OpenChat("/2");
+	</Binding>
+	<Binding name="three">
+		ChatFrame_OpenChat("/3");
+	</Binding>
+	<Binding name="four">
+		ChatFrame_OpenChat("/4");
+	</Binding>
+	<Binding name="five">
+		ChatFrame_OpenChat("/5");
+	</Binding>
+	<Binding name="six">
+		ChatFrame_OpenChat("/6");
+	</Binding>
+	<Binding name="seven">
+		ChatFrame_OpenChat("/7");
+	</Binding>
+	<Binding name="eight">
+		ChatFrame_OpenChat("/8");
+	</Binding>
+  	<Binding name="nine">
+		ChatFrame_OpenChat("/9");
+	</Binding>
+  	<Binding name="SmartGroup">
+		ChatFrame_OpenChat("/gr");
+	</Binding>	
+	<Binding name="NextTab">
+		 Prat.Addon:GetModule("KeyBindings"):CycleChatTabs()
+	</Binding>		
+	<!-- TellTarget -->
+	<Binding name="TellTarget">
+		 Prat.Addon:GetModule("TellTarget"):SendTellToTarget(SELECTED_CHAT_FRAME, "");
+	</Binding>
+	<!-- CopyChat -->
+	<Binding name="Copy Selected Chat Frame">
+		Prat.Addon:GetModule("CopyChat"):CopyChat();
+	</Binding>
+</Bindings>

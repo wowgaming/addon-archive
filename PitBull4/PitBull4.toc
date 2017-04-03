@@ -1,0 +1,31 @@
+## Interface: 30300
+## Title: PitBull Unit Frames 4.0
+## Title-deDE: PitBull Unit Frames 4.0
+## Title-esES: PitBull Unit Frames 4.0
+## Title-frFR: PitBull Unit Frames 4.0
+## Title-koKR: PitBull Unit Frames 4.0
+## Title-ruRU: Pitbull 4.0
+## Title-zhCN: PitBull Unit Frames 4.0
+## Title-zhTW: PitBull Unit Frames 4.0
+## Notes: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-deDE: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-esES: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-frFR: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-koKR: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-ruRU: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-zhCN: Dog-themed unit frames. Woof. Arf. Yip.
+## Notes-zhTW: Dog-themed unit frames. Woof. Arf. Yip.
+## Author: ckknight
+## X-eMail: ckknight AT gmail DOT com
+## X-Website: http://wow.curseforge.com/projects/pitbull4/
+## SavedVariables: PitBull4DB
+## OptionalDeps: Ace3, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, LibDataBroker-1.1, LibDBIcon-1.0, LibBossIDs-1.0
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+libs.xml
+load.xml
+modules.xml

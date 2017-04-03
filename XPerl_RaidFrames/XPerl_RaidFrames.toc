@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fRaidFrames|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fРейд|r
+## Title-zhCN: X-Perl |cffeda55f团队窗|r
+## Title-zhTW: X-Perl |cffeda55f團隊框架|r 由 |cFFFF8080Zek|r 開發
+## Notes: X-Perl Raid frames
+## Notes-ruRU: Фреймы рейда.
+## Notes-deDE: X-Perl UnitFrames Schlachtzugframes
+## Notes-zhTW: X-Perl 團隊框架
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## Dependencies: XPerl
+## SavedVariablesPerCharacter: XPerl_Roster
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_Raid.xml

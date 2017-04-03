@@ -1,0 +1,17 @@
+## Interface: 30300
+## Title: Titan Panel [|cffeda55fVolume|r] |cff00aa004.3.8.30300|r
+## Notes: Adds a volume control icon on your Titan Bar
+## Author: Titan Development Team (http://www.titanpanel.org)
+## Dependencies: Titan
+## Version: 4.3.8.30300
+## X-Child-Of: Titan
+
+locale\locale-enUS.lua
+locale\locale-deDE.lua
+locale\locale-frFR.lua
+locale\locale-esES.lua
+locale\locale-ruRU.lua
+locale\locale-zhCN.lua
+locale\locale-zhTW.lua
+
+TitanVolume.xml

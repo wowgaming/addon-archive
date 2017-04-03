@@ -1,0 +1,15 @@
+﻿## Interface: 30300
+## Title: EasyLoot
+## Author: Zaman
+## Version: 1.7.0.0
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: EasyLootSettings
+## SavedVariablesPerCharacter: EasyLootLootList
+## OptionalDeps: AtlasLoot
+## X-Curse-Packaged-Version: v1.7.0.0
+## X-Curse-Project-Name: EasyLoot
+## X-Curse-Project-ID: easyloot
+## X-Curse-Repository-ID: wow/easyloot/mainline
+locale\localization.lua
+EasyLoot.xml

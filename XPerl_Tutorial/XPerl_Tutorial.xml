@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	-- Would have put the lua declaration directly into the TOC file, but that doesn't work with Load on Demand...
+	<Script file="XPerl_Tutorial.lua"/>
+	<Script file="localization.lua"/>
+	<Script file="localization.ruRU.lua"/>
+	<Script file="localization.frFR.lua"/>
+	<Script file="localization.esES.lua"/>
+	<Script file="localization.zhTW.lua"/>
+	<Script file="localization.zhCN.lua"/>
+	<Script file="localization.koKR.lua"/>
+</Ui>

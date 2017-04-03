@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fParty|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fГруппа|r
+## Title-zhCN: X-Perl |cffeda55f小队窗|r
+## Title-zhTW: X-Perl |cffeda55f隊伍框架|r 由 |cFFFF8080Zek|r 開發
+## Notes: Replaces the default party frames.
+## Notes-ruRU: Заменяет стандартные фреймы группы.
+## Notes-deDE: Ersetzt die Gruppenframes.
+## Notes-zhTW: 整合預設的隊伍框架顯示.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## RequiredDeps: XPerl
+## OptionalDeps: XPerl_ArcaneBar
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_Party.xml

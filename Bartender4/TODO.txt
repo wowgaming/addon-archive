@@ -1,0 +1,4 @@
+Bartender4 TODO List
+
+- Alignment Menu
+- Options to control the removal of the Blizzard Artwork Bottom Bar

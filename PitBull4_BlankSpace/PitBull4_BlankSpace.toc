@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fBlank space|r]
+## Title-deDE: PitBull4 |r[|cffeda55fLeerraum|r]
+## Title-esES: PitBull4 |r[|cffeda55fEspacio vacío|r]
+## Title-frFR: PitBull4 |r[|cffeda55fEspace vide|r]
+## Title-koKR: PitBull4 |r[|cffeda55f빈 공간|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fПустое пространство|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f空白区域|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f空白|r]
+## Notes: Provide empty bars for spacing.
+## Notes-deDE: Zeige eine leere Leiste, um einen Abstand zu simulieren.
+## Notes-esES: Muestra una barra vacía para actuar como separador.
+## Notes-frFR: Fournit une barre vide à titre d'espacement.
+## Notes-koKR: 간격을 위해 비워진 바를 표시합니다.
+## Notes-ruRU: Отображать пустую панель для разделения.
+## Notes-zhCN: 显示用于间隔的空白条
+## Notes-zhTW: 顯示用於間隔的空白條。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

@@ -1,0 +1,55 @@
+------------------------------------------------------------------------
+r12 | pompachomp | 2010-02-19 18:58:04 +0000 (Fri, 19 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/DataStore_Quests.toc
+   D /trunk/local.xml
+   A /trunk/locale.xml (from /trunk/local.xml:11)
+
+local.xml->locale.xml
+
+------------------------------------------------------------------------
+r11 | thaoky | 2010-02-17 19:04:05 +0000 (Wed, 17 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.lua
+   M /trunk/DataStore_Quests.toc
+   A /trunk/Locales
+   A /trunk/Locales/deDE.lua
+   A /trunk/Locales/enUS.lua
+   A /trunk/Locales/esES.lua
+   A /trunk/Locales/esMX.lua
+   A /trunk/Locales/frFR.lua
+   A /trunk/Locales/koKR.lua
+   A /trunk/Locales/repoenUS.lua
+   A /trunk/Locales/ruRU.lua
+   A /trunk/Locales/zhCN.lua
+   A /trunk/Locales/zhTW.lua
+   A /trunk/Options.lua
+   A /trunk/Options.xml
+   A /trunk/local.xml
+
+Added 2 options to manage quest turn-ins & history auto-update.
+------------------------------------------------------------------------
+r10 | thaoky | 2010-02-15 18:12:05 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.lua
+
+Quest turn-ins are now detected and update the history DB.
+------------------------------------------------------------------------
+r9 | thaoky | 2010-02-03 19:00:55 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.lua
+
+Improved quest history support.
+------------------------------------------------------------------------
+r8 | thaoky | 2010-01-24 17:40:19 +0000 (Sun, 24 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.lua
+
+Added early support to manage quest history.
+------------------------------------------------------------------------
+r7 | thaoky | 2009-12-09 12:35:09 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.toc
+
+ToC Update
+------------------------------------------------------------------------

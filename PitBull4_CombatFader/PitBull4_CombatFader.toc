@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fCombat fader|r]
+## Title-deDE: PitBull4 |r[|cffeda55fKampf-Fader|r]
+## Title-esES: PitBull4 |r[|cffeda55fAtenuador de Combate|r]
+## Title-frFR: PitBull4 |r[|cffeda55fFondu de combat|r]
+## Title-koKR: PitBull4 |r[|cffeda55f전투 상태 투명도|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fФэйдер режима боя|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f战斗淡出|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f戰鬥淡出|r]
+## Notes: Make the unit frame fade if out of combat.
+## Notes-deDE: Blendet den Rahmen außerhalb des Kampfes aus.
+## Notes-esES: Permite que el marco de la unidad se atenue cuando se está fuera de combate.
+## Notes-frFR: Effectue un fondu du cadre d'unité si celle-ci est hors-combat.
+## Notes-koKR: 비전투중에 유닛 프레임의 투명도를 줍니다.
+## Notes-ruRU: Скрывает юнит фрейм если игрок выходит из режима боя.
+## Notes-zhCN: 战斗外淡出单位框体
+## Notes-zhTW: 戰鬥外淡出單位框架。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

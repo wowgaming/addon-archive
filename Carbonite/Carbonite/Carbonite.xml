@@ -1,0 +1,452 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+  <Frame name="NxFrame">
+		<Scripts>
+			<OnLoad>
+        if Nx and not Nx.NXVerOld then
+          Nx:NXOnLoad()
+        else
+          this:Hide()
+        end
+			</OnLoad>
+			<OnEvent>
+				Nx:NXOnEvent (event, ...)
+			</OnEvent>
+      <OnUpdate>
+        Nx:NXOnUpdate (arg1)
+      </OnUpdate>
+    </Scripts>
+	</Frame>
+
+  <Slider name="NxSliderFrame" orientation="HORIZONTAL" virtual="true">
+    <Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+      <EdgeSize>
+        <AbsValue val="8"/>
+      </EdgeSize>
+      <TileSize>
+        <AbsValue val="8"/>
+      </TileSize>
+      <BackgroundInsets>
+        <AbsInset left="3" right="3" top="6" bottom="6"/>
+      </BackgroundInsets>
+    </Backdrop>
+    <ThumbTexture file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+      <Size>
+        <AbsDimension x="32" y="32"/>
+      </Size>
+    </ThumbTexture>
+  </Slider>
+
+  <ScrollFrame name="NxQuestDetails" inherits="UIPanelScrollFrameTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="298" y="334"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT">
+        <Offset>
+          <AbsDimension x="19" y="-76"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <ScrollChild>
+      <Frame name="NXQuestLogDetailScrollChildFrame">
+        <Size>
+          <AbsDimension x="298" y="333"/>
+        </Size>
+      </Frame>
+    </ScrollChild>
+  </ScrollFrame>
+
+  <ScrollFrame name="NxQuestDetailsOld" inherits="UIPanelScrollFrameTemplate" virtual="true">
+      <Size>
+        <AbsDimension x="300" y="261"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+          <Offset>
+            <AbsDimension x="0" y="-7"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <ScrollChild>
+        <Frame name="$parentSC">
+          <Size>
+            <AbsDimension x="400" y="261"/>
+          </Size>
+          <Layers>
+            <Layer level="BACKGROUND">
+              <FontString name="$parentQuestTitle" inherits="QuestTitleFont" justifyH="LEFT" text="Quest title">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="5" y="-5"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjectivesText" inherits="QuestFont" justifyH="LEFT">
+                <Size>
+                  <AbsDimension x="475" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentQuestTitle" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-5"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentTimerText" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjectivesText" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-10"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective1" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentTimerText" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-10"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective2" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective1" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective3" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective2" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective4" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective3" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective5" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective4" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective6" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective5" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective7" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective6" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective8" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective7" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective9" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective8" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentObjective10" inherits="QuestFontNormalSmall" justifyH="LEFT" hidden="true">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective9" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-2"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentRequiredMoneyText" inherits="QuestFontNormalSmall" text="REQUIRED_MONEY">
+                <Anchors>
+                  <Anchor point="TOPLEFT"/>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentSuggestedGroupNum" inherits="QuestFont">
+                <Anchors>
+                  <Anchor point="TOPLEFT"/>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentDescriptionTitle" inherits="QuestTitleFont" justifyH="LEFT" text="QUEST_DESCRIPTION">
+                <Size>
+                  <AbsDimension x="285" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentObjective10" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-10"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentQuestDescription" inherits="QuestFont" justifyH="LEFT">
+                <Size>
+                  <AbsDimension x="470" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentDescriptionTitle" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-5"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentRewardTitleText" inherits="QuestTitleFont" text="QUEST_REWARDS" justifyH="LEFT">
+                <Size>
+                  <AbsDimension x="300" y="18"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentQuestDescription" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-15"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentItemChooseText" inherits="QuestFont" text="REWARD_CHOICES" hidden="true" justifyH="LEFT">
+                <Size>
+                  <AbsDimension x="295" y="0"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parentRewardTitleText" relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0" y="-5"/>
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentItemReceiveText" inherits="QuestFont" hidden="true" justifyH="LEFT">
+                <Anchors>
+                  <Anchor point="TOPLEFT"/>
+                </Anchors>
+              </FontString>
+              <FontString name="$parentSpellLearnText" inherits="QuestFont" hidden="true" justifyH="LEFT">
+                <Anchors>
+                  <Anchor point="TOPLEFT"/>
+                </Anchors>
+              </FontString>
+            </Layer>
+          </Layers>
+          <Frames>
+            <Button name="$parentItem1" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem2" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem3" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem4" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem5" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem6" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem7" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem8" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem9" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Button name="$parentItem10" inherits="QuestLogRewardItemTemplate" hidden="true">
+              <Anchors>
+                <Anchor point="TOPLEFT"/>
+              </Anchors>
+            </Button>
+            <Frame name="$parentMoneyFrame" inherits="MoneyFrameTemplate">
+              <Anchors>
+                <Anchor point="LEFT" relativeTo="$parentItemReceiveText" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="15" y="0"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <Scripts>
+                <OnLoad>
+                  if QuestMoneyFrame_OnLoad then
+                    QuestMoneyFrame_OnLoad (self)
+                  end
+                </OnLoad>
+              </Scripts>
+            </Frame>
+            <Frame name="$parentRequiredMoneyFrame" inherits="MoneyFrameTemplate">
+              <Anchors>
+                <Anchor point="LEFT" relativeTo="$parentRequiredMoneyText" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="10" y="0"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+              <Scripts>
+                <OnLoad>
+                  SmallMoneyFrame_OnLoad (self)
+                  MoneyFrame_SetType (self, "STATIC")
+                </OnLoad>
+              </Scripts>
+            </Frame>
+            <Frame name="$parentSpacerFrame">
+              <Size>
+                <AbsDimension x="5" y="25"/>
+              </Size>
+              <Anchors>
+                <Anchor point="TOP">
+                  <Offset>
+                    <AbsDimension x="0" y="0"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </Frame>
+          </Frames>
+        </Frame>
+      </ScrollChild>
+    </ScrollFrame>
+
+	<Button name="NXMiniMapBut" parent="Minimap" toplevel="true" hidden="false" frameStrata="LOW" enableMouse="true" movable="true">
+
+		<NormalTexture file="Interface\AddOns\Carbonite\Gfx\MMBut"/>
+		<PushedTexture alphaMode="ADD" file="Interface\AddOns\Carbonite\Gfx\MMBut"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+		</Anchors>
+		<Scripts>
+			<OnEnter>
+        Nx.NXMiniMapBut:NXOnEnter()
+      </OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+			<OnLoad>
+        this:RegisterForClicks ("LeftButtonUp", "MiddleButtonUp", "RightButtonUp")
+      </OnLoad>
+			<OnClick>
+        Nx.NXMiniMapBut:NXOnClick (button, down)
+			</OnClick>
+			<OnMouseUp>
+        this:StopMovingOrSizing()
+        this.NXDrag = false
+      </OnMouseUp>
+			<OnDragStart>
+				if arg1 == "LeftButton" and IsShiftKeyDown() then
+					this:StartMoving()
+          this.NXDrag = true
+				end
+			</OnDragStart>
+			<OnDragStop>
+        this:StopMovingOrSizing()
+        this.NXDrag = false
+      </OnDragStop>
+      <OnUpdate>
+        if Nx then
+          Nx.NXMiniMapBut:NXOnUpdate()
+        else
+          UIErrorsFrame:AddMessage ("Carbonite File Error!\nDownload and unzip it again", 1, .2, .2)
+        end
+      </OnUpdate>
+    </Scripts>
+	</Button>
+
+</Ui>

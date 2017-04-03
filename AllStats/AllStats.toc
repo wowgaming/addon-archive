@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: All Stats
+## Notes: Shows all of the stats from the dropdowns next to the paperdoll window.
+## Version: 1.1
+## Author: Ganoran
+## Credits: Lekyaira
+## Email: ganoran@gmail.com
+## License: GPLv3
+## SavedVariables:
+
+AllStats.xml

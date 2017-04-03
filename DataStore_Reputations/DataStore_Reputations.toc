@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## Title: DataStore_Reputations
+## Notes: Stores information about character reputation levels
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.001
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_ReputationsDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+## X-Curse-Packaged-Version: r10
+## X-Curse-Project-Name: DataStore_Reputations
+## X-Curse-Project-ID: datastore_reputations
+## X-Curse-Repository-ID: wow/datastore_reputations/mainline
+
+embeds.xml
+
+DataStore_Reputations.lua

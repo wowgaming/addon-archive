@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: Carbonite Nodes
+## Version: 1.00
+## Author: Carbon Based Creations, LLC
+## Notes: Copyright 2008-2010 Carbon Based Creations, LLC.  Contains Herbalism and Mining locations. Import using Guide page of Options Window.
+## DefaultState: Enabled
+## LoadOnDemand: 1
+
+CarboniteNodes.lua

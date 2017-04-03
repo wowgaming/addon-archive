@@ -1,0 +1,19 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fRaid Helper|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fРейд помощник|r
+## Title-zhCN: X-Perl |cffeda55f团队助手|r
+## Title-zhTW: X-Perl |cffeda55f團隊助手|r 由 |cFFFF8080Zek|r 開發
+## Notes: Replaces CTRA MT Targets window with extra functionality, and provides assists frame.
+## Notes-ruRU: Заменяет окно главных танков CTRA на более функциональное, и обеспечивает фреймом поддержки.
+## Notes-deDE: Ersetzt das CTRA MT-Fenster mit Extrafunktionen und bietet einen Assistentenframe an.
+## Notes-zhTW: 整合 CTRA MT目標視窗另增加額外功能, 以及提供協助框架.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## SavedVariablesPerCharacter: XPerlConfigHelper, XPerl_MainTanks
+## RequiredDeps: XPerl
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_RaidHelper.xml
+XPerl_AssistFrame.xml

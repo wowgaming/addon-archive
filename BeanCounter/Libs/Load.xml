@@ -1,0 +1,6 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Include file="Configator\Load.xml"/>
+	<Include file="Babylonian\Load.xml"/>
+	<Include file="LibExtraTip\Load.xml"/>
+	<Include file="TipHelper\Load.xml"/>
+</Ui>

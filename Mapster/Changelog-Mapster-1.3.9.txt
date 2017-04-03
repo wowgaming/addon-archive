@@ -1,0 +1,12 @@
+tag 1.3.9
+1c451d24d299d44002b1e182f848aa3a3e7faa6b
+Hendrik Leppkes <h.leppkes@gmail.com>
+2010-07-02 18:03:59 +0200
+
+Tag as 1.3.9
+
+
+--------------------
+
+Hendrik Leppkes:
+	- Added ruby sanctum instance map.

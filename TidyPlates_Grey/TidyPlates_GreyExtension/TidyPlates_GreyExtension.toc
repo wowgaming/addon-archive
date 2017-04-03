@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Tidy Plates
+## Notes: Modifies the Grey theme
+## Author: Binny the Love Fool
+## Dependencies: TidyPlates, TidyPlates_Grey
+
+GreyExtension.lua

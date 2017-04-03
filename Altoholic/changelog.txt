@@ -1,0 +1,713 @@
+Altoholic Changelog (dates in dd/mm/yyyy)
+===================
+
+Join the #altoholic IRC channel on Freenode : irc://irc.freenode.net:6667/
+
+3.3.002b
+
+- Fixed linking items/quests/etc.. to chat.
+- Several minor bugfixes.
+
+Note: due to several real life constraints, progress is likely to remain slow, and the fact that Cataclysm is getting closer means I will not update the addon for a while.
+Chances are that once addons are allowed on the beta servers and I get access, I will spend my time making changes there directly. 
+Adding functionalities now and having to rewrite them in a month wouldn't make sense.
+
+3.3.002
+
+- Added an information tooltip when mousing over the number of mails in the Activity pane.
+- Search is now cancelled if there is no value in the search edit box, except if you're using the categories in the search tab.
+- Reworked item filtering during searches. All types of searches now use the same code path. Also fixed a few filters that were not working properly.
+- Changed the location drop down in the Summary tab, you can now select more combinations of realms/accounts.
+- Added an option to clamp the addon's window to the screen.
+- Fixed skill tooltip displaying "no data" when mousing over skinning or herbalism.
+- The achievement UI is now a module on its own and is loaded-on-demand. This slightly decreases resource usage if you don't use that part of the UI. 
+- You can now fully disable DataStore_Achievements and Altoholic_Achievements if you do not wish to track achievements at all.
+- Winter code cleanup is almost over, almost everything has been reviewed. Next reviews: Calendar & Account Sharing (too big/touchy to review in this pass).
+
+Note: I have released an alpha version of my new addon on CurseForge. It's definitely not final, but it's stable and fully usable.
+Those of you who like to hunt quests you may have missed should like it, it's called Odyssey, and you can find it here:
+
+http://wow.curseforge.com/addons/odyssey/
+
+The quest database is still WIP, so don't bash if there are a few mistakes here & there. I will also be looking for people who can help me maintaining the list of quests & filters.
+
+No "official" support will be given at this point, please use the email thaoky.altoholic@yahoo.com if you have questions or if you are willing to help. I can also be reached on IRC.
+
+
+3.3.001d (28/01/2010)
+
+- Fixed several issues with the guild bank tab: deleting a guild, guilds that still appeared in the drop down, etc.. 
+Note: guild bank money is reset to zero in the process, please visit your guild bank to update it.
+- Improved the source's description when searching for items located in the guild bank.
+- Fixed an error when changing alt in the 'Characters' tab.
+
+3.3.001c (27/01/2010)
+
+- Added back 'text' field in LDB (conditional, for Broker2FuBar)
+- Fixed LinkWrangler hook.
+- Added support for faction specific achievements. They are now displayed on the same line if a given realm contains characters of the two factions. This used to be a bug/limitation of the system in earlier versions.
+- Guild bank counters from other realms are no longer displayed in the tooltip.
+- Fixed a Lua error in the 'Guild Skills' pane.
+- Added "Offline Members" to the 'Guild Members' pane. The AiL of an offline member can still be clicked, and if a players' equipment has been checked earlier, it will be displayed.
+- Fixed a few Lua errors.
+- Added an option to show/hide pets already known/could be learned by xx. (Thanks bsmorgan !)
+- Pets/mounts can now be shift-clicked and linked.
+- Expiries that are supposed to be shown in a dialog box will now be printed to the chat frame instead if player is in combat.
+- Changed dependencies in the .toc file, to help the Curse Client with DataStore & its modules.
+- Updated the recipe DB.
+- Updated loot tables (ICC).
+
+
+3.3.001b (26/12/2009)
+
+Two Year Anniversary Edition
+
+In a few days, Altoholic will turn two, and I would like to take some time to thank you all for the continuous support you have given me :)
+Quite often, I have received warm "thank you" messages from many of you, and apart from the traditional "you're welcome", or "glad you like the addon", I never had the opportunity to tell you how much this keeps me going.
+So here I am, thanking you for being patient when bugfixes do not come in fast enough, for taking the time to dig into the issues yourselves because I cannot reproduce a bug, and for sometimes fixing bugs in my place too.
+For all these little things you have done to help, know that I am extremely grateful, and that what started as a small personal project now binds a small community, thanks to all of you.
+
+I wish you all the very best for 2010!
+
+/kisses
+/hugs
+/love
+x1000
+
+Thaoky
+
+On to the changelog:
+- Fixed a Lua error in DataStore_Auctions.
+- Fixed missing currencies count to the tooltip.
+- Added a sorted list of achievements in the category "Dungeons & Raids".
+- Fixed a tooltip bug where only one of two guilds with the same name would be listed.
+- Added The Ashen Verdict faction.
+
+
+3.3.001 (09/12/2009)
+
+2 reminders :
+
+1) In the previous version, all options have been moved to Blizzard's option panel, under 2 categories : Altoholic & DataStore (click on '+'). No options has been removed.
+2) Help topics have been added in both categories, make sure to read them, they contain a lot of frequently asked questions. 
+
+- Added two new options in DataStore_Mails to check mail expiries for all accounts and/or all realms
+- Slightly modified the options panels to better fit all resolutions/UI scales.
+- The "Shared Content" scroll frame now has its own panel, right under "Account Sharing". This will change in the future when the entire account sharing feature gets an upgrade and becomes entirely managed by DataStore.
+- Added an option to automatically clear expired auctions and bids (DataStore_Auctions).
+- Fixed a bug where mail counters were not always displayed in the tooltip. (Thanks Quagm1re !)
+- Added currencies count to the tooltip.
+- Added 4 missing pets.
+- Added mandatory dependencies on DataStore_Characters & DataStore_Containers. The other modules are optional, and the addon will be updated to reflect that soon. Until you read a note about this in the changelog, keep all modules activated.
+- Manually updated the loot tables of Onyxia's Lair & ToC, since they are not yet in LPT.
+
+3.2.003b (25/11/2009)
+
+- Fixed a Lua error in the when sorting the activity pane by auctions or bids, this happened if one of the alts had never visited the AH.
+- Fixed a Lua error in the search pane.
+- Fixed a Lua error when mousing over the skill level of an unscanned profession in the Skills pane.
+- The options tab has been removed, all options are now available in the Blizzard Options panel. A button has been added at the top of the summary tab, for faster access.
+- Added an help topic in the options panel. More topics will be added along the way, don't hesitate to ask if you want to see a particular topic.
+- Added a "what's new" topic in the options panel.
+- Added an option to turn off the broadcast of profession links to the guild channel into DataStore_Crafts. This is what consumes the most bandwidth, so disable it if you/your guild considers this as critical.
+
+
+3.2.003 (16/11/2009)
+
+- Fixed a compatibility issue with MrTrader (DataStore_Crafts)
+- Added the character skill level in the recipe tooltip (in "Could be learned by ..")
+- Fixed a Lua error in when trying to get the item count of a missing character.
+- Fixed invalid reporting of the number of free bank slots.
+- Added a counter in the achievements tooltip to show the amount of completed criterias, this is particulary useful for achievements like "Northrend Gourmet"
+- Some achievement categories are now sorted in a custom fashion, rather than alphabetically, in order to show progressive achievements side by side.
+- Achievements can now be linked into chat frames. (You will need to relog your alts at least once for this to work).
+- Moved the option that manages the mail expiry threshold to DataStore_Mails. It is thus reset to 5 days for everyone, make sure to change it back to whatever you like in the options pane.
+- Guild communication has been entirely rewritten. 
+	The bad news is that backwards compatibility is not maintained (way too much work), meaning that you will not see your guild mates' data in the guild panes unless they upgrade to this version.
+	The good news is that the amount of data put on the guild channel has been decreased by around 30-35%, and as guild comm is now mostly managed by datastore, this will open doors for new features.
+- Improved the "Guild Bank Tabs" pane:
+	- if you're playing in a guild where players use different localizations of Altoholic, you will now see all timestamps in the same format.
+	- Players who have more recent data than yours are now shown in yellow (the colour may change if I find something more suitable).
+- Improved return mail support. If a guildmate returns a mail to one of your alts, you will be notified immediately.
+- Mail expiries are now checked 5 seconds after login, to slightly decrease the processing load at startup.
+- Your alts' professions are now sent 5 seconds after login at a pace of 1 per 0.5 seconds, this also decreases the amount of info put on the network at startup. Same thing when you reply to someone else's login.
+- Guild member professions will now automatically be cleaned after a patch, to make sure your database only contains usable links.
+- Most money amounts are now displayed using money icons, some of them will remain as they were due to graphic inconsistencies.
+- DataStore_Talents now scans talent tree reference only once per game patch, this saves some cpu cycles at loading.
+- Fixed a lot of small bugs in a lot of places.
+
+
+3.2.002b (28/09/2009)
+
+- Removed the "Method missing" error message in DataStore, it now fails silently (it's mostly a debug feature).
+- Added an option to display detailed guild bank counters (per tab). Disabled by default.
+- Fixed a Lua error in the Auctions/bids panes.
+- Updated the list of Feats of Strength.
+- Added 3.2 pets.
+- Changed the mysterious egg/disgusting jar timers from 7 days to 6 days 20 hours.
+- Fixed a bug where the message "No player named xx is currently playing." could be spammed if a guildmate logged in & out too quickly.
+
+3.2.002 (14/09/2009)
+
+- Added early support for returned mails.
+- Fixed a Lua error when trying to delete a guild bank.
+- Changed the calendar warning options, you can now set different warning thresholds per event type.
+- Added an option to disable name auto-complete when writing a mail (to prevent conflicts with other addons offering the same feature).
+- The reputations pane has been redone. I'm still playing a bit with the icon colors, feel free to make suggestions/tests by changing the values in Frames\Reputations.lua
+- Added a new pane for the currencies. They are still visible per character in the activity pane.
+
+3.2.001d (24/08/2009)
+
+More bugfixes.
+- Removed an unnecessary blank line that sometimes appeared in the tooltip.
+- Fixed mining ore/herbs counters being displayed twice when Informant is present (finally :D).
+- Fixed the detection of goblin AH (DataStore_Auctions).
+- Fixed a Lua error when receiving a mail from a guildmate (DataStore_Mails).
+- Fixed a Lua error when searching guild members professions. This was caused by LibTradeLinks expiry after a patch.
+- Updated LibTradeLinks to the most recent version.
+- Slightly modified the way calendar events are managed, in order to prevent a wall of text when multiple alchemy transmutes expire simultaneously.
+- Several bugfixes in the calendar too.
+- koKR partial localization (thanks Seashop !)
+- Fixed realm deletion in the account summary.
+- Declined invitations are now filtered out.
+
+3.2.001c (14/08/2009)
+
+- Moved mail expiry check back in OnEnable()
+- Fixed 2 Lua errors when doing a search.
+- Fixed a minor bug when viewing guild bank tabs on an unguilded alt.
+- Fixed invalid counters when taking an attachment (DataStore_Mails).
+- [frFR] Fixed an error when viewing certain talent trees (DataStore_Talents).
+- Fixed a lua error when visiting the AH (DataStore_Auctions).
+- [deDE] Fixed a lua error when scanning skills (DataStore_Skills).
+- Fixed sorting alts by rest XP rate.
+
+
+3.2.001b (11/08/2009)
+
+- Fixed a Lua error in the quest log (DataStore_Quests).
+- Fixed the option that scans the body of a mail or not (DataStore_Mails)
+- Removed debug code when mousing over a talent.
+- Gathered Ace & LPT libraries used by DataStore_* modules under DataStore (thanks AnrDaemon).
+- Removed Ace libraries already provided by DataStore
+- Fixed localization issues.
+
+3.2.001 (10/08/2009)
+
+YOU MUST DELETE your altoholic.lua in SavedVariables before using this version!
+
+As of this version, Altoholic will be using the DataStore series of addons.
+These small addons are responsible for scanning, storing and providing data to client addons.
+Although I wrote them, they must be seen as independent projects which will offer numerous benefits, such as:
+
+- Other client addons can use them, in order to save memory and processing time.
+- Data is scanned and stored only once.
+- Each module has its own saved variables file (DataStore_Containers, DataStore_Crafts, etc..), so a change in one DB will not impact the other.
+- Scanning has been fine tuned in many places, ex: you can say goodbye to messages like "Recipes could not be read, please rescan" :)
+- This will strongly ease the implementation of account sharing related features.
+
+Other changes:
+
+- Added the possibility to search guild members recipe (enabled by default). Ex: simply type "glacial bag" to see which guild members can craft it.
+- Fixed the calendar to use server time instead of local time. Note that in order to determine the difference between these, the addon waits until time rolls over to the next minute, so in the first minute, values shown in the calendar will not take this offset into account. Warnings are now also triggered after this happened, rather than right after login.
+- Added a small test to prevent a wall of text being displayed when a profession cooldown is available again.
+- A lot of lua errors have been fixed.
+
+
+3.1.003b (14/06/2009)
+
+- Fixed FuBar icon issues introduced in the previous release.
+- Fixed a lua error in the calendar pane when mousing over a day.
+- Fixed a bug when scanning the talents of a low level alt (under lv 10). 10 mottled boars were rageously slain to fix this bug.
+
+3.1.003 (12/06/2009)
+
+- Finalized a massive code update started several versions ago, the goal is to facilitate the implementation of new features, so the effort was definitely worth it, even if it caused a small delay in my schedule.
+- Brought a few changes that should address the issue of empty Account Summary/Bag Usage/Skills/Activity. Please let me know if this is still happening !
+- Fixed a rare refresh bug that could trigger a Lua error in the recipes pane.
+- Added an option to change the UI transparency.
+- Added an option to change the UI scale.
+- Fixed a bug when sorting alts on rest xp in the account summary (Thanks Dreamsmith !).
+- Fixed invalid tooltip counters when mousing over an item in the mailbox.
+- Updated zhCN localization (thanks ALADDINN).
+- Updated zhTW localization (thanks NightOwl).
+- Updated ruRU localization (thanks StingerSoft).
+- Added ruRU suggestions (thanks StingerSoft).
+- Added a calendar pane to track the following events: standard calendar events, profession cooldowns, raid timers, mysterious egg/disgusting jar.
+- Localization update in order to comply with the CurseForge localization tool. A few large strings may need review in ruRU, zhCN & zhTW (those that are used as option tooltips).
+- Fixed a bug with the option "Include guild bank count in the total count".
+
+3.1.002b (05/05/2009)
+
+- Better tracking of raid id's, they should hopefully no longer be reset at login.
+- Added a workaround to the database conversion failing due to a partial DB corruption.
+- Added a missing mount.
+- Updated loot tables (mostly Ulduar).
+- The tradeskill scanning code has been rewritten, it should no longer miss cooldowns or get wrong colors for recipes. Filters are no longer lost during the scan either. If it doesn't work perfectly now, I think I'll start crying like a baby :)
+- Fixed a bug where some equipped items might not appear in the search results.
+
+3.1.002 (29/04/2009)
+
+- Changed the way pets & craft recipes are stored, thereby considerably reducing the amount of memory used and decreasing the duration of the account sharing process. To give you an idea, my own database (10 alts) went from 4.15 Mb down to 3.34 Mb. Transferring an alt now takes around 40k down from 80k.
+- Fixed an error in the all-in-one pets/mounts pane.
+- Added a small check to automatically remove players who have left the guild from "Offline Members" in the guild professions pane.
+- Fixed quest log headers being continuously expanded when the quest log was updated.
+- Fixed reputation log headers being continuously expanded when the reputation log was updated.
+- Fixed a lua error due to a line inversion in the account sharing process. (/target Thaoky, /bonk, *ouch*)
+- The guild skills pane now display profession icons (when available) + skill level instead of profession link, the button can still be clicked or shift-clicked.
+- The 3 column header of the guild skills pane can now be used to sort the view by skill level.
+- Added 3 drop down menus in the recipe list to filter recipes on color, class, or inventory slot.
+- Updated the list of achievements (thanks shad0h). 
+- Updated zhTW localization (thanks NightOwl).
+
+3.1.001b (17/04/2009)
+
+- Added several missing pets/mounts (Thanks Poco !)
+- Fixed a minor issue when counting equipped items.
+- Added a temporary workaround to help Bean Counter users (mail function hook).
+- Slightly reworked the "Already known by.." tooltip information to make it use less space, both for recipes and pets/mounts.
+
+3.1.001 (16/04/2009)
+
+- Added "Already know/Could be learned by" information to the tooltip for both pets & mounts. Database might not be complete, please let me know if you find missing entries.
+- Fixed a bug when searching items with a variable enchant name (ex: ".. of the bandit", ".. of the monkey", etc..)
+- Fixed a data refresh issue after updating a guild bank tab from another player. This used to be a potential cause of Lua errors in the 3 guild panes.
+- Talent & Glyph information has been removed from the character tooltip in the account summary.
+- Added a pane for full talent trees. You don't need to clean your DB, but you obviously need to reload alts at least once to scan the trees. Hunter pets are not in yet.
+- Glyphs have been moved to the talent tree pane.
+- Dual specs are now supported for both talent trees & glyphs.
+- Bank visit timestamps are now broadcasted and updated when leaving the guild bank.
+- Fixed a few issues that occured while sharing data between two accounts.
+- Added a right-click menu option to update a realm imported through account sharing.
+- Item cooldowns are now tracked.
+- Fixed a very nasty bug in the achievements pane that caused issues in several places, although the most visible was the "GetItemCount" one. (Thaoky wins ! \o/)
+- Added/changed search locations in the search pane ("This character" / "This realm, this faction" / "This realm, both factions")
+- Fixed linking a craft recipe to a chat channel when Altoholic is visible.
+- Added a name auto-complete feature when sending a mail, the addon will lookup your alts of the same faction. (Thanks Omegasnow for the code !)
+- Added an option to include the guild bank count or not in the total count. Enabled by default.
+- Updated Ace 3 libraries to r803 (15/04/2009).
+- Updated LibBabble libs to 3.0-release15 (15/04/2009).
+- Updated loot tables with AtlasLoot 5.04.00.
+- Updated zhCN localization (thanks ALADDINN).
+- Updated esES localization (thanks PatoDaia).
+- zhCN: Fixed the translation of "Professions"
+
+3.0.008b (06/03/2009)
+
+Minor bugfix release
+- Added a right-click menu on the realm name in the account summary. Currently, the only option is to delete the entire realm (current realm can't be deleted). More will come later.
+- Added an information tooltip when mousing over a name in the "Guild Members" pane, it contains the guild rank, zone, public & officer notes.
+- Updated zhTW localization (thanks NightOwl).
+- Updated zhCN localization (thanks ALADDINN).
+- Fixed "Lockpicking" in esES.
+- Fixed a Lua error in the containers pane when loading a new character.
+- Fixed a Lua error in the skills pane.
+- Fixed a rare issue with the pets pane.
+
+Note: Most open issues have been fixed, this is thus most likely the last release until patch 3.1 goes live.
+
+3.0.008 (04/03/2009)
+
+- Added a few tests to prevent the risk of displaying an empty frame when opening the addon.
+- Changed the "Guild Bank Tabs" slightly, the top level is now the tab name instead of the player. It now shows your own timestamps on the same line as the tab name, and your guildmates in the children lines. It feels more natural than the original implementation.
+- Added support for profession links of offline members in the "Guild Skills" pane.
+- Added profession icons in the skill pane. Cold Weather Flying in now tracked.
+- Added a tooltip to the "Totals" line of the account summary, it contains per faction totals of that realms' data (levels/money/played).
+- The mail expiry warning has been reworked, you will now see a popup frame at login that will inform you that mail is about to expire, and offer you the possibility to view the Activity pane directly. This check can be disabled in the options if you don't want to see it.
+- Added a new feature to the mail system: when a guildmate sends a mail to one of your alts, the content is directly saved into your alt's mailbox and is immediately visible in Altoholic, without having to reconnect the alt!
+- Fixed several Lua errors introduced in the previous version.
+
+3.0.007b (20/02/2009)
+
+Minor bugfix release
+- Fixed 2 lua errors in the Pets frame.
+- Fixed an option stored at the wrong place in the DB, causing lua errors when viewing bags.
+- Added few more suggestions for professions in frFR (Thanks to Laumac !)
+
+3.0.007 (18/02/2009)
+
+- Updated zhTW localization (thanks NightOwl).
+- Updated the containers view. You can now view either bank+bags, or bags only, or bank only in normal or all-in-one mode.
+- Added a rarity filter to the containers view that allows you to highlight items with the specified rarity, while greying out other items.
+- Changed the "View" DropDownMenu in the "Characters" tab into buttons, for faster browsing. Thanks AnrDaemon for the suggestion.
+- Colour legend for reputations moved from the characters' frame to the tooltip.
+- Mail & auction house have been slightly reworked, they now use more readable timestamps and also have column headers.
+- Added two "All-in-one" views for pets & mounts, to compare your pets/mount across your alts, and also to see which ones you're missing.
+- Added a small database of spell ID's taught by recipes. This will prevent the tooltip from reporting that a recipe "Could be learned by x" when it's actually already known.
+Note: If a recipe is not in the database, the addon will try to use the old method (parsing the tooltip) to find a match. Both practices should lead to a much better level of accuracy. If you still spot mistakes, make sure to report them and to specify which recipe is impacted.
+	
+
+3.0.006c (7/02/2009)
+
+You DO NOT have to clean your saved variables if you're upgrading from 3.0.006 or 3.0.006b. You MUST still do it if upgrading from a lower version though.
+
+- Changed the grand totals at the bottom right of the main Altoholic frame, they now change based on how realms/accounts are filtered.
+- Fixed a lua error when mousing over an item during an account sharing phase, until this phase is completed, the tooltip will only show the counters of the current realm.
+- Message Type MSG_GUILD_ANNOUNCELOGOUT deprecated. Guild logouts are no-longer communicated to other members, they are now detected with CHAT_MSG_SYSTEM.
+- You can now Shift-click any profession link from "Guild Skills" to copy it into the chat frame.
+- Improved sorting columns in the "Guild Members" pane. Alts are now sorted too.
+- Added sorting abilities to the "Guild Professions" pane (first 3 columns only).
+- Added the "AH" location in the item tooltip.
+- Added an icon for the resulting item of a tradeskill in the recipes pane. It can be be linked to chat, as well as each material.
+- Removed the restriction to link a full profession from another account, my original tests had failed, but this seems to work well anyway! Link from another realm remains impossible though. (Thanks g3gg0 for your input on this!) 
+- The date/time at which an account sharing was performed is now saved and displayed next to the account/realm into the 4 main panes (account summary/activity/etc..).
+- Progressive achievements are now tracked. You have to log your characters once to gather the missing data, but cleaning the DB first is NOT required, missing data will simply be completed when you relog.
+- Achievements are now listed alphabetically in their respective categories.
+- Reference tables have been added in order to support progressive achievements, which means that you will see more achievements than offered by the default achievement UI. For instance, all feats of strength are visible.
+- The achievements frame has been slightly reworked, *HUGE* thanks to 0xdeadc0de for the suggestion & the code behind this.
+- Updated LibBabble libs (7/02/2009).
+
+Security Note: Added an option to automatically authorize guild bank updates.
+This option is DISABLED by default, this will prevent unauthorized users to query information about a tab on which they do not have view rights.
+Unfortunately, the API is extremely limited with regards to security, and this is the best solution I could come up with.
+For instance: the API does not allow me to determine whether user x with guild rank y can access bank tab z.
+Make sure that if Blizzard provides more API functions to manage such things, I will update this feature and make it automatic (ie: no rights = auto reject).
+Until then, security is in your hands.
+
+To other users, make sure you ENABLE this option if everyone can see everything in your guild, so that you do not get bothered by requests.
+
+
+3.0.006b (01/02/2009)
+
+You DO NOT have to clean your saved variables if you're upgrading from 3.0.006. You MUST still do it if upgrading from a lower version though.
+
+- Added an option to include both factions in the tooltip counters (for PVE realms).
+- Added an option to include all accounts in the tooltip counters.
+- Fixed a Lua error when clicking on an empty profession in the Guild Skills pane.
+- Fixed a Lua error in the Auctions pane.
+- Fixed 3 Lua errors in the companions/mounts panes when viewing characters from another account.
+- Improved the detection of guild login/logout.
+- Added a few hints/buttons/tooltips to make the account sharing process more explicit for both sides.
+- The account name in the "Account Sharing" frame can no longer be empty, it was never intended to.
+- Updated zhTW localization (thanks NightOwl).
+
+Note: most bugs introduced in 3.0.006 have been fixed. I'm still working on a refresh issue in the guild panes, I expect this to be an easy fix, but it is hard to reproduce the problem, so the fix will be in a future release.
+
+3.0.006 (26/01/2009)
+
+3.0.005 was an internal release number, it was not available outside of my guild.
+
+YOU MUST DELETE your altoholic.lua in SavedVariables before using this version!
+
+- Support for multiple accounts has been added. Please refer to the appropriate section of readme.txt for details.
+- Added 3 new panes in the Summary tab:
+	- Guild Members: a list of your connected guildmates, along with their alts (if they're using Altoholic too), and their average item level. Clicking their AiL will also allow you to "remotely" inspect their equipment.
+	- Guild Skills: a list of altoholic users in your guild, along with their alts and direct profession links. All professions are available in one click.
+	- Guild Bank tabs: a list of altoholic users and the time at which they last visited the guild bank. If you haven't visited the guild bank for a few days, you can remotely update your local data without going to a capital city.
+
+- A button to expand/collapse realms has been added to the "Summary" tab.
+- A filter to select "This realm / All realms / All accounts" has been added to the "Summary" tab.
+- An option to select "All accounts" has been added in one of the search filters.
+- Horde and Alliance characters on the same PVE realm are now displayed together in the addon, they are no longer displayed in separate realms.
+- Fixed a bug in the quest log when abandonning a quest. (Thanks Squeet !)
+- Fixed yet another bug related to filters in the tradeskill window, scanning should hopefully be flawless now.
+- Added a button to link an entire tradeskill in chat. Only works with alts on the same realm, same account. Does not work for runeforging either.
+- Winter code cleanup, won't change your life, but will definitely change mine :D
+- Guild bank timestamps are now tracked separately for each tab.
+- Raid timers are now updated when PLAYER_ENTERING_WORLD is triggered (entering or leaving an instance).
+- Updated loot tables with AtlasLoot 5.03.02 (wotlk crafts missing, coming soon).
+- Updated LibBabble libs (26/01/2009).
+- A lot of small changes.
+
+Note:
+- In order to support multiple accounts, a lot of code changes have taken place at the core of the addon, and although the addon has been thoroughly tested since last release, this addition plus the guild features that rely on communication may mean that some new bugs were added.
+Problems that did not arise in my guild may arise in yours, so let me know if you spot anything. 
+
+
+3.0.004b (17/12/2008)
+
+- Minor localization (frFR) fixes.
+- Updated LibBabble libs.
+- When searching bags with an active filter on rarity or equipment slot, searching known recipes will no longer happen, as this was inconsistent.
+
+3.0.004 (15/12/2008)
+
+- Fixed/added leveling suggestions in all languages for wotlk zones.
+- Updated the loot tables to be on par with the AtlasLoot 5.02.03.
+- Added support for esES. Thanks IrregularByte.
+- WotLK factions have been triggered, please let me know if I missed any, as I do not have a high level horde character.
+- Fixed a couple of bugs related to profession cooldowns.
+- Fixed a potential incompatibility issue between Auctioneer and Altoholic's auction pane.
+- Fixed a rare bug related to rest xp (rest status not correctly reported).
+- Added a tooltip above the average item level in the account summary, with a few references.
+- Fixed an issue with raid id's of instances like Naxx 10 & 25 overlapping one another.
+- Removed specific parsing for enchanting in the recipe tooltip.
+- Added 2 options (in Options -> General) to show/hide the fubar icon & text.
+
+Here's some information about tests I have made regarding a few bug reports:
+
+- Quest Log: a bug had been reported when a quest is abandonned, the "cursor" seems to go back to the beginning of the log. After extensive tests (without altoholic, with altoholic but all QL scanning code commented, etc..), it appears that this is not a bug. Abandonning quest #10 brings you back to the beginning of the list, seems new since 3.0.
+- FuBar: There's a minor issue with the FuBar options that were added. 
+FuBar does not seem to accept that both the text & icon are hidden, so if you're trying to hide both, one will always come back. As a side note, I have spent way too much time on FuBar issues already, and these two buttons should meet the needs of most FuBar users, so I will not do anything about FuBar anymore.
+Also, FuBar saves the status of icon/text per user, not per account, and I won't spend time working around that either.
+If you're not happy with the result, use LibDataBroker instead of FuBar.
+
+3.0.003 (12/11/2008)
+
+- Fixed mistakes in deDE leveling suggestions, invalid translations (causing Lua errors).
+- Fixed LinkWrangler support. (moved Hook_LinkWrangler).
+- Added a launcher for LDB. Tested with ButtonBin & MakeRocketGoNow, working ok, let me know if by any chance you have problems with other LDB displays (which I really doubt given how simple it was to implement it).
+- Updated zhTW localization (thanks NightOwl).
+- Changed libraries directory from "Libs" to "libs" in embeds.xml, to avoid problems on non-windows platforms.
+- Fixed a Lua error when clearing AH entries from the list.
+- Added support for glyphs, they are visible in the character tooltip of the account summary. Their location is likely to change whenever I have time to implement better support.
+- Suggestions to level inscription have been updated, they are now more complete and go up to 350.
+- [zhTW]: Fixed translations for "Secondary Skills" and "Riding" that prevented data from being displayed in the skills pane.
+- [deDE]: Fixed "Klasse: xx" to "Klassen: xx" & "Restores %d+ mana per", and ITEM_MOD_SPELL_POWER (Thanks ckaotik)
+- Fixed the name of the alt who last visited the guild bank. It was correctly saved, but not correctly refreshed.
+- Number of achievements earned + points have been added in the class icon tooltip, on top of the achievements frame.
+- Fixed a Lua error when trying to find an equipment upgrade based on item level.
+- Tradeskill cap raised to 450.
+- Level cap raised to 80.
+
+Note: v3.0.004 should be released rather quickly, and will contain an updated faction list as well as updated loot tables.
+
+3.0.002b (18/10/2008) Bugfix release.
+
+- Fixed a bug with the PLAYER_LEVEL_UP event.
+- Fixed the issue where earning an achievement updated all of them (it was actually intended to be a temporary solution). Earning an achievement now only updates the information of that specific achievement. (Thanks Syzgyn)
+- Fixed a few typos in deDE suggestions.
+- Updated all LibBabble libraries to the latest version, as the ones included with 3.0.002 seemed to be causing issues.
+
+Important notes: 
+	If you didn't face any problems with 3.0.002, you can (and you should) install 3.0.002b without deleting your saved variables database. Simply update the addon, and you'll be fine.
+
+	If you did face problems with 3.0.002, the most annoying bug was that the level of one of your alts has been saved as an incorrect value (the addon expects a number, and gets a string, this is the bug I've fixed).
+	How did this happen?
+		A wow event has changed, and I wasn't aware of it. You have only been impacted by this problem if one of your alts actually leveled up since you installed 3.0.002, otherwise, you have not been affected.
+	
+	How can I fix it?
+		If you know exactly which alts leveled up, you can simply update the addon to 3.0.002b, and relog them all once, this will update the invalid value to a valid one. You should NOT toggle the UI before you have logged the incriminated characters at least once.
+		There is a chance that if you kept playing with this problem, the addon did not operate properly and corrupted certain data (like professions, etc..), so if you're in doubt, you should totally delete your saved variables file.
+		
+	My sincere apologies for this inconvenience.
+		
+3.0.002 (12/10/2008) 
+
+Known issues:
+- There is a known issue with refreshing achievements information, currently data is updated whenever an achievement is completed, but not when its partially completed. This is being addressed in a future patch.
+- Only achievements are implemented at this point, statistics will come later.
+- Glyphs are not in yet, but definitely planned.
+- Tokens/currencies are visible when mousing over a character in the activity tab, this will likely change in a future release.
+
+IMPORTANT NOTES - PLEASE READ BEFORE INSTALLING !!
+
+1) Do not install this version before patch 3.0.2 is applied to live realms.
+2) YOU MUST DELETE your previous Altoholic directory, as lot of libraries have changed, it is highly recommended to start with a clean installation.
+3) YOU MUST DELETE your altoholic.lua in SavedVariables.
+
+- Added an activity pane: you can now see in one pane how many mails, auctions or bids your alts have, including the time at which they were last checked.
+- The addon now detects when a profession is abandonned. All data related to this profession will automatically be removed from the database.
+- Fixed the update of faction data, keyring and bank bags.
+- deDe localization (almost complete) + suggestions (complete), thanks to sLiz3r.
+- Slightly modified the skill pane to display the riding skill level in the right color. The color legend is now a bit different.
+
+3.0.001b (WotLK beta)
+- Fixed feats of strength
+- The "color" of recipes is now being tracked, you can now see how many recipes are still green/yellow/orange for any profession.
+- Added a button in the tradeskill pane to expand/collapse all sections at once.
+- Fixed a few small bugs here and there.
+- Tokens are now tracked.
+- Rock libraries removed, they had been temporarily included in the previous version to make a few tests with FuBar. Since I could not reach convincing results, they've been dropped.
+- Key binding is now supported, you can configure any key to toggle the UI rapidly.
+
+3.0.001 (WotLK beta)
+- Way too much to list :)
+- ruRU localization added, thanks to Hellbot.
+- frFR suggestions added, thanks to Laumac.
+- Support for pets, mounts and achievements.
+- Changed the categories in the search tab, they're now the same as at the AH, except all categories have a "Any" subcategory.
+- Fixed the bug related to scanning recipes introduced in an earlier release. Recipes are no longer scanned every time a tradeskill window is opened if the database is already well populated.
+- The options that were moved to the option pane in 2.4.016 are now permanent.
+
+2.4.016 (not officially released)
+- The UI now uses tabs, like at the real AH, this will leave room to add new features and simplifies navigation. Don't worry if some frames feel a bit empty, this will change over time as new features are added.
+- Added the possibility to see bag contents as one large bag.
+- Loot table updated with AtlasLoot 4.06.00
+- Fixed trade skills being partially wiped when a filter was active in a tradeskill window.
+- Fixed a bug that sometimes caused the counters to be displayed twice in the tooltip for certain gathering nodes.
+- Fixed a rare bug when reporting the rest xp of a character that has never entered an inn.
+- Fixed Fubar icon not being draggable.
+- Added current xp + xp rate in the character tooltip
+- Improved the search window by adding column headers to sort results. 
+- Improved the "find upgrade" feature by adding column headers as well to sort results based on a specific stat.
+- Fixed a few other bugs to prevent lua errors when an item link is unknow (especially after a patch).
+
+- A few checkboxes that were at the top of the search pane have been moved to the options pane. They ARE NOT YET permanent options, but they will be soon. (ex: include guild bank, include mails, etc..)
+
+
+Note to translators: expect some strings to be updated soon, I used to concatenate strings without using %s, which is a bad practice, I'll need your help in future releases :)
+
+
+2.4.015 (22/06/2008)
+- NOTE: To those who are facing the issue of options not saving properly, please note that cleaning your Altoholic.lua in WTF/.../SavedVariables will fix the problem.
+- Added a count of ores/herbs when mousing over a known type of mining/herbalism node.
+- When a quest is linked in chat, clicking on it now tells you which alts are also on the quest (excluding current player).
+- Fixed incorrect reporting that mail is about to expire in x days.
+- Replaced usage of GameTooltip by Altoholic's own tooltip in order to avoid unnecessary hooks from other addons, thereby preventing potential lockups.
+- Quest log is now updated a bit more often, to ensure data validity.
+- FuBar: it's now possible to show/hide icon/text.
+- Added Auction House support. You can now view a list of auctions & bids you've done with any character. This works like the mail or the bank, you have to be at the AH to read/refresh the data. There's unfortunately no way to provide more accurate info than what I provide, like letting the addon react to an outbid/sale/auction expiry. If that ever becomes possible, make sure Altoholic will take advantage of it :)
+Note about the AH information: The AH entries visible in the addon WILL NOT be deleted automatically upon expiry. Reasoning behind this is that you might want to see in which auctions/bids you have to track at login, even if it expired two hours ago.
+You can right-click any entry to get a contextual menu thanks to which you can delete AH entries from either your faction's AH, goblin's AH, or both.
+- Disabled data refresh on exit, no longer necessary.
+- Added advanced filters to find upgrades in the equipment pane. Right-click an item to get the options. Please refer to readme.txt for the details.
+Note about the filters: at the moment, they work quite well on armor slots, but I need to improve filtering for rings/trinkets/etc.. expect more fine-tuning.
+
+2.4.014 (28/05/2008)
+- Fixed a bug related to "First Aid" frFR translation being changed without notice.
+- Fixed tradeskill levels not always being properly saved on exit.
+- Fixed a lua error when mousing over equipment from another realm than the current.
+- Updated the loot table to AtlasLoot 4.05.00.
+- Added the possibility to find an upgrade for an item in the Equipment pane. Simply right-click the item. The items listed are the ones with a higher item level for a specific slot, so it's possible that searching for a DPS cloth upgrade returns healing stuff.
+- Addon uploaded on wowace svn. You can now get it via WowAceUpdater or on files.wowace.com. There will be more frequent updates there, but keep in mind that those version will always be work-in-progress, even though I'll strive to upload stable versions only.
+- Added support for profession cooldowns. The profession tooltip in the "Skills" pane now shows the list of items that are currently in cooldown.
+- Added support for command line searches, please refer to readme.txt for details.
+- /altoholic no longer toggles the ui. You can now use '/alto show', '/alto hide' or '/alto toggle' to act on the UI.
+- /alto is now a valid slash command, it does the same as /altoholic.
+- Massive localization effort in this version. *HUGE* thanks to NightOwl (wowace) for zhTW, and to AYiNaFA/Wang for zhCN.
+- The addon is getting close to be 100% localized for enUS, frFR, zhTW, zhCN. If you notice mistakes, thanks to report them.
+Note: deDE still defaults to enUS for many entries, help will be gladly welcome to finish this localization.
+I'm also looking for help to translate the suggestions in frFR, deDE.
+
+2.4.013 (13/05/2008)
+- Fixed incorrect counters in the tooltip when viewing mailbox content.
+- Fixed a bug after a /gquit.
+- Fixed a localization bug in the recipe tooltip.
+- Fixed a bug displaying or linking guild bank tooltips on realm other than the current.
+- Fixed a bug processing recipe tooltips in frFR (and potentially deDE too).
+- Fixed a few typos in deDE.
+- Fixed a small typo that prevented the Factions table from being cleared.
+- Raid id's are now tracked and visible in the character tooltip (Account Summary). Simply relog your characters to get this info.
+- Added suggestions to the following factions: Honor Hold, Thrallmar, Cenarion Exp., Keepers of Time, Sha'tar, Lower City, Consortium. More will come later.
+- Right-clicking an alt's level now opens a contextual menu for faster access to bags, mail & questlog. Left clicking still directly opens his bags.
+- Added LinkWrangler support. Thanks Brykrys for the help.
+- Added basic PVP info (arena, honor, hk, dk) to the character tooltip.
+- Added the possibility to delete an alt by right clicking on its level in "Account Summary->Characters" and selecting "Delete this Alt".
+Note: The addon will NOT let you delete the character with which you're currently logged in, this is the desired behaviour and will not be changed.
+- Added support for an AutoQuery of the loot tables, this is disabled by default of the serious risk of disconnection. Please check readme.txt for an explanation on how this works.
+
+2.4.012b (05/05/2008) Bugfix release.
+- Fixed a bug introduced in .012 that reported all recipes as "Could be learned by".
+- Click an alt's name in the Account Summary now opens its containers.
+- Changed the colours in the reputation frame. I'm using WoWwiki's colour scheme, but I could not use it for button textures as the colours were too bright.
+I thus opted for a more neutral background (dark gray), and used the colours for the text. The result is not too bad, and I feel it's less aggressive to the eye now.
+However, depending on the feedback this may still change, and there will probably be more colour sets in the future (if there's demand).
+- Added an option to show/hide "Already known by", "Will be learnable by ", etc .. in the tooltip.
+- Fixed a bug when linking a stacked item causing the "split stack" to popup all the time.
+
+2.4.012 (04/05/2008)
+- Fixed enchanting recipes not being listed when searching known recipes.
+- Fixed a bug when searching transmutes.
+- Fixed known recipes being listed as search results when searching via the menu.
+- Fixed the FuBar icon bug for good. If FuBar is not installed, the icon will appear for a split second at login and will be hidden by the addon. Will stay like this until I know FuBar a bit better.
+- Fixed a bug when scanning professions.
+- Fixed a bug when mousing over a character icon in the reputation frame.
+- Fixed a bug introduced in .010 in the multiple realm support for the guild bank.
+- Added the list of characters already on a quest in the tooltip.
+- Registered ZONE_CHANGED_NEW_AREA & ZONE_CHANGED_INDOORS to better track player location.
+- Added support for "Will be learnable by " in the recipe tooltip.
+- The reputation pane has been redone, factions are now grouped like in the genuine reputation windows.
+A few notes on this:
+1) Only the current realm is supported at this point, but multiple-realm support is in the works.
+2) Suggestions on how to level each faction will be provided. Aldor, Scryers & Netherwing are already in, to give you a taste of what you can expect :)
+3) The frFR & deDE localization have been done by myself, thanks to the WoW-EU Armory, if you find any mistake in the name of a reputation, please let me know.
+4) Given how the reputations are now grouped, the need for an "inactive" sub-group is not necessary. This may still happen in the future though.
+5) I am not satisfied with the colour scheme of the reputation frame, I'm open to suggestions to make this look better!
+
+2.4.011 (28/04/2008)
+- Fixed a small bug when closing the guild bank after purchasing a new slot.
+- Fixed the bug where 2 Altoholic icons were drawn around the minimap when fubar was not running.
+- Fixed an invalid item count in the tooltip when moving items from the main bank slots to the bags.
+- Prevented the profession from being messed up by opening a craft window with an active filter (have material, subclass, etc..).
+The assumption is that the number of crafts will never decrease, so if the number displayed is lower than what is in the DB, scanning is skipped.
+- The previous fix will prevent incorrect reporting of "already known" or "could be used by" in a recipe tooltip.
+- Now displays item count in the tooltip if it's equal to 1 (was previously considered implicit).
+- Various fixes to handle nil pointers.
+- Added leveling suggestions when mousing over character level in the character list.
+- Fixed a bug due to which rest xp was not correctly updated on logout.
+
+2.4.010 (26/04/2008)
+- YOU MUST DELETE these files: /wtf/your_account/SavedVariables/Altoholic.lua & Altoholic.lua.bak 
+- The database has been reworked in order to use much less lua tables than before, thereby reducing memory consumption (by around 20%).
+- Source files have been re-arranged to be more manageable, you should completely delete your previous Altoholic directory before installing this version.
+- German localization ! Thanks Ayindi :D
+- It is now possible to search for known recipes, as if you were searching for items.
+- The amount of money available at the guild bank is now tracked.
+- Added an option to automatically sort loots in descending order (still based on item level).
+- Added an option to display the maximum rest xp as 150% instead of 100%.
+- Removed the "scan successful" message when scanning a profession went ok. No use for an option.
+- Added an option to scan the body of a mail, enabled by default. Disabling this will prevent mails from being marked as read.
+- Fixed a bug where a recipe known by an alt was reported as "could be learned".
+- Fixed a bug when there were two characters with the same name on 2 different realms.
+- Added multiple realms support to the equipment frame.
+- Added multiple realms support to the guild bank frame.
+- Note: multiple realms support for reputations is NOT YET implemented, but is definitely planned.
+
+2.4.009 (20/04/2008)
+- Added Suggestions for all professions (except skinning, will come once I find meaningful information to provide ..)
+- Removed a unnecessary bag update when leaving the bank, which I suspect to be causing a bug.
+- Slightly decreased memory usage.
+- Mousing over a rogue class in the "skills" frame now shows lockpicking & poisons.
+- Quests can now be shift-linked in chat windows
+- Added support for professions. You MUST open each profession windows one by one so that the addon can learn them.
+This is mandatory, professions can't be queried unless their window is opened, just like the bank.
+A message will let you know if professions were properly loaded, which under certain conditions might not be the case.
+I'm not sure there's a way to work around this issue, but at least I can detect it, so if you get the error message, just close the window and reopen it.
+
+2.4.008 (13/04/2008)
+- Improved multilingual support for female class names, currently frFR & deDE. I don't know if it's necessary in other languages.
+- Fixed the estimation of rest xp, and support for disconnections out of an inn. 
+- Fixed missing enchant information in item links, relog your alts to update the info.
+- Added "Suggestions" to the first aid, tailoring & riding skills tooltip, the concept will be extended to other professions and reputations.
+
+2.4.007 (10/04/2008)
+- Added a "Quests" frame. Suggestions to enhance it are welcome.
+- Fixed a bug that prevented bank bags from being correctly read. Make sure to visit the banks of the alts that were affected by this. You DO NOT have to clean the .lua database in the WTF folder.
+- Updated most inventory terms to use LibBabble-Inventory 3.0.
+- Fixed a bug (that could not be reproduced) with the tooltip parameter being nil in hooked functions (can't happen anymore)
+- Updated loot table to AtlasLoot 4.04.01
+
+2.4.006 (07/04/2008)
+- /Altoholic now toggles the UI
+- Fixed a bug with the item count being invalid after equiping/unequiping an item.
+- Added early FuBar support.
+- Added an option to show/hide the minimap button
+
+2.4.005 (05/04/2008)
+- Improved the method that clears tables.
+- Added additional details to the item tooltip.
+- Added a new drop down to filter searches by equipment slot.
+- The BAG_UPDATE event is now registered later, to prevent inconsistencies after logout.
+- Completed the loot table with: Sha'tar faction, Heroic mode badge rewards, and various sets. Now fully on par with AtlasLoot 4.04
+- Fixed a bug in the "Bag Usage" tooltips, the total amount of free slots didn't take the first bag into account.
+- The item tooltip is now refreshed automatically when the quantity of the item varies.
+
+2.4.004 (04/04/2008)
+- Fixed a bug when trying to update a bag with a wrong id.
+- Added support of LibBabble 3.0 libraries: Boss, Faction, Inventory & Zone, this will add support for additional languages.
+Please let me know if you face particular problems related to localization.
+The core of the addon still only supports enUS & frFR, but I intend to integrate LibBabble-Class shortly, to make the addon entirely open to other languages.
+
+2.4.003 (01/04/2008)
+- (frFR) Fixed a typo for 2H maces, swords & axes.
+- Added the "SetsAndPVP" part of AtlasLoot 4.04 to the loot tables, only a few sets remain to be added (but PVP & T4, T5, T6 are in)
+- Fixed a bug with the item tooltip causing a Lua error due to a nil itemLink.
+- Fixed a bug that caused the source to be displayed twice on certain recipes.
+- Fixed a bug with the item count in the tooltip, this was due to me being too conservative about bag updates. The tooltip will now display the correct value. There is only a small inconsistency that will not be corrected. If for instance you own 3 copies of an item, and you want to purchase one more, you'll see "3" right before the purchase, and to update it to "4" in the tooltip, you'll have to mouse over an another item first.
+
+This is because I do not want to be constantly counting the bags (as the function "OnTooltipSetItem" is being triggered continuously by the game when your cursor is over the item).
+I thus save the last item ID, and do not recount until a new item ID is found.
+
+Note that the count isn't displayed if you only own 1 copy of the item.
+
+2.4.002 (30/03/2008)
+- Added the "Crafting" part of AtlasLoot 4.04 to the loot tables
+- Added the "WorldLoot" part of AtlasLoot 4.04 to the loot tables
+- Added support for item count on the item tooltip, similar to Bagnon_tooltip (configurable)
+- Added support for item source location on the item tooltip, similar to Mendeleev (configurable)
+- Fixed a bug with the bag usage tooltip.
+- Fixed a bug with the female class names introduced since 2.4 in the frFR version.
+
+2.4.001 (29/03/2008)
+- Initial Release

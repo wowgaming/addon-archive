@@ -1,0 +1,22 @@
+﻿## Interface: 30300
+## LoadOnDemand: 1
+## Title: Lib: Babble-Faction-3.0
+## Notes: A library to help with localization of factions.
+## Notes-zhCN: 为本地化服务的支持库[声望阵营]
+## Notes-zhTW: 為本地化服務的函式庫[聲望陣營]
+## Notes-deDE: BabbleLib ist eine Bibliothek, die bei der Lokalisierung helfen soll.
+## Notes-frFR: Une bibliothèque d'aide à la localisation.
+## Notes-esES: Una biblioteca para ayudar con las localizaciones.
+## Notes-ruRU: Библиотека для локализации аддонов.
+## Author: Daviesh
+## X-eMail: oma_daviesh@hotmail.com
+## X-Category: Library
+## X-License: MIT
+## X-Curse-Packaged-Version: r112
+## X-Curse-Project-Name: LibBabble-Faction-3.0
+## X-Curse-Project-ID: libbabble-faction-3-0
+## X-Curse-Repository-ID: wow/libbabble-faction-3-0/mainline
+
+LibStub\LibStub.lua
+lib.xml
+

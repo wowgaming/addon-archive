@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: MoveAnything
+## Notes: 3.3.5-10 by Wagthaa
+## Version: 3.3.5-10
+## Author: Classic: Skrag - Mod: Jason - TBC: Vincent - WotLK: Wagthaa
+## SavedVariables: MoveAnything_CustomFrames, MoveAnything_CharacterSettings, MoveAnything_UseCharacterSettings, MADB
+
+localization.en.lua
+MoveAnything.lua
+MoveAnything.xml
+UserVariables.lua

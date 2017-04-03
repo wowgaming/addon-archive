@@ -1,0 +1,16 @@
+﻿## Interface: 30300
+## Title: DataStore_Currencies
+## Notes: Stores information about character currencies
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.001
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_CurrenciesDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+## X-Curse-Packaged-Version: r10
+## X-Curse-Project-Name: DataStore_Currencies
+## X-Curse-Project-ID: datastore_currencies
+## X-Curse-Repository-ID: wow/datastore_currencies/mainline
+
+DataStore_Currencies.lua

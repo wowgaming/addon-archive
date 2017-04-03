@@ -1,0 +1,1 @@
+﻿BINDING_HEADER_EASY_LOOT = "|cFF000cFFEasy Loot|r";

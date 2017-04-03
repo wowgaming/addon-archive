@@ -1,0 +1,42 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+Font: White Rabbit (whitrabt.ttf)
+Created By: Matthew Welch
+E-Mail: daffy-duck@worldnet.att.net
+Web Address: http://home.att.net/~daffy-duck
+             (PGP public key available here)
+
+White Rabbit, like all of my fonts, is free.  You can use it for most
+personal or business uses you'd like, and I ask for no money.  I
+would, however, like to hear from you.  If you use my fonts for
+something please send me a postcard or e-mail letting me know how
+you used it.  Send me a copy if you can or let me know where I can
+find your work.
+
+You may use this font for graphical or printed work, but you may not
+sell it or include it in a collection of fonts (on CD or otherwise)
+being sold. You can redistribute this font as long as you charge
+nothing to receive it. If you redistribute it include this text file
+with it as is (without modifications).
+
+If you use this font for commercial purposes please credit me in
+at least some little way.
+
+About the font:
+
+White Rabbit is reminiscent of the characters displayed on all those
+old low-res terminal screens. Smoothed out and cleaned up for 1999,
+this is the font to use for all your computing applications.
+
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: PGP for Personal Privacy 5.0
+Charset: noconv
+
+iQA/AwUBNzDcWuEM8BJ4ZA+2EQJlHgCff/odpTMZxjkMHJrSJMpKNxRMCmsAoNu0
+kdQTGph0RRtmtuaBROcKnCxW
+=lMfG
+-----END PGP SIGNATURE-----

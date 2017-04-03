@@ -1,0 +1,143 @@
+[B]Skillet[/B]: A trade skill window replacement
+
+Skillet is a replacement for the default tradeskill and craft UI, and is based on [URL=http://www.wowinterface.com/downloads/info5812-AdvancedTradeSkillWindow]ATSW[/URL] , by Slarti. This is not a continuation of ATSW, which is still going strong as far as I know, but is rather a brand new mod based in the ideas in ATSW.
+
+[I]Skillet is now hosted by wowace.com and is available through the various updators that reference that site.[/I]
+
+[B]Features[/B]
+[list]
+[*]Larger the the standard tradeskill window
+[*]Built-in queue for creating multiple, different items
+[*]User editable list of notes attached to reagents and crafted items.
+[*]Automatically buy reagents for queued recipes when visiting a vendor
+[*]Recipes can be filtered by name, whether or not you could level when creating the item, and whether or not you have the mats available.
+[*]If you can craft a reagent needed by a recipe, then clicking on that reagent will take you to its recipe (same features as [I]Reverse Engineering[/I].
+[*]Queued items are saved when you log out and are restored on log in
+[*]If the item to be crafted requires a minimum level to use, that level can be displayed along with the recipe (disabled by default)
+[*]The shopping list of items needed for all queued recipes for all alts can be displayed at banks, auction houses, or from the command line
+[*]Items needed for crafting queued items can be automatically retrieved from your bank (by using the shopping list)
+[*]Sorting of recipes (name, difficulty, level, and quality of crafted item)
+[*]Complete or mostly complete localizations for deDE, koKR, zhCN, zhTW, and frFR.
+[*]Complete support for Alternate characters (trade skills, queued recipes, reagent stocks)
+[/list]
+
+[B]Planned (Future) Features[/B]
+[list]
+[*]Sorting by slot (head/arms/leg etc)
+[*]Custom filtering of recipes (have mats, have mats in bank, min level/max level, etc)
+[*]"Craft Until .." where Skillet will continue to make items until you run out of reagents or a certain skill level is met or until the recipe becomes grey/green.
+[*]Queue heirarchies so that deleting a item that queued up craftable reagents will also remove those queue entries
+[/list]
+
+[B]Supported / Tested Mods[/B]
+
+Skillet has been tested with the following mods. Other mods that change or update the tradeskill window may not work.
+
+[list]
+[*][URL=http://www.wowinterface.com/downloads/info4109-FizzwidgetReagentCost]Fizzwidget Reagent Cost[/URL]
+[*][URL=http://www.wowinterface.com/downloads/info4134-SomeAssemblyRequired.html]SomeAssemblyRequired[/URL]
+[*][URL=http://wowui.incgamers.com/?p=mod&m=4655]TradeJunkie[/URL]
+[*][URL=http://www.wowinterface.com/downloads/info7158-Quartz-ModularCastingBar.html]Quartz[/URL]
+[*][URL=http://www.wowinterface.com/downloads/info6752-ArmorCraftFanUpdate.html]ArmorCraft (fan update)[/URL]
+[*][URL=http://www.wowinterface.com/downloads/info7427-GemHelper.html]GemHelper[/URL] (v1.41 or later)
+[*][URL=http://www.wowinterface.com/downloads/info7663-LilSparkysWorkshop.html]LilSparky's Workshop[/URL]
+[*][URL=http://files.wowace.com/EnchantingSell/]EnchantingSell[/URL]
+[/list]
+
+[INDENT][I]Mod authors: please contact me if you would like to make your mod work with Skillet, or you would like me to make Skillet work with you mods. I'm always happy to discuss changing the code so it is easier to integrate with.[/I][/INDENT]
+
+[B]Reporting Bugs or Feature Requests[/B]
+
+I am using the [URL=http://jira.wowace.com/browse/SKL]wowace.com Jira[/URL] bug tracking system to record all bugs and features for Skillet. You can check there to see if the problem you are seeing or the feature you are interested in has been discussed before. The full list of know problems and pending feature requests is available [URL=http://jira.wowace.com/secure/IssueNavigator.jspa?reset=true&pid=10050&status=1]from that site[/URL].
+
+[I]Jira requires an account to create new issues so if you want to report a problem, but don't want to create an account, please post a message here or email me and I will enter the bug report.[/I]
+
+When in doubt, contact me anyway. I'd rather hear about a problem twice than not at all.
+
+I'm often available on the #wowace IRC channel ([URL=irc://irc.freenode.org/wowace]irc://irc.freenode.org/wowace[/URL]) if you'd like to chat with me.
+
+[B]ChangeLog[/B]
+
+[B]1.11 (lilspark)[/B]
+[list]
+[*]Completely reworked in the internal data gathering of skillet to use spell ids for all recipes
+[*]Alternate character tradeskill recipes are now browseable
+[*]Alternate character queues are viewable and editable
+[*]Alternate character inventories are tracked for "interesting" reagents (those that have been scanned into the global recipe list)
+[*]Tradeskills are selectable from inside the Skillet frame
+[/list]
+
+
+[B]1.10[/B]
+[list]
+[*]Full list of bug fixes [URL=http://jira.wowace.com/browse/SKL/fixforversion/10032]here[/URL]
+[*]When the level of the crafted item is displayed in recipe list, it is now coloured by the quality of the item
+[*]You can now sort by the quality of the crafted item
+[*]Inventory is tracked on alternate characters as long as a supported inventory mod is installed. Currently supported mods are: Sanity2, CharacterInfoStorage, Possessions, BankList, and BankItems
+[*]Added developer API to allow the list of recipes to be queried.
+[*]Updated the .toc for patch 2.3.0
+[*]Upgraded embedded libraries (including LibPeriodicTable-3.1)
+[/list]
+
+[B]1.9[/B]
+[list]
+[*]Full list of bug fixes [URL=http://jira.wowace.com/browse/SKL/fixforversion/10031]here[/URL]
+[*]Skillet window is now resizable
+[*]Can now set transparency for the main Skillet window
+[*]Lots more hooks for other mods to use have been added. This only matters if you're a mod writer looking to integrate with Skillet.
+[*]Cooldowns for enchanting should now be displayed properly.
+[*]Added sorting of the recipe list. You can sort by name, difficulty and item level at the moment.
+[*]Added ability to check the scale of the main trade skill window.
+[*]Skillet recipe tooltip now obeys the global UI scale setting
+[*]The merchant buy button is now properly updated when the merchant window is open and the list of queued recipes is changed
+[*]Added reverse sort toggle for all sorting methods.
+[*]Name searching now checks recipe reagents as well.
+[/list]
+
+[B]1.8[/B]
+[list]
+[*]Fixed call to method 'GetPlayerShoppingList'. I renamed this method but did not change all the uses of it. Sorry about that.
+[*]Added files missed in the 1.7 package. Let's pretend 1.7 never existed, shall we?
+[*]Enchantrix-Barker (part of AuctioneerAdvanced) is now supported
+[/list]
+
+[B]1.6[/B]
+[list]
+[*]When queuing items, you now have the option to automatically queue/create any reagents you don't have, but can craft. This can be disabled in the options if you wish.
+[*]Added a shopping list that can display at the bank/auction house and which will display the materials needed for all queued reagents. The list can also be seen with '/skillet shoppinglist'
+[*]Fixed problem with items not being purchased when visting a vendor
+[*]Profile options are now properly stored at the profile level
+[*]Item notes from all alts are now added to tooltips
+[*]Fixed problem with enchanting window not closing when you click 'Enchanting' a second time
+[*]Fixed problem with enchanting in the zhTW locale
+[*]If the item to be crafted requires a minimum level to use, that level can be displayed along with the recipe (disabled by default)
+[*]Fixed several problems with changes in inventory (adding aremoving items from bag) not being accounted for correctly.
+[/list]
+
+[B]1.5[/B]
+No new features have been added in this release. There is no need to download it unless you are experiencing one
+of the problems listed below.
+[list]
+[*]Removed all :SetScale() calls, which crashes the Mac client
+[*]More work on avoiding the problems with Blizzard's tradeskill API calls
+[*]Fixed (hopefully) the zhTW localization file
+[/list]
+
+[B]1.4[/B]
+Mainly a bug fix release. Most of these problems are caused by what I believe to be quirks in the Blizzard UI so I've tried to work around then as best as I can. Please let me know if anyone still experiences these problems.
+[list]
+[*]Added zhCN translation courtesty of Shadowsongs
+[*]Fixed problem: SkilletStitch-1.1.lua:503: attempt to index field 'data' (a nil value) (bug 3940)
+[*]Fixed problem: MerchantWindow.lua:262:attempt to index field '?' (a nil value) (bug 3944)
+[/list]
+
+[B]1.3[/B]
+[list]
+[*]Craftable counts for recipes should now be updated properly when bag contents change (redux)
+[*]Removed some unnecessary optimizations that were causing problems.
+[*]Production queues are now saved when you log out and are restored on log in
+[*]Added custom hook for mod authors to use to add buttons the tradeskill window
+[*]Bump the .toc to 20200 for patch 2.2.0
+[*]Sadly, the bug with crafting multiple items is still not fixed. I wanted to get this release out for the new patch.
+[/list]
+

@@ -1,0 +1,10 @@
+﻿## Interface: 30300
+## Author: Sylvanaar
+## X-License: GPLv3
+## X-Curse-Packaged-Version: 3.3.26
+## X-Curse-Project-Name: Prat 3.0
+## X-Curse-Project-ID: prat-3-0
+## X-Curse-Repository-ID: wow/prat-3-0/mainline
+
+
+eventfilters.lua

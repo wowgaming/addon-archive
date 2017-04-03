@@ -1,0 +1,86 @@
+## Interface: 30200
+## 
+## Title: Gatherer
+## Title-frFR: Gatherer
+## Title-deDE: Gatherer
+## 
+## Notes: Gatherer, displays stuff you gather in your minimap and world map
+## Notes-frFR: Gatherer, affiche les objets recoltes dans la minicarte et la carte du monde
+## Notes-deDE: Gatherer, zeigt gesammelte Krauter und Erze auf der Minikarte und Weltkarte an
+## 
+## Version: 3.1.14
+## Author: Norganna
+##
+# myAddOns Support Metadata
+## X-Date: 
+## X-Website: http://www.gathereraddon.com
+## X-Category: MYADDONS_CATEGORY_PROFESSIONS
+## X-Help: 
+## X-OptionsFrame: 
+## 
+## SavedVariables: GatherItems, GatherDrops, Gatherer_DropRates, Gatherer_SavedSettings_AccountWide, LibSwagData, Gatherer_SharingBlacklist
+## SavedVariablesPerCharacter: Gatherer_SavedSettings_PerCharacter
+## Revision: $Id: Gatherer.toc 869 2009-08-05 19:54:12Z Esamynn $
+## OptionalDeps: myAddOns, Configator, SlideBar, Babylonian
+
+# Manifest list
+GatherManifest.lua
+
+# Libraries
+Swag\LibSwag.lua
+Astrolabe\Load.xml
+Libs\Load.xml
+
+# Base object definition
+GatherObjects.lua
+
+# Translations
+GatherNodes.lua
+GatherStrings.lua
+GatherLocale.lua
+
+# Initialization
+GatherMain.lua
+GatherEvent.lua
+
+# Storage System
+GatherStorage.lua
+
+# base UI widgets
+GatherMain.xml
+
+# Util Functions
+GatherUtil.lua
+
+# Notification System
+GatherNotifications.lua
+GatherNotifications.xml
+
+# Data
+GatherIcons.lua
+GatherZoneTokens.lua
+
+# Classes
+GatherApi.lua
+GatherCategories.lua
+GatherComm.lua
+GatherCommand.lua
+GatherConfig.xml
+GatherConfig.lua
+GatherConstants.lua
+GatherConvert.lua
+GatherDropRates.lua
+GatherMapNotes.xml
+GatherMiniIcon.lua
+GatherMiniNotes.xml
+GatherPlugins.lua
+GatherReport.lua
+GatherSpecialCases.lua
+GatherTooltip.lua
+GathererNodeSearch.lua
+
+# Reports
+Reports\Load.xml
+
+# Import modules
+Import\ImportModules.xml

@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Include file="libs\LibBabble-Boss-3.0\lib.xml"/>
+<Include file="libs\LibBabble-Zone-3.0\lib.xml"/>
+
+<Script file="libs\LibPeriodicTable-3.1-CurrencyItems\LibPeriodicTable-3.1-CurrencyItems.lua"/>
+<Script file="libs\LibPeriodicTable-3.1-InstanceLoot\LibPeriodicTable-3.1-InstanceLoot.lua"/>
+<Script file="libs\LibPeriodicTable-3.1-InstanceLootHeroic\LibPeriodicTable-3.1-InstanceLootHeroic.lua"/>
+
+</Ui>

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fPower bar|r]
+## Title-deDE: PitBull4 |r[|cffeda55fEnergieleiste|r]
+## Title-esES: PitBull4 |r[|cffeda55fBarra de poder|r]
+## Title-frFR: PitBull4 |r[|cffeda55fBarre de puissance|r]
+## Title-koKR: PitBull4 |r[|cffeda55f마력 바|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fПанель энергии|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f法力条|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f法力條|r]
+## Notes: Show a mana, rage, energy, or runic power bar.
+## Notes-deDE: Zeigt eine Mana-, Wut-, Energie- oder Runenmachtleiste.
+## Notes-esES: Muestra una barra de maná, rabia, energía o poder rúnico.
+## Notes-frFR: Affiche une barre de mana, de rage, d'énergie, ou de puissance runique.
+## Notes-koKR: 마나, 분노, 기력, 룬마력 바를 표시합니다.
+## Notes-ruRU: Показывать панель маны, ярости, энергии либо рунической силы.
+## Notes-zhCN: 显示法力、怒气、能量或符文能量状态条
+## Notes-zhTW: 顯示法力、怒氣、能量或符文能量狀態條。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

@@ -1,0 +1,25 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<!--@debug@ 
+<Script file="Debug.lua"/>
+@end-debug@-->
+
+<Include file="Localization\load.xml"/>
+
+<Script file="Main.lua"/>
+
+<Script file="Utils.lua"/>
+
+<Include file="ModuleHandling\load.xml"/>
+
+<Script file="UnitFrame.lua"/>
+<Script file="GroupHeader.lua"/>
+
+<Script file="UnitFrameLayout.lua"/>
+
+<Include file="Controls\load.xml"/>
+
+<Include file="Options\load.xml"/>
+
+</Ui>

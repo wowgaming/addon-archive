@@ -1,0 +1,19 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+
+	<Script file="ui.lua"/>
+
+	<!-- a button added to each frame, shows the character selection list when clicked -->
+	<Button name="BagnonDBUIDropDownButton" topLevel="true" virtual="true">
+		<Size x="24" y="24"/>
+
+		<Scripts>
+			<OnClick>
+				BagnonDB:SetDropdownFrame(self:GetParent())
+				BagnonDB:ToggleDropdown(self, 0, 2)
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up" setAllPoints="true"/>
+		<PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down" setAllPoints="true"/>
+		<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD" setAllPoints="true"/>
+	</Button>
+</Ui>

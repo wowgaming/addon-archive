@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="libs\LibStub\LibStub.lua"/>
+<Include file="libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+
+<!--Ace3 Libraries-->
+<Include file="libs\AceAddon-3.0\AceAddon-3.0.xml"/>
+<Include file="libs\AceEvent-3.0\AceEvent-3.0.xml"/>
+<Include file="libs\AceDB-3.0\AceDB-3.0.xml"/>
+<Include file="libs\AceDBOptions-3.0\AceDBOptions-3.0.xml"/>
+<Include file="libs\AceLocale-3.0\AceLocale-3.0.xml"/>
+<Include file="libs\AceConsole-3.0\AceConsole-3.0.xml"/>
+<Include file="libs\AceGUI-3.0\AceGUI-3.0.xml"/>
+<Include file="libs\AceConfig-3.0\AceConfig-3.0.xml"/>
+
+<!--Libraries-->
+<Include file="libs\LibBabble-Zone-3.0\lib.xml"/>
+<Include file="libs\LibBabble-Faction-3.0\lib.xml"/>
+<Include file="libs\LibBabble-Boss-3.0\lib.xml"/>
+<Include file="libs\LibAboutPanel\lib.xml"/>
+<Include file="libs\LibSharedMedia-3.0\lib.xml"/>
+<Include file="libs\LibQTip-1.0\lib.xml"/>
+
+</Ui>

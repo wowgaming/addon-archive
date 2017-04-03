@@ -1,0 +1,6 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="Type.lua"/>
+	<Script file="Region.lua"/>
+	<Script file="Source.lua"/>
+</Ui>
+

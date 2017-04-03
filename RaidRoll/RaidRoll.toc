@@ -1,0 +1,18 @@
+## Interface: 40000
+## X-Compatible-With: 40000
+## Title: Raid Roll
+## Author: Musou
+## Notes: An addon that can be used to perform Raid Rolls
+## email: killerpet@gmail.com
+## SavedVariables: RaidRoll_DB,RaidRoll_DBPC
+## SavedVariablesPerCharacter: RR_Accept_All_Rolls,RR_Track_Unannounced_Rolls,RR_Roll_Tracking_Enabled,RR_AllowExtraRolls,RR_Show_Ranks,RR_RankPriority,RR_ExtraWidth,RR_ShowGroupNumber,RR_RollFrameHeight
+
+
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+RaidRoll.xml
+
+

@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fBackground|r]
+## Title-deDE: PitBull4 |r[|cffeda55fHintergrund|r]
+## Title-esES: PitBull4 |r[|cffeda55fFondo|r]
+## Title-frFR: PitBull4 |r[|cffeda55fArrière-plan|r]
+## Title-koKR: PitBull4 |r[|cffeda55f배경|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fФон|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f背景|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f背景|r]
+## Notes: Show a flat background for your unit frames.
+## Notes-deDE: Zeigt einen flachen Hintergrund für die Rahmen an.
+## Notes-esES: Muestra un fondo plano para tus marcos de unidad.
+## Notes-frFR: Affiche un arrière-plan uniforme pour vos cadres d'unité.
+## Notes-koKR: 유닛 프레임에 대한 평범한 배경을 표시합니다.
+## Notes-ruRU: Показывать плоский фон для юнит  фреймов.
+## Notes-zhCN: 单位框体显示背景
+## Notes-zhTW: 單位框架顯示背景。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

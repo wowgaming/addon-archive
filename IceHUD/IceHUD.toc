@@ -1,0 +1,82 @@
+## Interface: 30300
+## Author: Parnic, originally created by Iceroth
+## Name: IceHUD
+## Title: IceHUD |cff7fff7f -Ace3-|r
+## Notes: Another HUD addon
+## Version: 1.6.12 (Revision: 609)
+## SavedVariables: IceCoreDB
+## OptionalDeps: Ace3, LibSharedMedia-3.0, LibDogTag-3.0, LibDogTag-Unit-3.0, LibRangeCheck-2.0, LibHealComm-4.0
+## X-Category: HUDs
+## X-Website: http://www.wowace.com/projects/ice-hud/
+## X-Compatible-With: 40000
+## X-Curse-Packaged-Version: 1.6.12
+## X-Curse-Project-Name: IceHUD
+## X-Curse-Project-ID: ice-hud
+## X-Curse-Repository-ID: wow/ice-hud/mainline
+
+# Libraries
+embeds.xml
+
+# IceHUD core functionality
+IceCore.lua
+IceHUD.lua
+IceElement.lua
+IceBarElement.lua
+IceUnitBar.lua
+IceCastBar.lua
+
+
+# IceHUD modules
+# - Feel free to comment these out if you like
+modules\PlayerHealth.lua
+modules\PlayerMana.lua
+modules\TargetHealth.lua
+modules\TargetMana.lua
+modules\PetHealth.lua
+modules\PetMana.lua
+modules\DruidMana.lua
+modules\TargetInfo.lua
+modules\TargetOfTarget.lua
+modules\ComboPoints.lua
+modules\CastBar.lua
+modules\TargetCast.lua
+modules\MirrorBar.lua
+modules\SunderCount.lua
+modules\GlobalCoolDown.lua
+modules\SliceAndDice.lua
+modules\TargetCC.lua
+# - make sure FocusCC loads after TargetCC since it inherits
+modules\FocusCC.lua
+modules\FocusHealth.lua
+modules\FocusMana.lua
+modules\FocusCast.lua
+modules\LacerateCount.lua
+modules\Runes.lua
+# - make sure TargetOfTarget health/mana load after TargetHealth/TargetMana since they inherit
+modules\TargetOfTargetHealth.lua
+modules\TargetOfTargetMana.lua
+modules\Threat.lua
+modules\FocusThreat.lua
+modules\RangeCheck.lua
+modules\MaelstromCount.lua
+modules\HungerForBlood.lua
+modules\CustomBar.lua
+modules\CustomCount.lua
+# - make sure PlayerInfo loads after TargetInfo since it inherits
+modules\PlayerInfo.lua
+modules\PetInfo.lua
+modules\TargetOfTargetCast.lua
+modules\CustomCDBar.lua
+modules\Totems.lua
+# - PlayerCC must be after TargetCC
+modules\PlayerCC.lua
+modules\TargetInvuln.lua
+# - PlayerInvuln must be after TargetInvuln
+modules\PlayerInvuln.lua
+modules\ComboPointsBar.lua
+modules\CustomHealth.lua
+modules\CustomMana.lua
+modules\ClassPowerCounter.lua
+modules\HolyPower.lua
+modules\Shards.lua
+modules\EclipseBar.lua

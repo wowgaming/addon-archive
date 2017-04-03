@@ -1,0 +1,56 @@
+<Bindings>
+<!--
+    This file is part of Decursive.
+    
+    Decursive (v 2.5.1-6-gd3885c5) add-on for World of Warcraft UI
+    Copyright (C) 2006-2007-2008-2009 John Wellesz (archarodim AT teaser.fr) ( http://www.2072productions.com/to/decursive.php )
+
+    Starting from 2009-10-31 and until said otherwise by its author, Decursive
+    is no longer free software, all rights are reserved to its author (John Wellesz).
+
+    The only official and allowed distribution means are www.2072productions.com, www.wowace.com and curse.com.
+    To distribute Decursive through other means a special authorization is required.
+    
+
+    Decursive is inspired from the original "Decursive v1.9.4" by Quu.
+    The original "Decursive 1.9.4" is in public domain ( www.quutar.com )
+
+    Decursive is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY.
+-->
+
+        
+        <Binding name="DCRSHOW" header="DECURSIVE">
+                        Dcr:HideBar(false);
+        </Binding>
+        <Binding name="DCRMUFSHOWHIDE">
+                        Dcr:ShowHideDebuffsFrame ();
+        </Binding>
+        <Binding name="DCRSHOWOPTION">
+                        Dcr.Waterfall:Open("Decursive");
+        </Binding>
+        <Binding name="DCRPRSHOW">
+                        Dcr:ShowHidePriorityListUI();
+        </Binding>
+        <Binding name="DCRPRADD">
+                        Dcr:AddTargetToPriorityList();
+        </Binding>
+        <Binding name="DCRPRCLEAR">
+                        Dcr:ClearPriorityList();
+        </Binding>
+        <!--<Binding name="DCRPRLIST">
+                        Dcr:PrintPriorityList();
+        </Binding>-->
+        <Binding name="DCRSKSHOW">
+            Dcr:ShowHideSkipListUI();
+        </Binding>
+        <Binding name="DCRSKADD">
+                        Dcr:AddTargetToSkipList();
+        </Binding>
+        <Binding name="DCRSKCLEAR">
+                        Dcr:ClearSkipList();
+        </Binding>
+        <!--<Binding name="DCRSKLIST">
+            Dcr:PrintSkipList();
+        </Binding>-->
+</Bindings>

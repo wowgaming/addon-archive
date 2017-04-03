@@ -1,0 +1,36 @@
+## Interface: 30100
+## Title: Zanzer's Hunter Mod
+## Notes: Useful additions to make a Hunter's life even easier!
+## SavedVariablesPerCharacter: ZHunterMod_Saved
+
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\LibBabble-Spell-3.0\lib.xml
+Libs\LibBabble-CreatureType-3.0\lib.xml
+
+Setup\SavedVariables.lua
+Setup\Config.lua
+
+ZHunterMod.lua
+
+ZAutoShot\ZAutoShot.lua
+ZAutoShot\ZAutoShot.xml
+
+ZActionBar.xml
+ZHunterBars\aspect.lua
+ZHunterBars\track.lua
+ZHunterBars\trap.lua
+ZHunterBars\pet.lua
+ZHunterBars\sting.lua
+
+ZCombatLog\ZCombatLog.lua
+
+ZExtras\ZMisdirect.lua
+ZExtras\ZPetCommands.lua
+ZExtras\ZAntiDaze.lua
+ZExtras\ZArcaneDispel.lua
+ZExtras\ZFreezeFail.lua
+ZExtras\ZTrackTarget.lua
+ZExtras\ZSting.lua

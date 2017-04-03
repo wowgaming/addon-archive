@@ -1,0 +1,55 @@
+local L = LibStub("AceLocale-3.0"):NewLocale("MrTrader", "zhCN", false);
+if L then
+
+L["Add to New Favorite Group..."] = "Add to New Favorite Group..." -- Requires localization
+L["All Items"] = "All Items" -- Requires localization
+L["Categories"] = "Categories" -- Requires localization
+L["Characters"] = "角色"
+L["Click to open menu."] = "点击打开菜单。"
+L["Click to open tradeskill window."] = "点击打开商业技能窗口。"
+L["Click to open tradeskill window. Shift-click to link tradeskill."] = "点击打开商业技能窗口。Shift+点击输出商业技能链接。"
+L["Click to remove from the list, shift-click to ignore this character permanently."] = "点击从列表中移除，Shift+点击屏蔽该角色。"
+L["Close"] = "光笔"
+L["Configure"] = "配置"
+L["Difficulty"] = "Difficulty" -- Requires localization
+L["Easy"] = "Easy" -- Requires localization
+L["Favorite Groups"] = "Favorite Groups" -- Requires localization
+L["Favorites"] = "Favorites" -- Requires localization
+L["I don't know that skill."] = "我不知道这技能。o_o?"
+L["I don't know what skill you mean."] = "I don't know what skill you mean." -- Requires localization
+L["Inventory Slots"] = "Inventory Slots" -- Requires localization
+L["Medium"] = "Medium" -- Requires localization
+L["MrTrader"] = "MrTrader"
+L["Name"] = "Name" -- Requires localization
+L["New Favorite Group"] = "New Favorite Group" -- Requires localization
+L["New Group"] = "New Group" -- Requires localization
+L["No skill exists by that name."] = "No skill exists by that name." -- Requires localization
+L["Open configuration dialog"] = "打开配置窗口"
+L["Optimal"] = "Optimal" -- Requires localization
+L["Profiles"] = "个人配置"
+L["Remove"] = "移除"
+L["Remove Favorite Group"] = "Remove Favorite Group" -- Requires localization
+L["Respond to Commands over Guild Chat"] = "Respond to Commands over Guild Chat" -- Requires localization
+L["Respond to Commands over Raid and Party Chat"] = "Respond to Commands over Raid and Party Chat" -- Requires localization
+L["Respond to Whisper Commands"] = "Respond to Whisper Commands" -- Requires localization
+L["Show Minor Skills for Alts"] = "Show Minor Skills for Alts" -- Requires localization
+L["Show Opposing Faction Alts"] = "Show Opposing Faction Alts" -- Requires localization
+L["%s v%s loaded."] = "%s 版本%s 已载入。"
+L["Tradeskill cannot be linked, and is unavailable."] = "商业技能链接不能输出，不可用。"
+L["Tradeskills"] = "商业技能"
+L["Trivial"] = "Trivial" -- Requires localization
+L["Unignore"] = "取消屏蔽"
+L["Unignore this character and show on all other characters."] = "解除该角色屏蔽并显示其他全部角色。"
+L["Use Custom Tradeskill Window"] = "使用自定义商业技能窗口"
+L["Use Tradeskill Window"] = "Use Tradeskill Window" -- Requires localization
+L["Whisper Skills for Alts"] = "Whisper Skills for Alts" -- Requires localization
+L["Will respond to guild messages asking for skill links."] = "Will respond to guild messages asking for skill links." -- Requires localization
+L["Will respond to raid and party messages asking for skill links."] = "Will respond to raid and party messages asking for skill links." -- Requires localization
+L["Will respond to whispers sent to you asking for skill links."] = "Will respond to whispers sent to you asking for skill links." -- Requires localization
+L["Will search your alts for skill links when responding to whisper commands."] = "Will search your alts for skill links when responding to whisper commands." -- Requires localization
+L["Will show Cooking, Smelting, Runeforging, and First Aid on other characters."] = "Will show Cooking, Smelting, Runeforging, and First Aid on other characters." -- Requires localization
+L["Will show your alts from the opposing faction in the menu."] = "在菜单上显示你的对立阵营的角色。"
+L["Will use MrTrader's tradeskill window in place of the default."] = "Will use MrTrader's tradeskill window in place of the default." -- Requires localization
+L["Will use MrTrader's tradeskill window instead of Blizzard's"] = "使用MrTrader的商业技能窗口替代系统原始的。"
+
+end

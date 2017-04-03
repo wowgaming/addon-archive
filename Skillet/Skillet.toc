@@ -1,0 +1,83 @@
+## Interface: 30200
+## Title: Skillet |cff7fff7f -Ace2-|r
+## Notes: A replacement tradeskill window
+## Author: nogudnik, lilsparky
+## Version 1.10-LS
+## X-Category: Tradeskill
+## X-eMail: nogudnik@gmail.com
+## X-License GPL v3 or later
+## X-Credits Slartie (for ASTW)
+## X-RelSite-WoWI: 7571
+## X-AceForum: 9179
+## X-WoWIPortal: nogudnik
+## X-Website: http://www.wowace.com/wiki/Skillet
+#### X-RelSite-Curse:
+#### X-RelSite-UI.WoW:
+## SavedVariables: SkilletDB
+## SavedVariablesPerCharacter: SkilletDBPC
+## OptionalDeps: Ace2, Waterfall-1.0, AbacusLib, Fizzwidget Reagent Cost, LibPeriodicTable-3.1, WindowLib, LibStub, CharacterInfoStorage, Sanity2
+## X-Embeds: Ace2, Waterfall-1.0, AbacusLib, LibPeriodicTable-3.1, WindowLib
+## X-Revision: $Rev: 166 $
+## X-Curse-Packaged-Version: r167
+## X-Curse-Project-Name: Skillet
+## X-Curse-Project-ID: skillet
+## X-Curse-Repository-ID: wow/skillet/lilsparkys-clone
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+
+#### List of embedded libraries
+#@no-lib-strip@
+Libs\AceLibrary\AceLibrary.lua
+Libs\AceOO-2.0\AceOO-2.0.lua
+Libs\AceAddon-2.0\AceAddon-2.0.lua
+Libs\AceComm-2.0\AceComm-2.0.lua
+Libs\AceConsole-2.0\AceConsole-2.0.lua
+Libs\AceDB-2.0\AceDB-2.0.lua
+Libs\AceEvent-2.0\AceEvent-2.0.lua
+Libs\AceHook-2.1\AceHook-2.1.lua
+Libs\AceLocale-2.2\AceLocale-2.2.lua
+Libs\Waterfall-1.0\Waterfall-1.0.lua
+Libs\Abacus-2.0\Abacus-2.0.lua
+Libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1.lua
+Libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1-Tradeskill\LibPeriodicTable-3.1-Tradeskill.lua
+Libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1-TradeskillResultMats\LibPeriodicTable-3.1-TradeskillResultMats.lua
+Libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1-TradeskillLevels\LibPeriodicTable-3.1-TradeskillLevels.lua
+Libs\Window-1.0\Window-1.0.lua
+#@end-no-lib-strip@
+
+
+#### Localization files
+Locale\Locale-enUS.lua
+Locale\Locale-deDE.lua
+Locale\Locale-zhTW.lua
+Locale\Locale-zhCN.lua
+Locale\Locale-koKR.lua
+Locale\Locale-frFR.lua
+Locale\Locale-esES.lua
+Locale\Locale-ruRU.lua
+
+#### Main files
+#LibPossessions.lua
+Skillet.lua
+SkilletData.lua
+TradeskillInfo.lua
+SkilletQueue.lua
+ThirdPartyHooks.lua
+Upgrades.lua
+SkillLevelData.lua
+RecipeGroups.lua
+Inventory.lua
+
+#### UI files
+UI\Utils.lua
+UI\Sorting.lua
+UI\MainFrame.lua
+UI\MainFrame.xml
+UI\RecipeNotes.lua
+UI\RecipeNotes.xml
+UI\MerchantWindow.lua
+UI\MerchantWindow.xml
+UI\ShoppingList.lua
+UI\ShoppingList.xml

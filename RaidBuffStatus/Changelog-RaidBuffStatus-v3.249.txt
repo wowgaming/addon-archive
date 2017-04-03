@@ -1,0 +1,86 @@
+------------------------------------------------------------------------
+r339 | danielbarron | 2010-01-16 09:58:44 +0000 (Sat, 16 Jan 2010) | 2 lines
+Changed paths:
+   A /tags/v3.249 (from /trunk:338)
+
+RaidBuffStatus:
+- Tagged as stable.
+------------------------------------------------------------------------
+r337 | danielbarron | 2010-01-07 22:40:06 +0000 (Thu, 07 Jan 2010) | 9 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Config.lua
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+Fixed some individual buffs accidentally reporting to officer channel.
+- Fixed Shadow Protection not appearing when clicking Raid Leader in the Buff Wizzard.
+- Split the warnings for when one's own taunts fail in to two separate set of options; one for resists and one for immune.  They even have their own sounds.
+- Taunt fails now include information to say if it was a Resist or due to Immune.
+- The warning when someone who had Pally Power blessings assigned to them leaves the raid now only goes to the leader and Paladin raid assistants with Pally Power.  So those using RBS as a buff bot don't need to see it.  Now also plays a sound.
+- The warning when someone tries to assign blessings to a raid member no longer in the raid now only warns the person doing it and only if they are a leader or Paladin raid assistant with Pally Power.  In addition it has anti-spam but now also plays a sound.
+- The option to ignore the last three groups is now off by default.  This was causing issues with Paladins being in group 6-8 and RBS complaining.
+
+------------------------------------------------------------------------
+r336 | danielbarron | 2010-01-03 12:02:30 +0000 (Sun, 03 Jan 2010) | 2 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Config.lua
+   M /trunk/Core.lua
+   M /trunk/MiniMap.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Added a Buff Wizard.  What this does is help the new user configure the dashboard buffs for what they want to do.
+------------------------------------------------------------------------
+r334 | danielbarron | 2010-01-01 21:09:40 +0000 (Fri, 01 Jan 2010) | 2 lines
+Changed paths:
+   M /trunk/RaidBuffStatus.toc
+
+RaidBuffStatus:
+- Touched to fix translations problems.
+------------------------------------------------------------------------
+r333 | danielbarron | 2009-12-31 22:12:23 +0000 (Thu, 31 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Config.lua
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Added a feature where RBS will tell you if someone in your party, raid or guild has a newer version of RBS than you.
+------------------------------------------------------------------------
+r332 | danielbarron | 2009-12-27 21:55:15 +0000 (Sun, 27 Dec 2009) | 6 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Repair bot expiring warnings now no longer appear when the person who put down the bot died thus causing it to disappear.  It uses the combat log so if you zone and don't notice the death then it won't.
+- Added a feature where RBS will warn leaders and assistants when someone who had Pally Power blessings assigned to them leaves the raid.  It tries to spot when people leave due to raid end time and not spam.
+- Added a feature where RBS will warn leaders and assistants when someone tries to assign blessings to a raid member no longer in the raid.
+- Added the ability to report to Officer chat by holding down Shift when clicking the Boss or Trash buttons.
+- PLPWR messages are now ignored and not sent in a Battleground.
+------------------------------------------------------------------------
+r331 | danielbarron | 2009-12-26 11:21:18 +0000 (Sat, 26 Dec 2009) | 7 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Config.lua
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Added an option to hide the Boss R Trash buttons.
+- Added a Misdirection warning feature where it will tell you if Misdirection or Tricks of the Trade are cast.
+- Added Vampiric Embrace buff check and talent report.
+- Added Shatter Rounds + Iceblade Arrow support.
+- RBS now attempts to call NotifyInspect() less on weapon buff checking.
+- Improved Pally Power message parsing, fixed a bug with short blessing assignments and also hopefully made RBS spam "PLPWR REQ" a lot less.
+------------------------------------------------------------------------

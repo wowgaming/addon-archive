@@ -1,0 +1,23 @@
+<!-- This file describes which scripts and xml files are to be loaded.  -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="SearchMain.lua"/>
+	<Script file="SearcherArbitrage.lua"/>
+	<Script file="SearcherGeneral.lua"/>
+	<Script file="SearcherResale.lua"/>
+	<Script file="SearcherDisenchant.lua"/>
+	<Script file="SearcherEnchantMats.lua"/>
+	<Script file="SearcherProspect.lua"/>
+	<Script file="SearcherMilling.lua"/>
+	<Script file="SearcherConverter.lua"/>
+	<Script file="SearcherSnatch.lua"/>
+    <Script file="SearcherVendor.lua"/>
+	<Script file="SearchRealTime.lua"/>
+	<script file="FilterTimeLeft.lua"/>
+	<script file="FilterItemQuality.lua"/>
+	<script file="FilterItemLevel.lua"/>
+	<script file="FilterItemPrice.lua"/>
+	<script file="FilterItemAuctionHistory.lua"/>
+	<Script>
+		AucAdvanced.RegisterRevision("$URL: http://svn.norganna.org/auctioneer/branches/5.8/Auc-Util-SearchUI/Embed.xml $", "$Rev: 3655 $")
+	</Script>
+</Ui>

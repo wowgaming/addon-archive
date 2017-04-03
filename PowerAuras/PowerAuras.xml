@@ -1,0 +1,4527 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+    ..\..\FrameXML\UI.xsd">
+
+  <!-- Main Frame -->
+  <Frame name="PowaAuras_Frame"
+         hidden="false">
+    <Scripts>
+		<OnLoad>
+			PowaAuras:OnLoad(self)
+		</OnLoad>
+		<OnEvent>
+			if (PowaAuras.DebugEvents) then
+				PowaAuras:ShowText("Event:", event);
+			end
+			PowaAuras[event](PowaAuras, ...);
+		</OnEvent>
+		<OnUpdate>
+			PowaAuras:OnUpdate(elapsed)
+		</OnUpdate>
+    </Scripts>
+  </Frame>
+  
+  <!-- Tootips -->
+  <GameTooltip name="PowaAuras_Tooltip"
+               frameStrata="TOOLTIP"
+               hidden="false"
+               parent="UIParent"
+               inherits="GameTooltipTemplate">
+    <Anchors>
+      <Anchor point="BOTTOM"
+              relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0"
+                        y="100" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </GameTooltip>
+  <GameTooltip name="PowaAction_Tooltip"
+               frameStrata="TOOLTIP"
+               hidden="false"
+               parent="UIParent"
+               inherits="GameTooltipTemplate">
+    <Anchors>
+      <Anchor point="BOTTOM"
+              relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0"
+                        y="100" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </GameTooltip>
+  
+ <!-- Templates -->
+ 
+<!-- Copied from OptionSliderTemplate 2.4.3 because Blizzard is ......
+Check to see if they use consistent fontsizes in build > 8982 and remove this template.
+Revert PowaBarSliderTemplate to inherit from OptionsSliderTemplate if it's fixed as well.  -->
+  <Slider name="OptionsSmallSliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="144" y="17"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="-10" bottom="-10"/>
+		</HitRectInsets>
+		<Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="8"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="3" right="3" top="6" bottom="6"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOM" relativePoint="TOP"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentLow" inherits="GameFontHighlightSmall" text="LOW">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentHigh" inherits="GameFontHighlightSmall" text="HIGH">
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				if ( self:IsEnabled() ) then
+					if ( self.tooltipText ) then
+						GameTooltip:SetOwner(self, self.tooltipOwnerPoint or "ANCHOR_RIGHT");
+						GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+					end
+					if ( self.tooltipRequirement ) then
+						GameTooltip:AddLine(self.tooltipRequirement, 1.0, 1.0, 1.0, 1.0);
+						GameTooltip:Show();
+					end
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			<Size>
+				<AbsDimension x="32" y="32"/>
+			</Size>
+		</ThumbTexture>
+	</Slider>
+	
+  <Slider name="PowaBarSliderTemplate"
+          inherits="OptionsSmallSliderTemplate"
+          virtual="true">
+    <Scripts>
+      <OnEnter>
+      	if (self.aide) then 
+      		GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); 
+      		GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1); 
+      	end
+      </OnEnter>
+      <OnLeave>GameTooltip:Hide();</OnLeave>
+    </Scripts>
+  </Slider>
+  
+    <Slider name="PowaBarSliderTemplateWithButtons"
+          inherits="PowaBarSliderTemplate"
+          virtual="true">
+		<Frames>
+			<Button name="$parentPlus" text="+" inherits="OptionsButtonTemplate">
+			<Size>
+			  <AbsDimension x="17" y="18" />
+			</Size>
+			<Anchors>
+			  <Anchor point="RIGHT" relativePoint="LEFT">
+				<Offset>
+				  <AbsDimension x="0" y="0" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+				self:GetParent():SetValue(self:GetParent():GetValue() + self:GetParent():GetValueStep());
+				</OnClick>
+			</Scripts>
+		  </Button>
+		  <Button name="$parentMinus" text="-" inherits="OptionsButtonTemplate">
+			<Size>
+			  <AbsDimension x="17" y="18" />
+			</Size>
+			<Anchors>
+			  <Anchor point="RIGHT" relativePoint="LEFT" relativeTo="$parentPlus">
+				<Offset>
+				  <AbsDimension x="0" y="0" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+				self:GetParent():SetValue(self:GetParent():GetValue() - self:GetParent():GetValueStep());
+				</OnClick>
+			</Scripts>
+		  </Button>
+
+		</Frames>
+	</Slider>
+  
+  <CheckButton name="PowaCheckTemplate"
+               inherits="OptionsSmallCheckButtonTemplate"
+               virtual="true">
+    <HitRectInsets>
+      <AbsInset left="0"
+                right="0"
+                top="0"
+                bottom="0" />
+    </HitRectInsets>
+  </CheckButton>
+  
+  <CheckButton name="PowaRadioTemplate"
+               inherits="UIRadioButtonTemplate"
+               virtual="true">
+    <HitRectInsets>
+      <AbsInset left="0"
+                right="0"
+                top="0"
+                bottom="0" />
+    </HitRectInsets>
+    <Scripts>
+      <OnEnter>
+		local parent = self:GetParent();
+      	if (parent.tooltipText) then 
+      		GameTooltip:SetOwner(parent, "ANCHOR_RIGHT"); 
+      		GameTooltip:SetText(parent.tooltipText, nil, nil, nil, nil, 1); 
+      	end
+      </OnEnter>
+      <OnLeave>GameTooltip:Hide();</OnLeave>
+    </Scripts>
+  </CheckButton>
+  
+  
+	<!-- Ternary Selector -->
+	<CheckButton name="PowaTernarySelectorTemplate" inherits="UICheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<Scripts>
+			<OnClick>
+				PowaAuras.Ternary_OnClick(self)
+			</OnClick>
+		  <OnEnter>
+			PowaAuras.Ternary_CheckTooltip(self)
+		  </OnEnter>
+		  <OnLeave>GameTooltip:Hide();</OnLeave>
+		</Scripts>
+	</CheckButton>
+	
+  <Frame name="PowaTernarySelectorTemplateOld" inherits="OptionsBoxTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="300"
+                    y="28" />
+    </Size>
+	<Scripts>
+		<OnLoad>
+			self.RadioButtons = {"Yes", "No", "Whatever"};
+		</OnLoad>
+      <OnEnter>
+      	if (self.tooltipText) then 
+      		GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); 
+      		GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1); 
+      	end
+      </OnEnter>
+      <OnLeave>GameTooltip:Hide();</OnLeave>
+	</Scripts>
+
+	<Layers>
+		<Layer level="BORDER">
+			<FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT">
+				<Anchors>
+					<Anchor point="TOPLEFT"
+						  relativeTo="$parent"
+						  relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="-9"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+
+    <Frames>
+
+		<CheckButton name="$parentYes" inherits="PowaRadioTemplate" text="Yes">
+			<Size>
+			  <AbsDimension x="22"
+							y="22" />
+			</Size>
+			<Anchors>
+			  <Anchor point="LEFT"
+					  relativeTo="$parentText"
+					  relativePoint="RIGHT">
+				<Offset>
+				  <AbsDimension x="5"
+								y="0" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					self.OtherButtons = {"No", "Whatever"};
+				</OnLoad>
+				<OnClick>
+					PowaAuras:Ternary_OnClick(self, "Yes");
+				</OnClick>
+			</Scripts>
+
+		</CheckButton>
+
+		<CheckButton name="$parentNo" inherits="PowaRadioTemplate" text="No">
+			<Size>
+			  <AbsDimension x="22"
+							y="22" />
+			</Size>
+			<Anchors>
+			  <Anchor point="LEFT"
+					  relativeTo="$parentYesText"
+					  relativePoint="RIGHT">
+				<Offset>
+				  <AbsDimension x="5"
+								y="0" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					self.OtherButtons = {"Yes", "Whatever"};
+				</OnLoad>
+				<OnClick>
+					PowaAuras:Ternary_OnClick(self, "No");
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+
+		<CheckButton name="$parentWhatever" inherits="PowaRadioTemplate" text="Whatever">
+			<Size>
+			  <AbsDimension x="22"
+							y="22" />
+			</Size>
+			<Anchors>
+			  <Anchor point="LEFT"
+					  relativeTo="$parentNoText"
+					  relativePoint="RIGHT">
+				<Offset>
+				  <AbsDimension x="5"
+								y="0" />
+				</Offset>
+			  </Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					self.OtherButtons = {"Yes", "No"};
+				</OnLoad>
+				<OnClick>
+					PowaAuras:Ternary_OnClick(self, "Whatever");
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+
+    </Frames>
+  </Frame>	
+  
+  <Button name="PowaFontButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="200" y="16"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="196" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				PowaAuras:FontButton_OnClick(self);
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="200" y="16"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset>
+						<AbsDimension x="5" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	
+	
+  <Frame name="PowaDebugMessages"
+         parent="UIParent"
+         frameStrata="HIGH"
+         hidden="true">
+    <Size>
+      <AbsDimension x="300"
+                    y="300" />
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT"
+              relativeTo="UIParent"
+              relativePoint="LEFT">
+        <Offset>
+          <AbsDimension x="0"
+                        y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <Layer>
+        <FontString name="PowaDebugMessagesText"
+                    inherits="GameFontNormalSmall"
+                    justifyH="LEFT"
+                    text="Texte">
+          <Size>
+            <AbsDimension x="300"
+                          y="300" />
+          </Size>
+          <Anchors>
+            <Anchor point="LEFT">
+              <Offset>
+                <AbsDimension x="0"
+                              y="0" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <FontHeight>
+            <AbsValue val="14" />
+          </FontHeight>
+        </FontString>
+      </Layer>
+    </Layers>
+  </Frame>
+  
+  <!-- Aura Configuration Frame -->
+  <Frame name="PowaBarConfigFrame"
+         movable="true"
+         parent="UIParent"
+         frameStrata="DIALOG"
+         hidden="true"
+         enableMouse="true"
+         enableKeyboard="true">
+    <Size>
+      <AbsDimension x="488"
+                    y="716" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER"
+              relativeTo="UIParent">
+        <Offset>
+          <AbsDimension x="0"
+                        y="50" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+              edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
+              tile="true">
+      <BackgroundInsets>
+        <AbsInset left="11"
+                  right="12"
+                  top="12"
+                  bottom="11" />
+      </BackgroundInsets>
+      <TileSize>
+        <AbsValue val="200" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="32" />
+      </EdgeSize>
+    </Backdrop>
+    <Scripts>
+      <OnLoad>self:SetBackdropBorderColor(0.9, 1.0, 0.95); self:SetBackdropColor(0.6, 0.6, 0.6);</OnLoad>
+      <OnMouseDown>PowaAuras:Bar_MouseDown(self, button, "PowaBarConfigFrame" );</OnMouseDown>
+      <OnMouseUp>PowaAuras:Bar_MouseUp(self, button, "PowaBarConfigFrame" );</OnMouseUp>
+	  <OnShow>if (PowaAuras.Auras[PowaAuras.CurrentAuraId].bufftype==PowaAuras.BuffTypes.Slots) then PowaEquipmentSlotsFrame:Show(); end</OnShow>
+	  <OnHide>if (PowaEquipmentSlotsFrame:IsVisible()) then PowaEquipmentSlotsFrame:Hide(); end</OnHide>
+    </Scripts>
+    <Layers>
+      <Layer>
+        <Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+          <Size>
+            <AbsDimension x="180"
+                          y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0"
+                              y="8" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0.2"
+                     right="0.8"
+                     top="0"
+                     bottom="0.6" />
+        </Texture>
+        <FontString name="PowaHeader"
+                    inherits="GameFontNormalSmall"
+                    text="POWER AURAS">
+          <Size>
+            <AbsDimension x="140"
+                          y="0" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0"
+                              y="-4" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <FontHeight>
+            <AbsValue val="14" />
+          </FontHeight>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Button name="PowaCloseButton">
+        <Size>
+          <AbsDimension x="30"
+                        y="30" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPRIGHT"
+                  relativeTo="PowaBarConfigFrame"
+                  relativePoint="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-4"
+                            y="-4" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>PowaAuras:EditorClose();</OnClick>
+        </Scripts>
+        <NormalTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Up" />
+        <PushedTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight"
+                          alphaMode="ADD" />
+      </Button>
+	  
+	  <!-- Top Panel -->
+      <Frame name="PowaBarConfigFrameEditor">
+        <Size>
+          <AbsDimension x="450"
+                        y="300" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOP">
+            <Offset>
+              <AbsDimension x="0"
+                            y="-25" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                  edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                  tile="true">
+          <EdgeSize>
+            <AbsValue val="12" />
+          </EdgeSize>
+          <TileSize>
+            <AbsValue val="128" />
+          </TileSize>
+          <BackgroundInsets>
+            <AbsInset left="2"
+                      right="2"
+                      top="2"
+                      bottom="2" />
+          </BackgroundInsets>
+        </Backdrop>
+        <Scripts>
+          <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+        </Scripts>
+        <Layers>
+          <Layer>-- texture 
+          <Texture name="AuraTexture"
+                   file="Interface\AddOns\PowerAuras\Auras\Aura1.tga"
+                   alphaMode="ADD">
+            <Size>
+              <AbsDimension x="107"
+                            y="107" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="22"
+                                y="-5" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+          </Texture></Layer>
+        </Layers>
+        <Frames>
+          <Slider name="PowaBarAuraTextureSlider"
+                  inherits="PowaBarSliderTemplateWithButtons">
+            <Size>
+              <AbsDimension x="290"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativeTo="AuraTexture"
+                      relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="20"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.aide = PowaAuras.Text.aideTexture;
+				self:SetValueStep(1);
+              </OnLoad>
+             <OnValueChanged>PowaAuras:BarAuraTextureSliderChanged();</OnValueChanged>
+            </Scripts>
+          </Slider>
+		  <EditBox name="PowaBarAuraTextureEdit"
+                   autoFocus="false"
+                   inherits="InputBoxTemplate">
+            <Size>
+              <AbsDimension x="40"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="BOTTOMRIGHT"
+                      relativeTo="PowaBarAuraTextureSlider"
+                      relativePoint="TOPRIGHT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="5" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString inherits="ChatFontNormal"
+                            bytes="6" />
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnLoad>self:SetMaxLetters(3)</OnLoad>
+              <OnEnterPressed>self:ClearFocus(); PowaAuras:TextAuraTextureChanged();</OnEnterPressed>
+            </Scripts>
+          </EditBox>
+		  
+          <EditBox name="PowaBarAurasText"
+                   autoFocus="false"
+                   inherits="InputBoxTemplate">
+            <Size>
+              <AbsDimension x="225"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT"
+                      relativeTo="PowaBarAuraTextureSlider"
+                      relativePoint="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="5"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString inherits="ChatFontNormal"
+                            bytes="100" />
+              </Layer>
+            </Layers>
+            <Scripts>
+				<OnLoad>
+					self:SetMaxLetters(100);
+			  		self.tooltipText = PowaAuras.Text.aideCustomText;
+				</OnLoad>
+                <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);</OnEnter>				
+				<OnEnterPressed>PowaAuras:AurasTextChanged(); self:ClearFocus()</OnEnterPressed>
+				<OnEditFocusLost>PowaAuras:AurasTextChanged()</OnEditFocusLost>
+				<OnEscapePressed>PowaAuras:AurasTextCancel(); self:ClearFocus()</OnEscapePressed>
+            </Scripts>
+          </EditBox>
+		  
+          <Button name="PowaFontsButton" inherits="OptionsButtonTemplate" text="[T]">
+		        <Size>
+		          <AbsDimension x="22"
+		                        y="22" />
+		        </Size>
+		        <Anchors>
+		          <Anchor point="TOPLEFT"
+		                  relativeTo="PowaBarAurasText"
+		                  relativePoint="TOPRIGHT">
+		            <Offset>
+		              <AbsDimension x="5"
+		                            y="3" />
+		            </Offset>
+		          </Anchor>
+		        </Anchors>
+		        <Scripts>
+		          <OnClick>PowaAuras:OpenFontSelector(self);</OnClick>
+		          <OnEnter>
+		          	GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetText(PowaAuras.Text.aideFont, nil, nil, nil, nil, 1);
+		          </OnEnter>
+		          <OnLeave>GameTooltip:Hide();</OnLeave>
+		        </Scripts>          	
+          </Button>
+          <EditBox name="PowaBarCustomTexName"
+                   autoFocus="false"
+                   inherits="InputBoxTemplate">
+            <Size>
+              <AbsDimension x="145"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT"
+                      relativeTo="PowaBarAuraTextureSlider"
+                      relativePoint="TOPLEFT">
+                <Offset>
+                  <AbsDimension x="5"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString inherits="ChatFontNormal"
+                            bytes="100" />
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnLoad>
+				self:SetMaxLetters(100);
+			  </OnLoad>
+              <OnEnterPressed>PowaAuras:CustomTextChanged() self:ClearFocus()</OnEnterPressed>
+            </Scripts>
+          </EditBox>
+
+
+		  
+          <CheckButton name="PowaTexModeButton"
+                       inherits="PowaCheckTemplate">
+            <Size>
+              <AbsDimension x="25"
+                            y="25" />
+            </Size>
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativeTo="AuraTexture"
+                      relativePoint="TOPRIGHT">
+                <Offset>
+                  <AbsDimension x="40"
+                                y="-8" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.tooltipText = PowaAuras.Text.aideTexMode; 
+              	PowaTexModeButtonText:SetText(PowaAuras.Text.nomTexMode);
+              </OnLoad>
+              <OnClick>PowaAuras:TexModeChecked();</OnClick>
+            </Scripts>
+          </CheckButton>
+
+
+          <CheckButton name="PowaWowTextureButton"
+                       inherits="PowaCheckTemplate">
+            <Size>
+              <AbsDimension x="25"
+                            y="25" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT"
+                      relativeTo="PowaTexModeButton"
+                      relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="4" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.tooltipText = PowaAuras.Text.aideWowTextures; 
+              	PowaWowTextureButtonText:SetText(PowaAuras.Text.nomWowTextures);
+              </OnLoad>
+              <OnClick>PowaAuras:WowTexturesChecked();</OnClick>
+            </Scripts>
+          </CheckButton>
+		  
+           <CheckButton name="PowaCustomTextureButton"
+                       inherits="PowaCheckTemplate">
+            <Size>
+              <AbsDimension x="25"
+                            y="25" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT"
+                      relativeTo="PowaWowTextureButton"
+                      relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="4" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.tooltipText = PowaAuras.Text.aideCustomTextures; 
+              	PowaCustomTextureButtonText:SetText(PowaAuras.Text.nomCustomTextures);
+              </OnLoad>
+              <OnClick>PowaAuras:CustomTexturesChecked();</OnClick>
+            </Scripts>
+          </CheckButton>
+		  
+		  <CheckButton name="PowaTextAuraButton"
+                       inherits="PowaCheckTemplate">
+            <Size>
+              <AbsDimension x="25"
+                            y="25" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT"
+                      relativeTo="PowaCustomTextureButton"
+                      relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="4" />
+                </Offset>
+              </Anchor>
+
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.tooltipText = PowaAuras.Text.aideTextAura; 
+              	PowaTextAuraButtonText:SetText(PowaAuras.Text.nomTextAura);
+              </OnLoad>
+              <OnClick>PowaAuras:TextAuraChecked();</OnClick>
+            </Scripts>
+          </CheckButton>
+		  
+		  
+          <CheckButton name="PowaRandomColorButton"
+                       inherits="PowaCheckTemplate">
+            <Size>
+              <AbsDimension x="25"
+                            y="25" />
+            </Size>
+            <Anchors>
+              <Anchor point="BOTTOMLEFT"
+                      relativeTo="AuraTexture"
+                      relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="-15"
+                                y="-42" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.tooltipText = PowaAuras.Text.aideRandomColor; 
+              	PowaRandomColorButtonText:SetText(PowaAuras.Text.nomRandomColor);
+              </OnLoad>
+              <OnClick>PowaAuras:RandomColorChecked();</OnClick>
+            </Scripts>
+          </CheckButton>
+		  
+          <Slider name="PowaBarAuraAlphaSlider"
+                  inherits="PowaBarSliderTemplate">
+            <Size>
+              <AbsDimension x="290"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPRIGHT"
+                      relativeTo="PowaBarAuraTextureSlider"
+                      relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-17" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self:SetMinMaxValues(0.1,1.0); self:SetValue(1.0); self:SetValueStep(0.01); 
+              	PowaBarAuraAlphaSliderText:SetText(PowaAuras.Text.nomAlpha.." : 1.0");
+              	PowaBarAuraAlphaSliderLow:SetText("10"); 
+              	PowaBarAuraAlphaSliderHigh:SetText("100");
+              </OnLoad>
+              <OnValueChanged>PowaAuras:BarAuraAlphaSliderChanged();</OnValueChanged>
+            </Scripts>
+          </Slider>
+	  
+          <Slider name="PowaBarAuraDeformSlider"
+                  inherits="PowaBarSliderTemplate">
+            <Size>
+              <AbsDimension x="130"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPRIGHT"
+                      relativeTo="PowaBarAuraAlphaSlider"
+                      relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-17" />
+                </Offset>
+               </Anchor>
+			</Anchors>
+            <Scripts>
+              <OnLoad>
+              	self.aide = PowaAuras.Text.aideDeform; self:SetMinMaxValues(0.5,1.5); self:SetValue(1); self:SetValueStep(0.01); 
+              	PowaBarAuraDeformSliderText:SetText(PowaAuras.Text.nomDeform.." : 1"); 
+              	PowaBarAuraDeformSliderLow:SetText(PowaAuras.Text.hauteur); 
+              	PowaBarAuraDeformSliderHigh:SetText(PowaAuras.Text.largeur);
+              </OnLoad>
+              <OnValueChanged>PowaAuras:BarAuraDeformSliderChanged();</OnValueChanged>
+            </Scripts>
+          </Slider>
+		  
+          <Slider name="PowaBarAuraSymSlider"
+                  inherits="PowaBarSliderTemplate">
+            <Size>
+              <AbsDimension x="130"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="RIGHT"
+                      relativeTo="PowaBarAuraDeformSlider"
+                      relativePoint="LEFT">
+                <Offset>
+                  <AbsDimension x="-30"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self:SetMinMaxValues(0,3); self:SetValue(0); self:SetValueStep(1); 
+              	PowaBarAuraSymSliderText:SetText(PowaAuras.Text.nomSymetrie.." : "..PowaAuras.Text.aucune);
+              	PowaBarAuraSymSliderLow:SetText(PowaAuras.Text.aucune); 
+              	PowaBarAuraSymSliderHigh:SetText("XY");
+              </OnLoad>
+              <OnValueChanged>PowaAuras:BarAuraSymSliderChanged();</OnValueChanged>
+            </Scripts>
+          </Slider>
+		  
+          <Slider name="PowaBarAuraSizeSlider"
+                  inherits="PowaBarSliderTemplate">
+            <Size>
+              <AbsDimension x="428"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPRIGHT"
+                      relativeTo="PowaBarAuraDeformSlider"
+                      relativePoint="BOTTOMRIGHT">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-17" />
+                </Offset>
+               </Anchor>
+			</Anchors>
+            <Scripts>
+              <OnLoad>
+              	self:SetMinMaxValues(0.02,5.0); self:SetValue(1.0); self:SetValueStep(0.01); 
+              	PowaBarAuraSizeSliderText:SetText(PowaAuras.Text.nomTaille.." : 100");
+              	PowaBarAuraSizeSliderLow:SetText("2%"); 
+              	PowaBarAuraSizeSliderHigh:SetText("500%");
+              </OnLoad>
+              <OnValueChanged>PowaAuras:BarAuraSizeSliderChanged();</OnValueChanged>
+            </Scripts>
+          </Slider>
+		  
+          <Slider name="PowaBarAuraCoordXSlider"
+                  inherits="PowaBarSliderTemplateWithButtons">
+            <Size>
+              <AbsDimension x="350"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOPLEFT"
+                      relativeTo="PowaBarAuraSizeSlider"
+                      relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="30"
+                                y="-18" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self:SetMinMaxValues(-300,300); self:SetValue(0); self:SetValueStep(1); 
+              	PowaBarAuraCoordXSliderText:SetText(PowaAuras.Text.nomPos.." X : 0");
+              	PowaBarAuraCoordXSliderLow:SetText("-300"); 
+              	PowaBarAuraCoordXSliderHigh:SetText("300");
+              </OnLoad>
+              <OnValueChanged>PowaAuras:BarAuraCoordXSliderChanged();</OnValueChanged>
+              <OnMouseUp>
+              	self:SetMinMaxValues(self:GetValue()-200,self:GetValue()+200); 
+              	PowaBarAuraCoordXSliderLow:SetText(self:GetValue()-200);
+              	PowaBarAuraCoordXSliderHigh:SetText(self:GetValue()+200);
+              </OnMouseUp>
+            </Scripts>
+          </Slider>
+		  
+          <EditBox name="PowaBarAuraCoordXEdit"
+                   autoFocus="false"
+                   inherits="InputBoxTemplate">
+            <Size>
+              <AbsDimension x="40"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativeTo="PowaBarAuraCoordXSlider"
+                      relativePoint="RIGHT">
+                <Offset>
+                  <AbsDimension x="10"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString inherits="ChatFontNormal"
+                            bytes="6" />
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnLoad>self:SetMaxLetters(6)</OnLoad>
+              <OnEnterPressed>self:ClearFocus() PowaAuras:TextCoordXChanged();</OnEnterPressed>
+            </Scripts>
+          </EditBox>
+		  
+          <Slider name="PowaBarAuraCoordSlider"
+                  inherits="PowaBarSliderTemplateWithButtons">
+            <Size>
+              <AbsDimension x="350"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOP"
+                      relativeTo="PowaBarAuraCoordXSlider"
+                      relativePoint="BOTTOM">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-16" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnLoad>
+              	self:SetMinMaxValues(-300,300); self:SetValue(-30); self:SetValueStep(1); 
+              	PowaBarAuraCoordSliderText:SetText(PowaAuras.Text.nomPos.." Y : -30");
+              	PowaBarAuraCoordSliderLow:SetText("-300"); 
+              	PowaBarAuraCoordSliderHigh:SetText("300");
+              </OnLoad>
+              <OnValueChanged>PowaAuras:BarAuraCoordSliderChanged();</OnValueChanged>
+              <OnMouseUp>
+              	self:SetMinMaxValues(self:GetValue()-200,self:GetValue()+200); 
+              	PowaBarAuraCoordSliderLow:SetText(self:GetValue()-200);
+              	PowaBarAuraCoordSliderHigh:SetText(self:GetValue()+200);
+              </OnMouseUp>
+            </Scripts>
+          </Slider>
+          <EditBox name="PowaBarAuraCoordYEdit"
+                   autoFocus="false"
+                   inherits="InputBoxTemplate">
+            <Size>
+              <AbsDimension x="40"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativeTo="PowaBarAuraCoordSlider"
+                      relativePoint="RIGHT">
+                <Offset>
+                  <AbsDimension x="10"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString inherits="ChatFontNormal"
+                            bytes="6" />
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnLoad>self:SetMaxLetters(6)</OnLoad>
+              <OnEnterPressed>self:ClearFocus() PowaAuras:TextCoordYChanged();</OnEnterPressed>
+            </Scripts>
+          </EditBox>
+		  
+          <Button name="PowaColor">
+            <Size>
+              <AbsDimension x="16"
+                            y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="BOTTOMLEFT"
+                      relativeTo="AuraTexture"
+                      relativePoint="BOTTOMLEFT">
+                <Offset>
+                  <AbsDimension x="-11"
+                                y="-15" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="BACKGROUND">
+                <Texture name="$parent_SwatchBg">
+                  <Size>
+                    <AbsDimension x="14"
+                                  y="14" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="CENTER">
+                      <Offset>
+                        <AbsDimension x="0"
+                                      y="0" />
+                      </Offset>
+                    </Anchor>
+                  </Anchors>
+                  <Color r="1.0"
+                         g="1.0"
+                         b="1.0" />
+                </Texture>
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnLoad>getglobal(self:GetName().."_SwatchBg").r = 1.0; getglobal(self:GetName().."_SwatchBg").g = 1.0; getglobal(self:GetName().."_SwatchBg").b = 1.0;</OnLoad>
+              <OnClick>PowaAuras:OpenColorPicker(self, PowaAuras.Auras[PowaAuras.CurrentAuraId]);</OnClick>
+              <OnEnter>
+              	getglobal(self:GetName().."_SwatchBg"):SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b); 
+              	GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+              	GameTooltip:SetText(PowaAuras.Text.aideColor, nil, nil, nil, nil, 1);
+              </OnEnter>
+              <OnLeave>getglobal(self:GetName().."_SwatchBg"):SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b); GameTooltip:Hide();</OnLeave>
+            </Scripts>
+            <NormalTexture name="$parentNormalTexture"
+                           file="Interface\ChatFrame\ChatFrameColorSwatch" />
+          </Button>
+		  
+		  <!-- First Configuration Tab Panel (Activation)-->
+          <Frame name="PowaBarConfigFrameEditor2">
+            <Size>
+              <AbsDimension x="450"
+                            y="352" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOP"
+                      relativeTo="PowaBarConfigFrameEditor"
+                      relativePoint="BOTTOM">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-25" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                      edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                      tile="true">
+              <EdgeSize>
+                <AbsValue val="12" />
+              </EdgeSize>
+              <TileSize>
+                <AbsValue val="128" />
+              </TileSize>
+              <BackgroundInsets>
+                <AbsInset left="2"
+                          right="2"
+                          top="2"
+                          bottom="2" />
+              </BackgroundInsets>
+            </Backdrop>
+            <Scripts>
+              <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+            </Scripts>
+            <Layers>
+              <Layer>
+                <Texture name="PowaIconTexture"
+                         file="Interface\InventoryItems\WowUnknownItem01">
+                  <Size>
+                    <AbsDimension x="40"
+                                  y="40" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="TOPRIGHT"
+                            relativeTo="PowaBarConfigFrameEditor2"
+                            relativePoint="TOPRIGHT">
+                      <Offset>
+                        <AbsDimension x="-5"
+                                      y="-5" />
+                      </Offset>
+                    </Anchor>
+                  </Anchors>
+                </Texture>
+              </Layer>
+            </Layers>
+            <Frames>
+			
+              <EditBox name="PowaBarBuffName"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate"
+					   historyLines="5">
+                <Size>
+                  <AbsDimension x="272"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor2"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="13"
+                                    y="-55" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self:SetMaxLetters(200); self.aide = PowaAuras.Text.aideBuff;</OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:TextChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString inherits="ChatFontNormal"
+                                bytes="200" />
+                  </Layer>
+                  <Layer level="OVERLAY">
+                    <FontString name="PowaBarBuffNameText"
+                                inherits="GameFontNormalSmall"
+                                justifyH="LEFT"
+                                text="">
+                      <Size>
+                        <AbsDimension x="150"
+                                      y="20" />
+                      </Size>
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativeTo="PowaBarBuffName"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+			  
+              <EditBox name="PowaBarMultiID"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate">
+                <Size>
+                  <AbsDimension x="145"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPRIGHT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self:SetMaxLetters(50) self.aide = PowaAuras.Text.aideMultiID;</OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:MultiIDChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString inherits="ChatFontNormal"
+                                bytes="50" />
+                  </Layer>
+                  <Layer level="OVERLAY">
+                    <FontString name="PowaBarMultiIDText"
+                                inherits="GameFontNormalSmall"
+                                justifyH="LEFT"
+                                text="">
+                      <Size>
+                        <AbsDimension x="150"
+                                      y="20" />
+                      </Size>
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativeTo="PowaBarMultiID"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+			  
+              <EditBox name="PowaBarTooltipCheck"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate">
+                <Size>
+                  <AbsDimension x="145"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarMultiID"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self:SetMaxLetters(40); self.aide = PowaAuras.Text.aideTooltipCheck;</OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:TooltipCheckChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString inherits="ChatFontNormal"
+                                bytes="50" />
+                  </Layer>
+                  <Layer level="OVERLAY">
+                    <FontString name="PowaBarTooltipCheckText"
+                                inherits="GameFontNormalSmall"
+                                justifyH="LEFT"
+                                text="">
+                      <Size>
+                        <AbsDimension x="150"
+                                      y="20" />
+                      </Size>
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativeTo="PowaBarTooltipCheck"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+			  
+              <EditBox name="PowaBarBuffStacks"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate">
+                <Size>
+                  <AbsDimension x="90"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="BOTTOMLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="200"
+                                    y="12" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	PowaBarBuffStacksLabel:SetText(PowaAuras.Text.nomStacks); 
+                  	self:SetMaxLetters(10);
+					self.aide = PowaAuras.Text.aideStacks;
+                  </OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:StacksTextChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="RIGHT"
+                                relativePoint="LEFT">
+                          <Offset>
+                            <AbsDimension x="-5"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+			  
+              <Frame name="PowaDropDownBuffType"
+                     inherits="UIDropDownMenuTemplate"
+                     id="10">
+                <Size>
+                  <AbsDimension x="245" />
+                </Size>
+                <Anchors>
+                  <Anchor point="BOTTOMLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="-25"
+                                    y="10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownBuffTypeLabel:SetText(PowaAuras.Text.nomActivationBy); 
+					UIDropDownMenu_SetWidth(self, 150);
+                 	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <Frame name="PowaDropDownPowerType"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="210" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownPowerTypeLabel:SetText(PowaAuras.Text.nomPowerType); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aidePowerType, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <Frame name="PowaDropDownStance"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="210" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="30"
+                                    y="20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="TOPRIGHT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="-5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownStanceLabel:SetText(PowaAuras.Text.nomStance); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideStance, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <Frame name="PowaDropDownGTFO"
+                     inherits="UIDropDownMenuTemplate"
+                     id="12">
+                <Size>
+                  <AbsDimension x="210" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="TOPRIGHT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="10"
+                                          y="-5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownGTFOLabel:SetText(PowaAuras.Text.nomGTFO); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideGTFO, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <Slider name="PowaBarThresholdSlider"
+                      inherits="PowaBarSliderTemplate">
+                <Size>
+                  <AbsDimension x="245"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="18" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(0,100); self:SetValue(50); self:SetValueStep(1); 
+                  	getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomThreshold.." : 50");
+                  	getglobal(self:GetName().."Low"):SetText("0%"); 
+                  	getglobal(self:GetName().."High"):SetText("100%");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:BarThresholdSliderChanged();</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+              <CheckButton name="PowaThresholdInvertButton"
+              						 inherits="PowaCheckTemplate">
+              	<Size>
+              		<AbsDimension x="25"
+              									y="25" />
+              	</Size>
+              	<Anchors>
+              		<Anchor point="TOPLEFT"
+              						relativeTo="PowaBarThresholdSlider"
+              						relativePoint="TOPRIGHT">
+              			<Offset>
+              				<AbsDimension x="2"
+              											y="3" />
+              			</Offset>
+              		</Anchor>
+              	</Anchors>
+              	<Scripts>
+              		<OnLoad>self.tooltipText = PowaAuras.Text.aideThreshInv; getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomThreshInv);</OnLoad>
+              		<OnClick>PowaAuras:ThresholdInvertChecked(self);</OnClick>
+              	</Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaOwntexButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownBuffType"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self.tooltipText = PowaAuras.Text.aideOwnTex; getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomOwnTex); PowaOwntexButtonText:SetTextColor(1.0,0.2,0.2);</OnLoad>
+                  <OnClick>PowaAuras:OwntexChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="PowaExactButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarBuffName"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="-8"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self.tooltipText = PowaAuras.Text.aideExact; getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomExact); PowaExactButtonText:SetTextColor(1.0,0.2,0.2);</OnLoad>
+                  <OnClick>PowaAuras:ExactChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaIngoreCaseButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaExactButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+					self.tooltipText = PowaAuras.Text.aideIgnoreMaj;
+					getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomCheckIgnoreMaj);
+				  </OnLoad>
+                  <OnClick>PowaAuras:IgnoreMajChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaInverseButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaIngoreCaseButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-18" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideInverse; 
+                  	getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomCheckInverse);
+                  </OnLoad>
+                  <OnClick>PowaAuras:InverseChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaMineButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaInverseButton"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideMine; 
+                  	getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomMine); 
+                  	getglobal(self:GetName().."Text"):SetTextColor(1.0,0.2,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:SettingChecked(self, "mine");</OnClick>
+                </Scripts>
+              </CheckButton>
+
+			 <CheckButton name="PowaPvPButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaMineButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "PvP"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	  
+	
+              <CheckButton name="PowaExtraButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaPvPButton"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="70"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideExtra; 
+                  	getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomExtra); 
+                  </OnLoad>
+                  <OnClick>PowaAuras:SettingChecked(self, "Extra");</OnClick>
+                </Scripts>
+              </CheckButton>  
+		  
+			  <CheckButton name="PowaInCombatButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaInverseButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="3" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "combat"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+
+			  			  
+			  <CheckButton name="PowaRestingButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaInCombatButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "isResting"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	
+
+ 			  
+			  <CheckButton name="PowaIsAliveButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaRestingButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "isAlive"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	
+
+			  <CheckButton name="PowaIsInPartyButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaInCombatButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-3" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "inParty"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	  
+			  
+			  
+			  <CheckButton name="PowaIsInRaidButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaIsInPartyButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "inRaid"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	
+			  
+			 <CheckButton name="Powa5ManInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaIsInRaidButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "Instance5Man"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+			  <CheckButton name="Powa5ManHeroicInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa5ManInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "Instance5ManHeroic"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+			  <CheckButton name="Powa10ManInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa5ManHeroicInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "Instance10Man"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+			  <CheckButton name="Powa10ManHeroicInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa10ManInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "Instance10ManHeroic"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+			  <CheckButton name="Powa25ManInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa10ManHeroicInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "Instance25Man"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+			  <CheckButton name="Powa25ManHeroicInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa25ManInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "Instance25ManHeroic"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>
+			  
+			  <CheckButton name="PowaBgInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa25ManHeroicInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "InstanceBg"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>		  
+			  <CheckButton name="PowaArenaInstanceButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBgInstanceButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "InstanceArena"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>		  
+
+			 <CheckButton name="PowaRoleTankButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="Powa5ManInstanceButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="70"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "RoleTank"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Role[self.Parameter]);
+					</OnShow>
+				</Scripts>
+			  </CheckButton>	
+
+			 <CheckButton name="PowaRoleHealerButton" inherits="PowaTernarySelectorTemplate">
+               <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaRoleTankButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Scripts>
+					<OnShow>
+						self.Parameter = "RoleHealer"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Role[self.Parameter]);
+					</OnShow>
+				</Scripts>
+			  </CheckButton>	
+
+			 <CheckButton name="PowaRoleMeleDpsButton" inherits="PowaTernarySelectorTemplate">
+               <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaRoleHealerButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Scripts>
+					<OnShow>
+						self.Parameter = "RoleMeleDps"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Role[self.Parameter]);
+					</OnShow>
+				</Scripts>
+			  </CheckButton>	
+
+			 <CheckButton name="PowaRoleRangeDpsButton" inherits="PowaTernarySelectorTemplate">
+               <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaRoleMeleDpsButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="9" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Scripts>
+					<OnShow>
+						self.Parameter = "RoleRangeDps"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Role[self.Parameter]);
+					</OnShow>
+				</Scripts>
+			  </CheckButton>	
+		  			  
+			  <CheckButton name="PowaIsMountedButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaIsInPartyButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-3" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "ismounted"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	
+  			  
+			  <CheckButton name="PowaInVehicleButton" inherits="PowaTernarySelectorTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaIsMountedButton"
+                          relativePoint="TOPRIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnShow>
+						self.Parameter = "inVehicle"; 
+						getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.Ternary[self.Parameter]);
+					</OnShow>
+                </Scripts>
+			  </CheckButton>	
+			  
+              <CheckButton name="PowaTargetButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaIsMountedButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideTarget; 
+                  	PowaTargetButtonText:SetText(PowaAuras.Text.nomCheckTarget);
+                  	PowaTargetButtonText:SetTextColor(1.0,0.2,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:TargetChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="PowaTargetFriendButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaTargetButton"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideTargetFriend; 
+                  	PowaTargetFriendButtonText:SetText(PowaAuras.Text.nomCheckFriend);
+                  	PowaTargetFriendButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:TargetFriendChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="PowaFocusButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaTargetButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideFocus; 
+                  	PowaFocusButtonText:SetText(PowaAuras.Text.nomCheckFocus); 
+                  	PowaFocusButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:FocusChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              <CheckButton name="PowaGroupOrSelfButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaFocusButton"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideGroupOrSelf; 
+                  	PowaGroupOrSelfButtonText:SetText(PowaAuras.Text.nomCheckGroupOrSelf); 
+                  	PowaGroupOrSelfButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:GroupOrSelfChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              
+              <CheckButton name="PowaPartyButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaFocusButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideParty; 
+                  	PowaPartyButtonText:SetText(PowaAuras.Text.nomCheckParty); 
+                  	PowaPartyButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:PartyChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="PowaRaidButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaPartyButton"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="100"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideRaid; 
+                  	PowaRaidButtonText:SetText(PowaAuras.Text.nomCheckRaid); 
+                  	PowaRaidButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:RaidChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="PowaOptunitnButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaPartyButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideOptunitn; 
+                  	PowaOptunitnButtonText:SetText(PowaAuras.Text.nomCheckOptunitn);
+                  	PowaOptunitnButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:OptunitnChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <EditBox name="PowaBarUnitn"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate">
+                <Size>
+                  <AbsDimension x="150"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaOptunitnButtonText"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="60"
+                                    y="3" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString inherits="ChatFontNormal"
+                                bytes="200" />
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>self:SetMaxLetters(200) self.aide = PowaAuras.Text.aideUnitn;</OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:UnitnTextChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="PowaBarUnitnText"
+                                inherits="GameFontNormalSmall"
+                                justifyH="LEFT"
+                                text="">
+                      <Size>
+                        <AbsDimension x="150"
+                                      y="20" />
+                      </Size>
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativeTo="PowaBarUnitn"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+
+              <CheckButton name="PowaTalentGroup1Button"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaOptunitnButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self.tooltipText = PowaAuras.Text.aideTalentGroup1; PowaTalentGroup1ButtonText:SetText(PowaAuras.Text.nomTalentGroup1);</OnLoad>
+                  <OnClick>PowaAuras:SettingChecked(self, "spec1");</OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="PowaTalentGroup2Button"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaTalentGroup1Button"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="50"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>self.tooltipText = PowaAuras.Text.aideTalentGroup2; PowaTalentGroup2ButtonText:SetText(PowaAuras.Text.nomTalentGroup2);</OnLoad>
+                  <OnClick>PowaAuras:SettingChecked(self, "spec2");</OnClick>
+                </Scripts>
+              </CheckButton>
+
+              <CheckButton name="PowaGroupAnyButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaTalentGroup2Button"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="60"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideGroupAny; 
+                  	PowaGroupAnyButtonText:SetText(PowaAuras.Text.nomCheckGroupAny); 
+                  </OnLoad>
+                  <OnClick>PowaAuras:GroupAnyChecked();</OnClick>
+                </Scripts>
+              </CheckButton>
+
+
+              <CheckButton name="PowaAuraDebugButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="BOTTOMRIGHT"
+                          relativeTo="PowaBarConfigFrameEditor2"
+                          relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="-50"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+					self.tooltipText = PowaAuras.Text.aideAuraDebug;
+					PowaAuraDebugButtonText:SetText(PowaAuras.Text.nomAuraDebug);
+				  </OnLoad>
+                  <OnClick>PowaAuras:SettingChecked(self, "Debug");</OnClick>
+                </Scripts>
+              </CheckButton>			  
+			  
+			  
+            </Frames>
+          </Frame>
+		  
+		  
+		  <!-- Second Configuration Tab Panel (Animation)-->
+           <Frame name="PowaBarConfigFrameEditor3"
+                 hidden="true">
+            <Size>
+              <AbsDimension x="450"
+                            y="220" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOP"
+                      relativeTo="PowaBarConfigFrameEditor"
+                      relativePoint="BOTTOM">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-25" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                      edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                      tile="true">
+              <EdgeSize>
+                <AbsValue val="12" />
+              </EdgeSize>
+              <TileSize>
+                <AbsValue val="128" />
+              </TileSize>
+              <BackgroundInsets>
+                <AbsInset left="2"
+                          right="2"
+                          top="2"
+                          bottom="2" />
+              </BackgroundInsets>
+            </Backdrop>
+            <Scripts>
+              <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+            </Scripts>
+            <Frames>
+              <Frame name="PowaDropDownAnimBegin"
+                     inherits="UIDropDownMenuTemplate"
+                     id="1">
+                <Size>
+                  <AbsDimension x="140" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor3"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="-8"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownAnimBeginLabel:SetText(PowaAuras.Text.nomBegin); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                </Scripts>
+              </Frame>
+              <Frame name="PowaDropDownAnimEnd"
+                     inherits="UIDropDownMenuTemplate"
+                     id="2">
+                <Size>
+                  <AbsDimension x="140" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaDropDownAnimBegin"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownAnimEndLabel:SetText(PowaAuras.Text.nomEnd); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                </Scripts>
+              </Frame>
+			  
+             <CheckButton name="PowaShowSpinAtBeginning"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownAnimBegin"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="15"
+                                    y="-30" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideShowSpinAtBeginning; 
+                  	PowaShowSpinAtBeginningText:SetText(PowaAuras.Text.nomCheckShowSpinAtBeginning);
+                  </OnLoad>
+                  <OnClick>PowaAuras:ShowSpinAtBeginningChecked(self);</OnClick>
+                </Scripts>
+              </CheckButton>			  
+			  
+			  
+              <Frame name="PowaDropDownAnim1"
+                     inherits="UIDropDownMenuTemplate"
+                     id="3">
+                <Size>
+                  <AbsDimension x="140" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaDropDownAnimBegin"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-45" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownAnim1Label:SetText(PowaAuras.Text.nomAnim1); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideAnim1, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <Frame name="PowaDropDownAnim2"
+                     inherits="UIDropDownMenuTemplate"
+                     id="4">
+                <Size>
+                  <AbsDimension x="140" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaDropDownAnim1"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownAnim2Label:SetText(PowaAuras.Text.nomAnim2); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideAnim2, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <Slider name="PowaBarAuraAnimSpeedSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="360"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownAnim1"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="60"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(0.05,2.00); self:SetValue(1.0); self:SetValueStep(0.01); 
+                  	PowaBarAuraAnimSpeedSliderText:SetText(PowaAuras.Text.nomSpeed.." : 100%");
+                  	PowaBarAuraAnimSpeedSliderLow:SetText("5"); 
+                  	PowaBarAuraAnimSpeedSliderHigh:SetText("200");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:BarAuraAnimSpeedSliderChanged(self);</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaBarAuraDurationSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="360"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarAuraAnimSpeedSlider"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.aide = PowaAuras.Text.aideDuration; self:SetMinMaxValues(0,30); self:SetValue(0); self:SetValueStep(0.25);
+                  	PowaBarAuraDurationSliderText:SetText(PowaAuras.Text.nomDuration.." : 0 sec"); 
+                  	PowaBarAuraDurationSliderLow:SetText(PowaAuras.Text.aucune);
+                  	PowaBarAuraDurationSliderHigh:SetText("30");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:BarAuraAnimDurationSliderChanged(self);</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+             <CheckButton name="PowaOldAnimation"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarAuraDurationSlider"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="5"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideOldAnimations; 
+                  	PowaOldAnimationText:SetText(PowaAuras.Text.nomOldAnimations);
+                  </OnLoad>
+                  <OnClick>PowaAuras:OldAnimationChecked(self);</OnClick>
+                </Scripts>
+              </CheckButton>			  
+			  			  
+			  
+            </Frames>
+          </Frame>
+		  <!-- Third Configuration Tab Panel (Sound)-->
+           <Frame name="PowaBarConfigFrameEditor5"
+                 hidden="true">
+            <Size>
+              <AbsDimension x="450"
+                            y="340" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOP"
+                      relativeTo="PowaBarConfigFrameEditor"
+                      relativePoint="BOTTOM">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-25" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                      edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                      tile="true">
+              <EdgeSize>
+                <AbsValue val="12" />
+              </EdgeSize>
+              <TileSize>
+                <AbsValue val="128" />
+              </TileSize>
+              <BackgroundInsets>
+                <AbsInset left="2"
+                          right="2"
+                          top="2"
+                          bottom="2" />
+              </BackgroundInsets>
+            </Backdrop>
+            <Scripts>
+              <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+            </Scripts>
+            <Frames>
+			
+               <Frame name="PowaStartSound">
+                <Size>
+                  <AbsDimension x="220" y="20"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor5"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+				<Layers>
+					<Layer>
+
+						<FontString name="$parentText"
+									inherits="GameFontHighlight"
+									justifyV = "TOP"
+									justifyH = "LEFT"
+									text="Starting Sound:">
+						  <FontHeight>
+							<AbsValue val="22" />
+						  </FontHeight>
+						</FontString>
+						
+					</Layer>
+               </Layers>
+			  </Frame>
+			  
+              <Frame name="PowaDropDownSound"
+                     inherits="UIDropDownMenuTemplate"
+                     id="11">
+                <Size>
+                  <AbsDimension x="220" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor5"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="5"
+                                    y="-45" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="15"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownSoundLabel:SetText(PowaAuras.Text.nomSound); 
+                  	PowaStartSoundText:SetText(PowaAuras.Text.nomSoundStarting); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideSound, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+             <Frame name="PowaDropDownSound2"
+                     inherits="UIDropDownMenuTemplate"
+                     id="11">
+                <Size>
+                  <AbsDimension x="220" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownSound"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="15"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownSound2Label:SetText(PowaAuras.Text.nomSound2); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideSound2, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <EditBox name="PowaBarCustomSound"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate">
+                <Size>
+                  <AbsDimension x="420"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownSound2"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="20"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString inherits="ChatFontNormal"
+                                bytes="200" />
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>PowaBarCustomSoundText:SetText(PowaAuras.Text.nomCustomSound); self:SetMaxLetters(200) self.aide = PowaAuras.Text.aideCustomSound;</OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:CustomSoundTextChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="PowaBarCustomSoundText"
+                                inherits="GameFontNormalSmall"
+                                justifyH="LEFT">
+                      <Size>
+                        <AbsDimension x="220"
+                                      y="20" />
+                      </Size>
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativeTo="PowaBarCustomSound"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+			  
+			
+               <Frame name="PowaEndSound">
+                <Size>
+                  <AbsDimension x="220" y="20"/>
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarCustomSound"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="-15"
+                                    y="-30" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+				<Layers>
+					<Layer>
+
+						<FontString name="$parentText"
+									inherits="GameFontHighlight"
+									justifyV = "TOP"
+									justifyH = "LEFT"
+									text="Ending Sound:">
+						  <FontHeight>
+							<AbsValue val="22" />
+						  </FontHeight>
+						</FontString>
+						
+					</Layer>
+               </Layers>
+			  </Frame>			  
+
+              <Frame name="PowaDropDownSoundEnd"
+                     inherits="UIDropDownMenuTemplate"
+                     id="11">
+                <Size>
+                  <AbsDimension x="220" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaEndSound"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="-5"
+                                    y="-35" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="15"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownSoundEndLabel:SetText(PowaAuras.Text.nomSoundEnd); 
+                 	PowaEndSoundText:SetText(PowaAuras.Text.nomSoundEnding); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideSoundEnd, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+             <Frame name="PowaDropDownSound2End"
+                     inherits="UIDropDownMenuTemplate"
+                     id="11">
+                <Size>
+                  <AbsDimension x="220" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownSoundEnd"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="15"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownSound2EndLabel:SetText(PowaAuras.Text.nomSound2End); 
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnLoad>
+                  <OnShow>UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);</OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(PowaAuras.Text.aideSound2End, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+			  
+              <EditBox name="PowaBarCustomSoundEnd"
+                       autoFocus="false"
+                       inherits="InputBoxTemplate">
+                <Size>
+                  <AbsDimension x="420"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownSound2End"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="20"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString inherits="ChatFontNormal"
+                                bytes="200" />
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>PowaBarCustomSoundEndText:SetText(PowaAuras.Text.nomCustomSoundEnd); self:SetMaxLetters(200) self.aide = PowaAuras.Text.aideCustomSoundEnd;</OnLoad>
+                  <OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+                  <OnTextChanged>PowaAuras:CustomSoundEndTextChanged()</OnTextChanged>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:SetText(self.aide, nil, nil, nil, nil, 1);</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="PowaBarCustomSoundEndText"
+                                inherits="GameFontNormalSmall"
+                                justifyH="LEFT">
+                      <Size>
+                        <AbsDimension x="220"
+                                      y="20" />
+                      </Size>
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativeTo="PowaBarCustomSoundEnd"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="0"
+                                          y="0" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+              </EditBox>
+			  
+			  
+            </Frames>
+          </Frame>
+		  
+		  <!-- Fourth Configuration Tab Panel (Timer)-->
+           <Frame name="PowaBarConfigFrameEditor4"
+                 hidden="true">
+            <Size>
+              <AbsDimension x="450"
+                            y="310" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOP"
+                      relativeTo="PowaBarConfigFrameEditor"
+                      relativePoint="BOTTOM">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-25" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                      edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                      tile="true">
+              <EdgeSize>
+                <AbsValue val="12" />
+              </EdgeSize>
+              <TileSize>
+                <AbsValue val="128" />
+              </TileSize>
+              <BackgroundInsets>
+                <AbsInset left="2"
+                          right="2"
+                          top="2"
+                          bottom="2" />
+              </BackgroundInsets>
+            </Backdrop>
+            <Scripts>
+              <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+            </Scripts>
+            <Frames>
+			
+              <CheckButton name="PowaShowTimerButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor4"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="-5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideShowTimer; 
+                  	PowaShowTimerButtonText:SetText(PowaAuras.Text.nomCheckShowTimer);
+                  	PowaShowTimerButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:ShowTimerChecked(self);</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <Slider name="PowaTimerCoordXSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor4"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="-42" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(-150,150); self:SetValue(0); self:SetValueStep(1); 
+                  	PowaTimerCoordXSliderText:SetText(PowaAuras.Text.nomPos.." X : 0");
+                  	PowaTimerCoordXSliderLow:SetText("-150"); 
+                  	PowaTimerCoordXSliderHigh:SetText("150");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:TimerCoordXSliderChanged();</OnValueChanged>
+                  <OnMouseUp>
+                  	self:SetMinMaxValues(self:GetValue()-100,self:GetValue()+100); 
+                  	PowaTimerCoordXSliderLow:SetText(self:GetValue()-100);
+                  	PowaTimerCoordXSliderHigh:SetText(self:GetValue()+100);
+                  </OnMouseUp>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaTimerCoordSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaTimerCoordXSlider"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(-200,100); self:SetValue(0); self:SetValueStep(1); 
+                  	PowaTimerCoordSliderText:SetText(PowaAuras.Text.nomPos.." Y : 0");
+                  	PowaTimerCoordSliderLow:SetText("-200"); 
+                  	PowaTimerCoordSliderHigh:SetText("100");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:TimerCoordSliderChanged();</OnValueChanged>
+                  <OnMouseUp>
+                  	self:SetMinMaxValues(self:GetValue()-100,self:GetValue()+100); 
+                  	PowaTimerCoordSliderLow:SetText(self:GetValue()-100);
+                  	PowaTimerCoordSliderHigh:SetText(self:GetValue()+100);
+                  </OnMouseUp>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaTimerSizeSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaTimerCoordXSlider"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(0.5,10.0); self:SetValue(1.0); self:SetValueStep(0.01); 
+                  	PowaTimerSizeSliderText:SetText(PowaAuras.Text.nomTaille.." : 1.0");
+                  	PowaTimerSizeSliderLow:SetText("0.5"); 
+                  	PowaTimerSizeSliderHigh:SetText("10.0");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:TimerSizeSliderChanged();</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaTimerAlphaSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaTimerCoordSlider"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(0.1,1.0); self:SetValue(1.0); self:SetValueStep(0.01); 
+                  	PowaTimerAlphaSliderText:SetText(PowaAuras.Text.nomAlpha.." : 1.0");
+                  	PowaTimerAlphaSliderLow:SetText("0.1"); 
+                  	PowaTimerAlphaSliderHigh:SetText("1.0");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:TimerAlphaSliderChanged();</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaTimerDurationSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPRIGHT"
+                          relativeTo="PowaTimerAlphaSlider"
+                          relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-15" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.aide = PowaAuras.Text.aideTimerDuration; self:SetMinMaxValues(0,60); self:SetValue(0); self:SetValueStep(1);
+                  	PowaTimerDurationSliderText:SetText(PowaAuras.Text.nomTimerDuration.." : 0"); 
+                  	PowaTimerDurationSliderLow:SetText("0");
+                  	PowaTimerDurationSliderHigh:SetText("60");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:TimerDurationSliderChanged();</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+              <CheckButton name="PowaBuffTimerCentsButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="35" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaTimerSizeSlider"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-10" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomCentiemes);</OnLoad>
+                  <OnClick>PowaAuras:TimerChecked(self, "cents");</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaBuffTimerLeadingZerosButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaBuffTimerCentsButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomHideLeadingZeros);</OnLoad>
+                  <OnClick>PowaAuras:TimerChecked(self, "HideLeadingZeros");</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaBuffTimerUpdatePingButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaBuffTimerLeadingZerosButtonText"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomUpdatePing);</OnLoad>
+                  <OnClick>PowaAuras:TimerChecked(self, "UpdatePing");</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaBuffTimerTransparentButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaBuffTimerLeadingZerosButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomTransparent);</OnLoad>
+                  <OnClick>PowaAuras:TimerTransparentChecked(self);</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaBuffTimerActivationTime"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                 <Anchor point="TOP"
+                          relativeTo="PowaBuffTimerUpdatePingButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomActivationTime);</OnLoad>
+                  <OnClick>PowaAuras:TimerChecked(self, "ShowActivation");</OnClick>
+                </Scripts>
+              </CheckButton>			  
+
+			  <CheckButton name="PowaBuffTimerUseOwnColorButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaBuffTimerTransparentButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomUseOwnColor);</OnLoad>
+                  <OnClick>PowaAuras:TimerChecked(self, "UseOwnColor");</OnClick>
+                </Scripts>
+              </CheckButton>
+
+			  
+			  <Button name="PowaTimerColor">
+				<Size>
+				  <AbsDimension x="16"
+								y="16" />
+				</Size>
+				<Anchors>
+				  <Anchor point="LEFT"
+						  relativeTo="PowaBuffTimerUseOwnColorButtonText"
+						  relativePoint="RIGHT">
+					<Offset>
+					  <AbsDimension x="10"
+									y="0" />
+					</Offset>
+				  </Anchor>
+				</Anchors>
+				<Layers>
+				  <Layer level="BACKGROUND">
+					<Texture name="$parent_SwatchBg">
+					  <Size>
+						<AbsDimension x="14"
+									  y="14" />
+					  </Size>
+					  <Anchors>
+						<Anchor point="CENTER">
+						  <Offset>
+							<AbsDimension x="0"
+										  y="0" />
+						  </Offset>
+						</Anchor>
+					  </Anchors>
+					  <Color r="1.0"
+							 g="1.0"
+							 b="1.0" />
+					</Texture>
+				  </Layer>
+				</Layers>
+				<Scripts>
+				  <OnLoad>getglobal(self:GetName().."_SwatchBg").r = 1.0; getglobal(self:GetName().."_SwatchBg").g = 1.0; getglobal(self:GetName().."_SwatchBg").b = 1.0;</OnLoad>
+				  <OnClick>PowaAuras:OpenColorPicker(self, PowaAuras.Auras[PowaAuras.CurrentAuraId].Timer);</OnClick>
+				  <OnEnter>
+					getglobal(self:GetName().."_SwatchBg"):SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b); 
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetText(PowaAuras.Text.aideTimerColor, nil, nil, nil, nil, 1);
+				  </OnEnter>
+				  <OnLeave>getglobal(self:GetName().."_SwatchBg"):SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b); GameTooltip:Hide();</OnLeave>
+				</Scripts>
+				<NormalTexture name="$parentNormalTexture"
+							   file="Interface\ChatFrame\ChatFrameColorSwatch" />
+			  </Button>
+		  
+             <Frame name="PowaDropDownTimerTexture"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="160" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBuffTimerUseOwnColorButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-25" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	getglobal(self:GetName().."Label"):SetText(PowaAuras.Text.nomTimerTexture); 
+                  </OnLoad>
+                  <OnShow>
+                   	UIDropDownMenu_Initialize(self, PowaAuras.DropDownTimerMenu_Initialize);
+                  </OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>
+
+			  
+             <Frame name="PowaBuffTimerRelative"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="160" />
+                </Size>
+               <Anchors>
+                 <Anchor point="LEFT"
+                          relativeTo="PowaDropDownTimerTexture"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="20"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	getglobal(self:GetName().."Label"):SetText(PowaAuras.Text.nomRelative); 
+                  </OnLoad>
+                  <OnShow>
+                   	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>			  
+			  
+	         <Slider name="PowaTimerInvertAuraSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="260"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaDropDownTimerTexture"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.aide = PowaAuras.Text.aidePowaTimerInvertAuraSlider;
+					self:SetMinMaxValues(0,300);
+					self:SetValue(0);
+					self:SetValueStep(0.25);
+                  	getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomTimerInvertAura.." : 0"); 
+                  	getglobal(self:GetName().."Low"):SetText("0");
+                  	getglobal(self:GetName().."High"):SetText("300");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:PowaTimerInvertAuraSliderChanged(self);</OnValueChanged>
+                </Scripts>
+              </Slider>
+		  
+
+            </Frames>
+          </Frame>
+
+		  <!-- Fith Configuration Tab Panel (Stacks)-->
+           <Frame name="PowaBarConfigFrameEditor6"
+                 hidden="true">
+            <Size>
+              <AbsDimension x="450"
+                            y="260" />
+            </Size>
+            <Anchors>
+              <Anchor point="TOP"
+                      relativeTo="PowaBarConfigFrameEditor"
+                      relativePoint="BOTTOM">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="-25" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                      edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                      tile="true">
+              <EdgeSize>
+                <AbsValue val="12" />
+              </EdgeSize>
+              <TileSize>
+                <AbsValue val="128" />
+              </TileSize>
+              <BackgroundInsets>
+                <AbsInset left="2"
+                          right="2"
+                          top="2"
+                          bottom="2" />
+              </BackgroundInsets>
+            </Backdrop>
+            <Scripts>
+              <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+            </Scripts>
+            <Frames>
+			
+              <CheckButton name="PowaShowStacksButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor6"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="-5" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self.tooltipText = PowaAuras.Text.aideShowStacks; 
+                  	PowaShowStacksButtonText:SetText(PowaAuras.Text.nomCheckShowStacks);
+                  	PowaShowStacksButtonText:SetTextColor(0.2,1.0,0.2);
+                  </OnLoad>
+                  <OnClick>PowaAuras:ShowStacksChecked(self);</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <Slider name="PowaStacksCoordXSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBarConfigFrameEditor6"
+                          relativePoint="TOPLEFT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="-42" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(-150,150); self:SetValue(0); self:SetValueStep(1); 
+                  	PowaStacksCoordXSliderText:SetText(PowaAuras.Text.nomPos.." X : 0");
+                  	PowaStacksCoordXSliderLow:SetText("-150"); 
+                  	PowaStacksCoordXSliderHigh:SetText("150");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:StacksCoordXSliderChanged();</OnValueChanged>
+                  <OnMouseUp>
+                  	self:SetMinMaxValues(self:GetValue()-100,self:GetValue()+100); 
+                  	PowaStacksCoordXSliderLow:SetText(self:GetValue()-100);
+                  	PowaStacksCoordXSliderHigh:SetText(self:GetValue()+100);
+                  </OnMouseUp>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaStacksCoordSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaStacksCoordXSlider"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="40"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(-200,100); self:SetValue(0); self:SetValueStep(1); 
+                  	PowaStacksCoordSliderText:SetText(PowaAuras.Text.nomPos.." Y : 0");
+                  	PowaStacksCoordSliderLow:SetText("-200"); 
+                  	PowaStacksCoordSliderHigh:SetText("100");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:StacksCoordSliderChanged();</OnValueChanged>
+                  <OnMouseUp>
+                  	self:SetMinMaxValues(self:GetValue()-100,self:GetValue()+100); 
+                  	PowaStacksCoordSliderLow:SetText(self:GetValue()-100);
+                  	PowaStacksCoordSliderHigh:SetText(self:GetValue()+100);
+                  </OnMouseUp>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaStacksSizeSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaStacksCoordXSlider"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(0.5,10.0); self:SetValue(1.0); self:SetValueStep(0.01); 
+                  	PowaStacksSizeSliderText:SetText(PowaAuras.Text.nomTaille.." : 1.0");
+                  	PowaStacksSizeSliderLow:SetText("0.5"); 
+                  	PowaStacksSizeSliderHigh:SetText("10.0");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:StacksSizeSliderChanged();</OnValueChanged>
+                </Scripts>
+              </Slider>
+			  
+              <Slider name="PowaStacksAlphaSlider"
+                      inherits="PowaBarSliderTemplateWithButtons">
+                <Size>
+                  <AbsDimension x="180"
+                                y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaStacksCoordSlider"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                  	self:SetMinMaxValues(0.1,1.0); self:SetValue(1.0); self:SetValueStep(0.01); 
+                  	PowaStacksAlphaSliderText:SetText(PowaAuras.Text.nomAlpha.." : 1.0");
+                  	PowaStacksAlphaSliderLow:SetText("0.1"); 
+                  	PowaStacksAlphaSliderHigh:SetText("1.0");
+                  </OnLoad>
+                  <OnValueChanged>PowaAuras:StacksAlphaSliderChanged();</OnValueChanged>
+                </Scripts>
+              </Slider>
+ 			  
+              <CheckButton name="PowaBuffStacksTransparentButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaStacksSizeSlider"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-20" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>PowaBuffStacksTransparentButtonText:SetText(PowaAuras.Text.nomTransparent);</OnLoad>
+                  <OnClick>PowaAuras:StacksChecked(self, "Transparent");</OnClick>
+                </Scripts>
+              </CheckButton>
+			  
+              <CheckButton name="PowaBuffStacksUpdatePingButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="LEFT"
+                          relativeTo="PowaBuffStacksTransparentButtonText"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="10"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>PowaBuffStacksUpdatePingButtonText:SetText(PowaAuras.Text.nomUpdatePing);</OnLoad>
+                  <OnClick>PowaAuras:StacksChecked(self, "UpdatePing");</OnClick>
+                </Scripts>
+              </CheckButton>
+
+			  <CheckButton name="PowaBuffStacksUseOwnColorButton"
+                           inherits="PowaCheckTemplate">
+                <Size>
+                  <AbsDimension x="25"
+                                y="25" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOP"
+                          relativeTo="PowaBuffStacksTransparentButton"
+                          relativePoint="BOTTOM">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="4" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>getglobal(self:GetName().."Text"):SetText(PowaAuras.Text.nomUseOwnColor);</OnLoad>
+                  <OnClick>PowaAuras:StacksChecked(self, "UseOwnColor");</OnClick>
+                </Scripts>
+              </CheckButton>
+	  
+			  <Button name="PowaStacksColor">
+				<Size>
+				  <AbsDimension x="16"
+								y="16" />
+				</Size>
+				<Anchors>
+				  <Anchor point="LEFT"
+						  relativeTo="PowaBuffStacksUseOwnColorButtonText"
+						  relativePoint="RIGHT">
+					<Offset>
+					  <AbsDimension x="10"
+									y="0" />
+					</Offset>
+				  </Anchor>
+				</Anchors>
+				<Layers>
+				  <Layer level="BACKGROUND">
+					<Texture name="$parent_SwatchBg">
+					  <Size>
+						<AbsDimension x="14"
+									  y="14" />
+					  </Size>
+					  <Anchors>
+						<Anchor point="CENTER">
+						  <Offset>
+							<AbsDimension x="0"
+										  y="0" />
+						  </Offset>
+						</Anchor>
+					  </Anchors>
+					  <Color r="1.0"
+							 g="1.0"
+							 b="1.0" />
+					</Texture>
+				  </Layer>
+				</Layers>
+				<Scripts>
+				  <OnLoad>getglobal(self:GetName().."_SwatchBg").r = 1.0; getglobal(self:GetName().."_SwatchBg").g = 1.0; getglobal(self:GetName().."_SwatchBg").b = 1.0;</OnLoad>
+				  <OnClick>PowaAuras:OpenColorPicker(self, PowaAuras.Auras[PowaAuras.CurrentAuraId].Stacks);</OnClick>
+				  <OnEnter>
+					getglobal(self:GetName().."_SwatchBg"):SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b); 
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetText(PowaAuras.Text.aideStacksColor, nil, nil, nil, nil, 1);
+				  </OnEnter>
+				  <OnLeave>getglobal(self:GetName().."_SwatchBg"):SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b); GameTooltip:Hide();</OnLeave>
+				</Scripts>
+				<NormalTexture name="$parentNormalTexture"
+							   file="Interface\ChatFrame\ChatFrameColorSwatch" />
+			  </Button>
+			  
+             <Frame name="PowaDropDownStacksTexture"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="160" />
+                </Size>
+                <Anchors>
+                  <Anchor point="TOPLEFT"
+                          relativeTo="PowaBuffStacksUseOwnColorButton"
+                          relativePoint="BOTTOMLEFT">
+                    <Offset>
+                      <AbsDimension x="0"
+                                    y="-25" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	PowaDropDownStacksTextureLabel:SetText(PowaAuras.Text.nomStacksTexture); 
+                  </OnLoad>
+                  <OnShow>
+                  	UIDropDownMenu_Initialize(self, PowaAuras.DropDownStacksMenu_Initialize);
+                  </OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>				  
+
+             <Frame name="PowaBuffStacksRelative"
+                     inherits="UIDropDownMenuTemplate">
+                <Size>
+                  <AbsDimension x="160" />
+                </Size>
+               <Anchors>
+                 <Anchor point="LEFT"
+                          relativeTo="PowaDropDownStacksTexture"
+                          relativePoint="RIGHT">
+                    <Offset>
+                      <AbsDimension x="20"
+                                    y="0" />
+                    </Offset>
+                  </Anchor>
+                </Anchors>
+
+                <Layers>
+                  <Layer level="BACKGROUND">
+                    <FontString name="$parentLabel"
+                                inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT"
+                                relativePoint="TOPLEFT">
+                          <Offset>
+                            <AbsDimension x="21"
+                                          y="5" />
+                          </Offset>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Scripts>
+                  <OnLoad>
+                  	getglobal(self:GetName().."Label"):SetText(PowaAuras.Text.nomRelative); 
+                  </OnLoad>
+                  <OnShow>
+                   	UIDropDownMenu_Initialize(self, PowaAuras.DropDownMenu_Initialize);
+                  </OnShow>
+                  <OnEnter>GameTooltip:SetOwner(self, "ANCHOR_RIGHT");</OnEnter>
+                  <OnLeave>GameTooltip:Hide();</OnLeave>
+                </Scripts>
+              </Frame>			
+			  
+            </Frames>
+          </Frame>		  
+		  
+		  
+          <Button name="PowaEditorTab2"
+                  inherits="TabButtonTemplate">
+            <Anchors>
+              <Anchor point="BOTTOMLEFT"
+                      relativePoint="TOPLEFT"
+                      relativeTo="PowaBarConfigFrameEditor2">
+                <Offset>
+                  <AbsDimension x="5"
+                                y="-2" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnClick>
+              	PanelTemplates_SelectTab(self); 
+              	PanelTemplates_DeselectTab(PowaEditorTab1); 
+              	PanelTemplates_DeselectTab(PowaEditorTab3); 
+              	PanelTemplates_DeselectTab(PowaEditorTab4);
+              	PanelTemplates_DeselectTab(PowaEditorTab5);
+              	PowaBarConfigFrameEditor2:Show(); 
+              	PowaBarConfigFrameEditor3:Hide(); 
+              	PowaBarConfigFrameEditor4:Hide();
+              	PowaBarConfigFrameEditor5:Hide(); 
+              	PowaBarConfigFrameEditor6:Hide(); 
+              	PlaySound("igCharacterInfoTab");
+              </OnClick>
+              <OnLoad>
+              	PowaEditorTab2Text:SetText(PowaAuras.Text.nomTabActiv); 
+              	PanelTemplates_SelectTab(self); PanelTemplates_TabResize(self, 0);
+              	getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 31);
+              </OnLoad>
+            </Scripts>
+          </Button>
+          <Button name="PowaEditorTab1"
+                  inherits="TabButtonTemplate">
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativePoint="RIGHT"
+                      relativeTo="PowaEditorTab2">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnClick>
+              	PanelTemplates_SelectTab(self); 
+              	PanelTemplates_DeselectTab(PowaEditorTab2); 
+              	PanelTemplates_DeselectTab(PowaEditorTab3); 
+              	PanelTemplates_DeselectTab(PowaEditorTab4);
+              	PanelTemplates_DeselectTab(PowaEditorTab5);
+              	PowaBarConfigFrameEditor2:Hide(); 
+              	PowaBarConfigFrameEditor3:Show(); 
+              	PowaBarConfigFrameEditor4:Hide();
+              	PowaBarConfigFrameEditor5:Hide(); 
+              	PowaBarConfigFrameEditor6:Hide(); 
+              	PlaySound("igCharacterInfoTab");
+              </OnClick>
+              <OnLoad>
+              	PowaEditorTab1Text:SetText(PowaAuras.Text.nomTabAnim); 
+              	PanelTemplates_DeselectTab(self); 
+              	PanelTemplates_TabResize(self, 0);
+              	getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 31);
+              </OnLoad>
+            </Scripts>
+          </Button>
+          <Button name="PowaEditorTab4"
+                  inherits="TabButtonTemplate">
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativePoint="RIGHT"
+                      relativeTo="PowaEditorTab1">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnClick>
+             	PanelTemplates_SelectTab(self); 
+              	PanelTemplates_DeselectTab(PowaEditorTab1); 
+              	PanelTemplates_DeselectTab(PowaEditorTab2); 
+              	PanelTemplates_DeselectTab(PowaEditorTab3);
+              	PanelTemplates_DeselectTab(PowaEditorTab5);
+              	PowaBarConfigFrameEditor5:Show(); 
+              	PowaBarConfigFrameEditor2:Hide(); 
+              	PowaBarConfigFrameEditor3:Hide();
+              	PowaBarConfigFrameEditor4:Hide(); 
+              	PowaBarConfigFrameEditor6:Hide(); 
+              	PlaySound("igCharacterInfoTab");
+              </OnClick>
+              <OnLoad>
+              	PowaEditorTab4Text:SetText(PowaAuras.Text.nomTabSound); 
+              	PanelTemplates_DeselectTab(self); 
+              	PanelTemplates_TabResize(self, 0);
+              	getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 31);
+              </OnLoad>
+            </Scripts>
+          </Button>
+          <Button name="PowaEditorTab3"
+                  inherits="TabButtonTemplate">
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativePoint="RIGHT"
+                      relativeTo="PowaEditorTab4">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnClick>
+               	PanelTemplates_SelectTab(self); 
+              	PanelTemplates_DeselectTab(PowaEditorTab1); 
+              	PanelTemplates_DeselectTab(PowaEditorTab2); 
+              	PanelTemplates_DeselectTab(PowaEditorTab4);
+              	PanelTemplates_DeselectTab(PowaEditorTab5);
+              	PowaBarConfigFrameEditor4:Show(); 
+              	PowaBarConfigFrameEditor2:Hide(); 
+              	PowaBarConfigFrameEditor3:Hide();
+              	PowaBarConfigFrameEditor5:Hide(); 
+              	PowaBarConfigFrameEditor6:Hide(); 
+              	PowaAuras:UpdateTimerOptions(); 
+              	PlaySound("igCharacterInfoTab");
+              </OnClick>
+              <OnLoad>
+              	PowaEditorTab3Text:SetText(PowaAuras.Text.nomTabTimer); 
+              	PanelTemplates_DeselectTab(self); 
+              	PanelTemplates_TabResize(self, 0);
+              	getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 31);
+              </OnLoad>
+            </Scripts>
+          </Button>
+          <Button name="PowaEditorTab5"
+                  inherits="TabButtonTemplate">
+            <Anchors>
+              <Anchor point="LEFT"
+                      relativePoint="RIGHT"
+                      relativeTo="PowaEditorTab3">
+                <Offset>
+                  <AbsDimension x="0"
+                                y="0" />
+                </Offset>
+              </Anchor>
+            </Anchors>
+            <Scripts>
+              <OnClick>
+               	PanelTemplates_SelectTab(self); 
+              	PanelTemplates_DeselectTab(PowaEditorTab1); 
+              	PanelTemplates_DeselectTab(PowaEditorTab2); 
+              	PanelTemplates_DeselectTab(PowaEditorTab3); 
+              	PanelTemplates_DeselectTab(PowaEditorTab4);
+              	PowaBarConfigFrameEditor6:Show(); 
+              	PowaBarConfigFrameEditor2:Hide(); 
+              	PowaBarConfigFrameEditor3:Hide();
+             	PowaBarConfigFrameEditor4:Hide();
+              	PowaBarConfigFrameEditor5:Hide(); 
+              	PowaAuras:UpdateStacksOptions(); 
+              	PlaySound("igCharacterInfoTab");
+              </OnClick>
+              <OnLoad>
+              	PowaEditorTab5Text:SetText(PowaAuras.Text.nomTabStacks); 
+              	PanelTemplates_DeselectTab(self); 
+              	PanelTemplates_TabResize(self, 0);
+              	getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 31);
+              </OnLoad>
+            </Scripts>
+          </Button>
+        </Frames>
+      </Frame>
+    </Frames>
+  </Frame>
+  
+  <Frame name="FontSelectorFrame"
+  			 movable="false"
+  			 parent="UIParent"
+  			 frameStrata="DIALOG"
+  			 hidden="true"
+  			 enableMouse="true"
+  			 enableKeyboard="true">
+  	<Size>
+  		<AbsDimension x="250"
+  					  y="225" />
+  	</Size>
+  	<Anchors>
+      <Anchor point="TOPLEFT"
+              relativeTo="PowaBarConfigFrame"
+              relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="0"
+                        y="-200" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+              edgeFile="Interface\DialogFrame\UI-DialogBox-Border"
+              tile="true">
+      <BackgroundInsets>
+        <AbsInset left="11"
+                  right="12"
+                  top="12"
+                  bottom="11" />
+      </BackgroundInsets>
+      <TileSize>
+        <AbsValue val="200" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="32" />
+      </EdgeSize>
+    </Backdrop>
+    <Scripts>
+      <OnShow>PowaAuras:FontSelectorOnShow(self);</OnShow>
+    </Scripts>
+    <Layers>
+      <Layer>
+        <Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+          <Size>
+            <AbsDimension x="180"
+                          y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0"
+                              y="8" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0.2"
+                     right="0.8"
+                     top="0"
+                     bottom="0.6" />
+        </Texture>
+        <FontString name="PowaFontHeader"
+                    inherits="GameFontNormalSmall"
+                    text="Font Picker">
+          <Size>
+            <AbsDimension x="120"
+                          y="0" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0"
+                              y="-4" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <FontHeight>
+            <AbsValue val="14" />
+          </FontHeight>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+    	<Button name="PowaFontsCloseButton">
+        <Size>
+          <AbsDimension x="30"
+                        y="30" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPRIGHT"
+                  relativeTo="FontSelectorFrame"
+                  relativePoint="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-4"
+                            y="-4" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>PowaAuras:FontSelectorClose(self);</OnClick>
+        </Scripts>
+        <NormalTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Up" />
+        <PushedTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Down" />
+        <HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight"
+                          alphaMode="ADD" />
+      </Button>
+			<Button name="PowaFontsOkayButton" inherits="OptionsButtonTemplate" text="Okay">
+        <Anchors>
+          <Anchor point="BOTTOMLEFT"
+                  relativeTo="FontSelectorFrame"
+                  relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="20"
+                            y="15" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>PowaAuras:FontSelectorOkay(self);</OnClick>
+        </Scripts>
+      </Button>
+      <Button name="PowaFontsCancelButton" inherits="OptionsButtonTemplate" text="Cancel">
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT"
+                  relativeTo="FontSelectorFrame"
+                  relativePoint="BOTTOMRIGHT">
+            <Offset>
+              <AbsDimension x="-20"
+                            y="15" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>PowaAuras:FontSelectorCancel(self);</OnClick>
+        </Scripts>
+      </Button>
+			<Frame name="FontSelectorEditor">
+        <Size>
+          <AbsDimension x="210"
+                        y="162" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOP">
+            <Offset>
+              <AbsDimension x="0"
+                            y="-25" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+                  edgeFile="Interface\Tooltips\UI-Tooltip-Border"
+                  tile="true">
+          <EdgeSize>
+            <AbsValue val="12" />
+          </EdgeSize>
+          <TileSize>
+            <AbsValue val="128" />
+          </TileSize>
+          <BackgroundInsets>
+            <AbsInset left="2"
+                      right="2"
+                      top="2"
+                      bottom="2" />
+          </BackgroundInsets>
+        </Backdrop>
+        <Scripts>
+          <OnLoad>self:SetBackdropBorderColor(0.0, 0.0, 0.0); self:SetBackdropColor(0.1, 0.1, 0.1);</OnLoad>
+        </Scripts>
+        <Frames>
+					<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate">
+				  	<Anchors>
+				    	<Anchor point="TOPLEFT" 
+				    					relativeTo="FontSelectorEditor">
+				    		<Offset>
+				    			<AbsDimension x="-22" y="-3"/>
+				    		</Offset>
+				    	</Anchor>
+				    	<Anchor point="BOTTOMRIGHT" 
+				    					relativeTo="FontSelectorEditor">
+				    		<Offset>
+				    			<AbsDimension x="-22" y="2"/>
+				    		</Offset>
+				    	</Anchor>
+				   	</Anchors>
+				   	<Scripts>
+				    	<OnVerticalScroll>
+							FauxScrollFrame_OnVerticalScroll(self, offset, 16, PowaAuras.FontScrollBar_Update); 
+				     	</OnVerticalScroll>
+				     	<OnShow>
+							PowaAuras.FontScrollBar_Update(self);
+						</OnShow>
+				   	</Scripts>
+				 	</ScrollFrame>
+				 	<Button name="$parentScrollButton1" inherits="PowaFontButtonTemplate" id="1">
+						<Anchors>
+				    	<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+				         	<AbsDimension x="0" y="0"/>
+				       	</Offset>
+				     	</Anchor>
+				   	</Anchors>
+				  </Button>
+					<Button name="$parentScrollButton2" inherits="PowaFontButtonTemplate" id="2">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton1" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton3" inherits="PowaFontButtonTemplate" id="3">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton2" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton4" inherits="PowaFontButtonTemplate" id="4">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton3" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton5" inherits="PowaFontButtonTemplate" id="5">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton4" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton6" inherits="PowaFontButtonTemplate" id="6">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton5" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton7" inherits="PowaFontButtonTemplate" id="7">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton6" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+				  </Button>
+					<Button name="$parentScrollButton8" inherits="PowaFontButtonTemplate" id="8">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton7" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton9" inherits="PowaFontButtonTemplate" id="9">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton8" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+					<Button name="$parentScrollButton10" inherits="PowaFontButtonTemplate" id="10">
+						<Anchors>
+				     	<Anchor point="TOPLEFT" relativeTo="$parentScrollButton9" relativePoint="BOTTOMLEFT">
+				      </Anchor>
+				   	</Anchors>
+					</Button>
+        </Frames>
+    	</Frame>
+    </Frames>
+  </Frame>
+</Ui>

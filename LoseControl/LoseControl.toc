@@ -1,0 +1,21 @@
+## Interface: 30300
+## Title: LoseControl
+## Author: Kouri
+## Version: 3.32
+## Notes: Displays the duration of CC effects on your character
+## Notes-deDE: Zeigt die Dauer der CC-Effekte auf Ihren Buchstaben an
+## Notes-esES: Exhibe la duración de los efectos del CC sobre su carácter
+## Notes-esMX: Exhibe la duración de los efectos del CC sobre su carácter
+## Notes-frFR: Montre la durée des effets de CC sur votre caractère
+## Notes-koKR: 당신의 특성에 대한 CC 효력의 내구를 표시한다
+## Notes-ruRU: Показывает продолжительность влияний CC на вашем характере
+## Notes-zhCN: 显示被控制的剩余时间
+## Notes-zhTW: 顯示被控制的剩餘時間
+## X-eMail: kouri@kouri.org
+## X-Website: http://wow.curse.com/downloads/wow-addons/details/losecontrol.aspx
+## X-Website2: http://www.wowinterface.com/downloads/info11642-LoseControl.html
+## X-Category: Buffs
+## SavedVariablesPerCharacter: LoseControlDB
+
+localization.lua
+LoseControl.lua

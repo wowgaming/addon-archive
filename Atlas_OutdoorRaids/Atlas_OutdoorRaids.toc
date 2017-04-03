@@ -1,0 +1,31 @@
+﻿## Interface: 30300
+## Title: Atlas |r|cFF0099FF[Outdoor Raids]|r
+## Title-deDE: Atlas |r|cFF0099FF[Außenweltschlachtzüge]|r
+## Title-ruRU: Atlas |r|cFF0099FF[Внешние Рейды]|r
+## Title-zhTW: |r|cFF0099FF[地圖]|rAtlas 戶外首領地圖
+## Title-zhCN: Atlas |r|cFF0099FF[户外首领分布图]|r
+## Notes: Outdoor Raid Encounters
+## Notes-ruRU: Места внешних рейдовых схваток
+## Notes-deDE: Außenweltschlachtzüge
+## Notes-esES: Encuentros Raid
+## Notes-frFR: Rencontres de Raid
+## Notes-koKR: 야외 레이드
+## Notes-zhCN: 户外首领分布图
+## Notes-zhTW: Atlas 戶外首領地圖模組
+## Version: 1.17.0
+## X-Date: August, 2010
+## Author: Dan Gilbert
+## X-Email: dan.b.gilbert@gmail.com
+## X-Website: http://www.atlasmod.com
+## X-Category: Map
+## RequiredDeps: Atlas
+
+Locale\Atlas_OutdoorRaids-enUS.lua
+Locale\Atlas_OutdoorRaids-ruRU.lua
+Locale\Atlas_OutdoorRaids-frFR.lua
+Locale\Atlas_OutdoorRaids-deDE.lua
+Locale\Atlas_OutdoorRaids-zhCN.lua
+Locale\Atlas_OutdoorRaids-zhTW.lua
+Locale\Atlas_OutdoorRaids-esES.lua
+
+Atlas_OutdoorRaids.lua

@@ -1,0 +1,21 @@
+﻿## Interface: 30300
+## LoadOnDemand: 1
+## Title: Lib: Babble-Boss-3.0
+## Notes: A library to help with localization of bosses.
+## Notes-zhCN: 为本地化服务的支持库[首领名称]
+## Notes-zhTW: 為本地化服務的函式庫[首領名稱]
+## Notes-deDE: BabbleLib ist eine Bibliothek, die bei der Lokalisierung helfen soll.
+## Notes-frFR: Une bibliothèque d'aide à la localisation.
+## Notes-esES: Una biblioteca para ayudar con las localizaciones.
+## Author: ckknight
+## X-eMail: ckknight@gmail.com
+## X-Category: Library
+## X-License: MIT
+## X-Curse-Packaged-Version: r287
+## X-Curse-Project-Name: LibBabble-Boss-3.0
+## X-Curse-Project-ID: libbabble-boss-3-0
+## X-Curse-Repository-ID: wow/libbabble-boss-3-0/mainline
+
+LibStub\LibStub.lua
+lib.xml
+

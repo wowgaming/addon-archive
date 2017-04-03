@@ -1,0 +1,41 @@
+
+ CARBONITE Quest
+ Copyright 2007-2008 Carbon Based Creations, LLC
+ CARBONITE(tm) is a registered trademark of Carbon Based Creations, LLC.
+
+----------------------------------------------------------
+ Enable word wrap to more easily view this file.
+----------------------------------------------------------
+
+LICENSE AGREEMENT
+
+PLEASE READ THIS END USER LICENSE AGREEMENT ("AGREEMENT") CAREFULLY AND MAKE SURE YOU UNDERSTAND IT. 
+The accompanying executable code version of CARBONITE and related documentation ("Software") is made available under the terms and conditions of this Agreement. IF YOU INSTALL OR USE THE PRODUCT, YOU CONSENT TO BE BOUND BY THIS AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS HEREIN, DO NOT INSTALL OR USE THIS PRODUCT.
+
+LICENSE.  The Software is protected by copyright laws, trade secret, and international copyright treaties, and is being licensed to You according to the terms of this Agreement.  Carbon Based Creations, LLC ("Company") grants to You a non-exclusive and non-transferable right to install and use a copy of the Software for Your personal, non-commercial home entertainment use on one personal computer.  The Software made available under this Agreement is licensed, not sold, to You by Company.  Company reserves all rights not expressly granted under this Agreement.
+
+Except to the extent that Company otherwise authorizes You in writing, the following restrictions shall apply:
+
+(1) You may not use the Software for any commercial purposes, including resale, rental, lease, display, or offering on a pay-per-play or other for-charge basis.  You may not sub-license the rights provided to You.  
+
+(2) The Software (in both object and source code forms) constitutes valuable trade secret information of Company, and You may not reverse-engineer, decompile or disassemble the Software or otherwise attempt to gain access to the source code for the Software.  
+
+(3) You may make a single archival copy of the Software to the extent permitted by law.  You may not otherwise reproduce the Software, or modify or distribute all or any portion of the Software. You shall not provide copies of the Software to any other party.  You may not create derivative works from the Software. 
+
+(4) No right, title or interest in or to any trademark, service mark, logo or trade name of Company or of any third parties is granted under this Agreement.  You may not remove or alter any trademark, logo, copyright, or other proprietary notice(s) on the Software.  
+
+TERMINATION:  This Agreement is effective until terminated. If You breach this Agreement, the license and Your right to use the Software will terminate immediately and without notice, but all other terms of this Agreement will survive termination and continue in effect.  Upon termination, You will immediately cease using the Software and You must destroy all copies of the Software in Your possession or control.    
+
+EXPORT.  You agree that You will not export the Software or any part thereof, except in accordance with all applicable U.S. export restrictions.
+
+U.S. GOVERNMENT RESTRICTED RIGHTS.  The Software is commercial computer software and documentation developed by Company and belonging solely to Company.  If the Software is acquired by or on behalf of the U.S. Government or by a U.S. government prime contractor or a subcontractor, then the Government's rights in the Software will be only as set forth in this Agreement; this is in accordance with 48 C.F.R. 227.7202-4 or successor regulation (for Department of Defense (DOD) acquisitions) and with 48 C.F.R. 2.101 and 12.212 or successor regulation (for non-DOD acquisitions).  
+ 
+GOVERNING LAW AND VENUE.  This Agreement is governed by the laws of the State of Illinois, excluding its choice of law rules.  The United Nations Convention on Contracts for the International Sale of Goods shall not apply.  In any action or suit to enforce any right or remedy under this Agreement or to interpret any of its provisions, the state or federal courts located in the State of Illinois shall have exclusive jurisdiction over any such suit or action, and You hereby agree to submit to the jurisdiction of such courts.
+
+NO WARRANTY.  YOU ACKNOWLEDGE AND AGREE THAT THE SOFTWARE IS PROVIDED "AS IS", "AT YOUR OWN RISK", AND WITHOUT WARRANTY OF ANY KIND.   TO THE FULLEST EXTENT PERMITTED BY LAW, COMPANY HEREBY DISCLAIMS ALL EXPRESS AND IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF ANY THIRD PARTY RIGHTS WITH RESPECT TO THE SOFTWARE.  COMPANY DOES NOT WARRANT THAT THE SOFTWARE IS ERROR-FREE OR THAT ACCESS TO THE SOFTWARE WILL BE UNINTERRUPTED AND WITHOUT COMPROMISE TO SECURITY SYSTEMS.   
+
+LIMITATION OF LIABILITY.  YOU ACKNOWLEDGE AND AGREE THAT TO THE FULLEST EXTENT PERMITTED BY LAW, COMPANY WILL NOT BE LIABLE FOR ANY LOST REVENUE, LOST PROFIT, BUSINESS INTERRUPTION, LOSS OF BUSINESS OR CONFIDENTIAL INFORMATION OR LOSS OF DATA, COMPUTER MALFUNCTION, OR FOR ANY DIRECT, SPECIAL, INDIRECT, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF OR RELATED TO THE USE OF OR INABILITY TO USE OR IN CONNECTION WITH THE SOFTWARE, EVEN IF COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND WHETHER OR NOT SUCH DAMAGES ARE FORESEEABLE.  IN NO EVENT WILL COMPANY'S LIABILITY TO YOU, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE, EXCEED THE AMOUNT, IF ANY, PAID BY YOU FOR THE SOFTWARE UNDER THIS AGREEMENT.  THE FOREGOING LIMITATIONS WILL APPLY EVEN IF THE ABOVE STATED WARRANTY FAILS OF ITS ESSENTIAL PURPOSE.  BECAUSE SOME STATES AND/OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU, AND YOU MAY ALSO HAVE OTHER LEGAL RIGHTS THAT VARY FROM STATE TO STATE.
+
+SEVERABILITY/NO WAIVER.  If any provision of this Agreement is held to be unenforceable, this Agreement will remain in effect with the provision omitted, unless omission would frustrate the intent of the parties, in which case this Agreement will immediately terminate.  Failure to enforce any provision of this Agreement is not a waiver of future enforcement of that or any other provision.
+
+----------------------------------------------------------

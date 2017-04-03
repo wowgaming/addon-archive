@@ -1,0 +1,17 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fTutorial|r by |cFFFF8080Zek|r |cFF40FF40(LoadOnDemand)|r
+## Title-ruRU: X-Perl |cffeda55fУчебное пособие|r |cFF40FF40(LoadOnDemand)|r
+## Title-zhCN: X-Perl |cffeda55f教程|r
+## Title-zhTW: X-Perl |cffeda55f新手教學|r 由 |cFFFF8080Zek|r 開發 |cFF40FF40(隨機載入)|r
+## Notes: Give Tutorial tips for new users.
+## Notes-ruRU: Отображает подсказки по настройке фреймов.
+## Notes-zhTW: 提供新使用者簡單的使用教學.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## RequiredDeps: XPerl
+## LoadOnDemand: 1
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_Tutorial.xml

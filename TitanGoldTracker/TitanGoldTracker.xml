@@ -1,0 +1,150 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="TitanGoldTracker.lua"/>
+	<Frame parent="UIParent">
+		<Frames>
+			<Button name="TitanPanelGoldTrackerButton" inherits="TitanPanelButtonTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Size>
+					<AbsDimension x="128" y="16"/>
+				</Size>
+				<Frames>
+					<Button name="$parentCopperButton" inherits="TitanPanelChildButtonTemplate">
+						<Size>
+							<AbsDimension x="32" y="13"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT">
+								<Offset>
+									<AbsDimension x="-13" y="1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TitanPanelGoldTrackerCopperButton_OnClick(self, button);
+								TitanPanelButton_OnClick(self, button, true);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\MoneyFrame\UI-MoneyIcons">
+							<Size>
+								<AbsDimension x="13" y="13"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0.5" right="0.75" top="0" bottom="1"/>
+						</NormalTexture>
+						<ButtonText name="$parentText" inherits="GameFontHighlightSmall" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</ButtonText>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+					<Button name="$parentSilverButton" inherits="TitanPanelChildButtonTemplate">
+						<Size>
+							<AbsDimension x="32" y="13"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentCopperButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-4" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TitanPanelGoldTrackerSilverButton_OnClick(self, button);
+								TitanPanelButton_OnClick(self, button, true);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\MoneyFrame\UI-MoneyIcons">
+							<Size>
+								<AbsDimension x="13" y="13"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0.25" right="0.5" top="0" bottom="1"/>
+						</NormalTexture>
+						<ButtonText name="$parentText" inherits="GameFontHighlightSmall" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+						</ButtonText>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+					<Button name="$parentGoldButton" inherits="TitanPanelChildButtonTemplate">
+						<Size>
+							<AbsDimension x="32" y="13"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentSilverButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-4" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TitanPanelGoldTrackerGoldButton_OnClick(self, button);
+								TitanPanelButton_OnClick(self, button, true);
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\MoneyFrame\UI-MoneyIcons">
+							<Size>
+								<AbsDimension x="13" y="13"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0" right="0.25" top="0" bottom="1"/>
+						</NormalTexture>
+						<ButtonText name="$parentText" inherits="GameFontHighlightSmall" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+				 		</ButtonText>
+						<PushedTextOffset>
+							<AbsDimension x="0" y="0"/>
+						</PushedTextOffset>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						SmallMoneyFrame_OnLoad(self);
+						TitanPanelGoldTrackerButton_OnLoad(self);
+						TitanPanelButton_OnLoad(self);
+					</OnLoad>
+					<OnShow>
+						TitanPanelGoldTrackerButton_OnShow();
+						TitanPanelButton_OnShow(self);
+					</OnShow>
+					<OnEvent>
+						TitanGoldTracker_OnEvent(self, event, ...);
+					</OnEvent>
+					<OnHide>
+						if ( self.hasPickup == 1 ) then
+							CoinPickupFrame:Hide();
+							self.hasPickup = 0;
+						end
+						TitanPanelGoldTrackerButton_OnHide();
+					</OnHide>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	<MessageFrame name="TitanPanelGoldTracker_Detail" insertMode="BOTTOM" parent="UIParent" frameStrata="HIGH" toplevel="true">
+		<Size>
+			<AbsDimension x="512" y="100"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<FontString inherits="ErrorFont" justifyH="CENTER"/>
+	</MessageFrame>
+</Ui>

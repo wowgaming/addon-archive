@@ -1,0 +1,33 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 1.4
+## X-Curse-Project-Name: Inline Aura
+## X-Curse-Project-ID: inline-aura
+## X-Curse-Repository-ID: wow/inline-aura/mainline
+
+## Title: Inline Aura
+## Notes: Display aura information inside action buttons 
+## Author: Adirelle
+## Version: 1.4 
+## X-Date: 2010-02-06T09:38:05Z
+## X-Category: Buffs & Debuffs, Action Bars
+## X-License: GPL v2
+## X-eMail: adirelle@tagada-team.net
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+## SavedVariables: InlineAuraDB
+## OptionalDeps: LibStub, CallbackHandler-1.0, Ace3, LibSharedMedia-3.0, LibDualSpec-1.0, ButtonFacade, Bartender4, Dominos, OmniCC, CooldownCount, tekDebug
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\LibSharedMedia-3.0\lib.xml
+libs\LibDualSpec-1.0\LibDualSpec-1.0.lua
+#@end-no-lib-strip@
+
+Localization.lua
+Core.lua
+ClassDefaults.lua
+

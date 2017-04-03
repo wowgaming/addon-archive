@@ -1,0 +1,16 @@
+﻿## Interface: 20300
+## LoadOnDemand: 1
+## Title: Lib: Gratuity-3.0
+## Notes: Tooltip scanning library.
+## Author: Tekkub Stoutwrithe
+## Version: r$Revision: 41183 $
+## LastUpdate: $Date: 2007-06-21 15:59:31 -1000 (Thu, 21 Jun 2007) $
+## X-Category: Library
+## X-AceLibrary-Gratuity-2.0: true
+## X-Curse-Packaged-Version: r41
+## X-Curse-Project-Name: LibGratuity-3.0
+## X-Curse-Project-ID: libgratuity-3-0
+## X-Curse-Repository-ID: wow/libgratuity-3-0/mainline
+
+LibStub\LibStub.lua
+lib.xml

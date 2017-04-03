@@ -1,0 +1,34 @@
+==Macro's==
+
+The macro's below work on the intended target when your mouse hovers an ally. If you're not hovering anyone, or an enemy, it will cast the spell normally.
+
+===Lifebloom macro===
+<pre>
+#showtooltip Lifebloom
+/cast [target=mouseover,exists,help]Lifebloom;Lifebloom
+</pre>
+
+===Rejuvenation macro===
+<pre>
+#showtooltip Rejuvenation
+/cast [target=mouseover,exists,help]Rejuvenation;Rejuvenation
+</pre>
+
+===Regrowth macro===
+<pre>
+#showtooltip Regrowth
+/cast [target=mouseover,exists,help]Regrowth;Regrowth
+</pre>
+
+===Wild Growth macro===
+<pre>
+#showtooltip Wild Growth
+/cast [target=mouseover,exists,help]Wild Growth;Wild Growth
+</pre>
+
+===Nature's Swiftness and Healing Touch macro===
+<pre>
+/stopcasting
+/cast [target=mouseover,exists,help]Nature's Swiftness
+/cast [target=mouseover,exists,help]Healing Touch;Healing Touch
+</pre>

@@ -1,0 +1,22 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+    <Script file="ToolBox.lua" />
+    <Script file="ContextMenu.lua" />
+    <Script file="Constants.lua" />
+    <Script file="StateHandler.lua" />
+    <Script file="Animations.lua" />
+    <Script file="WindowHandler.lua" />
+    <Script file="Skinner.lua" />
+    <script file="TabHandler.lua" />
+    <Script file="Hooks.lua" />
+    <Script file="SlashHandler.lua" />
+    <Script file="Stewmat.lua" />
+    <Script file="Compression.lua" />
+    <Script file="Socket.lua" />
+    <Script file="Clear.lua" />
+    <Script file="OpCodes.lua" />
+    
+    <Script file="Options\Options.lua" />
+    <Script file="Options\OptionsTookKit.lua" />
+    <Script file="Options\CoreOptions.lua" />
+</Ui>

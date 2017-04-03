@@ -1,0 +1,334 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+  <Button name="YarkoCooldowns_SwatchTemplate" virtual="true">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Layers>
+      <Layer level="BACKGROUND">
+        <Texture name="$parentSwatchBg">
+          <Size>
+            <AbsDimension x="14" y="14"/>
+          </Size>
+          <Anchors>
+            <Anchor point="CENTER">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <Color r="1.0" g="1.0" b="1.0"/>
+        </Texture>
+      </Layer>
+    </Layers>
+    <Scripts>
+      <OnClick>
+        PlaySound("igMainMenuOptionCheckBoxOn");
+        YarkoCooldowns.SwatchOnClick(self);
+      </OnClick>
+      <OnEnter>
+        _G[self:GetName().."SwatchBg"]:SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+      </OnEnter>
+      <OnLeave>
+        _G[self:GetName().."SwatchBg"]:SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+      </OnLeave>
+    </Scripts>
+    <NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
+  </Button>
+  
+  <!-- Options panel -->
+  <Frame name="YarkoCooldowns_OptionsPanel" hidden="false">
+    <Layers>
+      <Layer level="ARTWORK">
+        <FontString name="$parentTitle" text="YARKOCOOLDOWNS_TITLE" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="16" y="-16"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Button name="$parentMainColor" inherits="YarkoCooldowns_SwatchTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="166" y="-32"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_MAINCOLOR" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="RIGHT" relativePoint="LEFT">
+                  <Offset>
+                    <AbsDimension x="-10" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </Button>
+      <Button name="$parentFlashColor" inherits="YarkoCooldowns_SwatchTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentMainColor" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="42" y="-18"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_FLASHCOLOR" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="RIGHT" relativePoint="LEFT">
+                  <Offset>
+                    <AbsDimension x="-10" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </Button>
+      <EditBox name="$parentFontLocation" autoFocus="false" inherits="InputBoxTemplate">
+        <Size>
+          <AbsDimension x="272" y="16"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentFlashColor" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="-110" y="-18"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_FONTLOCATION" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="RIGHT" relativePoint="LEFT">
+                  <Offset>
+                    <AbsDimension x="-10" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnEnter>
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+            GameTooltip:SetText(YARKOCOOLDOWNS_CONFIG_FONTLOCATION_INFO, nil, nil, nil, nil, 1);
+          </OnEnter>
+          <OnLeave>
+            GameTooltip:Hide();
+          </OnLeave>
+        </Scripts>
+        <FontString inherits="ChatFontNormal" bytes="1024"/>
+      </EditBox>
+      <EditBox name="$parentFontFile" autoFocus="false" inherits="InputBoxTemplate">
+        <Size>
+          <AbsDimension x="128" y="24"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentFontLocation" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="8" y="-14"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_FONTFILE" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="RIGHT" relativePoint="LEFT">
+                  <Offset>
+                    <AbsDimension x="-10" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnEnter>
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+            GameTooltip:SetText(YARKOCOOLDOWNS_CONFIG_FONTFILE_INFO, nil, nil, nil, nil, 1);
+          </OnEnter>
+          <OnLeave>
+            GameTooltip:Hide();
+          </OnLeave>
+        </Scripts>
+        <FontString inherits="ChatFontNormal" bytes="128"/>
+      </EditBox>
+      <EditBox name="$parentFontHeight" autoFocus="false" inherits="InputBoxTemplate">
+        <Size>
+          <AbsDimension x="64" y="24"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentFontFile" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="-18" y="-12"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_FONTHEIGHT" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="RIGHT" relativePoint="LEFT">
+                  <Offset>
+                    <AbsDimension x="-10" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <FontString inherits="ChatFontNormal" bytes="5"/>
+      </EditBox>
+      <CheckButton name="$parentShadow" inherits="InterfaceOptionsBaseCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentFontHeightText" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="-3" y="-18"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_SHADOW" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="0" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </CheckButton>
+      <Frame name="$parentOutline" inherits="UIDropDownMenuTemplate" enableMouse="true">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentShadowText" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="45" y="-18"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="BACKGROUND">
+            <FontString name="$parentLabel" inherits="GameFontHighlight" text="YARKOCOOLDOWNS_CONFIG_OUTLINE">
+              <Anchors>
+                <Anchor point="TOPRIGHT" relativePoint="TOPLEFT">
+                  <Offset>
+                    <AbsDimension x="12" y="-6"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+          </OnLoad>
+        </Scripts>
+      </Frame>
+      <CheckButton name="$parentTenths" inherits="InterfaceOptionsBaseCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentOutlineLabel" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="-3" y="-20"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_TENTHS" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="0" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </CheckButton>
+      <CheckButton name="$parentBelowTwo" inherits="InterfaceOptionsBaseCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentTenths" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-8"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_BELOWTWO" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="0" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </CheckButton>
+      <EditBox name="$parentSeconds" autoFocus="false" inherits="InputBoxTemplate">
+        <Size>
+          <AbsDimension x="64" y="24"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentBelowTwo" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="120" y="-10"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentText" text="YARKOCOOLDOWNS_CONFIG_SECONDS" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="RIGHT" relativePoint="LEFT">
+                  <Offset>
+                    <AbsDimension x="-10" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+            <FontString name="$parentText2" text="YARKOCOOLDOWNS_CONFIG_SECONDS2" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="5" y="1"/>
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <FontString inherits="ChatFontNormal" bytes="5"/>
+      </EditBox>
+    </Frames>
+    <Scripts>
+      <OnLoad>
+        self.name = YARKOCOOLDOWNS_TITLE;
+        self.default = YarkoCooldowns.OptionsDefault;
+        self.refresh = YarkoCooldowns.OptionsRefresh;
+        self.okay = YarkoCooldowns.OptionsOkay;
+      </OnLoad>
+    </Scripts>
+  </Frame>
+
+</Ui>

@@ -1,0 +1,17 @@
+## Interface: 30300
+## LoadOnDemand: 1
+## Title: Lib: Tourist-3.0
+## Notes: A library to provide information about zones and instances.
+## Author: ckknight, Arrowmaster
+## X-eMail: ckknight@gmail.com
+## X-Category: Library
+## Dependencies: LibBabble-Zone-3.0
+## X-License: MIT
+## X-Credits: Abydos
+## X-Curse-Packaged-Version: r98
+## X-Curse-Project-Name: LibTourist-3.0
+## X-Curse-Project-ID: libtourist-3-0
+## X-Curse-Repository-ID: wow/libtourist-3-0/mainline
+
+LibStub\LibStub.lua
+lib.xml

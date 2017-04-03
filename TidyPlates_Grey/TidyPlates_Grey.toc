@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: Tidy Plates: Grey Theme
+## Notes: Tidy Plates' Bundled Theme.  Use apostrophes wisely. 
+## Author: Binny the Love Fool
+## Dependencies: TidyPlates
+## SavedVariablesPerCharacter: TidyPlatesGreyTankSavedVariables,TidyPlatesGreyDPSSavedVariables
+
+Tank\StylesTank.lua
+Tank\FunctionsTank.lua
+Tank\PanelTank.lua
+
+DPS\StylesDPS.lua
+DPS\FunctionsDPS.lua
+DPS\PanelDPS.lua

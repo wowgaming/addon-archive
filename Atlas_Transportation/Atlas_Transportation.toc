@@ -1,0 +1,31 @@
+﻿## Interface: 30300
+## Title: Atlas |r|cFF0099FF[Transportation]|r
+## Title-deDE: Atlas |r|cFF0099FF[Beförderungsrouten]|r
+## Title-ruRU: Atlas |r|cFF0099FF[Маршруты полётов]|r
+## Title-zhTW: |r|cFF0099FF[地圖]|rAtlas 交通網路圖
+## Title-zhCN: Atlas |r|cFF0099FF[飞行路线图]|r
+## Notes: Transportation Maps
+## Notes-ruRU: Карты маршрутов полёта
+## Notes-deDE: Beförderungsrouten
+## Notes-esES: Mapa de Trayectorias
+## Notes-frFR: Cartes des trajets aériens
+## Notes-koKR: 비행경로 지도
+## Notes-zhCN: 飞行路线图
+## Notes-zhTW: Atlas 交通網路圖模組
+## Version: 1.17.0
+## X-Date: August, 2010
+## Author: Dan Gilbert
+## X-Email: dan.b.gilbert@gmail.com
+## X-Website: http://www.atlasmod.com
+## X-Category: Map
+## RequiredDeps: Atlas
+
+Locale\Atlas_Transportation-enUS.lua
+Locale\Atlas_Transportation-ruRU.lua
+Locale\Atlas_Transportation-deDE.lua
+Locale\Atlas_Transportation-frFR.lua
+Locale\Atlas_Transportation-zhCN.lua
+Locale\Atlas_Transportation-esES.lua
+Locale\Atlas_Transportation-zhTW.lua
+
+Atlas_Transportation.lua

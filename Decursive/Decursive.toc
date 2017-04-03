@@ -1,0 +1,73 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 2.5.1-6-gd3885c5
+## X-Curse-Project-Name: Decursive
+## X-Curse-Project-ID: decursive
+## X-Curse-Repository-ID: wow/decursive/mainline
+
+## Title: Decursive |cffff00ff -Ace3-|r
+## Notes: Afflictions display and cleaning for solo, group and raids with advanced filtering and priority system.
+## Notes-frFR: Affichage et guérison des afflictions avec un système évolué de filtrage et de priorité.
+## Notes-ruRU: Отображение и лечение недугов с расширенной фильтрацией и системой приоритетов.
+## Notes-koKR: 쏠로, 파티, 공격대를 위한 고급화된 필터링과 시스템 우선권으로 고통들의 표시와 제거를 합니다.
+## Notes-zhTW: 當單獨、小隊和團隊時清除有害狀態，並可使用高級過濾和優先等級系統。
+## Notes-zhCN: 当单独、小队和团队时清除有害状态，并可使用高级过滤和优先等级系统。
+
+## X-Compatible-With: 40000
+## X-Max-Interface: 40000
+## X-Min-Interface: 30300
+
+## SavedVariables: DecursiveDB
+
+## Version: 2.5.1-6-gd3885c5
+## Author: Archarodim
+
+## X-License: All Rights Reserved
+
+## OptionalDeps: Ace3, CallbackHandler-1.0, LibQTip-1.0, LibDataBroker-1.1, LibDBIcon-1.0 
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Class: Mage, Priest, Paladin, Druid, Hunter, Warlock, Shaman
+
+
+## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibQTip-1.0, LibDataBroker-1.1, LibDBIcon-1.0
+
+## X-ReleaseDate: "2010-09-06T22:38:15Z"
+## X-Category: Combat
+## X-Website: http://www.2072productions.com/to/decursive.php
+## X-Credits: Sylvin (Full french translation), Peter Sun, Ananhaid (ZhTW and zhCN translation), Fenlis, Chkid (koKR translation), Hemathio, Swix, Athariel, StingerSoft (Russian Translation), Freydis88, Floyddotnet, Vilogity, Dessa, Farook (German translation)
+
+## X-AceForum: 4195
+
+## X-eMail: archarodim@teaser.fr
+
+LibStub\LibStub.lua
+
+embeds.xml
+
+Dcr_DIAG.lua
+Dcr_DIAG.xml
+
+Localization\load.xml
+
+DCR_init.lua
+Dcr_LDB.lua
+Dcr_utils.lua
+
+
+Dcr_opt.lua
+Dcr_Events.lua
+
+Dcr_Raid.lua
+
+Decursive.lua
+Decursive.xml
+
+Dcr_lists.lua
+Dcr_lists.xml
+
+Dcr_DebuffsFrame.lua
+Dcr_DebuffsFrame.xml
+
+Dcr_LiveList.lua
+Dcr_LiveList.xml
+

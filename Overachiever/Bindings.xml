@@ -1,0 +1,11 @@
+<Bindings>
+	<Binding name="OVERACHIEVER_TAB_SEARCH" header="OVERACHIEVER">
+		Overachiever.OpenTab("Overachiever_SearchFrame");
+	</Binding>
+	<Binding name="OVERACHIEVER_TAB_SUGGESTIONS">
+		Overachiever.OpenTab("Overachiever_SuggestionsFrame");
+	</Binding>
+	<Binding name="OVERACHIEVER_TAB_WATCH">
+		Overachiever.OpenTab("Overachiever_WatchFrame");
+	</Binding>
+</Bindings>

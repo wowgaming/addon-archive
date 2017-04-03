@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## Title: X-Perl |cffeda55fRaid Monitor|r by |cFFFF8080Zek|r
+## Title-ruRU: X-Perl |cffeda55fМонитор|r
+## Title-zhCN: X-Perl |cffeda55f团队监控|r
+## Title-zhTW: X-Perl |cffeda55f團隊生命法力監視|r 由 |cFFFF8080Zek|r 開發
+## Notes: Provides a casting monitor and mana status window.
+## Notes-ruRU: Обеспечивает окном мониторинга применений и маны.
+## Notes-zhTW: 提供施法進度以及法力狀態治療監控視窗.
+## Author: Zek
+## X-License: GNU GPL v3, 29 June 2007
+## SavedVariablesPerCharacter: XPerlRaidMonConfig
+## RequiredDeps: XPerl
+## DefaultState: Disabled
+## X-Curse-Packaged-Version: r402
+## X-Curse-Project-Name: X-Perl UnitFrames
+## X-Curse-Project-ID: xperl
+## X-Curse-Repository-ID: wow/xperl/mainline
+XPerl_RaidMonitor.xml

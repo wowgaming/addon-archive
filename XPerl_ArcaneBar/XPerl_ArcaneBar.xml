@@ -1,0 +1,73 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+
+	<Script file="XPerl_ArcaneBar.lua"/>
+
+	<StatusBar name="XPerl_ArcaneBarTemplate" hidden="true" virtual="true">
+		<BarTexture name="$parenttex" file="Interface\TargetingFrame\UI-StatusBar"/>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parentbarSpark" file="Interface\Addons\XPerl\Images\XPerl_ArcaneBarSpark" hidden="true" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="28" y="56"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentcastTimeText" inherits="GameFontHighlight" hidden="true">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentspellText" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentbarFlash" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-5" y="12"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="5" y="-12"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parenttex" file="Interface\Addons\XPerl\Images\XPerl_ArcaneBarFlash" setAllPoints="true" alphaMode="ADD"/>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self.unit = "player"
+				XPerl_ArcaneBar_OnLoad(self)
+				self:SetScript("OnEvent", XPerl_ArcaneBar_OnEvent)
+			</OnLoad>
+		</Scripts>
+	</StatusBar>
+</Ui>

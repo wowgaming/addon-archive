@@ -1,0 +1,22 @@
+tag v1.3
+776f4baadf8d14e90434dd3a2fdcf65ec7dff2ad
+Xinhuan <xinhuan@pacific.net.sg>
+2010-07-01 01:17:19 +0800
+
+Tag v1.3
+
+
+--------------------
+
+Xinhuan:
+	- Update WoWEquip version number to 1.3
+	- Fix errors when trying to link items in chat that due to patch 3.3.5. The fix is backwards compatible.
+Erik Broes:
+	- Added 'Enchant Gloves - Angler'.
+	Updated 'Enchant Gloves - Fishing' to +5 fishing (existing locales are updated).
+Xinhuan:
+	- Add workaround for menuitems appearing disabled because Blizzard added "self:SetFrameLevel(2);" into their OnLoad template code in the default UI which causes the menu buttons to be BELOW the menu itself.
+	- You can now link items and enchants into the AH search editbox from anywhere in WoWEquip you can link an item or enchant (including the menus).
+	- Gem slots are now linkable in chat and AH search editbox.
+Erik Broes:
+	- Added 'Rune of the Nerubian Carapace'

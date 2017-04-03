@@ -1,0 +1,35 @@
+﻿## Interface: 30300
+## Title: Gladius
+## Notes: Arena enemy unit frames
+## Version: v1.2.0
+## Author: Proditor, Rinu
+## SavedVariables: GladiusDB
+## OptionalDeps: Ace3, LibStub, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /gladius
+## X-LoadOn-InterfaceOptions: Gladius
+## X-LoadOn-Arena: yes
+## X-Curse-Packaged-Version: v1.2.0
+## X-Curse-Project-Name: Gladius
+## X-Curse-Project-ID: gladius
+## X-Curse-Repository-ID: wow/gladius/mainline
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+localization\koKR.lua
+localization\enUS.lua
+localization\deDE.lua
+localization\frFR.lua
+localization\zhCN.lua
+localization\zhTW.lua
+localization\ruRU.lua
+
+Gladius.lua
+auralist.lua
+speclist.lua
+cooldownlist.lua
+drlist.lua
+options.lua
+frame.lua

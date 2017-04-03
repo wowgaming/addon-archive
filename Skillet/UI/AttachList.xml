@@ -1,0 +1,260 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+    <!--
+
+    Skillet: A tradeskill window replacement.
+    Copyright (c) 2007 Robert Clark <nogudnik@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    -->
+
+<!--
+#
+#  Template for all the buttons we use to display items in the shopping list
+#
+-->
+<Frame name="SkilletAttachListItemButtonTemplate_Count" hidden="false" virtual="true">
+    <Size>
+        <AbsDimension x="30" y="16"/>
+    </Size>
+    <Layers>
+        <Layer level="OVERLAY">
+            <FontString name="$parentText" inherits="GameFontNormal" justifyH="LEFT">
+                <Size>
+                    <AbsDimension x="30" y="0"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT"/>
+                </Anchors>
+                <Color r="1" g="1" b="1" a="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+</Frame>
+
+<Frame name="SkilletAttachListItemButtonTemplate_Name" hidden="false" virtual="true">
+    <Size>
+        <AbsDimension x="90" y="16"/>
+    </Size>
+    <Layers>
+        <Layer level="OVERLAY">
+            <FontString name="$parentText" inherits="GameFontNormal" justifyH="LEFT">
+                <Size>
+                    <AbsDimension x="90" y="0"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT"/>
+                </Anchors>
+                <Color r="1" g="1" b="1" a="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+</Frame>
+
+<Frame name="SkilletAttachListItemButtonTemplate_Player" hidden="false" virtual="true">
+    <Size>
+        <AbsDimension x="90" y="16"/>
+    </Size>
+    <Layers>
+        <Layer level="OVERLAY">
+            <FontString name="$parentText" inherits="GameFontNormal" justifyH="LEFT">
+                <Size>
+                    <AbsDimension x="90" y="0"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT"/>
+                </Anchors>
+                <Color r="1" g="1" b="1" a="1"/>
+            </FontString>
+        </Layer>
+    </Layers>
+</Frame>
+
+<Frame name="SkilletAttachListItemButtonTemplate" hidden="true" virtual="true">
+    <Size>
+        <AbsDimension x="140" y="18"/>
+    </Size>
+    <Frames>
+        <Frame name="$parentPlayer" inherits="SkilletAttachListItemButtonTemplate_Player">
+            <Anchors>
+                <Anchor point="LEFT" >
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>                
+            </Anchors>
+        </Frame>
+		 <Frame name="$parentName" inherits="SkilletAttachListItemButtonTemplate_Name">
+            <Anchors>
+                <Anchor point="LEFT" relativeTo="$parentPlayer" relativePoint="RIGHT">
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>                
+            </Anchors>
+        </Frame>
+   
+    <Button name="$parentAttachButton" inherits="UIPanelButtonTemplate" text="Attach">
+				<Size>
+					<AbsDimension x="35" y="18"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="8" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					Skillet:AttachItems(this:GetID());
+					</OnClick>
+				</Scripts>
+				
+	</Button>
+	 </Frames>
+</Frame>
+
+
+
+<Frame name="Skillet_AttachListMain" parent="UIParent" toplevel="true" movable="true" enableMouse="true" resizable="true" hidden="true" clampedToScreen="true">
+ <Size><AbsDimension x="180" y="150"/></Size>
+ <Anchors>
+  <Anchor point="CENTER"/> 
+ </Anchors>
+ <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+	<EdgeSize>
+		<AbsValue val="16"/>
+	</EdgeSize>
+	<TileSize>
+		<AbsValue val="16"/>
+	</TileSize>
+	<BackgroundInsets>
+		<AbsInset left="3" right="3" top="3" bottom="3"/>
+	</BackgroundInsets>
+  </Backdrop>
+  <Layers>
+	<Layer level="ARTWORK">
+	<FontString inherits="GameFontNormalLarge" text="Skillet: Auto Mails">
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset>
+					<AbsDimension x="0" y="-10"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</FontString>
+	</Layer>
+  </Layers> 
+  <scripts>
+	<OnUpdate>
+		Skillet:AttachOnUpdate()
+	</OnUpdate>
+  </scripts>
+  	<Frames>
+	 <Button name="SkilletAttachListCloseButton" inherits="UIPanelCloseButton" parent="Skillet_AttachListMain">
+            <Anchors>
+                <Anchor point="TOPRIGHT" relativeTo="Skillet_AttachListMain" relativePoint="TOPRIGHT">
+                    <Offset>
+                        <AbsDimension x="-2" y="-2"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    HideUIPanel(Skillet_AttachListMain)
+                </OnClick>
+            </Scripts>
+        </Button>
+		<Frame name="SkilletAttachListParent" parent="Skillet_AttachListMain">
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="Skillet_AttachListMain" relativePoint="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="5" y="-35"/>
+                    </Offset>
+                </Anchor>
+                <Anchor point="BOTTOMRIGHT" relativeTo="Skillet_AttachListMain" relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                        <AbsDimension x="-5" y="30"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+        </Frame>
+		  <ScrollFrame name="SkilletAttachListList" inherits="FauxScrollFrameTemplate" parent="SkilletAttachListParent">
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeTo="SkilletAttachListParent" relativePoint="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="5" y="-5"/>
+                    </Offset>
+                </Anchor>
+                <Anchor point="BOTTOMRIGHT" relativeTo="SkilletAttachListParent" relativePoint="BOTTOMRIGHT">
+                    <Offset>
+                        <AbsDimension x="-27" y="5"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnVerticalScroll>
+                    FauxScrollFrame_OnVerticalScroll(SKILLET_ATTACH_LIST_HEIGHT, Skillet.AttachList_OnScroll) 
+                </OnVerticalScroll>
+            </Scripts>
+        </ScrollFrame>
+		<Button name="SkilletAttachListButton1" inherits="SkilletAttachListItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="SkilletAttachListList" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="1" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<!-- rest of the buttons are created dynaically -->
+	</Frames>
+</Frame>
+
+
+		
+ <Button name="SkilletAttachMailButton" inherits="UIPanelButtonTemplate" text="0" parent="MailFrame">
+				<Size>
+					<AbsDimension x="30" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="InboxCloseButton" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-5" y="-5"/>
+							
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						Skillet:ToggleMailAttachVisible()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(SkilletAttachMailButton, "ANCHOR_BOTTOMRIGHT")
+						GameTooltip:ClearLines()
+						GameTooltip:AddLine("Skillet: Attach Mail Helper",1,1,1)
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+								GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				
+	</Button>
+
+</Ui>
+

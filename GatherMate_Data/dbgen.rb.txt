@@ -1,0 +1,475 @@
+#!/usr/bin/env ruby -w
+
+require 'net/http'
+
+# WoWhead URL Format http://www.wowhead.com/?object=xxxxx
+# Data is embeded as arry of arrays within a javascript call
+# return mp_Embed('Searing Gorge',[[56,76.6],[64.6,49.1],[66.2,37.7],[68,75.1]],this)
+module LuaRuby
+  def ruby_to_lua(v)
+    if v=~ /\D+/
+      return "\"#{v}\""
+    else
+      return v
+    end
+  end
+end
+# Add to_lua method to hash and array
+class Array
+  include LuaRuby
+  def to_lua(depth=1)
+    result = "{"
+    each {|v|
+        if v.instance_of? Array
+          result << v.to_lua(depth+1)
+        elsif v.instance_of? Hash
+          result << v.to_lua(depth+1)
+        else
+          myval = ruby_to_lua(v)
+          result << "\"#{myval}\","
+        end
+      }
+    result << "}\n"
+    return result
+  end
+end
+class Hash
+  include LuaRuby
+  def to_lua(depth=1)
+    # code here to generate lua out
+    result = ("\t" * depth) +"{\n"
+    keys.each {|k|
+      mykey = ruby_to_lua(k)
+      myval = fetch(k)
+      if mykey.to_s.length <= 0
+        next
+      end
+      if myval.instance_of? Hash
+        result << ("\t" * depth) + "[#{mykey}] = \n" + myval.to_lua(depth+1)
+      elsif myval.instance_of? Array
+        result << ("\t" * depth) + "[#{mykey}] = \n" + myval.to_lua(depth+1)
+      else
+        myval = ruby_to_lua(myval)
+        result << ("\t" * depth)+ "[#{mykey}] = #{myval},\n"
+      end
+      }
+    comma = ""
+    if depth > 1
+      comma = ","
+    end
+    return result << ("\t" * depth) + "}#{comma}\n"
+  end
+end
+
+def javascript_to_ruby(d)
+    #d.gsub!("Ahn'kahet: The Old Kingdom","Ahn'kahet, The Old Kingdom")
+	  #return eval(d.gsub(/\w+:\s/) { |key| key.gsub!(/:/,''); key.gsub!(/\'\"/,'\''); key.lstrip!;key.rstrip!; key = "\"#{key}\"=>"})
+	  return eval(d.gsub(/\w+:\s(?=[\"|\d|\[])/) { |key| 
+	    key.gsub!(/:/,''); 
+	    key.lstrip!;
+	    key.rstrip!; 
+	    key = "\"#{key}\"=>"})
+	  
+end
+
+#
+#
+$zone_map = {
+  "Arathi Highlands" => 1,
+	"Orgrimmar" => 2,
+	"Eastern Kingdoms" => 3,
+	"Undercity" => 4,
+	"The Barrens" => 5,
+	"Darnassus" => 6,
+	"Azuremyst Isle" => 7,
+	"Un'Goro Crater" => 8,
+	"Burning Steppes" => 9,
+	"Wetlands" => 10,
+	"Winterspring" => 11,
+	"Dustwallow Marsh" => 12,
+	"Darkshore" => 13,
+	"Loch Modan" => 14,
+	"Blade's Edge Mountains" => 15,
+	"Durotar" => 16,
+	"Silithus" => 17,
+	"Shattrath City" => 18,
+	"Ashenvale" => 19,
+	"Azeroth" => 20,
+	"Nagrand" => 21,
+	"Terokkar Forest" =>22,
+	"Eversong Woods" =>23,
+	"Silvermoon City" => 24,
+	"Tanaris" => 25,
+	"Stormwind City" => 26,
+	"Swamp of Sorrows" => 27,
+  "Eastern Plaguelands" => 28,
+	"Blasted Lands" => 29,
+	"Elwynn Forest" => 30,
+	"Deadwind Pass" => 31,
+	"Dun Morogh" => 32,
+	"The Exodar" => 33,
+	"Felwood" => 34,
+	"Silverpine Forest" => 35,
+	"Thunder Bluff" => 36,
+	"The Hinterlands" => 37,
+	"Stonetalon Mountains" => 38,
+	"Mulgore" => 39,
+	"Hellfire Peninsula" => 40,
+	"Ironforge" => 41,
+	"Thousand Needles" => 42,
+	"Stranglethorn Vale" => 43,
+	"Badlands" => 44,
+	"Teldrassil" => 45,
+	"Moonglade" => 46,
+	"Shadowmoon Valley" =>47,
+	"Tirisfal Glades" => 48,
+	"Azshara" => 49,
+	"Redridge Mountains" => 50,
+	"Bloodmyst Isle" => 51,
+	"Western Plaguelands" => 52,
+	"Alterac Mountains" => 53,
+	"Westfall" => 54,
+	"Duskwood" => 55,
+	"Netherstorm" => 56,
+	"Ghostlands" => 57,
+	"Zangarmarsh" => 58,
+	"Desolace" => 59,
+	"Kalimdor" => 60,
+	"Searing Gorge" => 61,
+	"Outland" => 62,
+	"Feralas" => 63,
+	"Hillsbrad Foothills" => 64,
+	"Isle of Quel'Danas" => 65,
+	"Borean Tundra" => 67,
+	"Crystalsong Forest" => 77,
+	"Dragonblight" => 68,
+	"Grizzly Hills" => 69,
+	"Howling Fjord" => 70,
+	"Icecrown" => 71,
+	"Sholazar Basin" => 72,
+	"The Storm Peaks" => 73,
+	"Wintergrasp" => 78,
+	"Zul'Drak" => 74,
+}
+$rare_map = {
+  	204 => [202,203], # silver
+  	205 => [203,206], # gold
+  	208 => [206,214,215], # truesilver
+  	209 => [212,213,207], # oozed covered silver
+  	210 => [212,213,207], # ooze covered gold
+  	211 => [212,213,207], # oozed covered true silver
+  	217 => [206,214,215], # dark iron
+  	224 => [222,223,221], # khorium
+  	223 => [222],
+  	441 => [440], #flame cap
+  	229 => [228], # cobalt
+  	232 => [231] # Saronite
+}
+$rare_src = {
+  202 => [204,203],
+  203 => [204,205],
+  206 => [208,217,205],
+  214 => [208,217],
+  215 => [208,217],
+  207 => [209,210,211],
+  212 => [209,210,211],
+  213 => [209,210,211],
+  440 => [441],
+  222 => [224,223],
+  223 => [224],
+  221 => [224],
+  228 => [229],
+  231 => [232]
+}
+
+# mieral viens
+mineral_map = {
+  "Copper Vein"                     => [1731,201],
+  "Incendicite Mineral Vein"        => [1610,219],
+  "Tin Vein"                        => [1732,202],
+  "Lesser Bloodstone Deposit"       => [2653,218],
+  "Iron Deposit"                    => [1735,203],
+  "Mithril Deposit"                 => [2040,206],
+  "Ooze Covered Mithril Deposit"    => [123310,207],
+  "Small Thorium Vein"              => [324,214],
+  "Ooze Covered Thorium Vein"       => [123848,213],
+  "Rich Thorium Vein"               => [175404,215],
+  "Fel Iron Deposit"                => [181555,221],
+  "Adamantite Deposit"              => [181556,222],
+  "Rich Adamantite Deposit"         => [181569,223],
+  "Khorium Vein"                    => [181557,224],
+  "Nethercite Deposit"              => [185877,227],
+  # rare nodes below
+  "Silver Vein"                     => [1733,204],
+  "Ooze Covered Silver Vein"        => [73940,209],
+  "Ooze Covered Rich Thorium Vein"  => [177388,212],
+  "Dark Iron Deposit"               => [165658,217],
+  "Truesilver Deposit"              => [2047,208],
+  "Ooze Covered Truesilver Deposit" => [123309,211],
+  "Gold Vein"                       => [1734,205],
+  "Ooze Covered Gold Vein"          => [73941,210],
+  "Cobalt Deposit"				          => [189978,228],
+	"Rich Cobalt Deposit"			        => [189979,229],
+	"Titanium Vein"					          => [191133,230],
+	"Saronite Deposit"			          => [189980,231],
+	"Rich Saronite Deposit"			      => [189981,232]
+  }
+# Herbs
+herb_map = {
+  "Silverleaf" 			    => [1617,402],
+  "Peacebloom" 			    => [1618,401],
+  "Bloodthistle"		    => [181166,436],
+  "Earthroot"			    	=> [1619,403],
+  "Mageroyal" 		    	=> [1620,404],
+  "Briarthorn" 		    	=> [1621,405],
+  "Stranglekelp" 		  	=> [2045,407],
+  "Bruiseweed" 			    => [1622,408],
+  "Wild Steelbloom" 		=> [1623,409],
+  "Grave Moss" 			    => [1628,410],
+  "Kingsblood" 			    => [1624,411],
+  "Liferoot" 				    => [2041,412],
+  "Fadeleaf" 				    => [2042,413],
+  "Goldthorn" 				  => [2046,414],
+  "Khadgar's Whisker" 	=> [2043,415],
+  "Wintersbite" 			  => [2044,416],
+  "Firebloom" 				  => [2866,417],
+  "Purple Lotus" 			  => [142140,418],
+  "Arthas' Tears" 			=> [142141,420],
+  "Sungrass" 				    => [142142,421],
+  "Blindweed" 				  => [142143,422],
+  "Ghost Mushroom" 		  => [142144,423],
+  "Gromsblood" 			    => [142145,424],
+  "Golden Sansam" 			=> [176583,425],
+  "Dreamfoil" 				  => [176584,426],
+  "Mountain Silversage" => [176586,427],
+  "Plaguebloom" 			  => [176587,428],
+  "Icecap" 				      => [176588,429],
+  "Black Lotus" 			  => [176589,431],
+  "Felweed" 				    => [181270,432],
+  "Dreaming Glory" 		  => [181271,433],
+  "Terocone" 			  	  => [181277,434],
+  "Ragveil" 				    => [181275,440],
+  "Flame Cap" 			  	=> [181276,441],
+  "Netherbloom" 		  	=> [181279,438],
+  "Nightmare Vine" 	  	=> [181280,439],
+  "Mana Thistle" 		  	=> [181281,437],
+  "Netherdust Bush"     => [185881,442],
+  "Icethorn"	          => [190172,447],
+  "Lichbloom"	          => [190171,448],
+  "Tiger Lily"	        => [190169,450],
+  "Frozen Herb"	        => [190173,452],
+  "Adder's Tongue"      => [191019,443],
+  "Talandra's Rose"     => [190170,449],
+  "Firethorn"           => [191303,451],
+  "Goldclover"          => [189973,446]
+  
+}
+treasure_map = {
+  "Giant Clam" 						    => [2744,501],
+	"Battered Chest" 				    => [2843,502],
+	"Tattered Chest" 				    => [2844,503],
+	"Solid Chest" 					    => [2850,504],
+	"Large Iron Bound Chest"    => [74447,505],
+	"Large Solid Chest" 			  => [74448,506],
+	"Large Battered Chest"		  => [75293,507],
+	"Buccaneer's Strongbox" 	  => [123330,508],
+	"Large Mithril Bound Chest" => [153468,509],
+	"Large Darkwood Chest" 			=> [131979,510],
+	"Un'Goro Dirt Pile" 				=> [157936,511],
+	"Bloodpetal Sprout" 				=> [164958,512],
+	"Blood of Heroes" 				  => [176213,513],
+	"Practice Lockbox" 			  	=> [178244,514],
+	"Battered Footlocker" 		  => [179488,515],
+	"Waterlogged Footlocker" 	  => [179487,516],
+	"Dented Footlocker" 			  => [179496,517],
+	"Mossy Footlocker" 				  => [179497,518],
+	"Scarlet Footlocker" 			  => [179498,519],
+	"Burial Chest" 					    => [181665,520],
+	"Fel Iron Chest" 					  => [181798,521],
+	"Heavy Fel Iron Chest" 		  => [181800,522],
+	"Adamantite Bound Chest" 	  => [181802,523],
+	"Felsteel Chest" 					  => [181804,524],
+	"Glowcap" 						      => [182053,525],
+	"Wicker Chest" 					    => [184740,526],
+	"Primitive Chest" 				  => [184793,527],
+	"Solid Fel Iron Chest" 		  => [184930,528],
+	"Bound Fel Iron Chest" 		  => [184931,529],
+	"Bound Adamantite Chest" 	  => [184936,530],
+	"Netherwing Egg" 					  => [185915,531],
+	"Everfrost Chip"            => [193997,532]
+}
+# utility function
+def gather_coords(x,y)
+  trim_terminator = 7
+  if y == 100
+    y = 99.9
+  end
+  if x == 100
+    x = 99.9
+  end
+  id = (x * 10000 + 0.5).floor * 10000 + (y * 10000 + 0.5).floor
+  return id/100
+end
+
+def get_wowdbdata(id)
+  response = Net::HTTP.get(URI.parse("http://www.wowdb.com/object.aspx?id=#{id}"))
+  unless response
+    raise "Data not available for id #{id}"
+  end
+  lst = response.scan(/<script>addMapLocations\((.*)\)<\/script>/)[0]
+  if lst.nil?
+    raise "No map data for #{id}"
+  end
+  data = lst[0]
+  return javascript_to_ruby(data)
+end
+
+def process_wowdbdata(maps,storage_object,search_object)
+  isRare = $rare_map.has_key?(search_object)
+  totalNodes = 0
+  maps.each do |map|
+      zone = map['mapLabel']
+      zoneID = $zone_map[zone]
+      puts "\t\tZone #{zone}(#{zoneID})"
+      if zoneID.to_i == 0
+        puts "Skipping #{zone}"
+        next
+      end
+      coords = map['coords']
+      coords.each do |coord|
+        x = coord[0]
+        y = coord[1]
+        gid = gather_coords(x,y)
+        totalNodes += 1
+        unless storage_object[zoneID]
+          storage_object[zoneID] = Hash.new
+        end
+        if storage_object[zoneID].has_key?(gid) and not isRare # we already have a node at the location we are processing
+          if $rare_src.has_key?(search_object) and $rare_src[search_object].include?(storage_object[zoneID][gid]) #
+            storage_object[zoneID][gid] = search_object
+          else
+            # we have a conflict, this may be due to the fact wowhead only keps track of node to 1 decimal place and it really is a 1 yard difference
+            # lets generate a new x,y shifting it by 10 yards
+            while storage_object[zoneID].has_key?(gid)
+              x += 0.1
+              y += 0.1
+              gid = gather_coords(x,y)
+              puts "\t\t\tshifting x,y by 0.1"
+            end
+            storage_object[zoneID][gid] = search_object
+          end
+        else
+          storage_object[zoneID][gid] = search_object
+        end
+      end
+  end
+  return totalNodes
+end
+
+def process_mapline(line,zoneid,node_id, map)
+  offset = 0
+  length = 6
+  lineLength = line.length
+  map[zoneid] = Hash.new
+  count = 0
+  while offset < lineLength
+    x = "#{line[offset,2]}.#{line[offset+2,1]}"
+    y = "#{line[offset+3,2]}.#{line[offset+5,1]}"
+    offset = offset + 6
+    map[zoneid][gather_coords(x.to_f,y.to_f)] = node_id
+    count +=1
+  end
+  return count
+end
+
+def scrape(data_file,node_list,saved_variable)
+  start = Time.now
+  passed = true
+  count = 0
+  storage = Hash.new
+  puts "Starting data extract for #{saved_variable}"
+  node_list.keys.sort.each {|key|
+    id = node_list[key]
+    puts "\tNode: #{key}"
+    #sleep(5)
+    begin
+      maps = get_wowdbdata(id[0])
+      c = process_wowdbdata(maps,storage,id[1])
+      puts "\t\tTotal Nodes found: #{c}"
+      count += c
+    rescue Exception => e
+      passed = false
+      puts "Exception processing wowdbd data for #{saved_variable} cause: #{e}"
+    end
+  }
+  if passed then
+    puts "Processed #{count} nodes in #{((Time.now).to_i-start.to_i) } seconds for #{saved_variable}"
+    file = File.new(data_file,modestring="w")
+    file << "#{saved_variable} = "
+    file << storage.to_lua
+    file.close
+  else
+    puts "Failed to fully process #{saved_variable}, skipping update"
+  end
+  return count
+end
+# Main program below
+start_time = Time.now
+count = 0
+count += scrape("MiningData.lua",mineral_map,"GatherMateDataMineDB")
+count += scrape("HerbalismData.lua",herb_map,"GatherMateDataHerbDB")
+count += scrape("TreasureData.lua",treasure_map,"GatherMateDataTreasureDB")
+
+####
+## Manual Map Processing for Gas Clouds
+## Staticly adding gas clouds as reported on Wowhead
+####
+gas_start = Time.now
+gases = Hash.new
+if File.exists?("user_gas.yaml")
+  require 'yaml'
+  gases = YAML.load_file( 'user_gas.yaml' )
+end
+
+gas_sv_file = File.new("GasData.lua", modestring="w")
+gas_sv_file << "GatherMateDataGasDB = "
+count4 = 0
+if File.exists?("user_fish.yaml")
+  require 'yaml'
+  fishes = Hash.new
+  fishes = YAML.load_file( 'user_fish.yaml' )
+  fish_sv_file = File.new("FishData.lua", modestring="w")
+  fish_sv_file << "GatherMateDataFishDB = "
+  fish_sv_file << fishes.to_lua
+  fish_sv_file.close
+end
+
+# windy cloud
+count4 += process_mapline("284611580780620760220340490660300590340270300620563436659555542225250281384308409244518217541242625394571471641462704433686652512299453596361811593714702522338394519829672770645669676590651590287366310667428526322629551644610646720652418293722697492302655640265423496275681565476380373256680619650739313260595417",21,301,gases) 
+#Arcane vortex
+count4 += process_mapline("568330401619430751518600531871643580699440332652492184238425231768384766408687332601272588301382457252588339610374724394411524422568514532562570616582633601654594617633580803536266397316646363458180410254720351663514511557341545309434405166630485608345579460306407660304297530",56,303,gases)
+#felmist
+count4 += process_mapline("614587614592613583568460466470570461522210525222384419389420642466634466646471640474642470638474518208467521471535581455495330420426469537214327533341349344622631649612466378430490560540300450620374542506450380350450280360431729570190328378342412",47,304,gases)
+#swamp gas
+count4 += process_mapline("580520650730590350240560160200437533460580302504607549329309090510280240300210310320320380340420381589450560630660750830780790850490160240330621601530826726844312713347269359270433650685119458415584808792402623382631603462281481132621185687673658866458388520",58,302,gases)
+# 
+gas_sv_file << gases.to_lua
+gas_sv_file.close
+puts "Processed #{count4} nodes in #{((Time.now).to_i-gas_start.to_i) } seconds for GatherMateDataGasDB"
+
+puts "Total nodes processed: #{count + count4}, executed in #{Time.now.to_i - start_time.to_i} seconds"
+changelog = File.new("run.out", modstring="w")
+changelog.puts "#{Time.now}"
+changelog.puts "Total nodes processed: #{count + count4}, executed in #{Time.now.to_i - start_time.to_i} seconds"
+changelog.close
+version =  File.new("version").read.chomp
+version = version.next
+puts "Version #{version}"
+updated = File.new("version","w")
+updated.puts(version)
+updated.close
+tag = File.new("tag","w")
+tag.puts "#!/bin/bash"
+tag.puts "svn ci -m 'GatherMate_Data: Weekly update'"
+tag.puts "svn cp -m 'GatherMate_Data: weekly update' svn://kagaro@svn.wowace.com/wow/gathermate_data/mainline/trunk svn://kagaro@svn.wowace.com/wow/gathermate_data/mainline/tags/v#{version}"
+tag.close

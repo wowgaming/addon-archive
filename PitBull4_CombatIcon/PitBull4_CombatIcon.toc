@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fCombat icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fKampfsymbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono de Combate|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône de combat|r]
+## Title-koKR: PitBull4 |r[|cffeda55f전투 아이콘|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fИконка боя|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f战斗标志|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f戰鬥標誌|r]
+## Notes: Show an icon based on whether or not the unit is in combat.
+## Notes-deDE: Zeigt ein Symbol, ob die Einheit sich im Kampf befindet oder nicht.
+## Notes-esES: Muestra un icono basándose en si la unidad está en combate o no.
+## Notes-frFR: Affiche une icône basée sur le statut du joueur (en combat ou non).
+## Notes-koKR: 유닛의 전투 여부에 따라 아이콘을 표시합니다.
+## Notes-ruRU: Отображает инонку боя, если игрок находится в бою.
+## Notes-zhCN: 根据目标是否处于战斗状态显示图标
+## Notes-zhTW: 根據目標是否處於戰鬥狀態顯示圖示。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

@@ -1,0 +1,65 @@
+Each UnitID can have 0..* frames, not just 0..1
+
+Definitions:
+    classification: what kind of frame something is, also what settings it adheres to. e.g. player, party, raid, target, partypet
+    singleton: a frame that is not part of a larger whole, e.g. player, pet, target, targettarget
+    member: a frame that is part of a larget whole, e.g. raid1, party2pet
+    supergroup: a set of members, e.g. raid, partypet
+    group: a specific set of members, e.g. raid group 1, party members. All supergroups are made up of 1 or more groups.
+    wacky: Whether a unit frame receives standard Blizzard events for UNIT_HEALTH and such. player, target, pet, focus, mouseover, party, partypet, and raid receive such events.
+
+List of classifications:
+    - player
+    - target (alias of playertarget)
+    - pet
+    - focus
+    - mouseover
+    - party
+    - partypet
+    - raid
+    - raidpet
+    - maintank
+    - mainassist
+    - target+ for the above
+
+Singletons:
+    - player
+    - target (alias of playertarget)
+    - pet
+    - focus
+    - mouseover
+    - target+ for the above
+
+Groups:
+    - party
+    - partypet
+    - raid
+    - raidpet
+    - maintank
+    - mainassist
+    - target+ for the above
+
+Featureset:
+    Configuration mode: show the possible frames for a specific situation, allow for placement, mostly
+    Contextual profiles:
+        - solo (possibly with a pet)
+        - party (or 5-man raid)
+        - 10-man raid
+        - 25-man raid
+        - 40-man raid
+
+Modules:
+    each module has a type
+
+Module types:
+    status_bar: provides functions to provide details on a status bar.
+    custom: different from above
+
+status_bar layout options:
+	size: how tall/wide a bar is
+	reverse: whether it's reversed
+	deficit: whether it's showing its deficit
+	alpha: alpha value of the whole bar
+	background_alpha: alpha value of the bg
+	position: numeric position relative to other bars on the same side
+	side: left, center, or right

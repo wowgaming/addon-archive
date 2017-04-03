@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Include file="Database\Alchemy.lua"/>
+<Include file="Database\Blacksmithing.lua"/>
+<Include file="Database\Cooking.lua"/>
+<Include file="Database\Enchanting.lua"/>
+<Include file="Database\Engineering.lua"/>
+<Include file="Database\FirstAid.lua"/>
+<Include file="Database\Inscription.lua"/>
+<Include file="Database\Jewelcrafting.lua"/>
+<Include file="Database\Leatherworking.lua"/>
+<Include file="Database\Runeforging.lua"/>
+<Include file="Database\Smelting.lua"/>
+<Include file="Database\Tailoring.lua"/>
+
+<Include file="Database\Custom.lua"/>
+<Include file="Database\Mob.lua"/>
+<Include file="Database\Quest.lua"/>
+<Include file="Database\Reputation.lua"/>
+<Include file="Database\Seasonal.lua"/>
+<Include file="Database\Trainer.lua"/>
+<Include file="Database\Vendor.lua"/>
+
+</Ui>

@@ -1,0 +1,47 @@
+## Interface: 30300
+## X-Compatible-With: 40000
+## Version: 3.4.0
+## Title: Postal
+## Author: Xinhuan
+## X-Credits: Ammo, Rabbit, Grennon, Mikk
+## X-Category: Mail
+## Notes: Postal: Enhanced Mailbox support
+## Notes-ruRU: Postal: Расширенная поддержка почтового ящика
+## Notes-frFR: Postal: améliorations diverses de l'interface d'envoi/réception de courriers.
+## Notes-esES: Postal: soporte mejorado para el buzon
+## Notes-zhTW: Postal: 強化信箱功能。
+## Notes-zhCN: Postal: 增强信箱功能
+## OptionalDeps: Ace3, !BlizzBugsSuck, !ClassColors
+## SavedVariables: Postal3DB
+## X-Curse-Packaged-Version: v3.4.0
+## X-Curse-Project-Name: Postal
+## X-Curse-Project-ID: postal
+## X-Curse-Repository-ID: wow/postal/mainline
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Mailbox: true
+## X-Email: xinhuan AT gmail DOT com
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+#@end-no-lib-strip@
+
+Localization.lua
+Postal.lua
+
+# Users can comment out any module (or delete the .lua) of any module they do not wish to load
+Modules\Express.lua
+Modules\OpenAll.lua
+Modules\Wire.lua
+Modules\Select.lua
+Modules\TradeBlock.lua
+Modules\Rake.lua
+Modules\BlackBook.lua
+Modules\DoNotWant.lua
+Modules\CarbonCopy.lua

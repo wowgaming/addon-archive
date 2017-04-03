@@ -1,0 +1,32 @@
+<Bindings>
+  <Binding name="CLICK ProximoTarget1:LeftButton" header="PROXIMO">
+    -- target1!
+  </Binding>
+  <Binding name="CLICK ProximoTarget2:LeftButton">
+    -- target2!
+  </Binding>
+  <Binding name="CLICK ProximoTarget3:LeftButton">
+    -- target3!
+  </Binding>
+  <Binding name="CLICK ProximoTarget4:LeftButton">
+    -- target4!
+  </Binding>
+  <Binding name="CLICK ProximoTarget5:LeftButton">
+    -- target5!
+  </Binding>
+  <Binding name="CLICK ProximoTarget1:RightButton">
+    -- target1!
+  </Binding>
+  <Binding name="CLICK ProximoTarget2:RightButton">
+    -- target2!
+  </Binding>
+  <Binding name="CLICK ProximoTarget3:RightButton">
+    -- target3!
+  </Binding>
+  <Binding name="CLICK ProximoTarget4:RightButton">
+    -- target4!
+  </Binding>
+  <Binding name="CLICK ProximoTarget5:RightButton">
+    -- target5!
+  </Binding>
+</Bindings>

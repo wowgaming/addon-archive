@@ -1,0 +1,9 @@
+## Interface: 30000
+## Title : Super Duper Macro
+## Notes: Enables creation of incredibly long macros.
+## Author: hypehuman
+## Version: 1.8.3
+## SavedVariables: sdm_version, sdm_listFilters, sdm_iconSize, sdm_mainContents, sdm_macros
+SuperDuperMacro.lua
+SuperDuperMacro.xml
+MacroInterpreter.lua

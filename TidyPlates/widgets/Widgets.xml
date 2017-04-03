@@ -1,0 +1,12 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="WidgetCore.lua"/>
+	<Script file="ClassWidget.lua"/>
+	<Script file="ComboPointWidget.lua"/>
+	<Script file="ThreatWidgets.lua"/>
+	<Script file="AuraWidget.lua"/>
+	<Script file="RangeWidget.lua"/>
+	<Script file="BossDebuff.lua"/>
+	<Script file="NoteWidget.lua"/>
+	<Script file="CastWidget.lua"/>
+</Ui>

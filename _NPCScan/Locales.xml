@@ -1,0 +1,11 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<!-- See http://wow.curseforge.com/addons/npcscan/localization/ -->
+	<Script file="Locales\Locale-enUS.lua"/>
+	<Script file="Locales\Locale-deDE.lua"/>
+	<Script file="Locales\Locale-esES.lua"/>
+	<Script file="Locales\Locale-frFR.lua"/>
+	<Script file="Locales\Locale-koKR.lua"/>
+	<Script file="Locales\Locale-ruRU.lua"/>
+	<Script file="Locales\Locale-zhCN.lua"/>
+	<Script file="Locales\Locale-zhTW.lua"/>
+</Ui>

@@ -1,0 +1,21 @@
+------------------------------------------------------------------------
+r126 | pneumatus | 2010-07-13 20:37:39 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/PT3-RaidLoot.lua
+
+- Re-mine all WotLK instances
+------------------------------------------------------------------------
+r124 | pneumatus | 2010-06-30 21:55:07 +0000 (Wed, 30 Jun 2010) | 2 lines
+Changed paths:
+   M /trunk/ClassLoot_Data.lua
+   M /trunk/PT3-RaidLoot.lua
+
+ - Add Halion loot
+ - Remine all PT3 sets
+------------------------------------------------------------------------
+r123 | Mars1491 | 2010-04-03 12:35:11 +0000 (Sat, 03 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/ClassLoot.toc
+
+TOC Update for zhTW&zhCN
+------------------------------------------------------------------------

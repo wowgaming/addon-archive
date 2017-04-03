@@ -1,0 +1,330 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+
+<!-- Item Button Template -->
+<Button name="PowaItemButtonTemplate" hidden="true" virtual="true">
+	<Size>
+		<AbsDimension x="37" y="37"/>
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMRIGHT">
+			<Offset>
+				<AbsDimension x="0" y="0"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BORDER">
+			<Texture name="$parentIconTexture"/>
+			<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT" hidden="true">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-5" y="2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+		<Size>
+			<AbsDimension x="64" y="64"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="-1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</NormalTexture>
+	<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+</Button>
+
+<!-- ItemSlot Template -->
+<Button name="PowaItemSlotTemplate" inherits="ItemButtonTemplate" virtual="true">
+	<Scripts>
+		<OnLeave>
+			self.updateTooltip = nil;
+			GameTooltip:Hide();
+			ResetCursor();
+		</OnLeave>
+		<OnClick>
+			PowaAuras:EquipmentSlot_OnClick(self);
+		</OnClick>
+	</Scripts>
+</Button>
+
+
+<!-- Character Frame -->
+<Frame name="PowaEquipmentSlotsFrame" 
+         movable="true"
+         parent="UIParent"
+         frameStrata="DIALOG"
+         hidden="true"
+         enableMouse="true"
+         enableKeyboard="true">
+
+	<TitleRegion>
+	  <Size>
+			<AbsDimension x="200" y="40" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset>
+					<AbsDimension x="0" y="20" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</TitleRegion>
+  
+	<Size>
+		<AbsDimension x="225" y="360"/>
+	</Size>
+	
+	<Anchors>
+		<Anchor point="CENTER">
+			<Offset>
+				<AbsDimension x="0" y="0"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnLoad>
+			self:SetBackdropColor(0.05, 0.05, 0.05, 0.8);
+			self:SetBackdropBorderColor(0.4, 0.4, 0.4, 1);
+			tinsert(UISpecialFrames,self:GetName());
+		</OnLoad>
+		<OnShow>
+			PowaAuras:EquipmentSlotsShow();
+		</OnShow>
+		<OnHide>
+			PowaAuras:EquipmentSlotsHide();
+		</OnHide>
+	</Scripts>
+	
+	<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" edgeFile="Interface\ChatFrame\ChatFrameBackground" tile="false">
+		<BackgroundInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0" />
+		</BackgroundInsets>
+		<EdgeSize>
+			<AbsValue val="2" />
+		</EdgeSize>
+	</Backdrop>
+	
+	<Layers>
+		<Layer level="BACKGROUND">
+			<FontString name="PowaTitleText" inherits="GameFontNormal" text="Slots to Check">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	
+	<Frames>
+		<Button name="PowaFrameCloseButton" inherits="UIPanelCloseButton">
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="PowaEquipmentSlotsFrame" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-12" y="-12"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnLoad>
+					self:SetFrameLevel(self:GetFrameLevel() + 4);
+				</OnLoad>
+			</Scripts>
+		</Button>
+		
+		<Button name="PowaHeadSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="11" y="-20"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<Button name="PowaNeckSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaHeadSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<Button name="PowaShoulderSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaNeckSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaBackSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaShoulderSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaChestSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaBackSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaShirtSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaChestSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaTabardSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaShirtSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaWristSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaTabardSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<Button name="PowaHandsSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-11" y="-20"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<Button name="PowaWaistSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaHandsSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaLegsSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaWaistSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaFeetSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaLegsSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaFinger0Slot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaFeetSlot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaFinger1Slot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaFinger0Slot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaTrinket0Slot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaFinger1Slot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaTrinket1Slot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaTrinket0Slot" relativePoint="BOTTOMLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<Button name="PowaMainHandSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaWristSlot" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="4" y="-10"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<Button name="PowaSecondaryHandSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaMainHandSlot" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="5" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="PowaRangedSlot" inherits="PowaItemSlotTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="PowaSecondaryHandSlot" relativePoint="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="5" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+	</Frames>
+
+</Frame>
+
+
+</Ui>

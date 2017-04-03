@@ -1,0 +1,32 @@
+<Bindings>
+	<Binding name="GLADIUSTARGET1_LEFT" header="GLADIUS">	
+	--Target1
+	</Binding>
+	<Binding name="GLADIUSTARGET2_LEFT">
+	--Target2
+	</Binding>
+	<Binding name="GLADIUSTARGET3_LEFT">
+	--Button3
+	</Binding>
+	<Binding name="GLADIUSTARGET4_LEFT">
+	--button4
+	</Binding>
+	<Binding name="GLADIUSTARGET5_LEFT">
+	--button5
+	</Binding>
+	<Binding name="GLADIUSTARGET1_RIGHT">
+	--button1
+	</Binding>
+	<Binding name="GLADIUSTARGET2_RIGHT">
+	--button2
+	</Binding>
+	<Binding name="GLADIUSTARGET3_RIGHT">
+	--button3
+	</Binding>
+	<Binding name="GLADIUSTARGET4_RIGHT">
+	--button4
+	</Binding>
+	<Binding name="GLADIUSTARGET5_RIGHT">
+	--button5
+	</Binding>
+</Bindings>

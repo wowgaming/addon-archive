@@ -1,0 +1,11 @@
+## Title: Auc:Util:GlypherPost
+## Interface: 30200
+## Dependancies: Auc-Advanced
+##
+## Version: 5.6.4409 (KangaII)
+## Revision: $Id: Auc-Util-GlypherPost.toc 4383 2009-08-06 16:05:57Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Embed.xml

@@ -1,0 +1,444 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="AllStats.lua"/>
+	<Frame name="AllStatsFrame" parent="PaperDollFrame" toplevel="true">
+    <Size>
+      <AbsDimension x="115" y="500"/>
+    </Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="PaperDollFrame" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-38" y= "-33"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="AllStatsFrameTop" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrame"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0" bottom="0.125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle1" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameTop" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle2" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle1" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle3" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle2" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle4" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle3" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle5" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle4" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle6" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle5" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameMiddle7" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="53"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle6" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.125" bottom="0.1953125"/>
+				</Texture>
+				<Texture name="AllStatsFrameBottom" file="Interface\PaperDollInfoFrame\UI-Character-StatBackground">
+					<Size>
+						<AbsDimension x="115" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="AllStatsFrameMiddle7" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.8984375" top="0.484375" bottom="0.609375"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="AllStatsFrameStat1" inherits="StatFrameTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="6" y="-13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="AllStatsFrameLabelStats" inherits="GameFontHighlightSmall" text="Base Stats">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="AllStatsFrameStat1" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="AllStatsFrameStat2" inherits="StatFrameTemplate" id="2">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStat1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStat3" inherits="StatFrameTemplate" id="3">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStat2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStat4" inherits="StatFrameTemplate" id="4">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStat3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStat5" inherits="StatFrameTemplate" id="5">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStat4" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatMeleeDamage" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStat5" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-11"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="AllStatsFrameLabelMelee" inherits="GameFontHighlightSmall" text="Melee">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="AllStatsFrameStatMeleeDamage" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="AllStatsFrameStatMeleeSpeed" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatMeleeDamage" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatMeleePower" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatMeleeSpeed" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatMeleeHit" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatMeleePower" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatMeleeCrit" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatMeleeHit" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatMeleeExpert" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatMeleeCrit" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatRangeDamage" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatMeleeExpert" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-11"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="AllStatsFrameLabelRange" inherits="GameFontHighlightSmall" text="Ranged">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="AllStatsFrameStatRangeDamage" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="AllStatsFrameStatRangeSpeed" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatRangeDamage" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatRangePower" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatRangeSpeed" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatRangeHit" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatRangePower" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatRangeCrit" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatRangeHit" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatSpellDamage" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatRangeCrit" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-11"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="AllStatsFrameLabelSpell" inherits="GameFontHighlightSmall" text="Spell">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="AllStatsFrameStatSpellDamage" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="AllStatsFrameStatSpellHeal" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatSpellDamage" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatSpellHit" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatSpellHeal" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatSpellCrit" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatSpellHit" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatSpellHaste" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatSpellCrit" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatSpellRegen" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatSpellHaste" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatArmor" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatSpellRegen" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-11"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatDefense" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatArmor" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="AllStatsFrameLabelDefense" inherits="GameFontHighlightSmall" text="Defenses">
+							<Anchors>
+								<Anchor point="BOTTOM" relativeTo="AllStatsFrameStatArmor" relativePoint="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="AllStatsFrameStatDodge" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatDefense" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatParry" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatDodge" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatBlock" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatParry" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="AllStatsFrameStatResil" inherits="StatFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="AllStatsFrameStatBlock" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				AllStats_OnLoad();
+			</OnLoad>
+			<OnShow>
+				PrintStats();
+			</OnShow>
+		</Scripts>
+	</Frame>
+	<Button name="AllStatsButtonShowFrame" parent="PaperDollFrame" inherits="UIPanelButtonTemplate" text="Stats->">
+		<Size>
+			<AbsDimension x="50" y="20"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="-43" y="86"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				AllStatsButtonShowFrame_OnClick();
+			</OnClick>
+		</Scripts>
+	</Button>
+</Ui>

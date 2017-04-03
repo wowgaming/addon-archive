@@ -1,0 +1,70 @@
+==Rewatch==
+===Summary===
+Rewatch is an addon to help you monitor your healing-over-time (HoT) spells as a druid. There's an easy main window which you can move around, which will contain six bars for every target; a healthbar, energy-/rage-/manabar, lifebloom bar, rejuvenation bar, regrowth bar and a wild growth bar. Simply click a spell bar to cast that spell on that specific player and watch the clicked bar channel down as the corresponding HoT spell runs out.
+
+Party- and raidhealing has never been so easy!
+
+===Important notes===
+* '''If you're updating from a version prior 5.0, delete these files ''first'':
+** World of Warcraft/WTF/Account/'''accountname'''/SavedVariables/Rewatch.*
+** World of Warcraft/Interface/AddOns/Rewatch/*
+* '''Highly recommended usage with ''/cast [target=mouseover, exists, help] Lifebloom; Lifebloom'' macro!
+* '''Check this page for the macro's I use: http://wow.curseforge.com/projects/rewatch/pages/macros/
+
+==Installation==
+Just extract this entire folder to your World of Warcraft/Interface/AddOns/ folder and run the game. By default, this AddOn will be enabled on every character. No need to disable it for your non-druid classes by the way; it will not load on these characters so you won't have to bother about that.
+
+==Usage==
+===Launch===
+After installing the AddOn, all you will need to do is launch the game and log in to your druid character. You will notice the Rewatch frame in the middle of your screen. The odds are small you want the AddOn to be placed here - just move it to it's new location by click&dragging the entire frame to the desired location; there's a small bar at the bottom of the frame that is left blank so you can always use that to drag it around.
+
+===Adding and removing players===
+Players are automatically added to the list once you group with them, and will also be automatically removed if one of them (or you) leaves. If there's a player in the list you don't want to have in there anymore, simply right-click his/her healthbar and click '''Remove player''' to remove the player. By doing this, however, you will automatically turn off the auto-adjust to group feature to prevent the removed player from popping back up again. You can turn this feature back on in the options menu, or typing '''/rewatch autogroup 1'''.
+
+Manually adding players is allowed through the '''/rewatch add [_target||<name>]''' command. Erh, that means, typing '''/rewatch add''' will try to add your current target, or you can specify a name using '''/rewatch add namehere'''. If you're persistent and want to add someone that doesn't exist, you can, just add the word '''always''' after the name of the player you specified. To quickly add pets, right-click their owner's HP bar and click '''Add his/her pet'''.
+
+===Casting heals===
+If you wish to target a player from your list, left-click on his/her healthbar. To cast or refresh his/her Lifebloom, simply click on the Lifebloom bar, which is the top one. Same goes for Rejuvenation, Regrowth and Wild Growth, just click the bar! They are listed in that order. You'll see the clicked bar channel down as this player's corresponding HoT spell runs out. The first small button to the bottom left of a player frame is the Swiftmend button; just click it to cast a Swiftmend on that player. If the player is cursed or poisoned, the Abolish Poison button or Remove Curse button will fade-in next to the Swiftmend button. Simply click it to cure your pal! And for those that want to use Healing Touch or Nourish, those are also available as buttons. And for every casted spell: rightclick or click with a modifier (shift, ctrl, alt) pops Nature's Swiftness along with the heal for some instant recovery! All of the important spells, right at a single click away. Told you it was easy!
+
+For those that prefer mouse-over macro's, these work on the Rewatch player frames as well. Just mouse-over the playerframe of the player you want to heal, and hit the keybind to your mouse-over macro. You can find these macro's here: http://wow.curseforge.com/projects/rewatch/pages/macros/. I can recommend using this!
+
+===Options===
+You can adjust the AddOn to fit your needs in the options menu, accessible through the command '''/rewatch options''' or '''Esc > Interface > AddOns > Rewatch'''. Note that these options are not processed live; you will have to click '''Okay''' to save and confirm changes before they have effect. That means if you click '''Cancel''', all options will revert back. Exception to this are the bars- and framecolors, these are directly processed and have no undo feature.
+
+===Did you know?!===
+* Did you know you can shift-click on a dead player's HP bar to rez him? Automatically choses CR in combat and a normal rez when out of combat!
+* The cooldown of CR is displayed on the Nourish button. Nature's Swiftness cooldown is displayed on the Healing Touch button.
+* Have you ever tried '''/rewatch check'''? And how about '''/rewatch sort'''?
+* If you use commandline commands much, you can save yourself some typing by using '''/rew''' instead of '''/rewatch'''!
+* Only using Rewatch for the tanks? You can disable the auto-group feature and then write a macro to add the tanks you know by '''/rewatch add tankname''' - if the tank's not in your group they won't be added.
+* Different frame control; Forced height. You can use '''/rewatch forcedHeight [number]''' to define the height instead of the 'Number of frames' width!
+* Limit the total number of frames in your Rewatch frame by using '''/rewatch maxPlayers [number]'''.
+* Rightclick, shift-click, ctrl-click or alt-click a spellbar or -button to cast Nature's Swiftness in addition to the spell.
+* Rightclick the main Rewatch frame to lock it!
+
+==FAQ==
+===Basic===
+====Q: How do I control who's in my Rewatch frame? It's so crowded in 25 mans!====
+In 25-mans, you usually only prefer to have the tanks on your frame, or other important players. It's hard for the AddOn to decide who's important and who isn't, though. So there are two ways in which you can set up your Rewatch frame;
+# Wait until the raid's full and remove every non-tank from the frame by rightclicking their HP bars and choosing '''Remove player'''
+# Disable the auto-adjust-to-group feature before joining and manually add every tank using '''/rew add tankname'''. 
+====Q: How can I see the number Lifebloom stacked?====
+A: Lifebloom stacks are indicated by colors. There's a configurable color for the Lifebloom bar if you have 1 stacked, 2 stacked or 3 stacked!
+====Q: Where is the Rewatch AddOn? I can't find it!====
+A: Check if you have extracted it in the World of Warcraft/Interface/AddOns folder. If it still won't show up, make sure you log on your druid! ;)
+====Q: Where can I adjust some settings?====
+SHORT A: Type '''/rewatch options'''.<br>
+LONG A: There are two ways available to do this; you can either configure the AddOn through the /rewatch commands. Type '''/rewatch help''' in-game to get a list of all available commandline commands. This is the original way of configuring I made and allows for all commands to be given by commandline. If you're a little bit familiar with macros, you can even have macros perform these commands. But, for better convenience, you can also configure stuff through the WoW's UI interface menu. Hit Escape, click Interface and the click the AddOn tab - in the AddOn list there should be a Rewatch item, click it and you will see the commandline options in a UI form there. A shortcut to this frame is implemented commandline as well; just type '''/rewatch options'''.
+====Q: Rewatch looks strange, how can I reset it to it's defaults?====
+A: You can use the options menu to set it to it's default, but this won't likely solve your issue. You've probably updated from a previous version and forgot to remove some old configuration files. Exit WoW, delete all World of Warcraft/WTF/Account/'''accountname'''/SavedVariables/Rewatch.* files and load up WoW again. That should do it.
+
+===Problems===
+====Q: Why do I get an error when trying to re-sort the list in the WoW UI panel?====
+A: This error occurs if you disabled the auto-adjust to group feature. Resorting is actually just a clear, and then puts all grouped players back in a correct order. But this cannot be performed since you didn't allow the AddOn to adjust to the group! So make sure this feature is enabled before hitting the button. If you're in the WoW UI, make sure you clicked the '''Done''' button when changing the checkbox, because else the new check state will not be saved. Also, typing '''/rewatch autogroup 1''' will re-enable it.
+====Q: It doesn't automatically put players on my Rewatch list anymore! Why?====
+A: Because you told Rewatch you don't want it to. You probably removed a player from the list by right-clicking his/her healthbar and clicking '''Remove player''', which automatically turns the auto-update feature of Rewatch off. Since if it wouldn't, then Rewatch will sooner or later detect this player in your party but not in the list, and will add it again. Turn the auto-update feature back on in the rewatch options menu, or through '''/rewatch autogroup 1'''.
+
+==Creditz==
+Written by Coen van der Wel, main character Daîsey on Argent Dawn, Europe, 2008-2010.
+
+Special thanks to Hee-seon, Thomas Friedrich, Didier ''Silvio'' Carmin and Jkon (Tyrande) for the resp. Korean, German, French and Spanish localizations!

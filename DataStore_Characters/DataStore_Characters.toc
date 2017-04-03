@@ -1,0 +1,16 @@
+﻿## Interface: 30300
+## Title: DataStore_Characters
+## Notes: Stores information about characters (race, level, etc..)
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.001
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_CharactersDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+## X-Curse-Packaged-Version: r11
+## X-Curse-Project-Name: DataStore_Characters
+## X-Curse-Project-ID: datastore_characters
+## X-Curse-Repository-ID: wow/datastore_characters/mainline
+
+DataStore_Characters.lua

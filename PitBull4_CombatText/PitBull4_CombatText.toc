@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fCombat text|r]
+## Title-deDE: PitBull4 |r[|cffeda55fKampftext|r]
+## Title-esES: PitBull4 |r[|cffeda55fTexto de Combate|r]
+## Title-frFR: PitBull4 |r[|cffeda55fTexte de combat|r]
+## Title-koKR: PitBull4 |r[|cffeda55f전투 문자|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fТекст в режиме боя|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f战斗文字|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f戰鬥文字|r]
+## Notes: Show information like damage taken, healing taken, resists, etc. on the unit frame.
+## Notes-deDE: Zeigt Informationen über genommenen Schaden, erhaltene Heilung, Wiederstände, usw. auf dem Rahmen an.
+## Notes-esES: Muestra información como el daño recibido, curaciones recibidas, resistencias, etc. en la unidad.
+## Notes-frFR: Affiche des informations comme les dégâts reçus, les soins reçus, les résistances... sur le cadre d'unité.
+## Notes-koKR: 유닛 프레임에 피해, 치유량, 저항 등의 정보를 표시합니다.
+## Notes-ruRU: Показывает информацию типа полученного урона, лечения, сопротивлений и т.д. поверх юнит фрейма.
+## Notes-zhCN: 在单位框体上显示诸如受到伤害、受到治疗、抵抗等等战斗信息
+## Notes-zhTW: 在單位框架上顯示諸如受到傷害、受到治療、抵抗等等戰鬥資訊。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

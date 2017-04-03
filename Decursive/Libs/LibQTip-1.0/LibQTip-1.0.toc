@@ -1,0 +1,17 @@
+## Interface: 30300
+## Title: Lib: QTip-1.0
+## Notes: Library providing multi-column tooltips.
+## Author: Torhal, Adirelle, Elkano, Tristanian
+## Version: r138 
+## LoadOnDemand: 1
+## X-Date: 2010-08-03T20:56:32Z
+## X-Credits: Kaelten (input on initial design)
+## X-Category: Library, Tooltip
+## X-License: Ace3 BSD-like license
+## X-Curse-Packaged-Version: r138
+## X-Curse-Project-Name: LibQTip-1.0
+## X-Curse-Project-ID: libqtip-1-0
+## X-Curse-Repository-ID: wow/libqtip-1-0/mainline
+
+LibStub\LibStub.lua
+lib.xml

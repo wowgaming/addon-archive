@@ -1,0 +1,140 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Options.lua"></Script>
+
+	<Frame name="DataStoreGeneralOptions" hidden="true">
+		<Size>
+			<AbsDimension x="615" y="306"/>
+		</Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Title" inherits="GameFontHighlightLarge" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="400" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" />
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_AddonsText" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="60" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="20" y="-40"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_AddonsList" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP">
+					<Size>
+						<AbsDimension x="220" y="240"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_AddonsText" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="20" y="-20"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_AddonsMem" inherits="GameFontNormal" justifyH="RIGHT" justifyV="TOP">
+					<Size>
+						<AbsDimension x="60" y="240"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_AddonsList" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="20" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnShow>
+				DataStore:UpdateMyMemoryUsage()
+			</OnShow>
+		</Scripts>
+		<Frames>
+			<Button name="$parent_Refresh" inherits="UIPanelButtonTemplate" text="Refresh">
+				<Size>
+					<AbsDimension x="100" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_AddonsList" relativePoint="BOTTOMLEFT" >
+						<Offset>
+							<AbsDimension x="30" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						DataStore:UpdateMyMemoryUsage()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<Frame name="DataStoreHelp" hidden="true">
+		<Size>
+			<AbsDimension x="615" y="400"/>
+		</Size>
+		<Scripts>
+			<OnUpdate>
+				DataStore:OnUpdate(self)
+			</OnUpdate>
+			<OnShow>
+				DataStore:OnUpdate(self, true)
+			</OnShow>
+		</Scripts>
+		<Frames>
+			<ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="615" y="400"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<Frame name="$parentScrollChildFrame">
+						<Size>
+							<AbsDimension x="270" y="304"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="DataStoreHelp_Text" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP">
+									<Size>
+										<AbsDimension x="580" />
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+	</Frame>	
+	
+</Ui>

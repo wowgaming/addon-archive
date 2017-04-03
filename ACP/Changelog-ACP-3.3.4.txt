@@ -1,0 +1,8 @@
+2010-04-14  StingerSoft  <StingerSoft@7213456c-7c21-484b-8324-69955f39d2f8>
+
+[6197a75a935b] [3.3.4]
+* localization-ruRU.lua:
+
+ruRU update
+
+

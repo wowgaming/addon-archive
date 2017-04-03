@@ -1,0 +1,15 @@
+﻿## Interface: 30300
+## Title: Altoholic_Achievements
+## Notes: Altoholic's Achievements UI
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: 3.3.002
+## Dependencies: Altoholic, DataStore, DataStore_Achievements, DataStore_Characters
+## LoadOnDemand: 1
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: r90
+## X-Curse-Project-Name: Altoholic
+## X-Curse-Project-ID: altoholic
+## X-Curse-Repository-ID: wow/altoholic/mainline
+
+TabAchievements.xml
+Achievements.xml

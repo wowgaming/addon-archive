@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fRole icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fRollensymbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono de rol|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône de rôle|r]
+## Title-koKR: PitBull4 |r[|cffeda55fRole icon|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fРоль персонажа|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f角色图标|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f隊伍角色圖示|r]
+## Notes: Show an icon on the unit frame based on which Role it is.
+## Notes-deDE: Zeigt die Rolle der Einheit als Symbol an.
+## Notes-esES: Muestra un icono en el marco de la unidad basándose en su Rol.
+## Notes-frFR: Affiche une icône sur le cadre d'unité selon le rôle de ce dernier.
+## Notes-koKR: Show an icon on the unit frame based on which Role it is.
+## Notes-ruRU: Отображать иконку "Роль персонажа" на фрейме юнита.
+## Notes-zhCN: 在单位框体上按其队伍角色显示图标
+## Notes-zhTW: 按隊伍角色在單位框體上顯示圖示
+## Author: ulic
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

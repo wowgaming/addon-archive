@@ -1,0 +1,16 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	
+	<Script file="libs\LibStub\LibStub.lua"/>
+	<Include file="libs\LibTipHooker-1.1\lib.xml"/>	
+	<Include file="libs\AceTimer-3.0\AceTimer-3.0.xml"/>
+	<Include file="libs\AceLocale-3.0\AceLocale-3.0.xml"/>	
+	<Script file="locale\Localization.lua"/>
+	<Script file="locale\Localization.FR.lua"/>	
+	<Script file="locale\Localization.DE.lua"/>	
+	<Script file="locale\Localization.CN.lua"/>	
+	<Script file="locale\Localization.TW.lua"/>	
+	<Script file="locale\Localization.ES.lua"/>	
+	<GameTooltip name="BonusScannerTooltip" frameStrata="TOOLTIP" hidden="true" parent="UIParent" inherits="GameTooltipTemplate"/>
+	<Script file="BonusScanner.lua"/>
+</Ui>

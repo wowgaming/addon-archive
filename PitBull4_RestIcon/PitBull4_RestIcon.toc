@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fRest icon|r]
+## Title-deDE: PitBull4 |r[|cffeda55fRastsymbol|r]
+## Title-esES: PitBull4 |r[|cffeda55fIcono de descanso|r]
+## Title-frFR: PitBull4 |r[|cffeda55fIcône de repos|r]
+## Title-koKR: PitBull4 |r[|cffeda55f휴식 아이콘|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fИконка отдыха|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f休息标记|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f休息標記|r]
+## Notes: Show an icon on the unit frame when the unit is resting in an inn or city.
+## Notes-deDE: Zeigt ein Symbol auf dem Einheitsrahmen, wenn sich die Einheit in einem Gasthaus oder in einer Hauptstadt befindet.
+## Notes-esES: Muestra un icono en la unidad cuando la unidad está descansando en una posada o ciudad.
+## Notes-frFR: Affiche une icône sur le cadre d'unité quand l'unité se repose dans une auberge ou dans une capitale.
+## Notes-koKR: 유닛이 여관이나 도시에 있을 때 휴식 아이콘을 표시합니다.
+## Notes-ruRU: Показывать иконку, когда юнит отдыхает в таверне или в городе.
+## Notes-zhCN: 显示单位处在旅店或主城中时的休息标记
+## Notes-zhTW: 顯示單位處在旅店或主城中時的休息標記。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

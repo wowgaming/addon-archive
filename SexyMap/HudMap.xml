@@ -1,0 +1,21 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Frame name="HudMapCluster" parent="UIParent">
+		<Size>
+			<AbsDimension x="140" y="140"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativePoint="CENTER" />
+		</Anchors>
+		<Frames>
+			<Minimap name="SexyMapHudMap" enableMouse="false" minimapPlayerModel="Interface\Minimap\MinimapArrow.mdx" minimapArrowModel="Interface\Minimap\Rotating-MinimapArrow.mdl">
+				<Size>
+					<AbsDimension x="140" y="140"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="CENTER" />
+				</Anchors>
+			</Minimap>
+		</Frames>
+	</Frame>
+</Ui>

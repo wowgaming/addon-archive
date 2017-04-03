@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <!-- This file is included as a template.
+        In order to import fonts into WIM, you must first create your font objects here.
+        For more information visit: http://www.wimaddon.com
+    -->
+    
+    
+    
+</Ui>

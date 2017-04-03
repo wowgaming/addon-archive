@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fHide Blizzard frames|r]
+## Title-deDE: PitBull4 |r[|cffeda55fBlizzardrahmen verstecken|r]
+## Title-esES: PitBull4 |r[|cffeda55fOcultar los marcos de Blizzard.|r]
+## Title-frFR: PitBull4 |r[|cffeda55fCacher les cadres de Blizzard|r]
+## Title-koKR: PitBull4 |r[|cffeda55f블리자드 프레임 숨김|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fСкрыть фреймы от Близзард|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f隐藏暴雪默认框体|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f隱藏官方預設框架|r]
+## Notes: Hide Blizzard frames that are no longer needed.
+## Notes-deDE: Versteckt Blizzardrahmen, die nicht mehr benötigt werden.
+## Notes-esES: Oculta los marcos de Blizzard que ya no son necesarios.
+## Notes-frFR: Cache les cadres de Blizzard qui ne sont plus nécessaires.
+## Notes-koKR: 더 이상 필요없는 블리자드 프레임을 숨깁니다.
+## Notes-ruRU: Скрыть невостребованные фреймы от Близзард.
+## Notes-zhCN: 隐藏不再需要的暴雪框体
+## Notes-zhTW: 隱藏不再需要的官方框架。
+## Author: ckknight
+## DefaultState: enabled
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: Titan Panel [|cffeda55fClock|r] |cff00aa004.3.8.30300|r
+## Notes: Adds a clock to Titan Panel
+## Author: Titan Development Team (http://www.titanpanel.org)
+## SavedVariables: 
+## OptionalDeps: 
+## Dependencies: Titan
+## Version: 4.3.8.30300
+## X-Child-Of: Titan
+TitanClock.xml

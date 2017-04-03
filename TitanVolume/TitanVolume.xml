@@ -1,0 +1,283 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="TitanVolume.lua"/>
+	<Frame name="TitanPanelVolumeControlFrameTemplate" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="470" y="200" />
+		</Size>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer>
+				<FontString name="$parentTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-10" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMasterTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="-200" y="-30" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSoundTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="-130" y="-30" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMusicTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="-60" y="-30" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentAmbienceTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="10" y="-30" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMicrophoneTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="100" y="-30" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSpeakerTitle" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="180" y="-30" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Slider name="TitanPanelMasterVolumeControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="-200" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelMasterVolumeControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelMasterVolumeControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelUnifiedVolumeControlSlider_OnMouseWheel(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelMasterVolumeControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelMasterVolumeControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>			
+			<Slider name="TitanPanelSoundVolumeControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="-130" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelSoundVolumeControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelSoundVolumeControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelUnifiedVolumeControlSlider_OnMouseWheel(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelSoundVolumeControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelSoundVolumeControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>			
+			<Slider name="TitanPanelMusicVolumeControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="-60" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelMusicVolumeControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelMusicVolumeControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelUnifiedVolumeControlSlider_OnMouseWheel(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelMusicVolumeControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelMusicVolumeControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>
+			<Slider name="TitanPanelAmbienceVolumeControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="10" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelAmbienceVolumeControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelAmbienceVolumeControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelUnifiedVolumeControlSlider_OnMouseWheel(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelAmbienceVolumeControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelAmbienceVolumeControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>
+			<Slider name="TitanPanelMicrophoneVolumeControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="100" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelMicrophoneVolumeControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelMicrophoneVolumeControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelUnifiedVolumeControlSlider_OnMouseWheel(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelMicrophoneVolumeControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelMicrophoneVolumeControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>
+			<Slider name="TitanPanelSpeakerVolumeControlSlider" inherits="TitanOptionsSliderTemplate">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="180" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TitanPanelSpeakerVolumeControlSlider_OnShow(self);
+					</OnShow>
+					<OnValueChanged>
+						TitanPanelSpeakerVolumeControlSlider_OnValueChanged(self, value);
+					</OnValueChanged>
+					<OnMouseWheel>
+					  	TitanPanelUnifiedVolumeControlSlider_OnMouseWheel(self, delta);
+					</OnMouseWheel>
+					<OnEnter>
+						TitanPanelSpeakerVolumeControlSlider_OnEnter(self);
+					</OnEnter>
+					<OnLeave>
+						TitanPanelSpeakerVolumeControlSlider_OnLeave(self)
+					</OnLeave>
+				</Scripts>
+			</Slider>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				TitanPanelVolumeControlFrame_OnLoad(self);
+			</OnLoad>
+			<OnEnter>
+				TitanUtils_StopFrameCounting(self);
+			</OnEnter>
+			<OnLeave>
+				TitanUtils_StartFrameCounting(self, 0.5);
+			</OnLeave>
+			<OnUpdate>
+				TitanPanelVolumeControlFrame_OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>	
+	<Frame parent="UIParent">
+		<Frames>
+			<Button name="TitanPanelVolumeButton" inherits="TitanPanelIconTemplate" frameStrata="FULLSCREEN" toplevel="true">
+				<Scripts>
+					<OnLoad>
+						TitanPanelVolumeButton_OnLoad(self);
+						TitanPanelButton_OnLoad(self);
+					</OnLoad>
+					<OnShow>
+						TitanPanelVolumeButton_OnShow();
+						TitanPanelButton_OnShow(self);
+					</OnShow>
+					<OnEnter>
+						TitanPanelVolumeButton_OnEnter();
+						TitanPanelButton_OnEnter(self);
+					</OnEnter>
+					<OnEvent>
+						TitanPanelVolumeButton_OnEvent(self, event, ...);
+					</OnEvent>
+				</Scripts>
+			</Button>
+			<Frame name="TitanPanelVolumeControlFrame" inherits="TitanPanelVolumeControlFrameTemplate" frameStrata="FULLSCREEN" toplevel="true" />
+		</Frames>
+	</Frame>		
+	</Ui>

@@ -1,0 +1,17 @@
+## Title: Auc:Stat:iLevel
+## Notes: Statistics extension for Auctioneer that uses the variance to detect outliers, grouping data upon the item quality, type and item level.
+##
+## Interface: 30300
+## LoadOnDemand: 0
+## Disabled: 1
+## Dependencies: Auc-Advanced
+## SavedVariables: AucAdvancedStat_iLevelData
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Stat-iLevel.toc 4566 2009-12-08 14:43:28Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+
+iLevel.lua

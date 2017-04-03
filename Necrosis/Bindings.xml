@@ -1,0 +1,151 @@
+﻿<Bindings>
+	<Binding name="CLICK NecrosisButton:LeftButton" header="Necrosis">
+		-- Sphere --
+	</Binding>
+	<Binding name="CLICK NecrosisMountButton:LeftButton">
+		-- Monture 1--
+	</Binding>
+	<Binding name="CLICK NecrosisMountButton:RightButton">
+		-- Monture 2--
+	</Binding>
+	<Binding name="CLICK NecrosisFirestoneButton:RightButton">
+		-- Créer Pierre de feu --
+	</Binding>
+	<Binding name="CLICK NecrosisFirestoneButton:LeftButton">
+		-- Utiliser Pierre de feu --
+	</Binding>
+	<Binding name="CLICK NecrosisSpellstoneButton:RightButton">
+		-- Créer Pierre de sort --
+	</Binding>
+	<Binding name="CLICK NecrosisSpellstoneButton:LeftButton">
+		-- Utiliser Pierre de sort --
+	</Binding>
+	<Binding name="CLICK NecrosisHealthstoneButton:RightButton">
+		-- Créer Pierre de soins --
+	</Binding>
+	<Binding name="CLICK NecrosisHealthstoneButton:LeftButton">
+		-- Utiliser Pierre de soins --
+	</Binding>
+	<Binding name="CLICK NecrosisHealthstoneButton:MiddleButton">
+		-- Echanger Pierre de soins --
+	</Binding>
+	<Binding name="CLICK NecrosisSoulstoneButton:RightButton">
+		-- Créer Pierre de résurrection --
+	</Binding>
+	<Binding name="CLICK NecrosisSoulstoneButton:LeftButton">
+		-- Utiliser Pierre de résurrection --
+	</Binding>
+	
+	<Binding name="CLICK NecrosisBuffMenuButton:LeftButton" header="NecrosisSpell">
+		-- Menu des sorts --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu1:LeftButton">
+		-- Demon Armor || Armure démoniaque --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu2:LeftButton">
+		-- Fel Armor || Gangrarmure --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu3:LeftButton">
+		-- Unending Breath || Respiration interminable --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu4:LeftButton">
+		-- Detect Invisibility || Invisibilité --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu5:LeftButton">
+		-- Eye of Kilrogg --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu6:LeftButton">
+		-- Ritual of Summoning || Rituel d'invocation --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu7:LeftButton">
+		-- Soul Link || Lien Spirituel --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu8:LeftButton">
+		-- Shadow Ward || Gardien de l'ombre --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu9:LeftButton">
+		-- Demonic Empowerment || Renforcement démoniaque --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu10:LeftButton">
+		-- Banish || Bannir --
+	</Binding>
+	<Binding name="CLICK NecrosisBuffMenu10:RightButton">
+		-- Banish rank 1 || Bannir rang 1 --
+	</Binding>
+	
+
+	<Binding name="CLICK NecrosisPetMenuButton:LeftButton" header="NecrosisPet">
+		-- Menu des démons --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu1:LeftButton">
+		-- Domination corrompue --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu2:LeftButton">
+		-- Imp --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu3:LeftButton">
+		-- Marcheur --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu4:LeftButton">
+		-- Succube --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu5:LeftButton">
+		-- Felhunter --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu6:LeftButton">
+		-- Gangregarde --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu7:LeftButton">
+		-- Infernal --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu8:LeftButton">
+		-- Doomguard --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu9:LeftButton">
+		-- Asservissement --
+	</Binding>
+	<Binding name="CLICK NecrosisPetMenu10:LeftButton">
+		-- Sacrifice --
+	</Binding>
+
+	<Binding name="CLICK NecrosisCurseMenuButton:LeftButton" header="NecrosisCurse">
+		-- Menu des malédictions --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu1:LeftButton">
+		-- Faiblesse --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu2:LeftButton">
+		-- Agonie --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu3:LeftButton">
+		-- Témérité --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu4:LeftButton">
+		-- Langage --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu5:LeftButton">
+		-- Fatigue --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu6:LeftButton">
+		-- Elements --
+	</Binding>
+	<Binding name="CLICK NecrosisCurseMenu7:LeftButton">
+		-- Corruption --
+	</Binding>
+	
+	<Binding name="CLICK NecrosisMetamorphosisButton:LeftButton" header="NecrosisMetamorphosis">
+		-- Menu de la Métamorphose --
+	</Binding>
+	<Binding name="CLICK NecrosisMetamorphosisMenu1:LeftButton">
+		-- Charge --
+	</Binding>
+	<Binding name="CLICK NecrosisMetamorphosisMenu2:LeftButton">
+		-- Défi --
+	</Binding>
+	<Binding name="CLICK NecrosisMetamorphosisMenu3:LeftButton">
+		-- Echainement --
+	</Binding>
+	<Binding name="CLICK NecrosisMetamorphosisMenu4:LeftButton">
+		-- Immolation --
+	</Binding>
+</Bindings>

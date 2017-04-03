@@ -1,0 +1,18 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="Options.lua"/>
+<Script file="General.lua"/>
+<Script file="ConfigMode.lua"/>
+<Script file="LayoutEditor.lua"/>
+<Script file="LayoutEditor\General.lua"/>
+<Script file="LayoutEditor\Bars.lua"/>
+<Script file="LayoutEditor\Indicators.lua"/>
+<Script file="LayoutEditor\Texts.lua"/>
+<Script file="LayoutEditor\Faders.lua"/>
+<Script file="LayoutEditor\Other.lua"/>
+<Script file="Units.lua"/>
+<Script file="Modules.lua"/>
+<Script file="Colors.lua"/>
+
+</Ui>

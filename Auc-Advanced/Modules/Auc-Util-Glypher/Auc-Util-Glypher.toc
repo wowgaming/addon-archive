@@ -1,0 +1,14 @@
+## Title: Auc:Util:Glypher
+## Notes: Auctioneer utility to assist in the creation of glyphs according to the player's stock and market conditions.
+##
+## Interface: 30300
+## Dependancies: Auc-Advanced, BeanCounter, Informant
+## OptionalDeps: AdvancedTradeSkillWindow, Auc-Util-Appraiser, DataStore, Skillet
+##
+## Version: 5.8.4723 (CreepyKangaroo)
+## Revision: $Id: Auc-Util-Glypher.toc 4587 2009-12-17 22:00:31Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Embed.xml

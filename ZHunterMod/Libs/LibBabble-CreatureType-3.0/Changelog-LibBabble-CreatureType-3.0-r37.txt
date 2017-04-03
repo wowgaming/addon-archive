@@ -1,0 +1,33 @@
+------------------------------------------------------------------------
+r37 | nevcairiel | 2008-10-12 11:39:14 +0000 (Sun, 12 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-CreatureType-3.0.toc
+
+Patch 3.0 prep: Remove LoD from Libraries that have no load manager (LoD+OptDep Bug)
+------------------------------------------------------------------------
+r36 | nevcairiel | 2008-10-09 21:51:56 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-CreatureType-3.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r35 | arrowmaster | 2008-10-04 01:30:38 +0000 (Sat, 04 Oct 2008) | 1 line
+Changed paths:
+   M /trunk
+   M /trunk/LibBabble-CreatureType-3.0.lua
+
+Fix autoupdating minor version
+------------------------------------------------------------------------
+r34 | root | 2008-09-29 22:14:51 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r32 | root | 2008-09-29 20:58:16 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/LibBabble-CreatureType-3.0
+   A /trunk (from /tmp/trunk/LibBabble-CreatureType-3.0:31)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------

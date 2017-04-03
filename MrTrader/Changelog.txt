@@ -1,0 +1,117 @@
+v0.5.10
+* TOC update for 3.3.0
+
+v0.5.9
+* Reverts back the change from 0.5.1 where we block the Blizz UI from loading. Instead we just hook Blizz UI, and only override its display.
+* Tradeskill windows should use the tradeskill icon for its portrait rather than the player icon. This makes a bit more sense in a world where tradeskills can be linked, and we won't even be able to get the portrait of the character with that tradeskill.
+* Moved the tooltip when hovering over a recipe so it is more visible when browsing. 
+
+v0.5.8
+* Library cleanup
+* Ackis Recipe List support (Requires r2509 of Ackis or later).
+
+v0.5.7
+* Fixes for DockingStation for the menu
+* Fixes in the Tradeskill UI to remove some script errors.
+
+v0.5.6
+* Minor tweak to the positioning of the drop-down tradeskill menu to match the old DewDrop positioning.
+* Fixes so that MrTrader can load correctly when everything else is disabled.
+
+v0.5.5
+* No longer hook TradeSkillFrame_Show before the blizzard add-on is loaded. Should lead to causing fewer problems with other addons that hook this API.
+* Convert drop-down menus to UIDropDownMenu and remove dependency on DewDrop-2.0 for more memory savings.
+* Removal of debug spew.
+* Fixes for the 'remember selected category' feature which was broken with regards to category/inventory slot filtering.
+
+v0.5.4.1
+* Updated changelog to actually include what changed.
+
+v0.5.4
+* MrTrader-side support for LilSparky's Workshop
+* Ability to whisper back more than 1 version of a tradeskill at a time (if you have multiple characters with the same tradeskill). Has a privacy option of also whispering back the character name, which is disabled by default.
+* Ability to remember which category on the left side of the window was selected by the user.
+
+v0.5.3
+* Fixes on the hooks to make them a bit more robust in more uncommon situations.
+* Fixes for the search bar to make it a bit more robust when switching tradeskills.
+
+v0.5.2
+* Fixes a stupid bug introduced when making the tradeskill window independent from Blizzard's.
+
+v0.5.1
+* Fix for some refreshing issues (bag related and so on) with the tradeskill window.
+* Fixes an issue where trying to use Market Watcher's tradeskill filtering wouldn't work.
+* The tradeskill window is now a module and is loaded on-demand. MrTrader will also prevent the Blizzard UI from being loaded at all if you don't want it to be used.
+
+v0.5
+* Big new functionality: A replacement Tradeskill window. Comes with the following features:
+	* New filter selection UI based on the Auction House
+	* Difficulty Filtering
+	* Custom Groups
+	* Context menu support for manipulating filters and tradeskills
+	* Search as you type for all filters
+	* Blizzard UI-parity
+	* Can be turned off in the configuration to remain compatible with other Addons
+* Partial translations for French and Simplified Chinese (Thanks for submitting localizations guys!)
+
+v0.4.9
+* Fix for a bug with !link and alts without any tradeskills to track.
+
+v0.4.8
+* Cleaned up Config GUI.
+* New icon for menu.
+
+v0.4.6
+* Some more fixes so that certain combinations of addons don't cause MrTrader to fail.
+
+v0.4.5
+* You can now configure MrTrader to also respond to commands over guild, or raid/party chat. It is off by default and must be enabled by the user.
+
+v0.4.4
+* You can now turn off secondary skills (Cooking, First Aid) and unlinkable skills (Runeforging, Smelting) from showing up on the list of tradeskills for your alt's. The character you are logged into will always show all your tradeskills.
+
+v0.4.3
+* Fixed the AceLibrary dependancy... really.
+
+v0.4.2
+* New logic for matching partial skill names. Any part of the full name can be used, as long as it is unique to the skill 'black' or 'smith' will both match Blacksmithing. 'alch' will match Alchemy, as well. The name of the skill matched is localized.
+* Removed some debug code which would spew text into a chat window if you had linking alt's tradeskills turned on.
+
+v0.4.1
+* Supports '!link' in addition to '!full' to get a skill link.
+* Responding to whispers can be turned off in the options.
+
+v0.4
+* Cleanup of the localizations, removing old phrases.
+* Support for German and Russian translations.
+* A fix that should address errors when someone doesn't have AceLibrary.
+* Support for '!full <skill name>' as a whisper command, to be similar to CraftList2
+* Options for turning off showing opposite faction alts, and for having '!full' search your alts skills when responding.
+
+v0.3.2
+* Fixes to adding a link, so that it won't fail if you don't already have the chat editor up.
+
+v0.3.1
+* No changes, was accidentally released without any.
+
+v0.3
+* No longer claims to be incompatible with 3.1
+* Items in the menu now have better tooltips
+* Characters of the opposite faction will now show up in the menu, tinted red.
+* You can now ignore characters and remove them from the list until you decide otherwise. For now you will need to log into the ignored character and select 'Unignore' from the menu to undo this.
+
+Due to changes to the DB in 0.3, you might run into the following issues:
+* Tinting of characters won't work until you login.
+* You will need to log into characters of both factions before the DB is properly merged so that you can see both factions at the same time.
+
+If you run into issues with links not working, login to the character whose links aren't working to refresh them. Changes to skills in 3.1 make links saved before the patch not work.
+
+v0.2
+* Allows removing a character from the menu, so you don't get deleted characters clogging up the menu.
+* Cleanup of the code to make WoWAce and lib owners happier.
+* MrTrader should use spellIDs now, so we can let WoW localize skill names for us.
+* Fixed a debug spew issue.
+
+v0.1
+* Initial release. View and link skills. Whee.

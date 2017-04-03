@@ -1,0 +1,13 @@
+tag v1.2.3
+b23773fd9d797c14d4d5c2cdc92c10a7e07b16bb
+unknown <Chris@.(none)>
+2009-12-20 13:40:51 -0700
+
+tagging as 1.2.3
+
+
+--------------------
+
+unknown:
+	- Add mover for boss target frames (Gunship, etc)
+	- Remove debugging statements

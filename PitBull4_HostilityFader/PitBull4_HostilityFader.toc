@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: PitBull4 |r[|cffeda55fHostility fader|r]
+## Title-deDE: PitBull4 |r[|cffeda55fFeindseligkeitsfader|r]
+## Title-esES: PitBull4 |r[|cffeda55fDesvanecimiento por hostilidad|r]
+## Title-frFR: PitBull4 |r[|cffeda55fFondu d'hostilité|r]
+## Title-koKR: PitBull4 |r[|cffeda55fHostility fader|r]
+## Title-ruRU: PitBull4 |r[|cffeda55fФейдер враждебности|r]
+## Title-zhCN: PitBull4 |r[|cffeda55f敌对淡出|r]
+## Title-zhTW: PitBull4 |r[|cffeda55f敵對淡出|r]
+## Notes: Make the unit frame fade depending on the units hostility.
+## Notes-deDE: Blendet den Rahmen in Abhängigkeit der Feindseligkeit aus.
+## Notes-esES: Hace que el marco se desvanezca dependiendo de la hostilidad de las unidades
+## Notes-frFR: Permet au cadre d'unité de s'estomper selon l'hostilité des unités.
+## Notes-koKR: Make the unit frame fade depending on the units hostility.
+## Notes-ruRU: Обеспечивает исчезновение юнитфрейма в зависимости от враждебности объектов.
+## Notes-zhCN: 按照单位敌对状态淡出框体
+## Notes-zhTW: 按照單位敵對狀態淡出框體。
+## Author: Shefki 
+## DefaultState: enabled 
+## LoadOnDemand: 1
+## Dependencies: PitBull4
+## Version: v4.0.0-beta9
+## X-Curse-Packaged-Version: v4.0.0-beta9
+## X-Curse-Project-Name: PitBull Unit Frames 4.0
+## X-Curse-Project-ID: pitbull4
+## X-Curse-Repository-ID: wow/pitbull4/mainline
+
+load.xml

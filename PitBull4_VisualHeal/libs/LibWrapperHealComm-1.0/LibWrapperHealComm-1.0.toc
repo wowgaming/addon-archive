@@ -1,0 +1,16 @@
+## Interface: 30300
+## Title: Lib: HealComm Wrapper - 1.0
+## Notes: Wrapper to convert HealComm data from 3.0 to 4.0
+## Author: xbeeps (3.0), Shadowed (4.0)
+## X-Category: Library
+## OptionalDeps: LibHealComm-3.0, LibHealComm-4.0
+## X-Curse-Packaged-Version: v5.2
+## X-Curse-Project-Name: LibWrapperHealComm-1.0
+## X-Curse-Project-ID: libwrapperhealcomm-1-0
+## X-Curse-Repository-ID: wow/libwrapperhealcomm-1-0/mainline
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+#@end-no-lib-strip@
+
+LibWrapperHealComm-1.0.xml

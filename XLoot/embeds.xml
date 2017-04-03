@@ -1,0 +1,18 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="libs\AceLibrary\AceLibrary.lua"/>
+<Script file="libs\AceOO\AceOO-2.0.lua"/>
+<Script file="libs\AceEvent\AceEvent-2.0.lua"/>
+<Script file="libs\AceAddon\AceAddon-2.0.lua"/>
+<Script file="libs\AceHook\AceHook-2.1.lua"/>
+<Script file="libs\AceLocale\AceLocale-2.2.lua"/>
+<Script file="libs\AceDB\AceDB-2.0.lua"/>
+<Script file="libs\AceConsole\AceConsole-2.0.lua"/>
+<Script file="libs\AceModuleCore\AceModuleCore-2.0.lua"/>
+<Script file="libs\AnchorsAway\AnchorsAway-1.0.lua"/>
+<Script file="libs\Dewdrop\Dewdrop-2.0.lua"/>
+<Script file="libs\Deformat\Deformat-2.0.lua"/>
+<Script file="libs\SpecialEvents-Loot\SpecialEvents-Loot-1.0.lua"/>
+
+</Ui>

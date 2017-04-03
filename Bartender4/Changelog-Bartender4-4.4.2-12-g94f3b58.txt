@@ -1,0 +1,14 @@
+Hendrik Leppkes:
+	- Add new files to Babelfish.lua
+	- Poke for locale update.
+	- Cleanup up and re-indented BlizzardArt sources.
+	- Added a Bartender-specific toggle-actionbar-lock keybinding.
+	- Disabeld "ActionBar Paging" by default.
+	- Don't modify the hotkey position when LBF is loaded, as a skin could modify this.
+	- Improved sliders in the options with softMin/softMax and bigStep to offer more freedom in configuration.
+	- Remove old unused option code snippet
+Thomas Schaap:
+	- Added a Defaults option tab which can be used to reset a profile to a close approximation of Blizzard's UI.
+	Note that to get even closer a couple of other things would need to be changed, such as strata options and the bag bar's layout.
+	- Corrected a small error in the default values for BlizzardArt.
+	- Added BlizzardArt module to existing code.

@@ -1,0 +1,10 @@
+## Interface: 20400
+## Title: Lib: Babble-CreatureType-3.0
+## Notes: A library to help with localization of the output of UnitCreatureType.
+## Author: Kemayo
+## X-eMail: kemayo AT gmail DOT com
+## X-Category: Library
+## X-License: MIT
+
+LibStub\LibStub.lua
+lib.xml

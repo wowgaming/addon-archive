@@ -1,0 +1,78 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">	
+  
+  <GameTooltip name="TitanPanelTooltip" inherits="GameTooltipTemplate" parent="UIParent" hidden="true"/>
+	<Button name="TitanPanelBarButtonHiderTemplate" frameStrata="BACKGROUND" toplevel="true" movable="true" parent="UIParent" virtual="true">
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonDown")
+			</OnLoad>
+			<OnEnter>
+				TitanPanelBarButtonHider_OnEnter(self:GetName())
+			</OnEnter>
+			<OnClick>
+				TitanPanelBarButton_OnClick(self, button)
+			</OnClick>
+		</Scripts>
+		<Size>
+			<AbsDimension x="2560" y="24"/>
+		</Size>		
+	</Button>
+
+	<Button name="TitanPanelBarButtonHider" inherits="TitanPanelBarButtonHiderTemplate" hidden="false">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Button>
+
+	<Button name="TitanPanelAuxBarButtonHider" inherits="TitanPanelBarButtonHiderTemplate" hidden="false">
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="UIParent" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>		
+	</Button>
+
+	<Button name="TitanPanelBarButton" frameStrata="DIALOG" parent="UIParent">	
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+			<Anchor point="BOTTOMRIGHT" relativeTo="UIParent" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="-24"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Frame name="$parentRightClickMenu" inherits="UIDropDownMenuTemplate" hidden="true">
+			</Frame>
+		</Frames>
+	</Button>
+	<Button name="TitanPanelAuxBarButton" frameStrata="DIALOG" parent="UIParent">	
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+			<Anchor point="BOTTOMRIGHT" relativeTo="UIParent" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="-24"/>
+				</Offset>
+			</Anchor>
+		</Anchors>		
+		<Frames>
+			<Frame name="$parentRightClickMenu" inherits="UIDropDownMenuTemplate" hidden="true">
+			</Frame>
+		</Frames>
+	</Button>
+</Ui>

@@ -1,0 +1,602 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+	<Script file="localization.lua"/>
+	<Script file="localization.deDE.lua"/>
+	<Script file="localization.frFR.lua"/>
+	<Script file="localization.esES.lua"/>
+	<Script file="localization.zhCN.lua"/>
+	<Script file="localization.zhTW.lua"/>
+	<Script file="localization.koKR.lua"/>
+	<Script file="localization.ruRU.lua"/>
+	<Script file="XPerl_RaidMonitor.lua"/>
+
+	<Button name="XPerl_RaidMonitor_BasicButton" virtual="true">
+		<Scripts>
+			<OnEnter>
+				if (self.tooltipText) then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+				end
+			</OnEnter>
+			<OnLeave function="XPerl_PlayerTipHide"/>
+		</Scripts>
+	</Button>
+
+	<StatusBar name="XPerl_RaidMonitor_StatusBarTemplate" virtual="true">
+		<Scripts>
+			<OnLoad>
+				self.bg = _G[self:GetName().."bg"]
+				self.name = _G[self:GetName().."name"]
+				self.tex = _G[self:GetName().."tex"]
+				XPerl_RegisterBar(self)
+			</OnLoad>
+		</Scripts>
+		<BarTexture name="$parenttex" file="Interface\TargetingFrame\UI-StatusBar"/>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentname" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Color r="1" g="1" b="1"/>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentbg" file="Interface\TargetingFrame\UI-TargetingFrame-BarFill" setAllPoints="true"/>
+			</Layer>
+		</Layers>
+	</StatusBar>
+
+	<Button name="XPerl_RaidMonitor_BarTemplate" inherits="SecureActionButtonTemplate" virtual="true">
+		<Size><AbsDimension x="80" y="12"/></Size>
+		<HighlightTexture file="Interface\Addons\XPerl\images\XPerl_Highlight" alphaMode="ADD">
+			<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+		</HighlightTexture>
+		<Frames>
+			<StatusBar name="$parentBar" inherits="XPerl_RaidMonitor_StatusBarTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="1" y="-1"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-1" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</StatusBar>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self.bar = _G[self:GetName().."Bar"]
+				self:RegisterForClicks("AnyUp")
+				XPerl_RegisterHighlight(self, 3)
+			</OnLoad>
+			<OnEnter>
+				if (XPerlRaidMonConfig.Tooltips == 1) then
+					XPerl_PlayerTip(self)
+				end
+			</OnEnter>
+			<OnLeave function="XPerl_PlayerTipHide"/>
+		</Scripts>
+	</Button>
+
+	<Button name="XPerl_RaidMonitor_UnitTemplate" inherits="SecureUnitButtonTemplate" virtual="true">
+		<Scripts>
+			<OnLoad>
+				self.bar = _G[self:GetName().."Bar"]
+				self.groupedIcon = _G[self:GetName().."BarGrouped"]
+				self.castBar = _G[self:GetName().."BarCastBar"]
+				self.castBar.icon = _G[self:GetName().."BarCastBarIcon"]
+				self.castBar.spark = _G[self:GetName().."BarCastBarSpark"]
+				self.castBar.bg:Hide()
+				self.target = _G[self:GetName().."Target"]
+				self:RegisterForClicks("AnyUp")
+				XPerl_CastMon_ChildUnits(self)
+			</OnLoad>
+			<OnSizeChanged>
+				self.castBar.icon:SetHeight(h - 2)
+				self.castBar.icon:SetWidth(h - 2)
+				self.castBar.name:SetPoint("TOPLEFT", self, "BOTTOMLEFT", h + 2, h)
+				self.castBar.name:SetPoint("BOTTOMRIGHT", 0, 2)
+				self.castBar.spark:SetHeight((h - 2) * 2)
+				self.castBar.spark:SetWidth(h - 2)
+				self.castBar:SetHeight((h - 2) / 2)
+				self.castBar:SetPoint("TOPLEFT", self, "LEFT", h + 2, 0)
+				self.groupedIcon:SetWidth(h - 4)
+				self.groupedIcon:SetHeight(h - 4)
+			</OnSizeChanged>
+			<OnEnter>
+				if (XPerlRaidMonConfig.Tooltips == 1) then
+					local unit = SecureButton_GetUnit(self)
+					if (unit) then
+						XPerl_PlayerTip(self)
+
+						local left = SecureButton_GetModifiedAttribute(self, "type1")
+						local right = SecureButton_GetModifiedAttribute(self, "type2")
+
+						if (left or right) then
+							GameTooltip:AddLine(" ")
+						end
+						if (left) then
+							local action = XPerl_Monitor_MakeAction(self, left, 1)
+							if (action) then
+								GameTooltip:AddLine(string.format(XPERL_MONITOR_LEFTCLICK, action))
+							end
+						end
+						if (right) then
+							local action = XPerl_Monitor_MakeAction(self, right, 2)
+							if (action) then
+								GameTooltip:AddLine(string.format(XPERL_MONITOR_RIGHTCLICK, action))
+							end
+						end
+
+						GameTooltip:Show()
+					end
+				end
+			</OnEnter>
+			<OnLeave function="XPerl_PlayerTipHide"/>
+		</Scripts>
+		<Size>
+			<AbsDimension x="120" y="12"/>
+		</Size>
+		<HighlightTexture file="Interface\Addons\XPerl\images\XPerl_Highlight" alphaMode="ADD">
+			<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+		</HighlightTexture>
+		<Frames>
+			<StatusBar name="$parentBar" inherits="XPerl_RaidMonitor_StatusBarTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="2" y="-1"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-2" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<StatusBar name="$parentCastBar" inherits="XPerl_RaidMonitor_StatusBarTemplate" hidden="true">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="13" y="0"/>
+								</Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="$parentSpark" file="Interface\Addons\XPerl\Images\XPerl_ArcaneBarSpark" alphaMode="ADD">
+									<Size>
+										<AbsDimension x="8" y="16"/>
+									</Size>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="1"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.25" right="0.75" top="0.125" bottom="0.875"/>
+								</Texture>
+								<Texture name="$parentIcon">
+									<Size><AbsDimension x="12" y="12"/></Size>
+									<Anchors>
+										<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT">
+											<Offset>
+												<AbsDimension x="-2" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.1" right="0.9" top="0.1" bottom="0.9"/>
+								</Texture>
+							</Layer>
+						</Layers>
+					</StatusBar>
+				</Frames>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="$parentGrouped" file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Bits" hidden="true">
+							<Size><AbsDimension x="8" y="8"/></Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset><AbsDimension x="-5" y="0"/></Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.125" top="0.25" bottom="0.359375"/>
+						</Texture>
+					</Layer>
+				</Layers>
+			</StatusBar>
+			<Button name="$parentTarget" inherits="XPerl_RaidMonitor_BarTemplate">
+				<Size><AbsDimension x="80" y="12"/></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT"/>
+				</Anchors>
+			</Button>
+		</Frames>
+	</Button>
+
+	<Frame name="XPerl_RaidMonitor_Anchor" parent="UIParent" movable="true" resizable="true" clampedToScreen="true">
+		<Size><AbsDimension x="200" y="80"/></Size>
+		<Anchors><Anchor point="CENTER"/></Anchors>
+	</Frame>
+
+	<Frame name="XPerl_RaidMonitor_Frame" enableMouse="true" parent="XPerl_RaidMonitor_Anchor" clampedToScreen="true">
+		<Scripts>
+			<OnLoad>
+				self.area = _G[self:GetName().."Area"]
+				XPerl_RaidMonitor_OnLoad(self)
+				self:RegisterForDrag("LeftButton")
+			</OnLoad>
+			<OnShow>
+				XPerl_Tutorial(14)
+			</OnShow>
+			<OnDragStart>
+				if (not XPerlRaidMonConfig.Pinned) then
+					XPerl_RaidMonitor_Anchor:StartMoving()
+				end
+			</OnDragStart>
+			<OnDragStop>
+				XPerl_RaidMonitor_Anchor:StopMovingOrSizing()
+				if (XPerl_SavePosition) then
+					XPerl_SavePosition(XPerl_RaidMonitor_Anchor)
+				end
+			</OnDragStop>
+		</Scripts>
+		<Size>
+			<AbsDimension x="200" y="80"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\AddOns\XPerl_RaidHelper\images\XPerl_FrameBack" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="9"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="3" right="3" top="3" bottom="3"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Frames>
+			<Frame name="$parent_TitleBar">
+				<Size><AbsDimension x="160" y="12"/></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="3" y="-3"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="-13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						XPerl_SetChildMembers(self)
+						self:GetParent().titleBar = self
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="5" y="5"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self:GetParent():GetParent().Buttons = {}
+								self:GetParent():GetParent().Buttons.Close = self
+							</OnLoad>
+							<OnClick>
+								XPerlRaidMonConfig.enabled = false
+								XPerl_RaidMonitor_Frame:Hide()
+							</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="$parentPin" inherits="XPerl_RaidMonitor_BasicButton">
+						<Size>
+							<AbsDimension x="11" y="11"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentCloseButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="4" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Pin">
+							<TexCoords left="0" right="0.46875" top="0" bottom="0.453125"/>
+						</NormalTexture>
+
+						<PushedTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Pin">
+							<TexCoords left="0" right="0.46875" top="0.5" bottom="0.953125"/>
+						</PushedTexture>
+
+						<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD">
+							<TexCoords left="0" right="0.9" top="0.1" bottom="0.9"/>
+						</HighlightTexture>
+
+						<Scripts>
+							<OnLoad>
+								self:GetParent():GetParent().Buttons.Pin = self
+
+								self.SetButtonTex = function(self)
+									local tex = self:GetNormalTexture()
+									if (XPerlRaidMonConfig.Pinned) then
+										tex:SetTexCoord(0.5, 0.96875, 0, 0.453125)
+									else
+										tex:SetTexCoord(0, 0.46875, 0, 0.453125)
+									end
+
+									tex = self:GetPushedTexture()
+									if (XPerlRaidMonConfig.Pinned) then
+										if (XPerl_RaidMonitor_Frame.corner) then
+											XPerl_RaidMonitor_Frame.corner:Hide()
+										end
+										tex:SetTexCoord(0.5, 0.96875, 0.5, 0.953125)
+									else
+										if (XPerl_RaidMonitor_Frame.corner) then
+											XPerl_RaidMonitor_Frame.corner:Show()
+										end
+										tex:SetTexCoord(0, 0.46875, 0.5, 0.953125)
+									end
+								end
+								self.tooltipText = XPERL_BUTTON_HELPER_PIN
+							</OnLoad>
+							<OnClick>
+								XPerlRaidMonConfig.Pinned = not XPerlRaidMonConfig.Pinned
+								self:SetButtonTex()
+							</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="$parentTotals" inherits="XPerl_RaidMonitor_BasicButton">
+						<Size>
+							<AbsDimension x="11" y="11"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentPin" relativePoint="LEFT"/>
+						</Anchors>
+						<NormalTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Bits">
+							<TexCoords left="0.625" right="0.75" top="0.0" bottom="0.125"/>
+						</NormalTexture>
+
+						<PushedTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Bits">
+							<TexCoords left="0.625" right="0.75" top="0.125" bottom="0.25"/>
+						</PushedTexture>
+
+						<DisabledTexture file="Interface\Addons\XPerl_RaidHelper\Images\XPerl_Bits">
+							<TexCoords left="0.625" right="0.75" top="0.25" bottom="0.375"/>
+						</DisabledTexture>
+
+						<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD">
+							<TexCoords left="0" right="0.9" top="0.1" bottom="0.9"/>
+						</HighlightTexture>
+
+						<Scripts>
+							<OnLoad>
+								self:GetParent():GetParent().Buttons.Totals = self
+
+								self.tooltipText = XPERL_RAID_MONITOR_TOTALS
+								self.SetButtonTex = function(self)
+									local tex = self:GetNormalTexture()
+
+									if (XPerlRaidMonConfig.Totals) then
+										tex:SetTexCoord(0.625, 0.75, 0.125, 0.25)
+									else
+										tex:SetTexCoord(0.625, 0.75, 0, 0.125)
+									end
+
+									tex = self:GetDisabledTexture()
+									if (XPerlRaidMonConfig.Totals) then
+										tex:SetTexCoord(0.625, 0.75, 0.375, 0.5)
+									else
+										tex:SetTexCoord(0.625, 0.75, 0.25, 0.375)
+									end
+								end
+							</OnLoad>
+							<OnClick>
+								XPerlRaidMonConfig.Totals = not XPerlRaidMonConfig.Totals
+								self:SetButtonTex()
+								self:GetParent():GetParent():SetFrameSizes()
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentTitle" inherits="GameFontNormalSmall" text="XPERL_RAID_MONITOR_TITLE" justifyH="LEFT">
+							<Color r="1" g="1" b="1"/>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="3" y="0"/>
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+
+			<Frame name="$parentArea" inherits="SecureRaidGroupHeaderTemplate">
+				<Size><AbsDimension x="160" y="26"/></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="4" y="-15"/></Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+
+			<Frame name="$parentTotals" hidden="true">
+				<Scripts>
+					<OnLoad>
+						self:GetParent().totals = self
+						self.RaidMana = _G[self:GetName().."RaidMana"]
+						self.LowMana = _G[self:GetName().."LowMana"]
+						self.HighMana = _G[self:GetName().."HighMana"]
+						self.RaidHealth = _G[self:GetName().."RaidHealth"]
+
+						self.RaidMana.name:SetJustifyH("CENTER")
+						self.LowMana.name:SetJustifyH("CENTER")
+						self.HighMana.name:SetJustifyH("CENTER")
+						self.RaidHealth.name:SetJustifyH("CENTER")
+
+						self.RaidMana:SetMinMaxValues(1, 100)
+						self.LowMana:SetMinMaxValues(1, 100)
+						self.HighMana:SetMinMaxValues(1, 100)
+						self.RaidHealth:SetMinMaxValues(1, 100)
+
+						self.sep = _G[self:GetName().."Separator"]
+					</OnLoad>
+				</Scripts>
+				<Size><AbsDimension x="160" y="26"/></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentArea">
+						<Offset><AbsDimension x="0" y="-2"/></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-4" y="4"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<StatusBar name="$parentHighMana" inherits="XPerl_RaidMonitor_StatusBarTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset><AbsDimension x="80" y="0"/></Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+								<Offset><AbsDimension x="-1" y="-10"/></Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString inherits="GameFontNormalSmall" text="XPERL_RAID_MONITOR_STATS_HIGH_MANA" justifyH="RIGHT">
+									<Size><AbsDimension x="90" y="10"/></Size>
+									<Anchors>
+										<Anchor point="RIGHT" relativePoint="LEFT">
+											<Offset><AbsDimension x="-2" y="0"/></Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.75" g="1" b="0.75"/>
+								</FontString>
+							</Layer>
+						</Layers>
+					</StatusBar>
+					<StatusBar name="$parentLowMana" inherits="XPerl_RaidMonitor_StatusBarTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentHighMana">
+								<Offset><AbsDimension x="0" y="-2"/></Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parentHighMana">
+								<Offset><AbsDimension x="0" y="-12"/></Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString inherits="GameFontNormalSmall" text="XPERL_RAID_MONITOR_STATS_LOW_MANA" justifyH="RIGHT">
+									<Size><AbsDimension x="90" y="10"/></Size>
+									<Anchors>
+										<Anchor point="RIGHT" relativePoint="LEFT">
+											<Offset><AbsDimension x="-2" y="0"/></Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="1" g="0.75" b="0.75"/>
+								</FontString>
+							</Layer>
+						</Layers>
+					</StatusBar>
+					<StatusBar name="$parentRaidMana" inherits="XPerl_RaidMonitor_StatusBarTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentLowMana">
+								<Offset><AbsDimension x="0" y="-2"/></Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parentLowMana">
+								<Offset><AbsDimension x="0" y="-12"/></Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString inherits="GameFontNormalSmall" text="XPERL_RAID_MONITOR_STATS_RAID_MANA" justifyH="RIGHT">
+									<Size><AbsDimension x="90" y="10"/></Size>
+									<Anchors>
+										<Anchor point="RIGHT" relativePoint="LEFT">
+											<Offset><AbsDimension x="-2" y="0"/></Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="0.5" g="0.5" b="1"/>
+								</FontString>
+							</Layer>
+						</Layers>
+					</StatusBar>
+					<StatusBar name="$parentRaidHealth" inherits="XPerl_RaidMonitor_StatusBarTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRaidMana">
+								<Offset><AbsDimension x="0" y="-2"/></Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parentRaidMana">
+								<Offset><AbsDimension x="0" y="-12"/></Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString inherits="GameFontNormalSmall" text="XPERL_RAID_MONITOR_STATS_RAID_HEALTH" justifyH="RIGHT">
+									<Size><AbsDimension x="90" y="10"/></Size>
+									<Anchors>
+										<Anchor point="RIGHT" relativePoint="LEFT">
+											<Offset><AbsDimension x="-2" y="0"/></Offset>
+										</Anchor>
+									</Anchors>
+									<Color r="1" g="1" b="0.5"/>
+								</FontString>
+							</Layer>
+						</Layers>
+					</StatusBar>
+				</Frames>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="$parentSeparator" file="Interface\TradeSkillFrame\UI-TradeSkill-SkillBorder">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="1"/>
+									</Offset>
+								</Anchor>
+								<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="0" y="-3"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.1" right="1.0" top="0" bottom="0.25"/>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+	</Frame>
+</Ui>
