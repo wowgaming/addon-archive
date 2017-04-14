@@ -2,7 +2,9 @@
 
 Go back to [WoWGame Site](http://wowgame.github.io)
 
-<span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/edit/master/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/index.md">Edit</a></span>
+
+Do you have an addon compatible with 3.3.5a that is not in this list? Please send us a Pull Request and then:
+<span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/edit/master/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/index.md">Edit this page</a></span>
 
 ## With description
 
