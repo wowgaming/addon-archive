@@ -4,6 +4,7 @@
 
 ![](screen1.png)
 
+
 ## Downloads
 
 [Addon Download Link](https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/GearScore)
