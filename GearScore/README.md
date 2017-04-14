@@ -1,6 +1,6 @@
 # GearScores
 
-<span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/_edit">Edit</a></span>
+<span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/README.md/_edit">Edit</a></span>
 
 ![](screen1.png)
 
