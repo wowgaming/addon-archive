@@ -1,5 +1,9 @@
 # Addons List
 
+Go back to (WoWGame Site)[http://wowgame.github.io]
+
+<span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/edit/master/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/index.md">Edit</a></span>
+
 ## With description
 
 [GearScore](GearScore/README.md)
