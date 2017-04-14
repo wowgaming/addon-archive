@@ -1,4 +1,6 @@
-#GearScores
+# GearScores
+
+![](screen1.png)
 
 The addon GearScores calculates a comparable score based on customisable stat weights, and displays it on item tooltips. Use it as a tool to choose the best items for your spec/gear.
 
