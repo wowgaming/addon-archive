@@ -1,6 +1,18 @@
 # GearScores
 
+<span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/_edit">Edit</a></span>
+
 ![](screen1.png)
+
+## Downloads
+
+[Addon](https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/GearScore)
+
+
+## Dependencies (to download)
+
+No dependencies.
+
 
 The addon GearScores calculates a comparable score based on customisable stat weights, and displays it on item tooltips. Use it as a tool to choose the best items for your spec/gear.
 
