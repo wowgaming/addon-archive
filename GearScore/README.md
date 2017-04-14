@@ -14,6 +14,9 @@
 No dependencies.
 
 
+## Description
+
+
 The addon GearScores calculates a comparable score based on customisable stat weights, and displays it on item tooltips. Use it as a tool to choose the best items for your spec/gear.
 
 Gear score does not come with any profiles, and thus you need to create them youself. You can use the interwebs to find the latest stats weights for your class/spec, or specific goal. The idea is that you can create new profiles with ease, and optimise your gear more easily.
