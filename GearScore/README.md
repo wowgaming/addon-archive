@@ -1,6 +1,4 @@
 # GearScores
-[Back to index page](../index.md)
-
 
 <span class="tools-element"><a target="_blank" href="{{ site.github.repository_url }}/edit/master/{{{page.folder}}{{page.url | remove: '.html' | append: ''}}/README.md">Edit</a></span>
 
