@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Udw_LootTools
+## Author: Yehonal
+## Version: 0.0.2.5
+## DefaultState: disabled
+## Dependencies: Udw_Lib
+Loot.lua

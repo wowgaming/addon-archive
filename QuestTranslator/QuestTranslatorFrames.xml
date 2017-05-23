@@ -1,0 +1,208 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+	<!-- UIParent -->
+	<Frame name="QuestTranslatorFrame1" parent="QuestLogDetailScrollFrame" hidden="true" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="350" y="425"/>
+		</Size>
+		<Anchors>
+			<Anchor point="RIGHT">
+				<Offset>
+					<AbsDimension x="385" y="65"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+				<TileSize>
+						<AbsValue val="32"/>
+				</TileSize>
+				<EdgeSize>
+						<AbsValue val="32"/>
+				</EdgeSize>
+				<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11"/>
+				</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Background" setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.8" />
+				</Texture>
+				<FontString name="QuestTranslator_QuestID" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" nonspacewrap="true" text="">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="120" y="30"/>
+					</Size>
+					<Color r="0.5" g="0.5" b="1" a="1" />
+				</FontString>
+				<FontString name="QuestTranslator_MainTitle" font="GameFontNormal" text="QuestTranslator v. 1.05">
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-5" y="-6" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="170" y="30" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="12" />
+					</FontHeight>
+					<Color r="1" g="0" b="0" a="1" />
+				</FontString>
+				<FontString name="QuestTranslator_QuestTitle" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" nonspacewrap="true">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-40"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="320" y="17"/>
+					</Size>
+					<Color r="1" g="1" b="1" a="1" />
+				</FontString>
+				<FontString name="QuestTranslator_QuestDetail" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" nonspacewrap="true">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="320" y="350"/>
+					</Size>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				QuestTranslator_OnLoad1();
+			</OnLoad>
+			<OnMouseDown>
+				QuestTranslator_OnMouseDown1();
+			</OnMouseDown>
+			<OnMouseUp>
+				QuestTranslator_OnMouseUp1();
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+	<Frame name="QuestTranslatorFrame2" parent="QuestFrame" hidden="true" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="350" y="425"/>
+		</Size>
+		<Anchors>
+			<Anchor point="RIGHT">
+				<Offset>
+					<AbsDimension x="385" y="65"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+				<TileSize>
+						<AbsValue val="32"/>
+				</TileSize>
+				<EdgeSize>
+						<AbsValue val="32"/>
+				</EdgeSize>
+				<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11"/>
+				</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Background" setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.8" />
+				</Texture>
+				<FontString name="QuestTranslator_QuestID2" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" nonspacewrap="true" text="">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="120" y="30"/>
+					</Size>
+					<Color r="0.5" g="0.5" b="1" a="1" />
+				</FontString>
+				<FontString name="QuestTranslator_MainTitle2" font="GameFontNormal" text="QuestTranslator v. 1.05">
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-5" y="-6" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="170" y="30" />
+					</Size>
+					<FontHeight>
+						<AbsValue val="12" />
+					</FontHeight>
+					<Color r="1" g="0" b="0" a="1" />
+				</FontString>
+				<FontString name="QuestTranslator_QuestTitle2" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" nonspacewrap="true">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-40"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="320" y="17"/>
+					</Size>
+					<Color r="1" g="1" b="1" a="1" />
+				</FontString>
+				<FontString name="QuestTranslator_QuestDetail2" inherits="GameFontNormal" justifyH="LEFT" justifyV="TOP" nonspacewrap="true">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="320" y="350"/>
+					</Size>
+				</FontString>
+				<FontString name="QuestTranslator_QuestWarning2" inherits="GameFontNormal" justifyH="LEFT" justifyV="BOTTOM" nonspacewrap="true">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-385"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Size>
+						<AbsDimension x="320" y="25"/>
+					</Size>
+					<Color r="0" g="0.5" b="0" a="1" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				QuestTranslator_OnLoad2();
+			</OnLoad>
+			<OnMouseDown>
+				QuestTranslator_OnMouseDown2();
+			</OnMouseDown>
+			<OnMouseUp>
+				QuestTranslator_OnMouseUp2();
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+</Ui>

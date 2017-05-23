@@ -1,0 +1,5 @@
+<Bindings>
+  <Binding name="UDW_LOOT_DESTROY" description="Destroy opened loot, you need at least one free bag slot" header="Udw_LootTools">
+    Udw_DestroyStart();
+  </Binding>
+</Bindings>

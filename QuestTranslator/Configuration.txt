@@ -1,0 +1,29 @@
+QuestTranslator, version 1.05, 2010.11.30, Italian
+
+INSTALATION
+~~~~~~~~~~~
+
+1. Copy QuestTranslator folder into WoW\Interface\AddOns
+   e.g. C:\Program Files\World of Warcraft\Interface\AddOns\QuestTranslator
+
+
+CONFIGURATION
+~~~~~~~~~~~~~
+
+2. Default intercafe of QuestTranslator addon is set to the latest patch 4.3.0
+   If your version of the game is different - you must make minor changes to the file
+   QuestTranslator.toc   Please edit this file and wnter your version of the game 
+   in line Interface: the following formula
+
+   Patch: 4.3.0 -          Interface: 40300
+   Patch: 4.2.0 - 4.2.2    Interface: 40200
+   Patch: 4.0.0 - 4.0.3    Interface: 40000
+   Patch: 3.3.0 - 3.3.5    Interface: 30300
+   Patch: 2.4.0 - 2.4.3    Interface: 20400
+
+
+
+UNINSTALATION
+~~~~~~~~~~~~~
+
+3. Simply delete the folder QuestTranslator from WoW\Interface\AddOns

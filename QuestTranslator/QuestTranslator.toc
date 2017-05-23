@@ -1,0 +1,16 @@
+﻿## Interface: 40300
+## Title: QuestTranslator
+## Version: 1.05
+## Notes: AddOn displays the translated quest informations in a separete window.
+## Notes_PL: Dodatek wyswietla przetlumaczone questy w oddzielnym oknie.
+## Notes_JP: アドオンは、別のウィンドウで翻訳クエストが表示されます。
+## Author: Platine
+## eMail: platine.wow@gmail.com
+## DefaultState: disabled
+## LoadOnDemand: 0
+## SavedVariables: QTR_PS
+## SavedVariablesPerCharacter: QTR_PC
+QuestData_it.lua
+QuestList.lua
+QuestTranslator.lua
+QuestTranslatorFrames.xml
