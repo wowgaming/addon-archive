@@ -387,6 +387,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/QuestHelper" target="_blank">QuestHelper</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/QuestTranslator" target="_blank">QuestTranslator</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/RaidBuffStatus" target="_blank">RaidBuffStatus</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/RaidRoll" target="_blank">RaidRoll</a>
@@ -470,6 +472,10 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/TitanVolume" target="_blank">TitanVolume</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/TitanXP" target="_blank">TitanXP</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/Udw_Lib" target="_blank">Udw_Lib</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/Udw_LootTools" target="_blank">Udw_LootTools</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/WIM" target="_blank">WIM</a>
 
