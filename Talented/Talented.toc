@@ -1,0 +1,74 @@
+## Interface: 30300
+## DefaultState: disabled
+## Title: Talented
+## Name: Talented
+## Notes: The Talent Template Editor
+## Author: Jerry
+## Version: v2.4.6c-release
+## OptionalDeps: Ace3
+## SavedVariables: TalentedDB
+## X-Category: Interface Enhancements
+## LoadManagers: Talented_Loader AddonLoader
+## X-LoadOn-Execute: local N = "ToggleTalentFrame" local P = _G[N] local function f() if _G[N] == f then _G[N] = P end local T = "Talented" AddonLoader:LoadAddOn(T) local t = _G[T] if t then t[N](t) else P() end end _G[N] = f
+## X-LoadOn-Execute2: local N = "ToggleGlyphFrame" local P = _G[N] local function f() if _G[N] == f then _G[N] = P end local T = "Talented" AddonLoader:LoadAddOn(T) local t = _G[T] if t then t[N](t) else P() end end _G[N] = f
+## X-LoadOn-Execute3: UIParent:UnregisterEvent"USE_GLYPH" UIParent:UnregisterEvent"CONFIRM_TALENT_WIPE" TalentMicroButton:SetScript("OnClick", function () ToggleTalentFrame() end)
+## X-LoadOn-Slash: /talented
+## X-LoadOn-Event: INSPECT_TALENT_READY USE_GLYPH CONFIRM_TALENT_WIPE
+## X-LoadOn-INSPECT_TALENT_READY: if IsAddOnLoaded"Talented" or not InspectFrame or not InspectFrame:IsShown() then return end AddonLoader:LoadAddOn"Talented" if Talented then Talented:INSPECT_TALENT_READY() end
+## X-LoadOn-USE_GLYPH: if IsAddOnLoaded"Talented" then return end AddonLoader:LoadAddOn"Talented" if Talented then Talented:GLYPHFRAME_OPEN() end
+## X-LoadOn-CONFIRM_TALENT_WIPE: if IsAddOnLoaded"Talented" then return end AddonLoader:LoadAddOn"Talented" if Talented then Talented:CONFIRM_TALENT_WIPE() end
+## X-Curse-Packaged-Version: v2.4.6c-release
+## X-Curse-Project-Name: Talented
+## X-Curse-Project-ID: talented
+## X-Curse-Repository-ID: wow/talented/mainline
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceComm-3.0\AceComm-3.0.xml
+Libs\AceSerializer-3.0\AceSerializer-3.0.xml
+#@end-no-lib-strip@
+
+locales.xml
+
+core.lua
+options.lua
+spelldata.lua
+tabdata.lua
+spell.lua
+check.lua
+encode.lua
+viewmode.lua
+view.lua
+editmode.lua
+learn.lua
+other.lua
+chat.lua
+tips.lua
+apply.lua
+inspectui.lua
+wowhead.lua
+wowdb.lua
+mmochamp.lua
+
+ui\pool.lua
+ui\base.lua
+ui\trees.lua
+ui\buttons.lua
+ui\branches.lua
+ui\arrows.lua
+ui\lines.lua
+ui\menu.lua
+
+pet.lua
+glyph.lua
+whpet.lua

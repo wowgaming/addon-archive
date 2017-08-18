@@ -1,4 +1,4 @@
-﻿## Interface: 40300
+﻿## Interface: 30300
 ## Title: QuestTranslator
 ## Version: 1.05
 ## Notes: AddOn displays the translated quest informations in a separete window.

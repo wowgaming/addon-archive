@@ -1,0 +1,47 @@
+------------------------------------------------------------------------
+r659 | jerry | 2010-07-29 12:47:12 +0000 (Thu, 29 Jul 2010) | 1 line
+Changed paths:
+   A /tags/v2.4.6c-release (from /trunk:658)
+
+Tagging as v2.4.6c-release
+------------------------------------------------------------------------
+r658 | jerry | 2010-07-28 06:38:08 +0000 (Wed, 28 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+
+Fix .pkgmeta to use tagged Ace3.
+
+------------------------------------------------------------------------
+r657 | jerry | 2010-07-26 06:50:24 +0000 (Mon, 26 Jul 2010) | 3 lines
+Changed paths:
+   M /trunk/pet.lua
+
+Make sure pet talents are available before trying to fix alternate talents.
+Let's hope the client correctly sends an event when they are available.
+
+------------------------------------------------------------------------
+r656 | jerry | 2010-07-21 13:27:16 +0000 (Wed, 21 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/core.lua
+   M /trunk/pet.lua
+   M /trunk/view.lua
+
+Try to fix Ticket-82: pet target template provoke a crash
+
+------------------------------------------------------------------------
+r655 | jerry | 2010-07-08 16:28:29 +0000 (Thu, 08 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/SpecTabs/core.lua
+
+Fix SpecTabs not updating after a new pet has been tamed.
+------------------------------------------------------------------------
+r654 | jerry | 2010-07-08 16:03:42 +0000 (Thu, 08 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/chat.lua
+   M /trunk/encode.lua
+   M /trunk/other.lua
+   M /trunk/whpet.lua
+   M /trunk/wowhead.lua
+
+Remove some internal error handling.
+------------------------------------------------------------------------
