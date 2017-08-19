@@ -439,7 +439,13 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/Stubby" target="_blank">Stubby</a>
 
-<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/SuperDuperMacro" target="_blank">SuperDuperMacro</a>
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/Talented" target="_blank">Talented</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/Talented_GlyphFrame" target="_blank">Talented_GlyphFrame</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/Talented_SpecTabs" target="_blank">Talented_SpecTabs</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/TidyPlates" target="_blank">TidyPlates</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgame/addons-335a-collection/tree/master/TidyPlates" target="_blank">TidyPlates</a>
 
