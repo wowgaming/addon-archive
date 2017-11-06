@@ -1,6 +1,8 @@
 # Addons List
 
-Go back to [WoWGame Site](http://wowgame.github.io)
+Go back to [WoWGame Site](http://wowgaming.github.io)
+
+Download entire collection: [DOWNLOAD](https://github.com/wowgaming/addon-archive/archive/master.zip)
 
 If you want to download the entire collection, use download buttons in sidebar please.
 
