@@ -257,6 +257,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/IceHUD" target="_blank">IceHUD</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/idTip" target="_blank">idTip</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Informant" target="_blank">Informant</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/InlineAura" target="_blank">InlineAura</a>
