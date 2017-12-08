@@ -1,0 +1,6 @@
+## Interface: 40000
+## Title: idTip
+## Version: 2.0
+## Notes: Adds SpellIDs and ItemIDs to the various tooltips ingame
+## Author: Silverwind
+core.lua
