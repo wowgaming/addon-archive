@@ -81,11 +81,15 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Bagnon_Tooltips" target="_blank">Bagnon_Tooltips</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BankStack" target="_blank">BankStack</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Bartender4" target="_blank">Bartender4</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Bartender4_Dualspec" target="_blank">Bartender4_Dualspec</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BeanCounter" target="_blank">BeanCounter</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BlizzMove" target="_blank">BlizzMove</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BonusScanner" target="_blank">BonusScanner</a>
 
@@ -209,6 +213,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/EasyLoot" target="_blank">EasyLoot</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/EavesDrop" target="_blank">EavesDrop</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Enchantrix-Barker" target="_blank">Enchantrix-Barker</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Enchantrix" target="_blank">Enchantrix</a>
@@ -239,6 +245,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/EveryQuest_World_Events" target="_blank">EveryQuest_World_Events</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/FriendShare" target="_blank">FriendShare</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/GatherMate" target="_blank">GatherMate</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/GatherMate_Data" target="_blank">GatherMate_Data</a>
@@ -249,11 +257,17 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Gatherer_HUD" target="_blank">Gatherer_HUD</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/GearScoreLite" target="_blank">GearScoreLite</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Gladius" target="_blank">Gladius</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Grid" target="_blank">Grid</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/GTFO" target="_blank">GTFO</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/HealBot" target="_blank">HealBot</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Healium" target="_blank">Healium</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/IceHUD" target="_blank">IceHUD</a>
 
@@ -279,6 +293,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/MikScrollingBattleText" target="_blank">MikScrollingBattleText</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Minimalist" target="_blank">Minimalist</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/MoveAnything" target="_blank">MoveAnything</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/MrTrader" target="_blank">MrTrader</a>
@@ -290,6 +306,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Omen" target="_blank">Omen</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Outfitter" target="_blank">Outfitter</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Ovale" target="_blank">Ovale</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Overachiever" target="_blank">Overachiever</a>
 
@@ -405,11 +423,17 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Rewatch" target="_blank">Rewatch</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/SellJunk" target="_blank">SellJunk</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/SexyMap" target="_blank">SexyMap</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/ShadowedUF_Options" target="_blank">ShadowedUF_Options</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/ShadowedUnitFrames" target="_blank">ShadowedUnitFrames</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/SilverDragon" target="_blank">SilverDragon</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/SilverDragon_Data" target="_blank">SilverDragon_Data</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Skada" target="_blank">Skada</a>
 
@@ -457,6 +481,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TidyPlates_Neon" target="_blank">TidyPlates_Neon</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TinyTipBasic" target="_blank">TinyTipBasic</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Titan" target="_blank">Titan</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TitanAmmo" target="_blank">TitanAmmo</a>
@@ -482,6 +508,16 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TitanVolume" target="_blank">TitanVolume</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TitanXP" target="_blank">TitanXP</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TomTomLite" target="_blank">TomTomLite</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TopFit" target="_blank">TopFit</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TourGuide" target="_blank">TourGuide</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TourGuide_LunarFestival" target="_blank">TourGuide_LunarFestival</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TourGuide_MidsummerFestival" target="_blank">TourGuide_MidsummerFestival</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Udw_Lib" target="_blank">Udw_Lib</a>
 

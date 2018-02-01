@@ -1,0 +1,49 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 3.3.0.56-Beta
+## X-Curse-Project-Name: TourGuide
+## X-Curse-Project-ID: tourguide
+## X-Curse-Repository-ID: wow/tourguide/mainline
+
+## Title: Tour Guide
+## Notes: Powerleveling guide framework
+## Notes-koKR: 파워레벨링 가이드 프레임워크
+## Author: Tekkub Stoutwrithe
+## Version: 3.3.0.56
+## X-Website: http://www.tekkub.net/
+## X-Email: tekkub-wow@googlegroups.com
+## X-Category: Quest
+
+## SavedVariables: TourGuideAlphaDB
+
+## OptionalDeps: Dongle, Optionhouse, TomTom, tekDebug
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+## X-LoadOn-LDB-Launcher: Interface\Icons\Ability_Hunter_Pathfinding TourGuideLauncher
+
+Dongle.lua
+tekKonfig\tekKonfig.xml
+CallbackHandler-1.0.lua
+LibDataBroker-1.1\LibDataBroker-1.1.lua
+WidgetWarlock.lua
+
+Locale.lua
+TourGuide.lua
+Parser.lua
+Mapping.lua
+Broker.lua
+StatusFrame.lua
+ItemButton.lua
+Config.lua
+ObjectivesFrame.lua
+GuideList.lua
+Help.lua
+UnlistedQuest.lua
+QuestTracking.lua
+QuestIDTracking.lua
+
+NilGuide.lua
+
+TourGuide_Alliance\Guides.xml
+TourGuide_Horde\Guides.xml
+TourGuide_Neutral\Guides.xml

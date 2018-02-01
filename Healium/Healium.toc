@@ -1,0 +1,19 @@
+## Interface: 30300
+## Title: Healium
+## Notes: A healing user-interface addon that provides up to 15 customizable buttons next to each party or raid members name.  Based on FB Healbox.
+## SavedVariables: HealiumGlobal
+## SavedVariablesPerCharacter: Healium
+## X-Curse-Packaged-Version: v1.0.2
+## X-Curse-Project-Name: Healium
+## X-Curse-Project-ID: healium
+## X-Curse-Repository-ID: wow/healium/mainline
+HealiumHealButton.lua
+HealiumSpells.lua
+HealiumSlashCommands.lua
+HealiumConfigPanel.lua
+HealiumMinimapButton.lua
+Healium.lua
+HealiumMenu.lua
+Healium.xml
+HealiumUnitFrames.xml
+HealiumUnitFrames.lua

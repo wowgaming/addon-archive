@@ -1,0 +1,315 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+ 
+<!-- The main frame template -->	
+	<Frame name="HealiumUnitFrameTemplate"  virtual="true" movable="true" parent="UIParent" hidden="true" enableMouse="true">
+        <Size>
+            <AbsDimension x="120" y="30"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER">
+            </Anchor>
+        </Anchors>
+		<Frames>
+			<Frame parentKey="CaptionBar" enableMouse="true">
+				<Size>
+					<AbsDimension x="120" y="30"/>
+				</Size>			
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset></Offset>					
+					</Anchor>
+				</Anchors>			
+				<Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground"  edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/> 
+					</EdgeSize>
+				   <TileSize>
+					  <AbsValue val="32"/> 
+				   </TileSize>
+				   <BackgroundInsets>
+					  <AbsInset left="5" right="5" top="5" bottom="5"/> 
+				   </BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString parentKey="Caption" inherits="GameFontNormal">
+							<Size>
+								<AbsDimension x="75" y="20"/>
+							</Size>				
+							<Anchors>
+								<Anchor point="LEFT"/>
+							</Anchors>
+							<Color r="1.0" g="1.0" b="1.0"/>
+						</FontString>
+					</Layer>			
+				</Layers>
+				<Frames>
+					<Button parentKey="CloseButton" inherits="UIPanelCloseButton">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+								</Offset>					
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>HealiumUnitFrames_OnEnter(self:GetParent())</OnEnter>
+							<OnLeave>HealiumUnitFrames_OnLeave(self:GetParent())</OnLeave>							
+							<OnClick>HideParentPanel(self:GetParent())</OnClick>
+						</Scripts>						
+					</Button>
+				</Frames>
+			<Scripts>
+				<OnEnter>HealiumUnitFrames_OnEnter(self)</OnEnter>
+				<OnLeave>HealiumUnitFrames_OnLeave(self)</OnLeave>
+				<OnMouseDown>HealiumUnitFrames_OnMouseDown(self:GetParent(), button)</OnMouseDown>
+				<OnMouseUp>HealiumUnitFrames_OnMouseUp(self:GetParent(), button)</OnMouseUp>				
+			</Scripts>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnShow>HealiumUnitFrames_ShowHideFrame(self, true)</OnShow>
+			<OnHide>HealiumUnitFrames_ShowHideFrame(self, false)</OnHide>
+		</Scripts>		
+	</Frame>
+	
+<!-- A template for the buff frames, currently doesn't do jack -->	
+	<Frame name="HealiumBuffTemplate" inherits="TargetBuffFrameTemplate" virtual="true" hidden="false">
+		<Scripts>
+			<OnLoad>
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<!-- A template for the healing buttons -->	
+	<!-- This can't have hidden="true" or it will fail to create unit frames during combat. -->
+	<Button name="HealiumHealButtonTemplate" inherits="SecureActionButtonTemplate" virtual="true" enableMouse="true">
+		<Size x="28" y ="28"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Icon" parentKey="icon" setAllPoints="true" />
+			</Layer>
+			<Layer level="HIGHLIGHT">
+				<Texture name="$parent_Highlight" file="Interface/Buttons/ButtonHilight-Square" setAllPoints="true" alphaMode="ADD" />
+			</Layer>
+		</Layers>
+		<PushedTexture file="Interface/Buttons/UI-Quickslot-Depress" />
+		<Frames>
+			<Cooldown name="$parent_Cooldown" parentKey="cooldown" inherits="CooldownFrameTemplate" hidden="true" setAllPoints="true"/>
+			<Frame parentKey="CurseBar" frameStrata="HIGH" alpha="0">
+				<Size x="36" y="36"/>
+				<Anchors>
+					<Anchor point="CENTER"></Anchor>
+				</Anchors>			
+					<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true"> 
+					<EdgeSize>
+						<AbsValue val="28"/> 
+					</EdgeSize>
+				   <BackgroundInsets>
+					  <AbsInset left="0" right="0" top="0" bottom="0"/> 
+				   </BackgroundInsets>
+				</Backdrop>
+			</Frame>			
+		</Frames>
+		<Attributes>
+			<Attribute name="type" value="spell" />
+			<Attribute name="useparent-unit" value="true" />
+			<Attribute name="*unit2" value="target" />
+		</Attributes>
+		<Scripts>
+			<OnLoad function="Healium_HealButton_OnLoad" />
+			<OnEnter function="Healium_HealButton_OnEnter" />
+			<OnEvent function="Healium_HealButton_OnEvent" />
+			<OnLeave function="Healium_HealButton_OnLeave" />
+			<OnUpdate function="Healium_HealButton_OnUpdate" />
+			<OnReceiveDrag function="Healium_HealButton_OnReceiveDrag" />
+			<OnDragStart function ="Healium_HealButton_OnDragStart" />
+			<PreClick function = "Healium_HealButton_PreClick" />
+			<PostClick function = "Healium_HealButton_PostClick" />
+		</Scripts>
+	</Button>
+
+
+	
+<!-- The unit frame template -->		
+<!-- WARNING
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			DO NOT SET hidden="true" here because it will cause creation of unit frames to fail during combat, and generate an 
+			"action blocked" message, and place an entry into taint.log about CreateFrame()
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-->			
+	<Button name="HealiumUnitFrames_ButtonTemplate" virtual="true" movable="true" enableMouse="true" inherits="SecureActionButtonTemplate">
+		<Size x="120" y="28"/>
+		<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="10"/> 
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/> 
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="4" right="4" top="4" bottom="4"/> 
+			</BackgroundInsets>
+		</Backdrop>		
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Name" parentKey="name" text="Unknown Entitiy" inherits="GameFontNormalSmall" maxLines="2" nonspacewrap="true" justifyH="LEFT">
+					<Color r="1.0" g="1.0" b="1.0"/>				
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="10" y="0"/>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_HPText" parentKey="HPText" text="100%" inherits="NumberFontNormalYellow"> <!-- inherits="NumberFontNormalYellow">  -->
+					<Color r="1.0" g="1.0" b="1.0"/>
+					<Anchors> 
+						<Anchor point="RIGHT"> 
+							<Offset x="-5" y="0" /> 
+						</Anchor> 
+					</Anchors> 
+				</FontString>
+			</Layer>
+	
+			<Layer level="ARTWORK">
+				<Texture name="$parent_RaidTargetIcon" parentKey="raidTargetIcon" file="Interface\TargetingFrame\UI-RaidTargetingIcons" hidden="true">
+					<Size>
+						<AbsDimension x="26" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>			
+				</Texture>			
+			</Layer>
+		</Layers>
+		<Attributes>
+			<Attribute name="type1" value="target" />
+		</Attributes>
+		<Frames>
+			<Frame parentKey="CurseBar"  frameStrata="MEDIUM" alpha="0">
+				<Size x="124" y="32"/>
+				<Anchors>
+					<Anchor point="CENTER"></Anchor>
+				</Anchors>			
+				<Backdrop edgeFile="Interface/Tooltips/UI-Tooltip-Border" tile="true"> 
+					<EdgeSize>
+						<AbsValue val="24"/> 
+					</EdgeSize>
+				   <BackgroundInsets>
+					  <AbsInset left="0" right="0" top="0" bottom="0"/> 
+				   </BackgroundInsets>
+				</Backdrop>
+			</Frame>
+			<Frame name="$parent_Buff1" inherits="HealiumBuffTemplate">
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+			</Frame>
+			<Frame name="$parent_Buff2" inherits="HealiumBuffTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Buff1">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+			</Frame>			
+			<Frame name="$parent_Buff3" inherits="HealiumBuffTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Buff2">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+			</Frame>						
+			<Frame name="$parent_Buff4" inherits="HealiumBuffTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Buff3">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+			</Frame>						
+			<Frame name="$parent_Buff5" inherits="HealiumBuffTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Buff4">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+			</Frame>				
+			<Frame name="$parent_Buff6" inherits="HealiumBuffTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Buff5">
+						<Offset>
+							<AbsDimension x="-2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+			</Frame>				
+			<StatusBar parentKey="HealthBar" minValue="0" maxValue="100" defaultValue="100" frameStrata="LOW">
+				<Size x="111" y="23"/>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="7" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+				<BarTexture file="Interface\TargetingFrame\UI-StatusBar" />
+				<BarColor r="1.0" g="1.0" b="1.0"/>
+				<Scripts >
+					<OnLoad function="Healium_HealthStatusBar_OnLoad" />
+				</Scripts>
+			</StatusBar>
+			<StatusBar parentKey="ManaBar" minValue="0" maxValue="100" defaultValue="100" frameStrata="LOW">
+				<Size x="5" y="23"/>
+				<Layers>
+					<Layer level="BACKGROUND" setAllPoints="true">
+						<Texture>
+							<Color r="1.0" g="0.0" b="0.0"/>					
+						</Texture>
+					</Layer>						
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="2" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>				
+				
+				<BarTexture file="Interface\TargetingFrame\UI-StatusBar" />
+				<BarColor r="0.0" g="0.0" b="1.0"/>
+				<Scripts >
+					<OnLoad function="Healium_ManaStatusBar_OnLoad" />
+				</Scripts>
+			</StatusBar>			
+			
+
+		</Frames>
+		<Scripts>
+			<OnLoad>HealiumUnitFrames_Button_OnLoad(self)</OnLoad>
+			<OnShow>HealiumUnitFrames_Button_OnShow(self)</OnShow>
+			<OnHide>HealiumUnitFrames_Button_OnHide(self)</OnHide>
+			<OnMouseDown>HealiumUnitFrames_Button_OnMouseDown(self, button)</OnMouseDown>
+			<OnMouseUp>HealiumUnitFrames_Button_OnMouseUp(self, button)</OnMouseUp>
+		</Scripts>
+	</Button>
+
+</Ui>

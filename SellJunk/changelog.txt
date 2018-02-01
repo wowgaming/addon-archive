@@ -1,0 +1,44 @@
+2.6.3:
+  - feature: added commands '/sj add <itemlink>' and '/sj rem <itemlink>', that will add/remove given item to global exceptions
+  - bugfix: it should now skip items, that cannot be sell to a vendor as there are quite a few grey ones
+
+2.6.2:
+  - bugfix: '/sj destroy <number>' did not work properly
+
+2.6.1:
+  - bugfix: ticket #13
+
+2.6:
+  - feature: added command '/sj destroy', that will delete all junk from bags and '/sj destroy x', that will delete up to x pieces of junk
+
+2.5.1:
+  - update: updated for patch 3.3
+  - update: spanish (esES) locale
+
+2.5:
+  - feature: option to hide the 'item sold' spam
+  - update: french (frFR) locale
+
+2.4.3:
+  - update: korean (koKR) locale
+
+2.4.2:
+  - update: more efficient code for getting item price
+
+2.4.1:
+  - update: updated for patch 3.2
+
+2.4:
+  - feature: option to clear global or character specific exceptions
+  - removed: option to list all exceptions, it was useless anyway
+
+2.3.2:
+  - feature: french (frFR) locale
+  - update: various locales
+
+2.3.1:
+	- feature: german (deDE) locale
+
+2.3:
+	- feature: option to show gold gain from selling trash
+	- bugfix: was possible to have same item many times on exception list

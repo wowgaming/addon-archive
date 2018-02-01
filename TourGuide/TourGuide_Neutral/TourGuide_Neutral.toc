@@ -1,0 +1,18 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 3.3.0.56-Beta
+## X-Curse-Project-Name: TourGuide
+## X-Curse-Project-ID: tourguide
+## X-Curse-Repository-ID: wow/tourguide/mainline
+
+## Title: Tour Guide (Neutral Data)
+## Notes: Powerleveling guide framework
+## Author: Tekkub Stoutwrithe
+## Version: 3.3.0.56
+## X-Category: Quest
+
+## RequiredDeps: TourGuide
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+Guides.xml

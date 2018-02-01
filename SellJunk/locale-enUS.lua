@@ -1,0 +1,43 @@
+local L = LibStub("AceLocale-3.0"):NewLocale("SellJunk", "enUS", true)
+
+if L then
+
+L["ADD"] = "Add"
+L["ADDED"] = "Added"
+L["ADD_ITEM"] = "Add item:"
+L["ALL_CHARS"] = "an exception for all characters."
+L["AUTO_SELL"] = "Automatically sell junk"
+L["AUTO_SELL_DESC"] = "Toggles the automatic selling of junk when the merchant window is opened."
+L["CHAR_EXC"] = "Character specific exceptions"
+L["CLEAR_CHAR"] = "Clear character"
+L["CLEAR_CHAR_DESC"] = "Removes all character specific exceptions from list."
+L["CLEARED"] = "Exceptions succesfully cleared."
+L["CLEAR_GLOBAL"] = "Clear global"
+L["CLEAR_GLOBAL_DESC"] = "Removes all exceptions from global list."
+L["CLEAR_HEADER"] = "Clear exceptions"
+L["COPPER"] = "copper"
+L["DESTROYED"] = "Destroyed"
+L["DRAG_ITEM_DESC"] = "Drag item into this window to add/remove it from exception list"
+L["FROM"] = "from"
+L["GAINED"] = "Gained:"
+L["GLOBAL_EXC"] = "Global exceptions"
+L["GOLD"] = "gold"
+L["ITEMLINK"] = "<Item Link>"
+L["ITEMLINK_ONLY"] = "Command accepts only itemlinks."
+L["MAX12"] = "Sell max. 12 items"
+L["MAX12_DESC"] = "This is failsafe mode. Will sell only 12 items in one pass. In case of an error, all items can be bought back from vendor."
+L["REM"] = "Remove"
+L["REM_ITEM"] = "Remove item:"
+L["REMOVED"] = "Removed"
+L["SELLJUNK"] = "Sell Junk"
+L["SHOW_GAIN"] = "Show gold gained"
+L["SHOW_GAIN_DESC"] = "Shows gold gained from selling trash."
+L["SHOW_SPAM"] = "Show 'item sold' spam"
+L["SHOW_SPAM_DESC"] = "Prints itemlinks to chat, when automatically selling items."
+L["SILVER"] = "silver"
+L["SOLD"] = "Sold:"
+L["THIS_CHAR"] = "an exception for this character."
+L["TO"] = "to"
+
+
+end

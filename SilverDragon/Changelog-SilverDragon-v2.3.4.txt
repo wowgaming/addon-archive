@@ -1,0 +1,16 @@
+tag v2.3.4
+41399046f80a8d2c9ed80d108debb72369caef8c
+David Lynch <kemayo@gmail.com>
+2010-01-24 19:26:50 -0600
+
+Tagging v2.3.4
+
+
+--------------------
+
+David Lynch:
+	- Handynotes updates without requiring a reloadui for import/clear.
+	- Add ability to clear all rares.
+	- Allow disabling of rare-scanning in instances.
+	- Run dataminer. (At last, defaults without Vern!)
+	- Fix dataminer, and bump TOC

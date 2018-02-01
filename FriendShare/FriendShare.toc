@@ -1,0 +1,13 @@
+## Interface: 30300
+## Title: Friend & Ignore Share v1.4.2
+## Notes: Synchronizes your friends and ignore lists across your alts.
+## Author: Vimrasha
+## OptionalDeps:
+## Dependencies:
+## SavedVariables: FriendShare_GlobalFriends FriendShare_RemovedFriends FriendShare_Alts FriendShare_AutoAlts IgnoreShare_GlobalIgnores IgnoreShare_RemovedIgnores
+## X-Curse-Packaged-Version: v1.4.2
+## X-Curse-Project-Name: Friend & Ignore Share
+## X-Curse-Project-ID: friend-ignore-share
+## X-Curse-Repository-ID: wow/friend-ignore-share/mainline
+FriendShare.xml
+IgnoreShare.xml

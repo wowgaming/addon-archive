@@ -1,0 +1,20 @@
+------------------------------------------------------------------------
+r17 | yess | 2010-04-15 01:07:48 +0000 (Thu, 15 Apr 2010) | 1 line
+Changed paths:
+   A /tags/v0.7 (from /trunk:16)
+
+Tagging as v0.7
+------------------------------------------------------------------------
+r16 | yess | 2010-04-15 01:00:47 +0000 (Thu, 15 Apr 2010) | 2 lines
+Changed paths:
+   M /trunk/BlizzMove.lua
+
+added trade window.
+fixed quest window.
+------------------------------------------------------------------------
+r15 | yess | 2010-01-04 01:47:52 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/BlizzMove.lua
+
+Make the raid browser movable
+------------------------------------------------------------------------

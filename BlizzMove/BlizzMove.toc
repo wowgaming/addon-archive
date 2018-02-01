@@ -1,0 +1,15 @@
+﻿## Interface: 30300
+## Title: Blizzmove
+## Notes: Move those blizzard windows
+## Author: yess
+## Version: v0.7
+## X-Email: yessica@fantasymail.de
+## X-Curse-Packaged-Version: v0.7
+## X-Curse-Project-Name: BlizzMove
+## X-Curse-Project-ID: blizzmove
+## X-Curse-Repository-ID: wow/blizzmove/mainline
+
+## SavedVariables: BlizzMoveDB
+
+Blizzmove.lua
+

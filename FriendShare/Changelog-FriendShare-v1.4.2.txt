@@ -1,0 +1,20 @@
+------------------------------------------------------------------------
+r7 | vimrasha | 2010-04-05 18:21:09 +0000 (Mon, 05 Apr 2010) | 1 line
+Changed paths:
+   A /tags/v1.4.2 (from /trunk:6)
+
+Tagging as v1.4.2
+------------------------------------------------------------------------
+r6 | vimrasha | 2010-04-05 18:07:32 +0000 (Mon, 05 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/FriendShare.toc
+   M /trunk/IgnoreShare.lua
+
+Updated TOC version. Fixed typo.
+------------------------------------------------------------------------
+r5 | vimrasha | 2009-06-05 04:49:08 +0000 (Fri, 05 Jun 2009) | 1 line
+Changed paths:
+   M /trunk/FriendShare.toc
+
+Updated version number.
+------------------------------------------------------------------------

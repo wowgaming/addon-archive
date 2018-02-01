@@ -1,0 +1,28 @@
+## Interface: 50001
+## Title: TomTomLite
+## Author: Cladhaire
+## Version: v50001-1.1.2
+## Notes: An even simpler navigational assistant
+## SavedVariables: TomTomLiteDB
+
+## X-Localizations: enUS, enGB
+## X-CompatibleLocales: enUS, enGB, deDE, frFR, esES, esMX, zhCN, zhTW, koKR, ruRU
+
+AddonCore.lua
+Localization.enUS.lua
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\LibMapData-1.0\library.lua
+libs\LibWindow-1.1.lua
+
+MapUtils.lua
+Utils.lua
+DatabaseDefaults.lua
+
+TomTomLite.lua
+
+sources\ArchaeologyDigSites.lua
+sources\Corpse.lua
+sources\QuestObjectives.lua

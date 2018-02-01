@@ -1,0 +1,71 @@
+------------------------------------------------------------------------
+r95 | whizkid | 2010-09-10 10:47:34 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Minimalist: - clean-up
+------------------------------------------------------------------------
+r91 | whizkid | 2010-09-10 10:44:35 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   D /trunk/v87
+
+Minimalist: - remove branch
+------------------------------------------------------------------------
+r90 | whizkid | 2010-09-10 10:44:20 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   D /trunk/r85
+
+Minimalist: - remove branch
+------------------------------------------------------------------------
+r89 | whizkid | 2010-09-10 10:42:24 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Minimalist.toc
+
+Minimalist: - fixed bad branch/packaging
+------------------------------------------------------------------------
+r88 | whizkid | 2010-09-10 06:24:40 +0000 (Fri, 10 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Minimalist.lua
+
+Minimalist: - Mostly small cosmetic fixes
+------------------------------------------------------------------------
+r87 | whizkid | 2010-09-07 08:02:07 +0000 (Tue, 07 Sep 2010) | 1 line
+Changed paths:
+   A /trunk/v87 (from /trunk:86)
+
+Minimalist: - tagging as release for curse client
+------------------------------------------------------------------------
+r86 | whizkid | 2010-09-06 11:03:13 +0000 (Mon, 06 Sep 2010) | 1 line
+Changed paths:
+   A /trunk/r85 (from /trunk:85)
+
+Minimalist: - tagging as release
+------------------------------------------------------------------------
+r85 | whizkid | 2010-09-06 11:02:33 +0000 (Mon, 06 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Minimalist.lua
+   M /trunk/Minimalist.toc
+
+Minimalist: - Option to hide tracking button
+------------------------------------------------------------------------
+r84 | whizkid | 2010-09-02 11:23:28 +0000 (Thu, 02 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Minimalist.lua
+   M /trunk/Minimalist.toc
+
+Minimalist: - Better default values, fixed .toc
+------------------------------------------------------------------------
+r80 | whizkid | 2010-09-01 09:22:31 +0000 (Wed, 01 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/Minimalist.lua
+   M /trunk/Minimalist.toc
+
+Minimalist: - code clean-up and fixes for client 3.3.5
+------------------------------------------------------------------------
+r79 | grennon | 2008-12-09 02:47:35 +0000 (Tue, 09 Dec 2008) | 2 lines
+Changed paths:
+   M /trunk/Minimalist.lua
+
+Minimalist: 
+Fix small buglet in chat options
+------------------------------------------------------------------------

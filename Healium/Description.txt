@@ -1,0 +1,123 @@
+=== Healium
+Healium is a World of Warcraft addon who's main goal is to simplify healing of party or raid members.
+
+Healium provides a customizable, intuitive, compact, no-clutter interface optimized to make it easy to heal.  Healium places your healing spells onto buttons right next to each person's healthbar.  The buttons will cast the heal on the person they are beside of,  without the need for you to target the person first. 
+
+Player healthbar's are compact and close to each other which reduces the amount of screen space you have to look over to monitor the party's health.  The healing buttons are very close by, minimizing the space you have to move your mouse, and thus the time required, to cast the heal.
+
+Unlike other healing focused addons, Healium does not require you to set up complex key combinations (shift, ctrl, and alt) to cast your heals.  In Healium, you just click a healing button next to the person's health bar.  There is no memorization of key combinations required, or even allowed!
+
+Healium was originally based on FB Heal Box and has been updated to work with WOTLK, with many new features.
+
+Here is Healium in action:
+
+<<youtube qkrzRTTOG4k>>
+
+[[http://www.youtube.com/watch?v=qkrzRTTOG4k&fmt=22|Click here to wach on YouTube in HD 720p]] (much better quality)
+
+[[http://www.youtube.com/watch?v=vAV6-4HDjZI|A good introduction to Healium video]] (not by the Author)
+
+== Healium Features
+
+* Up to 15 customizable healing buttons next to each party member's name and health
+** The buttons have optional cooldown animations.
+** The buttons have optional range checking with customizable frequency
+** The button configurations are saved separately for each talent specialization
+* Drag and drop directly from the spell book to configure spells
+*  Unit Frames:
+** Party - Shows your current party
+** Pets - Shows all pets in your party or raid
+** Me - Shows you only
+** Friends - Shows the people in your party or raid who are also on your Healium friends list.
+** Tanks - Shows just those assigned as tanks in the raid.  This is handy if you are in a 25 man raid and are responsible for healing the tank since it makes them easy to find.
+** Group1-8 - Shows the corresponding raid group
+* The unit frames are compatible with the Clique addon
+* True Unit Frames: Left click on a player's healthbar to target the player or prime a spell and click to cast it on them
+* Displays your HoTs / Buffs that have been assigned in Healium, which are currently on a player, next to each player with a cooldown animation.  
+* Debuff Warnings - Audible and visual indicators when someone has a debuff which you can cure with a spell in Healium
+** Healthbar Highlight - Highlights the healthbar
+** Healthbar Coloring - Changes the healthbar color to the color of the debuff type
+** Button Highlight - Highlights the exact healing button for you to press 
+** Audio warning - Plays a (configurable) sound 
+
+==Instructions
+After installing Healium, you will want to configure the button count and the button's spells. 
+
+Follow these steps
+* Press the ESC key. That will bring up the Options window.
+* Press the Interface button.
+* Click the AddOns tab.
+* Find Healium in the list and click it.
+
+You should see options specific to Healium, including the Button Count slider, and button dropdowns that allow you to pick healing spells for each button.  Use the scrollbar on the right to access more options.  The spells in the dropdown just include healing and emergency type spells specifically picked by Healium.  If you do not see any spells in the dropdown, make sure you are on a character class that actually has heals.  The dropdown will only show heals which you actually have currently in your spellbook.  Also make sure you are in the spec that has the spells you want to cast because many spells are only available via talents and will not show up if you are in a spec that doesn't have the spell currently.  Those talent specific spells will be saved when you switch specs.  You may actually use any spell including buffs by drag and dropping a spell directly from you spellbook onto any Healium button.  It's just like dragging a spell to an action bar.
+
+== Debuff Warnings
+For the debuff warning options to work you must assign curing spells to buttons in Healium.  Some classes only get one and some get two.  Here is a summary of the cures that Healium can use:
+* Druid 
+** Remove Curse
+** Abolish Poison
+* Mage
+** Remove Curse
+* Paladin 
+** Purify 
+** Cleanse (replaces Purify)
+* Priest
+** Cure Disease
+** Abolish Disease (replaces Cure Disease)
+** Dispel Magic
+* Shaman
+** Cure Toxins
+** Cleanse Spirit (replaces Cure Toxins)
+
+
+== Healium Friends
+Healium Friends is a Healium frame which allows you to customize the people that appear in it.  Anyone who is on your Healium Friends list will appear in this frame.  It will work with people cross-realm as well.
+
+The Healium Friends list is a global list (not specific to a character).  That means that all of your alts on a server share the same list.
+
+Management of the Healium friends list is done via command line, using these commands:
+
+/hlm friends add (Target or name)
+
+/hlm friends remove (Target or name or index)
+
+/hlm friends list 
+
+When using /hlm friends add, you may type a name instead of having them targeted.
+This could be used to add someone offline or otherwise not currently targetable. 
+When you type their name instead of targeting them, make sure you properly capitalize their name, otherwise they will not appear.
+If you are typing a name for someone cross-realm use this format "Name-Realm" where there are no spaces before or after the -, but there may be spaces in the realm name, and also make sure you properly capitalize the realm name.
+Any improper capitalization will result in the user not appearing. It is recommended that you target them when adding, instead of typeing their name, so you don't even have to be concerned about capitalization.
+
+When removing someone via /hlm friends remove, in addition to allowing you to target the person or type their name, you may also specify their 'index'.  The index is the index shown next to the player's name via the command /hlm friends list.
+
+== Slash Commands
+Type /hlm for a list of slash commands
+
+/hlm config -  Shows the Healium config panel
+
+/hlm show [ party | pets | me | tanks | 1-8 ] - Shows the corresponding Healium frame
+
+/hlm reset frames - Resets all Healium frame positions
+
+/hlm friends list - list current Healium friends   
+
+/hlm friends add (Target or name) adds the player to the Healium friends.  
+
+/hlm friends remove (Target or name or index) removes the player form Healium friends.  
+
+
+== Hints
+* You can right click on a frame caption to access the Healium menu.  This can be more convenient than going through the wow UI to get to the Healium config panel.
+* You can right click on a health bar to drag the entire frame.
+* Left clicking on a health bar will target that player.  
+* You may right click any Healium button to cast the spell on your current target instead of its intended target.  This might be useful in emergencies or just as a way to cast spells/buffs on other people, using the Healium UI.
+
+== Known Issues
+* Changing some settings on the Config Panel while in combat will cause problems.  Please try to set it up before combat.
+* Changes to the party/raid will cause right-click dragging of a frame window to stop.
+
+== Reporting Issues / Bugs / Feedback
+Please report all issues as comments on the [[http://wow.curse.com/downloads/wow-addons/details/healium.aspx|Healium curse page]].  
+**These will be looked at!**
+If you are having a problem and are not using an English version client, please post which language version of the client you are using, as this will vastly increase the likelihood of reproducing the problem and help to get it fixed quickly. 

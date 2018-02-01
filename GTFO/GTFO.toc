@@ -1,0 +1,23 @@
+## Interface: 30300
+## Title: GTFO
+## Notes: GTFO, you're dying!
+## Author: Zensunim of Malygos
+## Version: 2.5.3
+## DefaultState: Enabled
+## OptionalDeps: PowerAuras
+## SavedVariables: GTFOData
+## X-Compatible-With: 40000
+Localization\enUS.lua
+GTFO.lua
+GTFO_Spells_Generic.lua
+GTFO_Spells_Classic.lua
+GTFO_Spells_BC.lua
+GTFO_Spells_LK.lua
+GTFO_Spells_CAT.lua
+GTFO_Fail_Generic.lua
+GTFO_Fail_LK.lua
+GTFO_Fail_CAT.lua
+GTFO_Mobs.lua
+GTFO_PowerAuras.lua
+GTFO_Custom.lua
+GTFO.xml

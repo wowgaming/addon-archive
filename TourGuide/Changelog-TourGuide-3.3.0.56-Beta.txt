@@ -1,0 +1,88 @@
+tag 3.3.0.56-Beta
+c9910fdbf9bd346e737c06f6267b107bb2e45844
+tekkub <tekkub@gmail.com>
+2010-05-01 21:45:02 -0600
+
+Weekly build
+
+
+--------------------
+
+tekkub:
+	- Weekly build 3.3.0.56-Beta
+	- Update changelog for 3.3.0.56-Beta
+	- Updating TOC to 30300
+	- more readmeing
+	- More readme tweaks
+	- lawlurl
+	- Move docs off to their own branch
+	- That should be optional
+	- lawl links
+	- lawl docs
+	- Readme updates
+	- That one's belf-specific
+	- Now there's a portal
+	- Yet more horde RAF
+	- More horde RAF
+	- And a bit more RAF
+	- Barf, get rid of those
+	- More horde RAF
+	- Ally tweakings
+	- Some |T| tags
+	- RAF RAF RAF
+	- Fix up "The swarm grow" chain for NORAF
+	- More horde RAF
+	- Horde RAF Dustwallow
+	- More and more RAFfing
+	- More horde RAF goodness
+	- more horde RAF
+	- More horde RAF
+	- More RAF
+	- Add orc sucky bus quests
+	- Add orkenlock voidwalker quests
+	- Those are in town, duh
+	- More horde RAFink
+	- Horde RAF guide updates
+	- Add RAF mode
+	- Yet more hording
+	- More horde playtestes bits
+	- That horde Desolace guide was all fucked up
+	- Also edit macro "TourGuide" if it's present, ala Buffet
+	- Make that item button thing work again
+	- Horde updates from playtesting
+	- Remove forced item caching, GetItemIcon(itemid) is our friend
+	- Lets send waypoints too!
+	- Send QID if we know it
+	- Make sure we send comms when the party makeup changes
+	- We can watch TURNINs now too
+	- Give status frame better default anchor, since the quest tracker got moved
+	- Never meant to commit that
+	- Make mapping work, again
+	- Fix Ally BC guides to tie loose objectives to QIDs
+	- Adjust how QID'd objectives are completed, fix Ally NR guides to tie loose objectives to QIDs
+	- Bad quest order
+	Fixes #13
+	- Missed a quest accept.
+	Fixes #14
+	- Fix up horde Feralas guide, seems some quests were tweaked in 3.2
+	Fixes #16
+	- Bad QIDs
+	Fixes #19
+	- Some race-specific starter zone quests
+	Closes #18
+	- Argh
+	- Fix a QID
+	- Query quests on login, in case we're reloading a lot
+	- Blizzy changed the completed quest table format, thank Dog.
+	- Another big batch o' ally IC
+	- More ally IC tweaks
+	- Use |QID| tags for all notes in the current guides
+	- Make |QID| work with |QO| tags and the new tracking stuffs
+	- Fix completed quest query on initial login without AddonLoader
+	- Don't purge QIDs on guide reset
+	- Don't save turnin name if we have a QID
+	- Don't save QIDs, use new API
+	- Ally IC tweaks
+	- And they redesigned mapping again, the asses
+Tekkub:
+	- Use new mapping coords from patch 3.2, when available

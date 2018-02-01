@@ -1,0 +1,20 @@
+------------------------------------------------------------------------
+r260 | sidoine | 2010-07-04 10:25:52 +0000 (Sun, 04 Jul 2010) | 1 line
+Changed paths:
+   A /tags/3.3.35 (from /trunk:259)
+
+tag 3.3.35
+------------------------------------------------------------------------
+r259 | sidoine | 2010-07-04 10:25:28 +0000 (Sun, 04 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Condition.lua
+
+added Speed function
+------------------------------------------------------------------------
+r258 | sidoine | 2010-05-24 18:08:30 +0000 (Mon, 24 May 2010) | 1 line
+Changed paths:
+   M /trunk/Ovale.toc
+   M /trunk/OvaleFrame.lua
+
+buttonfacade colors were not saved
+------------------------------------------------------------------------

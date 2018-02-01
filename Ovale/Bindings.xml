@@ -1,0 +1,17 @@
+﻿<Bindings>
+	<Binding name="OVALE_CHECKBOX0" header="OVALE">
+		Ovale:ToggleCheckBox(0)
+	</Binding>
+	<Binding name="OVALE_CHECKBOX1">
+		Ovale:ToggleCheckBox(1)
+	</Binding>
+	<Binding name="OVALE_CHECKBOX2">
+		Ovale:ToggleCheckBox(2)
+	</Binding>
+	<Binding name="OVALE_CHECKBOX3">
+		Ovale:ToggleCheckBox(3)
+	</Binding>
+	<Binding name="OVALE_CHECKBOX4">
+		Ovale:ToggleCheckBox(4)
+	</Binding>
+</Bindings>

@@ -1,0 +1,52 @@
+## Interface: 30300
+## Title: BankStack
+## Author: Kemayo
+## Notes: From bags we came, to bank we return
+## Version: v17
+## X-Category: Inventory
+## LoadOnDemand: 0
+## OptionalDeps: Ace3, tekDebug
+## SavedVariables: BankStackDB
+## X-Curse-Packaged-Version: v17
+## X-Curse-Project-Name: BankStack
+## X-Curse-Project-ID: bank-stack
+## X-Curse-Repository-ID: wow/bank-stack/mainline
+
+# ## LoadManagers: AddonLoader
+# ## X-LoadOn-Slash: /bankstack, /sort, /sortbags, /stack, /compress, /compressbags, /fill, /fillbags
+# ## X-LoadOn-LDB-Launcher: Interface\Icons\INV_Misc_Shovel_01
+# ## X-LoadOn-Events: BANKFRAME_OPENED, GUILDBANKFRAME_OPENED
+# ## X-LoadOn-BANKFRAME_OPENED: AddonLoader:LoadAddOn("BankStack"); BankStack.bank_open = true
+# ## X-LoadOn-GUILDBANKFRAME_OPENED: AddonLoader:LoadAddOn("BankStack"); BankStack.guild_bank_open = true
+
+#@no-lib-strip@
+lib\LibStub\LibStub.lua
+lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
+#@end-no-lib-strip@
+
+lib\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+#@no-lib-strip@
+lib\AceAddon-3.0\AceAddon-3.0.xml
+lib\AceEvent-3.0\AceEvent-3.0.xml
+lib\AceDB-3.0\AceDB-3.0.xml
+lib\AceDBOptions-3.0\AceDBOptions-3.0.xml
+lib\AceGUI-3.0\AceGUI-3.0.xml
+lib\AceConfig-3.0\AceConfig-3.0.xml
+lib\AceLocale-3.0\AceLocale-3.0.xml
+lib\LibDBIcon-1.0\LibDBIcon-1.0.lua
+#@end-no-lib-strip@
+
+local.enUS.lua
+local.ruRU.lua
+local.deDE.lua
+local.koKR.lua
+local.zhCN.lua
+
+core.lua
+stack.lua
+sort.lua
+fill.lua
+config.lua
+
+ldb.lua

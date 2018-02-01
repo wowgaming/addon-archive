@@ -1,0 +1,37 @@
+## Interface: 30300
+## Title: SellJunk
+## Notes: Sells all junk in your inventory at once.
+## Author: CrazyBenny of Stormrage-EU
+## X-Email: s_m AT centrum DOT cz
+## LastUpdate: 2010-01-18T23:46:57Z
+## Version: 2.6.3
+## X-Curse-Packaged-Version: 2.6.3
+## X-Curse-Project-Name: SellJunk
+## X-Curse-Project-ID: sell-junk
+## X-Curse-Repository-ID: wow/sell-junk/mainline
+
+## X-Credits: Xonpathos for previous version of SellJunk
+## X-Category: Inventory
+
+## SavedVariables: SellJunkDB
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceAddon-3.0\AceAddon-3.0.xml
+libs\AceEvent-3.0\AceEvent-3.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceLocale-3.0\AceLocale-3.0.xml
+libs\AceConsole-3.0\AceConsole-3.0.xml
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+
+locale-enUS.lua
+locale-zhCN.lua
+locale-zhTW.lua
+locale-ruRU.lua
+locale-esES.lua
+locale-koKR.lua
+locale-deDE.lua
+locale-frFR.lua
+
+selljunk.lua

@@ -1,0 +1,15 @@
+tag v17
+7968b5f5b5253522bd5f8c6430be04a5a0848fea
+David Lynch <kemayo@gmail.com>
+2010-01-24 23:37:12 +0000
+
+Apparently long-existing bug with compressing which caused "confused!" aborts if a single stack could be moved into more than one partial stack.
+
+
+--------------------
+
+David Lynch:
+	- Apparently long-existing bug with compressing which caused "confused!" aborts if a single stack could be moved into more than one partial stack.
+	- Use the broker object to show how many moves are remaining. (Mostly useful for guild bank sorts, since everything else is over quickly.)
+	- Just hardcode the constant instead of loading guildbankui.
+	- Problem with guild bank sorting is that guild-bank-replacement addons which suppress loading of Blizzard_GuildBankUI (like Bagnon) stop MAX_GUILDBANK_SLOTS_PER_TAB from existing. Add a LoadAddOn to get around this.

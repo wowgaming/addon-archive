@@ -1,0 +1,68 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="01_11_Dun_Morogh.lua"/>
+	<Script file="01_12_Elwynn_Forest.lua"/>
+
+	<Script file="01_12_Azuremyst_Isle.lua"/>
+	<Script file="12_20_Bloodmyst_Isle.lua"/>
+	<Script file="20_21_Darkshore_Draenei.lua"/>
+
+	<Script file="01_12_Teldrassil.lua"/>
+	<Script file="12_17_Darkshore.lua"/>
+
+	<Script file="17_18_Loch_Modan.lua"/>
+	<Script file="18_20_Redridge_Mountains.lua"/>
+
+	<Script file="20_21_Darkshore.lua"/>
+	<Script file="22_24_Ashenvale.lua"/>
+	<Script file="25_27_Wetlands.lua"/>
+	<Script file="27_28_Redridge_Mountains.lua"/>
+	<Script file="28_29_Duskwood.lua"/>
+	<Script file="29_30_Ashenvale.lua"/>
+
+	<Script file="30_31_Wetlands.lua"/>
+	<Script file="31_32_Hillsbrad_Foothills.lua"/>
+	<Script file="33_35_Desolace.lua"/>
+	<Script file="36_37_Stranglethorn.lua"/>
+	<Script file="37_38_Dustwallow_Marsh.lua"/>
+	<Script file="38_40_Stranglethorn.lua"/>
+
+	<Script file="40_41_Badlands.lua"/>
+	<Script file="41_42_Stranglethorn.lua"/>
+	<Script file="43_Tanaris.lua"/>
+	<Script file="43_45_Feralas.lua"/>
+	<Script file="46_47_Hinterlands.lua"/>
+	<Script file="47_Feralas.lua"/>
+	<Script file="47_48_Tanaris.lua"/>
+	<Script file="49_50_Blasted_Lands.lua"/>
+
+	<Script file="50_51_Searing_Gorge.lua"/>
+	<Script file="51_Kalimdor.lua"/>
+	<Script file="51_52_UnGoro_Crater.lua"/>
+	<Script file="52_53_Azshara.lua"/>
+	<Script file="53_54_Felwood.lua"/>
+	<Script file="54_55_Winterspring.lua"/>
+	<Script file="55_56_Burning_Steppes.lua"/>
+	<Script file="56_Silithus.lua"/>
+	<Script file="56_57_Western_Plaguelands.lua"/>
+	<Script file="57_58_Eastern_Plaguelands.lua"/>
+	<Script file="58_Western_Plaguelands.lua"/>
+	<Script file="58_Eastern_Plaguelands.lua"/>
+	<Script file="58_59_Western_Plaguelands.lua"/>
+
+	<Script file="60_62_Hellfire_Peninsula.lua"/>
+	<Script file="62_63_Zangarmarsh.lua"/>
+	<Script file="64_65_Terokkar.lua"/>
+	<Script file="65_66_Nagrand.lua"/>
+	<Script file="66_67_BladesEdge.lua"/>
+	<Script file="67_70_Netherstorm.lua"/>
+	<Script file="70_Shadowmoon_Valley.lua"/>
+
+	<Script file="70_72_Howling_Fjord.lua"/>
+	<Script file="70_72_Borean_Tundra.lua"/>
+	<Script file="72_73_Dragonblight.lua"/>
+	<Script file="73_75_Grizzly_Hills.lua"/>
+	<Script file="75_77_ZulDrak.lua"/>
+	<Script file="77_78_Sholazar_Basin.lua"/>
+	<Script file="78_80_Storm_Peaks.lua"/>
+	<Script file="80_Icecrown.lua"/>
+</Ui>

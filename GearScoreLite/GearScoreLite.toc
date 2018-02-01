@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: GearScoreLite
+## Notes: Quickly and easily judge a player's level of Gear.
+## Version: 3.1.15
+## Original Author: Mirrikat45
+## Fan Update: Finwe
+## SavedVariables: GS_Settings
+
+informationLite.lua
+GearScoreLite.lua

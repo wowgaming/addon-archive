@@ -1,0 +1,883 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+
+	<!-- Fonts -->
+	<Font name="EavesDropFontNormal" inherits="GameFontNormal" virtual="true"/>
+  <Font name="EavesDropFontNormalSmall" inherits="GameFontNormalSmall" virtual="true"/>
+
+	<!-- EVENT TEMPLATE -->
+	<Frame name="EavesDropEventTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="200" y="21"/>
+		</Size>
+		<Backdrop bgFile="Interface\QuestFrame\UI-QuestTitleHighlight">
+			<BackgroundInsets>
+				<AbsInset left="2" right="2" top="2" bottom="2"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Frames>
+			<!-- incoming texture -->
+			<Frame name="$parentIncoming">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<Texture name="$parentTexture">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+
+			<!-- misc text -->
+			<Frame>
+				<Layers>
+					<Layer level="BORDER">
+						<FontString name="$parentEventText" inherits="EavesDropFontNormal" justifyH="CENTER">
+							<Size>
+								<AbsDimension x="140" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parent" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+
+			<!-- outgoing texture -->
+			<Frame name="$parentOutgoing">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentEventText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer>
+						<Texture name = "$parentTexture">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				this:SetBackdropColor(0, 0, 0, 0);
+			</OnLoad>
+			<OnEnter>
+				this:SetBackdropColor(1, 1, 1, 0.33);
+				GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+				GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+			</OnEnter>
+			<OnLeave>
+				this:SetBackdropColor(0, 0, 0, 0);
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown>
+       	if arg1 == "LeftButton" and IsShiftKeyDown() and this.tooltipText then
+					EavesDrop:SendToChat(this.tooltipText)
+			  elseif IsAltKeyDown() then
+			  	if arg1 == "LeftButton" then
+			  		EavesDrop:OpenMenu()
+			  	elseif arg1 == "RightButton" then
+       			EavesDrop:ShowHistory()
+       		end
+			  end
+			</OnMouseDown>
+		</Scripts>
+	</Frame>
+
+	<!-- EVENT HISTORY TEMPLATE -->
+	<Frame name="EavesDropHistoryEventTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="200" y="20" />
+		</Size>
+		<Backdrop bgFile="Interface\QuestFrame\UI-QuestTitleHighlight">
+			<BackgroundInsets>
+				<AbsInset left="1" right="1" top="1" bottom="1"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parent_Texture">
+					<Size>
+						<AbsDimension x="18" y="18"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<FontString name="$parent_Skill" inherits="EavesDropFontNormalSmall" wraponspaces="false" justifyH="LEFT" text="">
+					<Size>
+						<AbsDimension x="90" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Texture" relativePoint="TOPRIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_Hit" inherits="EavesDropFontNormalSmall" wraponspaces="false" justifyH="RIGHT" text="">
+					<Size>
+						<AbsDimension x="45" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Skill" relativePoint="TOPRIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_Crit" inherits="EavesDropFontNormalSmall" wraponspaces="false" justifyH="RIGHT" text="">
+					<Size>
+						<AbsDimension x="45" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Hit" relativePoint="TOPRIGHT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:SetBackdropColor(0, 0, 0, .33);
+			</OnLoad>
+			<OnEnter>
+				this:SetBackdropColor(1, 1, 1, 1);
+				if ( this.tooltipText ) then
+					GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+					GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+				end
+			</OnEnter>
+			<OnLeave>
+				this:SetBackdropColor(0, 0, 0, .33);
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown>
+       	if arg1 == "LeftButton" and IsShiftKeyDown() and this.tooltipText2 then
+					EavesDrop:SendToChat(this.tooltipText2)
+			  elseif arg1 == "RightButton" and IsShiftKeyDown() and this.tooltipText1 then
+					EavesDrop:SendToChat(this.tooltipText1)
+			  end
+			</OnMouseDown>
+		</Scripts>
+	</Frame>
+
+	<!-- Event Button Template -->
+	<Button name="EavesDropHistoryButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="21" y="21"/>
+		</Size>
+		<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+		<Scripts>
+			<OnEnter>
+				if ( this.tooltipText ) then
+					GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+					GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<!-- MAIN FRAME -->
+	<Frame name="EavesDropFrame" enableMouse="true" movable="true" frameStrata="LOW" parent="UIParent">
+		<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size>
+			<AbsDimension x="200" y="260"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="EavesDropTopBar" file="Interface\ChatFrame\ChatFrameBackground">
+					<Size>
+						<AbsDimension x="190" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="EavesDropBottomBar" file="Interface\ChatFrame\ChatFrameBackground">
+					<Size>
+						<AbsDimension x="190" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOM">
+							<Offset>
+								<AbsDimension x="0" y="5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentPlayerText" inherits="EavesDropFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="95" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTargetText" inherits="EavesDropFontNormal" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="95" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="EavesDropEvent1" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EavesDropFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-25"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent2" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent1" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent3" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent2" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent4" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent3" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent5" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent4" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent6" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent5" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent7" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent6" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent8" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent7" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent9" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent8" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent10" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent9" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent11" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent10" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent12" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent11" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent13" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent12" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent14" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent13" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent15" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent14" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent16" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent15" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent17" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent16" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent18" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent17" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent19" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent18" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropEvent20" inherits="EavesDropEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropEvent19" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+
+			<!--down button-->
+			<Button name="$parentDownButton" hidden="true">
+				<Size>
+					<AbsDimension x="24" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-2" y="2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound("igChatScrollDown");
+						if IsShiftKeyDown() then
+		            EavesDrop:ScrollToBottom()
+		        elseif IsControlKeyDown() then
+    						EavesDrop:FindCombatDown()
+		        else
+		            EavesDrop:ScrollDown()
+		        end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+						GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up"/>
+				<PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down"/>
+				<DisabledTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+			</Button>
+
+			<!--up button-->
+			<Button name="$parentUpButton">
+				<Size>
+					<AbsDimension x="24" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-2" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+							PlaySound("igChatScrollUp");
+							if IsShiftKeyDown() then
+			            EavesDrop:ScrollToTop()
+			        elseif IsControlKeyDown() then
+    							EavesDrop:FindCombatUp()
+			        else
+			            EavesDrop:ScrollUp()
+			        end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+						GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollUp-Up"/>
+				<PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollUp-Down"/>
+				<DisabledTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollUp-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+			</Button>
+
+		</Frames>
+		<Scripts>
+			<OnMouseWheel>
+				EavesDrop:Scroll();
+			</OnMouseWheel>
+			<OnEnter>
+				EavesDropTab:SetAlpha(1);
+			</OnEnter>
+			<OnLeave>
+				EavesDropTab:SetAlpha(0);
+			</OnLeave>
+			<OnMouseDown>
+       	if IsAltKeyDown() then
+			  	if arg1 == "LeftButton" then
+			  		EavesDrop:OpenMenu()
+			  	elseif arg1 == "RightButton" then
+       			EavesDrop:ShowHistory()
+       		end
+			  end
+			</OnMouseDown>
+		</Scripts>
+	</Frame>
+
+	<Button name="EavesDropTab" hidden="false" frameStrata="LOW" parent="EavesDropFrame" movable="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="100" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM" relativePoint="TOP">
+				<Offset>
+					<AbsDimension x="-10" y="-2"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\ChatFrame\ChatFrameTab">
+					<Size>
+						<AbsDimension x="16" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0.0" right="0.25" top="0.0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\ChatFrame\ChatFrameTab">
+					<Size>
+						<AbsDimension x="80" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.25" right="0.75" top="0.0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\ChatFrame\ChatFrameTab">
+					<Size>
+						<AbsDimension x="16" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.75" right="1.0" top="0.0" bottom="1.0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForDrag("LeftButton");
+				this:SetAlpha(0);
+			</OnLoad>
+			<OnMouseDown>
+				GameTooltip:Hide();
+       	if arg1 == "RightButton" then
+			  	EavesDrop:OpenMenu()
+			  end
+			</OnMouseDown>
+			<OnEnter>
+				EavesDropTab:SetAlpha(1);
+				GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+				GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+			</OnEnter>
+			<OnLeave>
+				EavesDropTab:SetAlpha(0);
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnDragStart>
+				if (not EavesDrop.db.profile["LOCKED"] ) then
+			 		EavesDropFrame:StartMoving();
+			 	end
+			</OnDragStart>
+			<OnDragStop>
+				EavesDropFrame:StopMovingOrSizing();
+				local x, y = EavesDropFrame:GetLeft(), EavesDropFrame:GetTop()
+        local es = EavesDropFrame:GetEffectiveScale()
+        local ps = UIParent:GetScale()
+        x = x*es - GetScreenWidth()*ps/2
+        y = y*es - GetScreenHeight()*ps/2
+        EavesDrop.db.profile.x, EavesDrop.db.profile.y = x, y
+			</OnDragStop>
+		</Scripts>
+		<ButtonText name="$parentText" text="EavesDrop">
+			<Size>
+				<AbsDimension x="86" y="8"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="-2" y="-5"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="EavesDropFontNormalSmall"/>
+		<HighlightTexture file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="0" y="-7"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="RIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="0" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+
+	<Button name="EavesDropHistoryButton" inherits="EavesDropHistoryButtonTemplate" parent="EavesDropTab">
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT" relativeTo="EavesDropFrame" relativePoint="TOPRIGHT">
+				<Offset x="-4" y="-2"/>
+			</Anchor>
+		</Anchors>
+		<NormalTexture file="Interface\Icons\Ability_Hunter_Readiness"/>
+		<PushedTexture file="Interface\Icons\Ability_Hunter_Readiness"/>
+		<Scripts>
+			<OnClick>
+				EavesDrop:ShowHistory()
+			</OnClick>
+			<OnEnter>
+				EavesDropTab:SetAlpha(1);
+				GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+				GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+			</OnEnter>
+			<OnLeave>
+				EavesDropTab:SetAlpha(0);
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<!-- HISTORY FRAME -->
+	<Frame name="EavesDropHistoryFrame" enableMouse="true" movable="true" frameStrata="LOW" clampedToScreen="true" parent="UIParent" hidden="true">
+		<Backdrop bgFile="Interface\ChatFrame\ChatFrameBackground" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size>
+			<AbsDimension x="230" y="250"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="EavesDropFrame" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="EavesDropHistoryTopBar" file="Interface\ChatFrame\ChatFrameBackground">
+					<Size>
+						<AbsDimension x="220" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="EavesDropHistoryBottomBar" file="Interface\ChatFrame\ChatFrameBackground">
+					<Size>
+						<AbsDimension x="220" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOM">
+							<Offset>
+								<AbsDimension x="0" y="5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentSkillText" inherits="EavesDropFontNormal" justifyH="CENTER" text="Skill">
+					<Size>
+						<AbsDimension x="95" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentAmountCritText" inherits="EavesDropFontNormal" justifyH="CENTER" text="Crit">
+					<Size>
+						<AbsDimension x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-16" y="-3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentAmountNormalText" inherits="EavesDropFontNormal" justifyH="CENTER" text="Normal">
+					<Size>
+						<AbsDimension x="60" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parentAmountCritText" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<ScrollFrame name="EavesDropHistoryScrollBar" inherits="FauxScrollFrameTemplate" hidden="false">
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-25"/>
+            </Offset>
+          </Anchor>
+          <Anchor point="BOTTOMRIGHT">
+            <Offset>
+              <AbsDimension x="-27" y="25"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnVerticalScroll>
+            FauxScrollFrame_OnVerticalScroll(this, arg1, 16, EavesDrop.ScrollBar_Update);
+          </OnVerticalScroll>
+          <OnShow>
+            EavesDrop:ScrollBar_Update()
+          </OnShow>
+        </Scripts>
+      </ScrollFrame>
+			<Frame name="EavesDropHistoryEvent1" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="EavesDropHistoryFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-7" y="-25"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent2" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent1" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent3" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent2" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent4" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent3" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent5" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent4" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent6" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent5" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent7" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent6" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent8" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent7" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent9" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent8" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Frame name="EavesDropHistoryEvent10" inherits="EavesDropHistoryEventTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EavesDropHistoryEvent9" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Frame>
+			<Button name="$parentOutgoingHit" inherits="EavesDropHistoryButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="EavesDropHistoryFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-77" y="-3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\Icons\Ability_MeleeDamage"/>
+				<PushedTexture file="Interface\Icons\Ability_MeleeDamage"/>
+				<Scripts>
+					<OnClick>
+						EavesDrop:SetDisplay(1, "hit")
+						PlaySound("igMainMenuOptionCheckBoxOn");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentOutgoingHeal" inherits="EavesDropHistoryButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentOutgoingHit" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<NormalTexture file="Interface\Icons\Spell_Nature_HealingTouch"/>
+				<PushedTexture file="Interface\Icons\Spell_Nature_HealingTouch"/>
+				<Scripts>
+					<OnClick>
+						EavesDrop:SetDisplay(1, "heal")
+						PlaySound("igMainMenuOptionCheckBoxOn");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentIncomingHit" inherits="EavesDropHistoryButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentOutgoingHeal" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<NormalTexture file="Interface\Icons\Ability_Warrior_Rampage"/>
+				<PushedTexture file="Interface\Icons\Ability_Warrior_Rampage"/>
+				<Scripts>
+					<OnClick>
+						EavesDrop:SetDisplay(-1, "hit")
+						PlaySound("igMainMenuOptionCheckBoxOn");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentIncomingHeal" inherits="EavesDropHistoryButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentIncomingHit" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<NormalTexture file="Interface\Icons\Spell_Nature_MagicImmunity"/>
+				<PushedTexture file="Interface\Icons\Spell_Nature_MagicImmunity"/>
+				<Scripts>
+					<OnClick>
+						EavesDrop:SetDisplay(-1, "heal");
+						PlaySound("igMainMenuOptionCheckBoxOn");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentClose" inherits="UIPanelCloseButton">
+				<Size>
+					<AbsDimension x="24" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-1" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parentReset" inherits="UIPanelButtonTemplate" text="Reset">
+				<Size x="50" y="20"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset x="6" y="6"/>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EavesDrop:ResetHistory()
+					</OnClick>
+					<OnEnter>
+						if ( this.tooltipText ) then
+							GameTooltip:SetOwner(this, EavesDrop.ToolTipAnchor);
+							GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+						end
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnDragStart>
+				if (not EavesDrop.db.profile["LOCKED"] ) then
+			 		this:StartMoving();
+			 	end
+			</OnDragStart>
+			<OnDragStop>
+				this:StopMovingOrSizing();
+				local x, y = this:GetLeft(), this:GetTop()
+        local es = this:GetEffectiveScale()
+        local ps = UIParent:GetScale()
+        x = x*es - GetScreenWidth()*ps/2
+        y = y*es - GetScreenHeight()*ps/2
+        EavesDrop.db.profile.hx, EavesDrop.db.profile.hy = x, y
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+</Ui>

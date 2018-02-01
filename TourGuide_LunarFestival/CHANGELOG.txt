@@ -1,0 +1,48 @@
+Version 1.0.2
+- More guide cleanup and optimisation, thanks to Yewbacca and darkiz0r for the information!
+
+Version 1.0.1
+- Updated locations of elders inside Northrend dungeons. Thanks Branur!
+- Added a note about summoning and defeating Omen.
+- Cleaned up the guides a little bit.
+
+Version 1.0
+- Updated for WoW 3.3.0.
+
+Version 0.6.3
+- Updated for WoW 3.1.0.
+
+Version 0.6.2
+- Fix various typos, including Lower Blackrock Spire -> Blackrock Spire and Temple of Atal'Hakkar -> The Temple of Atal'Hakkar. Thanks Arrowmaster!
+- Rearrange Northrend portion of the guide so that instances are left to last.
+
+Version 0.6.1
+- We need Greater Moon Light to use the Lunar Invitation, so visit Silverpine before the Undercity (or just teleport straight to Moonglade if you a Druid).
+- Fix typo (Elywnn -> Elwynn).
+
+Version 0.6
+- Fix a typo (Taunka'lo -> Tunka'lo).
+- Tell players that Lake Wintergrasp must be controlled by their faction to visit Elder Bluewolf.
+- Whoops, missed a subzone -> zone change in the Horde guide.
+- Swapped the Elders of Silithus around in the guide.
+- Add an ugly fix to hopefully get rid of "table index is nil" errors.
+- Fix the Elder of Thunder Bluff (Proudhorn -> Ezra Wheathoof).
+
+Version 0.5
+- Remove "DefaultState: disabled" line from the .toc file.
+- Fixed the "Cannot find zone The Lunar Festival, using current zone" issues.
+- Use zone names instead of subzone names when travelling.
+- Update the co-ordinates of all the Elders, using data on WowHead.
+
+Version 0.4
+- The guides have been improved! New features include: automatic tracking, less typos, smaller wall of text.
+
+Version 0.3
+- Add preliminary guides for the Elders of Northrend. Thanks Astemus!
+
+Version 0.2
+- Added Horde guide.
+- Improved Alliance guide slightly.
+
+Version 0.1
+- Added Alliance guide.

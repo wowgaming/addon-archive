@@ -1,0 +1,152 @@
+1.0.2
+* Healium Friends frame is not always shown by default regardless of setting
+* Configurating buttons from Healium menu now updates the corresponding dropdown in config panel
+* Added Show Friends menu option to Healium menu
+
+1.0.1
+* Fixed Toggle Frames error with Friends Frame (new bug in 1.0.0)
+* Added Cure Poison spell for druids and also added it to the debuff warning logic
+
+1.0.0
+* Added optional mana bar
+* Raid icons support
+* Long names will wrap to a 2nd line
+* When a unit is dead, the HP percent text will say "dead", and the healthbar will be at 0.
+* Added Friends frame
+* Misc. optimizations
+* Fixed taint issue when dinging while in combat
+* Fixed issue with "Configure Buttons" menu not showing spells after a /reload, and probably other unknown related issues
+
+.9.5.0
+* Added "Set button count" to the Healium menu.  This allows you a simple way to set the number of buttons to show.
+* Added "Configure Buttons" to the Healium menu,  This allows you a smiple way to configure the spells assigned to each Healium button.
+* Gift of the Naaru should once again show in the dropdowns for Dranei.
+* Improved drag and drop support.  The main goal was to make it easier to move spells around by dragging and dropping.
+* You may now hold down shift and drag on a healium button to "pick up" that spell
+* If you release your mouse button during the drag operation, you may left click a healium button to replace its currently assigned spell.  Previously this wouldn't work.
+* If you drop a spell onto a healium button while holding shift it will replace the spell but also pick up the spell being replaced.
+
+.9.4.1
+* Added "/hlm reset frames" command line option to reset all frame positions
+* Added "Reset all frame position" to the Healium menu
+
+.9.4.0
+* Debuff warning system
+* The built-in spell list is now auto-translated. This means non-english wow verions will now have the spells in the button dropdowns in the config panel.  This is not a full translation of the entire addon, just the spell names.
+* Clique addon and related click-to-cast addons support
+* Shows tooltips for your buffs on a player
+
+.9.3.6
+* Fixed spell update issues caused in .9.3.5.
+
+.9.3.5
+* Fixed loading and LUA errors caused in .9.3.4
+
+.9.3.4 
+* Added Lock Frames checkbox to config panel.  
+* Added tool-tips to controls on config panel.
+
+.9.3.3 
+This version was not released to the public.
+* Switced to using Curse source control and automatic packaging, so the .zip names will be in a little different format.
+* .zip now includes a changelog.txt that contains this same exact text.
+* Added "Cure Toxins" to Shaman spell list, and removed the two it replaces.
+
+.9.3.2
+* Added Hide Close Buttons checkbox to config panel.  This will hide the X button so you don't accidently close the frame.
+* Added Hide Captions checkbox to config panel.  This will hide the caption bar above the Healium frames when you move your mouse away.
+
+.9.3.1
+* Fixed LUA errors caused in .9.3.0:
+Interface\FrameXML\UIDropDownMenu.lua:604 attempt to index local 'button' (a nil value) 
+Interface\FrameXML\UIDropDownMenu.lua:859 attempt to index local 'filterText' (a nil value)
+
+.9.3.0
+* The button configuration and button count settings are now saved seperately for each talent specialization.  When you log in, your existing button configuration will be automatically imported as the button configuration for each talent specialization, requiring nothing on your part.  Any button changes you make will now only be applied to the configuration specific to the talent specialization you are in at the time of the change.
+
+e.g. if you have a paladin with a holy spec and a ret spec, you may configure Healium while in your ret spec to not have Holy Shock, which is only available via talent, but when you switch back to holy spec, Holy Shock will be there (unless you remove it while in the Holy spec.)
+
+* Fixed scrollbar on config panel to quit scrolling infinitely.
+
+.9.2.3
+* Added ability to right click any Healium button to cast the spell on your current target instead of its intended target.  This might be useful in emergencies or just as a way to cast spells/buffs on other people, using the Healium UI.
+
+.9.2.2
+* Fixed resetting of Healium frame positions each time you logged in.  I think this bug was probably new in .9.2.0
+* Fixed config panel frame checkboxes are now checked/unchecked correctly when showing or hiding Healium frames
+* Added /hlm slash commands
+
+.9.2.1
+* sync to wow version 3.3.0
+
+.9.2.0
+* Drag and Drop directly from spell book to buttons to configure spells
+* Buffs and other spells are supported (only via drag and drop from the spell book, not in the drop downs).  Inventory and macros might be supported in the future but I don't consider this a priority.
+* Added Tanks Unit Frame (Shows the assigned Tanks in the raid)
+* Increased the width of the spell drop downs in the config panel
+* When dragging a unit frame by the caption - it no longer will stop moving when the party/raid changes.  It will however still do this if you were right-click dragging on a health-bar.
+* Fix to Use Class Colors setting- It wasn't being applied until the player's health changed.
+* Misc Taint fixes, including an annoying one (caused in .9.1.0) while in combat when a unit frame was created you would get "action was blocked in combat " message and the unit frame would have 15 buttons visible no matter how many you had configured.
+* Hide All Frames, via menu and via shift + left click on the Healium mini map button now toggles it's frames on and off.   It is smart- if any frame is visible it will toggle them all of and the next time you toggle, it will toggle back on just the frames it hid via the previous toggle.
+
+.9.1.0
+Unit Frames
+Prior to this update, Healium placed every player of the raid, into a single column.  For a single party or maybe a 10 man raid this was ok.   But for a 25 man raid it was pretty troublesome in a lot of ways.  First of all, you couldn’t easily tell who was in what group so if you were assigned to heal particular group(s) it wasn’t very easy in Healium.  On top of that there was a 25 man limit.   Now Healium has multiple independent and movable frames!
+Here are the frames:
+* Party – Shows your current party
+* Pets – Shows all pets in your group or raid.  That’s right- now you can now heal pets with Healium.  This was impossible before.
+* Me – Shows you only.  You’re important and if you are in a large raid or battleground it’s not always easy to remember what group and position you are in.  With this frame open, you can always position your frame anywhere you want.  You can actually appear in multiple frames at the same time (Me, Party, and your raid group).
+* Group1-8 – Shows the corresponding raid group. The 25 man limit has been removed and you can now see groups 6-8.
+* The frames have a draggable caption and close button.  
+* Player’s health bars are now true unit frames.
+* Left clicking on a player’s health bar will now target the player.  
+* If you have a spell primed then you can left click the health bar to cast it on them.
+*  Right clicking on a player’s health bar will allow you to drag the entire frame.
+
+Healium Menu
+Left clicking on the Healium mini map icon will now open a menu. The fist menu “Healium Config Panel” will open the config panel (same as left clicking the Healium mini map icon before this update.)  The menu “Show / Hide Frames” will allow you to show and hide particular frames or group of frames.   Right clicking on a Healium frame caption will also open this menu!
+
+Buffs / HOTs
+* Your active buffs/HOTs on players will show up as small icons just to the left of their health bar.  The icons have cooldown animations so you can judge how long they have left.  It also shows how many times the spell is stacked.  Only the spells you have assigned to Healium which you have personally cast will show up.  This feature is incredibly useful for spells like Beacon of Light (Paladin), Lifebloom (Druid), Prayer of Mending (Priest), among many others.
+15 Buttons
+* The maximum number of buttons has been increased from 8 to 15.  
+New Available Spells
+These spells will now appear in the Config Panel button dropdowns if you have the spell.
+* Draenei– Gift of the Naaru
+* Mage – Remove Curse
+* Druid – Rebirth, Remove Curse
+
+Configuration Panel
+Added
+* Show Button Tooltips checkbox – Controls whether or not a tooltip with the spell info is shown when hovering over a healing button.  A few people requested this as an option because the position of the tooltip was covering up something important on their UI.   Maybe in the future I can add an option that controls the position of the tooltip, but for now at least you can toggle it off.
+* Show Health Percentage checkbox – Controls whether or not to show the health percentage text on health bars.
+* Use Class Colors checkbox – If checked, the health bar color will be the color of the player’s class instead of green/yellow/red based on their current health.
+* Show Frames checkboxes: Party, Pets, Me, Group1-8 – Toggling these will show or hide the corresponding frame.
+* Show Buffs checkbox – Controls whether or not to show your buffs beside each player’s health bar.  Only your buffs which have also been assigned to Healium will be shown.
+Removed 
+* Default Party Frames – This option was especially troubling to support after the unit frames coding changes.  If anyone misses this, say so as it is probably salvageable, but with a lot of work.
+* Raid Scale setting – This setting was there to support shrinking the UI when in “raid mode” to allow the single column to fit on the screen.  Now that we have multiple frames support I don’t see a need to have a separate setting; just use the Scale setting which now controls the scale for all frames.  
+* No Raid checkbox – If you don’t want to see raid frames, either close them or just don’t open them.
+* Enabled checkbox – Before this update, this was your only option to close the main Healium frame.  Now you can close the individual frames instead.
+
+.9.0.5
+* Fixed spellbook blocking issue.  
+
+.9.0.4
+* Added "Penance" to Priests spell list.
+
+.9.0.3
+* Added "Cleanse Spirit" and "Riptide" to Shaman spell list.
+
+.9.0.2
+* Added "Guardian Spirit" to Priests spell list.
+* Fixed memory leaks.
+* Tweaks to raid support.  You will always appear on the bottom when in raids now.
+
+.9.0.1
+* Fixed serious lag spike when respeccing.
+* Increased max button count from 7 to 8
+* Added druid spells "Wild Growth", and "Innervate" to the available spells list for druids.
+
+.9.0 
+* Initial Release

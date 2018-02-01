@@ -1,0 +1,27 @@
+## Interface: 30200
+## Name: EavesDrop
+## Title: EavesDrop
+## Notes: A simple combat log that displays events similar to SCT
+## Version: 2.1
+## Author: Grayhoof
+## SavedVariables: EavesDropDB
+## SavedVariablesPerCharacter: EavesDropStatsDB
+## X-Website: http://grayhoof.wowinterface.com/
+## X-Category: Combat
+## X-RelSite-WoWI: 5332
+## X-Embeds: Ace3, LibSharedMedia-3.0
+## OptionalDeps: Ace3, LibSharedMedia-3.0
+## X-Curse-Packaged-Version: v2.3
+## X-Curse-Project-Name: EavesDrop
+## X-Curse-Project-ID: eaves-drop
+## X-Curse-Repository-ID: wow/eaves-drop/mainline
+
+embeds.xml
+
+locals\localization-enUS.lua
+locals\localization-koKR.lua
+locals\localization-zhCN.lua
+EavesDrop.lua
+EavesDropStats.lua
+options.lua
+EavesDrop.xml

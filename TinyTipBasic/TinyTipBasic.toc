@@ -1,0 +1,28 @@
+## Interface: 30000
+## Author: Thrae
+## Version: 0.2
+## Title: TinyTipBasic
+## Notes: Not required if you already have TinyTip, as this is a basic TinyTip module. Reformats and improves a unit's tooltip. It's what Thrae wants in his tooltip.
+##
+## LoadManagers: TinyTip
+## X-TinyTip-Load-Always: 1
+##
+## X-Website: http://code.google.com/p/thrae-wow/
+## X-Email: generalmx@gmail.com
+## X-Category: Interface Enhancements
+##
+## X-Curse-Packaged-Version: r29
+## X-Curse-Project-Name: TinyTipBasic
+## X-Curse-Project-ID: project-14817
+## X-Curse-Repository-ID: wow/project-14817/mainline
+
+localization\TinyTipLocale.lua
+localization\TinyTipLocale_deDE.lua
+localization\TinyTipLocale_frFR.lua
+## localization\TinyTipLocale_esES.lua
+localization\TinyTipLocale_koKR.lua
+localization\TinyTipLocale_zhTW.lua
+localization\TinyTipLocale_zhCN.lua
+
+StandAloneConfig.lua
+TinyTipBasic.lua
