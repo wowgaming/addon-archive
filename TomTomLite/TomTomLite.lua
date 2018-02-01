@@ -69,16 +69,6 @@ function addon:Initialize()
     self.PRI_ACTIVE = 15
     self.PRI_NORMAL = 0
     self.PRI_ALWAYS = math.huge
-
-	-- Set options for any pre-registered sources
-	for idx, source in ipairs(self.sources) do
-		local stype = source.stype
-		if addon.db.profile.sources[stype] == nil then
-			source.enabled = true
-		else
-			source.enabled = addon.db.profile.sources[stype]
-		end
-	end
 end
 
 function addon:CreateCrazyArrow(name, parent)
@@ -106,17 +96,9 @@ function addon:CreateCrazyArrow(name, parent)
     frame:Hide()
 
     local PI2 = math.pi * 2
-	local forceUpdateCounter = 0
 
     -- Set up the OnUpdate handler
     frame:SetScript("OnUpdate", function(self, elapsed)
-		-- Update the arrow (sort) every updateThrottle seconds
-		forceUpdateCounter = forceUpdateCounter + elapsed
-		if forceUpdateCounter >= addon.db.profile.forceUpdateThrottle then
-			addon:UpdateArrow()
-			forceUpdateCounter = 0
-		end
-
         local map, floor, x, y = unpack(self.waypoint)
         local distance, angle = addon:GetVectorFromCurrent(map, floor, x, y)
 
@@ -190,31 +172,22 @@ end
 --   opt    - A table containing any other options, for future-use
 
 function addon:RegisterSource(stype, name, desc, opt)
-    local source = {
-        stype = stype,
+    local sources = {
+        type = stype,
         name = name,
         desc = desc,
     }
 
     if opt then
         for k,v in pairs(opt) do
-            if source[k] then
+            if sources[k] then
                 local err = string.format(L["Source '%s' registered with invalid option '%s'"], name, k)
                 error(err)
             else
-                source[k] = v
+                sources[k] = v
             end
         end
     end
-
-	-- Check to see if the options table has been loaded, if so
-	if addon.db then
-		if addon.db.profile.sources[stype] == nil then
-			source.enabled = true
-		else
-			source.enabled = addon.db.profile.sources[style]
-		end
-	end
 
     table.insert(self.sources, source)
 end
@@ -242,8 +215,6 @@ end
 --                 The default priority is 0 and the greatest should be
 --                 100, indicating something that should always be
 --                 displayed, for example the Corpse arrow.
---
---      source - The source that produced the waypoint
 --
 -- Returns:
 --   waypoint   - A table containing the information about the given waypoint and
@@ -307,54 +278,27 @@ function addon:TOMTOMLITE_WAYPOINTS_CHANGED(msg, ...)
     self:UpdateArrow()
 end
 
--- stores the current position
-local current = {}
-local sortPriThenDistance = function(a, b)
-	local m, f, x, y = current.m, current.f, current.x, current.y
-	local apri = a.priority or 0
-	local bpri = b.priority or 0
-
-	if apri == bpri then
-		-- priorities differ, so sort by distance instead
-		local adist = addon:GetVector(m, f, x, y, unpack(a))
-		local bdist = addon:GetVector(m, f, x, y, unpack(b))
-		return adist < bdist
-	end
-
-	return bpri < apri
-end
-
 function addon:UpdateArrow()
-	current.m, current.f, current.x, current.y = self:GetPlayerPosition()
+    -- This naive sort function will sort all waypoints so the highest
+    -- priority waypoint is first. This is the waypoint that will be
+    -- displayed on the arrow.
 
-	-- Sort by priority, then by distance to waypoint. All sort functions
-	-- return true when a is less than b.
-    table.sort(self.waypoints, sortPriThenDistance)
+    table.sort(self.waypoints, function(a, b)
+        local apri = a.priority or 0
+        local bpri = b.priority or 0
+        return bpri < apri
+    end)
 
-	local active = false
-	for idx, waypoint in ipairs(self.waypoints) do
-		local source = waypoint.source
-		local disabled = source and self.db.profile.sources[source] == false
+    local highest = self.waypoints[1]
+    if highest then
+        local zone, floor, x, y = unpack(highest)
+        local lzone = self:GetMapDisplayName(zone)
 
-		if disabled then
-			-- move on to the next waypoint
-		else
-			local zone, floor, x, y = unpack(waypoint)
-			local lzone = self:GetMapDisplayName(zone)
-
-			self.arrow.waypoint = waypoint
-			self.arrow.title:SetText(waypoint.title or L["Unknown waypoint"])
-			self.arrow.info:SetFormattedText("%.2f, %.2f - %s", x * 100, y * 100, lzone)
-			self.arrow:Show()
-			active = true
-		end
-
-		if active then
-			break
-		end
-	end
-
-	if not active then
+        self.arrow.waypoint = highest
+        self.arrow.title:SetText(highest.title or L["Unknown waypoint"])
+        self.arrow.info:SetFormattedText("%.2f, %.2f - %s", x * 100, y * 100, lzone)
+        self.arrow:Show()
+    else
         self.arrow.waypoint = nil
         self.arrow:Hide()
     end
@@ -461,8 +405,6 @@ SLASH_TOMTOMLITE3 = "/tt"
 
 local wrongseparator = "(%d)" .. (tonumber("1.1") and "," or ".") .. "(%d)"
 local rightseparator =   "%1" .. (tonumber("1.1") and "." or ",") .. "%2"
-local enabled = L["|cFF11FF11%s|r"]:format(L["enabled"])
-local disabled = L["|cFFFF1111%s|r"]:format(L["disabled"])
 
 SlashCmdList["TOMTOMLITE"] = function(msg, editbox)
     -- Attempt to fix any pairs of coordinates in any form so they work. This
@@ -481,7 +423,6 @@ SlashCmdList["TOMTOMLITE"] = function(msg, editbox)
     end
 
     local verb = tokens[1] and tokens[1]:lower()
-	local showusage = false
 
     if verb == "set" then
         if not tonumber(tokens[2]) then
@@ -501,43 +442,11 @@ SlashCmdList["TOMTOMLITE"] = function(msg, editbox)
             if desc then
                 desc = table.concat(tokens, " ", zoneEnd + 3)
             end
-		else
+
             -- TODO: Try to find a match for the zone/map name
-		end
-	elseif verb == "source" then
-		local found = false
-
-		if tokens[2] then
-			for idx, source in ipairs(addon.sources) do
-				if source.stype == tokens[2]:lower() then
-					found = true
-					source.enabled = not source.enabled
-					addon.db.profile.sources[source.stype] = source.enabled
-					local status = source.enabled and enabled or disabled
-					addon:FireMessage("TOMTOMLITE_WAYPOINTS_CHANGED")
-					addon:Printf(L["Waypoint source '%s' has been %s"], tokens[2], status)
-					break
-				end
-			end
-		end
-
-		if not found then
-			showusage = true
-		end
-	elseif verb == "sources" then
-		addon:Printf(L["Waypoint sources for TomTomLite"])
-		for idx, source in ipairs(addon.sources) do
-			local status = source.enabled and enabled or disabled
-			addon:Printf(L["  - %s - %s: %s"], source.stype, status, source.desc)
-		end
-	else
-		showusage = true
-	end
-
-	if showusage then
-		addon:Printf(L["Usage for /ttl:"])
-		addon:Printf(L["  * set [zone] <x> <y> [desc] - sets a waypoint"])
-		addon:Printf(L["  * source <sourceName> - toggles a waypoint source"])
-		addon:Printf(L["  * sources - lists available sources and states"])
+        else
+            self:Printf(L["Usage for /ttl:"])
+            self:Printf(L["  * set [zone] <x> <y> [desc] - sets a waypoint"])
+        end
 	end
 end

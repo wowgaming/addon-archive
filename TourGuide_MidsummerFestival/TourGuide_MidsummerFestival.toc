@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Tour Guide - The Midsummer Fire Festival
 ## Notes: An easy-to-follow guide for visiting all of the Midsummer Festival bonfires.
 ## Author: Ethan Centaurai

@@ -1,4 +1,5 @@
 ## Interface: 30200
+## DefaultState: disabled
 ## Name: EavesDrop
 ## Title: EavesDrop
 ## Notes: A simple combat log that displays events similar to SCT

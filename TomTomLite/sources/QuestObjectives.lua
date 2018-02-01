@@ -12,7 +12,7 @@ local L = addon.L
 -------------------------------------------------------------------]]--
 
 do
-    local desc = L["This source provides waypoints for each of the objectives listed in the Blizzard objectives tracker. To add a quest to the tracking list, just shift-click it in your quest log."]
+    local desc = L["This source provides waypoints for each of the objectives listed in the Blizzard objectives tracker. To add a quest to the tracking list, just shift-click it in your quest log."],
     addon:RegisterSource("questobj", L["Quest Objectives (tracked)"], desc)
 end
 
@@ -48,7 +48,7 @@ function addon:OBJECTIVES_CHANGED()
     SetCVar("questPOI", 1)
 
     -- Only do an objective scan if the option is enabled
-    if not self.db.profile.sources.questobj then
+    if not self.db.profile.questObjectivesSource then
         return
     end
 
@@ -93,23 +93,19 @@ function addon:OBJECTIVES_CHANGED()
                 -- This waypoint already exists, no need to do anything, except
                 -- possibly change the priority
 
-				-- NOTE: Priority broken right now, so skip this
                 local waypoint = waypoints[key]
-                -- local newpri = key == first and addon.PRI_ACTIVE or addon.PRI_NORMAL
-                -- if waypoint.priority ~= newpri then
-                --     changed = true
-                --     waypoint.priority = newpri
-                -- end
+                local newpri = key == first and addon.PRI_ACTIVE or addon.PRI_NORMAL
+                if waypoint.priority ~= newpri then
+                    changed = true
+                    waypoint.priority = newpri
+                end
 
                 newWaypoints[key] = waypoint
             else
                 -- Create the waypoint, setting priority
                 local waypoint = self:AddWaypoint(map, floor, x, y, {
                     title = title,
-					priority = addon.PRI_NORMAL,
-					-- Proximity sory appears to be broken right now
-                    -- priority = key == first and addon.PRI_ACTIVE or addon.PRI_NORMAL,
-					source = "questobj",
+                    priority = key == first and addon.PRI_ACTIVE or addon.PRI_NORMAL,
                 })
 
                 newWaypoints[key] = waypoint

@@ -6,18 +6,14 @@ addon.defaults = {
     profile = {
         positions = {},
 
-		sources = {
-			corpse = true,
-			questobj = true,
-			archaeodig = true,
-		},
+        corpseSource = true,
+        questObjectivesSource = true,
+        archaeologyDigSitesSource = true,
 
         showMapIconsZone = false,
         showMapIconsContinent = false,
 
         corpseArrow = true,
-
-		forceUpdateThrottle = 2.0,
 
         goodcolor = {0, 1, 0},
         badcolor = {1, 0, 0},

@@ -22,7 +22,7 @@ local waypoint
 local map, floor, x, y
 
 local function GetCorpseLocation()
-    if not addon.db.profile.sources.corpse then
+    if not addon.db.profile.corpseSource then
         return
     end
 
@@ -77,7 +77,6 @@ local function SetCorpseArrow()
         waypoint = addon:AddWaypoint(map, floor, x, y, {
             title = "Your corpse",
             priority = addon.PRI_ALWAYS,
-			source = "corpse",
         })
         return waypoint
 	end
@@ -105,7 +104,7 @@ eventFrame:SetScript("OnUpdate", function(self, elapsed)
 		return
 	else
 		counter = 0
-		if addon.db.profile.sources.corpse then
+		if addon.db.profile.corpseSource then
 			if GetCorpseLocation() then
 				if SetCorpseArrow() then
 					self:Hide()

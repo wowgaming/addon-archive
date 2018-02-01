@@ -1,4 +1,5 @@
 ## Interface: 30300
+## DefaultState: disabled
 ## Title: Healium
 ## Notes: A healing user-interface addon that provides up to 15 customizable buttons next to each party or raid members name.  Based on FB Healbox.
 ## SavedVariables: HealiumGlobal

@@ -1,4 +1,5 @@
 ﻿## Interface: 30300
+## DefaultState: disabled
 ## Title: SilverDragon
 ## Notes: Remember where rares were
 ## Title-zhTW: SilverDragon

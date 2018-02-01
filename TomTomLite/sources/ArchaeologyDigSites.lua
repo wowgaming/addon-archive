@@ -20,7 +20,7 @@ eventFrame:RegisterEvent("ARTIFACT_DIG_SITE_UPDATED")
 -- on the current continent
 local waypoints = {}
 local function UpdateDigSites()
-    if not addon.db.profile.sources.archaeodig then
+    if not addon.db.profile.archaeologyDigSitesSource then
         return
     end
 
@@ -35,27 +35,24 @@ local function UpdateDigSites()
         SetMapByID(continent)
     end
 
-	local sites = {}
-	if continent then
-		for idx = 1, GetNumMapLandmarks() do
-			local name, desc, textureIdx, px, py = GetMapLandmarkInfo(idx)
-			local zoneName, mapFile, texPctX, texPctY, texX, texY, scrollX, scrollY = UpdateMapHighlight(px, py)
+    local sites = {}
+    for idx = 1, GetNumMapLandmarks() do
+        local name, desc, textureIdx, px, py = GetMapLandmarkInfo(idx)
+        local zoneName, mapFile, texPctX, texPctY, texX, texY, scrollX, scrollY = UpdateMapHighlight(px, py)
 
-			if textureIdx == 177 then
-				local key = string.format("%s:%f:%f:", name, px, py)
-				if not waypoints[key] then
-					local waypoint = addon:AddWaypoint(continent, nil, px, py, {
-						title = string.format(L["Dig site: %s\n%s"], name, zoneName),
-						priority = 0,
-						source = "archaeodig",
-					})
-					sites[key] = waypoint
-				else
-					sites[key] = waypoints[key]
-				end
-			end
-		end
-	end
+        if textureIdx == 177 then
+            local key = string.format("%s:%f:%f:", name, px, py)
+            if not waypoints[key] then
+                local waypoint = addon:AddWaypoint(continent, nil, px, py, {
+                    title = string.format(L["Dig site: %s\n%s"], name, zoneName),
+                    priority = 0,
+                })
+                sites[key] = waypoint
+            else
+                sites[key] = waypoints[key]
+            end
+        end
+    end
 
     for key, waypoint in pairs(sites) do
         waypoints[key] = nil

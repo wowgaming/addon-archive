@@ -142,7 +142,6 @@ local continents = {
     [466] = 3,                   -- Outland (3)
     [485] = 4,                   -- Northrend (4)
     [751] = 5,                   -- Maelstrom (5)
-	[862] = 6, 					 -- Pandaria (6)
 
     -- Map from continentIndex to mapId
     [1] = 13,                    -- Kalimdor (13)
@@ -150,7 +149,6 @@ local continents = {
     [3] = 466,                   -- Outland (466)
     [4] = 485,                   -- Northrend (485)
     [5] = 751,                   -- Maelstrom (751)
-	[6] = 862,                   -- Pandaria (862)
 }
 
 -- Returns if a given map file is a continent map

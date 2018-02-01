@@ -1,4 +1,5 @@
 ## Interface: 30000
+## DefaultState: disabled
 ## Author: Thrae
 ## Version: 0.2
 ## Title: TinyTipBasic

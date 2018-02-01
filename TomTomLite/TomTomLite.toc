@@ -1,7 +1,8 @@
-## Interface: 50001
+## Interface: 40300
+## DefaultState: disabled
 ## Title: TomTomLite
 ## Author: Cladhaire
-## Version: v50001-1.1.2
+## Version: v40300-0.1.3-75066ed
 ## Notes: An even simpler navigational assistant
 ## SavedVariables: TomTomLiteDB
 
