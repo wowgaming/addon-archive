@@ -1,0 +1,1549 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<Frame name="TRP2_DebugScripterFrame" inherits="TRP2_ZoneSaisieTemplate" toplevel="false" movable="true" parent="UIParent" enableMouse="true" hidden="false">
+		<TitleRegion setAllPoints="true"/>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				TRP2_DebugScripterFrameScrollEditBox:SetScript("OnEnterPressed",function() 
+					local func,errorMess = loadstring(TRP2_DebugScripterFrameScrollEditBox:GetText());
+					if not func then
+						TRP2_debug(tostring(errorMess));
+					end
+					TRP2_PCall(func);
+				end);
+			</OnLoad>
+			<OnUpdate>
+				if not TRP2_GetConfigValueFor("DebugMode",false) then
+					self:Hide();
+				end
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+	
+	<!-- Debug : SynchronizedTab  -->
+	<Frame name="TRP2_DebugSynchronizedFrame" toplevel="false" parent="UIParent" enableMouse="false" hidden="true">
+		<Size x="600" y="10"/>
+		<Anchors>
+			<Anchor point="TOP" x="0" y="0"/>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="TRP2_DebugSynchronizedFrameString" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="0" y="0"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate>
+				if TRP2_GetConfigValueFor("DebugMode",false) then
+					self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+					if (self.TimeSinceLastUpdate > 0.2) then
+						self.TimeSinceLastUpdate = 0;
+						TRP2_DebugSynchronizedFrameString:SetText(TRP2_CTS(TRP2_DebugRefreshSynchronizedString()));
+					end
+				else
+					TRP2_DebugSynchronizedFrameString:SetText("");
+				end
+				self.TimeSinceLastUpdate2 = self.TimeSinceLastUpdate2 + elapsed; 	
+				if (self.TimeSinceLastUpdate2 > 1) then
+					self.TimeSinceLastUpdate2 = 0;
+					TRP2_RefreshEverySeconds();
+				end
+			</OnUpdate>
+			<OnLoad>
+				TRP2_OnLoad(self);
+				self.TimeSinceLastUpdate = 10;
+				self.TimeSinceLastUpdate2 = 10;
+			</OnLoad>
+			<OnEvent function="TRP2_OnEvent"/>
+		</Scripts>
+	</Frame>
+	
+	<!-- Bouton Mini Map  -->
+	<Button name="TRP2_MinimapButton" parent="Minimap" frameStrata="LOW">
+	    <Size x="32" y="32"/>
+	    <Anchors>
+		    <Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Layers>
+	      <Layer level="OVERLAY">
+	        <Texture name="$parentIcon" file="Interface\AddOns\totalRP2\Images\icon.tga">
+				<Size x="18" y="18"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="7" y="-7"/>
+				</Anchors>
+			</Texture>
+	      </Layer>
+	      <Layer level="OVERLAY">
+	        <Texture name="$parentIcon" file="Interface\MINIMAP\MiniMap-TrackingBorder.blp">
+				<Size x="53" y="53"/>
+				<Anchors>
+					<Anchor point="CENTER" x="11" y="-11"/>
+				</Anchors>
+			</Texture>
+	      </Layer>
+	    </Layers>
+	    <HighlightTexture file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight" alphaMode="ADD"/>
+	    <Scripts>
+			<OnClick>
+				if button == "LeftButton" then
+					TRP2_OpenMainMenu(not TRP2MainFrame:IsVisible());
+				elseif button == "RightButton" then
+					if TRP2_RaccBar:IsVisible() then
+						TRP2_RaccBar:Hide();
+					else
+						TRP2_RaccBar:Show();
+					end
+				end
+			</OnClick>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+			</OnLoad>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+	    </Scripts>
+	</Button>
+	
+	<!-- Barre principale d'icone  -->
+	<Frame name="TRP2_MenuBarTemplate" virtual="true">
+		<Size x="250" y="40"/> 
+		<Frames>
+			<!-- ONGLET = FICHE -->
+			<Button name="TRP2MainFrameMenuBarOngletFiche" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="15" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_OpenPanel("Fiche");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2MainFrame.Nom == TRP2_Joueur and TRP2MainFrame.Panel == "Fiche");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<!-- ONGLET = LANG -->
+			<Button name="TRP2MainFrameMenuBarOngletLangage" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="45" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_OpenPanel("Langage");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Langage");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<!-- ONGLET = Quete -->
+			<Button name="TRP2MainFrameMenuBarOngletQuest" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="75" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_OpenPanel("Quests");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Quests");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<!-- ONGLET = REG -->
+			<Button name="TRP2MainFrameMenuBarOngletRegistre" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="125" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_OpenPanel("Registre");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Registre" or (TRP2MainFrame.Nom ~= TRP2_Joueur and TRP2MainFrame.Panel == "Fiche"));
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<!-- ONGLET = CREA -->
+			<Button name="TRP2MainFrameMenuBarOngletCreation" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="185" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_OpenPanel("Creation");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<!-- ONGLET = GUIDE -->
+			<Button name="TRP2MainFrameMenuBarOngletGuide" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="245" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						if TRP2_Guide_OpenPage ~= nil then
+							TRP2_Guide_OpenPage("Index",nil,true);
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<!-- ONGLET = OPTIONS -->
+			<Button name="TRP2MainFrameMenuBarOngletOptions" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" x="215" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_OpenPanel("Options");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- Barre de raccourcis  -->
+	<Frame name="TRP2_RaccBar" frameStrata="DIALOG" toplevel="true" parent="UIParent" enableMouse="true" hidden="false" movable="true">
+		<TitleRegion setAllPoints="true"/>
+		<Size x="190" y="60"/>
+		<Scripts>
+			<OnLoad>
+				self:SetClampedToScreen(true);
+			</OnLoad>
+		</Scripts>
+		<Anchors>
+			<Anchor point="TOP" x="0" y="0"/>
+		</Anchors>
+		<Frames>
+			<Frame>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="20"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="20"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="190" y="50"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="-10"/>
+				</Anchors>
+				<Frames>
+					<!-- Bouton sac à dos -->
+					<Button name="TRP2_RaccBarSacBouton" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="-35" y="-15"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"BOTTOM",0,0,"{w}"..TRP2_LOC_SAC,
+									TRP2_GetIndexedTabSize(TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Sac"]["Slot"]).." / 400 "..TRP2_LOC_RACCBAR1);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnClick>
+								if TRP2InventaireFrameSac:IsVisible() then
+									TRP2InventaireFrameSac:Hide();
+								else
+									TRP2_ShowSac();
+								end
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 1) then
+									self.TimeSinceLastUpdate = 0;
+									if TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Sac"]["Id"] and TRP2_SacsADos[TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Sac"]["Id"]] then
+										TRP2_RaccBarSacBoutonIcon:SetTexture("Interface\\Icons\\"..TRP2_SacsADos[TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Sac"]["Id"]]["Icone"]);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton coffre -->
+					<Button name="TRP2_RaccBarCoffreBouton" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-15"/></Anchors>
+						<Scripts>
+							<OnClick>
+								if IsMounted() and not UnitOnTaxi("player") then
+									if TRP2InventaireFrameCoffre:IsVisible() then
+										TRP2InventaireFrameCoffre:Hide();
+									else
+										TRP2_ShowCoffre();
+									end
+								else
+									TRP2_Error(TRP2_LOC_COFFR_ERROR_1);
+								end
+							</OnClick>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"BOTTOM",0,0,"{w}"..TRP2_LOC_COFFRE,
+									TRP2_GetIndexedTabSize(TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Coffre"]["Slot"]).." / 400 "..TRP2_LOC_RACCBAR1);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									if TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Coffre"]["Id"] and TRP2_CoffreMonture[TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Coffre"]["Id"]] then
+										TRP2_RaccBarCoffreBoutonIcon:SetTexture("Interface\\Icons\\"..TRP2_CoffreMonture[TRP2_Module_Inventaire[TRP2_Royaume][TRP2_Joueur]["Coffre"]["Id"]]["Icone"]);
+									end
+									if IsMounted() and not UnitOnTaxi("player") then
+										TRP2_RaccBarCoffreBoutonIcon:SetDesaturated(false);
+									else
+										TRP2_RaccBarCoffreBoutonIcon:SetDesaturated(true);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton Planque -->
+					<Button name="TRP2_RaccBarPlanqueBouton" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="35" y="-15"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_InitUIDropDown(TRP2_DD_PlanqueAndPanneau);
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.20) then
+									self.TimeSinceLastUpdate = 0;
+									if TRP2_CanPlanqueHere(false) then
+										TRP2_RaccBarPlanqueBoutonIcon:SetDesaturated(false);
+										self:Enable();
+									else
+										TRP2_RaccBarPlanqueBoutonIcon:SetDesaturated(true);
+										self:Disable();
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 10;
+								self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+								TRP2_RaccBarPlanqueBoutonIcon:SetTexture("Interface\\Icons\\INV_Misc_Map09");
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton chapeau -->
+					<Button name="TRP2_RaccBarCasqueSwitch">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="TOP" x="60" y="-7"/></Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="TRP2_RaccBarCasqueSwitchNormal" file="Interface\RAIDFRAME\ReadyCheck-NotReady">
+									<Size x="8" y="8"/>
+									<Anchors>
+										<Anchor point="CENTER" x="3" y="-3"/>
+									</Anchors>
+									<TexCoords left="1" right="0" top="0" bottom="1"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\ICONS\INV_Helmet_13"/>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing"/>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\INV_Helmet_13"/>
+						<Scripts>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								ShowHelm(not ShowingHelm());
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									if ShowingHelm() then
+										TRP2_RaccBarCasqueSwitchNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-Ready.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\INV_Helmet_13.blp:35:35|t {w}"..SHOW_HELM,TRP2_LOC_CASQUE_AFF);
+									else
+										TRP2_RaccBarCasqueSwitchNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-NotReady.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\INV_Helmet_13.blp:35:35|t {w}"..SHOW_HELM,TRP2_LOC_CASQUE_CAC);
+									end
+									if GetMouseFocus() == self then
+										TRP2_RefreshTooltipForFrame(self);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton cape -->
+					<Button name="TRP2_RaccBarCapeSwitch">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="TOP" relativeTo="TRP2_RaccBarCasqueSwitch" relativePoint="BOTTOM" x="0" y="2"/></Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="TRP2_RaccBarCapeSwitchNormal" file="Interface\RAIDFRAME\ReadyCheck-NotReady">
+									<Size x="8" y="8"/>
+									<Anchors>
+										<Anchor point="CENTER" x="3" y="-3"/>
+									</Anchors>
+									<TexCoords left="1" right="0" top="0" bottom="1"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\ICONS\INV_Misc_Cape_18">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\INV_Misc_Cape_18">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</PushedTexture>
+						<Scripts>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								ShowCloak(not ShowingCloak());
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									if ShowingCloak() then
+										TRP2_RaccBarCapeSwitchNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-Ready.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\INV_Misc_Cape_18.blp:35:35|t {w}"..SHOW_CLOAK,TRP2_LOC_CAPE_AFF);
+									else
+										TRP2_RaccBarCapeSwitchNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-NotReady.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\INV_Misc_Cape_18.blp:35:35|t {w}"..SHOW_CLOAK,TRP2_LOC_CAPE_CAC);
+									end
+									if GetMouseFocus() == self then
+										TRP2_RefreshTooltipForFrame(self);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton RP/HRP -->
+					<Button name="TRP2_RaccBarRPSwitch">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="LEFT" relativeTo="TRP2_RaccBarCasqueSwitch" relativePoint="RIGHT" x="-2" y="0"/></Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="TRP2_RaccBarRPSwitchNormal" file="Interface\RAIDFRAME\ReadyCheck-NotReady">
+									<Size x="8" y="8"/>
+									<Anchors>
+										<Anchor point="CENTER" x="3" y="-3"/>
+									</Anchors>
+									<TexCoords left="1" right="0" top="0" bottom="1"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\ICONS\Spell_Shadow_Charm">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\Spell_Shadow_Charm">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</PushedTexture>
+						<Scripts>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								TRP2_SwitchStatutRP();
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									if TRP2_GetWithDefaut(TRP2_GetInfo(TRP2_Joueur,"Actu",{}),"StatutRP",2) == 1 then -- HRP
+										TRP2_RaccBarRPSwitchNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-NotReady.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\Spell_Shadow_Charm.blp:35:35|t {w}"..TRP2_LOC_StatutRP.." : "..TRP2_LOC_StatutRP_Tab[1],TRP2_LOC_HRPTORP);
+									else -- RP
+										TRP2_RaccBarRPSwitchNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-Ready.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\Spell_Shadow_Charm.blp:35:35|t {w}"..TRP2_LOC_StatutRP.." : "..TRP2_LOC_StatutRP_Tab[2],TRP2_LOC_RPTOHRP);
+									end
+									if GetMouseFocus() == self then
+										TRP2_RefreshTooltipForFrame(self);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton ABS/NDP -->
+					<Button name="TRP2_RaccBarABSSwitch">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="TOP" relativeTo="TRP2_RaccBarRPSwitch" relativePoint="BOTTOM" x="0" y="2"/></Anchors>
+						<NormalTexture name="TRP2_RaccBarABSSwitchNormal" file="Interface\ICONS\Spell_Nature_Sleep">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\Spell_Nature_Sleep">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</PushedTexture>
+						<Scripts>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								TRP2_SwitchStatutABS(button);
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									if UnitIsDND("player") then
+										TRP2_RaccBarABSSwitchNormal:SetTexture("Interface\\ICONS\\Ability_Mage_IncantersAbsorbtion.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\Ability_Mage_IncantersAbsorbtion.blp:35:35|t {w}"..MODE.." : {r}"..DEFAULT_DND_MESSAGE,TRP2_LOC_TO_NORMAL);
+									elseif UnitIsAFK("player") then
+										TRP2_RaccBarABSSwitchNormal:SetTexture("Interface\\ICONS\\Spell_Nature_Sleep.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\Spell_Nature_Sleep.blp:35:35|t {w}"..MODE.." : {o}"..DEFAULT_AFK_MESSAGE,TRP2_LOC_TO_NORMAL);
+									else
+										TRP2_RaccBarABSSwitchNormal:SetTexture("Interface\\ICONS\\Ability_Rogue_MasterOfSubtlety.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"RIGHT",0,-50,"|TInterface\\ICONS\\Ability_Rogue_MasterOfSubtlety.blp:35:35|t {w}"..MODE.." : {v}"..PLAYER_DIFFICULTY1,TRP2_LOC_TO_ABS.."\n"..TRP2_LOC_TO_DND);
+									end
+									if GetMouseFocus() == self then
+										TRP2_RefreshTooltipForFrame(self);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton Parole/Emote NPC -->
+					<Button name="TRP2_RaccBarParoleButton">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="TOP" x="-79" y="-7"/></Anchors>
+						<NormalTexture file="Interface\ICONS\Ability_Warrior_CommandingShout">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\Ability_Mage_Burnout">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</PushedTexture>
+						<Scripts>
+							<OnEnter>
+								local secondeLigne;
+								if UnitName("target") then
+									secondeLigne = TRP2_FT(TRP2_LOC_Sound_NPCParleEmote,TRP2_GetTargetTRPName());
+								else
+									secondeLigne = TRP2_LOC_Sound_TexteSeul;
+								end
+								TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"LEFT",0,-50,"|TInterface\\ICONS\\Ability_Warrior_CommandingShout.blp:35:35|t {w}"..TRP2_LOC_Sound_EventAnim,
+									"{j}"..TRP2_LOC_CLIC.." {w}: "..secondeLigne);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								if TRP2_NPCAnimFrame:IsVisible() then
+									TRP2_NPCAnimFrame:Hide();
+								else
+									if UnitName("target") then
+										TRP2_AnimPersoShow("Parole");
+									else
+										TRP2_AnimPersoShow("Texte");
+									end
+								end
+							</OnClick>
+						</Scripts>
+					</Button>
+					<!-- Bouton Liste son -->
+					<Button name="TRP2_RaccBarSonBouton">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="TOP" relativeTo="TRP2_RaccBarParoleButton" relativePoint="BOTTOM" x="0" y="2"/></Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="TRP2_RaccBarSonBoutonNormal" file="Interface\RAIDFRAME\ReadyCheck-NotReady">
+									<Size x="8" y="8"/>
+									<Anchors>
+										<Anchor point="CENTER" x="3" y="-3"/>
+									</Anchors>
+									<TexCoords left="1" right="0" top="0" bottom="1"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\ICONS\INV_Misc_Ear_Human_01">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\INV_Misc_Ear_Human_01">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								if button == "LeftButton" then
+									if TRP2_ListeSoundFav:IsVisible() then
+										TRP2_ListeSoundFav:Hide();
+									else
+										TRP2_OpenSoundFavList();
+									end
+								else
+									if TRP2_GetConfigValueFor("ActivateSound", true) then
+										TRP2_Module_Configuration[TRP2_Royaume][TRP2_Joueur]["ActivateSound"] = false;
+									else
+										TRP2_Module_Configuration[TRP2_Royaume][TRP2_Joueur]["ActivateSound"] = nil;
+									end
+								end
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									if TRP2_GetConfigValueFor("ActivateSound", true) then
+										TRP2_RaccBarSonBoutonNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-Ready.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"LEFT",0,-50,"|TInterface\\ICONS\\INV_Misc_Ear_Human_01.blp:35:35|t {w}"..TRP2_LOC_Playlist,
+									"{j}"..TRP2_LOC_CLIC.." {w}: "..TRP2_LOC_ShowHidePlaylist.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_RACCBAR3);
+									else
+										TRP2_RaccBarSonBoutonNormal:SetTexture("Interface\\RAIDFRAME\\ReadyCheck-NotReady.blp");
+										TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"LEFT",0,-50,"|TInterface\\ICONS\\INV_Misc_Ear_Human_01.blp:35:35|t {w}"..TRP2_LOC_Playlist,
+									"{j}"..TRP2_LOC_CLIC.." {w}: "..TRP2_LOC_ShowHidePlaylist.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_RACCBAR4);
+									end
+									if GetMouseFocus() == self then
+										TRP2_RefreshTooltipForFrame(self);
+									end
+								end
+							</OnUpdate>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Bouton Notes -->
+					<Button name="TRP2_RaccBarChannBouton">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="LEFT" relativeTo="TRP2_RaccBarParoleButton" relativePoint="RIGHT" x="-2" y="0"/></Anchors>
+						<NormalTexture file="Interface\ICONS\INV_Inscription_ArmorScroll01">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\INV_Inscription_ArmorScroll01">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"LEFT",0,-50,"|TInterface\\ICONS\\INV_Inscription_ArmorScroll01.blp:35:35|t {w}"..TRP2_LOC_CarnetNotes,
+									"{j}"..TRP2_LOC_CLIC.." {w}: "..TRP2_LOC_CHATFRAMEGEST);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								if TRP2_CarnetNotes:IsVisible() then
+									TRP2_CarnetNotes:Hide();
+								else
+									TRP2_CarnetNotes:Show();
+								end
+							</OnClick>
+						</Scripts>
+					</Button>
+					<!-- Bouton Langage -->
+					<Button name="TRP2_RaccBarPersoBouton">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="TOP" relativeTo="TRP2_RaccBarChannBouton" relativePoint="BOTTOM" x="0" y="2"/></Anchors>
+						<NormalTexture name="TRP2_RaccBarPersoBoutonIcon" file="Interface\ICONS\Ability_Warrior_RallyingCry">
+							<Size x="16" y="16"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="1"/>
+						</NormalTexture>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing">
+							<Size x="20" y="20"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</HighlightTexture>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\Ability_Warrior_RallyingCry">
+							<Size x="18" y="18"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</PushedTexture>
+						<Scripts>
+							<OnEnter>
+								local ID = TRP2_GetInfo(TRP2_Joueur,"SelectDial", select(1, GetDefaultLanguage("player")));
+								local LangueTab = TRP2_GetLangageInfo(ID);
+								TRP2_SetTooltipForFrame(self,TRP2_RaccBar,"LEFT",0,-50,"|TInterface\\ICONS\\"..TRP2_GetWithDefaut(LangueTab,"Icone","Temp")..":35:35|t {w}"..TRP2_LOC_DIALECTES,
+									"{v}"..TRP2_LOC_Actuellement.." : "..TRP2_GetWithDefaut(LangueTab,"Entete",ID)
+									.."\n{j}"..TRP2_LOC_CLIC.." {w}: "..TRP2_LOC_LanguesListe);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								TRP2_InitUIDropDown(TRP2_DD_MenuLangages);
+							</OnClick>
+							<OnUpdate>
+								self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+								if (self.TimeSinceLastUpdate > 0.2) then
+									self.TimeSinceLastUpdate = 0;
+									local ID = TRP2_GetInfo(TRP2_Joueur,"SelectDial", select(1, GetDefaultLanguage("player")));
+									local LangueTab = TRP2_GetLangageInfo(ID);
+									TRP2_RaccBarPersoBoutonIcon:SetTexture("Interface\\ICONS\\"..TRP2_GetWithDefaut(LangueTab,"Icone","Temp"));
+								end
+							</OnUpdate>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp");
+								self.TimeSinceLastUpdate = 10;
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Cadre Titre  -->
+					<Frame name="TRP2_RaccBarTitleFrame">
+						<Size x="100" y="25"/> 
+						<Backdrop bgFile="Interface\CHARACTERFRAME\UI-Party-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+							<EdgeSize>
+								<AbsValue val="16"/>
+							</EdgeSize>
+							<TileSize>
+								<AbsValue val="16"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Anchors>
+							<Anchor point="TOP" x="0" y="13"/>
+						</Anchors>
+						<Frames>
+							<Button inherits="TRP2_ExitButton">
+								<Anchors>
+									<Anchor point="RIGHT" x="-5" y="3"/>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										TRP2_RaccBar:Hide();
+									</OnClick>
+								</Scripts>
+							</Button>
+							<Button name="TRP2_RaccBarAide" inherits="TRP2_BoutonAideTemplate">
+								<Anchors>
+									<Anchor point="LEFT" relativepoint="LEFT" x="5" y="0"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self.Page = "RaccBar";
+									</OnLoad>
+								</Scripts>
+							</Button>
+						</Frames>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_RaccBarTitleString" inherits="GameFontNormalSmall" justifyH="CENTER">
+									<Size x="190" y="5"/>
+									<Anchors>
+										<Anchor point="CENTER" x="0" y="0"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+	
+	<!-- Carnet Notes -->
+	<Frame name="TRP2_CarnetNotes" movable="true" frameStrata="HIGH" toplevel="true" parent="UIParent" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Backdrop bgFile="Interface\AchievementFrame\UI-Achievement-StatsBackground" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+			<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="400"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="250" y="400"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Frames>
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-2" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Anchors>
+					<Anchor point="TOP" relativepoint="TOP" x="0" y="-22"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="500" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="10"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size x="190" y="350"/>
+				<Frames>
+					<ScrollFrame name="TRP2_CarnetNotesScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="175" y="340"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<EditBox name="TRP2_CarnetNotesScrollEditBox" letters="10000" multiLine="true" enableMouse="false" autoFocus="false">
+								<Size x="175" y="50"/>
+								<Scripts>
+									<OnTextChanged>
+										if self:GetText() ~= TRP2_NilToEmpty(TRP2_Module_Notes) then
+											TRP2_CarnetNotesSave:Enable();
+										else
+											TRP2_CarnetNotesSave:Disable();
+										end
+									</OnTextChanged>
+									<OnEscapePressed>
+										self:ClearFocus()
+									</OnEscapePressed>
+									<OnEditFocusGained>
+										if self.disabled then
+											self:ClearFocus();
+										else
+											self:HighlightText();
+										end
+									</OnEditFocusGained>
+									<OnEditFocusLost>
+										self:HighlightText(0,0);
+										if self.defaut and (not TRP2_EmptyToNil(self:GetText()) or (self.noZero and self:GetText() == "0")) then
+											self:SetText(self.defaut);
+										end
+									</OnEditFocusLost>
+									<OnEnter>
+										TRP2_RefreshTooltipForFrame(self);
+									</OnEnter>
+									<OnLeave>
+										TRP2_MainTooltip:Hide();
+										
+									</OnLeave>
+								</Scripts>
+								<FontString inherits="GameFontNormal"/>
+							</EditBox>
+						</ScrollChild>
+						<Scripts>
+							<OnEnter>
+								if not getglobal(self:GetName().."EditBox").disabled then
+									getglobal(self:GetName().."EditBox"):SetFocus();
+								end
+							</OnEnter>
+						</Scripts>
+					</ScrollFrame>
+					<Button name="TRP2_CarnetNotesSave" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="BOTTOM" x="0" y="-20"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_Module_Notes = TRP2_CarnetNotesScrollEditBox:GetText();
+								self:Disable();
+							</OnClick>
+							<OnShow>
+								TRP2_CarnetNotesScrollEditBox:SetText(TRP2_NilToEmpty(TRP2_Module_Notes));
+								self:Disable();
+							</OnShow>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+
+	<!-- Dialogue quests -->
+	<Frame name="TRP2_DialQuestFrame" movable="true" frameStrata="HIGH" toplevel="true" parent="UIParent" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Backdrop bgFile="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal-Desaturated" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+			<EdgeSize><AbsValue val="26"/></EdgeSize><TileSize><AbsValue val="450"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="440" y="10"/>
+		<Anchors>
+			<Anchor point="LEFT" x="50"/>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="TRP2_DialQuestFrameNameTexte" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" x="55" y="-15"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameMainTexte" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" relativeto="TRP2_DialQuestFrameNameTexte" relativepoint="BOTTOM" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameObjectifTitle" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" relativeto="TRP2_DialQuestFrameMainTexte" relativepoint="BOTTOM" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameObjectifTexte" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" relativeto="TRP2_DialQuestFrameObjectifTitle" relativepoint="BOTTOM" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameRewardTitle" inherits="GameFontNormalLarge" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" relativeto="TRP2_DialQuestFrameObjectifTexte" relativepoint="BOTTOM" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameRewardTexte" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" relativeto="TRP2_DialQuestFrameRewardTitle" relativepoint="BOTTOM" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameRewardChoix" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" relativeto="TRP2_DialQuestFrameRewardTitle" relativepoint="BOTTOM" x="0" y="-5"/>
+					</Anchors>
+				</FontString>
+				<FontString name="TRP2_DialQuestFrameTitleTexte" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="0" y="0"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT" x="-5" y="10"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-5" y="-5"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_DialQuestFrame:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_DialQuestFrameNextButton">
+				<Size x="26" y="26"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-10" y="10"/>
+				</Anchors>
+				<NormalTexture file="Interface\GLUES\COMMON\Glue-RightArrow-Button-Up"/>
+				<PushedTexture file="Interface\GLUES\COMMON\Glue-RightArrow-Button-Down"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\GLUES\COMMON\Glue-RightArrow-Button-Highlight"/>
+			</Button>
+			<Button name="TRP2_DialQuestFramePreviousButton">
+				<Size x="26" y="26"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="115" y="10"/>
+				</Anchors>
+				<NormalTexture file="Interface\GLUES\COMMON\Glue-LeftArrow-Button-Up"/>
+				<PushedTexture file="Interface\GLUES\COMMON\Glue-LeftArrow-Button-Down"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\GLUES\COMMON\Glue-LeftArrow-Button-Highlight"/>
+			</Button>
+			<Button name="TRP2_DialQuestFrameAcceptButton" inherits="TRP2_UIPanelButtonTemplate" text="ACCEPT">
+				<Size x="90" y="20"/>
+				<Anchors>
+					<Anchor point="LEFT" relativepoint="Right" relativeto="TRP2_DialQuestFramePreviousButton" x="15" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_DialQuestFrameDeclineButton" inherits="TRP2_UIPanelButtonTemplate" text="DECLINE">
+				<Size x="90" y="20"/>
+				<Anchors>
+					<Anchor point="Right" relativepoint="left" relativeto="TRP2_DialQuestFrameNextButton" x="-15" y="0"/>
+				</Anchors>
+			</Button>
+			<!-- Connected only -->
+			<CheckButton name="TRP2_DialQuestFrameAnimCheck" inherits="TRP2_CheckButtonSmallTemplate" checked="true">
+				<Size x="24" y="24"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-10"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if TRP2_DialQuestFrameAnimCheck:GetChecked() then
+							if TRP2_DialQuestFrameModelFrameModel.cible == UnitName("npc") then
+								TRP2_DialQuestFrameModelFrameModel:SetCamera(1);
+								TRP2_DialQuestFrameModelFrameModel:SetFacing(0.75);
+								TRP2_DialQuestFrameModelFrameModel:SetUnit("npc");
+							elseif TRP2_DialQuestFrameModelFrameModel.cible == UnitName("target") then
+								TRP2_DialQuestFrameModelFrameModel:SetCamera(1);
+								TRP2_DialQuestFrameModelFrameModel:SetFacing(0.75);
+								TRP2_DialQuestFrameModelFrameModel:SetUnit("target");
+							end
+						else
+							if TRP2_DialQuestFrameModelFrameModel.cible ~= false then
+								TRP2_DialQuestFrameModelFrameModel:SetCamera(0);
+							end
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<!-- Mini-Lui -->
+			<Frame name="TRP2_DialQuestFrameModelFrame">
+				<Backdrop bgFile="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize><AbsValue val="12"/></EdgeSize><TileSize><AbsValue val="450"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="105" y="105"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-30"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="TRP2_DialQuestFrameModelFrameIcon" file="Interface\ICONS\INV_Misc_Book_16">
+							<Size x="95" y="95"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<PlayerModel  name="TRP2_DialQuestFrameModelFrameModel" scale="1">
+						<Size x="95" y="95"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnUpdate>
+								if TRP2_DialQuestFrameAnimCheck:GetChecked() and self.seqtime and self.sequence and self.sequenceTab then
+									self.seqtime = self.seqtime + (elapsed * 1000);
+									if self.sequenceTab[self.sequence] ~= 0 then
+										self:SetSequenceTime(self.sequenceTab[self.sequence], self.seqtime);
+									end
+									if TRP2_ANIMSEQTIME[tostring(self.sequenceTab[self.sequence])] and self.seqtime &gt; TRP2_ANIMSEQTIME[tostring(self.sequenceTab[self.sequence])] then
+										self.seqtime = 0;
+										if self.sequence &lt; #self.sequenceTab then
+											self.sequence = self.sequence + 1;
+										end
+									end
+								end
+								if self.start then
+									self.time = 0;
+									self.start = self.start + (elapsed*70);
+									if self.start == string.len(TRP2_DialQuestFrameMainTexte:GetText()) then
+										self.start = nil;
+										TRP2_DialQuestFrameMainTexte:SetAlphaGradient(0,0);
+									else
+										TRP2_DialQuestFrameMainTexte:SetAlphaGradient(self.start,30);
+									end
+								end
+							</OnUpdate>
+						</Scripts>
+					</PlayerModel>
+				</Frames>
+			</Frame>
+			<Button name="TRP2_DialQuestFramePlayButton" inherits="TRP2_UIPanelButtonTemplate" text="PLAY">
+				<Size x="90" y="20"/>
+				<Anchors>
+					<Anchor point="top" relativepoint="bottom" relativeto="TRP2_DialQuestFrameModelFrame" x="0" y="-3"/>
+				</Anchors>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- AnimNPC -->
+	<Frame name="TRP2_NPCAnimFrame" movable="true" frameStrata="HIGH" toplevel="true" parent="UIParent" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Backdrop bgFile="Interface\AchievementFrame\UI-Achievement-StatsBackground" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+			<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="300"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="250" y="190"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTitre" inherits="GameFontNormalLarge" justifyH="CENTER">
+					<Size x="150" y="10"/>
+					<Anchors>
+						<Anchor point="TOP" x="0" y="-15"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="TRP2_AnimNPCAide" inherits="TRP2_BoutonAideTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-10"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.Page = "AnimNPC";
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Frame name="TRP2_NPCAnimFrameApercuFrame">
+				<Size x="175" y="130"/>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize><AbsValue val="16"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="TRP2_NPCAnimFrameApercu" inherits="GameFontNormalSmall" justifyH="CENTER">
+							<Size x="150" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-10"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="BOTTOM" relativepoint="TOP" relativeto="TRP2_NPCAnimFrame" x="0" y="0"/>
+				</Anchors>
+			</Frame>
+			<Button name="$parentOngletTexte" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="BOTTOMLEFT" x="42" y="15"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_AnimPersoShow("Texte");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2_NPCAnimFrame.Mode == "Texte");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Button name="$parentOngletParole" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" relativeto="$parentOngletTexte" relativepoint="RIGHT" x="10" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_AnimPersoShow("Parole");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2_NPCAnimFrame.Mode == "Parole");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_NPCAnimFrameOngletCrier" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" relativeto="$parentOngletParole" relativepoint="RIGHT" x="10" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_AnimPersoShow("Crier");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2_NPCAnimFrame.Mode == "Crier");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_NPCAnimFrameOngletChuchotter" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" relativeto="$parentOngletCrier" relativepoint="RIGHT" x="10" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_AnimPersoShow("Chuchotter");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2_NPCAnimFrame.Mode == "Chuchotter");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Button name="$parentOngletEmote" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="LEFT" relativeto="$parentOngletChuchotter" relativepoint="RIGHT" x="10" y="0"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_AnimPersoShow("Emote");
+					</OnClick>
+					<OnUpdate>
+						TRP2_DisableIcon(self,TRP2_NPCAnimFrame.Mode == "Emote");
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Frame name="TRP2_NPCAnimFrameScroll" inherits="TRP2_ZoneSaisieTemplate">
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="50"/>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						TRP2_NPCAnimFrameScrollScrollEditBox:SetFocus();
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+					<OnLoad>
+						TRP2_NPCAnimFrameScrollApercu:Hide();
+						TRP2_NPCAnimFrameScrollScrollEditBox:SetScript("OnTextChanged",function(self)
+							self:SetText(string.gsub(self:GetText(),"\n",""));
+							local total = TRP2_CalculCarRestant(self:GetText(),TRP2_NPCAnimFrame.Mode,TRP2_NPCAnimFrame.Nom);
+							self:SetText(string.sub(self:GetText(),1,250-total));
+							TRP2_NPCAnimFrameScrollTexte:SetText((total+string.len(self:GetText())-2).."/248");
+							TRP2_NPCAnimFrameApercu:SetText(TRP2_CTS(TRP2_LOC_APERCU.." :\n"..TRP2_AnimNPCFormat(self:GetText(),TRP2_NPCAnimFrame.Mode,TRP2_NPCAnimFrame.Nom,true)));
+							TRP2_NPCAnimRecalculTailleApercu();
+						end);
+						TRP2_NPCAnimFrameScrollScrollEditBox:SetScript("OnTabPressed",function()
+							if TRP2_NPCAnimFrame.Mode == "Texte" then
+								TRP2_AnimPersoShow("Parole");
+							elseif TRP2_NPCAnimFrame.Mode == "Parole" then
+								TRP2_AnimPersoShow("Crier");
+							elseif TRP2_NPCAnimFrame.Mode == "Crier" then
+								TRP2_AnimPersoShow("Chuchotter");
+							elseif TRP2_NPCAnimFrame.Mode == "Chuchotter" then
+								TRP2_AnimPersoShow("Emote");
+							elseif TRP2_NPCAnimFrame.Mode == "Emote" then
+								TRP2_AnimPersoShow("Texte");
+							end
+						end);
+						TRP2_NPCAnimFrameScrollScrollEditBox:SetScript("OnEnterPressed",function(self)
+							if TRP2_EmptyToNil(self:GetText()) then
+								TRP2_AnimPersoSend();
+							else
+								TRP2_NPCAnimFrame:Hide();
+							end
+						end);
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<EditBox name="TRP2_NPCAnimFrameScrollNomSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="TRP2_NPCAnimFrameScroll" relativePoint="TOP" x="5" y="10"/>
+				</Anchors>
+				<Scripts>
+					<OnTextChanged>
+						local nom = TRP2_EmptyToNil(self:GetText());
+						TRP2_NPCAnimFrame.Nom = nom;
+						TRP2_NPCAnimFrameApercu:SetText(TRP2_CTS(TRP2_LOC_APERCU.." :\n"..TRP2_AnimNPCFormat(TRP2_NPCAnimFrameScrollScrollEditBox:GetText(),TRP2_NPCAnimFrame.Mode,TRP2_NPCAnimFrame.Nom,true)));
+						TRP2_NPCAnimRecalculTailleApercu();
+					</OnTextChanged>
+					<OnTabPressed>
+						if TRP2_NPCAnimFrame.Mode == "Texte" then
+							TRP2_AnimPersoShow("Parole");
+						elseif TRP2_NPCAnimFrame.Mode == "Parole" then
+							TRP2_AnimPersoShow("Crier");
+						elseif TRP2_NPCAnimFrame.Mode == "Crier" then
+							TRP2_AnimPersoShow("Chuchotter");
+						elseif TRP2_NPCAnimFrame.Mode == "Chuchotter" then
+							TRP2_AnimPersoShow("Emote");
+						elseif TRP2_NPCAnimFrame.Mode == "Emote" then
+							TRP2_AnimPersoShow("Texte");
+						end
+					</OnTabPressed>
+				</Scripts>
+			</EditBox>
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="0" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_NPCAnimFrameTarget">
+				<Size x="20" y="20"/>
+				<Anchors><Anchor point="RIGHT" relativeto="TRP2_NPCAnimFrameScrollNomSaisie" relativepoint="LEFT" x="-15" y="0"/></Anchors>
+				<NormalTexture file="Interface\ICONS\Ability_Hunter_SniperShot"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing"/>
+				<Scripts>
+					<OnEnter>
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						if UnitName("target") then
+							local nomPet, maitre = TRP2_RecupTTInfo();
+							if nomPet and maitre then
+								local petTab = TRP2_GetInfo(maitre,"Pets",{});
+								if petTab[nomPet] and petTab[nomPet]["Nom"] then
+									TRP2_NPCAnimFrameScrollNomSaisie:SetText(petTab[nomPet]["Nom"]);
+								else
+									TRP2_NPCAnimFrameScrollNomSaisie:SetText(TRP2_GetTargetTRPName());
+								end
+							else
+								TRP2_NPCAnimFrameScrollNomSaisie:SetText(TRP2_GetTargetTRPName());
+							end
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+
+	
+	<!-- Trucs sur la carte  -->
+	<Button name="TRP2_WorldMapButtonMenu" parent="WorldMapButton" inherits="TRP2_MainMenuOngletTemplate">
+		<Anchors><Anchor point="BOTTOMLEFT" x="10" y="10"/></Anchors>
+		<Frames>
+			<Frame name="TRP2_WorldMapButtonMenuPanel" hidden="true">
+				<Size x="64" y="16"/>
+				<Anchors><Anchor point="TOP" x="0" y="16"/></Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="$parentQuest" file="Interface\PaperDollInfoFrame\UI-GearManager-FlyoutButton">
+							<Size x="64" y="16"/>
+							<Anchors>
+								<Anchor point="BOTTOM" x="0" y="0"/>
+							</Anchors>
+							<TexCoords left="1" right="0" top="0" bottom="0.5"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<!-- Afficher les persos  -->
+					<Button name="TRP2_WorldMapButtonRefresh" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOM" x="0" y="20"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								WorldMapPOIFrame.allowBlobTooltip = false;
+								WorldMapTooltip:Hide();
+								WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT",0,0);
+								WorldMapTooltip:AddLine(TRP2_CTS("{w}"..TRP2_LOC_AFFICHERGENS), 1, 1, 1,true);
+								WorldMapTooltip:AddLine(TRP2_CTS("{o}"..TRP2_LOC_AFFICHERGENSTT), 1, 1, 1,true);
+								WorldMapTooltip:Show();
+							</OnEnter>
+							<OnClick>
+								TRP2_GetCoordonnees();
+							</OnClick>
+							<OnLeave>
+								WorldMapTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					
+					<!-- Planques  -->
+					<Button name="TRP2_WorldMapButtonPlanque" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOM" relativepoint="TOP" relativeto="TRP2_WorldMapButtonRefresh" x="0" y="10"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								WorldMapPOIFrame.allowBlobTooltip = false;
+								WorldMapTooltip:Hide();
+								WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT",0,0);
+								WorldMapTooltip:AddLine(TRP2_CTS("{w}"..TRP2_LOC_PLANQUES), 1, 1, 1,true);
+								WorldMapTooltip:AddLine(TRP2_CTS("{o}"..TRP2_LOC_AFFICHERPLTT.."\n{j}"
+									..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_SHOWYOURPLAQNUE.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_SHOWOTHERPLAQNUE
+								), 1, 1, 1,true);
+								WorldMapTooltip:Show();
+							</OnEnter>
+							<OnClick>
+								if button == "LeftButton" then
+									TRP2_ShowMinimapPlanque();
+								else
+									TRP2_GetLocalPlanques();
+								end
+							</OnClick>
+							<OnLeave>
+								WorldMapTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					
+					<!-- Panneaux  -->
+					<Button name="TRP2_WorldMapButtonPanneau" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOM" relativepoint="TOP" relativeto="TRP2_WorldMapButtonPlanque" x="0" y="10"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								WorldMapPOIFrame.allowBlobTooltip = false;
+								WorldMapTooltip:Hide();
+								WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT",0,0);
+								WorldMapTooltip:AddLine(TRP2_CTS("{w}"..TRP2_LOC_PANNEAUX), 1, 1, 1,true);
+								WorldMapTooltip:AddLine(TRP2_CTS("{o}"..TRP2_LOC_PANNEAUX_TT.."\n{j}"
+									..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_PANNEAUX_TTown.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_PANNEAUX_TTothers
+								), 1, 1, 1,true);
+								WorldMapTooltip:Show();
+							</OnEnter>
+							<OnClick>
+								if button == "LeftButton" then
+									TRP2_ShowMinimapPanneau();
+								else
+									TRP2_GetLocalPanneaux();
+								end
+							</OnClick>
+							<OnLeave>
+								WorldMapTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					
+					<!-- Maison -->
+					<Button name="TRP2_WorldMapButtonHousing" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOM" relativepoint="TOP" relativeto="TRP2_WorldMapButtonPanneau" x="0" y="10"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								WorldMapPOIFrame.allowBlobTooltip = false;
+								WorldMapTooltip:Hide();
+								WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT",0,0);
+								WorldMapTooltip:AddLine(TRP2_CTS("{w}"..TRP2_LOC_HABITAT), 1, 1, 1,true);
+								WorldMapTooltip:AddLine(TRP2_CTS("{o}"..TRP2_LOC_PANNEAUX_TT.."\n{j}"
+									..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_HABITAT_MAP_ACTION.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_HABITAT_MAPTT
+								), 1, 1, 1,true);
+								WorldMapTooltip:Show();
+							</OnEnter>
+							<OnClick>
+								if button == "LeftButton" then
+									TRP2_HouseHere();
+								else
+									TRP2_GetLocalHouses();
+								end
+							</OnClick>
+							<OnLeave>
+								WorldMapTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					
+					<!-- Boutik -->
+					<Button name="TRP2_WorldMapButtonMagasin" inherits="TRP2_MainMenuOngletTemplate" hidden="true">
+						<Anchors><Anchor point="BOTTOM" relativepoint="TOP" relativeto="TRP2_WorldMapButtonHousing" x="0" y="10"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								WorldMapPOIFrame.allowBlobTooltip = false;
+								WorldMapTooltip:Hide();
+								WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT",0,0);
+								WorldMapTooltip:AddLine(TRP2_CTS("{w}"..TRP2_LOC_MAG_Boutik), 1, 1, 1,true);
+								WorldMapTooltip:AddLine(TRP2_CTS("{o}"..TRP2_LOC_MAG_BoutikShow), 1, 1, 1,true);
+								WorldMapTooltip:Show();
+							</OnEnter>
+							<OnClick>
+								
+							</OnClick>
+							<OnLeave>
+								WorldMapTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					
+					
+				</Frames>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnEnter>
+				WorldMapPOIFrame.allowBlobTooltip = false;
+				WorldMapTooltip:Hide();
+				WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT",0,0);
+				WorldMapTooltip:AddLine(TRP2_CTS("{w}"..TRP2_LOC_TRP2FUNCT), 1, 1, 1,true);
+				WorldMapTooltip:AddLine(TRP2_CTS("{o}"..TRP2_LOC_OPENMENU), 1, 1, 1,true);
+				WorldMapTooltip:Show();
+			</OnEnter>
+			<OnClick>
+				if TRP2_WorldMapButtonMenuPanel:IsVisible() then
+					TRP2_WorldMapButtonMenuPanel:Hide()
+				else
+					TRP2_WorldMapButtonMenuPanel:Show();
+				end
+			</OnClick>
+			<OnLeave>
+				WorldMapTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+</Ui>

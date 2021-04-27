@@ -1,0 +1,141 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	
+	<!-- Template d'un bouton du menu  -->
+	<Button name="TRP2_OngletAuraTargetTemplate" virtual="true">
+	    <Size x="16" y="16"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<NormalTexture file="Interface\ICONS\Temp"/>
+		<Scripts>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnLoad>
+				self:RegisterForClicks("RightButtonUp");
+			</OnLoad>
+		</Scripts>
+	</Button>
+	
+	<Frame name="TRP2_AuraTargetFrame" toplevel="true" movable="false" parent="UIParent" enableMouse="false" hidden="true">
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize><AbsValue val="16"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+			<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnUpdate>
+				self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+				if (self.TimeSinceLastUpdate > 1) then
+					self.TimeSinceLastUpdate = 0;
+					TRP2_UpdateAuraTargetFrame();
+				end
+			</OnUpdate>
+			<OnLoad>
+				self.TimeSinceLastUpdate = 0;
+			</OnLoad>
+		</Scripts>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="TargetFrame" relativePoint="TOPRIGHT" x="-25" y="-25"/>
+		</Anchors>
+		<Size x="118" y="78"/>
+		<Layers>
+			<Layer level="Overlay">
+				<FontString name="TRP2_AuraTargetFrameTitre" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="5" y="10"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="TRP2_AuraTargetFrameEmpty" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="TRP2_AuraTargetFrameAura1" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-10"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura2" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura1" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura3" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura2" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura4" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura3" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura5" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura4" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			
+			<Button name="TRP2_AuraTargetFrameAura6" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeto="TRP2_AuraTargetFrameAura1" relativepoint="bottom" x="0" y="-5"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura7" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura6" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura8" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura7" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura9" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura8" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura10" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura9" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			
+			<Button name="TRP2_AuraTargetFrameAura11" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativeto="TRP2_AuraTargetFrameAura6" relativepoint="bottom" x="0" y="-5"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura12" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura11" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura13" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura12" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura14" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura13" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_AuraTargetFrameAura15" inherits="TRP2_OngletAuraTargetTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_AuraTargetFrameAura14" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+			</Button>
+		</Frames>
+	</Frame>
+
+</Ui>

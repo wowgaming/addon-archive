@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Characters directory
+## Title-frFR: Total RP 2 : Registre
+## Title-esES: Total RP 2 : Directorio de contactos
+## Title-deDE: Total RP 2 : Charakter Adressbuch
+## Author: Telkostrasz
+## Notes: Characters directory management
+## Notes-frFR: Gestion du registre des personnages
+## Notes-esES: Control del Directorio de contactos
+## Notes-deDE: Verwaltet das Adressbuch
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Registre
+totalRP2_Registre_Main.lua

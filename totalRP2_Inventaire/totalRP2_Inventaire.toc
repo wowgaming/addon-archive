@@ -1,0 +1,21 @@
+## Interface: 50400
+## Title: Total RP 2 : Inventory
+## Title-frFR: Total RP 2 : Inventaire
+## Title-esES: Total RP 2 : Inventario
+## Title-deDE: Total RP 2 : Inventar
+## Author: Telkostrasz
+## Notes: Inventory management
+## Notes-frFR: Gestion de l'inventaire
+## Notes-esES: Control de inventario
+## Notes-deDE: Verwaltet das Inventar
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Inventaire
+totalRP2_ListeObjets_Main.lua
+totalRP2_ListeSounds_Main.lua
+totalRP2_Inventaire_Main.lua
+totalRP2_Inventaire_Planques.lua
+totalRP2_Inventaire_IHM.lua
+totalRP2_Inventaire_GestionSlot.lua

@@ -1,0 +1,18 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Data Base
+## Title-frFR: Total RP 2 : Base de données
+## Title-esES: Total RP 2 : Base de datos
+## Title-deDE: Total RP 2 : Datenbank
+## Author: Telkostrasz
+## Notes: Database module
+## Notes-frFR: Module de base de données
+## Notes-esES: Módulo de base de datos
+## Notes-deDE: Datenbank Module
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+totalRP2_DataBase_Auras.lua
+totalRP2_DataBase_Documents.lua
+totalRP2_DataBase_Objets.lua
+totalRP2_DataBase_Quests.lua

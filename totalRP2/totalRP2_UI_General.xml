@@ -1,0 +1,335 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<!--  TOTAL RP 2 -->
+	<!--  MAIN FRAME -->
+	<Frame name="TRP2MainFrame" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Size x="350" y="430"/>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-BottomLeft">
+					<Size x="256" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-58" y="-148"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+					<Size x="256" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-58" y="108"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-BottomRight">
+					<Size x="128" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="134" y="-148"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+					<Size x="128" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="134" y="108"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="TRP2_PanelPortrait">
+					<Size x="58" y="58"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-3" y="15"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="TRP2_PanelTitle" inherits="GameFontNormal" justifyH="CENTER" text="Le Titre ici">
+					<Size x="310" y="5"/>
+					<Anchors>
+						<Anchor point="TOP" x="10" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-7" y="13"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2MainFrame:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame>
+				<Size x="335" y="370"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-6" y="-15"/>
+				</Anchors>
+				<Backdrop bgFile="Interface\AchievementFrame\UI-Achievement-StatsBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="32"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="360"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Frames>
+					<Frame name="TRP2MainFrameFicheJoueur" inherits="TRP2_FicheJoueurFrameTemplate">
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="-2"/>
+						</Anchors>
+					</Frame>
+					<Frame name="TRP2MainFrameMenuBar" inherits="TRP2_MenuBarTemplate">
+						<Anchors>
+							<Anchor point="TOP" x="10" y="33"/>
+						</Anchors>
+					</Frame>
+					<Frame name="TRP2MainFrameRegistre" inherits="TRP2_RegistreFrameTemplate">
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+					</Frame>
+					<Frame name="TRP2MainFrameConfig" inherits="TRP2_ConfigFrameTemplate">
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+					</Frame>
+					<Frame name="TRP2MainFrameLangage" inherits="TRP2_PersoLanguagesPanelTemplate">
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+					</Frame>
+					<Frame name="TRP2MainFrameQuestsLog" inherits="TRP2_QuestsLogFrameTemplate">
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+					</Frame>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+
+	<!-- Choix de son-->
+	<Frame name="TRP2_ListeSmall" frameStrata="FULLSCREEN" inherits="TRP2_ListeTemplate"  toplevel="true" parent="TRP2MainFrame" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<Anchors>
+			<Anchor point="LEFT" relativeto="TRP2MainFrame" relativepoint="RIGHT" x="-5" y="-5"/>
+		</Anchors>
+		<Frames>
+			<Frame name="TRP2_ListeSmallDropDownCategorie" inherits="TRP2_LabelledDropDown" enableMouse="true">
+				<Anchors>
+					<Anchor point="TOP" x="-60" y="30"/>
+				</Anchors>
+			</Frame>
+			<EditBox name="TRP2_ListeSmallURLBox" inherits="TRP2_EditBoxSmallText" autofocus="false">
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-30"/>
+				</Anchors>
+			</EditBox>
+			<CheckButton name="TRP2_ListeSmallCheckDatabase" inherits="TRP2_CheckButtonSmallTemplate" checked="true">
+				<HitRectInsets>
+					<AbsInset left="0" right="-10" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="25" y="5"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_SetListFor(TRP2_ListeSmall.listType,nil,true,TRP2_ListeSmall.arg1,TRP2_ListeSmall.arg2,TRP2_ListeSmall.arg3,true);
+						TRP2_SetConfigValueFor("CheckDataBase",self:GetChecked());
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="TRP2_ListeSmallCheckOther" inherits="TRP2_CheckButtonSmallTemplate" checked="true">
+				<HitRectInsets>
+					<AbsInset left="0" right="-10" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-25" y="5"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_SetListFor(TRP2_ListeSmall.listType,nil,true,TRP2_ListeSmall.arg1,TRP2_ListeSmall.arg2,TRP2_ListeSmall.arg3,true);
+						TRP2_SetConfigValueFor("CheckOther",self:GetChecked());
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+	</Frame>
+	
+	<Frame name="TRP2_ListeSoundFav" frameStrata="HIGH" inherits="TRP2_ListeTemplate" toplevel="true" parent="UIParent" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Frames>
+			<EditBox name="TRP2_ListeSoundFavURLBox" inherits="TRP2_EditBoxSmallText" autofocus="false">
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-30"/>
+				</Anchors>
+			</EditBox>
+			<Button name="TRP2_PlaylistAide" inherits="TRP2_BoutonAideTemplate">
+				<Size x="20" y="20"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="10" y="50"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.Page = "Playlist";
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_ListeSoundFavButtonAfficheList">
+				<Size x="30" y="30"/>
+				<Anchors>
+					<Anchor point="BottomRIGHT" relativePoint="BottomRight" relativeto="TRP2_ListeSoundFav"/>
+				</Anchors>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Buttons\UI-ScrollBar-Button-Overlay"/>
+				<Scripts>
+					<OnEnter>
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+						if TRP2_ListeSound:IsVisible() then
+							TRP2_ListeSound:Hide();
+						else
+							TRP2_OpenSoundList();
+						end
+						TRP2_MainTooltip:Hide();
+					</OnClick>
+					<OnLoad>
+						
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_ListeSoundFavButtonMenu" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="topleft" x="5" y="-5"/></Anchors>
+				<Scripts>
+					<OnClick>
+						TRP2_InitUIDropDown(TRP2_DD_MenuSounds);
+					</OnClick>
+					<OnLoad>
+						getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\INV_Gizmo_GoblingTonkController");
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Slider name="TRP2_ListeSoundFavSliderDistance" inherits="OptionsSliderTemplate">
+				<Size x="15" y="100"/>
+				<Anchors>
+					<Anchor point="LEFT" x="13" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText("");
+						getglobal(self:GetName().."High"):SetText("");
+						getglobal(self:GetName().."Low"):SetText("");
+						self:SetMinMaxValues(1, 100);
+						self:SetValueStep(1);
+						self:SetOrientation("VERTICAL");
+					</OnLoad>
+					<OnValueChanged>
+						TRP2_SetTooltipForFrame(self,self,"TOP",0,5,TRP2_LOC_Distance.." : "..tostring(self:GetValue()).." mètres",TRP2_LOC_DistanceTT);
+						if self:IsVisible() then
+							TRP2_RefreshTooltipForFrame(self);
+						end
+					</OnValueChanged>
+					<OnEnter>
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Slider>
+			<Button name="TRP2_ListeSoundFavButtonAdd" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="BOTTOMLEFT" x="5" y="5"/></Anchors>
+				<Scripts>
+					<OnClick>
+						StaticPopupDialogs["TRP2_GET_Sound"].text = TRP2_CTS(TRP2_LOC_SoundURL);
+						TRP2_ShowStaticPopup("TRP2_GET_Sound",nil,function(url)
+							local PlaylistNum = TRP2_Module_Interface["SoundPlaylist"]["ActualPlaylist"];
+							local Playlist = TRP2_Module_Interface["SoundPlaylist"]["Playlist"][PlaylistNum];
+							Playlist[#Playlist+1] = url..".wav";
+							TRP2_OpenSoundFavList();
+						end,nil,nil,nil,false,"Interface\\AddOns\\");
+					</OnClick>
+					<OnLoad>
+						getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Spell_ChargePositive");
+					</OnLoad>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<Frame name="TRP2_ListeSound" frameStrata="HIGH" inherits="TRP2_ListeTemplate" toplevel="true" parent="TRP2_ListeSoundFav" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="TRP2_ListeSoundFav" relativePoint="RIGHT" x="-3" y="0"/>
+		</Anchors>
+		<Frames>
+			<Frame name="TRP2_ListeSoundCategorie" inherits="TRP2_LabelledDropDown" enableMouse="true">
+				<Anchors>
+					<Anchor point="TOP" x="-65" y="30"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						TRP2_ListeSoundCategorieButton:SetScript("OnClick",function(self) 
+							TRP2_InitUIDropDown(TRP2_DD_SoundCat,self,-110,0);
+						end);
+						TRP2_ListeSoundCategorie.Valeur = "all";
+						TRP2_ListeSoundCategorieValeur:SetText(ALL);
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<EditBox name="TRP2_ListeSoundURLBox" inherits="TRP2_EditBoxSmallText" autofocus="false">
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-30"/>
+				</Anchors>
+			</EditBox>
+		</Frames>
+	</Frame>
+
+	<Frame name="TRP2_ListeExportImport" frameStrata="HIGH" inherits="TRP2_ListeTemplate" toplevel="true" parent="UIParent" enableMouse="true" enableMouseWheel="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="TRP2_ListeExportImportSousTitre" inherits="GameFontNormal" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="-105"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="TRP2_ListeExportImportSave" inherits="TRP2_UIPanelButtonTemplate">
+				<Size x="90" y="20"/>
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-10"/>
+				</Anchors>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnHide>
+				wipe(TRP2_ExportTab);
+			</OnHide>
+		</Scripts>
+	</Frame>
+	
+	
+	<!-- Tooltip principal -->
+	<GameTooltip name="TRP2_MainTooltip" frameStrata="TOOLTIP" hidden="false" parent="UIParent" inherits="GameTooltipTemplate"/>
+</Ui>

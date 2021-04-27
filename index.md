@@ -11,7 +11,7 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 ## With description
 
-[GearScore](GearScore/README.md)
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/GearScore" target="_blank">GearScore</a> - [README](GearScore/README.md)
 
 ## Without description
 
@@ -483,6 +483,10 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TinyTipBasic" target="_blank">TinyTipBasic</a>
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+### Titan pack
+
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Titan" target="_blank">Titan</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TitanAmmo" target="_blank">TitanAmmo</a>
@@ -509,9 +513,47 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TitanXP" target="_blank">TitanXP</a>
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TomTomLite" target="_blank">TomTomLite</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TopFit" target="_blank">TopFit</a>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+### Total RP 2 Pack
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2" target="_blank">totalRP2</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Auras" target="_blank">totalRP2_Auras</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Config" target="_blank">totalRP2_Config</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Creation" target="_blank">totalRP2_Creation</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_DataBase" target="_blank">totalRP2_DataBase</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Documents" target="_blank">totalRP2_Documents</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Guide" target="_blank">totalRP2_Guide</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_ImpExport" target="_blank">totalRP2_ImpExport</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Interface" target="_blank">totalRP2_Interface</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Inventaire" target="_blank">totalRP2_Inventaire</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Language" target="_blank">totalRP2_Language</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Packages" target="_blank">totalRP2_Packages</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_PlayerInfo" target="_blank">totalRP2_PlayerInfo</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Quests" target="_blank">totalRP2_Quests</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/totalRP2_Registre" target="_blank">totalRP2_Registre</a>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TourGuide" target="_blank">TourGuide</a>
 
@@ -519,9 +561,15 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/TourGuide_MidsummerFestival" target="_blank">TourGuide_MidsummerFestival</a>
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+### UDW Pack
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Udw_Lib" target="_blank">Udw_Lib</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Udw_LootTools" target="_blank">Udw_LootTools</a>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/WIM" target="_blank">WIM</a>
 

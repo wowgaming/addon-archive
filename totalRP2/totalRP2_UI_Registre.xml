@@ -1,0 +1,2486 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<Frame name="TRP2_CaractJaugeInGameTemplate" virtual="true" toplevel="true" movable="true" enableMouse="true" hidden="false">
+		<TitleRegion setAllPoints="true"/>
+		<Size x="125" y="20"/>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentFond" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
+					<Size x="150" y="9"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-10" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentSurFond" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
+					<Size x="150" y="9"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-10" y="0"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentIcone" file="Interface\ICONS\Temp">
+					<Size x="16" y="16"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-26" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentContours" file="Interface\CastingBar\UI-CastingBar-Small-Shield">
+					<Size x="192" y="48"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="Overlay">
+				<FontString name="$parentPercent" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="$parentTitre" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="TOP" x="0" y="10"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button inherits="UIPanelCloseButton">
+				<Size x="16" y="16"/>
+				<Anchors>
+					<Anchor point="LEFT" x="-45" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent().fadeOut = true;
+					</OnClick>
+					<OnLoad>
+						self:GetParent().TimeSinceLastUpdate = 10;
+						if self:GetParent().bGood then
+							getglobal(self:GetParent():GetName().."SurFond"):SetVertexColor(0,1,0);
+						else
+							getglobal(self:GetParent():GetName().."SurFond"):SetVertexColor(1,0,0);
+						end
+						self:GetParent().value = 50;
+						self:GetParent().texte = "Titre";
+					</OnLoad>
+					<OnUpdate>
+						self:GetParent().TimeSinceLastUpdate = self:GetParent().TimeSinceLastUpdate + elapsed; 	
+						if (self:GetParent().TimeSinceLastUpdate > 0.2) then
+							self:GetParent().TimeSinceLastUpdate = 0;
+							getglobal(self:GetParent():GetName().."Contours"):SetVertexColor(1,1,1);
+							getglobal(self:GetParent():GetName().."Fond"):SetDesaturated(false);
+							getglobal(self:GetParent():GetName().."SurFond"):SetDesaturated(false);
+							getglobal(self:GetParent():GetName().."Titre"):SetText(TRP2_CTS("{o}"..self:GetParent().texte));
+							if self:GetParent().value == 0 then
+								getglobal(self:GetParent():GetName().."SurFond"):Hide();
+							else
+								getglobal(self:GetParent():GetName().."SurFond"):Show();
+								getglobal(self:GetParent():GetName().."SurFond"):SetWidth(150*(self:GetParent().value/100));
+							end
+							getglobal(self:GetParent():GetName().."Percent"):SetText(self:GetParent().value.."%");
+						end
+						if self:GetParent().fadeOut then
+							self:GetParent():SetAlpha(self:GetParent():GetAlpha()-elapsed);
+							if self:GetParent():GetAlpha() &lt;= 0 then
+								self:GetParent():Hide();
+							end
+						elseif self:GetParent().fadeIn then
+							self:GetParent():SetAlpha(self:GetParent():GetAlpha()+elapsed);
+							if self:GetParent():GetAlpha() &gt;= 1 then
+								self:GetParent().fadeIn = nil;
+							end
+						end
+					</OnUpdate>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnHide>
+				self:SetAlpha(1);
+				self.fadeOut = nil;
+				self.fadeIn = nil;
+			</OnHide>
+			<OnShow>
+				self:SetAlpha(0);
+				self.fadeIn = true;
+				self.fadeOut = nil;
+			</OnShow>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="TRP2_CaractJaugeInGameFatigue" inherits="TRP2_CaractJaugeInGameTemplate" toplevel="true" movable="true" enableMouse="true" hidden="true">
+		<Anchors>
+			<Anchor point="TOP" relativeto="PlayerFrame" relativepoint="bottom" x="25" y="-5"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				TRP2_CaractJaugeInGameFatigueIcone:SetTexture("Interface\\ICONS\\Ability_Hunter_RunningShot");
+			</OnLoad>
+			<OnUpdate>
+				self.value = TRP2_PlayerSouffle;
+				if TRP2_PlayerSouffle&lt;=0 or TRP2_GetWithDefaut(TRP2_GetInfo(TRP2_Joueur,"Actu",{}),"StatutRP",2) == 1 or not TRP2_GetInfo(TRP2_Joueur,"bFatigue") then
+					self.fadeOut = true;
+				end
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+
+	<!-- Jauge caract  -->
+	<Frame name="TRP2_CaractJaugeTemplate" virtual="true">
+		<Size x="125" y="20"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentFond" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
+					<Size x="150" y="9"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-10" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentSurFond" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
+					<Size x="150" y="9"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-10" y="0"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentIcone" file="Interface\ICONS\Temp">
+					<Size x="16" y="16"/>
+					<Anchors>
+						<Anchor point="LEFT" x="-26" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentContours" file="Interface\CastingBar\UI-CastingBar-Small-Shield">
+					<Size x="192" y="48"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="Overlay">
+				<FontString name="$parentPercent" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="$parentTitre" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="TOP" x="0" y="10"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<!-- Usability -->
+			<CheckButton name="$parentCheck" inherits="TRP2_CheckButtonSmallTemplate">
+				<Size x="24" y="24"/>
+				<Anchors>
+					<Anchor point="LEFT" x="-30" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if self:GetParent().caract then
+							TRP2_SetInfo(TRP2_Joueur,self:GetParent().caract,self:GetChecked());
+						end
+					</OnClick>
+					<OnLoad>
+						self:GetParent().TimeSinceLastUpdate = 10;
+						if self:GetParent().bGood then
+							getglobal(self:GetParent():GetName().."SurFond"):SetVertexColor(0,1,0);
+						else
+							getglobal(self:GetParent():GetName().."SurFond"):SetVertexColor(1,0,0);
+						end
+						self:GetParent().value = 50;
+						self:GetParent().texte = "Titre";
+					</OnLoad>
+					<OnUpdate>
+						self:GetParent().TimeSinceLastUpdate = self:GetParent().TimeSinceLastUpdate + elapsed; 	
+						if (self:GetParent().TimeSinceLastUpdate > 0.2) then
+							self:GetParent().TimeSinceLastUpdate = 0;
+							if getglobal(self:GetParent():GetName().."Check"):GetChecked() then
+								getglobal(self:GetParent():GetName().."Contours"):SetVertexColor(1,1,1);
+								getglobal(self:GetParent():GetName().."Fond"):SetDesaturated(false);
+								getglobal(self:GetParent():GetName().."SurFond"):SetDesaturated(false);
+								getglobal(self:GetParent():GetName().."Titre"):SetText(TRP2_CTS("{o}"..self:GetParent().texte));
+							else
+								getglobal(self:GetParent():GetName().."Contours"):SetVertexColor(0.5,0.5,0.5);
+								getglobal(self:GetParent():GetName().."Fond"):SetDesaturated(true);
+								getglobal(self:GetParent():GetName().."SurFond"):SetDesaturated(true);
+								getglobal(self:GetParent():GetName().."Titre"):SetText(TRP2_CTS("{aaaaaa}"..self:GetParent().texte));
+							end
+							if self:GetParent().value == 0 then
+								getglobal(self:GetParent():GetName().."SurFond"):Hide();
+							else
+								getglobal(self:GetParent():GetName().."SurFond"):Show();
+								getglobal(self:GetParent():GetName().."SurFond"):SetWidth(150*(self:GetParent().value/100));
+							end
+							getglobal(self:GetParent():GetName().."Percent"):SetText(self:GetParent().value.."%");
+						end
+					</OnUpdate>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+	</Frame>
+		
+	<!-- Jauge Psycho  -->
+	<Frame name="TRP2_BarrePsychoTemplate" virtual="true">
+		<Size x="125" y="20"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentFond" file="">
+					<Size x="76" y="7"/>
+					<Anchors>
+						<Anchor point="LEFT" x="25" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentSurFond" file="">
+					<Size x="76" y="7"/>
+					<Anchors>
+						<Anchor point="LEFT" x="25" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\CastingBar\UI-CastingBar-Border">
+					<Size x="100" y="40"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="Overlay">
+				<FontString name="$parentTexteDroite" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT" x="105" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="$parentTexteGauche" inherits="GameFontNormalSmall" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="RIGHT" x="-105" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate>
+				self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+				if (self.TimeSinceLastUpdate > 1) then
+					self.TimeSinceLastUpdate = 0;
+					if self.PsyVal then
+						getglobal(self:GetName().."SurFond"):SetWidth(76*self.PsyVal);
+					end
+				end
+			</OnUpdate>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnLoad>
+				getglobal(self:GetName().."TexteGauche"):SetTextColor(0,1,1);
+				getglobal(self:GetName().."TexteDroite"):SetTextColor(1,0.7,0);
+				getglobal(self:GetName().."Fond"):SetTexture(0.75,0.5,0);
+				getglobal(self:GetName().."SurFond"):SetTexture(0,0.5,0.5);
+				self.TimeSinceLastUpdate = 10;
+			</OnLoad>
+			<OnShow>
+				if self.textDroite then
+					getglobal(self:GetName().."TexteDroite"):SetText(TRP2_CTS("{w}("..(20-(self.PsyVal*20))..")|r "..self.textDroite));
+				end
+				if self.textGauche then
+					getglobal(self:GetName().."TexteGauche"):SetText(TRP2_CTS(self.textGauche.." {w}("..(self.PsyVal*20)..")"));
+				end
+			</OnShow>
+		</Scripts>
+		<Frames>
+			<Button name="$parentHelpGauche" inherits="TRP2_HelpButtonTemplate">
+				<Anchors>
+					<Anchor point="CENTER" x="-80" y="0"/>
+				</Anchors>
+				<Size x="80" y="15"/>
+			</Button>
+			<Button name="$parentHelpDroite" inherits="TRP2_HelpButtonTemplate">
+				<Anchors>
+					<Anchor point="CENTER" x="80" y="0"/>
+				</Anchors>
+				<Size x="80" y="15"/>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<Frame name="TRP2_BarrePsychoNewTemplate" virtual="true">
+		<Size x="55" y="15"/>
+		<Layers>
+			<Layer level="Overlay">
+				<FontString name="$parentDroite" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT" x="65" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="$parentGauche" inherits="GameFontNormalSmall" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="RIGHT" x="-65" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate>
+				self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+				if (self.TimeSinceLastUpdate > 0.1) then
+					self.TimeSinceLastUpdate = 0;
+					if self.textDroite then
+						getglobal(self:GetName().."Droite"):SetText(TRP2_CTS("{o}("..(20-self.Valeur)..")|r "..self.textDroite));
+					end
+					if self.textGauche then
+						getglobal(self:GetName().."Gauche"):SetText(TRP2_CTS(self.textGauche.." {o}("..(self.Valeur)..")"));
+					end
+				end
+			</OnUpdate>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnLoad>
+				self.TimeSinceLastUpdate = 10;
+			</OnLoad>
+		</Scripts>
+		<Frames>
+			<Button name="$parentHelpGauche" inherits="TRP2_HelpButtonTemplate">
+				<Anchors>
+					<Anchor point="CENTER" x="-80" y="0"/>
+				</Anchors>
+				<Size x="80" y="15"/>
+			</Button>
+			<Button name="$parentHelpDroite" inherits="TRP2_HelpButtonTemplate">
+				<Anchors>
+					<Anchor point="CENTER" x="80" y="0"/>
+				</Anchors>
+				<Size x="80" y="15"/>
+			</Button>
+			<Button name="$parentPlusGauche" inherits="TRP2_UIPanelButtonTemplate" text="&lt;&lt;">
+				<Anchors>
+					<Anchor point="CENTER" x="-15" y="0"/>
+				</Anchors>
+				<Size x="30" y="15"/>
+				<Scripts>
+					<OnEnter>
+						local message = self:GetParent().textGauche.." {v}+1{w}\n"..self:GetParent().textDroite.." {r}-1";
+						TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,"{w}"..message);
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnClick>
+						if self:GetParent().Valeur and self:GetParent().Valeur &lt; 19 then
+							self:GetParent().Valeur = self:GetParent().Valeur + 1;
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentPlusDroite" inherits="TRP2_UIPanelButtonTemplate" text="&gt;&gt;">
+				<Anchors>
+					<Anchor point="CENTER" x="15" y="0"/>
+				</Anchors>
+				<Size x="30" y="15"/>
+				<Scripts>
+					<OnEnter>
+						local message = self:GetParent().textDroite.." {v}+1{w}\n"..self:GetParent().textGauche.." {r}-1";
+						TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,"{w}"..message);
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnClick>
+						if self:GetParent().Valeur and self:GetParent().Valeur &gt; 1 then
+							self:GetParent().Valeur = self:GetParent().Valeur - 1;
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- Bouton Liste registre Template -->
+	<Frame name="TRP2_RegistreListeBoutonTemplate" virtual="true">
+		<Size x="15" y="15"/> 
+		<Layers>
+		  <Layer level="OVERLAY">
+			<FontString name="$parentNom" inherits="GameFontNormalSmall" justifyH="LEFT" text="nom">
+				<Size x="130" y="5"/> 
+				<Anchors>
+					<Anchor point="LEFT" relativeto="$parent" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+				<Color r="0.95" g="0.95" b="0.95"/>
+			</FontString>
+		  </Layer>
+		</Layers>
+		<Frames>
+			<!-- Bouton de lien -->
+			<Button name="$parentBouton">
+				<Size x="15" y="15"/>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+				<Layers>
+				  <Layer level="OVERLAY">
+					<Texture name="$parentIcon" file="Interface\ICONS\INV_Misc_QuestionMark">
+						<Size x="15" y="15"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+					</Texture>
+				  </Layer>
+				</Layers>
+				<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+				<Anchors><Anchor point="LEFT" x="0" y="0"/></Anchors>
+				<Scripts>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+					</OnLoad>
+					<OnLeave>
+						TRP2_MainTooltip:Hide()
+					</OnLeave>
+					<OnEnter>
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- Registre TEMPLATE  -->
+	<Frame name="TRP2_RegistreFrameTemplate" virtual="true">
+		<Size x="384" y="256"/> 
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="TRP2_RegistreListeFiltreText" inherits="GameFontNormal" justifyH="CENTER">
+					<Size x="150" y="5"/> 
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="-15"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentListe">
+				<Size x="384" y="256"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-10" y="0"/>
+				</Anchors>
+				<Frames>
+					<!-- Registre : Liste : Cadre liste -->
+					<Frame name="$parentCadreListe">
+						<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+							<EdgeSize>
+								<AbsValue val="16"/>
+							</EdgeSize>
+							<TileSize>
+								<AbsValue val="32"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Size x="210" y="150"/> 
+						<Anchors>
+							<Anchor point="CENTER" x="10" y="75"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_RegistreListeTitre1" inherits="GameFontNormal" justifyH="RIGHT">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="10"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_RegistreListeVide" inherits="GameFontNormal" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="CENTER" x="0" y="0"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<Slider name="$parentButtonSlider" inherits="OptionsSliderTemplate">
+								<Size x="15" y="140"/>
+								<Anchors>
+									<Anchor point="RIGHT" x="-10" y="0"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										getglobal(self:GetName().."Text"):SetText();
+										getglobal(self:GetName().."High"):SetText();
+										getglobal(self:GetName().."Low"):SetText();
+										self:SetMinMaxValues(0, 6);
+										self:SetValueStep(1);
+										self:SetOrientation("VERTICAL");
+									</OnLoad>
+									<OnValueChanged>
+										if self:IsVisible() then
+											TRP2_ChargerListeRegistrePage(self:GetValue());
+										end
+									</OnValueChanged>
+								</Scripts>
+							</Slider>
+							<Frame name="$parentBouton1" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOPLEFT" x="15" y="-8"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton2" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton1" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton3" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton2" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton4" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton3" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton5" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton4" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton6" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton5" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton7" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton6" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton8" inherits="TRP2_RegistreListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton7" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+						</Frames>
+					</Frame>
+					<!-- Saisie recherche -->
+					<EditBox name="TRP2_RegistreListeRechercheSaisie" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="BOTTOM" relativePoint="BOTTOM" x="15" y="-40"/>
+						</Anchors>
+						<Scripts>
+							<OnTextChanged>
+								TRP2_ChargerListeRegistre();
+							</OnTextChanged>
+						</Scripts>
+					</EditBox>
+					<!-- Connected only -->
+					<CheckButton name="TRP2_RegistreListeConnectedCheck" inherits="TRP2_CheckButtonSmallTemplate" checked="false">
+						<Size x="24" y="24"/>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativeTo="TRP2_RegistreListeRechercheSaisie" relativePoint="TOPLEFT" x="-10" y="10"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_ChargerListeRegistre();
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<!--Level DD -->
+					<Frame name="TRP2_RegistreListeLevelSlider" inherits="TRP2_LabelledDropDown" enableMouse="true">
+						<Anchors>
+							<Anchor point="BOTTOM" relativeTo="TRP2_RegistreListeRechercheSaisie" relativePoint="TOP" x="-66" y="40"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								_G[self:GetName().."Button"]:SetScript("OnClick",function(self) 
+									TRP2_InitUIDropDown(TRP2_DD_ListeLevel,self,-110,0);
+								end);
+								self.Valeur = 5;
+							</OnLoad>
+						</Scripts>
+					</Frame>
+					<!--Relation DD -->
+					<Frame name="TRP2_RegistreListeRelationSlider" inherits="TRP2_LabelledDropDown" enableMouse="true">
+						<Anchors>
+							<Anchor point="BOTTOM" relativeTo="TRP2_RegistreListeLevelSlider" relativePoint="TOP" x="0" y="10"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								_G[self:GetName().."Button"]:SetScript("OnClick",function(self) 
+									TRP2_InitUIDropDown(TRP2_DD_ListeRelation,self,-110,0);
+								end);
+								self.Valeur = 8;
+							</OnLoad>
+						</Scripts>
+					</Frame>
+					<!-- Bouton delete -->
+					<Button name="TRP2_RegistreListeDeleteAll" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" x="50" y="-42"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_RegDeleteAll();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<!-- Bouton epurer -->
+					<Button name="TRP2_RegistreListeEpurer" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" x="-30" y="-42"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_EpurerRegistre();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+	
+	<!-- Fiche Personnage TEMPLATE  -->
+	<Frame name="TRP2_FicheJoueurFrameTemplate" virtual="true">
+		<Size x="300" y="340"/> 
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Frames>
+			<!-- Fiche : Onglets du bas -->
+			<Frame name="TRP2MainFrameFicheJoueurMenuOnglet">
+				<Size x="200" y="40"/> 
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-40"/>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Frames>
+					<!-- ONGLET = REGISTRE -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletRegistre" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche","Registre","Actu","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnUpdate>
+								TRP2_DisableIcon(self, (TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.Onglet == "Registre") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- ONGLET = PETS LISTE -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletPetsList" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="40" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche","Pets","Pets_Liste",nil,TRP2MainFrame.Nom);
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnUpdate>
+								TRP2_DisableIcon(self, (TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "Pets_Liste") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- ONGLET = RETOUR LISTE -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletRetourListe" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Registre");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<!-- ONGLET = DELETE -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletDelete" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-70" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								StaticPopupDialogs["TRP2_CONFIRM_ACTION"].text = TRP2_CTS(TRP2_FT(TRP2_ENTETE..TRP2_LOC_DeleteRegConfirm,TRP2MainFrame.Nom));
+								TRP2_ShowStaticPopup("TRP2_CONFIRM_ACTION",TRP2MainFrame,function()
+									TRP2_DeleteFromRegistre(TRP2MainFrame.Nom);
+									TRP2_OpenPanel("Registre");
+								end);
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<!-- MODE = RELATION -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletRelation" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-40" y="0"/></Anchors>
+						<Layers>
+							<Layer level="Overlay">
+								<FontString name="$parentAccess" inherits="NumberFontNormal" justifyH="RIGHT">
+									<Anchors>
+										<Anchor point="BOTTOMRIGHT" x="-2" y="2"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnClick>
+								if button == "LeftButton" then
+									TRP2_InitUIDropDown(TRP2_DD_MenuRelation);
+								else
+									TRP2_InitUIDropDown(TRP2_DD_MenuAccess);
+								end
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLoad>
+								self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- MODE = MODE CONSULTE -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletConsulte" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_InitUIDropDown(TRP2_DD_PlayerInfoSaveButton);
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<!-- MODE = MODE EDITION -->
+					<Button name="TRP2MainFrameFicheJoueurMenuOngletOngletEdition" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel(TRP2MainFrame.Panel, TRP2MainFrame.Onglet,TRP2MainFrame.SousOnglet,"Edition",TRP2_Joueur);
+							</OnClick>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,TRP2MainFrameFicheJoueurOngletRegistreOngletEdition,"BOTTOM",0,0,"{w}"..TRP2_LOC_MenuJoueur);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Fiche" and (TRP2MainFrame.SousOnglet == "Caracteristiques" 
+								or TRP2MainFrame.SousOnglet == "Actu"),true);
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- MODE = MODE EDITION PETS -->
+					<Button name="TRP2_PetFrameOngletConsulte" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_InitUIDropDown(TRP2_DD_PetInfoSaveButton);
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<!-- MODE = MODE CONSULTE PETS -->
+					<Button name="TRP2_PetFrameOngletEdition" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="RIGHT" x="-10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche","Pets","EditePet",TRP2MainFrame.Mode,TRP2MainFrame.Nom);
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+				
+					<!-- Bouton chapeau -->
+					<Button name="TRP2_ButtonSwitchSound">
+						<Size x="20" y="20"/>
+						<Anchors><Anchor point="LEFT" x="75" y="0"/></Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="TRP2_ButtonSwitchSoundSwitch" file="Interface\RAIDFRAME\ReadyCheck-NotReady">
+									<Size x="16" y="16"/>
+									<Anchors>
+										<Anchor point="CENTER" x="0" y="0"/>
+									</Anchors>
+									<TexCoords left="1" right="0" top="0" bottom="1"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\ICONS\INV_Misc_Ear_Human_02"/>
+						<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing"/>
+						<PushedTexture alphaMode="ADD" file="Interface\ICONS\INV_Misc_Ear_Human_02"/>
+						<Scripts>
+							<OnEnter>
+								if TRP2_GetInfo(TRP2MainFrame.Nom,"bMute",false) then
+									TRP2_SetTooltipForFrame(self,self,"BOTTOM",0,-5,"{w}"..ENABLE_SOUNDFX.." : {r}"..MUTE,TRP2_LOC_CLIC.." : "..TRP2_LOC_UNMUTE);
+								else
+									TRP2_SetTooltipForFrame(self,self,"BOTTOM",0,-5,"{w}"..ENABLE_SOUNDFX.." : {v}"..TRP2_LOC_AUDIBLE,TRP2_LOC_CLIC.." : "..TRP2_LOC_MUTE);
+								end
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+							<OnClick>
+								TRP2_SetInfo(TRP2MainFrame.Nom,"bMute",not TRP2_GetInfo(TRP2MainFrame.Nom,"bMute",false));
+								TRP2_OpenPanel("Fiche", TRP2MainFrame.Onglet, TRP2MainFrame.SousOnglet, TRP2MainFrame.Mode, TRP2MainFrame.Nom);
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<!-- Fiche : Onglets de gauche -->
+			<Frame name="TRP2MainFrameFicheJoueurOngletRegistre">
+				<Size x="40" y="195"/> 
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Anchors>
+					<Anchor point="LEFT" x="-40" y="0"/>
+				</Anchors>
+				<Frames>
+					<!-- SOUSONGLET = INFOS GENERAL -->
+					<Button name="TRP2MainFrameFicheJoueurOngletRegistreOngletGeneral" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-10"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche","Registre","General","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnUpdate>
+								TRP2_DisableIcon(self,(TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "General") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = INFOS Physiques -->
+					<Button name="TRP2MainFrameFicheJoueurOngletRegistreOngletPhysique" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-40"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche", "Registre","Physique","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnUpdate>
+								TRP2_DisableIcon(self,(TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "Physique") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = INFOS Psycho -->
+					<Button name="TRP2MainFrameFicheJoueurOngletRegistreOngletPsycho" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-70"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche", "Registre","Psycho","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnUpdate>
+								TRP2_DisableIcon(self,(TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "Psycho") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = INFOS Histoire -->
+					<Button name="TRP2MainFrameFicheJoueurOngletRegistreOngletHistoire" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-100"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche", "Registre","Histoire","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnUpdate>
+								TRP2_DisableIcon(self,(TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "Histoire") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = INFOS Caracteristiques -->
+					<Button name="TRP2MainFrameFicheJoueurOngletRegistreOngletCaracteristiques" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-130"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche","Registre","Caracteristiques","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnUpdate>
+								TRP2_DisableIcon(self,(TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "Caracteristiques") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = INFOS HRP -->
+					<Button name="TRP2MainFrameFicheJoueurOngletRegistreOngletActu" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="0" y="-160"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Fiche", "Registre","Actu","Consulte",TRP2MainFrame.Nom);
+							</OnClick>
+							<OnUpdate>
+								TRP2_DisableIcon(self,(TRP2MainFrame.Panel == "Fiche" and TRP2MainFrame.SousOnglet == "Actu") or TRP2MainFrame.Mode == "Edition");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<!-- Fiche : Physique : Consulte -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurPhysiqueConsulte" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_PhysiqueAide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" x="-23" y="-15"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FichePhys";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="10" y="10"/>
+						<Frames>
+							<SimpleHTML name="TRP2_FicheJoueurPhysiqueBox">
+								<Size x="270" y="330"/>
+								<Anchors>
+									<Anchor point="TOPLEFT" x="3" y="-5"/>
+								</Anchors>
+								<Scripts>
+									<OnHyperlinkClick>
+										TRP2_Histolink(link,text);
+									</OnHyperlinkClick>
+								</Scripts>
+								<FontString inherits="GameFontNormalSmall"/>
+							</SimpleHTML>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Physique : Edition -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurPhysiqueEdition" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<ScrollChild>
+					<EditBox name="TRP2_FicheJoueurPhysiqueEditBox" letters="3000" multiLine="true" enableMouse="false" autoFocus="false">
+						<Size x="275" y="130"/>
+						<Scripts>
+							<OnTextChanged>
+								self:SetText(string.gsub(self:GetText(),"[%#%~%µ%$%@]",""));
+								if self:IsVisible() and self:GetCursorPosition() == string.len(self:GetText()) then
+									self:GetParent():SetVerticalScroll(self:GetParent():GetVerticalScrollRange());
+								end
+							</OnTextChanged>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+								
+							</OnLeave>
+							<OnEscapePressed>
+								self:ClearFocus()
+							</OnEscapePressed>
+							<OnEditFocusGained>
+								if self.disabled then
+									self:ClearFocus();
+								else
+									self:HighlightText();
+								end
+							</OnEditFocusGained>
+							<OnEditFocusLost>
+								self:HighlightText(0,0);
+							</OnEditFocusLost>
+						</Scripts>
+						<FontString inherits="ChatFontNormal"/>
+					</EditBox>
+				</ScrollChild>
+				<Scripts>
+					<OnEnter>
+						TRP2_FicheJoueurPhysiqueEditBox:SetFocus();
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<Frames>
+					<Button name="TRP2_Physique2Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" x="-23" y="-15"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FichePhys";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentApercu">
+					   <Size x="26" y="26"/>
+						<Anchors>
+							<Anchor point="TOP" relativepoint="BOTTOM" x="35" y="-12"/>
+						</Anchors>
+						<NormalTexture file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+						<HighlightTexture alphaMode="ADD" file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOP",0,0,"{w}"..TRP2_LOC_INSERTBAL,
+								"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_UI_BalTexte.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_UI_BalTexteMP);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnClick>
+								TRP2_ACTUALEDITBOX = TRP2_FicheJoueurPhysiqueEditBox;
+								if button == "LeftButton" then
+									TRP2_InitUIDropDown(TRP2_DD_BalisesNormales);
+								else
+									TRP2_InitUIDropDown(TRP2_DD_Balises);
+								end
+							</OnClick>
+							<OnLoad>
+								self:RegisterForClicks("LeftbuttonUp","RightButtonUp");
+							</OnLoad>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+								
+							</OnLeave>
+						</Scripts>
+					</Button>
+					<Button name="TRP2_Balises1Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="20" y="20"/>
+						<Anchors>
+							<Anchor point="RIGHT" relativeto="$parentApercu" relativepoint="LEFT" x="-10" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "BaliseTexte";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+			</ScrollFrame>
+			<!-- Fiche : Psycho : Consulte -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurPsychoConsulte" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_PsychoAide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FichePsy";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="270" y="60"/>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_FicheJoueurPsychoPersonnelTexte" inherits="GameFontNormalLarge" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-35"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurPsychoSocialTexte" inherits="GameFontNormalLarge" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-135"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<Frame name="TRP2_FicheJoueurPsychoBar1" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoPersonnelTexte" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar2" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar1" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar3" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar2" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar4" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar3" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar5" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoSocialTexte" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar6" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar5" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar7" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar6" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar8" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar7" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar9" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar8" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar10" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar9" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPsychoBar11" inherits="TRP2_BarrePsychoTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoBar10" relativePoint="BOTTOM" x="0" y="0"/>
+								</Anchors>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Psycho : Edition -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurPsychoEdition" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_Psycho2Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FichePsy";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="270" y="60"/>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_FicheJoueurPsychoEditPersonnelTexte" inherits="GameFontNormalLarge" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-35"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurPsychoEditSocialTexte" inherits="GameFontNormalLarge" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-135"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<Frame name="TRP2_FicheJoueurChaLuxSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoEditPersonnelTexte" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurIndRenSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurChaLuxSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurGenEgoSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurIndRenSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurSinTroSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurGenEgoSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurMisCruSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPsychoEditSocialTexte" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurModVanSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurMisCruSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurPiePraSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurModVanSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurRefImpSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPiePraSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurAceBonSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurRefImpSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurValCouSlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurAceBonSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurChaLoySlider" inherits="TRP2_BarrePsychoNewTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurValCouSlider" relativePoint="TOP" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Histoire : Consulte -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurHistoireConsulte" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_HistoireAide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" x="-23" y="-15"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FicheHist";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="10" y="10"/>
+						<Frames>
+							<SimpleHTML name="TRP2_FicheJoueurHistoireBox">
+								<Size x="270" y="330"/>
+								<Anchors>
+									<Anchor point="TOPLEFT" x="3" y="-5"/>
+								</Anchors>
+								<Scripts>
+									<OnHyperlinkClick>
+										TRP2_Histolink(link,text);
+									</OnHyperlinkClick>
+								</Scripts>
+								<FontString inherits="GameFontNormalSmall"/>
+							</SimpleHTML>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Histoire : Edition -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurHistoireEdition" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<ScrollChild>
+					<EditBox name="TRP2_FicheJoueurHistoireEditBox" letters="3000" multiLine="true" enableMouse="false" autoFocus="false">
+						<Size x="275" y="130"/>
+						<Scripts>
+							<OnTextChanged>
+								self:SetText(string.gsub(self:GetText(),"[%#%~%µ%$%@]",""));
+								if self:IsVisible() and self:GetCursorPosition() == string.len(self:GetText()) then
+									self:GetParent():SetVerticalScroll(self:GetParent():GetVerticalScrollRange());
+								end
+							</OnTextChanged>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+								
+							</OnLeave>
+							<OnEscapePressed>
+								self:ClearFocus()
+							</OnEscapePressed>
+							<OnEditFocusGained>
+								if self.disabled then
+									self:ClearFocus();
+								else
+									self:HighlightText();
+								end
+							</OnEditFocusGained>
+							<OnEditFocusLost>
+								self:HighlightText(0,0);
+							</OnEditFocusLost>
+						</Scripts>
+						<FontString inherits="ChatFontNormal"/>
+					</EditBox>
+				</ScrollChild>
+				<Scripts>
+					<OnEnter>
+						TRP2_FicheJoueurHistoireEditBox:SetFocus();
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<Frames>
+					<Button name="TRP2_Histoire2Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" x="-23" y="-15"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FicheHist";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentApercu">
+					   <Size x="26" y="26"/>
+						<Anchors>
+							<Anchor point="TOP" relativepoint="BOTTOM" x="35" y="-12"/>
+						</Anchors>
+						<NormalTexture file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+						<HighlightTexture alphaMode="ADD" file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOP",0,0,"{w}"..TRP2_LOC_INSERTBAL,
+								"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_UI_BalTexte.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_UI_BalTexteMP);
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnClick>
+								TRP2_ACTUALEDITBOX = TRP2_FicheJoueurHistoireEditBox;
+								if button == "LeftButton" then
+									TRP2_InitUIDropDown(TRP2_DD_BalisesNormales);
+								else
+									TRP2_InitUIDropDown(TRP2_DD_Balises);
+								end
+							</OnClick>
+							<OnLoad>
+								self:RegisterForClicks("LeftbuttonUp","RightButtonUp");
+							</OnLoad>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					<Button name="TRP2_Balises2Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="20" y="20"/>
+						<Anchors>
+							<Anchor point="RIGHT" relativeto="$parentApercu" relativepoint="LEFT" x="-10" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "BaliseTexte";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+			</ScrollFrame>
+			<!-- Fiche : Actuellement -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurActuConsulte" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_ActuAide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FicheActu";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="270" y="60"/>
+						<Frames>
+							<Frame name="TRP2_FicheJoueurActuStatutRP" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOPLEFT" x="-10" y="-30"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_FicheJoueurActuStatutRPButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_StatutRP,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurActuStatutXP" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOPLEFT" x="125" y="-30"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_FicheJoueurActuStatutXPButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_StatutXP,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Button name="TRP2_FicheJoueurActuPlayerIcon" inherits="TRP2_MainMenuOngletTemplate">
+								<Anchors><Anchor point="TOP" x="0" y="-70"/></Anchors>
+								<Scripts>
+									<OnClick>
+										if button == "LeftButton" then
+											TRP2_SetListFor("icones",nil,nil,self:GetName().."Icon",self:GetName(),TRP2_EnregistrerIcone);
+										else
+											self.icone = nil;
+											TRP2_EnregistrerIcone(self);
+										end
+									</OnClick>
+									<OnEnter>
+										TRP2_RefreshTooltipForFrame(self);
+									</OnEnter>
+								</Scripts>
+							</Button>
+							<!-- Actu -->
+							<Frame name="TRP2_FicheJoueurActuActu" inherits="TRP2_ZoneSaisieTemplate">
+								<Size x="230" y="85"/>
+								<Anchors>
+									<Anchor point="TOP" x="5" y="-115"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_FicheJoueurActuActuScroll:SetHeight(70);
+										TRP2_FicheJoueurActuActuScrollEditBox:SetHeight(60);
+										TRP2_FicheJoueurActuActuScroll:SetWidth(215);
+										TRP2_FicheJoueurActuActuScrollEditBox:SetWidth(215);
+									</OnLoad>
+								</Scripts>
+								<Frames>
+									<Button name="TRP2_FicheJoueurActuActuButton" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+										<Size x="90" y="20"/>
+										<Anchors>
+											<Anchor point="BOTTOM" x="0" y="-17"/>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												self:Hide();
+												local ActuTab = TRP2_GetInfo(TRP2_Joueur,"Actu",{});
+												ActuTab["ActuTexte"] = TRP2_EmptyToNil(TRP2_FicheJoueurActuActuScrollEditBox:GetText());
+												TRP2_FicheJoueurActuActuScrollEditBox.disabled = true;
+												TRP2_FicheJoueurActuActuScrollEditBox:ClearFocus();
+												TRP2_FicheJoueurActuActuTexte:SetText(TRP2_CTS("{w}"..TRP2_LOC_Actu3));
+												TRP2_SetInfo(TRP2_Joueur,"Actu",ActuTab);
+												TRP2_IncreaseVernNum("Actu");
+												TRP2_SetFicheActuConsulte(TRP2_Joueur);
+											</OnClick>
+										</Scripts>
+									</Button>
+									<Button frameStrata="HIGH" name="TRP2_FicheJoueurActuActuBoutonHide" inherits="TRP2_HelpButtonTemplate">
+										<Size x="230" y="85"/>
+										<Anchors>
+											<Anchor point="CENTER" x="0" y="0"/>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												TRP2_FicheJoueurActuActuScrollEditBox.disabled = nil;
+												TRP2_FicheJoueurActuActuTexte:SetText(TRP2_CTS("{w}"..TRP2_LOC_Actu3.." {o}("..TRP2_LOC_Edition..")"));
+												local ActuTab = TRP2_GetInfo(TRP2_Joueur,"Actu",{});
+												TRP2_FicheJoueurActuActuScrollEditBox:SetText(TRP2_GetWithDefaut(ActuTab,"ActuTexte",""));
+												TRP2_FicheJoueurActuActuScrollEditBox:SetFocus();
+												TRP2_FicheJoueurActuActuButton:Show();
+												TRP2_FicheJoueurActuActuButton:SetFrameStrata("HIGH")
+												self:Hide();
+											</OnClick>
+										</Scripts>
+									</Button>
+								</Frames>
+							</Frame>
+							<!-- HRP -->
+							<Frame name="TRP2_FicheJoueurActuHRP" inherits="TRP2_ZoneSaisieTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="BOTTOM" relativeto="TRP2_FicheJoueurActuActu" x="0" y="-30"/>
+								</Anchors>
+								<Frames>
+									<Button name="TRP2_FicheJoueurActuHRPButton" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+										<Size x="90" y="20"/>
+										<Anchors>
+											<Anchor point="BOTTOM" x="0" y="-17"/>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												self:Hide();
+												local ActuTab = TRP2_GetInfo(TRP2_Joueur,"Actu",{});
+												ActuTab["ActuTexteHRP"] = TRP2_EmptyToNil(TRP2_FicheJoueurActuHRPScrollEditBox:GetText());
+												TRP2_FicheJoueurActuHRPScrollEditBox.disabled = true;
+												TRP2_FicheJoueurActuHRPScrollEditBox:ClearFocus();
+												TRP2_FicheJoueurActuHRPTexte:SetText(TRP2_CTS("{w}"..TRP2_LOC_HRPINFO));
+												TRP2_SetInfo(TRP2_Joueur,"Actu",ActuTab);
+												TRP2_IncreaseVernNum("Actu");
+												TRP2_SetFicheActuConsulte(TRP2_Joueur);
+											</OnClick>
+										</Scripts>
+									</Button>
+									<Button frameStrata="HIGH" name="TRP2_FicheJoueurActuHRPBoutonHide" inherits="TRP2_HelpButtonTemplate">
+										<Size x="230" y="75"/>
+										<Anchors>
+											<Anchor point="CENTER" x="0" y="0"/>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												TRP2_FicheJoueurActuHRPScrollEditBox.disabled = nil;
+												TRP2_FicheJoueurActuHRPTexte:SetText(TRP2_CTS("{w}"..TRP2_LOC_HRPINFO.." {o}("..TRP2_LOC_Edition..")"));
+												local ActuTab = TRP2_GetInfo(TRP2_Joueur,"Actu",{});
+												TRP2_FicheJoueurActuHRPScrollEditBox:SetText(TRP2_GetWithDefaut(ActuTab,"ActuTexteHRP",""));
+												TRP2_FicheJoueurActuHRPScrollEditBox:SetFocus();
+												TRP2_FicheJoueurActuHRPButton:Show();
+												TRP2_FicheJoueurActuHRPButton:SetFrameStrata("HIGH")
+												self:Hide();
+											</OnClick>
+										</Scripts>
+									</Button>
+								</Frames>
+							</Frame>
+							<!-- Notes -->
+							<Frame name="TRP2_FicheJoueurActuNotes" inherits="TRP2_ZoneSaisieTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="BOTTOM" relativeto="TRP2_FicheJoueurActuHRP" x="0" y="-30"/>
+								</Anchors>
+								<Frames>
+									<Button name="TRP2_FicheJoueurActuNotesButton" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+										<Size x="90" y="20"/>
+										<Anchors>
+											<Anchor point="BOTTOM" x="0" y="-17"/>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												self:Hide();
+												TRP2_FicheJoueurActuNotesScrollEditBox.disabled = true;
+												TRP2_FicheJoueurActuNotesScrollEditBox:ClearFocus();
+												TRP2_FicheJoueurActuNotesTexte:SetText(TRP2_CTS("{w}"..TRP2_LOC_NOTES));
+												TRP2_SetInfo(TRP2MainFrame.Nom,"Notes",TRP2_EmptyToNil(TRP2_FicheJoueurActuNotesScrollEditBox:GetText()));
+												TRP2_SetFicheActuConsulte(TRP2MainFrame.Nom);
+											</OnClick>
+										</Scripts>
+									</Button>
+									<Button frameStrata="HIGH" name="TRP2_FicheJoueurActuNotesBoutonHide" inherits="TRP2_HelpButtonTemplate">
+										<Size x="190" y="75"/>
+										<Anchors>
+											<Anchor point="CENTER" x="0" y="0"/>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												TRP2_FicheJoueurActuNotesScrollEditBox.disabled = nil;
+												TRP2_FicheJoueurActuNotesTexte:SetText(TRP2_CTS("{w}"..TRP2_LOC_NOTES.." {o}("..TRP2_LOC_Edition..")"));
+												TRP2_FicheJoueurActuNotesScrollEditBox:SetText(TRP2_GetInfo(TRP2MainFrame.Nom,"Notes",""));
+												TRP2_FicheJoueurActuNotesScrollEditBox:SetFocus();
+												TRP2_FicheJoueurActuNotesButton:Show();
+												self:Hide();
+											</OnClick>
+										</Scripts>
+									</Button>
+								</Frames>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Général : Edition -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurGeneralEdition" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_GeneraAide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FicheReg";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="270" y="85"/>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_FicheJoueurBaseInfoGeneraleEdit" inherits="GameFontNormal" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-5"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurBaseInfoVisageEdit" inherits="GameFontNormal" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurBaseInfoGeneraleEdit" relativePoint="BOTTOM" x="0" y="-155"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurBaseInfoPhysiqueEdit" inherits="GameFontNormal" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurBaseInfoVisageEdit" relativePoint="BOTTOM" x="0" y="-65"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<EditBox name="TRP2_FicheJoueurPrenomSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurBaseInfoGeneraleEdit" relativePoint="BOTTOM" x="-50" y="-10"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurNomSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="TRP2_FicheJoueurPrenomSaisie" relativePoint="RIGHT" x="10" y="0"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurTitreSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurPrenomSaisie" relativePoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurTitreCompletSaisie" letters="500" inherits="TRP2_EditBoxExtensible" autofocus="false">
+								<Size x="210" y="18"/>
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurTitreSaisie" relativePoint="BOTTOM" x="50" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurAgeSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurTitreCompletSaisie" relativePoint="BOTTOM" x="-50" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurOrigineSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="TRP2_FicheJoueurAgeSaisie" relativePoint="RIGHT" x="10" y="0"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurHabitationSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurOrigineSaisie" relativePoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurRaceSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurAgeSaisie" relativePoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurClassSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurRaceSaisie" relativePoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurTraitSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurBaseInfoVisageEdit" relativePoint="BOTTOM" x="-50" y="-10"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurYeuxSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="LEFT" relativeTo="TRP2_FicheJoueurTraitSaisie" relativePoint="RIGHT" x="10" y="0"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="TRP2_FicheJoueurPiercingSaisie" letters="300" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurTraitSaisie" relativePoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<Frame name="TRP2_FicheJoueurTailleSlider" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurBaseInfoPhysiqueEdit" relativePoint="BOTTOM" x="10" y="-15"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_FicheJoueurTailleSliderButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_Taille,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Frame name="TRP2_FicheJoueurSilhouetteSlider" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_FicheJoueurBaseInfoPhysiqueEdit" relativePoint="BOTTOM" x="-130" y="-15"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_FicheJoueurSilhouetteSliderButton:SetScript("OnClick",function(self)
+											TRP2_InitUIDropDown(TRP2_DD_Silhouette,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Général : Consulte -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurGeneralConsulte" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_Genera2Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="0" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "FicheReg";
+							</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+				<ScrollChild>
+					<Frame>
+						<Size x="275" y="85"/>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_PanelJoueurNomComplet" inherits="GameFontNormalLarge" justifyH="CENTER" text="Nom Complet">
+									<Size x="270" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-12"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_PanelJoueurTitreComplet" inherits="GameFontNormal" justifyH="CENTER" text="Titre complet">
+									<Size x="270" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_PanelJoueurNomComplet" relativePoint="BOTTOM" x="0" y="-10"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurConsulteInfoBaseTitre" inherits="GameFontNormal" justifyH="CENTER">
+									<Size x="250" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_PanelJoueurTitreComplet" relativePoint="BOTTOM" x="0" y="-15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurConsulteInfoBase" inherits="GameFontNormalSmall" justifyH="CENTER">
+									<Size x="250" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurConsulteInfoBaseTitre" relativePoint="BOTTOM" x="0" y="0"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurConsulteInfoPhysiqueTitre" inherits="GameFontNormal" justifyH="CENTER">
+									<Size x="250" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurConsulteInfoBase" relativePoint="BOTTOM" x="0" y="-5"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurConsulteInfoPhysique" inherits="GameFontNormalSmall" justifyH="CENTER">
+									<Size x="250" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurConsulteInfoPhysiqueTitre" relativePoint="BOTTOM" x="0" y="-5"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurConsulteInfoVisageTitre" inherits="GameFontNormal" justifyH="CENTER">
+									<Size x="250" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurConsulteInfoPhysique" relativePoint="BOTTOM" x="0" y="-5"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_FicheJoueurConsulteInfoVisage" inherits="GameFontNormalSmall" justifyH="CENTER">
+									<Size x="250" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="TRP2_FicheJoueurConsulteInfoVisageTitre" relativePoint="BOTTOM" x="0" y="-5"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</ScrollChild>
+				<Scripts>
+					<OnLoad>
+						TRP2_FicheJoueurConsulteInfoBase:SetSpacing(5);
+						TRP2_FicheJoueurConsulteInfoPhysique:SetSpacing(5);
+					</OnLoad>
+				</Scripts>
+			</ScrollFrame>
+			<!-- Fiche : Etat -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurCaracteristiques" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<ScrollChild>
+					<Frame>
+						<Size x="270" y="60"/>
+						<Frames>
+							<Button name="TRP2_EtatAide" inherits="TRP2_BoutonAideTemplate">
+								<Size x="16" y="16"/>
+								<Anchors>
+									<Anchor point="TOPLEFT" x="0" y="0"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self.Page = "FicheEtat";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Frame name="TRP2_RegistreAurasPanel">
+								<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+									<EdgeSize><AbsValue val="16"/></EdgeSize><TileSize><AbsValue val="16"/></TileSize>
+									<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+								</Backdrop>
+								<Anchors>
+									<Anchor point="TOP" x="5" y="-20"/>
+								</Anchors>
+								<Size x="190" y="155"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+											<Anchors>
+												<Anchor point="TOP" x="0" y="15"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+										<FontString name="$parentEmpty" inherits="NumberFontNormalHuge" justifyH="CENTER">
+											<Anchors>
+												<Anchor point="CENTER" x="0" y="0"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnUpdate>
+										self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+										if (self.TimeSinceLastUpdate > 1) then
+											self.TimeSinceLastUpdate = 0;
+											TRP2_AfficherAurasPour(TRP2MainFrame.Nom);
+										end
+									</OnUpdate>
+									<OnLoad>
+										self.TimeSinceLastUpdate = 0;
+									</OnLoad>
+								</Scripts>
+								<Frames>
+									<Button name="TRP2_RegistreOngletAura1" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-70" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura2" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-35" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura3" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="0" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura4" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="35" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura5" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="70" y="-5"/></Anchors>
+									</Button>
+									
+									<Button name="TRP2_RegistreOngletAura6" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-70" y="-52"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura7" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-35" y="-52"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura8" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="0" y="-52"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura9" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="35" y="-52"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura10" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="70" y="-52"/></Anchors>
+									</Button>
+									
+									<Button name="TRP2_RegistreOngletAura11" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-70" y="-99"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura12" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-35" y="-99"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura13" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="0" y="-99"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura14" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="35" y="-99"/></Anchors>
+									</Button>
+									<Button name="TRP2_RegistreOngletAura15" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="70" y="-99"/></Anchors>
+									</Button>
+									<!-- MENU AURAS -->
+									<Button name="TRP2_RegistreOngletMenuAura" inherits="TRP2_MainMenuOngletTemplate">
+										<Anchors><Anchor point="LEFT" x="-35" y="0"/></Anchors>
+										<Scripts>
+											<OnClick>
+												TRP2_SetListFor("auras");
+											</OnClick>
+											<OnEnter>
+												TRP2_RefreshTooltipForFrame(self);
+											</OnEnter>
+										</Scripts>
+									</Button>
+								</Frames>
+							</Frame>
+							<Button name="TRP2_RegistreAurasPanelBoutonForce" inherits="TRP2_UIPanelButtonTemplate">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="top" relativeto="TRP2_RegistreAurasPanel" relativepoint="bottom" x="0" y="-10"/>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										TRP2_ForceEtatGet(TRP2MainFrame.Nom);
+									</OnClick>
+								</Scripts>
+							</Button>
+							<Frame name="TRP2_RegistreCaractPanel" hidden="true">
+								<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+									<EdgeSize><AbsValue val="16"/></EdgeSize><TileSize><AbsValue val="16"/></TileSize>
+									<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+								</Backdrop>
+								<Anchors>
+									<Anchor point="TOP" relativepoint="bottom" relativeto="TRP2_RegistreAurasPanel" x="0" y="-20"/>
+								</Anchors>
+								<Size x="225" y="65"/>
+								<Frames>
+									<Frame name="TRP2_CaractJaugeFatigue" inherits="TRP2_CaractJaugeTemplate">
+										<Anchors>
+											<Anchor point="TOP" relativepoint="TOP" relativeto="$parent" x="0" y="-20"/>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self.caract = "bFatigue";
+												TRP2_CaractJaugeFatigueIcone:SetTexture("Interface\\ICONS\\Ability_Hunter_RunningShot");
+											</OnLoad>
+											<OnShow>
+												TRP2_CaractJaugeFatigueCheck:SetChecked(TRP2_GetInfo(TRP2_Joueur,self.caract));
+											</OnShow>
+											<OnUpdate>
+												self.value = TRP2_PlayerSouffle;
+											</OnUpdate>
+										</Scripts>
+									</Frame>
+								</Frames>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Pet Liste -->
+			<Frame name="TRP2MainFrameFicheJoueurPetsListe">
+				<Anchors>
+					<Anchor point="CENTER" x="-10" y="0"/>
+				</Anchors>
+				<Size x="275" y="330"/>
+				<Frames>
+					<Button name="TRP2_Pet1Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="5" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "Familiers";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<!-- Registre : Liste : Cadre liste -->
+					<Frame name="$parentCadreListe">
+						<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+							<EdgeSize>
+								<AbsValue val="16"/>
+							</EdgeSize>
+							<TileSize>
+								<AbsValue val="32"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Size x="210" y="150"/> 
+						<Anchors>
+							<Anchor point="CENTER" x="10" y="10"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="TRP2_PetsListeTitre1" inherits="GameFontNormal" justifyH="RIGHT">
+									<Anchors>
+										<Anchor point="TOP" x="0" y="55"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="TRP2_PetsListeVide" inherits="GameFontNormal" justifyH="CENTER">
+									<Anchors>
+										<Anchor point="CENTER" x="0" y="0"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<Slider name="$parentButtonSlider" inherits="OptionsSliderTemplate">
+								<Size x="15" y="140"/>
+								<Anchors>
+									<Anchor point="RIGHT" x="-10" y="0"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										getglobal(self:GetName().."Text"):SetText();
+										getglobal(self:GetName().."High"):SetText();
+										getglobal(self:GetName().."Low"):SetText();
+										self:SetMinMaxValues(0, 6);
+										self:SetValueStep(1);
+										self:SetOrientation("VERTICAL");
+									</OnLoad>
+								</Scripts>
+							</Slider>
+							<CheckButton name="TRP2_PetsListAllCheck" inherits="TRP2_CheckButtonSmallTemplate">
+								<Anchors>
+									<Anchor point="BOTTOM" relativeto="$parent" relativepoint="TOP" x="-35" y="10"/>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										TRP2_ChargerListePets(TRP2_Joueur);
+									</OnClick>
+								</Scripts>
+							</CheckButton>
+							<Frame name="$parentBouton1" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOPLEFT" x="15" y="-8"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton2" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton1" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton3" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton2" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton4" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton3" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton5" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton4" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton6" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton5" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton7" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton6" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+							<Frame name="$parentBouton8" inherits="TRP2_JournalListeBoutonTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativepoint="Bottom" relativeto="$parentBouton7" x="0" y="-2"/>
+								</Anchors>
+							</Frame>
+						</Frames>
+					</Frame>
+					<!-- Saisie recherche -->
+					<EditBox name="TRP2_PetsListeRechercheSaisie" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="$parentCadreListe" relativePoint="BOTTOM" x="5" y="-10"/>
+						</Anchors>
+						<Scripts>
+							<OnTextChanged>
+								TRP2_ChargerListePets(TRP2MainFrame.Nom);
+							</OnTextChanged>
+						</Scripts>
+					</EditBox>
+				</Frames>
+			</Frame>
+			<!-- Fiche : Pet Consulte -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurPetsFrameConsulte" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<ScrollChild>
+					<Frame>
+						<Size x="275" y="330"/>
+						<Anchors>
+							<Anchor point="CENTER"/>
+						</Anchors>
+						<Layers>
+						  <Layer level="OVERLAY">
+							<FontString name="TRP2_PetsConsulteTitre" inherits="GameFontNormalLarge" justifyH="LEFT">
+								<Size x="255" y="0"/>
+								<Anchors>
+									<Anchor point="TOP" x="0" y="-5"/>
+								</Anchors>
+								<Color r="0.95" g="0.95" b="0.95"/>
+							</FontString>
+							<FontString name="TRP2_PetsConsulteDate" inherits="GameFontNormal" justifyH="LEFT">
+								<Size x="255" y="0"/>
+								<Anchors>
+									<Anchor point="TOP" relativeTo="TRP2_PetsConsulteTitre" relativePoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+								<Color r="0.95" g="0.95" b="0.95"/>
+							</FontString>
+						  </Layer>
+						</Layers>
+						<Frames>
+							<Button name="TRP2_Pet2Aide" inherits="TRP2_BoutonAideTemplate">
+								<Size x="16" y="16"/>
+								<Anchors>
+									<Anchor point="BOTTOMLEFT" x="0" y="5"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self.Page = "Familiers";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Frame name="TRP2_PetAurasPanel">
+								<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+									<EdgeSize>
+										<AbsValue val="16"/>
+									</EdgeSize>
+									<TileSize>
+										<AbsValue val="16"/>
+									</TileSize>
+									<BackgroundInsets>
+										<AbsInset left="5" right="5" top="5" bottom="5"/>
+									</BackgroundInsets>
+								</Backdrop>
+								<Anchors>
+									<Anchor point="TOP" relativepoint="bottom" relativeto="TRP2_PetsConsulteDate" x="5" y="-25"/>
+								</Anchors>
+								<Size x="190" y="45"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+											<Anchors>
+												<Anchor point="TOP" x="0" y="15"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+										<FontString name="$parentEmpty" inherits="NumberFontNormalHuge" justifyH="CENTER">
+											<Anchors>
+												<Anchor point="CENTER" x="0" y="-3"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+										<FontString name="TRP2_PetsDescription" inherits="GameFontNormalSmall" justifyH="LEFT">
+										<Size x="255" y="0"/>
+										<Anchors>
+											<Anchor point="TOP" relativeTo="TRP2_PetAurasPanel" relativePoint="BOTTOM" x="0" y="-10"/>
+										</Anchors>
+										<Color r="0.95" g="0.95" b="0.95"/>
+									</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<Button name="TRP2_PetOngletAura1" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-70" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_PetOngletAura2" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="-35" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_PetOngletAura3" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="0" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_PetOngletAura4" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="35" y="-5"/></Anchors>
+									</Button>
+									<Button name="TRP2_PetOngletAura5" inherits="TRP2_OngletAuraTemplate">
+										<Anchors><Anchor point="TOP" x="70" y="-5"/></Anchors>
+									</Button>
+									<!-- MENU AURAS -->
+									<Button name="TRP2_PetOngletMenuAura" inherits="TRP2_MainMenuOngletTemplate">
+										<Anchors><Anchor point="LEFT" x="-35" y="0"/></Anchors>
+										<Scripts>
+											<OnClick>
+												TRP2_SetListFor("auraspet");
+											</OnClick>
+											<OnEnter>
+												TRP2_RefreshTooltipForFrame(self);
+											</OnEnter>
+											<OnLoad>
+											</OnLoad>
+										</Scripts>
+									</Button>
+								</Frames>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+			<!-- Fiche : Pet Edite -->
+			<ScrollFrame name="TRP2MainFrameFicheJoueurPetsFrameEdite" inherits="UIPanelScrollFrameTemplate">
+				<Size x="275" y="330"/>
+				<Anchors>
+					<Anchor point="CENTER" x="-4" y="0"/>
+				</Anchors>
+				<ScrollChild>
+					<Frame>
+						<Size x="275" y="130"/>
+						<Anchors>
+							<Anchor point="CENTER"/>
+						</Anchors>
+						<Frames>
+							<Button name="TRP2_Pet3Aide" inherits="TRP2_BoutonAideTemplate">
+								<Size x="16" y="16"/>
+								<Anchors>
+									<Anchor point="TOPLEFT" x="0" y="0"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self.Page = "Familiers";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Button name="TRP2_PetFrameEditionIconChoix" inherits="TRP2_MainMenuOngletTemplate">
+								<Anchors><Anchor point="TOPLEFT" x="50" y="-10"/></Anchors>
+								<Scripts>
+									<OnClick>
+										TRP2_SetListFor("icones",nil,nil,self:GetName().."Icon",self:GetName());
+									</OnClick>
+									<OnEnter>
+										TRP2_RefreshTooltipForFrame(self);
+									</OnEnter>
+								</Scripts>
+							</Button>
+							<EditBox name="TRP2_PetFrameEditionNom" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="LEFT" relativeto="TRP2_PetFrameEditionIconChoix" relativepoint="RIGHT" x="30" y="0"/>
+								</Anchors>
+							</EditBox>
+							<!-- Description -->
+							<Frame name="TRP2_PetFrameEditionFrameDescri" inherits="TRP2_ZoneSaisieTemplate">
+								<Anchors>
+									<Anchor point="TOP" x="0" y="-60"/>
+								</Anchors>
+							</Frame>
+							<Frame name="TRP2_PetFrameEditionFrameHistoire" inherits="TRP2_ZoneSaisieTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeto="TRP2_PetFrameEditionFrameDescri" relativepoint="BOTTOM" x="0" y="-20"/>
+								</Anchors>
+							</Frame>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+
+	<!-- Bulle dialogue Mini-moi -->
+	<GameTooltip name="TRP2_StaticPopupPersoTooltip" frameStrata="TOOLTIP" hidden="false" parent="UIParent" inherits="GameTooltipTemplate">
+		<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\Tooltips\ChatBubble-Backdrop" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\Tooltips\ChatBubble-Tail">
+					<Size x="32" y="32"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" x="10" y="-28"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</GameTooltip>
+	
+	<!-- Frame du tabard -->
+	<Frame name="TRP2_TabardFrame" parent="UIParent" hidden="true">
+		<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\Tooltips\ChatBubble-Backdrop" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="150" y="150"/>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture name="$parentTabardEmblemUp" file="Interface\Tooltips\ChatBubble-Tail">
+					<Size x="32" y="64"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-16" y="16"/>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentTabardEmblemDown" file="Interface\Tooltips\ChatBubble-Tail">
+					<Size x="32" y="64"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeto="$parentTabardEmblemUp" relativepoint="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentTabardBorderUp" file="Interface\Tooltips\ChatBubble-Tail">
+					<Size x="32" y="64"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-16" y="16"/>
+					</Anchors>
+					<TexCoords left="0.5" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentTabardBorderDown" file="Interface\Tooltips\ChatBubble-Tail">
+					<Size x="32" y="64"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeto="$parentTabardBorderUp" relativepoint="RIGHT" x="0" y="0"/>
+					</Anchors>
+					<TexCoords left="1" right="0.5" top="0" bottom="1"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<!-- Tooltip des perso -->
+	<GameTooltip name="TRP2_PersoTooltip" frameStrata="TOOLTIP" parent="UIParent" inherits="GameTooltipTemplate">
+		<Scripts>
+			<OnUpdate>
+				if self.Nom and self.TT_Type and not self.isFading then
+					if self.Nom ~= UnitName(self.TT_Type) then
+						self.isFading = true;
+						self.Nom = nil;
+						self:FadeOut();
+						TRP2_MountTooltip.isFading = true;
+						TRP2_MountTooltip:FadeOut();
+					end
+				end
+			</OnUpdate>
+			<OnHide>
+				self.isFading = nil;
+				TRP2_MountTooltip.isFading = nil;
+			</OnHide>
+		</Scripts>
+	</GameTooltip>
+	
+	<!-- Tooltip des Montures -->
+	<GameTooltip name="TRP2_MountTooltip" frameStrata="TOOLTIP" parent="UIParent" inherits="GameTooltipTemplate"/>
+
+	<!-- TBouton TRP portrait  -->
+	<Button name="TRP2_TargetButton" parent="TargetFrame" frameStrata="LOW" hidden="true">
+	    <Size x="32" y="32"/>
+	    <Anchors>
+		    <Anchor point="CENTER" x="-135" y="10"/>
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture file="Interface\MINIMAP\MiniMap-TrackingBorder.blp">
+					<Size x="75" y="75"/>
+					<Anchors>
+						<Anchor point="CENTER" x="15" y="-18"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	    <NormalTexture name="$parentIcon" file="Interface\CharacterFrame\UI-Player-PlayTimeTired.blp"/>
+	    <HighlightTexture file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight" alphaMode="ADD"/>
+	    <Scripts>
+			<OnClick>
+				TRP2_RecupTTInfo();
+			</OnClick>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide()
+			</OnLeave>
+	    </Scripts>
+	</Button>
+</Ui>

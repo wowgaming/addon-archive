@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : UI
+## Author: Telkostrasz
+## Notes: User Interface
+## Notes-frFR: Interface utilisateur
+## Notes-esES: Interfaz de usuario
+## Notes-deDE: Benutzeroberfläche
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Interface
+totalRP2_Interface_Main.lua
+totalRP2_Interface_StaticPopup.lua
+totalRP2_Interface_Playlist.lua
+totalRP2_Interface_GestionChatFrame.lua

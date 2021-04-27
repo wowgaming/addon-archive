@@ -1,0 +1,707 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<Button name="TRP2_ComposantBouton" inherits="TRP2_MainMenuOngletTemplate" virtual="true">
+		<Frames>
+			<!-- Choix quantité -->
+			<EditBox name="$parentQte" numeric="true" inherits="TRP2_EditBoxExtensible" letters="3" autoFocus="false">
+				<Size x="30" y="18"/>
+				<Anchors>
+					<Anchor point="TOP" relativepoint="BOTTOM" x="0" y="-5"/>
+				</Anchors>
+			</EditBox>
+		</Frames>
+		<Scripts>
+			<OnClick>
+				if button == "LeftButton" then
+					TRP2_SetListFor("objetID",TRP2_CreationFrame,nil,self);
+				else
+					self.Arg = nil;
+					_G[self:GetName().."Icon"]:SetTexture("Interface\\ICONS\\Temp");
+					_G[self:GetName().."Icon"]:SetDesaturated(true);
+					_G[self:GetName().."Qte"]:SetText("1");
+				end
+				TRP2_MainTooltip:Hide();
+			</OnClick>
+			<OnEnter>
+				if self.Arg then
+					local objetTab = TRP2_GetObjectTab(self.Arg);
+					TRP2_SetTooltipForFrame(self,self,"TOP",0,10,TRP2_ItemQuality[TRP2_GetWithDefaut(objetTab,"Qualite",1)]..TRP2_GetWithDefaut(objetTab,"Nom",TRP2_LOC_NEW_Objet),"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_ChoixObjet.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..CALENDAR_DELETE_EVENT);
+				else
+					TRP2_SetTooltipForFrame(self,self,"TOP",0,10,EMPTY,"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_ChoixObjet);
+				end
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+		</Scripts>
+	</Button>
+
+
+	<Frame name="PanelCreationObjetTemplate" virtual="true">
+		<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+			<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="775" y="550"/>
+		<Layers>
+			<Layer level="overlay">
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentFrameMenu">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="150" y="140"/>
+				<Anchors>
+					<Anchor point="TOP" relativepoint="TOP" x="0" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="TRP2_CreaGen2Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" x="-7" y="7"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "CreaGene";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentSave" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" x="0" y="-10"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_ObjetSave(TRP2_CreationFrameObjet.ID);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentSaveSous" inherits="TRP2_UIPanelButtonTemplate" text="Save As">
+						<Size x="100" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSave" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_ObjetSaveAs();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentAnnuler" inherits="TRP2_UIPanelButtonTemplate" text="Cancel">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSaveSous" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_CreationPanel();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentApercu" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentAnnuler" relativepoint="BOTTOM" x="0" y="-20"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="Aperçululu">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetObjetApercuTooltip(self,TRP2_CreationFrameObjet.ID);
+							</OnEnter>
+							<OnLeave>
+								TRP2_ObjetTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameGeneral">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="255"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativepoint="TOPLEFT" x="10" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<EditBox name="$parentNom" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="-55" y="-10"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentCategorie" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="65" y="-10"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentUnique" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentNom" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentPoids" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentCategorie" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentLifetime" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentUnique" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentValeur" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentPoids" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+					<Frame name="$parentDescription" inherits="TRP2_ZoneSaisieTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentValeur" relativepoint="BOTTOM" x="-65" y="-12"/>
+						</Anchors>
+					</Frame>
+					<Slider name="$parentQualite" inherits="TRP2_SliderWithTitle">
+						<Size x="150" y="15"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentDescription" relativepoint="BOTTOM" x="0" y="-12"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								_G[self:GetName().."Text"]:SetText("");
+								_G[self:GetName().."High"]:SetText();
+								_G[self:GetName().."Low"]:SetText();
+								self:SetValueStep(1);
+								self:SetMinMaxValues(1,6);
+							</OnLoad>
+							<OnValueChanged>
+								 -- start fix
+   if not self._onsetting then   -- is single threaded 
+     self._onsetting = true
+     self:SetValue(self:GetValue())
+     value = self:GetValue()     -- cant use original 'value' parameter
+     self._onsetting = false
+   else return end               -- ignore recursion for actual event handler
+   -- end fix
+								_G[self:GetName().."Titre"]:SetText(TRP2_CTS("{o}"..QUALITY.." : "..TRP2_ItemQuality[value]..
+																			_G["ITEM_QUALITY"..(value-1).."_DESC"]));
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+					<Button name="$parentIcone" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentQualite" relativepoint="BOTTOM" x="-50" y="-20"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnClick>
+								TRP2_SetListFor("icones",TRP2_CreationFrame,nil,self:GetName().."Icon",self:GetName());
+							</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentStack" letters="3" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="$parentIcone" relativepoint="RIGHT" x="30" y="0"/>
+						</Anchors>
+					</EditBox>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameUtilisation">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="95"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativepoint="TOPRIGHT" x="-10" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<EditBox name="$parentCharge" letters="3" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="-55" y="-10"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentTooltip" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="65" y="-10"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentCooldown" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentCharge" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentDuree" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentTooltip" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="$parentAnim" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentCooldown" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+						<Scripts>
+							<OnEditFocusGained>
+								TRP2_NPCAnimSelectFrame:Show();
+								TRP2_NPCAnimSelectFrameSequence:SetText(self:GetText());
+							</OnEditFocusGained>
+						</Scripts>
+					</EditBox>
+					<EditBox name="$parentAction" numeric="false" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentDuree" relativepoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</EditBox>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameFlags">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="115"/>
+				<Anchors>
+					<Anchor point="TOP" relativeto="$parentFrameUtilisation" relativepoint="BOTTOM" x="0" y="-15"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<CheckButton name="$parentWriteLock" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeto="$parent" relativepoint="TOPLEFT" x="10" y="-5"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentStealable" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentWriteLock" relativepoint="BOTTOM" x="0" y="0"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentUsable" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="$parentWriteLock" relativepoint="RIGHT" x="100" y="0"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentDestroyable" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="$parentStealable" relativepoint="RIGHT" x="100" y="0"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentQuest" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentDestroyable" relativepoint="BOTTOM" x="0" y="0"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentManual" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentStealable" relativepoint="BOTTOM" x="0" y="0"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentGivable" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentManual" relativepoint="BOTTOM" x="0" y="0"/>
+						</Anchors>
+					</CheckButton>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameTrigger">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="270"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativepoint="BOTTOMRIGHT" x="-10" y="10"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentOnReceive" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="-50" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_RECEIVE,TRP2_LOC_DEC_OBJ_RECEIVE..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnDestroy" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="50" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_DESTROY,TRP2_LOC_DEC_OBJ_DESTROY..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnUseStart" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnReceive" relativepoint="BOTTOM" x="0" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_USESTART,TRP2_LOC_DEC_OBJ_USESTART..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnUseStartFail" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnDestroy" relativepoint="BOTTOM" x="0" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_USESTARTF,TRP2_LOC_DEC_OBJ_USESTARTFAIL..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnUseEnd" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnUseStart" relativepoint="BOTTOM" x="0" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_USEEND,TRP2_LOC_DEC_OBJ_USEFIN..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnUseEndFail" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnUseStartFail" relativepoint="BOTTOM" x="0" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_USEENDF,TRP2_LOC_DEC_OBJ_USEFINFAIL..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnUsed" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnUseEndFail" relativepoint="BOTTOM" x="0" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_USED,TRP2_LOC_DEC_OBJ_USED..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnCooldown" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnUsed" relativepoint="BOTTOM" x="0" y="-25"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_COOLDOWN,TRP2_LOC_DEC_OBJ_COOLDOWN..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="$parentOnTimeout" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="center" relativeto="$parentOnCooldown" relativepoint="center" x="-100" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_TRIGOBJ_TIMEOUT,TRP2_LOC_DEC_OBJ_LIFETIME..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameInfo">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="200" y="90"/>
+				<Anchors>
+					<Anchor point="TOP" relativeto="$parentFrameMenu" relativepoint="BOTTOM" x="0" y="-20"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentID" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-10"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentCreateur" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-25"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentVernum" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-40"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentDate" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-55"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentIDHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentID" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="20"/>
+					</Button>
+					<Button name="$parentAuteurHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentCreateur" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="20"/>
+					</Button>
+					<Button name="$parentVernumHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentVernum" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="20"/>
+					</Button>
+					<Button name="$parentDateHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentDate" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="25"/>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameCompo">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="475" y="70"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="10" y="10"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_ComposantBouton1" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="TOPLEFT" x="20" y="-10"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton2" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton1" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton3" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton2" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton4" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton3" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton5" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton4" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton6" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton5" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton7" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton6" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton8" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton7" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton9" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton8" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_ComposantBouton10" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_ComposantBouton9" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+				</Frames>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="$parentFrameOutils">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="247" y="70"/>
+				<Anchors>
+					<Anchor point="Center" relativeto="$parentFrameCompo" relativepoint="TOP" x="0" y="60"/>
+				</Anchors>
+				<Frames>
+					<Button name="TRP2_OutilBouton1" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="TOPLEFT" x="20" y="-10"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_OutilBouton2" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_OutilBouton1" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_OutilBouton3" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_OutilBouton2" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_OutilBouton4" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_OutilBouton3" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_OutilBouton5" inherits="TRP2_ComposantBouton">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="TRP2_OutilBouton4" relativepoint="RIGHT" x="20" y="0"/>
+						</Anchors>
+					</Button>
+				</Frames>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+	</Frame>
+	
+</Ui>

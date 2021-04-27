@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Dialects
+## Title-frFR: Total RP 2 : Dialectes
+## Title-esES: Total RP 2 : Dialectos
+## Title-deDE: Total RP 2 : Sprachen
+## Author: Telkostrasz
+## Notes: Dialects management
+## Notes-frFR: Gestion des dialectes
+## Notes-esES: Control de dialectos
+## Notes-deDE: Verwaltet die Sprachen bzw. Dialekte
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Language
+totalRP2_Language_Main.lua

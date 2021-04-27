@@ -1,0 +1,27 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<Script file="totalRP2_DataBase_Languages.lua"/>
+	<Script file="totalRP2_VariablesGlobales.lua"/>
+	<Script file="totalRP2_ListeIcone.lua"/>
+	<Script file="totalRP2_Localisation.lua"/>
+	<Script file="totalRP2_API.lua"/>
+	<Script file="totalRP2_Communication.lua"/>
+	<Script file="totalRP2.lua"/>
+
+	<Include file="totalRP2_UI_Includes.xml"/>
+	<Include file="totalRP2_UI_Guide.xml"/>
+	<Include file="totalRP2_UI_Interface.xml"/>
+	<Include file="totalRP2_UI_Inventaire.xml"/>
+	<Include file="totalRP2_UI_Registre.xml"/>
+	<Include file="totalRP2_UI_Documents.xml"/>
+	<Include file="totalRP2_UI_Auras.xml"/>
+	<Include file="totalRP2_UI_Quests.xml"/>
+	<Include file="totalRP2_UI_CreationObjets.xml"/>
+	<Include file="totalRP2_UI_CreationAura.xml"/>
+	<Include file="totalRP2_UI_Creation.xml"/>
+	<Include file="totalRP2_UI_Language.xml"/>
+	<Include file="totalRP2_UI_Configuration.xml"/>
+	<Include file="totalRP2_UI_Npcs.xml"/>
+	<Include file="totalRP2_UI_General.xml"/>
+
+</Ui>

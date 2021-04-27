@@ -1,0 +1,159 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<Frame name="TRP2_GuideFrame" toplevel="true" parent="UIParent" enableMouse="true" hidden="true" movable="true">
+		<TitleRegion setAllPoints="true"/>
+		<Size x="350" y="430"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="background">
+				<Texture name="TRP2_GuideFramePortrait">
+					<Size x="64" y="64"/>
+					<Anchors>
+						<Anchor point="topleft" x="-3" y="15"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="border">
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-TopLeft">
+					<Size x="256" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-58" y="108"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-TopRight">
+					<Size x="128" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="134" y="108"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-BotLeft">
+					<Size x="256" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-58" y="-148"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-BotRight">
+					<Size x="128" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="134" y="-148"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="Overlay">
+				<FontString name="TRP2_GuideFrameTitre" inherits="GameFontNormalLarge" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="TOP" x="10" y="3"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-5" y="12"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_GuideFrameHist1" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="65" y="-20"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist2" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist1" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist3" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist2" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist4" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist3" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist5" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist4" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist6" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist5" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist7" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist6" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist8" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist7" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist9" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist8" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<Button name="TRP2_GuideFrameHist10" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="TRP2_GuideFrameHist9" relativepoint="RIGHT" x="0" y="0"/>
+				</Anchors>
+			</Button>
+			<ScrollFrame name="TRP2_GuideFrameScroll" inherits="UIPanelScrollFrameTemplate">
+				<Size x="295" y="350"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="-20"/>
+				</Anchors>
+				<ScrollChild>
+					<Frame>
+						<Size x="10" y="10"/>
+						<Frames>
+							<SimpleHTML name="TRP2_GuideFrameTexteA" hidden="true">
+								<Size x="290" y="160"/>
+								<Anchors>
+									<Anchor point="TOPLEFT" x="0" y="-5"/>
+								</Anchors>
+								<Scripts>
+									<OnHyperlinkClick>
+										TRP2_Guide_OpenPage(link,true,false,text);
+										self:Hide();
+									</OnHyperlinkClick>
+								</Scripts>
+							</SimpleHTML>
+							<SimpleHTML name="TRP2_GuideFrameTexteB" hidden="true">
+								<Size x="290" y="160"/>
+								<Anchors>
+									<Anchor point="TOPLEFT" x="0" y="-5"/>
+								</Anchors>
+								<Scripts>
+									<OnHyperlinkClick>
+										TRP2_Guide_OpenPage(link,true,false,text);
+										self:Hide();
+									</OnHyperlinkClick>
+								</Scripts>
+							</SimpleHTML>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self.mode = "A";
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+</Ui>

@@ -1,0 +1,9 @@
+<Bindings>
+ <Binding name="TRP2_LOC_TOGGLE_BAGS" header="TRP2">
+  if TRP2InventaireFrameSac:IsVisible() then
+    TRP2InventaireFrameSac:Hide();
+  else
+    TRP2_ShowSac();
+  end
+ </Binding>
+</Bindings>

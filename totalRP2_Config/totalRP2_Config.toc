@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Settings
+## Title-frFR: Total RP 2 : Configuration
+## Title-esES: Total RP 2 : Ajustes
+## Title-deDE: Total RP 2 : Einstellungen
+## Author: Telkostrasz
+## Notes: Settings management
+## Notes-frFR: Gestion des paramètres
+## Notes-esES: Control de ajustes
+## Notes-deDE: Verwaltet die Einstellungen
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Configuration
+totalRP2_Configuration_Main.lua

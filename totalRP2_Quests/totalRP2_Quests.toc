@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Quests
+## Title-frFR: Total RP 2 : Quêtes
+## Title-esES: Total RP 2 : Misiones
+## Title-deDE: Total RP 2 : Quests
+## Author: Telkostrasz
+## Notes: Quests management
+## Notes-frFR: Gestion des quêtes
+## Notes-esES: Control de misiones
+## Notes-deDE: Verwaltet selbsterstellte Quests
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Quests,TRP2_Module_QuestsLog
+totalRP2_Quests_Main.lua

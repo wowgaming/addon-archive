@@ -1,0 +1,17 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Handbook
+## Title-frFR: Total RP 2 : Guide officiel
+## Title-esES: Total RP 2 : Manual oficial
+## Title-deDE: Total RP 2 : Handbuch
+## Author: Telkostrasz
+## Notes: Official integrated handbook
+## Notes-frFR: Guide officiel intégré
+## Notes-esES: Manual oficial integrado
+## Notes-deDE: Intigriertes Handbuch
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Guide
+totalRP2_Guide_Pages.lua
+totalRP2_Guide_Main.lua

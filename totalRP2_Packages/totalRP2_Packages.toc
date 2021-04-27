@@ -1,0 +1,13 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Packages
+## Author: Telkostrasz
+## Notes: Creation packs module
+## Notes-frFR: Module de packages de création
+## Notes-esES: Módulo de paquetes de creaciones
+## Notes-deDE: Creation packs module
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Packages
+totalRP2_Packages_Main.lua

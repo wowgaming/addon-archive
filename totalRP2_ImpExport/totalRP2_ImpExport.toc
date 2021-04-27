@@ -1,0 +1,15 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Import/Export
+## Title-frFR: Total RP 2 : Importation/Exportation
+## Title-esES: Total RP 2 : Importación/Exportación
+## Title-deDE: Total RP 2 : Importieren/Exportieren
+## Author: Telkostrasz
+## Notes: Creation packs Import/Export module
+## Notes-frFR: Module d'importation et d'exportation de pack de création
+## Notes-esES: Módulo de Importación/exportación de paquetes de creaciones
+## Notes-deDE: Modul zum Importieren und Exportieren eigener Erfindungen
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_ImpExport

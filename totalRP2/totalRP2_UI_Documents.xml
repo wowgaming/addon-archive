@@ -1,0 +1,888 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<Frame name="TRP2_DocumentFrame" movable="true" parent="UIParent" frameStrata="DIALOG" enableMouse="true" hidden="true">
+		<TitleRegion setAllPoints="true"/>
+		<Size x="350" y="430"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Frames>
+			<Button inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-5" y="12"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="TRP2_DocumentFrameBoutonSuiv" inherits="TRP2_UIPanelButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-40" y="-20"/>
+				</Anchors>
+				<Size x="35" y="35"/>
+				<NormalTexture file="Interface\GLUES\COMMON\Glue-RightArrow-Button-Up"/>
+				<PushedTexture file="Interface\GLUES\COMMON\Glue-RightArrow-Button-Down"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\GLUES\COMMON\Glue-RightArrow-Button-Highlight"/>
+			</Button>
+			<Button name="TRP2_DocumentFrameBoutonPrec" inherits="TRP2_UIPanelButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="20" y="-20"/>
+				</Anchors>
+				<Size x="35" y="35"/>
+				<NormalTexture file="Interface\GLUES\COMMON\Glue-LeftArrow-Button-Up"/>
+				<PushedTexture file="Interface\GLUES\COMMON\Glue-LeftArrow-Button-Down"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\GLUES\COMMON\Glue-LeftArrow-Button-Highlight"/>
+			</Button>
+			<Frame name="TRP2_DocumentUnderFrame">
+				<Size x="350" y="430"/>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+				<Layers>
+					<Layer level="overlay">
+						<Texture name="TRP2_CreationFrameDocumentFrameStringApercuGrad" alphaMode="ADD" file="interface\addons\totalrp2\images\docuapercunb">
+							<Size x="384" y="512"/>
+							<Anchors>
+								<Anchor point="CENTER" x="-13" y="0"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<CheckButton name="TRP2_CreationFrameDocumentFrameStringShowGrad" checked="false" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOPRIGHT" x="-85" y="-30"/>
+						</Anchors>
+					</CheckButton>
+					<Frame name="TRP2_CreationFrameDocumentFrameStringApercuCadre">
+						<Backdrop bgFile="" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+							<EdgeSize><AbsValue val="8"/></EdgeSize><TileSize><AbsValue val="8"/></TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+					</Frame>
+					<ScrollFrame name="TRP2_DocumentFrameScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="295" y="350"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="-20"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame>
+								<Size x="10" y="10"/>
+								<Frames>
+									<SimpleHTML name="TRP2_DocumentFrameScrollTexte" hidden="false">
+										<Size x="290" y="160"/>
+										<Anchors>
+											<Anchor point="TOPLEFT" x="0" y="-5"/>
+										</Anchors>
+										<Scripts>
+											<OnHyperlinkClick>
+												TRP2_Histolink(link,text);
+											</OnHyperlinkClick>
+										</Scripts>
+									</SimpleHTML>
+								</Frames>
+							</Frame>
+						</ScrollChild>
+						<Scripts>
+						</Scripts>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+		</Frames>
+		<Layers>
+			<Layer level="background">
+				<Texture name="TRP2_DocumentFramePortrait">
+					<Size x="65" y="65"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-3" y="15"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="border">
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-TopLeft">
+					<Size x="256" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-58" y="108"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-TopRight">
+					<Size x="128" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="134" y="108"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-BotLeft">
+					<Size x="256" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-58" y="-148"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\Spellbook\UI-SpellbookPanel-BotRight">
+					<Size x="128" y="256"/>
+					<Anchors>
+						<Anchor point="CENTER" x="134" y="-148"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="Overlay">
+				<FontString name="TRP2_DocumentFrameTitre" inherits="GameFontNormalLarge" justifyH="CENTER">
+					<Size x="250" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" x="10" y="3"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="TRP2_DocumentFrameAuteur" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="250" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" x="0" y="-20"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<Frame name="PanelCreationDocumentTemplate" virtual="true">
+		<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+			<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="775" y="550"/>
+		<Frames>
+			<Frame name="$parentFramePageMain">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size x="500" y="515"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativepoint="TOPRIGHT" x="-10" y="-25"/>
+				</Anchors>
+				<Frames>
+					<Frame name="TRP2_CreationFrameDocumentFrameString">
+						<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+							<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="LEFT">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOPLEFT" x="20" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Size x="475" y="240"/>
+						<Anchors>
+							<Anchor point="BOTTOM" relativepoint="BOTTOM" x="0" y="10"/>
+						</Anchors>
+						<Frames>
+							<EditBox name="$parentLevel" letters="1" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="topleft" relativeto="$parent" relativepoint="topleft" x="55" y="-30"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="general lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentTaille" letters="2" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentLevel" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentDimX" letters="4" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentTaille" relativepoint="BOTTOM" x="0" y="-25"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="dimentionlol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentDimY" letters="4" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentDimX" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentPosX" letters="5" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentDimY" relativepoint="BOTTOM" x="0" y="-25"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="position lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentPosY" letters="5" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentPosX" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentSpacing" letters="2" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentPosY" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<Frame name="$parentFont" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOPRIGHT" relativeto="$parent" relativepoint="TOPRIGHT" x="-115" y="-20"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_CreationFrameDocumentFrameStringFontButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_CreaStringFont,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Frame name="$parentAlignV" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentFont" relativepoint="BOTTOM" x="0" y="-10"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_CreationFrameDocumentFrameStringAlignVButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_CreaStringVertical,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Frame name="$parentAlignH" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentAlignV" relativepoint="BOTTOM" x="0" y="-10"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_CreationFrameDocumentFrameStringAlignHButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_CreaStringHorizontal,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Frame name="$parentTexte" inherits="TRP2_ZoneSaisieTemplate">
+								<Anchors>
+									<Anchor point="BOTTOM" relativeto="$parent" relativepoint="BOTTOM" x="0" y="30"/>
+								</Anchors>
+							</Frame>
+							<EditBox name="$parentShadowX" letters="4" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="Left" relativeto="$parentLevel" relativepoint="right" x="115" y="0"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="shadow lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentShadowY" letters="4" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentShadowX" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<Button name="$parentColor" inherits="TRP2_UIPanelButtonTemplate">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentShadowY" relativepoint="BOTTOM" x="-50" y="-5"/>
+								</Anchors>
+							</Button>
+							<Button name="$parentShadowColor" inherits="TRP2_UIPanelButtonTemplate">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentShadowY" relativepoint="BOTTOM" x="50" y="-5"/>
+								</Anchors>
+							</Button>
+							<CheckButton name="$parentContours" inherits="TRP2_CheckButtonSmallTemplate">
+								<Anchors>
+									<Anchor point="Left" relativeto="$parentPosX" relativepoint="right" x="275" y="0"/>
+								</Anchors>
+							</CheckButton>
+							<Button name="$parentSave" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="BOTTOM" x="0" y="10"/>
+								</Anchors>
+							</Button>
+						</Frames>
+					</Frame>
+					<Frame name="TRP2_CreationFrameDocumentFrameImage">
+						<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+							<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="LEFT">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOPLEFT" x="20" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Size x="475" y="240"/>
+						<Anchors>
+							<Anchor point="BOTTOM" relativepoint="BOTTOM" x="0" y="10"/>
+						</Anchors>
+						<Frames>
+							<EditBox name="$parentLevel" letters="1" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="topleft" relativeto="$parent" relativepoint="topleft" x="75" y="-50"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="general lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentUrl" letters="100" inherits="TRP2_EditBoxSmallText" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentLevel" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentDimX" letters="4" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentUrl" relativepoint="BOTTOM" x="0" y="-25"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="dimentionlol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentDimY" letters="4" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentDimX" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentPosX" letters="5" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentDimY" relativepoint="BOTTOM" x="0" y="-25"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="position lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentPosY" letters="5" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentPosX" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentRognerLeft" letters="3" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="LEFT" relativeto="$parentLevel" relativepoint="RIGHT" x="100" y="0"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="rogner lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="-5" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</EditBox>
+							<EditBox name="$parentRognerRight" letters="3" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentRognerLeft" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentRognerUp" letters="3" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentRognerRight" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<EditBox name="$parentRognerDown" letters="3" numeric="true" inherits="TRP2_EditBoxImproved" autofocus="false">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentRognerUp" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</EditBox>
+							<CheckButton name="$parentRounded" inherits="TRP2_CheckButtonSmallTemplate">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentRognerDown" relativepoint="BOTTOM" x="-35" y="-10"/>
+								</Anchors>
+							</CheckButton>
+							<CheckButton name="$parentDesaturated" inherits="TRP2_CheckButtonSmallTemplate">
+								<Anchors>
+									<Anchor point="LEFT" relativeto="$parentRognerLeft" relativepoint="RIGHT" x="65" y="-1"/>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="couleur lol">
+											<Size x="300" y="0"/>
+											<Anchors>
+												<Anchor point="TOP" x="45" y="20"/>
+											</Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</CheckButton>
+							<Frame name="$parentAlignement" inherits="TRP2_LabelledDropDown" enableMouse="true">
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentDesaturated" relativepoint="BOTTOM" x="-20" y="-15"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										TRP2_CreationFrameDocumentFrameImageAlignementButton:SetScript("OnClick",function(self) 
+											TRP2_InitUIDropDown(TRP2_DD_CreaImageDegrad,self,-110,0);
+										end);
+									</OnLoad>
+								</Scripts>
+							</Frame>
+							<Button name="$parentColorStart" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentAlignement" relativepoint="BOTTOM" x="60" y="-10"/>
+								</Anchors>
+							</Button>
+							<Button name="$parentColorEnd" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="TOP" relativeto="$parentColorStart" relativepoint="BOTTOM" x="0" y="-5"/>
+								</Anchors>
+							</Button>
+							<Button name="$parentSave" inherits="TRP2_UIPanelButtonTemplate" text="SAVE">
+								<Size x="90" y="20"/>
+								<Anchors>
+									<Anchor point="BOTTOM" x="0" y="10"/>
+								</Anchors>
+							</Button>
+						</Frames>
+					</Frame>
+					<Button name="$parentSave" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="75" y="-10"/>
+						</Anchors>
+					</Button>
+					<Frame name="$parentTexte">
+						<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+							<EdgeSize>
+								<AbsValue val="16"/>
+							</EdgeSize>
+							<TileSize>
+								<AbsValue val="32"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSave" relativepoint="BOTTOM" x="0" y="-12"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="500" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="8"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Size x="190" y="175"/>
+						<Frames>
+							<Button name="TRP2_Balises3Aide" inherits="TRP2_BoutonAideTemplate">
+								<Size x="20" y="20"/>
+								<Anchors>
+									<Anchor point="TOPRIGHT" x="0" y="16"/>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self.Page = "BaliseTexte";
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<ScrollFrame name="$parentScroll" inherits="UIPanelScrollFrameTemplate">
+								<Size x="175" y="160"/>
+								<Anchors>
+									<Anchor point="CENTER" x="0" y="0"/>
+								</Anchors>
+								<ScrollChild>
+									<EditBox name="$parentEditBox" letters="0" multiLine="true" enableMouse="false" autoFocus="false">
+										<Size x="175" y="50"/>
+										<Scripts>
+											<OnEscapePressed>
+												self:ClearFocus()
+											</OnEscapePressed>
+											<OnEditFocusGained>
+												if self.disabled then
+													self:ClearFocus();
+												else
+													self:HighlightText();
+												end
+											</OnEditFocusGained>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												if self.defaut and (not TRP2_EmptyToNil(self:GetText()) or (self.noZero and self:GetText() == "0")) then
+													self:SetText(self.defaut);
+												end
+											</OnEditFocusLost>
+											<OnEnter>
+												TRP2_RefreshTooltipForFrame(self);
+											</OnEnter>
+											<OnLeave>
+												TRP2_MainTooltip:Hide();
+											</OnLeave>
+										</Scripts>
+										<FontString inherits="GameFontNormal"/>
+									</EditBox>
+								</ScrollChild>
+								<Scripts>
+									<OnEnter>
+										if not getglobal(self:GetName().."EditBox").disabled then
+											getglobal(self:GetName().."EditBox"):SetFocus();
+										end
+									</OnEnter>
+								</Scripts>
+								<Frames>
+									<Button name="$parentApercu">
+									   <Size x="16" y="16"/>
+										<Anchors>
+											<Anchor point="TOPRIGHT" relativepoint="TOPLEFT" x="10" y="23"/>
+										</Anchors>
+										<NormalTexture file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+										<HighlightTexture alphaMode="ADD" file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+										<Scripts>
+											<OnEnter>
+												TRP2_SetTooltipForFrame(self,self,"TOP",0,0,"{w}"..TRP2_LOC_INSERTBAL,
+												"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_UI_BalTexte.."\n{j}"..TRP2_LOC_CLICDROIT.." : {w}"..TRP2_LOC_UI_BalTexteMP);
+												TRP2_RefreshTooltipForFrame(self);
+											</OnEnter>
+											<OnClick>
+												TRP2_ACTUALEDITBOX = TRP2_CreationFrameDocumentFramePageMainTexteScrollEditBox;
+												if button == "LeftButton" then
+													TRP2_InitUIDropDown(TRP2_DD_BalisesNormales);
+												else
+													TRP2_InitUIDropDown(TRP2_DD_Balises);
+												end
+											</OnClick>
+											<OnLoad>
+												self:RegisterForClicks("LeftbuttonUp","RightButtonUp");
+											</OnLoad>
+											<OnLeave>
+												TRP2_MainTooltip:Hide();
+											</OnLeave>
+										</Scripts>
+									</Button>
+								</Frames>
+							</ScrollFrame>
+						</Frames>
+					</Frame>
+					<!-- Liste des éléments-->
+					<Frame name="$parentListeElem" toplevel="true" parent="TRP2_CreationFrameDocumentFramePageMain" hidden="false" inherits="TRP2_ListeTemplate">
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativepoint="TOPRIGHT" x="-10" y="-10"/>
+						</Anchors>
+						<Frames>
+							<Button name="$parentAjout" inherits="TRP2_MainMenuOngletTemplate">
+								<Anchors><Anchor point="BOTTOMRIGHT" x="-5" y="5"/></Anchors>
+								<Scripts>
+									<OnEnter>
+										TRP2_RefreshTooltipForFrame(self);
+									</OnEnter>
+									<OnLoad>
+										getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Spell_ChargePositive.blp");
+										self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+									</OnLoad>
+								</Scripts>
+							</Button>
+						</Frames>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName().."Close"):Hide();
+							</OnLoad>
+						</Scripts>
+					</Frame>
+				</Frames>
+			</Frame>
+			<!-- Liste des action-->
+			<Frame name="$parentFrameListePage" toplevel="true" parent="TRP2_CreationFrameDocument" hidden="false" inherits="TRP2_ListeTemplate">
+				<Anchors>
+					<Anchor point="BottomLEFT" relativepoint="BottomLEFT" x="10" y="10"/>
+				</Anchors>
+				<Frames>
+					<Button name="$parentAjout" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOMRIGHT" x="-5" y="5"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLoad>
+								getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Spell_ChargePositive.blp");
+							</OnLoad>
+							<OnClick>
+								
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Close"):Hide();
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentFrameMenu">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="250" y="250"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativepoint="TOPLEFT" x="10" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="TRP2_CreaGen3Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" x="-7" y="7"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "CreaGene";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentSave" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" x="15" y="-10"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_DocumentSave(TRP2_CreationFrameDocument.Id);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentSaveSous" inherits="TRP2_UIPanelButtonTemplate" text="Save As">
+						<Size x="100" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSave" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_DocumentSaveAs();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentAnnuler" inherits="TRP2_UIPanelButtonTemplate" text="Cancel">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSaveSous" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+					</Button>
+					<Button name="$parentApercu" inherits="TRP2_UIPanelButtonTemplate" text="Aperçu">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentAnnuler" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+					</Button>
+					<EditBox name="$parentTitre" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeto="$parent" relativepoint="TOPRIGHT" x="-20" y="-10"/>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentIcone" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentTitre" relativepoint="BOTTOM" x="-5" y="-20"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnClick>
+								TRP2_SetListFor("icones",TRP2_CreationFrame,nil,self:GetName().."Icon",self:GetName());
+								if TRP2_CreationFrameDocumentFrameMenuSave.Can ~= false then 
+									TRP2_CreationFrameDocumentFrameMenuSave:Enable();
+								end
+							</OnClick>
+						</Scripts>
+					</Button>
+					<CheckButton name="$parentWriteLock" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeto="$parentIcone" relativepoint="BOTTOMLEFT" x="-40" y="-10"/>
+						</Anchors>
+					</CheckButton>
+					<Frame name="TRP2_CreationFrameDocumentFrameInfo">
+						<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+							<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+							<BackgroundInsets>
+								<AbsInset left="5" right="5" top="5" bottom="5"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Size x="200" y="85"/>
+						<Anchors>
+							<Anchor point="BOTTOM" relativeto="$parent" relativepoint="BOTTOM" x="0" y="10"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="$parentID" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-10"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="$parentCreateur" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-25"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="$parentVernum" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-40"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+								<FontString name="$parentDate" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="180" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="-55"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Frames>
+							<Button name="$parentIDHelp" inherits="TRP2_HelpButtonTemplate">
+								<Anchors>
+									<Anchor point="CENTER" relativeto="$parentID" x="0" y="0"/>
+								</Anchors>
+								<Size x="180" y="20"/>
+							</Button>
+							<Button name="$parentAuteurHelp" inherits="TRP2_HelpButtonTemplate">
+								<Anchors>
+									<Anchor point="CENTER" relativeto="$parentCreateur" x="0" y="0"/>
+								</Anchors>
+								<Size x="180" y="20"/>
+							</Button>
+							<Button name="$parentVernumHelp" inherits="TRP2_HelpButtonTemplate">
+								<Anchors>
+									<Anchor point="CENTER" relativeto="$parentVernum" x="0" y="0"/>
+								</Anchors>
+								<Size x="180" y="20"/>
+							</Button>
+							<Button name="$parentDateHelp" inherits="TRP2_HelpButtonTemplate">
+								<Anchors>
+									<Anchor point="CENTER" relativeto="$parentDate" x="0" y="0"/>
+								</Anchors>
+								<Size x="180" y="25"/>
+							</Button>
+						</Frames>
+					</Frame>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+</Ui>

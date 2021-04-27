@@ -1,0 +1,18 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Creation tools
+## Title-frFR: Total RP 2 : Outils de création
+## Title-esES: Total RP 2 : Creaciones
+## Title-deDE: Total RP 2 : Erstellungs-Werkzeuge
+## Author: Telkostrasz
+## Notes: Creation tools management
+## Notes-frFR: Gestion des outils de création
+## Notes-esES: Control de creaciones
+## Notes-deDE: Verwaltet die Erstellungs-Werkzeuge (Erfindungen)
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_ObjetsPerso
+totalRP2_Creation_Objet.lua
+totalRP2_Creation_Aura.lua
+totalRP2_Creation_Main.lua

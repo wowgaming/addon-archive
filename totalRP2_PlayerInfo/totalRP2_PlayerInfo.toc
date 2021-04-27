@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : Character sheet
+## Title-frFR: Total RP 2 : Informations du joueur
+## Title-esES: Total RP 2 : Ficha de personaje
+## Title-deDE: Total RP 2 : Charakter Eigenschaften
+## Author: Telkostrasz
+## Notes: Character sheet management
+## Notes-frFR: Gestion de la fiche du personnage
+## Notes-esES: Control de la ficha de personaje
+## Notes-deDE: Verwaltet die Charakter Eigenschaften
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_PlayerInfo,TRP2_Module_Registre_Access,TRP2_Module_Notes
+totalRP2_PlayerInfo_Main.lua

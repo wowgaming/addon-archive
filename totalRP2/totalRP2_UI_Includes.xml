@@ -1,0 +1,1146 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+
+	<!-- TOTALRP 2 -->
+	
+	<!-- Template d'un bouton du menu  -->
+	<Button name="TRP2_BoutonAideTemplate" virtual="true">
+		<Size x="16" y="16"/>
+	    <NormalTexture file="Interface\FriendsFrame\InformationIcon"/>
+	    <PushedTexture file="Interface\FriendsFrame\InformationIcon-Highlight"/>
+		<Scripts>
+			<OnEnter>
+				if self.Page and TRP2_GUIDES_PAGES[self.Page] then
+					TRP2_SetTooltipForFrame(self,self,"TOP",0,0,
+					"{w}|TInterface\\FriendsFrame\\InformationIcon:20:20|t "..TRP2_GUIDES_PAGES[self.Page]["Titre"],
+					"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_OPEN_HELP);
+				end
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				if TRP2_GuideFrame:IsVisible() and TRP2_GuideFrame.Page == self.Page then
+					TRP2_GuideFrame:Hide();
+					return;
+				end
+				if self.Page and TRP2_GUIDES_PAGES[self.Page] then
+					TRP2_Guide_OpenPage(self.Page,nil,true);
+				else
+					TRP2_Guide_OpenPage();
+				end
+			</OnClick>
+		</Scripts>
+	</Button>
+	
+	<!-- Dropdown avec label -->
+	<Frame name="TRP2_LabelledDropDown" inherits="UIDropDownMenuTemplate" enableMouse="true" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="RESOLUTION">
+					<Anchors>
+						<Anchor point="BOTTOM" relativePoint="TOP" x="63" y="0"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parentValeur" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="100" y="10"/>
+					<Anchors><Anchor point="LEFT" x="27" y="2"/></Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentHelp" inherits="TRP2_HelpButtonTemplate">
+				<Anchors>
+					<Anchor point="CENTER" x="52" y="2"/>
+				</Anchors>
+				<Size x="110" y="30"/>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- Bouton Quitter -->
+	<Button name="TRP2_ExitButton" virtual="true">
+		<Size x="10" y="10"/>
+		<NormalTexture file="Interface\RAIDFRAME\ReadyCheck-NotReady"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\BUTTONS\IconBorder-GlowRing"/>
+		<PushedTexture alphaMode="ADD" file="Interface\RAIDFRAME\ReadyCheck-NotReady"/>
+	</Button>
+	
+	<Frame name="TRP2_ListSeparator" virtual="true">
+		<Size x="50" y="10"/>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTexte" inherits="NumberFontNormal" justifyH="CENTER">
+					<Size x="500" y="0"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<!-- Slider and title Template -->
+	<Slider name="TRP2_SliderWithTitle" inherits="OptionsSliderTemplate" virtual="true">
+		<Size x="270" y="15"/>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="500" y="0"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="-10"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+				<FontString name="$parentTitre" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="500" y="0"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="10"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				getglobal(self:GetName().."Text"):SetText("");
+				getglobal(self:GetName().."High"):SetText();
+				getglobal(self:GetName().."Low"):SetText();
+				self:SetValueStep(1);
+			</OnLoad>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Slider>
+
+	<!-- Slider and title, with plus et moins Template -->
+	<Slider name="TRP2_SliderWithTitlePlusAndMinus" inherits="TRP2_SliderWithTitle" virtual="true">
+		<Frames>
+			<Button name="$parentBoutonPlus" virtual="true">
+			   <Size x="15" y="15"/>
+				<Anchors>
+					<Anchor point="RIGHT" x="15" y="0"/>
+				</Anchors>
+			    <NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-PlusButton-Up"/>
+			    <PushedTexture file="Interface\Buttons\UI-PlusButton-Down"/>
+			    <HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+				<Scripts>
+					<OnLeave>
+						TRP2_MainTooltip:Hide()
+					</OnLeave>
+					<OnEnter>
+						TRP2_MainTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+						TRP2_MainTooltip:AddLine("+1", 1, 1, 1);
+						TRP2_MainTooltip:Show();
+					</OnEnter>
+					<OnClick>
+						local min,max = self:GetParent():GetMinMaxValues();
+						local value = self:GetParent():GetValue();
+						if value == max then
+						
+						else
+							self:GetParent():SetValue(self:GetParent():GetValue()+1);
+						end
+					</OnClick>
+					<OnUpdate>
+						if self:GetParent():IsEnabled() then
+							self:Enable();
+						else
+							self:Disable();
+						end
+					</OnUpdate>
+				</Scripts>
+			</Button>
+			<Button name="$parentBoutonMoins" virtual="true">
+			   <Size x="15" y="15"/>
+				<Anchors>
+					<Anchor point="LEFT" x="-15" y="0"/>
+				</Anchors>
+			    <NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-MinusButton-Up"/>
+			    <PushedTexture file="Interface\Buttons\UI-MinusButton-Down"/>
+			    <HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+				<Scripts>
+					<OnLeave>
+						TRP2_MainTooltip:Hide()
+					</OnLeave>
+					<OnEnter>
+						TRP2_MainTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+						TRP2_MainTooltip:AddLine("-1", 1, 1, 1);
+						TRP2_MainTooltip:Show();
+					</OnEnter>
+					<OnClick>
+						local min,max = self:GetParent():GetMinMaxValues();
+						local value = self:GetParent():GetValue();
+						if value == min then
+						
+						else
+							self:GetParent():SetValue(self:GetParent():GetValue()-1);
+						end
+					</OnClick>
+					<OnUpdate>
+						if self:GetParent():IsEnabled() then
+							self:Enable();
+						else
+							self:Disable();
+						end
+					</OnUpdate>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Slider>
+
+	<!-- Template de la boite de saisie Large + Texte -->
+	<EditBox name="TRP2_EditBoxExtensible" letters="0" historyLines="10" autoFocus="false" virtual="true">
+		<Size x="185" y="18"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+					<Size x="12" y="28"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-6" y="-1"/>
+					</Anchors>
+					<TexCoords left="0" right="0.09375" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+					<Size x="12" y="28"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT" x="6" y="-1"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentCenter" file="Interface\Common\Common-Input-Border">
+					<Size x="170" y="28"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+						<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0.09375" right="0.90625" top="0" bottom="1.0"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="500" y="0"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="8"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<FontString inherits="GameFontWhite"/>
+		<Scripts>
+			<OnTabPressed>
+				if self.tabulation then
+					self.tabulation:SetFocus();
+				end
+			</OnTabPressed>
+			<OnEscapePressed>
+				self:ClearFocus()
+			</OnEscapePressed>
+			<OnUpdate>
+				if self.texte then
+					if self.disabled then
+						getglobal(self:GetName().."Texte"):SetText(TRP2_CTS("{777777}"..self.texte));
+					else
+						getglobal(self:GetName().."Texte"):SetText(TRP2_CTS("{o}"..self.texte));
+					end
+				else
+					getglobal(self:GetName().."Texte"):SetText("");
+				end
+				if self.disabled then
+					self:SetAlpha(0.75);
+					self:SetTextColor(0.5,0.5,0.5);
+					if self.defaut then
+						self:SetText(self.defaut);
+					end
+				else
+					self:SetAlpha(1);
+					self:SetTextColor(0.9,0.9,0.9);
+				end
+			</OnUpdate>
+			<OnEditFocusGained>
+				if self.disabled then
+					self:ClearFocus();
+				else
+					self:HighlightText();
+				end
+			</OnEditFocusGained>
+			<OnEditFocusLost>
+				self:HighlightText(0,0);
+				if self.defaut and (not TRP2_EmptyToNil(self:GetText()) or (self.noZero and self:GetText() == "0")) then
+					self:SetText(self.defaut);
+				end
+			</OnEditFocusLost>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</EditBox>
+
+	<!-- Template de la boite de saisie SMALL + Texte -->
+	<EditBox name="TRP2_EditBoxSmallText" letters="0" historyLines="10" autoFocus="false" virtual="true">
+		<Size x="100" y="18"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+					<Size x="12" y="28"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-6" y="-1"/>
+					</Anchors>
+					<TexCoords left="0" right="0.09375" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentCenter" file="Interface\Common\Common-Input-Border">
+					<Size x="80" y="28"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.09375" right="0.90625" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+					<Size x="12" y="28"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentCenter" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="500" y="0"/>
+					<Anchors>
+						<Anchor point="CENTER" x="-5" y="8"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<FontString inherits="GameFontWhite"/>
+		<Scripts>
+			<OnTabPressed>
+				if self.tabulation then
+					self.tabulation:SetFocus();
+				end
+			</OnTabPressed>
+			<OnEscapePressed>
+				self:ClearFocus()
+			</OnEscapePressed>
+			<OnUpdate>
+				if self.texte then
+					if self.disabled then
+						getglobal(self:GetName().."Texte"):SetText(TRP2_CTS("{777777}"..self.texte));
+					else
+						getglobal(self:GetName().."Texte"):SetText(TRP2_CTS("{o}"..self.texte));
+					end
+				else
+					getglobal(self:GetName().."Texte"):SetText("");
+				end
+				if self.disabled then
+					self:SetAlpha(0.75);
+					self:SetTextColor(0.5,0.5,0.5);
+					if self.defaut then
+						self:SetText(self.defaut);
+					end
+				else
+					self:SetAlpha(1);
+					self:SetTextColor(0.9,0.9,0.9);
+				end
+			</OnUpdate>
+			<OnEditFocusGained>
+				if self.disabled then
+					self:ClearFocus();
+				else
+					self:HighlightText();
+				end
+			</OnEditFocusGained>
+			<OnEditFocusLost>
+				self:HighlightText(0,0);
+				if self.defaut and (not TRP2_EmptyToNil(self:GetText()) or (self.noZero and self:GetText() == "0")) then
+					self:SetText(self.defaut);
+				end
+			</OnEditFocusLost>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</EditBox>
+	
+	<!-- Template d'un bouton normal  -->
+	<Button name="TRP2_UIPanelButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+		<Size x="90" y="20"/>
+		<Scripts>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<!-- Template d'une zone de saisie moyenne  -->
+	<Frame name="TRP2_ZoneSaisieTemplate" virtual="true">
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize><AbsValue val="16"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+			<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5"/></BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="500" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" x="0" y="8"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Size x="190" y="75"/>
+		<Frames>
+			<ScrollFrame name="$parentScroll" inherits="UIPanelScrollFrameTemplate">
+				<Size x="175" y="60"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="0"/>
+				</Anchors>
+				<ScrollChild>
+					<EditBox name="$parentEditBox" letters="10000" multiLine="true" enableMouse="false" autoFocus="false">
+						<Size x="175" y="50"/>
+						<Scripts>
+							<OnTabPressed>
+								if self.tabulation then
+									self.tabulation:SetFocus();
+								end
+							</OnTabPressed>
+							<OnTextChanged>
+								if self:IsVisible() and self:GetCursorPosition() == string.len(self:GetText()) then
+									self:GetParent():SetVerticalScroll(self:GetParent():GetVerticalScrollRange());
+								end
+							</OnTextChanged>
+							<OnEscapePressed>
+								self:ClearFocus()
+							</OnEscapePressed>
+							<OnEditFocusGained>
+								if self.disabled then
+									self:ClearFocus();
+								else
+									self:HighlightText();
+								end
+							</OnEditFocusGained>
+							<OnEditFocusLost>
+								self:HighlightText(0,0);
+								if self.defaut and (not TRP2_EmptyToNil(self:GetText()) or (self.noZero and self:GetText() == "0")) then
+									self:SetText(self.defaut);
+								end
+							</OnEditFocusLost>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+						<FontString inherits="GameFontNormalSmall"/>
+					</EditBox>
+				</ScrollChild>
+				<Scripts>
+					<OnEnter>
+						if not getglobal(self:GetName().."EditBox").disabled then
+							getglobal(self:GetName().."EditBox"):SetFocus();
+						end
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="$parentApercu">
+			   <Size x="16" y="16"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativepoint="TOPLEFT" x="0" y="-5"/>
+				</Anchors>
+				<NormalTexture file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\ICONS\Ability_Hunter_MarkedForDeath"/>
+				<Scripts>
+					<OnEnter>
+						if self.apercu then
+							TRP2_SetTooltipForFrame(self,self,"TOP",0,0,"{w}"..TRP2_LOC_INSERTBAL,
+							"Aperçu :\n\"{w}"..getglobal(self:GetParent():GetName().."ScrollEditBox"):GetText().."{o}\"\n\n{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_UI_BalTexte);
+						else
+							TRP2_SetTooltipForFrame(self,self,"TOP",0,0,"{w}"..TRP2_LOC_INSERTBAL,
+							"{j}"..TRP2_LOC_CLIC.." : {w}"..TRP2_LOC_UI_BalTexte);
+						end
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+					<OnClick>
+						TRP2_ACTUALEDITBOX = getglobal(self:GetParent():GetName().."ScrollEditBox");
+						TRP2_InitUIDropDown(TRP2_DD_BalisesNormales);
+					</OnClick>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- Template d'un bouton du menu  -->
+	<Button name="TRP2_OngletNombreTemplate" inherits="TRP2_MainMenuOngletTemplate" virtual="true">
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+	    </Layers>
+	</Button>
+	
+	<!-- Template d'un bouton du menu  -->
+	<Button name="TRP2_MainMenuOngletTemplate" virtual="true">
+	   <Size x="26" y="26"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+	    <Layers>
+	      <Layer level="OVERLAY">
+	        <Texture name="$parentIcon" file="Interface\ICONS\INV_Misc_QuestionMark">
+				<Size x="26" y="26"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="0"/>
+				</Anchors>
+			</Texture>
+	      </Layer>
+	    </Layers>
+	    <NormalTexture file="Interface\AchievementFrame\UI-Achievement-IconFrame">
+	      <Size x="65" y="65"/>
+	      <Anchors>
+	        <Anchor point="CENTER" x="14" y="-14"/>
+	      </Anchors>
+	    </NormalTexture>
+	    <PushedTexture file="Interface\Buttons\UI-EmptySlot">
+		  <Size x="50" y="50"/>
+	      <Anchors>
+	        <Anchor point="CENTER" x="0" y="0"/>
+	      </Anchors>
+		</PushedTexture>
+		 <DisabledTexture file="Interface\Buttons\UI-EmptySlot-Disabled">
+		  <Size x="47" y="47"/>
+	      <Anchors>
+	        <Anchor point="CENTER" x="0" y="0"/>
+	      </Anchors>
+		</DisabledTexture>
+	    <HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+		<Scripts>
+			<OnLoad>
+				CreateFrame("Cooldown",self:GetName().."Cooldown",self);
+				getglobal(self:GetName().."Cooldown"):SetAllPoints(self);
+				self:RegisterForClicks("RightButtonUp","LeftButtonUp");
+			</OnLoad>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	
+	<!-- Template d'un bouton trigger  -->
+	<Button name="TRP2_ButtonTriggerTemplate" inherits="TRP2_MainMenuOngletTemplate" virtual="true">
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+					<Size x="300" y="0"/>
+					<Anchors>
+						<Anchor point="TOP" x="0" y="15"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				if button == "LeftButton" then
+					TRP2_ChargerEffetCondi(self,self.Effets,self.Conditions,getglobal(self:GetName().."Texte"):GetText(),self.Scripts);
+				else
+					self.Effets = "";
+					self.Conditions = "";
+					self.Scripts = nil;
+				end
+			</OnClick>
+		</Scripts>
+	</Button>
+	
+	<!-- Template d'un bouton du menu  -->
+	<Button name="TRP2_OngletAuraTemplate" virtual="true">
+	    <Size x="35" y="35"/>
+	    <Layers>
+	      <Layer level="OVERLAY">
+	        <Texture name="$parentIcon" file="Interface\ICONS\INV_Misc_QuestionMark">
+				<Size x="30" y="30"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="0"/>
+				</Anchors>
+			</Texture>
+			<FontString name="$parentTime" inherits="GameFontNormalSmall" justifyH="CENTER" text="MOO">
+				<Anchors>
+					<Anchor point="TOP" x="0" y="-36"/>
+				</Anchors>
+				<Color r="0.95" g="0.95" b="0.95"/>
+			</FontString>
+	      </Layer>
+	    </Layers>
+		<NormalTexture file="Interface\Buttons\UI-EmptySlot-Disabled">
+		   <Size x="47" y="47"/>
+		   <Anchors>
+		      <Anchor point="CENTER" x="0" y="0"/>
+		   </Anchors>
+		</NormalTexture>
+	    <PushedTexture file="">
+		  <Size x="85" y="85"/>
+	      <Anchors>
+	        <Anchor point="CENTER" x="19" y="-19"/>
+	      </Anchors>
+		</PushedTexture>
+		 <DisabledTexture file="Interface\Buttons\UI-EmptySlot-Disabled">
+		  <Size x="47" y="47"/>
+	      <Anchors>
+	        <Anchor point="CENTER" x="0" y="0"/>
+	      </Anchors>
+		</DisabledTexture>
+	    <HighlightTexture name="$parentHighText" alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+		<Scripts>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnLoad>
+				self:RegisterForClicks("RightButtonUp","LeftButtonUp");
+			</OnLoad>
+		</Scripts>
+	</Button>
+
+	<!-- Template d'un bouton d'aide  -->
+	<Button name="TRP2_HelpButtonTemplate" virtual="true">
+		<Scripts>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<!-- Template d'un bouton check petit texte-->
+	<CheckButton name="TRP2_CheckButtonSmallTemplate" inherits="OptionsCheckButtonTemplate" virtual="true" checked="false">
+		<Scripts>
+			<OnLoad>
+				getglobal(self:GetName().."Text"):SetFontObject(GameFontNormalSmall);
+			</OnLoad>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnUpdate>
+				if not self.disabled then
+					getglobal(self:GetName().."Text"):SetTextColor(1,0.75,0);
+				else
+					getglobal(self:GetName().."Text"):SetTextColor(0.4,0.4,0.4);
+				end
+			</OnUpdate>
+		</Scripts>
+	</CheckButton>
+	
+	<EditBox name="TRP2_EditBoxSmallTextRandom" numeric="true" inherits="TRP2_EditBoxSmallText" autofocus="false" virtual="true">
+		<Frames>
+			<CheckButton checked="true" name="$parentCheck" inherits="TRP2_CheckButtonSmallTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeto="$parent" relativepoint="RIGHT" x="5" y="-1"/>
+				</Anchors>
+			</CheckButton>
+		</Frames>
+	</EditBox>
+	
+	<!-- Liste small element TEMPLATE  -->
+	<Button name="TRP2_ListSmallElemTemplate" virtual="true">
+	   <Size x="20" y="20"/>
+		<Layers>
+		  <Layer level="BORDER">
+			<Texture name="$parentIcon" file="Interface\Buttons\UI-EmptySlot-Disabled">
+			  <Size x="20" y="20"/>
+			  <Anchors>
+				<Anchor point="CENTER" x="-1" y="0"/>
+			  </Anchors>
+			</Texture>
+		  </Layer>
+		</Layers>
+		<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+		  <Size x="35" y="35"/>
+		  <Anchors>
+			<Anchor point="CENTER" x="0" y="-1"/>
+		  </Anchors>
+		</NormalTexture>
+		<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+		<Scripts>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide()
+			</OnLeave>
+			<OnLoad>
+			   self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+			   self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnClick>
+			</OnClick>
+		</Scripts>
+	</Button>
+	
+	<!-- Bouton edition  -->
+	<Button name="TRP2_EditBoutonTemplate" virtual="true">
+	    <Size x="16" y="16"/>
+		<NormalTexture file="Interface\Buttons\UI-GuildButton-OfficerNote-Up"/>
+		<PushedTexture file="Interface\Buttons\UI-GuildButton-PublicNote-Up"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\UI-GuildButton-OfficerNote-Up"/>
+		<DisabledTexture file="Interface\Buttons\UI-GuildButton-OfficerNote-Disabled"/>
+		<Scripts>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+			</OnLeave>
+			<OnLoad>
+			   self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+			</OnLoad>
+		</Scripts>
+	</Button>
+	
+	<!-- Template de liste-->
+	<Frame name="TRP2_ListeTemplate" toplevel="true" parent="UIParent" enableMouse="true" enableMouseWheel="true" hidden="true" virtual="true">
+		<Backdrop bgFile="Interface\AchievementFrame\UI-Achievement-StatsBackground" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+			<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="300"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="250" y="250"/> 
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\BattlefieldFrame\UI-BattlefieldMinimap-Border">
+					<Size x="210" y="310"/>
+					<Anchors>
+						<Anchor point="CENTER" x="5" y="-53"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTitre" inherits="GameFontNormal" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="105"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentEmpty" inherits="NumberFontNormalHuge" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentSlot1" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot2" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot3" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot4" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot5" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot6" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot7" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot8" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot9" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot10" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot11" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot12" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot13" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot14" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot15" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot16" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot17" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot18" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot19" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot20" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot21" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot22" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot23" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot24" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot25" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot26" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot27" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot28" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="0"/></Anchors>
+			</Button>
+			<Button name="$parentSlot29" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot30" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot31" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot32" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot33" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot34" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot35" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="-25"/></Anchors>
+			</Button>
+			<Button name="$parentSlot36" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot37" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot38" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot39" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot40" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot41" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot42" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="-50"/></Anchors>
+			</Button>
+			<Button name="$parentSlot43" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-75" y="-75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot44" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-50" y="-75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot45" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="-25" y="-75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot46" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="0" y="-75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot47" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="25" y="-75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot48" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="50" y="-75"/></Anchors>
+			</Button>
+			<Button name="$parentSlot49" inherits="TRP2_ListSmallElemTemplate">
+				<Anchors><Anchor point="CENTER" x="75" y="-75"/></Anchors>
+			</Button>
+			<Slider name="$parentSlider" inherits="OptionsSliderTemplate">
+				<Size x="15" y="150"/>
+				<Anchors>
+					<Anchor point="CENTER" x="95" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText("");
+						getglobal(self:GetName().."High"):SetText("");
+						getglobal(self:GetName().."Low"):SetText("");
+						self:SetMinMaxValues(0, 6);
+						self:SetValueStep(1);
+						self:SetOrientation("VERTICAL");
+					</OnLoad>
+				</Scripts>
+			</Slider>
+			<EditBox name="$parentRecherche" inherits="TRP2_EditBoxSmallText" autofocus="false">
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="-107"/>
+				</Anchors>
+				<Scripts>
+					<OnTextChanged>
+					</OnTextChanged>
+					<OnEscapePressed>
+						self:ClearFocus();
+					</OnEscapePressed>
+					<OnLoad>
+						self.texte = TRP2_CTS("{o}"..SEARCH);
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<Button name="$parentClose" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="CENTER" x="110" y="110"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<!-- Bouton Liste registre Template -->
+	<Frame name="TRP2_JournalListeBoutonTemplate" virtual="true">
+		<Size x="15" y="15"/> 
+		<Layers>
+		  <Layer level="OVERLAY">
+			<FontString name="$parentNom" inherits="GameFontNormalSmall" justifyH="LEFT" text="text journal">
+				<Size x="150" y="5"/> 
+				<Anchors>
+					<Anchor point="LEFT" relativeto="$parent" relativepoint="RIGHT" x="5" y="0"/>
+				</Anchors>
+				<Color r="0.95" g="0.95" b="0.95"/>
+			</FontString>
+		  </Layer>
+		</Layers>
+		<Frames>
+			<!-- Bouton de lien -->
+			<Button name="$parentBouton">
+				<Size x="15" y="15"/>
+				<Anchors>
+					<Anchor point="CENTER"/>
+				</Anchors>
+				<Layers>
+				  <Layer level="OVERLAY">
+					<Texture name="$parentIcon" file="Interface\ICONS\INV_Misc_QuestionMark">
+						<Size x="15" y="15"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+					</Texture>
+				  </Layer>
+				</Layers>
+				<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+				<Anchors><Anchor point="LEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnLeave>
+						TRP2_MainTooltip:Hide();
+					</OnLeave>
+					<OnLoad>
+						self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+					</OnLoad>
+					<OnEnter>
+						TRP2_RefreshTooltipForFrame(self);
+					</OnEnter>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+	<EditBox name="TRP2_EditBoxImproved" numeric="false" inherits="TRP2_EditBoxExtensible" letters="4" virtual="true" autoFocus="false">
+		<Size x="40" y="18"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Frames>
+			<Button name="$parentPlusOne" inherits="TRP2_HelpButtonTemplate">
+				<Size x="15" y="15"/>
+				<NormalTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Up"/>
+				<PushedTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Down"/>
+				<DisabledTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Disabled"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+				<Anchors>
+					<Anchor point="LEFT" relativepoint="RIGHT" x="7" y="-1"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						local value = tonumber(self:GetParent():GetText());
+						if not value then value = self:GetParent().defaut end
+						self:GetParent():SetText(value+1);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentPlusTen" inherits="TRP2_HelpButtonTemplate">
+				<Size x="15" y="15"/>
+				<NormalTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Up"/>
+				<PushedTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Down"/>
+				<DisabledTexture file="Interface\Minimap\UI-Minimap-ZoomInButton-Disabled"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+				<Anchors>
+					<Anchor point="LEFT" relativepoint="RIGHT" x="20" y="-1"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						local value = tonumber(self:GetParent():GetText());
+						if not value then value = self:GetParent().defaut end
+						self:GetParent():SetText(value+10);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentMinusOne" inherits="TRP2_HelpButtonTemplate">
+				<Size x="15" y="15"/>
+				<NormalTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Up"/>
+				<PushedTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Down"/>
+				<DisabledTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Disabled"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+				<Anchors>
+					<Anchor point="RIGHT" relativepoint="LEFT" x="-7" y="-1"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						local value = tonumber(self:GetParent():GetText());
+						if not value then value = self:GetParent().defaut end
+						self:GetParent():SetText(value-1);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentMinusTen" inherits="TRP2_HelpButtonTemplate">
+				<Size x="15" y="15"/>
+				<NormalTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Up"/>
+				<PushedTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Down"/>
+				<DisabledTexture file="Interface\Minimap\UI-Minimap-ZoomOutButton-Disabled"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+				<Anchors>
+					<Anchor point="RIGHT" relativepoint="LEFT" x="-20" y="-1"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						local value = tonumber(self:GetParent():GetText());
+						if not value then value = self:GetParent().defaut end
+						self:GetParent():SetText(value-10);
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnUpdate>
+				self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+				if (self.TimeSinceLastUpdate > 0.50) then
+					self.TimeSinceLastUpdate = 0;
+					if self.texte then
+						if self.disabled then
+							getglobal(self:GetName().."Texte"):SetText(TRP2_CTS("{777777}"..self.texte));
+						else
+							getglobal(self:GetName().."Texte"):SetText(TRP2_CTS("{o}"..self.texte));
+						end
+					else
+						getglobal(self:GetName().."Texte"):SetText("");
+					end
+					if self.disabled then
+						self:SetAlpha(0.75);
+						self:SetTextColor(0.5,0.5,0.5);
+						if self.defaut then
+							self:SetText(self.defaut);
+						end
+					else
+						self:SetAlpha(1);
+						self:SetTextColor(0.9,0.9,0.9);
+					end
+					local value = tonumber(self:GetText());
+					if not value then value = self.defaut end
+					if value then
+						if self.min and value &lt;= self.min then
+							self:SetText(self.min);
+							getglobal(self:GetName().."PlusOne"):Enable();
+							getglobal(self:GetName().."PlusTen"):Enable();
+							getglobal(self:GetName().."MinusOne"):Disable();
+							getglobal(self:GetName().."MinusTen"):Disable();
+						elseif self.max and value &gt;= self.max then
+							self:SetText(self.max);
+							getglobal(self:GetName().."PlusOne"):Disable();
+							getglobal(self:GetName().."PlusTen"):Disable();
+							getglobal(self:GetName().."MinusOne"):Enable();
+							getglobal(self:GetName().."MinusTen"):Enable();
+						else
+							getglobal(self:GetName().."PlusOne"):Enable();
+							getglobal(self:GetName().."PlusTen"):Enable();
+							getglobal(self:GetName().."MinusOne"):Enable();
+							getglobal(self:GetName().."MinusTen"):Enable();
+						end
+					end
+				end
+			</OnUpdate>
+			<OnLoad>
+				self.defaut = 0;
+				self.TimeSinceLastUpdate = 1;
+				TRP2_SetTooltipForFrame(getglobal(self:GetName().."PlusOne"),getglobal(self:GetName().."PlusOne"),"TOP",0,0,"+1");
+				TRP2_SetTooltipForFrame(getglobal(self:GetName().."PlusTen"),getglobal(self:GetName().."PlusTen"),"TOP",0,0,"+10");
+				TRP2_SetTooltipForFrame(getglobal(self:GetName().."MinusOne"),getglobal(self:GetName().."MinusOne"),"TOP",0,0,"-1");
+				TRP2_SetTooltipForFrame(getglobal(self:GetName().."MinusTen"),getglobal(self:GetName().."MinusTen"),"TOP",0,0,"-10");
+			</OnLoad>
+		</Scripts>
+	</EditBox>
+</Ui>

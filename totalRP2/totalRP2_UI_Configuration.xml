@@ -1,0 +1,484 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	
+	<!-- Fiche Personnage TEMPLATE  -->
+	<Frame name="TRP2_ConfigFrameTemplate" virtual="true">
+		<Size x="384" y="256"/>
+		<Frames>
+			<Frame name="TRP2_ConfigIconFrame">
+				<Size x="255" y="40"/>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-50"/>
+				</Anchors>
+				<Frames>
+					<!-- SOUSONGLET = General -->
+					<Button name="TRP2_ConfigFrameOnglet1" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="10" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","1");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "1");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = Icone Minimap -->
+					<Button name="TRP2_ConfigFrameOnglet2" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="40" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","2");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "2");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = ChatFrame -->
+					<Button name="TRP2_ConfigFrameOnglet3" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="70" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","3");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "3");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = ? -->
+					<Button name="TRP2_ConfigFrameOnglet4" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="100" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","4");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "4");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = ? -->
+					<Button name="TRP2_ConfigFrameOnglet5" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="130" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","5");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "5");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = ? -->
+					<Button name="TRP2_ConfigFrameOnglet6" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="160" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","6");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "6");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = ? -->
+					<Button name="TRP2_ConfigFrameOnglet7" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="190" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","7");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "7");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+					<!-- SOUSONGLET = ? -->
+					<Button name="TRP2_ConfigFrameOnglet8" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="LEFT" x="220" y="0"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_OpenPanel("Options","","8");
+							</OnClick>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLeave>
+								TRP2_MainTooltip:Hide()
+							</OnLeave>
+							<OnUpdate>
+								TRP2_DisableIcon(self,TRP2MainFrame.Panel == "Options" and TRP2MainFrame.SousOnglet == "8");
+							</OnUpdate>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll1">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll1Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll1Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll2">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll2Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll2Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll3">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll3Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll3Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll4">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll4Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll4Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll5">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll5Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll5Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll6">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll6Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll6Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll7">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll7Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll7Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_ConfigFrameScroll8">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="285" y="300"/>
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="10"/>
+				</Anchors>
+				<Frames>
+					<ScrollFrame name="$parentRealScroll" inherits="UIPanelScrollFrameTemplate">
+						<Size x="275" y="290"/>
+						<Anchors>
+							<Anchor point="CENTER" x="0" y="0"/>
+						</Anchors>
+						<ScrollChild>
+							<Frame name="TRP2_ConfigFrameScroll8Frame">
+								<Size x="275" y="85"/>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="TRP2_ConfigFrameScroll8Titre" inherits="GameFontNormalLarge" justifyH="CENTER">
+											<Size x="250" y="0"/>
+											<Anchors><Anchor point="TOP" x="5" y="-5"/></Anchors>
+											<Color r="0.95" g="0.95" b="0.95"/>
+										</FontString>
+									</Layer>
+								</Layers>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+</Ui>

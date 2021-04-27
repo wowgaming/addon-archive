@@ -1,0 +1,785 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	<!-- Bouton du journal de quete -->
+	<Button name="TRP2_QuestsLogBoutonTemplate" virtual="true">
+		<Size x="230" y="50"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBack" file="Interface\AchievementFrame\UI-Achievement-Alert-Background.blp">
+					<Size x="384" y="96"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="10"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="overlay">
+				<Texture name="$parentOngletIcon" file="Interface\ICONS\INV_Misc_QuestionMark">
+					<Size x="32" y="32"/>
+					<Anchors>
+						<Anchor point="LEFT" x="11" y="1"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentSelect" file="Interface\TUTORIALFRAME\UI-TutorialFrame-QuestComplete">
+					<Size x="32" y="32"/>
+					<Anchors>
+						<Anchor point="RIGHT" x="-5" y="1"/>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentTexte" inherits="GameFontNormal" justifyH="LEFT" text="bwabwabwabwabwabwabwa">
+					<Size x="170" y="10"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="60" y="-19"/>
+					</Anchors>
+					<Color r="0.95" g="0.95" b="0.95"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<HighlightTexture name="$parentHigh" alphaMode="ADD">
+			<Size x="512" y="256"/>
+			<Anchors>
+				<Anchor point="CENTER" x="0" y="0"/>
+			</Anchors>
+		</HighlightTexture>
+		<Frames>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				getglobal(self:GetName().."High"):SetAlpha(1);
+				self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+			</OnLoad>
+			<OnEnter>
+				TRP2_RefreshTooltipForFrame(self);
+			</OnEnter>
+			<OnLeave>
+				TRP2_MainTooltip:Hide();
+				
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<!-- Journal de quete -->
+	<Frame name="TRP2_QuestsLogFrameTemplate" virtual="true">
+		<Size x="364" y="256"/> 
+		<Frames>
+			<Button name="TRP2_QuestsAide" inherits="TRP2_BoutonAideTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="30" y="45"/>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.Page = "Quests";
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Frame name="TRP2MainFrameQuestsLogListe">
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="32"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="overlay">
+						<FontString name="$parentEmpty" inherits="NumberFontNormalHuge" justifyH="CENTER">
+							<Size x="170" y="0"/>
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size x="255" y="270"/> 
+				<Anchors>
+					<Anchor point="TOP" x="0" y="-25"/>
+				</Anchors>
+				<Frames>
+					<Button name="$parentElem1" inherits="TRP2_QuestsLogBoutonTemplate">
+						<Anchors>
+							<Anchor point="TOP" x="-7" y="-10"/>
+						</Anchors>
+					</Button>
+					<Button name="$parentElem2" inherits="TRP2_QuestsLogBoutonTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentElem1" relativepoint="bottom" x="0" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="$parentElem3" inherits="TRP2_QuestsLogBoutonTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentElem2" relativepoint="bottom" x="0" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="$parentElem4" inherits="TRP2_QuestsLogBoutonTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentElem3" relativepoint="bottom" x="0" y="0"/>
+						</Anchors>
+					</Button>
+					<Button name="$parentElem5" inherits="TRP2_QuestsLogBoutonTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentElem4" relativepoint="bottom" x="0" y="0"/>
+						</Anchors>
+					</Button>
+					<Slider name="$parentSlider" inherits="OptionsSliderTemplate">
+						<Size x="15" y="260"/>
+						<Anchors>
+							<Anchor point="RIGHT" relativepoint="RIGHT" x="-5" y="0"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName().."Text"):SetText("");
+								getglobal(self:GetName().."High"):SetText("");
+								getglobal(self:GetName().."Low"):SetText("");
+								self:SetValueStep(1);
+								self:SetOrientation("VERTICAL");
+								self:SetMinMaxValues(0,1);
+								self:SetValue(0);
+							</OnLoad>
+							<OnValueChanged>
+								
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+					<Button name="TRP2MainFrameQuestsLogListeAjout" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="TOP" x="-110" y="30"/></Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_SetListFor("quests");
+							</OnClick>
+							<OnLoad>
+								getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Spell_ChargePositive");
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Frame name="TRP2MainFrameQuestsLogAffichage" inherits="TRP2_LabelledDropDown" enableMouse="true">
+						<Anchors>
+							<Anchor point="TOP" x="-65" y="30"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								TRP2MainFrameQuestsLogAffichageButton:SetScript("OnClick",function(self) 
+									TRP2_InitUIDropDown(TRP2_DD_QuestList,self,-110,0);
+								end);
+								TRP2MainFrameQuestsLogAffichage.Valeur = 4;
+							</OnLoad>
+						</Scripts>
+					</Frame>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+	<!-- Panneau de creation -->
+	<Frame name="PanelCreationQuestTemplate" virtual="true">
+		<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+			<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Size x="775" y="550"/>
+		<Frames>
+			<!-- Liste des action-->
+			<Frame name="TRP2_CreationFrameQuestFrameListeAction" toplevel="true" parent="TRP2_CreationFrameQuest" hidden="false" inherits="TRP2_ListeTemplate">
+				<Anchors>
+					<Anchor point="BottomRIGHT" relativepoint="BottomRIGHT" x="-10" y="10"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentAjout" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOMRIGHT" x="-5" y="5"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLoad>
+								getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Spell_ChargePositive.blp");
+							</OnLoad>
+							<OnClick>
+								TRP2_CreaQuestChargerAction(TRP2_FoundFreePlace(TRP2_CreationFrameQuest.ActionTab,"",3));
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Close"):Hide();
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<!-- Liste des etapes-->
+			<Frame name="$parentFrameListeEtape" toplevel="true" parent="TRP2_CreationFrameQuest" hidden="false" inherits="TRP2_ListeTemplate">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativepoint="TOPRIGHT" x="-10" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentAjout" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors><Anchor point="BOTTOMRIGHT" x="-5" y="5"/></Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+							<OnLoad>
+								getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Spell_ChargePositive.blp");
+							</OnLoad>
+							<OnClick>
+								TRP2_CreaQuestChargerEtape(TRP2_FoundFreePlace(TRP2_CreationFrameQuest.EtapeTab,"",3));
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Close"):Hide();
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<Frame name="TRP2_CreationFrameQuestFrameAction">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="225"/>
+				<Anchors>
+					<Anchor point="BottomRIGHT" relativepoint="BottomRIGHT" x="-10" y="10"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Frame name="TRP2_CreationFrameQuestFrameActionType" inherits="TRP2_LabelledDropDown" enableMouse="true">
+						<Anchors>
+							<Anchor point="TOP" relativepoint="TOP" relativeto="$parent" x="-63" y="-15"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName().."Button"):SetScript("OnClick",function(self) 
+									TRP2_InitUIDropDown(TRP2_CreatQuetActionDD,self,-110,0);
+								end);
+							</OnLoad>
+						</Scripts>
+					</Frame>
+					<Button name="TRP2_CreationFrameQuestFrameActionOnAction" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentType" relativepoint="Bottom" x="63" y="-20"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_ACTION,TRP2_LOC_ONACTIONTT..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<EditBox name="TRP2_CreationFrameQuestFrameActionEtape" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentOnAction" relativepoint="BOTTOM" x="5" y="-15"/>
+						</Anchors>
+					</EditBox>
+					<EditBox name="TRP2_CreationFrameQuestFrameActionParole" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentEtape" relativepoint="BOTTOM" x="0" y="-15"/>
+						</Anchors>
+					</EditBox>
+					<Button name="TRP2_CreationFrameQuestFrameActionSave" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="BOTTOM" x="-45" y="10"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_CreationFrameQuestFrameActionCancel" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="BOTTOM" x="45" y="10"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								if TRP2_TriggerEditFrame.from == TRP2_CreationFrameQuestFrameActionOnAction then
+									TRP2_TriggerEditFrame:Hide();
+								end
+								TRP2_CreationFrameQuestFrameListeAction:Show();
+								TRP2_CreationFrameQuestFrameAction:Hide();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="TRP2_CreationFrameQuestFrameEtape">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="250"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativepoint="TOPRIGHT" x="-10" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<EditBox name="TRP2_CreationFrameQuestFrameEtapeEtapeNum" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="0" y="-15"/>
+						</Anchors>
+					</EditBox>
+					<Frame name="TRP2_CreationFrameQuestFrameEtapeDescription" inherits="TRP2_ZoneSaisieTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentEtapeNum" relativepoint="BOTTOM" x="0" y="-15"/>
+						</Anchors>
+					</Frame>
+					<Frame name="TRP2_CreationFrameQuestFrameEtapeEtat" inherits="TRP2_LabelledDropDown" enableMouse="true">
+						<Anchors>
+							<Anchor point="TOP" relativepoint="bottom" relativeto="$parentDescription" x="-63" y="-10"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName().."Button"):SetScript("OnClick",function(self) 
+									TRP2_InitUIDropDown(TRP2_CreatQuetEtatDD,self,-110,0);
+								end);
+							</OnLoad>
+						</Scripts>
+					</Frame>
+					<Button name="TRP2_CreationFrameQuestFrameEtapeOnEtape" inherits="TRP2_ButtonTriggerTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentEtat" relativepoint="Bottom" x="63" y="-20"/>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								TRP2_SetTooltipForFrame(self,self,"TOPLEFT",0,0,TRP2_LOC_ETAPE,TRP2_LOC_ONETAPETT..TRP2_TooltipTrigger(self.Conditions, self.Effets, self.Scripts));
+								TRP2_RefreshTooltipForFrame(self);
+							</OnEnter>
+						</Scripts>
+					</Button>
+					<Button name="TRP2_CreationFrameQuestFrameEtapeSave" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="BOTTOM" x="-45" y="10"/>
+						</Anchors>
+					</Button>
+					<Button name="TRP2_CreationFrameQuestFrameEtapeCancel" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="BOTTOM" x="45" y="10"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								if TRP2_TriggerEditFrame.from == TRP2_CreationFrameQuestFrameEtapeOnEtape then
+									TRP2_TriggerEditFrame:Hide();
+								end
+								TRP2_CreationFrameQuestFrameListeEtape:Show();
+								TRP2_CreationFrameQuestFrameEtape:Hide();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameGeneral">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="180"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativepoint="TOPLEFT" x="10" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<EditBox name="$parentTitre" inherits="TRP2_EditBoxSmallText" autofocus="false">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parent" relativepoint="TOP" x="0" y="-10"/>
+						</Anchors>
+					</EditBox>
+					<Frame name="$parentDescription" inherits="TRP2_ZoneSaisieTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentTitre" relativepoint="BOTTOM" x="0" y="-12"/>
+						</Anchors>
+					</Frame>
+					<Button name="$parentIcone" inherits="TRP2_MainMenuOngletTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentDescription" relativepoint="BOTTOM" x="0" y="-20"/>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentTexte" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+									<Size x="300" y="0"/>
+									<Anchors>
+										<Anchor point="TOP" x="0" y="15"/>
+									</Anchors>
+									<Color r="0.95" g="0.95" b="0.95"/>
+								</FontString>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnClick>
+								TRP2_SetListFor("icones",TRP2_CreationFrame,nil,self:GetName().."Icon",self:GetName());
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameFlags">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="260" y="65"/>
+				<Anchors>
+					<Anchor point="TOP" relativepoint="BOTTOM" relativeto="$parentFrameGeneral" x="0" y="-20"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="KEK">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<CheckButton name="$parentWriteLock" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeto="$parent" relativepoint="TOPLEFT" x="10" y="-5"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentManual" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeto="$parentWriteLock" relativepoint="RIGHT" x="100" y="0"/>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parentReinit" inherits="TRP2_CheckButtonSmallTemplate">
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentWriteLock" relativepoint="BOTTOM" x="0" y="0"/>
+						</Anchors>
+					</CheckButton>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameMenu">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="150" y="95"/>
+				<Anchors>
+					<Anchor point="TOP" relativepoint="TOP" x="0" y="-25"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="TRP2_CreaGen4Aide" inherits="TRP2_BoutonAideTemplate">
+						<Size x="16" y="16"/>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" x="-7" y="7"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self.Page = "CreaGene";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentSave" inherits="TRP2_UIPanelButtonTemplate" text="Save">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" x="0" y="-10"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_QuestSave(TRP2_CreationFrameQuest.ID);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentSaveSous" inherits="TRP2_UIPanelButtonTemplate" text="Save As">
+						<Size x="100" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSave" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_QuestSaveAs();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentAnnuler" inherits="TRP2_UIPanelButtonTemplate" text="Cancel">
+						<Size x="90" y="20"/>
+						<Anchors>
+							<Anchor point="TOP" relativeto="$parentSaveSous" relativepoint="BOTTOM" x="0" y="-5"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								TRP2_CreationPanel();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="$parentFrameInfo">
+				<Backdrop bgFile="Interface\Tooltips\ChatBubble-Background" edgeFile="Interface\GLUES\COMMON\TextPanel-Border" tile="true">
+					<EdgeSize><AbsValue val="32"/></EdgeSize><TileSize><AbsValue val="32"/></TileSize>
+					<BackgroundInsets>
+						<AbsInset left="5" right="5" top="5" bottom="5"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Size x="200" y="90"/>
+				<Anchors>
+					<Anchor point="TOP" relativeto="$parentFrameMenu" relativepoint="BOTTOM" x="0" y="-20"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentTitle" inherits="GameFontNormal" justifyH="CENTER" text="kek">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="15"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentID" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-10"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentCreateur" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-25"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentVernum" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-40"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+						<FontString name="$parentDate" inherits="GameFontNormalSmall" justifyH="CENTER" text="kek">
+							<Size x="180" y="0"/>
+							<Anchors>
+								<Anchor point="TOP" x="0" y="-55"/>
+							</Anchors>
+							<Color r="0.95" g="0.95" b="0.95"/>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentIDHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentID" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="20"/>
+					</Button>
+					<Button name="$parentAuteurHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentCreateur" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="20"/>
+					</Button>
+					<Button name="$parentVernumHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentVernum" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="20"/>
+					</Button>
+					<Button name="$parentDateHelp" inherits="TRP2_HelpButtonTemplate">
+						<Anchors>
+							<Anchor point="CENTER" relativeto="$parentDate" x="0" y="0"/>
+						</Anchors>
+						<Size x="180" y="25"/>
+					</Button>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+
+	<!-- Barre d'action  -->
+	<Frame name="TRP2_ActionBar" frameStrata="LOW" toplevel="true" parent="UIParent" enableMouse="true" hidden="true" movable="true">
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="20"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="20"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				self:SetClampedToScreen(true);
+			</OnLoad>
+		</Scripts>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Size x="135" y="40"/>
+		<Frames>
+			<Button name="TRP2_ActionBarBut" inherits="TRP2_UIPanelButtonTemplate">
+				<Size x="110" y="20"/>
+				<Anchors>
+					<Anchor point="TOP" x="0" y="15"/>
+				</Anchors>
+				<Scripts>
+					<OnEnter>
+						TRP2_ActionBarTooltip(self);
+					</OnEnter>
+					<OnClick>
+						if button=="RightButton" then
+							TRP2_NoActiveQuest();
+						else
+							TRP2_OpenPanel("Quests");
+						end
+					</OnClick>
+					<OnLoad>
+						self:RegisterForDrag("LeftButton");
+						self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+					</OnLoad>
+					<OnDragStart>
+						TRP2_ActionBar:StartMoving();
+					</OnDragStart>
+					<OnDragStop>
+						TRP2_ActionBar:StopMovingOrSizing();
+					</OnDragStop>
+				</Scripts>
+			</Button>
+			<!-- Bouton Observer -->
+			<Button name="TRP2_ActionBarObserver" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="CENTER" x="-45" y="0"/></Anchors>
+				<Scripts>
+					<OnEnter>
+						TRP2_ActionTooltip("Observer",self);
+					</OnEnter>
+					<OnClick>
+						TRP2_PerformAction("Observer");
+					</OnClick>
+					<OnLoad>
+						getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Ability_Warrior_Revenge");
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<!-- Bouton Ecouter -->
+			<Button name="TRP2_ActionBarEcouter" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="CENTER" x="-15" y="0"/></Anchors>
+				<Scripts>
+					<OnEnter>
+						TRP2_ActionTooltip("Ecouter",self);
+					</OnEnter>
+					<OnClick>
+						TRP2_PerformAction("Ecouter");
+					</OnClick>
+					<OnLoad>
+						getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\INV_Misc_Ear_Human_01");
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<!-- Bouton Ecouter -->
+			<Button name="TRP2_ActionBarFouiller" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="CENTER" x="15" y="0"/></Anchors>
+				<Scripts>
+					<OnEnter>
+						TRP2_ActionTooltip("Fouiller",self);
+					</OnEnter>
+					<OnClick>
+						TRP2_PerformAction("Fouiller");
+					</OnClick>
+					<OnLoad>
+						getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\INV_Gauntlets_41");
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<!-- Bouton Ecouter -->
+			<Button name="TRP2_ActionBarDire" inherits="TRP2_MainMenuOngletTemplate">
+				<Anchors><Anchor point="CENTER" x="45" y="0"/></Anchors>
+				<Scripts>
+					<OnUpdate>
+						if UnitExists("target") then
+							self:Enable();
+							TRP2_ActionBarDireIcon:SetDesaturated(false);
+						else
+							self:Disable();
+							TRP2_ActionBarDireIcon:SetDesaturated(true);
+						end
+					</OnUpdate>
+					<OnEnter>
+						TRP2_ActionTooltip("Dire",self);
+					</OnEnter>
+					<OnClick>
+						TRP2_PerformAction("Dire","TALK");
+					</OnClick>
+					<OnLoad>
+						getglobal(self:GetName().."Icon"):SetTexture("Interface\\ICONS\\Ability_Warrior_CommandingShout");
+					</OnLoad>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+</Ui>

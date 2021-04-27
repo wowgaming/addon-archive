@@ -1,0 +1,16 @@
+﻿## Interface: 50400
+## Title: Total RP 2 : States
+## Title-frFR: Total RP 2 : États
+## Title-esES: Total RP 2 : Estados
+## Title-deDE: Total RP 2 : Zustände
+## Author: Telkostrasz
+## Notes: States management
+## Notes-frFR: Gestion des états
+## Notes-esES: Control de estados
+## Notes-deDE: Verwaltet die Zustände
+## URL: http://trp2.forumotion.com
+## RequiredDeps: totalRP2
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TRP2_Module_Auras, TRP2_Module_AurasTemp
+totalRP2_Auras_Main.lua
