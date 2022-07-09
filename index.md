@@ -15,6 +15,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 ## Without description
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/!BugGrabber" target="_blank">!BugGrabber</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/!Swatter" target="_blank">!Swatter</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/ACP" target="_blank">ACP</a>
@@ -88,6 +90,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Bartender4_Dualspec" target="_blank">Bartender4_Dualspec</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BeanCounter" target="_blank">BeanCounter</a>
+
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BugSack" target="_blank">BugSack</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/BlizzMove" target="_blank">BlizzMove</a>
 
