@@ -579,6 +579,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/WoWEquip" target="_blank">WoWEquip</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/WowLua" target="_blank">WowLua</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/XLoot" target="_blank">XLoot</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/XPerl" target="_blank">XPerl</a>
