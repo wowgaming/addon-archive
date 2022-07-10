@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r41 | Cladhaire-15704 | 2010-09-02 15:01:15 +0000 (Thu, 02 Sep 2010) | 2 lines
+Changed paths:
+   A /tags/r40-release (from /trunk:40)
+
+Tagging r40-release
+
+------------------------------------------------------------------------
+r40 | Cladhaire-15704 | 2010-09-02 14:59:18 +0000 (Thu, 02 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/WowLua.lua
+
+this -> self/getglobal -> _G
+
+------------------------------------------------------------------------
+r39 | Cladhaire-15704 | 2010-09-02 14:54:52 +0000 (Thu, 02 Sep 2010) | 2 lines
+Changed paths:
+   M /trunk/WowLua.xml
+
+Initial fixes for WowLua in Cataclysm
+
+------------------------------------------------------------------------
+r37 | Cladhaire-15704 | 2010-08-20 08:07:00 +0000 (Fri, 20 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/WowLua.lua
+
+Fix ChatFrameEditBox issue
+------------------------------------------------------------------------

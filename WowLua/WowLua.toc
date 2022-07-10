@@ -1,0 +1,19 @@
+## Interface: 30300
+## Title: WowLua
+## Version: wowi:revision 
+## Author: Cladhaire
+## Notes: Interactive Lua interpreter and scratchpad
+## LoadManagers: AddonLoader
+## X-LoadOn-Slash: /wowlua, /lua, /wowluarun, /luarun
+## SavedVariables: WowLua_DB
+## X-Curse-Packaged-Version: r40-release
+## X-Curse-Project-Name: WowLua
+## X-Curse-Project-ID: wowlua
+## X-Curse-Repository-ID: wow/wowlua/mainline
+
+Localization.enUS.lua
+
+WowLua.lua
+FAIAP.lua
+WowLua.xml
+WowLua_Config.lua
