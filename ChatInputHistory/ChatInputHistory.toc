@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: ChatInputHistory
+## Notes: Enables plain Up/Down arrow key command and chat history recall.
+## Author: mrgoo / livemic (Mike Johnson)
+## Version: 1.0.0
+
+ChatInputHistory.lua
