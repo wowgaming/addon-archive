@@ -101,6 +101,8 @@ Do you have an addon compatible with 3.3.5a that is not in this list? Please sen
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Carbonite" target="_blank">Carbonite</a>
 
+<a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/ChatInputHistory" target="_blank">ChatInputHistory</a>
+
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/ClassLoot" target="_blank">ClassLoot</a>
 
 <a href="https://yehonal.github.io/DownGit/#/home?url=https://github.com/wowgaming/addon-archive/tree/master/Clique" target="_blank">Clique</a>
